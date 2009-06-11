@@ -1,0 +1,98 @@
+/***********************************************************************************
+ * Dashboard
+ ***********************************************************************************/
+#dashboard.landing_page{
+	padding:0;
+	margin:0;
+}
+/* profile */
+#dashboard .widget .gravatar{
+	float:right;
+	border:1px double #CCC;
+	padding:2px;
+	margin:8px;
+}
+#dashboard .widget#profile_widget ul{
+	margin-bottom:8px;
+}
+#dashboard .widget#profile_widget ul li{
+	list-style-type:circle;
+}
+#dashboard .widget#profile_widget ul li:hover{
+	list-style-type:disc;
+}
+/* tell your friends */
+#dashboard .widget#taf_widget #referral_url{
+	border-top:1px dotted #CCC;
+}
+#dashboard .widget #referral_url input{
+	width:265px;
+	border:1px groove #CCC;
+	background:#FCFCFC;
+	font-size:0.9em;
+	clear:none;
+	margin:5px 0 2px 0;
+}
+#dashboard table{
+  border-collapse:collapse;
+}
+#dashboard table td{
+}
+#dashboard .widget .round.date{
+ padding:3px 0 0 15px;
+ margin:0;
+}
+#dashboard .widget .round.date.start{
+  padding-top:10px;
+}
+#dashboard .widget .round.date.end{
+ 
+}
+#dashboard .widget#users_vote p.message{
+  border:0;
+  background:transparent;
+  margin:2px 10px;
+  clear:both;
+}
+.widget .sticky_note{
+  float:right;
+  width:280px;
+  margin:5px 10px 0px 5px;
+  padding:5px 5px 5px 10px;
+}
+#dashboard .widget#users_vote div.vote.leaders{
+  margin-top:-5px;
+}
+
+/* leaders */
+.widget .leaders p{
+  padding-bottom:0;
+  border:1px solid blue;
+}
+.widget .leaders ul{
+  padding:0;
+  margin:0px 0px 10px 10px;
+}
+.widget .leaders ul li{
+  width:180px;
+  float:left;
+  margin:0px 5px 5px 0px;
+}
+.widget .leaders ul li a{
+  background-color:#FFF;
+  border:1px solid #CCC;
+}
+.widget .leaders ul li a:hover{
+  border:1px solid #66CC00;
+}
+.widget .leaders ul li a.fav{
+  background-color:#f1f1f1;
+  border:1px solid #CCC;
+}
+.widget .leaders ul li a.fav:hover{
+  border:1px solid #66CC00;
+}
+.widget .leaders ul li a .fav,
+.widget .leaders ul li a .vote{
+  margin:-40px 3px 0 108px;
+}

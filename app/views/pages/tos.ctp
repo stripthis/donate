@@ -1,0 +1,1 @@
+<h2><?php echo __('Terms of Service'); ?></h2>

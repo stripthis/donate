@@ -1,0 +1,6 @@
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^www.lookbooks.com [nc]
+RewriteRule (.*) http://lookbooks.com/$1 [R=301,L]
+
+RewriteRule    ^$ app/webroot/    [L]
+RewriteRule    (.*) app/webroot/$1 [L]

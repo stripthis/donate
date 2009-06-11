@@ -1,0 +1,655 @@
+/***********************************************************************************
+ * Generic Admin CSS
+ * Copyright (c) GREENPEACE INTERNATIONAL 2009
+ *
+ * Licensed under The General Public Licence v3 onwards.
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright   Greenpeace International
+ * @license     GPL3 onwards - http://www.opensource.org/licenses/gpl-license.php
+ * @author      remy.bertot@greenpeace.org
+ * @credit      holy grail, cake.generic, etc.
+ */
+/***********************************************************************************
+ * General Style Info 
+ ***********************************************************************************/
+ 
+* {
+  margin:0;
+  padding:0;
+}
+
+body {
+  background: #66CC00;
+  font-family:verdana, helvetica, arial, sans-serif;
+  font-size:80%;
+  margin: 0;
+}
+
+/* links */
+a {
+  color: #003300;
+  text-decoration: none;
+  font-weight: bold;
+}
+a:hover {
+  color: #003300;
+  text-decoration:none;
+}
+a img {
+  border:none;
+}
+
+/* titles */
+h1, h2, h3, h4 {
+  font-weight: normal;
+  font-family:'Helvetica Neue', helvetica, arial, sans-serif;
+}
+h2{
+  font-size:1.7em;
+  margin:1.7em 0 2px 0;
+}
+h3{
+  font-weight:normal;
+  font-size:1.4em;
+  border-bottom:1px dotted #66CC00;
+  margin:0 0 8px 2px;
+  padding:0px 2px 2px 20px;
+  background: transparent url("../img/layout/arrow1_003300.png") 0 7px no-repeat;
+}
+
+/* lists */
+ul, li {
+  margin: 0 12px;
+}
+
+/* Tables */
+table {
+  background: #fff;
+  border:1px solid #ccc;
+  border-right:0;
+  clear: both;
+  color: #333;
+  margin-bottom: 10px;
+  width: 100%;
+}
+th {
+  background: #f2f2f2;
+  border:1px solid #bbb;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  text-align: left;
+}
+th a {
+  background:#f2f2f2;
+  display: block;
+  padding: 2px 4px 2px 6px;
+  text-decoration: none;
+}
+th a:hover {
+  background: #ccc;
+  color: #333;
+  text-decoration: none;
+}
+table tr td {
+  background: #fff;
+  border-right: 1px solid #ccc;
+  padding: 4px;
+  text-align: center;
+  vertical-align: top;
+}
+table tr.altrow td {
+  background: #fcfcfc;
+}
+td.actions {
+  text-align: left;
+  white-space: nowrap;
+}
+td.actions a {
+  margin: 0px 3px;
+  text-align:center;
+}
+th.date{
+  width:160px;
+  text-align: center;
+}
+table tr th.id, table tr td.id{
+  width:25px;
+  text-align: center;
+}
+table tr td.left,table tr td.text{
+  text-align: left;
+  padding-left:8px;
+}
+table tr td.numeric{
+  text-align: right;
+  padding-left:0;
+  padding-right:8px;
+}
+th.actions{
+  text-align:center;
+  width:150px;
+}
+.criteria.index table th.type{
+  width:75px;
+}
+
+/* Forms */
+form {
+  clear: both;
+  margin:0;
+  padding:0;
+}
+fieldset {
+  border: 1px solid #EEE;
+  margin-top: 20px;
+  padding: 0px 20px 10px 10px;
+}
+fieldset legend {
+  background:#fff;
+  font-size: 1.3em;
+  font-weight:bold;
+  padding: 0 10px;
+}
+fieldset fieldset {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding: 10px 10px;
+}
+fieldset fieldset legend {
+  font-size: 120%;
+  font-weight: normal;
+}
+fieldset fieldset div {
+  clear: left;
+  margin: 0 10px;
+}
+form div {
+  clear: both;
+  margin:0;
+  padding:5px;
+  vertical-align: text-top;
+}
+form div.input {
+  color: #444;
+}
+form div.required {
+  color: #333;
+  font-weight: bold;
+}
+
+/* generic input stuffs */
+form div.submit{
+  border: 0;
+  clear: none;
+}
+label {
+  display: block;
+  font-size: 1.2em;
+  padding: 5px 0px;
+}
+input, textarea {
+  clear: both;
+  font-size: 140%;
+  font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
+  padding: 2px;
+  width: 100%;
+}
+select {
+  clear: both;
+  font-size: 120%;
+  vertical-align: text-bottom;
+}
+select[multiple=multiple] {
+  width: 100%;
+}
+option {
+  font-size: 120%;
+  padding: 0 3px;
+}
+input[type=checkbox] {
+  clear: left;
+  float: left;
+  width: auto;
+  margin-top:0;
+}
+div.checkbox label{
+  margin: -3px 0 0 20px;
+  padding:0;
+  font-size:1.3em;
+}
+input[type=radio] {
+  float:left;
+  width:auto;
+  margin: 0 3px 7px 0;
+}
+div.radio label {
+  margin: 0 0 6px 20px;
+}
+input[type=submit] {
+  display: inline;
+  font-size: 110%;
+  padding: 2px 5px;
+  width: auto;
+  vertical-align: bottom;
+}
+
+/* custom inputs */
+
+#content div.submit input{  
+  min-width:150px;
+  font-size:1.3em;
+  margin:10px 0px 0px 0px;
+  float:left;
+  clear:none;
+  cursor:pointer;
+}
+#content div.cancel a{  
+ border:1px solid #CCC;
+  font-size:1.2em;
+  min-width:150px;
+  margin:20px 10px 0px 0px;
+  float:left;
+  text-align:center;
+  clear:none;
+  padding: 5px 5px;
+  width: auto;
+  vertical-align: bottom;
+  -moz-border-radius:5px;
+}
+
+/***********************************************************************************
+ * Layout 
+ ***********************************************************************************/
+/* holly grail "213" custom */
+#container{
+  min-width:850px;
+}
+#content_wrapper{
+  float: left;
+  width: 100%;
+  background: #fff;
+}
+#content{
+  width: 76%;
+  float:left;
+  margin: 10px 0px;
+  margin-right:22%;
+  padding: 5px 0px 20px 20px;
+  background: #FFF;
+}
+
+
+/*
+.sidebar_wrapper#left{
+  float: left;
+  margin-left: -100%;
+  width: 185px;
+}*/
+.sidebar_wrapper#right{
+  float: left;
+  margin: 0px;
+  margin-left:-21%;
+  margin-top:60px;
+  width: 21%;
+}
+* html .sidebar_wrapper#right{
+  margin-left: -20%;
+}
+
+/** layout hacks **/
+#container:after{
+  content: '[DO NOT LEAVE IT IS NOT REAL]'; 
+  display: block; 
+  height: 0; 
+  clear: both; 
+  visibility: hidden;
+}
+#container{
+  display: inline-block;
+}
+/*\ */
+* html #container{
+  height: 1%;
+}
+#container{
+  display: block;
+}
+/* */
+
+/***********************************************************************************
+ * Website Commons
+ ***********************************************************************************/
+/* header */
+#header{
+  padding: 0px;
+}
+#header h1 {
+  padding: 0px 5px 10px 15px;
+  font-size:19px;
+  color:#FFF;
+}
+#header h1 a {
+  color: #FFF;
+  font-weight: normal;
+  text-decoration: none;
+}
+#header h1 a img{
+  margin-top:10px;
+  vertical-align:bottom;
+}
+#header h1 a:hover {
+  color: #003300;
+}
+
+/* search */
+#header div#search {
+  width: 370px;
+  position:absolute;
+  right:1%;
+  top:12px;
+  padding:0;
+  float:left;
+  background:#369636;
+  padding:8px;
+  -moz-border-radius:5px
+}
+#header #search input{
+  clear:none;
+  display:inline;
+  margin:0;
+}
+#header #search .text{
+  float:left;
+  clear:none;
+  padding:0;
+  margin:0;
+}
+#header #search .text label{
+  float:left;
+  width:80px;
+  margin:0;
+  padding:5px;
+  color:white;
+  font-size:1.2em;
+  font-weight:bold;
+}
+#header #search .text input{
+  clear:none;
+  font-size:1.2em;
+  background:white;
+  border: 3px solid #66CC00;
+  -moz-border-radius:3px;
+  width:190px;
+}
+#header #search .submit{
+  float:left;
+  clear:none;
+  padding:0;
+  margin:0 0 0 5px;
+}
+#header #search .submit input{
+  font-size:1em;
+}
+
+/* menu */
+ul#menu{
+  padding: 5px 5px 5px 5px;
+}
+ul#menu li{
+  display:inline;
+  margin:0;
+}
+ul#menu li a{
+  font-size:1.2em;
+  color: #FFF;
+  background:#1d791d;
+  padding:5px 10px;
+  -moz-border-radius:3px 3px 0 0;
+}
+ul#menu li a.selected, ul#menu li a.selected:hover{
+  background:#FFF;
+  color:#003300;
+}
+ul#menu li a:hover{
+  background:#196119;
+  padding:5px 10px;
+}
+ul#menu.bottom li a{
+  -moz-border-radius:0 0 3px 3px ;
+}
+ul#menu.bottom{
+  clear:both;
+}
+
+/* sidebar */
+#sidebar{
+}
+#sidebar ul{
+  list-style: none;
+  padding:5px 0;
+  margin:0;
+  border:1px solid #CCC;
+  background:#EEE;
+  -moz-border-radius:5px;
+}
+#sidebar ul li{
+  padding:0;
+  margin:0;
+}
+#sidebar ul li a{
+  background:#FCFCFC;
+  display:block;
+  padding:5px 5px 5px 10px;
+  border:1px solid #CCC;
+  border-left:0;
+  border-right:0;
+}
+#sidebar ul li a.first{
+  border-bottom:0;
+}
+#sidebar ul li a:hover{
+  background:#F2F2F2;
+}
+
+/* content */
+#content .view, #content .edit{
+}
+#content div.actions{
+}
+
+/* footer */
+#footer {
+  color:#FFF;
+  clear: both;
+  padding: 10px 20px;
+  text-align: left;
+}
+
+/* Paging */
+div.paging {
+  background:#fff;
+  color: #ccc;
+  margin-bottom: 2em;
+}
+div.paging div.disabled {
+  color: #ddd;
+  display: inline;
+}
+div.paging span {
+}
+div.paging span.current {
+  color: #000;
+}
+div.paging span a {
+}
+
+/* Scaffold View */
+dl {
+  width: 100%;
+  line-height: 2em;
+  margin: 0em 0em;
+}
+dt {
+  font-weight: bold;
+  padding-left: 4px;
+  vertical-align: top;
+}
+dd {
+  margin-left: 10em;
+  margin-top: -2em;
+  vertical-align: top;
+}
+
+/* Notices and Errors */
+div.message {
+  clear: both;
+  color: #900;
+  font-size: 140%;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  padding:5px 5px 5px 10px;
+  background:#FFD;
+}
+div.error-message {
+  clear: both;
+  color: #900;
+  font-weight: bold;
+}
+p.error {
+  background-color: #e32;
+  color: #fff;
+  font-family: Courier, monospace;
+  font-size: 120%;
+  line-height: 140%;
+  padding: 0.8em;
+  margin: 1em 0;
+}
+p.error em {
+  color: #000;
+  font-weight: normal;
+  line-height: 140%;
+}
+.notice {
+  background: #ffcc00;
+  color: #000;
+  display: block;
+  font-family: Courier, monospace;
+  font-size: 120%;
+  line-height: 140%;
+  padding: 0.8em;
+  margin: 1em 0;
+}
+.success {
+  background: green;
+  color: #fff;
+}
+
+/*  Actions  */
+.actions ul {
+  margin: 0;
+  padding: 0;
+}
+.actions li {
+  display: inline;
+  list-style-type: none;
+  line-height: 2em;
+  margin: 0 2px 0 2px;
+  white-space: nowrap;
+}
+.actions ul li a {
+  text-decoration: none;
+  padding-right:10px;
+  border-right:1px solid #CCC;
+}
+.actions ul li a:hover {
+  color: #333;
+}
+.actions a{
+  padding-left:25px;
+  background-repeat:no-repeat;
+  font-size:1.1em;
+}
+.actions a.add{
+  background:url(../img/icons/S/add.png) 2px 2px no-repeat;
+}
+.actions a.leader_add{
+  background:url(../img/icons/S/leader_add.png) 2px 2px no-repeat;
+}
+.actions a.challenge_add{
+  background:url(../img/icons/S/challenge_add.png) 2px 2px no-repeat;
+}
+.actions a.view{
+  background:url(../img/icons/S/view.png) 2px 2px no-repeat;
+}
+.actions a.edit{
+  background:url(../img/icons/S/edit.png) 2px 2px no-repeat;
+}
+.actions a.delete{
+  background:url(../img/icons/S/delete.png) 2px 2px no-repeat;
+}
+.actions a.index, .actions a.list{
+  background:url(../img/icons/S/index.png) 2px 2px no-repeat;
+}
+.actions a.undo{
+  background:url(../img/icons/S/undo.png) 2px 2px no-repeat;
+}
+.actions ul{
+  border:1px solid #EEE;
+  padding:4px 4px 5px 4px;
+  margin:5px 0px 10px 0px;
+}
+.actions h3{
+  font-size:1.2em;
+  float:left;
+  padding:6px 20px 5px 6px;
+  margin:3px 10px 3px 3px;
+  font-weight:bold;
+  background:#EEE url(../img/layout/bg_arrow.png) right center no-repeat;
+  border:0;
+}
+
+/* Quicklinks */
+.quicklinks ul{
+  float:left;
+  width:100%;
+  padding:10px 0;
+  margin:0;
+}
+.quicklinks ul li{
+  float:left;
+  list-style:none;
+  width:100px;
+  text-align:center;
+  margin-bottom:10px;
+}
+.quicklinks ul li a{
+  text-align:center;
+  padding:0;
+}
+.quicklinks ul li a img{
+  display:inline-block;
+  border:1px solid #CCC;
+  clear:both;
+  padding:8px;
+  -moz-border-radius:3px;
+}
+.quicklinks ul li a:hover img{
+  border:1px solid #66CC00;
+}
+
+/* Related */
+div.related {
+  clear: both;
+  display: block;
+}
+
+div.input label.error {display: block; float: left; width: 350px; color: red; font-size: 9px; font-weight: normal; font-family: Arial, Helvetica, Verdana, sans-serif; text-transform: uppercase;}
+.clear {clear: both; font-size: 0; line-height: 0; width: 0; height: 0;}
+.clear_left {clear:left;}
+.left {float: left;}
+.right {float: right;}
+.hidden {display: none;}
+
+.points-left {font-weight:bold;}
+div.vote {margin-top:15px;}

@@ -1,0 +1,902 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Cool IT Challenge\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-05-25 11:11+0100\n"
+"PO-Revision-Date: 2009-05-25 11:11+0100\n"
+"Last-Translator: remy <remy.bertot@greenpeace.org>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: /home/remy/Work/www/gp_cool_it/app/\n"
+"X-Poedit-SearchPath-0: ./controllers\n"
+"X-Poedit-SearchPath-1: ./views\n"
+"X-Poedit-SearchPath-2: ./models\n"
+"X-Poedit-SearchPath-3: ./webroot\n"
+
+#: controllers/challenges_controller.php:34
+msgid "Invalid Challenge."
+msgstr ""
+
+#: controllers/challenges_controller.php:47
+#: controllers/challenges_controller.php:66
+msgid "The Challenge has been saved"
+msgstr ""
+
+#: controllers/challenges_controller.php:50
+#: controllers/challenges_controller.php:69
+msgid "The Challenge could not be saved. Please, try again."
+msgstr ""
+
+#: controllers/challenges_controller.php:61
+msgid "Invalid Challenge"
+msgstr ""
+
+#: controllers/challenges_controller.php:83
+msgid "Invalid id for Challenge"
+msgstr ""
+
+#: controllers/challenges_controller.php:87
+msgid "Challenge deleted"
+msgstr ""
+
+#: controllers/auth_controller.php:13
+msgid "Good to see you again... But how come you are not logged in yet?!"
+msgstr ""
+
+#: controllers/criteria_controller.php:24
+#: controllers/criteria_controller.php:79
+msgid "Invalid Criterion."
+msgstr ""
+
+#: controllers/criteria_controller.php:34
+#: controllers/criteria_controller.php:49
+#: controllers/criteria_controller.php:89
+#: controllers/criteria_controller.php:104
+msgid "The Criterion has been saved"
+msgstr ""
+
+#: controllers/criteria_controller.php:37
+#: controllers/criteria_controller.php:52
+#: controllers/criteria_controller.php:92
+#: controllers/criteria_controller.php:107
+msgid "The Criterion could not be saved. Please, try again."
+msgstr ""
+
+#: controllers/criteria_controller.php:44
+#: controllers/criteria_controller.php:99
+msgid "Invalid Criterion"
+msgstr ""
+
+#: controllers/criteria_controller.php:62
+#: controllers/criteria_controller.php:117
+msgid "Invalid id for Criterion"
+msgstr ""
+
+#: controllers/criteria_controller.php:66
+#: controllers/criteria_controller.php:121
+msgid "Criterion deleted"
+msgstr ""
+
+#: controllers/leaders_controller.php:50
+msgid "Invalid Leader."
+msgstr ""
+
+#: controllers/components/app_session.php:16
+msgid "You must set the Configure::write('Session.model') in core.php to use model storage"
+msgstr ""
+
+#: views/posts/admin_view.ctp:2
+#: views/posts/view.ctp:2
+msgid "Post"
+msgstr ""
+
+#: views/posts/admin_view.ctp:4
+#: views/posts/add.ctp:4
+#: views/posts/view.ctp:4
+#: views/posts/admin_add.ctp:4
+#: views/posts/edit.ctp:4
+#: views/posts/admin_index.ctp:17
+#: views/posts/admin_edit.ctp:4
+#: views/users/admin_index.ctp:5
+#: views/users/admin_index.ctp:16
+#: views/challenges/admin_view.ctp:4
+#: views/challenges/admin_add.ctp:4
+#: views/challenges/admin_index.ctp:4
+#: views/challenges/admin_index.ctp:15
+#: views/challenges/admin_edit.ctp:4
+#: views/criteria/admin_view.ctp:4
+#: views/criteria/admin_add.ctp:4
+#: views/criteria/admin_index.ctp:5
+#: views/criteria/admin_index.ctp:18
+#: views/criteria/admin_edit.ctp:4
+#: views/leaders/admin_view.ctp:5
+#: views/leaders/admin_add.ctp:4
+#: views/leaders/admin_index.ctp:5
+#: views/leaders/admin_index.ctp:14
+#: views/leaders/admin_edit.ctp:4
+msgid "Actions"
+msgstr ""
+
+#: views/posts/admin_view.ctp:6
+#: views/posts/view.ctp:6
+#: views/posts/edit.ctp:2
+#: views/posts/edit.ctp:12
+#: views/posts/admin_edit.ctp:2
+#: views/posts/admin_edit.ctp:12
+msgid "Edit Post"
+msgstr ""
+
+#: views/posts/admin_view.ctp:7
+#: views/posts/view.ctp:7
+msgid "Delete Post"
+msgstr ""
+
+#: views/posts/admin_view.ctp:7
+#: views/posts/view.ctp:7
+#: views/posts/edit.ctp:6
+#: views/posts/admin_index.ctp:36
+#: views/posts/admin_edit.ctp:6
+#: views/users/admin_index.ctp:34
+#: views/challenges/admin_view.ctp:8
+#: views/challenges/admin_index.ctp:36
+#: views/challenges/admin_edit.ctp:7
+#: views/criteria/admin_view.ctp:7
+#: views/criteria/admin_index.ctp:38
+#: views/criteria/admin_edit.ctp:6
+#: views/leaders/admin_view.ctp:9
+#: views/leaders/admin_index.ctp:31
+#: views/leaders/admin_edit.ctp:8
+#, php-format
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: views/posts/admin_view.ctp:8
+#: views/posts/add.ctp:6
+#: views/posts/view.ctp:8
+#: views/posts/admin_add.ctp:6
+#: views/posts/edit.ctp:7
+#: views/posts/admin_edit.ctp:7
+msgid "List Posts"
+msgstr ""
+
+#: views/posts/admin_view.ctp:9
+#: views/posts/view.ctp:9
+#: views/posts/admin_index.ctp:7
+msgid "New Post"
+msgstr ""
+
+#: views/posts/admin_view.ctp:13
+#: views/posts/view.ctp:13
+#: views/challenges/admin_view.ctp:13
+#: views/criteria/admin_view.ctp:13
+#: views/leaders/admin_view.ctp:15
+msgid "Id"
+msgstr ""
+
+#: views/posts/admin_view.ctp:18
+#: views/posts/view.ctp:18
+msgid "Title"
+msgstr ""
+
+#: views/posts/admin_view.ctp:23
+#: views/posts/view.ctp:23
+msgid "Body"
+msgstr ""
+
+#: views/posts/admin_view.ctp:28
+#: views/posts/view.ctp:28
+#: views/challenges/admin_view.ctp:25
+#: views/criteria/admin_view.ctp:38
+#: views/leaders/admin_view.ctp:21
+msgid "Created"
+msgstr ""
+
+#: views/posts/admin_view.ctp:33
+#: views/posts/view.ctp:33
+#: views/challenges/admin_view.ctp:29
+#: views/criteria/admin_view.ctp:43
+#: views/leaders/admin_view.ctp:23
+msgid "Modified"
+msgstr ""
+
+#: views/posts/add.ctp:2
+#: views/posts/add.ctp:11
+#: views/posts/admin_add.ctp:11
+msgid "Add Post"
+msgstr ""
+
+#: views/posts/admin_add.ctp:2
+msgid "Add a new post"
+msgstr ""
+
+#: views/posts/edit.ctp:6
+#: views/posts/admin_index.ctp:36
+#: views/posts/admin_edit.ctp:6
+#: views/users/admin_index.ctp:34
+#: views/challenges/admin_index.ctp:36
+#: views/challenges/admin_edit.ctp:7
+#: views/criteria/admin_index.ctp:38
+#: views/criteria/admin_edit.ctp:6
+#: views/leaders/admin_index.ctp:31
+#: views/leaders/admin_edit.ctp:8
+msgid "Delete"
+msgstr ""
+
+#: views/posts/index.ctp:2
+msgid "Latest News"
+msgstr ""
+
+#: views/posts/index.ctp:12
+msgid "Sorry, there is nothing to show there"
+msgstr ""
+
+#: views/posts/admin_index.ctp:3
+msgid "Posts Index"
+msgstr ""
+
+#: views/posts/admin_index.ctp:34
+#: views/challenges/admin_index.ctp:34
+#: views/criteria/admin_index.ctp:36
+#: views/leaders/admin_index.ctp:29
+msgid "View"
+msgstr ""
+
+#: views/posts/admin_index.ctp:35
+#: views/challenges/admin_index.ctp:35
+#: views/criteria/admin_index.ctp:37
+#: views/leaders/admin_index.ctp:30
+msgid "Edit"
+msgstr ""
+
+#: views/pages/home.ctp:3
+msgid ""
+"COOL <strong>IT</strong> CHALLENGE is Greenpeace's campaign to turn IT industry leaders \n"
+"        into climate advocates and solution providers."
+msgstr ""
+
+#: views/pages/home.ctp:5
+msgid "Get Involved!"
+msgstr ""
+
+#: views/pages/home.ctp:15
+msgid "Join thousands of techies, geeks and activists on an urgent mission to fight climate change. Let's have some fun!"
+msgstr ""
+
+#: views/pages/home.ctp:18
+#: views/auth/login.ctp:13
+#: views/users/register.ctp:15
+#: views/users/resend_activation_email.ctp:14
+msgid "Email"
+msgstr ""
+
+#: views/pages/home.ctp:19
+msgid "your email"
+msgstr ""
+
+#: views/pages/admin_home.ctp:1
+#: views/elements/widgets/actions.ctp:19
+msgid "What do you feel like doing?"
+msgstr ""
+
+#: views/pages/admin_home.ctp:28
+msgid "Your tmp directory is writable."
+msgstr ""
+
+#: views/pages/admin_home.ctp:32
+msgid "Your tmp directory is NOT writable."
+msgstr ""
+
+#: views/pages/admin_home.ctp:42
+#, php-format
+msgid "The %s is being used for caching. To change the config edit APP/config/core.php "
+msgstr ""
+
+#: views/pages/admin_home.ctp:46
+msgid "Your cache is NOT working. Please check the settings in APP/config/core.php"
+msgstr ""
+
+#: views/pages/admin_home.ctp:56
+msgid "Your database configuration file is present."
+msgstr ""
+
+#: views/pages/admin_home.ctp:61
+msgid "Your database configuration file is NOT present."
+msgstr ""
+
+#: views/pages/admin_home.ctp:63
+msgid "Rename config/database.php.default to config/database.php"
+msgstr ""
+
+#: views/pages/admin_home.ctp:78
+msgid "Cake is able to connect to the database."
+msgstr ""
+
+#: views/pages/admin_home.ctp:82
+msgid "Cake is NOT able to connect to the database."
+msgstr ""
+
+#: views/pages/admin_home.ctp:88
+msgid "Editing this Page"
+msgstr ""
+
+#: views/pages/admin_home.ctp:91
+#, php-format
+msgid ""
+"To change the content of this page, edit: %s\n"
+"\t\tTo change its layout, edit: %s\n"
+"\t\tYou can also add some CSS styles for your pages at: %s"
+msgstr ""
+
+#: views/auth/login.ctp:5
+#: views/users/dashboard.ctp:4
+#: views/users/forgot_pw.ctp:5
+#: views/users/resend_activation_email.ctp:5
+msgid "You are here"
+msgstr ""
+
+#: views/auth/login.ctp:5
+#: views/layouts/admin.ctp:20
+#: views/users/dashboard.ctp:4
+#: views/users/forgot_pw.ctp:6
+#: views/users/resend_activation_email.ctp:6
+#: views/elements/menu.ctp:3
+msgid "Home"
+msgstr ""
+
+#: views/auth/login.ctp:5
+#: views/users/resend_activation_email.ctp:7
+msgid "member login"
+msgstr ""
+
+#: views/auth/login.ctp:12
+msgid "Please enter your login details"
+msgstr ""
+
+#: views/auth/login.ctp:14
+#: views/users/register.ctp:16
+msgid "Password"
+msgstr ""
+
+#: views/auth/login.ctp:20
+msgid "Login"
+msgstr ""
+
+#: views/auth/login.ctp:24
+msgid "Need some help?"
+msgstr ""
+
+#: views/layouts/default.ctp:23
+msgid "Warning"
+msgstr ""
+
+#: views/layouts/default.ctp:24
+msgid "It seems that you have Javascript disabled. While we are doing our best to avoid it, some features may although be broken..."
+msgstr ""
+
+#: views/layouts/admin.ctp:5
+msgid "Greenpeace - Cool IT Challenge"
+msgstr ""
+
+#: views/layouts/admin.ctp:15
+#: views/layouts/admin_login.ctp:15
+msgid "International"
+msgstr ""
+
+#: views/layouts/admin.ctp:21
+#: views/challenges/admin_index.ctp:2
+msgid "Challenges"
+msgstr ""
+
+#: views/layouts/admin.ctp:22
+msgid "Rules"
+msgstr ""
+
+#: views/layouts/admin.ctp:23
+#: views/leaders/admin_index.ctp:3
+msgid "Leaders"
+msgstr ""
+
+#: views/layouts/admin.ctp:24
+msgid "Posts"
+msgstr ""
+
+#: views/layouts/admin.ctp:25
+#: views/users/admin_index.ctp:3
+msgid "Users"
+msgstr ""
+
+#: views/layouts/admin.ctp:26
+msgid "Logout"
+msgstr ""
+
+#: views/layouts/admin_login.ctp:5
+msgid "Greenpeace"
+msgstr ""
+
+#: views/users/register.ctp:3
+msgid "New Registration"
+msgstr ""
+
+#: views/users/register.ctp:6
+msgid "Enter details"
+msgstr ""
+
+#: views/users/register.ctp:7
+msgid "Select CEOs"
+msgstr ""
+
+#: views/users/register.ctp:8
+msgid "Profit!"
+msgstr ""
+
+#: views/users/register.ctp:14
+msgid "Your login"
+msgstr ""
+
+#: views/users/register.ctp:17
+msgid "Confirm password"
+msgstr ""
+
+#: views/users/register.ctp:21
+#: views/elements/widgets/profile.ctp:2
+msgid "Your profile"
+msgstr ""
+
+#: views/users/register.ctp:22
+msgid "Your Name (or nickname)"
+msgstr ""
+
+#: views/users/register.ctp:23
+msgid "Country"
+msgstr ""
+
+#: views/users/register.ctp:24
+msgid "State"
+msgstr ""
+
+#: views/users/register.ctp:25
+msgid "City"
+msgstr ""
+
+#: views/users/register.ctp:28
+msgid "Legal stuffs"
+msgstr ""
+
+#: views/users/register.ctp:32
+msgid "I've read and accept the fascinating"
+msgstr ""
+
+#: views/users/register.ctp:32
+msgid "Community Guidelines"
+msgstr ""
+
+#: views/users/register.ctp:35
+msgid "Note: Greenpeace won't be selling or giving your information away. We only collect what is needed to contact you. See, we are not that evil."
+msgstr ""
+
+#: views/users/register.ctp:49
+#: views/elements/header.ctp:6
+msgid "Register"
+msgstr ""
+
+#: views/users/dashboard.ctp:2
+#: views/elements/menu.ctp:10
+msgid "Dashboard"
+msgstr ""
+
+#: views/users/dashboard.ctp:4
+#: views/elements/header.ctp:17
+msgid "dashboard"
+msgstr ""
+
+#: views/users/forgot_pw.ctp:7
+msgid "Member login"
+msgstr ""
+
+#: views/users/forgot_pw.ctp:8
+msgid "lost password"
+msgstr ""
+
+#: views/users/forgot_pw.ctp:13
+#: views/users/resend_activation_email.ctp:13
+msgid "Password recovery"
+msgstr ""
+
+#: views/users/forgot_pw.ctp:16
+msgid "Recover Password"
+msgstr ""
+
+#: views/users/resend_activation_email.ctp:3
+msgid "Resend Activation Email"
+msgstr ""
+
+#: views/users/resend_activation_email.ctp:8
+msgid "resend actication email"
+msgstr ""
+
+#: views/users/resend_activation_email.ctp:16
+msgid "Resend"
+msgstr ""
+
+#: views/users/admin_index.ctp:7
+msgid "New User"
+msgstr ""
+
+#: views/users/admin_index.ctp:33
+msgid "Details"
+msgstr ""
+
+#: views/challenges/admin_view.ctp:2
+msgid "Challenge"
+msgstr ""
+
+#: views/challenges/admin_view.ctp:6
+#: views/challenges/admin_add.ctp:6
+#: views/challenges/admin_edit.ctp:6
+msgid "List Challenges"
+msgstr ""
+
+#: views/challenges/admin_view.ctp:7
+#: views/challenges/admin_edit.ctp:2
+#: views/challenges/admin_edit.ctp:12
+msgid "Edit Challenge"
+msgstr ""
+
+#: views/challenges/admin_view.ctp:8
+msgid "Delete Challenge"
+msgstr ""
+
+#: views/challenges/admin_view.ctp:9
+#: views/challenges/admin_index.ctp:6
+msgid "New Challenge"
+msgstr ""
+
+#: views/challenges/admin_view.ctp:17
+#: views/criteria/admin_view.ctp:23
+#: views/leaders/admin_view.ctp:17
+msgid "Name"
+msgstr ""
+
+#: views/challenges/admin_view.ctp:21
+#: views/criteria/admin_view.ctp:28
+msgid "Description"
+msgstr ""
+
+#: views/challenges/admin_add.ctp:2
+#: views/challenges/admin_add.ctp:11
+msgid "Add Challenge"
+msgstr ""
+
+#: views/challenges/admin_index.ctp:43
+#: views/leaders/admin_index.ctp:38
+msgid "previous"
+msgstr ""
+
+#: views/challenges/admin_index.ctp:45
+#: views/leaders/admin_index.ctp:40
+msgid "next"
+msgstr ""
+
+#: views/challenges/admin_index.ctp:50
+#: views/leaders/admin_index.ctp:45
+msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
+msgstr ""
+
+#: views/challenges/admin_edit.ctp:19
+#: views/leaders/admin_edit.ctp:23
+msgid "Cancel"
+msgstr ""
+
+#: views/criteria/admin_view.ctp:2
+msgid "Criterion"
+msgstr ""
+
+#: views/criteria/admin_view.ctp:6
+#: views/criteria/admin_edit.ctp:2
+#: views/criteria/admin_edit.ctp:12
+msgid "Edit Criterion"
+msgstr ""
+
+#: views/criteria/admin_view.ctp:7
+msgid "Delete Criterion"
+msgstr ""
+
+#: views/criteria/admin_view.ctp:8
+#: views/criteria/admin_add.ctp:6
+#: views/criteria/admin_edit.ctp:7
+msgid "List Criteria"
+msgstr ""
+
+#: views/criteria/admin_view.ctp:9
+#: views/criteria/admin_index.ctp:7
+msgid "New Criterion"
+msgstr ""
+
+#: views/criteria/admin_view.ctp:18
+msgid "Type"
+msgstr ""
+
+#: views/criteria/admin_view.ctp:33
+#: views/elements/widgets/score_details.ctp:8
+msgid "Points"
+msgstr ""
+
+#: views/criteria/admin_add.ctp:2
+#: views/criteria/admin_add.ctp:11
+msgid "Add Criterion"
+msgstr ""
+
+#: views/criteria/admin_index.ctp:3
+msgid "Score Rules"
+msgstr ""
+
+#: views/elements/warning.ctp:2
+msgid "Sorry, nothing to list."
+msgstr ""
+
+#: views/elements/menu.ctp:12
+msgid "About"
+msgstr ""
+
+#: views/elements/header.ctp:2
+msgid "Back to main website"
+msgstr ""
+
+#: views/elements/header.ctp:8
+msgid "coming back?"
+msgstr ""
+
+#: views/elements/header.ctp:11
+msgid "login"
+msgstr ""
+
+#: views/elements/header.ctp:13
+msgid "tell me more"
+msgstr ""
+
+#: views/elements/header.ctp:16
+msgid "You are logged in as"
+msgstr ""
+
+#: views/elements/header.ctp:18
+msgid "logout"
+msgstr ""
+
+#: views/elements/public/top_players.ctp:3
+msgid "Current Top 5 Players"
+msgstr ""
+
+#: views/elements/public/top_players.ctp:7
+msgid "Player"
+msgstr ""
+
+#: views/elements/public/top_players.ctp:8
+msgid "Score"
+msgstr ""
+
+#: views/elements/public/rules.ctp:5
+msgid ""
+"IT Industry leader are assessed by Greenpeace campaigner every two months, and awarded points\n"
+"          (max 100) for what they say and do to help stop climate change. Given enough encouragement, some\n"
+"          of these CEOs could be scoring in the 80s or 90s."
+msgstr ""
+
+#: views/elements/public/rules.ctp:8
+msgid "this is how the story begin »"
+msgstr ""
+
+#: views/elements/widgets/twitter_feed.ctp:7
+msgid "Last Tweets"
+msgstr ""
+
+#: views/elements/widgets/twitter_feed.ctp:20
+msgid "follow us on twitter"
+msgstr ""
+
+#: views/elements/widgets/score.ctp:2
+msgid "Your rank"
+msgstr ""
+
+#: views/elements/widgets/score.ctp:7
+msgid "Wow! I guess you really deserve it!"
+msgstr ""
+
+#: views/elements/widgets/score.ctp:9
+msgid "It's okay, everybody loves a looser..."
+msgstr ""
+
+#: views/elements/widgets/score.ctp:11
+msgid "How does it feel to be left over?"
+msgstr ""
+
+#: views/elements/widgets/score.ctp:13
+msgid "C'mon you can make it!"
+msgstr ""
+
+#: views/elements/widgets/score.ctp:15
+msgid "Hmm... it's cold here."
+msgstr ""
+
+#: views/elements/widgets/score.ctp:19
+#, php-format
+msgid "You currently have <strong>%s</strong> pts."
+msgstr ""
+
+#: views/elements/widgets/score.ctp:20
+#, php-format
+msgid "You are ranking <strong>#%s overall</strong>, and <strong>#%s</strong> in your country."
+msgstr ""
+
+#: views/elements/widgets/taf.ctp:2
+msgid "Tell your friends!"
+msgstr ""
+
+#: views/elements/widgets/socialize.ctp:51
+msgid "Spread the love (or die trying)"
+msgstr ""
+
+#: views/elements/widgets/profile.ctp:14
+msgid "Are you sure? This will remove all associated data with you and CANNOT BE UNDONE."
+msgstr ""
+
+#: views/elements/widgets/vote.ctp:2
+msgid "Select your favorite CEOs"
+msgstr ""
+
+#: views/elements/widgets/vote.ctp:11
+msgid "Every two months we will evaluate these CEOs and get back to you!"
+msgstr ""
+
+#: views/elements/widgets/vote.ctp:13
+msgid "Start date"
+msgstr ""
+
+#: views/elements/widgets/vote.ctp:14
+msgid "Close date"
+msgstr ""
+
+#: views/elements/widgets/vote.ctp:16
+msgid "Congratulations! You have selected your favorite CEOs."
+msgstr ""
+
+#: views/elements/widgets/vote.ctp:18
+msgid "You can still select"
+msgstr ""
+
+#: views/elements/widgets/vote.ctp:18
+msgid "CEOs"
+msgstr ""
+
+#: views/elements/widgets/score_taf.ctp:2
+msgid "Your friends"
+msgstr ""
+
+#: views/elements/widgets/score_taf.ctp:12
+#, php-format
+msgid "You have referred:<strong>%s friend</strong>."
+msgstr ""
+
+#: views/elements/widgets/score_taf.ctp:14
+#, php-format
+msgid "You have referred: <strong>%s friends</strong>."
+msgstr ""
+
+#: views/elements/widgets/score_taf.ctp:17
+msgid "Hu ho, it looks like you don't have many friends, do you?"
+msgstr ""
+
+#: views/elements/widgets/score_taf.ctp:19
+msgid "Haa, so you are not that lonely after all, that's good for you!"
+msgstr ""
+
+#: views/elements/widgets/score_taf.ctp:21
+msgid "Looks like you have too many friends, would you feel like subletting one?"
+msgstr ""
+
+#: views/elements/widgets/score_taf.ctp:23
+msgid "I wish I was a rock star too..."
+msgstr ""
+
+#: views/elements/widgets/score_taf.ctp:30
+msgid "My referral url"
+msgstr ""
+
+#: views/elements/widgets/actions.ctp:2
+msgid "Here is a hint"
+msgstr ""
+
+#: views/elements/widgets/score_details.ctp:2
+msgid "Your Score"
+msgstr ""
+
+#: views/elements/widgets/score_details.ctp:7
+msgid "What"
+msgstr ""
+
+#: views/elements/widgets/score_details.ctp:9
+msgid "When"
+msgstr ""
+
+#: views/elements/widgets/score_details.ctp:26
+msgid "Sorry, there is nothing to show here at the moment."
+msgstr ""
+
+#: views/elements/widgets/news_feed.ctp:8
+msgid "Last blog entry"
+msgstr ""
+
+#: views/elements/widgets/news_feed.ctp:17
+msgid "more"
+msgstr ""
+
+#: views/elements/widgets/news_feed.ctp:21
+msgid "follow us on Making Waves"
+msgstr ""
+
+#: views/leaders/admin_view.ctp:7
+#: views/leaders/admin_add.ctp:6
+#: views/leaders/admin_edit.ctp:6
+msgid "List Leaders"
+msgstr ""
+
+#: views/leaders/admin_view.ctp:8
+msgid "Edit Leader"
+msgstr ""
+
+#: views/leaders/admin_view.ctp:9
+msgid "Delete Leader"
+msgstr ""
+
+#: views/leaders/admin_view.ctp:10
+#: views/leaders/admin_index.ctp:7
+msgid "New Leader"
+msgstr ""
+
+#: views/leaders/admin_view.ctp:13
+#: views/leaders/admin_add.ctp:11
+#: views/leaders/admin_edit.ctp:13
+msgid "General Data"
+msgstr ""
+
+#: views/leaders/admin_view.ctp:19
+msgid "Company"
+msgstr ""
+
+#: views/leaders/admin_view.ctp:27
+msgid "Challenges taken by this leader"
+msgstr ""
+
+#: views/leaders/admin_view.ctp:29
+msgid "This leader didn't took any challenge. Shame on him! Booo!"
+msgstr ""
+
+#: views/leaders/admin_add.ctp:2
+msgid "Add a new leader"
+msgstr ""
+
+#: views/leaders/admin_add.ctp:16
+#: views/leaders/admin_edit.ctp:19
+msgid "Completed Challenges"
+msgstr ""
+
+#: views/leaders/leaderboard.ctp:2
+msgid "Leaderboard"
+msgstr ""
+
+#: views/leaders/admin_index.ctp:28
+msgid "Change Score"
+msgstr ""
+
+#: views/leaders/admin_edit.ctp:7
+msgid "View Leader"
+msgstr ""
+
+#: views/settings/admin_edit.ctp:2
+msgid "Settings"
+msgstr ""
+

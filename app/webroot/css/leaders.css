@@ -1,0 +1,146 @@
+/***********************************************************************************
+ * Leader Board(s)
+ ***********************************************************************************/
+.leaders h3{
+	color:white;
+  padding:4px 5px 4px 8px;
+	background-color:#9cafb3;
+  border:1px solid #FFF;
+  border-left:0;
+  border-right:0;
+  margin:0 0 2px 0;
+	font-family:verdana, helvetica, arial, sans-serif;
+	font-size:1em;
+	font-weight:bold;
+}
+.leaders ul{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+	border-collapse: collapse;
+}
+.leaders ul li{
+	padding:0;
+	margin:0;
+	margin-bottom:2px;
+}
+.leaders ul li a, .leaders ul li a:hover{
+	display: block;
+	font-weight: normal;
+	font-size:0.8em;
+	padding:4px 0px 0px 50px;
+	margin:0;
+	margin-bottom:1px;
+	height:43px;
+	-moz-border-radius: 8px 0 8px 0;
+	line-height:12px;
+	border:1px solid #FFF;
+  color:#003300;
+}
+.leaders ul li a:hover{
+	border:1px solid #CCC;
+}
+.leaders ul li a strong{
+	font-weight: bold;
+	font-size:1em;
+}
+.leaders .loading_bar{
+	float:left;
+	font-size:5px;
+	width:58px;
+	border:1px solid #CCC;
+	padding:1px;
+	height:5px;
+	margin:3px 5px 0 0;
+	margin-top:4px;
+	background:#FFF;
+}
+.leaders .loading_bar div{
+	float:left;
+	font-size:5px;
+	height:5px;
+	clear:none;
+}
+.leaders .loading_bar div.red{
+	background-color:red;
+}
+.leaders .loading_bar div.orange{
+	background-color:#ee6d33;
+}
+.leaders .loading_bar div.yellow{
+	background-color:#fff36c;
+}
+.leaders .loading_bar div.green{
+	background-color:#66CC00;
+}
+.leaders .completion{
+	width:20px;
+	float:left;
+	margin-top:2px;
+}
+
+/* favorites */
+.leaders ul li a .fav,
+.leaders ul li a .vote{
+  float:left;
+	background: transparent url(/img/icons/S/rate.png) 0 0 no-repeat;
+  width:16px;
+  height:16px;
+  margin:-39px 3px 0 80px;
+}
+
+/* Miss Universe  */
+.leaders ul li.first a{
+	background: #f1f1f1 url(/img/leaders/S/first.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.second{
+	background: #f1f1f1 url(/img/leaders/S/second.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.third{
+	background: #f1f1f1 url(/img/leaders/S/third.jpg) 3px 3px no-repeat;
+}
+
+/* Big shots */
+.leaders ul li.cisco a{
+	background: #f1f1f1 url(/img/leaders/S/cisco.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.dell a{
+	background: #f1f1f1 url(/img/leaders/S/dell.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.fujitsu a{
+	background: #f1f1f1 url(/img/leaders/S/fujitsu.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.google a{
+	background: #f1f1f1 url(/img/leaders/S/google.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.h_p a{
+	background: #f1f1f1 url(/img/leaders/S/hp.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.i_b_m a{
+	background: #f1f1f1 url(/img/leaders/S/ibm.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.intel a{
+	background: #f1f1f1 url(/img/leaders/S/intel.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.microsoft a{
+	background: #f1f1f1 url(/img/leaders/S/microsoft.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.nokia a{
+	background: #f1f1f1 url(/img/leaders/S/nokia.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.panasonic a{
+	background: #f1f1f1 url(/img/leaders/S/panasonic.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.sharp a{
+	background: #f1f1f1 url(/img/leaders/S/sharp.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.sony a{
+	background: #f1f1f1 url(/img/leaders/S/sony.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.sun a,
+.leaders ul li.sun_microsystems a{
+	background: #f1f1f1 url(/img/leaders/S/sun.jpg) 3px 3px no-repeat;
+}
+.leaders ul li.toshiba a{
+	background: #f1f1f1 url(/img/leaders/S/toshiba.jpg) 3px 3px no-repeat;
+}

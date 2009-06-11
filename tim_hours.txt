@@ -1,0 +1,29 @@
+1h initial meetup and project talk (Emails)
+0.75h Telephone call
+7.5h initial setup with debuggable components + user administration
+4.5h Referral system, round shell, scoring history, ranking list
+2.5h Voting engine + emails
+0.5h staging setup
+2h communication
+1.5h staging fixup
+3.5h communication + leaderscore implementation + leader CRUD refactor + initial shell version to assess a round
+3h Finalizing the round assessing shell
+3h user deletion, leader score history, display user rank and country rank in profile, communication
+3.5h leader score history filtered by round, registration captcha, registration js validation fix, registration validation for toc field, communication
+1.5h analytics, header login form refactor, menu reordering, leaderboard code refactoring, leader images fix in leaderboard, top players on hp, footer element, communication
+0.5h communication
+
+4h Removed email confirmation field, Made state and city not mandatory, messages element shown below bc and title, configure if email activation should be used,
+signup captcha bug fix, tos label selects the checkbox and vice versa, introducing name field
+
+3h Bugfixes, non js form fallback for votes, easy voting 1-1-1 backend, tell a friend functionality
+30min communication
+
+3h Planet2 Cookies, Leaderboard Dynamism, RSS Feed review, Refactorings
+
+1.5h voting cutoff settings administration, communication, voting process refactoring + enhancements
+1h Leaders Json API + Users Json API
+1h Communication + Profile Editing
+1h XSS support investigation and implementation
+30min no js form fillout for register page
+15min communication

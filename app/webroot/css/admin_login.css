@@ -1,0 +1,66 @@
+/***********************************************************************************
+ * Admin Login CSS
+ * Copyright (c) GREENPEACE INTERNATIONAL 2009
+ *
+ * Licensed under The General Public Licence v3 onwards.
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright   Greenpeace International
+ * @license     GPL3 onwards - http://www.opensource.org/licenses/gpl-license.php
+ * @author      remy.bertot@greenpeace.org
+ ***********************************************************************************/
+
+/* layout adjustments */
+#container{
+  min-width:300px;
+  width:320px;
+  margin:auto;
+  padding:20px 0;
+}
+#content_wrapper{
+  float: left;
+  width: 100%;
+  background: #fff;
+  border:10px solid #006600;
+}
+#content{
+  width: 280px;
+  float:left;
+  margin: 0;
+  padding: 0px 0px 20px 20px;
+  background: #FFF;
+}
+#content #login .submit input{
+  width:100%;
+  font-size:1.6em;
+}
+#footer{
+  padding:5px;
+  text-align:rigth;
+  margin:0;
+}
+#authMessage,.message{
+  font-size:1.1em;
+  margin:15px 0 -5px 0;
+}
+
+#remember_me{
+  padding:0;
+  margin:0;
+	padding-top:10px;
+	padding-left:5px;
+}
+#remember_me .input .checkbox {
+  border:1px solid red;
+  padding-top:5px;
+}
+#remember_me div.checkbox label{
+  margin: -5px 0 0 20px;
+  padding:0;
+  font-size:1.3em;
+}
+#remember_me p{
+  padding:0;
+  margin:0;
+  padding-left:25px;
+}

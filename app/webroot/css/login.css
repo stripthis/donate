@@ -1,0 +1,48 @@
+/***********************************************************************************
+ * Login page
+ ***********************************************************************************/
+
+#login p{
+  font-size:1.2em;
+}
+
+/* form */
+#login form fieldset{
+  margin-top:10px;
+}
+#login form input[type="submit"]{
+  float:right;
+  margin-right:10px;
+}
+#login fieldset legend{
+  border:1px solid #FFF;
+  background: #FFF url(/img/icons/S/lock.png) 5px 2px no-repeat;
+  padding-left:28px;
+}
+
+/* contextual help */
+#login .help{
+  border:1px solid #CCC;
+  font-size:1em;
+  margin:15px 0;
+  padding:5px 10px;
+  background: #F7F7F7;
+}
+#login .help h3{
+  font-size:1.3em;
+  color:#333;
+  padding:3px 0 2px 25px;
+  background: transparent url('/img/icons/S/help.png') 0px 5px no-repeat;
+  border-bottom:1px dotted #CCC;
+}
+#login .help ul{
+  padding:5px 0 ;
+}
+#login .help ul li{
+  list-style:circle;
+  padding:2px 0;
+  margin:0 0 0 8px;
+}
+#login .help ul li:hover{
+  list-style:disc;
+}

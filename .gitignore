@@ -1,0 +1,12 @@
+# Files to globally generally ignore
+.DS_Store
+
+# Specific files / paths to ignore
+/stats
+/app/config/database.php
+/app/config/core.php
+/app/config/local.php
+/app/tmp
+/app/sql_updates.txt
+/app/webroot/js/aggregate
+/app/webroot/css/aggregate

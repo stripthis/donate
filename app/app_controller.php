@@ -1,0 +1,338 @@
+<?php
+App::import('Model', array('User', 'AuthKey', 'Page'));
+App::import('Core', 'Controller');
+/**
+ * undocumented class
+ *
+ * @package default
+ * @access public
+ */
+class AppController extends Controller {
+	var $components = array(
+		'RequestHandler',
+		'Message',
+		'Cookie',
+		'AppSession',
+		'Json',
+		'Email',
+		'Silverpop',
+	);
+
+	var $helpers = array(
+		'Html','Javascript', 'Time', 'Form', 'Common', 'Text',
+		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
+	);
+
+	var $ignoreUserSession = false;
+	var $loginRedirectSesskey = 'login_redirect';
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function __construct() {
+		if (env('HTTP_X_REQUESTED_WITH') !== "XMLHttpRequest") {
+			require_once(COMPONENTS . 'app_session.php');
+			$this->Session = new AppSessionComponent();
+			$this->Session->__initSession();
+		}
+		parent::__construct();
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function beforeFilter() {
+		Assert::false($this->name == 'App', '404');
+		Assert::true(!!$this->action, '404');
+
+		$this->Session = $this->AppSession;
+
+		$this->_setLanguage();
+
+		ClassRegistry::addObject('Component.Session', $this->Session);
+		ClassRegistry::addObject('Component.Cookie', $this->Cookie);
+		ClassRegistry::addObject('Component.Email', $this->Email);
+
+		$this->RequestHandler->setContent('list', 'text/html');
+
+		if (empty($this->ignoreUserSession)) {
+			$canAccess = User::canAccess($this->name, $this->action);
+			if (!$canAccess) {
+				Assert::true(User::isGuest(), '403');
+				if ($this->isOkForSessionRedirect()) {
+					$this->Session->write($this->loginRedirectSesskey, $this->here);
+				}
+				return $this->redirect('/auth/login', '403', true);
+			}
+
+
+			if (!User::isGuest() && $this->name == 'auth' && $this->action == 'login') {
+				$url = array('controller' => 'users', 'action' => 'dashboard');
+				if ($this->Session->check($this->loginRedirectSesskey)) {
+					$url = $this->Session->read($this->loginRedirectSesskey);
+				}
+				$this->redirect($url);
+			}
+		}
+
+		$here = $this->params['url']['url'];
+		if (!empty($here) && $here{0} != '/') {
+			$here = '/' . $here;
+		}
+		$this->setJson('here', $here);
+
+		$ajax = $isAjax = false;
+		if ($this->isAjax()) {
+			$this->layout = 'ajax';
+			$ajax = $isAjax = true;
+		}
+		$this->set(compact('ajax', 'isAjax', 'here'));
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function isOkForSessionRedirect() {
+		if ($this->isAjax()) {
+			return false;
+		}
+
+		$unwantedControllers = array('Auth');
+		$unwantedActions = array('login');
+		if (!isset($this->name) || !isset($this->action)) {
+			return true;
+		}
+
+		$count = count($unwantedControllers);
+		for ($i = 0; $i < $count; $i++) {
+			if (
+				$unwantedControllers[$i] == $this->name &&
+				$unwantedActions[$i] == $this->action) {
+				return false;
+			}
+		}
+		return true;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function beforeRender() {
+		if ($this->isAjax()) {
+			return;
+		}
+	}
+/**
+ * undocumented function
+ *
+ * @param string $file 
+ * @return void
+ * @access public
+ */
+	function _removeViewCacheFile($file) {
+		@unlink(CACHE . 'views' . DS . $file . '.php');
+	}
+/**
+ * undocumented function
+ *
+ * @param unknown $key
+ * @return void
+ * @access public
+ */
+	function _authorizeKey($key) {
+		return false;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function setJson($one, $two = null) {
+		$jsonVars = isset($this->viewVars['jsonVars']) ? $this->viewVars['jsonVars'] : array();
+		if (is_array($one)) {
+			foreach ($one as $key => $val) {
+				$jsonVars[$key] = $val;
+			}
+		} else {
+			$jsonVars[$one] = $two;
+		}
+		$this->set(compact('jsonVars'));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $url
+ * @param string $status
+ * @return void
+ * @access public
+ */
+	function redirect($url, $status = null) {
+		if ($this->isAjax()) {
+			return $this->setJson('redirectUrl', $url);
+		}
+		parent::redirect($url, $status);
+	}
+/**
+ * undocumented function
+ *
+ * @param unknown $return
+ * @return void
+ * @access public
+ */
+	function isGet() {
+		return $this->RequestHandler->isGet();
+	}
+/**
+ * undocumented function
+ *
+ * @param unknown $return
+ * @return void
+ * @access public
+ */
+	function isPost() {
+		return $this->RequestHandler->isPost();
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function isPut() {
+		return $this->RequestHandler->isPut();
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function isDelete() {
+		return $this->RequestHandler->isDelete();
+	}
+/**
+ * undocumented function
+ *
+ * @param unknown $return
+ * @return void
+ * @access public
+ */
+	function isAjax() {
+		if (!isset($this->RequestHandler)) {
+			return false;
+		}
+		return $this->RequestHandler->isAjax();
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function _setLanguage() {
+		Configure::write('Config.language', 'eng');
+
+		$lang = false;
+		if (isset($this->params['language'])) {
+			$lang = $this->params['language'];
+		}
+		if (!$lang && $this->Session->check('Config.language')) {
+			$lang = $this->Session->read('Config.language');
+		}
+		if (!$lang && $this->Cookie->read('lang')) {
+			$lang = $this->Cookie->read('lang');
+		}
+
+		if (!$lang) {
+			$acceptedLanguages = array(
+				'en-us' => 'eng',
+				'en-gb' => 'eng',
+				'fr' => 'fre'
+			);
+
+			$settings = explode(';', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+			$settings = $settings[0];
+			$settings = explode(',', $settings);
+			$settings = $settings[0];
+
+			$lang = 'eng';
+			if (array_key_exists($settings, $acceptedLanguages)) {
+				$lang = $acceptedLanguages[$settings];
+			}
+		}
+
+		$this->Session->write('Config.language', $lang);
+		$this->Cookie->write('lang', $lang, null, '20 days');
+	}
+/**
+ * Fixing stupid behavior of cake core
+ *
+ * @param string $a
+ * @param string $b
+ * @return void
+ * @access public
+ */
+	function set($a, $b = null) {
+		if (is_array($a)) {
+			foreach ($a as $key => $val) {
+				parent::set($key, $val);
+			}
+		}
+		return parent::set($a, $b);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $model
+ * @return void
+ * @access public
+ */
+	function pageForPagination($model) {
+		$page = 1;
+		$sameModel = isset($this->params['named']['model']) && $this->params['named']['model'] == $model;
+		$pageInUrl = isset($this->params['named']['page']);
+		if ($sameModel && $pageInUrl) {
+			$page = $this->params['named']['page'];
+		}
+
+		$this->passedArgs['page'] = $page;
+		return $page;
+	}
+/**
+ * undocumented function
+ *
+ * @param string $data
+ * @return void
+ * @access public
+ */
+	function cleanupDate($data) {
+		return $data['year'] . '-' . $data['month'] . '-' . $data['day'];
+	}
+/**
+ * undocumented function
+ *
+ * @param string $msg
+ * @return void
+ * @access public
+ */
+	function dispatchFormError($url, $msg = '') {
+		$Dispatcher =& new Dispatcher();
+
+		$params = array('formerror' => true);
+		if (!empty($msg)) {
+			$params['formerror-msg'] = $msg;
+		}
+		$Dispatcher->dispatch(Router::url($url), $params);
+		exit;
+	}
+}
+?>

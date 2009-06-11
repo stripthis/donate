@@ -1,0 +1,44 @@
+<?php
+if (!defined('FULL_BASE_URL')) {
+	define('FULL_BASE_URL', '');
+}
+$config = array(
+	'App.name' => 'Greenpeace White Rabbit',
+	'App.domain' => 'http://coolit.greenpeace.org',
+	'App.stagingDomain' => 'http://coolit.river01.org',
+	'App.mirrorDomain' => 'http://www.greenpeace.org/international/campaigns/climate-change/cool-it-challenge/',
+	'App.usingMirror' => true,
+	'App.title' => 'Greenpeace White Rabbit',
+	'App.browserTitle' => 'Greenpeace White Rabbit | ',
+	'App.guestAccount' => 'guest@greenpeace.org',
+	'App.supportEmail' => 'general.support@greenpeace.org',
+	'App.feedbackEmail' => 'feedback@greenpeace.org',
+	'App.bugEmail' => 'general.support@greenpeace.org',
+	'App.registrationEmail' => 'Greenpeace White Rabbit <no-reply@greenpeace.org>',
+	'App.loginCookieLife' => '+1 year',
+	'App.noReplyEmail' => 'Greenpeace White Rabbit <no-reply@greenpeace.org>',
+	'App.emailDeliveryMethod' => 'mail',
+	'App.smtpOptions' => array(
+		'port' => '25',
+		'timeout' => '30',
+		'host' => 'smtp.river01.org',
+		'username' => 'no-reply@river01.org',
+		'password' => ''
+	),
+	'App.ssl' => array(
+		'enabled' => false,
+		'actions' => array()
+	),
+	'App.use_email_activation' => false,
+	'App.easy_voting' => true, // 5-4-3-2-1 betting if false, 1-1 if true
+	'App.lead_dev_email' => 'remy@stripthis.com',
+	'App.recaptcha_key' => '6LfXQgYAAAAAAHH3k76pZcBsbmsI6uustwK4lBF2',
+	'App.recaptcha_privkey' => '6LfXQgYAAAAAANChwyDVWumArldovDFn1O8G1TpW',
+	'App.avatarSize' => '52', //Avatar stuffs
+	'App.avatarDefault' => '/img/layout/defaultAvatar.png',
+	'App.newsURL' => 'http://weblog.greenpeace.org/makingwaves/',
+	'App.newsFeed' => 'http://weblog.greenpeace.org/makingwaves/itclimateleaders.xml',
+	'App.twitterURL' => 'http://www.twitter.com/coolitchallenge',
+	'App.twitterFeed' => 'http://twitter.com/statuses/user_timeline/39753217.rss'
+);
+?>

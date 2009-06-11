@@ -1,0 +1,212 @@
+<?php
+class AppModel extends Model {
+	var $actsAs = array('Lookupable', 'Containable');
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function onError() {
+		$call = array('type' => 'query');
+		$stack = debug_backtrace();
+		foreach ($stack as &$call) {
+			if (@preg_match('/^(save|find|delete).*/', $call['function'], $match) && @$call['class'] == 'Model') {
+				$call = array(
+					'type' => $match[1]
+					, 'function' => $call['function']
+					, 'line' => $call['line']
+					, 'file' => $call['file']
+				);
+				break;
+			}
+		}
+		throw new AppException($call);
+	}
+/**
+ * Executed by the paginator to get the count. Overriden to allow
+ * forcing a count (through var $forcePaginateCount)
+ *
+ * @param array $conditions Conditions to use
+ * @param int $recursive Recursivity level
+ * @return int Count
+ * @access public
+ */
+	function paginateCount($conditions, $recursive) {
+		if (isset($this->forcePaginateCount)) {
+			$count = $this->forcePaginateCount;
+			unset($this->forcePaginateCount);
+		} else {
+			$count = $this->find('count', compact('conditions', 'recursive'));
+		}
+		return $count;
+	}
+/**
+ * undocumented function
+ *
+ * @param string $find
+ * @return void
+ * @access public
+ */
+	function batchFind($find) {
+		$data = array();
+		foreach ($find as $type => $query) {
+			if (is_numeric($type)) {
+				$type = $query;
+				$query = array();
+			}
+			$data[$type] = $this->find($type, $query);
+		}
+		return $data;
+	}
+/**
+ * Returns if the parameter object belongs to the currently logged in user
+ *
+ * @param array $obj
+ * @param string $model
+ * @return boolean true if the $obj array contains a user_id key that is equal to User::get('id'), false if not
+ * @access public
+ */
+	static function isOwn($obj, $model) {
+		Assert::isArray($obj);
+		if (isset($obj[$model]['user_id'])) {
+			$userId = $obj[$model]['user_id'];
+		} else {
+			if (isset($obj['user_id'])) {
+				$userId = $obj['user_id'];
+			} else {
+				$userId = User::get('id');
+			}
+		}
+		if (!Common::isUuid($userId)) {
+			return false;
+		}
+		return $userId == User::get('id');
+	}
+/**
+ * undocumented function
+ *
+ * @param string $model
+ * @param string $id
+ * @param string $query
+ * @return void
+ * @access public
+ */
+	static function normalize($model, $id, $query = array()) {
+		if (is_array($id)) {
+			$record = $id;
+			if (!isset($record[$model])) {
+				$record = array($model => $record);
+			}
+		}
+		if (!isset($record)) {
+			$Model = ClassRegistry::init($model);
+			$record = $Model->find('first', am(array(
+				'conditions' => array($model.'.id' => $id),
+				'contain' => false,
+			), $query));
+		}
+		if (empty($record)) {
+			return false;
+		}
+		return $record;
+	}
+/**
+ * undocumented function
+ *
+ * @param string $model
+ * @param string $id
+ * @return void
+ * @access public
+ */
+	static function url($model, $id, $options = array()) {
+		if (!isset($options['admin'])) {
+			$options['admin'] = false;
+		}
+		$record = AppModel::normalize($model, $id);
+		if (!$record) {
+			return false;
+		}
+		$controller = Inflector::underscore(Inflector::pluralize($model));
+
+		return am(array(
+			'controller' => $controller,
+			'action' => 'view',
+			$record[$model]['id'],
+			'admin' => $options['admin']
+		), $options);
+	}
+/**
+ * Checks if the value defined is unique for the given data model.
+ * The check for uniqueness is case-insensitive.  If
+ * {@link $params}['conditions'] is given, this is used as a constraint.
+ * If {@link $params}['scope'] is given, the value is only checked against
+ * records that match the value of the column/field defined by
+ * {@link $params}['scope'].
+ *
+ * @param array $value Array in the form of $field => $value.
+ * @return bool True if value is unique; false otherwise.
+ */
+	function validateUnique($value, $params) {
+		return $this->isUnique(array($params['field'] => $this->__validateValue($value)));
+	}
+/**
+ * Checks if the value defined corresponds with
+ * it's confirmation value, which is defined by the field specified in
+ * {@link $params}['confirm'].
+ *
+ * @param array $value Array in the form of $field => $value.
+ * @return bool True if value corresponds to its confirmation value; false otherwise.
+ */
+	function validateConfirmed($value, $params) {
+		$value = $this->__validateValue($value);
+		if (!isset($this->data[$this->alias][$params['confirm']])) {
+			return false;
+		}
+
+		$confirmationValue = $this->data[$this->alias][$params['confirm']];
+		return (strcmp($value, $confirmationValue) == 0);
+	}
+/**
+ * Checks that a value is over the specified minimum
+ *
+ * @param string $check Value to check
+ * @param integer $min Minimum value in range (inclusive)
+ * @return boolean Success
+ * @access public
+ */
+	function validateMinimum($value, $min) {
+		$value = $this->__validateValue($value);
+		return ($value >= $min);
+	}
+/**
+ * Checks that a value is below the specified maximum
+ *
+ * @param string $check Value to check
+ * @param integer $max Maximum value in range (inclusive)
+ * @return boolean Success
+ * @access public
+ */
+	function validateMaximum($value, $max) {
+		$value = $this->__validateValue($value);
+		return ($value <= $max);
+	}
+/**
+ * Extract the value to validate.
+ *
+ * @param mixed $value If array, first element value is value, otherwise $value
+ * @return string Value to validate
+ * @access private
+ *
+ * @param string $value
+ * @return void
+ * @access public
+ */
+	function __validateValue($value) {
+		if (is_array($value)) {
+			$value = array_pop(array_reverse($value));
+		}
+		return $value;
+	}
+}
+?>
