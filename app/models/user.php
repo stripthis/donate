@@ -1,12 +1,8 @@
 <?php
 class User extends AppModel {
-	var $belongsTo = array(
-		'State',
-		'Country'
-	);
-
 	var $hasMany = array(
 		'AuthKey' => array('dependent' => true),
+		'Address' => array('dependent' => true),
 	);
 
 	var $validate = array(
@@ -125,7 +121,7 @@ class User extends AppModel {
 			$user = $_this->find('first', array(
 				'conditions' => array('User.id' => $user),
 				'contain' => array(
-					'State(id, name)', 'Country(id, name)'
+					'Address.State(id, name)', 'Address.Country(id, name)', 'Address.City(id, name)'
 				),
 			));
 		}
