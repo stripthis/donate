@@ -1,6 +1,5 @@
 <?php
 class AppHelper extends Helper {
-	var $helpers = array('Session');
 /**
  * undocumented function
  *
@@ -19,7 +18,9 @@ class AppHelper extends Helper {
 			}
 		}
 
-		$lang = $this->Session->read('Config.language') . '/';
+		App::import('Helper', 'Session');
+		$SessionHelper = new SessionHelper();
+		$lang = $SessionHelper->read('Config.language') . '/';
 
 		if (isset($params['admin']) && $params['admin'] && !isset($url['admin'])) {
 			$url['admin'] = $params['admin'];

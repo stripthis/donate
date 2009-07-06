@@ -72,7 +72,7 @@ class UsersController extends AppController {
  * @return void
  * @access public
  */
- 	function register($email = '') {
+	function register($email = '') {
 		$countries = $this->User->Country->find('list');
 		$email = isset($this->params['url']['email'])
 					? $this->params['url']['email']
@@ -120,9 +120,9 @@ class UsersController extends AppController {
 		$id = $this->User->getLastInsertId();
 		$this->User->handleReferral($id);
 		$this->User->referral_key($id, true);
-		
+	
 		// $this->Silverpop->UserSignUp(); // signup for newsletter (real time)
-		
+	
 		$msg = 'Thank you for signing up! You are now logged in.';
 		$url = array('controller' => 'users', 'action' => 'dashboard');
 		if ($useEmailActivation) {

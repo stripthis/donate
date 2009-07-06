@@ -200,6 +200,78 @@ class User extends AppModel {
  * @return void
  * @access public
  */
+	function handleReferral($justRegisteredId) {
+		$Session = Common::getComponent('Session');
+		$key = 'referral_user';
+		if (!$Session->check($key)) {
+			return;
+		}
+
+		$user = $this->find('first', array(
+			'conditions' => array(
+				'id' => $Session->read($key)
+			),
+			'contain' => false,
+			'fields' => array('id', 'login', 'score')
+		));
+
+		$scoreIncrease = Configure::read('App.referral_score_increase');
+		$this->set(array(
+			'id' => $user['User']['id'],
+			'score' => $user['User']['score'] + $scoreIncrease
+		));
+		$this->save();
+
+		$this->Referral->create(array(
+			'user_id' => $user['User']['id'],
+			'referred_id' => $justRegisteredId
+		));
+		$this->Referral->save();
+
+		$this->ScoringHistory->create(array(
+			'user_id' => $user['User']['id'],
+			'type' => 'referral',
+			'foreign_id' => $justRegisteredId,
+			'score' => $scoreIncrease
+		));
+		$this->ScoringHistory->save();
+
+		$Session->del($key);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $userId 
+ * @return void
+ * @access public
+ */
+	function referral_key($userId, $forceCreate = false) {
+		App::import('Core', 'Security');
+		if (!$forceCreate) {
+			$key = $this->lookup(array('id' => $userId), 'referral_key', false);	
+			if (!empty($key)) {
+				return $key;
+			}
+		}
+
+		do {
+			$key = Security::generateAuthKey();
+			$key = substr($key, 0, 10);
+		} while (!$this->isUnique(array('referral_key' => $key)));
+
+		$this->set(array(
+			'id' => $userId,
+			'referral_key' => $key
+		));
+		$this->save();
+		return $key;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	static function restore() {
 		return User::setActive(User::get('id'), true);
 	}
