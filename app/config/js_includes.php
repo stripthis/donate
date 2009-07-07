@@ -6,7 +6,8 @@ $config = array(
 		'plugins/jquery.state_dropdown.js' => 'Users:register, Users:edit',
 		'jquery.validate.js' => 'Users:register',
 		// 'jquery.blockUI.js' => '*:*',
-		'japp.js' => '*:*'
+		'japp.js' => '*:*',
+		'swfobject.js' => 'Statistics:*',
 	)
 );
 ?>

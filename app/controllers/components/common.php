@@ -513,5 +513,45 @@ class Common extends Object
 
 		return $result;
 	}
+/**
+ * undocumented function
+ *
+ * @param string $startDate 
+ * @param string $endDate 
+ * @return void
+ * @access public
+ */
+	static function months($startDate, $endDate, $count = true) {
+		if ($count) {
+			return (strtotime($endDate) - strtotime($startDate)) / MONTH;
+		}
+
+		$startStamp = strtotime($startDate);
+		$endDate = date('Y-m', strtotime($endDate));
+		$months = array();
+		$i = 0;
+
+		$reachedEnd = false;
+		while (!$reachedEnd) {
+			$month = date('Y-m', strtotime('+' . $i . ' months', $startStamp));
+			$months[] = $month;
+			if ($month == $endDate) {
+				break;
+			}
+			$i++;
+		}
+		return $months;
+	}
+/**
+ * undocumented function
+ *
+ * @param string $date1 
+ * @param string $date2 
+ * @return void
+ * @access public
+ */
+	static function sameMonth($date1, $date2) {
+		return date('Y-m', strtotime($date1)) == date('Y-m', strtotime($date2));
+	}
 }
 ?>

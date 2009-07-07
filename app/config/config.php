@@ -46,6 +46,7 @@ $config = array(
 			'/',
 		)
 	),
+	'Stats.startDate' => '-1 year'
 
 );
 ?>

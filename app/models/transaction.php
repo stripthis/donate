@@ -3,7 +3,7 @@ class Transaction extends AppModel {
 	var $belongsTo = array(
 		'Gateway',
 		'Gift',
-		'Parent' => array(
+		'ParentTransaction' => array(
 			'className' => 'Transaction',
 			'foreignKey' => 'parent_id'
 		)
