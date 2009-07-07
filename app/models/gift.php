@@ -4,5 +4,9 @@ class Gift extends AppModel {
 		'User',
 		'Appeal'
 	);
+
+	var $hasMany = array(
+		'Transaction'
+	);
 }
 ?>

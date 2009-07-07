@@ -12,6 +12,7 @@ class AppController extends Controller {
 		'RequestHandler',
 		'Message',
 		'Cookie',
+		'Ssl',
 		'AppSession',
 		'Json',
 		'Email',

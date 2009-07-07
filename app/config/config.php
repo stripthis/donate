@@ -39,6 +39,13 @@ $config = array(
 	'App.newsURL' => 'http://weblog.greenpeace.org/makingwaves/',
 	'App.newsFeed' => 'http://weblog.greenpeace.org/makingwaves/itclimateleaders.xml',
 	'App.twitterURL' => 'http://www.twitter.com/coolitchallenge',
-	'App.twitterFeed' => 'http://twitter.com/statuses/user_timeline/39753217.rss'
+	'App.twitterFeed' => 'http://twitter.com/statuses/user_timeline/39753217.rss',
+	'App.ssl' => array(
+		'enabled' => false,
+		'actions' => array(
+			'/',
+		)
+	),
+
 );
 ?>
