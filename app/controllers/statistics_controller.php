@@ -28,7 +28,7 @@ class StatisticsController extends AppController {
  * @access public
  */
 	function gifts() {
-		$createdGifts = $this->Gift->find('all', array(
+		$gifts = $this->Gift->find('all', array(
 			'conditions' => $this->_conditions(),
 			'contain' => false,
 			'fields' => array('created', 'amount')
@@ -38,13 +38,13 @@ class StatisticsController extends AppController {
 		$result = array();
 		foreach ($months as $month) {
 			$result[$month] = array();
-			foreach ($createdGifts as $gift) {
+			foreach ($gifts as $gift) {
 				if (Common::sameMonth($gift['Gift']['created'], $month)) {
 					$result[$month][] = $gift;
 				}
 			}
 		}
-		$this->set(compact('result', 'createdGifts', 'months'));
+		$this->set(compact('result', 'gifts', 'months'));
 	}
 /**
  * undocumented function
