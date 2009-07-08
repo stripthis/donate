@@ -46,7 +46,9 @@ $config = array(
 			'/',
 		)
 	),
-	'Stats.startDate' => '-1 year'
-
+	'Stats.startDate' => '-1 year',
+	'App.gift_types' => array(
+		'donation' => 'Donation'
+	)
 );
 ?>
