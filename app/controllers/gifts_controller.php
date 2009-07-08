@@ -11,10 +11,8 @@ class GiftsController extends AppController {
 
 		$this->Appeal = ClassRegistry::init('Appeal');
 
-		$this->Wizard->steps = array('add', 'thanks', 'tell_friends', 'receipt');
+		$this->Wizard->steps = array('add', 'login', 'confirm', 'thanks', 'tell_friends', 'receipt');
 		$this->Wizard->sessionKey = 'Gift';
-
-		# wizard redirects must keep current office
 		$this->Wizard->wizardAction = '/gifts/';
 		$this->Wizard->completeUrl = '/gifts/summary';
 	}
@@ -30,6 +28,9 @@ class GiftsController extends AppController {
 				$appealOptions = $this->Appeal->find('list');
 				$this->set(compact('appealOptions'));
 				break;
+			case 'confirm':
+				$this->data = $this->Session->read('gift');
+				break;
 			default:
 				break;
 		}
@@ -41,8 +42,14 @@ class GiftsController extends AppController {
  * @return void
  */
 	function processAdd() {
-		$this->Gift->create($this->data);
+		$this->Gift->set($this->data);
 		if ($this->Gift->validates()) {
+			if (!$this->data['Gift']['recurring']) {
+				unset($this->data['Gift']['start']);
+				unset($this->data['Gift']['end']);
+				unset($this->data['Gift']['frequency']);
+			}
+			$this->Session->write('gift', $this->data);
 			return true;
 		}
 
@@ -55,14 +62,26 @@ class GiftsController extends AppController {
  * undocumented function
  *
  * @return void
+ * @access public
+ */
+	function processConfirm() {
+		$this->data = $this->Wizard->read();
+		$msg = 'Sorry, this has not been implemented yet.';
+		$this->Message->add($msg, 'error');
+		return false;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
  */
 	function processThanks() {
-		$this->Client->set($this->data);
-		if ($this->Client->validates() ) {
+		$this->Gift->set($this->data);
+		if ($this->Gift->validates()) {
 			return true;
 		}
 
-		$this->flash('Es ist ein Fehler aufgetreten. Bitte überprüfen Sie Ihre Eingaben noch einmal.');
+		$this->Message->add('Sorry, this has not been implemented yet.', 'error');
 		return false;
 	}
 /**
@@ -71,13 +90,7 @@ class GiftsController extends AppController {
  * @return void
  */
 	function processTellFriends() {
-		$this->Gift->set($this->data);
-
-		if ($this->Gift->validates()) {
-			return true;
-		}
-
-		$this->flash('Ihre Anfrage konnte nicht gesendet werden. Bitte überprüfen Sie Ihre Eingaben noch einmal.');
+		$this->Message->add('Sorry, this has not been implemented yet.', 'error');
 		return false;
 	}
 /**
@@ -92,7 +105,7 @@ class GiftsController extends AppController {
 			return true;
 		}
 
-		$this->flash('Ihre Anfrage konnte nicht gesendet werden. Bitte überprüfen Sie Ihre Eingaben noch einmal.');
+		$this->Message->add('Sorry, this has not been implemented yet.', 'error');
 		return false;
 	}
 /**
@@ -102,20 +115,7 @@ class GiftsController extends AppController {
  */
 	function _afterComplete() {
 		$wizard_data = $this->Wizard->read();
-
-		# massage data
 		$this->data = $wizard_data;
-
-		$this->data['Gift'] = am(
-			$wizard_data['message']['Gift'],
-			$wizard_data['data']['Gift']
-		);
-		$this->data['Client'] = $wizard_data['password']['Client'];
-		$this->data['Message'] = $wizard_data['message']['Message'];
-
-		$this->Gift->createFromWizard($this->data);
-
-		# load data for summary in session
 		$this->Session->write('gift', $gift);
 	}
 /**
