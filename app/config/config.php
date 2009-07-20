@@ -67,6 +67,13 @@ $config = array(
 		'y_axis' => array(
 			'colors' => array('#BED4F4', '#BED4F4')
 		),
+	),
+	'App.frequency_options' => array(
+		'onetime' => 'One Time',
+		'monthly' => 'Monthly',
+		'quarterly' => 'Quarterly',
+		'biannually' => 'Biannually',
+		'annualy' => 'Annualy'
 	)
 );
 ?>
