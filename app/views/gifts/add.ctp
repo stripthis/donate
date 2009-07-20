@@ -28,6 +28,7 @@ $frequencyOptions = Configure::read('App.frequency_options');
 <?php echo $form->input('type', array('label' => 'Type:', 'options' => Configure::read('App.gift_types')))?>
 <?php echo $form->input('amount', array('label' => 'Amount:'))?>
 <?php echo $form->input('frequency', array('label' => 'Frequency:', 'options' => $frequencyOptions, 'selected' => 'monthly'))?>
-<?php echo $form->input('description', array('label' => 'Comments:'))?>
+<?php echo $form->input('office_id', array('label' => 'Office:', 'options' => $officeOptions))?>
 <?php echo $form->input('appeal_id', array('label' => 'Appeal:', 'options' => $appealOptions, 'empty' => '--'))?>
+<?php echo $form->input('description', array('label' => 'Comments:'))?>
 <?php echo $form->end('Save')?>

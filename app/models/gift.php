@@ -1,8 +1,7 @@
 <?php
 class Gift extends AppModel {
 	var $belongsTo = array(
-		'User',
-		'Appeal'
+		'User', 'Appeal', 'Country'
 	);
 
 	var $hasMany = array(
@@ -24,12 +23,6 @@ class Gift extends AppModel {
 			'valid' => array(
 				'rule' => array('money'),
 				'message' => 'Please provide an amount in the form dd.dd where d is a digit.',
-			)
-		),
-		'description' => array(
-			'valid' => array(
-				'rule' => array('notEmpty'),
-				'message' => 'Please provide a description. This is useful for your tax receipt.'
 			)
 		),
 		'fname' => array(
@@ -65,9 +58,23 @@ class Gift extends AppModel {
 			)
 		),
 		'country_id' => array(
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
+				'message' => 'Please provide a country.'
+			),
 			'valid' => array(
 				'rule' => array('validateCountry'),
 				'message' => 'Please provide a valid address.'
+			)
+		),
+		'office_id' => array(
+			'notEmpty' => array(
+				'rule' => 'notEmpty',
+				'message' => 'Please provide an office.'
+			),
+			'valid' => array(
+				'rule' => array('validateOffice'),
+				'message' => 'Please provide a valid office.'
 			)
 		),
 		'frequency' => array(
@@ -105,10 +112,23 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateCountry($check) {
-		$countryId = current($check);
-
-		$country = ClassRegistry::init('Country')->lookup(array('id' => $countryId), 'id', false);
+		$country = ClassRegistry::init('Country')->lookup(
+			array('id' => current($check)), 'id', false
+		);
 		return !empty($country);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $check 
+ * @return void
+ * @access public
+ */
+	function validateOffice($check) {
+		$office = ClassRegistry::init('Office')->lookup(
+			array('id' => current($check)), 'id', false
+		);
+		return !empty($office);
 	}
 /**
  * undocumented function

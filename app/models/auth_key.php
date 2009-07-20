@@ -21,9 +21,14 @@ class AuthKey extends AppModel{
 		}
 		Assert::true(Common::isUuid($key['auth_key_type_id']));
 
-		$conditions = array('user_id' => $key['user_id'], 'auth_key_type_id' => $key['auth_key_type_id']);
 		$recursive = -1;
-		$sameTypeKey = $_this->find('first', compact('conditions', 'recursive'));
+		$sameTypeKey = $_this->find('first', array(
+			'conditions' => array(
+				'user_id' => $key['user_id'],
+				'auth_key_type_id' => $key['auth_key_type_id']
+			),
+			'recursive' => -1
+		));
 		if ($sameTypeKey) {
 			if (!$autoRefresh) {
 				return false;
@@ -80,7 +85,7 @@ class AuthKey extends AppModel{
  * @return void
  * @access public
  */
-	static function verify($key, $user_id, $auth_key_type_id) {
+	static function verify($key, $user_id, $auth_key_type_id, $foreign_id = null) {
 		$_this = Common::getModel('AuthKey');
 		AuthKey::purgeExpired();
 
@@ -90,7 +95,12 @@ class AuthKey extends AppModel{
 		if (!Common::isUuid($auth_key_type_id)) {
 			return false;
 		}
-		return $_this->hasAny(compact('key', 'user_id', 'auth_key_type_id'));
+
+		$options = compact('key', 'user_id', 'auth_key_type_id');
+		if (!empty($foreign_id)) {
+			$options = compact('key', 'user_id', 'auth_key_type_id', 'foreign_id');
+		}
+		return $_this->hasAny($options);
 	}
 /**
  * undocumented function
