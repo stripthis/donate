@@ -6,6 +6,7 @@
  * @access public
  */
 class StatisticsController extends AppController {
+	var $helpers = array('OpenFlashChart');
 	var $uses = array();
 /**
  * undocumented function
@@ -27,7 +28,7 @@ class StatisticsController extends AppController {
  * @return void
  * @access public
  */
-	function gifts() {
+	function admin_index() {
 		$gifts = $this->Gift->find('all', array(
 			'conditions' => $this->_conditions(),
 			'contain' => false,
@@ -52,7 +53,7 @@ class StatisticsController extends AppController {
  * @return void
  * @access public
  */
-	function users() {
+	function admin_users() {
 		$result = array();
 		$users = $this->User->find('all', array(
 			'contain' => false,

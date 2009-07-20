@@ -2,7 +2,7 @@
 <?php echo $this->element('../statistics/sidebar') ?>
 
 <?php
-$url = '/statistics/gifts.json?startDate=' . $startDate . '&endDate=' . $endDate;
+$url = '/admin/statistics/index.json?startDate=' . $startDate . '&endDate=' . $endDate;
 ?>
 <script type="text/javascript">
 swfobject.embedSWF(

@@ -49,6 +49,24 @@ $config = array(
 	'Stats.startDate' => '-1 year',
 	'App.gift_types' => array(
 		'donation' => 'Donation'
+	),
+	'Stats.defaultChartOptions' => array(
+		'type' => 'bar_filled',
+		'color' => '#006600',
+		'outline_col' => '#551285',
+		'chart' => array('bg' => '#FFFFFF'),
+		'title' => array(
+			'style' => 'font-size: 16px; color: gray; padding: 10px;'
+		),
+		'x_axis' => array(
+			'color' => '#BED4F4',
+			'grid_colour' => '#BED4F4',
+			'tick_height' => 3,
+			'stroke' => 2
+		),
+		'y_axis' => array(
+			'colors' => array('#BED4F4', '#BED4F4')
+		),
 	)
 );
 ?>
