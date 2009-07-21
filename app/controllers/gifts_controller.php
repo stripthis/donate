@@ -1,5 +1,6 @@
 <?php
 class GiftsController extends AppController {
+	var $helpers = array('Fpdf');
 /**
  * undocumented function
  *

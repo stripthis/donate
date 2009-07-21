@@ -1,5 +1,5 @@
 <?php
-Router::parseExtensions('js', 'json', 'xml', 'rss');
+Router::parseExtensions('js', 'json', 'xml', 'rss', 'pdf');
 Router::connect('/', array('controller' => 'gifts', 'action' => 'add'));
 Router::connect('/:language/:controller/:action/*', array(), array('language' => '[a-z]{3}'));
 Router::connect('/users/add', array('controller' => 'users', 'action' => 'register'));
