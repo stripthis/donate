@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* AppealsController Test cases generated on: 2009-07-21 16:07:34 : 1248188314*/
+/* AppealsController Test cases generated on: 2009-07-21 17:07:07 : 1248188527*/
 App::import('Controller', 'Appeals');
 
 class TestAppeals extends AppealsController {
@@ -11,16 +11,11 @@ class AppealsControllerTest extends CakeTestCase {
 	var $Appeals = null;
 
 	function setUp() {
-		$this->Appeals = new TestAppeals();
-		$this->Appeals->constructClasses();
-	}
-
-	function testAppealsControllerInstance() {
-		$this->assertTrue(is_a($this->Appeals, 'AppealsController'));
+		$this->sut = ClassRegistry::init(Appeals);
 	}
 
 	function tearDown() {
-		unset($this->Appeals);
+		unset($this->sut);
 	}
 }
 ?>

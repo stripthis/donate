@@ -10,4 +10,12 @@
 /app/sql_updates.txt
 /app/webroot/js/aggregate
 /app/webroot/css/aggregate
+/vendors/shells/debuggable_bake.php
+/vendors/shells/tasks/debuggable_controller.php
+/vendors/shells/tasks/debuggable_fixture.php
+/vendors/shells/tasks/debuggable_model.php
+/vendors/shells/tasks/debuggable_plugin.php
+/vendors/shells/tasks/debuggable_project.php
+/vendors/shells/tasks/debuggable_test.php
+/vendors/shells/tasks/debuggable_view.php
 sql_updates.txt
