@@ -201,9 +201,7 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateFrequency($check) {
-		$value = current($check);
-
-		return array_key_exists($value, Configure::read('App.frequency_options'));
+		return array_key_exists(current($check), Configure::read('App.frequency_options'));
 	}
 /**
  * undocumented function
@@ -214,6 +212,27 @@ class Gift extends AppModel {
  */
 	function validateType($check) {
 		return array_key_exists($check['type'], Configure::read('App.gift_types'));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $email 
+ * @param string $authKey 
+ * @return void
+ * @access public
+ */
+	function emailReceipt($email, $authKey) {
+		$emailSettings = array(
+			'vars' => array(
+				'keyData' => $authKey
+			),
+			'mail' => array(
+				'to' => $email
+				, 'subject' => Configure::read('App.name') . ': Your Tax Receipt'
+			),
+			'store' => false
+		);
+		Mailer::deliver('receipt', $emailSettings);
 	}
 }
 ?>

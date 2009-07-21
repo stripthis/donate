@@ -69,19 +69,8 @@ class GiftsController extends AppController {
 			return $this->Message->add($msg);
 		}
 
-		App::import('Model', 'TimeZone');
-		$userId = !User::isGuest() ? User::get('id') : $this->data['Gift']['email'];
-		$authKeyTypeId = $this->AuthKeyType->lookup(array('name' => 'Transaction Receipt'), 'id', false);
-		$authKey = AuthKey::generate(array(
-			'user_id' => $userId
-			, 'auth_key_type_id' => $authKeyTypeId
-			, 'foreign_id' => $tId
-			, 'expires' => TimeZone::date('Y-m-d H:i:s', 'UTC', '+3 days')
-		));
-
-		$this->_addAuthkeyToSession($userId, $authKey, $authKeyTypeId, $tId);
-
-		// @todo maybe email the user the receipt
+		$keyData = $this->_addAuthkeyToSession($tId);
+		$this->Gift->emailReceipt($this->data['Gift']['email'], $keyData);
 
 		$this->redirect(array('action' => 'thanks'));
 	}
@@ -123,16 +112,29 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function _addAuthkeyToSession($userId, $authKey, $authKeyTypeId, $foreignId) {
-		$sessKey = 'gift_auth_keys';
-		$authKeys = $this->Session->read($sessKey);
-		$authKeys[] = array(
+	function _addAuthkeyToSession($tId) {
+		App::import('Model', 'TimeZone');
+		$userId = !User::isGuest() ? User::get('id') : $this->data['Gift']['email'];
+		$authKeyTypeId = $this->AuthKeyType->lookup(array('name' => 'Transaction Receipt'), 'id', false);
+		$authKey = AuthKey::generate(array(
+			'user_id' => $userId
+			, 'auth_key_type_id' => $authKeyTypeId
+			, 'foreign_id' => $tId
+			, 'expires' => TimeZone::date('Y-m-d H:i:s', 'UTC', '+3 days')
+		));
+		$keyData = array(
 			'user_id' => $userId,
 			'key' => $authKey,
 			'auth_key_type_id' => $authKeyTypeId,
-			'foreign_id' => $foreignId
+			'foreign_id' => $tId
 		);
+
+		$sessKey = 'gift_auth_keys';
+		$authKeys = $this->Session->read($sessKey);
+		$authKeys[] = $keyData;
 		$this->Session->write($sessKey, $authKeys);
+
+		return $keyData;
 	}
 /**
  * undocumented function

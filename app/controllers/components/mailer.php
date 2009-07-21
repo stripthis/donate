@@ -2,9 +2,9 @@
 
 class Mailer{
 	static function deliver($template, $options = array()) {
-		if (Common::isDevelopment() && !class_exists('ShellDispatcher')) {
-			return true;
-		}
+		// if (Common::isDevelopment() && !class_exists('ShellDispatcher')) {
+		// 	return true;
+		// }
 
 		$options = Set::merge(array(
 			'vars' => array(),
