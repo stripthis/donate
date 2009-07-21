@@ -13,7 +13,8 @@ class AuthKey extends AppModel{
 		} elseif (!isset($key['user_id'])) {
 			$key['user_id'] = User::get('id');
 		}
-		Assert::true(Common::isUuid($key['user_id']));
+		// to support emails, too
+		// Assert::true(Common::isUuid($key['user_id']));
 
 		$_this = Common::getModel('AuthKey');
 		if (!Common::isUuid($key['auth_key_type_id']) && !empty($key['auth_key_type_id'])) {

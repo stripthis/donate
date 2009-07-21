@@ -74,6 +74,7 @@ class GiftsController extends AppController {
 			, 'foreign_id' => $tId
 			, 'expires' => TimeZone::date('Y-m-d H:i:s', 'UTC', '+3 days')
 		));
+
 		$this->_addAuthkeyToSession($userId, $authKey, $authKeyTypeId, $tId);
 
 		// @todo maybe email the user the receipt
@@ -92,7 +93,6 @@ class GiftsController extends AppController {
 		$userId = $this->params['named']['user_id'];
 		$authKeyTypeId = $this->params['named']['auth_key_type_id'];
 
-		Assert::true(Common::isUuid($userId), '403');
 		Assert::true(Common::isUuid($authKeyTypeId), '403');
 		Assert::true(Common::isUuid($tId), '403');
 		Assert::true(AuthKey::verify($key, $userId, $authKeyTypeId, $tId), '403');
