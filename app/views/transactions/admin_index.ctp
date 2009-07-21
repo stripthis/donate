@@ -1,20 +1,7 @@
   <div class="transactions index">
   <h2><?php __('Transactions');?></h2>
-  <div class="actions">
-    <h3><?php echo __('Actions'); ?></h3>
-    <ul>
-      <li><?php echo $html->link(__('New Transaction', true), array('action'=>'add'),array('class'=>'add')); ?></li>
-      <li><?php echo $html->link(__('List Transactions', true), array('controller'=> 'transactions', 'action'=>'index')); ?> </li>
-    <li><?php echo $html->link(__('New Parent Transaction', true), array('controller'=> 'transactions', 'action'=>'add')); ?> </li>
-    <li><?php echo $html->link(__('List Gateways', true), array('controller'=> 'gateways', 'action'=>'index')); ?> </li>
-    <li><?php echo $html->link(__('New Gateway', true), array('controller'=> 'gateways', 'action'=>'add')); ?> </li>
-    <li><?php echo $html->link(__('List Gifts', true), array('controller'=> 'gifts', 'action'=>'index')); ?> </li>
-    <li><?php echo $html->link(__('New Gift', true), array('controller'=> 'gifts', 'action'=>'add')); ?> </li>
-    </ul>
-  </div>
   <table cellpadding="0" cellspacing="0">
   <tr>
-    	<th><?php echo $paginator->sort('id');?></th>
     	<th><?php echo $paginator->sort('parent_id');?></th>
     	<th><?php echo $paginator->sort('gateway_id');?></th>
     	<th><?php echo $paginator->sort('external_id');?></th>
@@ -34,9 +21,6 @@ foreach ($transactions as $transaction):
 	}
 ?>
   <tr<?php echo $class;?>>
-    <td>
-      <?php echo $transaction['Transaction']['id']; ?>
-    </td>
     <td>
       <?php echo $html->link($transaction['ParentTransaction']['id'], array('controller'=> 'transactions', 'action'=>'view', $transaction['ParentTransaction']['id'])); ?>
     </td>
@@ -63,7 +47,6 @@ foreach ($transactions as $transaction):
     </td>
     <td class="actions">
       <?php echo $html->link(__('View', true), array('action'=>'view', $transaction['Transaction']['id']),array('class'=>'view')); ?>
-      <?php echo $html->link(__('Edit', true), array('action'=>'edit', $transaction['Transaction']['id']),array('class'=>'edit')); ?>
       <?php echo $html->link(__('Delete', true), array('action'=>'delete', $transaction['Transaction']['id']), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $transaction['Transaction']['id'])); ?>
     </td>
   </tr>

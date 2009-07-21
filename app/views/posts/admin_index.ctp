@@ -1,4 +1,3 @@
-<?php echo $this->element('admin_nav') ?>
 <div class="posts index">
 	<h2><?php __('Posts Index');?></h2>
 	<div class="actions">

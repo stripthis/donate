@@ -1,1 +1,0 @@
-<?php echo $this->element('admin_nav') ?>

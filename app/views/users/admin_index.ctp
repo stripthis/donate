@@ -1,4 +1,3 @@
-<?php echo $this->element('admin_nav') ?>
 <div class="users index">
 	<h2><?php __('Users');?></h2>
 	<div class="actions">
