@@ -32,9 +32,8 @@ class GiftsController extends AppController {
 			return;
 		}
 
-		foreach ($this->data['Gift'] as $field => $value) {
-			$this->Cookie->write($field, $value);
-		}
+
+		$this->_reuseDataInCookie();
 
 		$this->Gift->create($this->data);
 		if (!$this->Gift->validates()) {
@@ -134,6 +133,19 @@ class GiftsController extends AppController {
 			'foreign_id' => $foreignId
 		);
 		$this->Session->write($sessKey, $authKeys);
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function _reuseDataInCookie() {
+		if (isset($this->data['Gift'])) {
+			foreach ($this->data['Gift'] as $field => $value) {
+				$this->Cookie->write($field, $value);
+			}
+		}
 	}
 }
 ?>

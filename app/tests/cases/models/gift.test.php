@@ -38,7 +38,7 @@ class GiftTest extends CakeTestCase {
 		$field = 'fname';
 		$dontPass = array(
 			't---', '#@@33434', '/sdasd2323/', '23', '2', '', '*&^', 'tim Kosch&^%',
-			't,', 'Remy#Bertot', 'Remy,  Bertot'
+			't,', 'Remy#Bertot'
 		);
 		foreach ($dontPass as $data) {
 			$this->sut->data = array();

@@ -45,7 +45,7 @@ class Gift extends AppModel {
 				'last' => true
 			),
 			'valid' => array(
-				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu}\s]+[\-,]?[ ]?[\p{Ll}\p{Lo}\p{Lt}\p{Lu}]+$/'),
+				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+[\-,]?[ ]?[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+$/'),
 				'message' => 'Please provide a valid first name.',
 			),
 			'length' => array(
