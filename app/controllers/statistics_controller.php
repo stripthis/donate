@@ -116,8 +116,8 @@ class StatisticsController extends AppController {
 				$endDate = $this->params['url']['endDate'];
 			}
 		} else {
-			$startDate = strtotime($this->cleanupDate($this->data['Inquiry']['startDate']));
-			$endDate = strtotime($this->cleanupDate($this->data['Inquiry']['endDate']));
+			$startDate = strtotime($this->cleanupDate($this->data['Statistics']['startDate']));
+			$endDate = strtotime($this->cleanupDate($this->data['Statistics']['endDate']));
 
 			$this->Session->write($sessKeyStart, $startDate);
 			$this->Session->write($sessKeyEnd, $endDate);

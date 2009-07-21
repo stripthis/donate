@@ -319,7 +319,7 @@ class AppController extends Controller {
  * @access public
  */
 	function cleanupDate($data) {
-		return $data['year'] . '-' . $data['month'] . '-' . $data['day'];
+		return $data['year'] . '-' . $data['month'] . '-01';
 	}
 /**
  * undocumented function
