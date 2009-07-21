@@ -14,63 +14,111 @@ class Gift extends AppModel {
 			'on' => 'create'
 		),
 		'type' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'The type is required!',
+				'required' => true,
+				'last' => true
+			),
 			'valid' => array(
 				'rule' => 'validateType',
-				'message' => 'This is an invalid type.'
+				'message' => 'This is an invalid type.',
 			)
 		),
 		'amount' => array(
 			'valid' => array(
 				'rule' => array('money'),
 				'message' => 'Please provide an amount in the form dd.dd where d is a digit.',
-			)
+			),
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'The amount is required!',
+				'required' => true,
+				'last' => true
+			),
 		),
 		'fname' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'The first name is required!',
+				'required' => true,
+				'last' => true
+			),
 			'valid' => array(
-				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu}\-,]+$/'),
-				'message' => 'Please provide a valid first name.'
+				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu}\s]+[\-,]?[ ]?[\p{Ll}\p{Lo}\p{Lt}\p{Lu}]+$/'),
+				'message' => 'Please provide a valid first name.',
 			),
 			'length' => array(
 				'rule' => array('minLength', '2'),
-				'message' => 'Your first name must have at least 2 characters.'
+				'message' => 'Your first name must have at least 2 characters.',
 			),
 		),
 		'lname' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'The last name is required!',
+				'required' => true,
+				'last' => true
+			),
 			'valid' => array(
-				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu}\-,]+$/'),
-				'message' => 'Please provide a valid last name.'
+				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu}\s]+[\-,]?[ ]?[\p{Ll}\p{Lo}\p{Lt}\p{Lu}]+$/'),
+				'message' => 'Please provide a valid last name.',
 			),
 			'length' => array(
 				'rule' => array('minLength', '2'),
-				'message' => 'Your last name must have at least 2 characters.'
+				'message' => 'Your last name must have at least 2 characters.',
 			),
 		),
 		'address' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'The address name is required!',
+				'required' => true,
+				'last' => true
+			),
 			'valid' => array(
 				'rule' => 'notEmpty',
-				'message' => 'Please provide a valid address.'
+				'message' => 'Please provide a valid address.',
 			)
 		),
 		'zip' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'The zip is required!',
+				'required' => true,
+				'last' => true
+			),
 			'valid' => array(
 				'rule' => 'notEmpty',
-				'message' => 'Please provide a valid zip code.'
+				'message' => 'Please provide a valid zip code.',
 			)
 		),
 		'country_id' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'The country is required!',
+				'required' => true,
+				'last' => true
+			),
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'Please provide a country.'
+				'message' => 'Please provide a country.',
 			),
 			'valid' => array(
 				'rule' => array('validateCountry'),
-				'message' => 'Please provide a valid address.'
+				'message' => 'Please provide a valid country.'
 			)
 		),
 		'office_id' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'The office is required!',
+				'required' => true,
+				'last' => true
+			),
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
-				'message' => 'Please provide an office.'
+				'message' => 'Please provide an office.',
 			),
 			'valid' => array(
 				'rule' => array('validateOffice'),
@@ -78,6 +126,12 @@ class Gift extends AppModel {
 			)
 		),
 		'frequency' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'The frequency is required!',
+				'required' => true,
+				'last' => true
+			),
 			'valid' => array(
 				'rule' => array('validateFrequency'),
 				'message' => 'Please provide a valid frequency.'
@@ -85,11 +139,14 @@ class Gift extends AppModel {
 		),
 		'email' => array(
 			'required' => array(
-				'rule' => VALID_NOT_EMPTY,
-				'message' => 'Email must not be empty.',
+				'rule' => 'notEmpty',
+				'message' => 'The email is required!',
+				'required' => true,
+				'last' => true
 			),
 			'valid' => array(
 				'rule' => array('email', false),
+				'allowEmpty' => false,
 				'message' => 'This is not a valid email address.'
 			),
 			'maxlength' => array(
@@ -99,7 +156,13 @@ class Gift extends AppModel {
 		),
 		'terms' => array(
 			'required' => array(
-				'rule' => array('equalTo', '1'), 
+				'rule' => 'notEmpty',
+				'message' => 'The terms field is required!',
+				'required' => true,
+				'last' => true
+			),
+			'accepted' => array(
+				'rule' => array('equalTo', '1'),
 				'message' => 'Please accept the terms.'
 			)
 		),
