@@ -32,6 +32,10 @@ class GiftsController extends AppController {
 			return;
 		}
 
+		foreach ($this->data['Gift'] as $field => $value) {
+			$this->Cookie->write($field, $value);
+		}
+
 		$this->Gift->create($this->data);
 		if (!$this->Gift->validates()) {
 			$msg = 'Sorry, something went wrong processing your gift data. ';
@@ -42,6 +46,7 @@ class GiftsController extends AppController {
 		$this->Gift->save();
 		$giftId = $this->Gift->getLastInsertId();
 		$officeId = $this->data['Gift']['office_id'];
+
 		//@todo dont always use the first one, make it dependent on the payment method
 		$gateway = $this->GatewayOffice->find('first', array(
 			'conditions' => array('office_id' => $officeId),
