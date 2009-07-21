@@ -104,7 +104,49 @@ class GiftsController extends AppController {
  * @access public
  */
 	function thanks() {
-		
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function admin_index() {
+		$this->paginate['Gift'] = array(
+			'contain' => array(
+				'Country(name)', 'Office(id, name)', 'Appeal(id, name)'
+			),
+			'limit' => 20
+		);
+		$gifts = $this->paginate();
+		$this->set(compact('gifts'));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	function admin_delete($id = null) {
+		$user = $this->User->find('first', $id);
+		$this->User->delete($id);
+		$this->Silverpop->UserOptOut($user);
+		$this->Message->add(DEFAULT_FORM_DELETE_SUCCESS, 'ok', true, array('action' => 'index'));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	function admin_view($id = null) {
+		$user = $this->User->find('first', array(
+			'conditions' => array('User.id' => $id),
+			'contain' => array('ScoringHistory')
+		));
+		$this->set(compact('user'));
 	}
 /**
  * undocumented function

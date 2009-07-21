@@ -12,7 +12,7 @@ class fpdfHelper extends FPDF {
  * @access public
  */
 	function __construct($options) {
-		parent::__construct('P', 'mm', 'A4'); 
+		parent::__construct('P', 'mm', 'A4');
 	}
 /**
  * undocumented function
@@ -41,11 +41,9 @@ class fpdfHelper extends FPDF {
  * @access public
  */
 	function Header() {
-		// $this->Image(WWW_ROOT.DS.'img/logo.png',10,8,33);  
-		// you can use jpeg or pngs see the manual for fpdf for more info
 		$this->SetFont('Arial','B',15);
 		$this->Cell(80);
-		$this->Cell(30,10,$this->title,1,0,'C');
+		$this->Cell(30, 10, $this->title, 1, 0, 'C');
 		$this->Ln(20);
 	}
 /**
@@ -57,7 +55,7 @@ class fpdfHelper extends FPDF {
 	function Footer() {
 		$this->SetY(-15);
 		$this->SetFont('Arial', 'I', 8);
-		$this->Cell(0,10,'Page ' . $this->PageNo() . '/{nb}', 0, 0, 'C');
+		$this->Cell(0, 10, 'Page ' . $this->PageNo() . '/{nb}', 0, 0, 'C');
 	}
 /**
  * undocumented function
