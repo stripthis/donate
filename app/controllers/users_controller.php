@@ -283,7 +283,8 @@ class UsersController extends AppController {
 		$this->User->delete(User::get('id'));
 		$this->Silverpop->UserOptOut();
 		User::logout();
-		$this->Message->add('Your account was successfully deleted.', 'ok', true, '/');
+		$msg = __('Your account was successfully deleted.', true);
+		$this->Message->add($msg, 'ok', true, '/');
 	}
 /**
  * undocumented function

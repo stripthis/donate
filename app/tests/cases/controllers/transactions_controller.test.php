@@ -11,7 +11,7 @@ class TransactionsControllerTest extends CakeTestCase {
 	var $Transactions = null;
 
 	function setUp() {
-		$this->sut = ClassRegistry::init(Transactions);
+		$this->sut = ClassRegistry::init('Transactions');
 	}
 
 	function tearDown() {

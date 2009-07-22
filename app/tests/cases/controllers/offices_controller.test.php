@@ -11,7 +11,7 @@ class OfficesControllerTest extends CakeTestCase {
 	var $Offices = null;
 
 	function setUp() {
-		$this->sut = ClassRegistry::init(Offices);
+		$this->sut = ClassRegistry::init('Offices');
 	}
 
 	function tearDown() {

@@ -11,7 +11,7 @@ class AppealsControllerTest extends CakeTestCase {
 	var $Appeals = null;
 
 	function setUp() {
-		$this->sut = ClassRegistry::init(Appeals);
+		$this->sut = ClassRegistry::init('Appeals');
 	}
 
 	function tearDown() {

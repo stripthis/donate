@@ -40,7 +40,7 @@ class GiftsController extends AppController {
 		if (!$this->Gift->validates()) {
 			$msg = 'Sorry, something went wrong processing your gift data. ';
 			$msg .= 'Please correct the errors below.';
-			return $this->Message->add($msg, 'error');
+			return $this->Message->add(__($msg, true), 'error');
 		}
 
 		$this->Gift->save();

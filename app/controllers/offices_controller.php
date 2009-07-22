@@ -53,9 +53,10 @@ class OfficesController extends AppController {
 			Assert::notEmpty($office, '404');
 			$action = 'edit';
 		}
-		$gateways = $this->Office->Gateway->find('list');
 
-		$this->set(compact('action'));
+		$gateways = $this->Office->Gateway->find('list');
+		$this->set(compact('action', 'gateways'));
+
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
 			return $this->data = $office;
@@ -68,16 +69,16 @@ class OfficesController extends AppController {
 		$this->Office->set($this->data['Office']);
 		$result = $this->Office->save();
 		if ($this->Office->validationErrors) {
-			return $this->Message->add('Please fill out all fields', 'error');
+			return $this->Message->add(__('Please fill out all fields', true), 'error');
 		}
 		Assert::notEmpty($result);
 
 		$msg = 'Office was saved successfully.';
 		if ($action == 'add') {
 			$url = array('action' => 'admin_edit', $this->Office->id);
-			return $this->Message->add($msg, 'ok', true, $url);
+			return $this->Message->add(__($msg, true), 'ok', true, $url);
 		}
-		$this->Message->add($msg, 'ok', true, array('action' => 'admin_index'));
+		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'admin_index'));
 	}
 /**
  * delete action
@@ -94,7 +95,7 @@ class OfficesController extends AppController {
 		Assert::notEmpty($office, '404');
 
 		$this->Office->del($id);
-		$this->Message->add('The Office has been deleted.', 'ok', true);
+		$this->Message->add(__('The Office has been deleted.', true), 'ok', true);
 		$this->redirect(array('action' => 'admin_index'));
 	}
 }

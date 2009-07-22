@@ -174,7 +174,9 @@ class DebuggableControllerTask extends ControllerTask {
 		\$action = 'add';
 		if (\$this->action == '{$admin}edit') {
 			\${$singularName} = \$this->{$currentModelName}->find('first', array(
-				'{$currentModelName}.id' => \$id,
+				'conditions' => array(
+					'{$currentModelName}.id' => \$id
+				),
 				'contain' => false,
 			));
 			Assert::notEmpty(\${$singularName}, '404');

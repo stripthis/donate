@@ -10,7 +10,8 @@ class AuthController extends AppController{
 	function login() {
 		Assert::true(User::isGuest(), '403');
 		if ($this->isGet()) {
-			return $this->Message->add(__("Good to see you again... But how come you are not logged in yet?!",true), 'error');
+			$msg = "Good to see you again... But how come you are not logged in yet?!";
+			return $this->Message->add(__($msg, true), 'error');
 		}
 
 		$success = false;
@@ -54,10 +55,12 @@ class AuthController extends AppController{
 					$url = $sessUrl;
 					$this->Session->del($this->loginRedirectSesskey);
 				}
-				return $this->Message->add('You have successfully logged in. Please wait while you\'re redirected.', 'ok', false, $url);
+				$msg = 'You have successfully logged in. Please wait while you\'re redirected.';
+				return $this->Message->add(__($msg, true), 'ok', false, $url);
 			}
 
-			return $this->Message->add('Sorry, but there is no activated user with these login credentials.', 'error');
+			$msg = 'Sorry, but there is no activated user with these login credentials.';
+			return $this->Message->add(__($msg, true), 'error');
 		}
 
 		if ($success) {
@@ -68,7 +71,8 @@ class AuthController extends AppController{
 			return $this->set('existingSession', true);
 		}
 
-		$this->Message->add('Sorry, but there is no activated user with these login credentials.', 'error');
+		$msg = 'Sorry, but there is no activated user with these login credentials.';
+		$this->Message->add(__($msg, true), 'error');
 		$this->set('invalidAccount', true);
 	}
 /**

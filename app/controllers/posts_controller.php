@@ -18,7 +18,7 @@ class PostsController extends AppController {
  * @access public
  */
 	function index($cat="news") {
-		switch($cat) {
+		switch ($cat) {
 			case "news":
 			case "twitter":
 				$cacheKey = 'posts_index_'.$cat;

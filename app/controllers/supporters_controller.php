@@ -1,5 +1,11 @@
 <?php
 class SupportersController extends AppController {
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	function beforeFilter() {
 		parent::beforeFilter();
 

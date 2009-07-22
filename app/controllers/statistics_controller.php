@@ -124,7 +124,8 @@ class StatisticsController extends AppController {
 		}
 
 		if ($startDate > $endDate) {
-			$this->User->invalidate('startDate', 'Sorry, the beginning date must be before the end date.');
+			$msg = 'Sorry, the beginning date must be before the end date.';
+			$this->User->invalidate('startDate', __($msg, true));
 		}
 
 		$this->startDate = date('Y-m-d', $startDate);

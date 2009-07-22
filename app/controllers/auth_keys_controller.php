@@ -19,7 +19,7 @@ class AuthKeysController extends AppController {
 		switch ($authKeyType) {
 			case 'Lost Password': {
 				$this->Session->write('lost_password', true);
-				$msg = 'Please go ahead and change your password now.';
+				$msg = __('Please go ahead and change your password now.', true);
 				$this->Message->add($msg, 'ok', true, '/users/edit_password/'.$userId);
 			}
 		}
