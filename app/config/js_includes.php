@@ -1,4 +1,5 @@
 <?php
+$mceRules = 'Gifts:admin_view, Comments:edit';
 $config = array(
 	'JsIncludes' => array(
 		'jquery.min.js' => '*:*',
@@ -8,6 +9,8 @@ $config = array(
 		// 'jquery.blockUI.js' => '*:*',
 		'japp.js' => '*:*',
 		'swfobject.js' => 'Statistics:*',
+		'tiny_mce/tiny_mce_gzip.js' => $mceRules,
+		'tiny_initializer.js' => $mceRules,
 	)
 );
 ?>

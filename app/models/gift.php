@@ -5,7 +5,11 @@ class Gift extends AppModel {
 	);
 
 	var $hasMany = array(
-		'Transaction'
+		'Transaction' => array('dependent' => true),
+		'Comment' => array(
+			'dependent' => true,
+			'foreignKey' => 'foreign_id'
+		)
 	);
 
 	var $validate = array(

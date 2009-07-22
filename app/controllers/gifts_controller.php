@@ -169,11 +169,14 @@ class GiftsController extends AppController {
  * @access public
  */
 	function admin_view($id = null) {
-		$user = $this->User->find('first', array(
-			'conditions' => array('User.id' => $id),
-			'contain' => array('ScoringHistory')
+		$gift = $this->Gift->find('first', array(
+			'conditions' => array('Gift.id' => $id),
+			'contain' => array(
+				'Country(name)', 'Office(id, name)', 'Appeal(id, name)',
+				'Comment(id, created, body, user_id)' => 'User(login, id)' 
+			)
 		));
-		$this->set(compact('user'));
+		$this->set(compact('gift'));
 	}
 /**
  * undocumented function
