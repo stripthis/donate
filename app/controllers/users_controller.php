@@ -158,7 +158,7 @@ class UsersController extends AppController {
 		$this->User->set($this->data);
 		if ($this->User->save()) {
 			User::restore();
-			$this->Message->add(__('Your profile has been updated.', true), 'ok', true, array('action'=>'dashboard')));
+			$this->Message->add(__('Your profile has been updated.', true), 'ok', true, array('action'=>'dashboard'));
 		}
 		$this->Message->add(__('There was an error updating your profile.', true), 'error', true, $this->referer());
 	}

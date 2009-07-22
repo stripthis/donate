@@ -111,14 +111,42 @@ class GiftsController extends AppController {
  * @access public
  */
 	function admin_index() {
+		$keyword = isset($this->params['url']['keyword'])
+					? $this->params['url']['keyword']
+					: '';
+		$type = isset($this->params['url']['type'])
+					? $this->params['url']['type']
+					: 'person';
+
+		$conditions = array();
+		if (!empty($keyword)) {
+			$keyword = trim($keyword);
+			switch ($type) {
+				case 'gift':
+					$conditions['Gift.id LIKE'] = '%' . $keyword . '%';
+					break;
+				case 'appeal':
+					$conditions['Appeal.name LIKE'] = '%' . $keyword . '%';
+					break;
+				case 'office':
+					$conditions['Office.name LIKE'] = '%' . $keyword . '%';
+					break;
+				default:
+					$key = "CONCAT(Gift.fname,' ',Gift.lname)";
+					$conditions[$key . ' LIKE'] = '%' . $keyword . '%';
+					break;
+			}
+		}
+
 		$this->paginate['Gift'] = array(
+			'conditions' => $conditions,
 			'contain' => array(
 				'Country(name)', 'Office(id, name)', 'Appeal(id, name)'
 			),
 			'limit' => 20
 		);
 		$gifts = $this->paginate();
-		$this->set(compact('gifts'));
+		$this->set(compact('gifts', 'keyword', 'type'));
 	}
 /**
  * undocumented function

@@ -1,5 +1,17 @@
-  <div class="gifts index">
+<div class="gifts index">
   <h2><?php __('Gifts');?></h2>
+	<?php
+	echo $form->create('Gift', array('url' => '/admin/gifts/index', 'type' => 'get'));
+	echo $form->input('keyword', array('label' => 'Keyword:', 'value' => $keyword));
+	$typeOptions = array(
+		'gift' => 'Gift Id',
+		'person' => 'Person Name',
+		'appeal' => 'Appeal Name',
+		'office' => 'Office Name'
+	);
+	echo $form->input('type', array('label' => 'Type:', 'selected' => $type, 'options' => $typeOptions));
+	echo $form->end('Filter');
+	?>
   <table cellpadding="0" cellspacing="0">
   <tr>
     	<th><?php echo $paginator->sort('office_id');?></th>
