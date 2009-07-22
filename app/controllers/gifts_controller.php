@@ -66,8 +66,7 @@ class GiftsController extends AppController {
 		if ($result !== true) {
 			$msg = 'There was a problem processing the transaction: ';
 			$msg .= $result;
-			// todo proper error msgs
-			return $this->Message->add($msg);
+			return $this->Message->add(__($msg, true));
 		}
 
 		$keyData = $this->_addAuthkeyToSession($tId);

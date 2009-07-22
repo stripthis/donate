@@ -39,10 +39,10 @@ class TransactionsController extends AppController {
 			'contain' => false
 		));
 		Assert::notEmpty($transaction, '404');
-		Assert::true(AppModel::isOwn($transaction, 'Transaction'), '403');
 
 		$this->Transaction->del($id);
-		$this->Message->add('The Transaction has been deleted.', 'ok', true, array('action' => 'admin_index'));
+		$msg = __('The Transaction has been deleted.', true);
+		$this->Message->add($msg, 'ok', true, array('action' => 'admin_index'));
 	}
 }
 ?>

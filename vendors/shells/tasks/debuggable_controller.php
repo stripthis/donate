@@ -225,11 +225,11 @@ PHP;
 		\$this->{$currentModelName}->set(\$this->data['{$currentModelName}']);
 		\$result = \$this->{$currentModelName}->save();
 		if (\$this->{$currentModelName}->validationErrors) {
-			return \$this->Message->add('Please fill out all fields', 'error');
+			return \$this->Message->add(__('Please fill out all fields', true), 'error');
 		}
 		Assert::notEmpty(\$result);
 
-		\$msg = '{$currentModelName} was saved successfully.';
+		\$msg = __('{$currentModelName} was saved successfully.', true);
 		if (\$action == 'add') {
 			\$url = array('action' => '{$admin}edit', \$this->{$currentModelName}->id);
 			return \$this->Message->add(\$msg, 'ok', true, \$url);
@@ -255,10 +255,12 @@ PHP;
 		\$url = array('action' => '{$admin}index');
 		if (!\$undelete) {
 			\$this->{$currentModelName}->del(\$id);
-			\$this->Message->add('The {$singularHumanName} has been deleted.', 'ok', true, \$url);
+			\$msg = 'The {$singularHumanName} has been deleted.';
+			\$this->Message->add(__(\$msg, true), 'ok', true, \$url);
 		} else {
 			\$this->{$currentModelName}->undelete(\$id);
-			\$this->Message->add('The {$singularHumanName} has been undeleted.', 'ok', true, \$url);
+			\$msg = 'The {$singularHumanName} has been undeleted.';
+			\$this->Message->add(__(\$msg, true), 'ok', true, \$url);
 		}
 	}
 
