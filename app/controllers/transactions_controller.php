@@ -7,7 +7,17 @@ class TransactionsController extends AppController {
  * @access public
  */
 	function admin_index() {
-		$this->paginate['Transaction']['order'] = array('Transaction.id' => 'asc');
+		$this->paginate['Transaction'] = array(
+			'conditions' => array('Transaction.parent_id' => ''),
+			'order' => array('Transaction.id' => 'asc'),
+			'contain' => array(
+				'Gateway',
+				'Gift',
+				'ChildTransaction.Gateway',
+				'ChildTransaction.Gift',
+				'ParentTransaction'
+			)
+		);
 		$transactions = $this->paginate($this->Transaction);
 		$this->set(compact('transactions'));
 	}

@@ -8,6 +8,13 @@ class Transaction extends AppModel {
 			'foreignKey' => 'parent_id'
 		)
 	);
+
+	var $hasMany = array(
+		'ChildTransaction' => array(
+			'className' => 'Transaction',
+			'foreignKey' => 'parent_id'
+		)
+	);
 /**
  * undocumented function
  *
