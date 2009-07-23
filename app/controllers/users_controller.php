@@ -295,6 +295,12 @@ class UsersController extends AppController {
  * @access public
  */
 	function admin_index() {
+		$this->paginate = array(
+			'conditions' => array(
+				'User.login <>' => Configure::read('App.guestAccount')
+			),
+			'contain' => false
+		);
 		$users = $this->paginate();
 		$this->set(compact('users'));
 	}
@@ -321,7 +327,7 @@ class UsersController extends AppController {
 	function admin_view($id = null) {
 		$user = $this->User->find('first', array(
 			'conditions' => array('User.id' => $id),
-			'contain' => array('ScoringHistory')
+			'contain' => false
 		));
 		$this->set(compact('user'));
 	}
