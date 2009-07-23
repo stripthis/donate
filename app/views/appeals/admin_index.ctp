@@ -4,12 +4,6 @@
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
       <li><?php echo $html->link(__('New Appeal', true), array('action'=>'add'),array('class'=>'add')); ?></li>
-      <li><?php echo $html->link(__('List Appeals', true), array('controller'=> 'appeals', 'action'=>'index')); ?> </li>
-    <li><?php echo $html->link(__('New Parent', true), array('controller'=> 'appeals', 'action'=>'add')); ?> </li>
-    <li><?php echo $html->link(__('List Users', true), array('controller'=> 'users', 'action'=>'index')); ?> </li>
-    <li><?php echo $html->link(__('New User', true), array('controller'=> 'users', 'action'=>'add')); ?> </li>
-    <li><?php echo $html->link(__('List Countries', true), array('controller'=> 'countries', 'action'=>'index')); ?> </li>
-    <li><?php echo $html->link(__('New Country', true), array('controller'=> 'countries', 'action'=>'add')); ?> </li>
     </ul>
   </div>
   <table cellpadding="0" cellspacing="0">
@@ -24,7 +18,7 @@
     	<th><?php echo $paginator->sort('reviewed');?></th>
     	<th><?php echo $paginator->sort('status');?></th>
     	<th><?php echo $paginator->sort('country_id');?></th>
-    	<th><?php echo $paginator->sort('user_id');?></th>
+    	<th><?php echo $paginator->sort('Created By', 'user_id');?></th>
     	<th><?php echo $paginator->sort('created');?></th>
     	<th><?php echo $paginator->sort('modified');?></th>
     	<th class="actions"><?php __('Actions');?></th>
@@ -66,7 +60,7 @@ foreach ($appeals as $appeal):
       <?php echo $appeal['Appeal']['status']; ?>
     </td>
     <td>
-      <?php echo $html->link($appeal['Country']['name'], array('controller'=> 'countries', 'action'=>'view', $appeal['Country']['id'])); ?>
+      <?php echo $appeal['Country']['name']; ?>
     </td>
     <td>
       <?php echo $html->link($appeal['User']['login'], array('controller'=> 'users', 'action'=>'view', $appeal['User']['id'])); ?>

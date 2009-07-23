@@ -1,6 +1,16 @@
 <?php
 class AppealsController extends AppController {
 /**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Country = $this->Appeal->Country;
+	}
+/**
  * index action
  *
  * @return void
@@ -53,7 +63,8 @@ class AppealsController extends AppController {
 			$action = 'edit';
 		}
 
-		$this->set(compact('action'));
+		$countryOptions = $this->Country->find('list');
+		$this->set(compact('action', 'countryOptions'));
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
 			return $this->data = $appeal;
