@@ -23,6 +23,7 @@ if (file_exists($viewFile)) {
 	$cssIncludes[] = 'views/' . $controller . '/' . $action . '.css';
 }
 
+
 if (Common::isDevelopment()) {
 	foreach ($cssIncludes as $include) {
 		echo "  ".$html->css($include)."\n";

@@ -24,6 +24,8 @@
     <?php echo __("It seems that you have Javascript disabled. While we are doing our best to avoid it, some features may although be broken...")."\n"; ?>
   </div>
 </noscript>
+    <?php echo $this->element('messages'); ?>
+
 <div id="header_wrapper">
   <div id="header">
 <?php echo $this->element('header'); ?>

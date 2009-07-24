@@ -3,7 +3,7 @@
 class Mailer{
 	static function deliver($template, $options = array()) {
 		if (Common::isDevelopment() && !class_exists('ShellDispatcher')) {
-			return true;
+			//return true;
 		}
 
 		$options = Set::merge(array(
@@ -24,6 +24,20 @@ class Mailer{
 			$options['mail']['subject'] = strip_tags($options['mail']['subject']);
 		}
 
+		$delivery = Configure::read('App.emailDeliveryMethod');
+		if (!empty($delivery) && !isset($options['mail']['delivery'])) {
+			$options['mail']['delivery'] = $delivery;
+		}
+
+		
+		if ($options['mail']['delivery'] == 'smtp') {
+			$options['mail']['smtpOptions'] = Configure::read('App.smtpOptions');
+		}
+
+		if (Common::isDevelopment()) {
+			$options['mail']['delivery'] = 'debug';
+		}
+		
 		App::import('Core', 'Controller');
 		$Email = Common::getComponent('Email');
 		Common::setProperties($Email, $options['mail']);
@@ -33,19 +47,8 @@ class Mailer{
 		}
 		$Email->Controller->set($options['vars']);
 
-		$delivery = Configure::read('App.emailDeliveryMethod');
-		if (!empty($delivery) && !isset($options['mail']['delivery'])) {
-			$options['mail']['delivery'] = $delivery;
-		}
 
-		if ($options['mail']['delivery'] == 'smtp') {
-			$options['smtpOptions'] = Configure::read('App.smtpOptions');
-		}
-
-		if (Common::isDevelopment()) {
-			$options['mail']['delivery'] = 'debug';
-		}
-
+		//echo "DELIVERY : ".$options['mail']['delivery'];
 		if ($options['store']) {
 			$hash = sha1(json_encode($options));
 			$folder = substr($hash, 0, 2);
@@ -66,6 +69,7 @@ class Mailer{
 			file_put_contents($path, $html);
 		}
 
+		//echo "OPTIONS : ";pr($Email->smtpOptions);
 		return $Email->send();
 	}
 }

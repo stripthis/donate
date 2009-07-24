@@ -900,6 +900,10 @@ msgstr ""
 msgid "View Leader"
 msgstr ""
 
+#: views/tellfriends/refer.ctp:7
+msgid "tellafriend"
+msgstr "Hello, Your friend wants you to visit www.greenpeace.org"
+
 #: views/settings/admin_edit.ctp:2
 msgid "Settings"
 msgstr ""

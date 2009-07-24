@@ -73,7 +73,7 @@ class UsersController extends AppController {
  * @access public
  */
 	function register($email = '') {
-		$countries = $this->User->Country->find('list');
+		//$countries = $this->User->Country->find('list');
 		$email = isset($this->params['url']['email'])
 					? $this->params['url']['email']
 					: '';
