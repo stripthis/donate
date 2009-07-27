@@ -9,7 +9,7 @@
 class TellfriendsController extends AppController {
 
 
-  var $uses = array('Tellfriend', 'InvitedFriend');
+  var $uses = array('Tellfriend');
   var $components = array('Caplimit');
   
   function refer() {

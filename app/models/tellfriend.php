@@ -8,13 +8,14 @@ class Tellfriend extends AppModel {
 											)
 										
 										),
-        'content' =>  array(
-						array( 'rule' => array('notSpam'),
-							   'message' => 'This comment appears to be spam. Please contact us if the problem persists.',
-							   'required' => true
-							  )	 
-						) 
     );
+	
+ var $actsAs = array('Akismet' => array(
+            'content'=>'content',
+            'type'=>false,
+            'owner'=>'receiver',
+            'is_spam'=>'spam'
+    )); 	
 	
  var $hasMany = array('InvitedFriend');
  var $cacheQueries = false;

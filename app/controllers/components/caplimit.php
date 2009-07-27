@@ -31,7 +31,7 @@ class CaplimitComponent extends Object {
 		  Configure::write('App.tellafriendError','Sorry. You have been banned from sending more emails. Please try after sometime.');
 		  return false;
      	}
-		if($this->checkForSpamEmail($emails) != 'passed') {
+		if($this->checkForSpamEmail($emails)!='passed') {
 		  $faultyEmail = $this->checkForSpamEmail($emails);
 		  Configure::write('App.tellafriendError','Sorry. The email '.$faultyEmail.' has already been used many times. Please send again to another email.');
 		  return false;
