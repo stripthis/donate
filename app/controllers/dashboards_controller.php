@@ -37,14 +37,14 @@ class DashboardsController extends AppController {
 		if ($type == 'clear_file') {
 			Cache::clear();
 			clearCache();
-			$this->Message->add('The cache has been cleared.', 'ok');
+			$this->Message->add(__('The cache has been cleared.', true), 'ok');
 		}
 		if ($type == 'session_restore') {
 			User::restore();
 		}
 
 		if ($done) {
-			$this->Message->add('The counter caches have been rebuilt.', 'ok');
+			$this->Message->add(__('The counter caches have been rebuilt.', true), 'ok');
 		}
 		$this->set(compact('done'));
 	}

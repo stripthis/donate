@@ -1,4 +1,3 @@
-<?php echo $this->element('admin_nav') ?>
 <div class="users index">
 	<h2><?php __('Users');?></h2>
 	<div class="actions">
@@ -9,10 +8,8 @@
 	</div>
 	<table cellpadding="0" cellspacing="0">
 		<tr>
-			<th class="id"><?php echo $paginator->sort('Status');?></th>
 			<th class="text"><?php echo $paginator->sort('login');?></th>
 			<th class="date"><?php echo $paginator->sort('created');?></th>
-			<th class="date"><?php echo $paginator->sort('modified');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 		</tr>
 		<?php
@@ -24,7 +21,6 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td class="id"><?php if($user['User']['active']) e($html->image("icons/S/bullet_green.png")); ?></td>
 			<td><?php echo $user['User']['id']; ?></td>
 			<td class="text"><?php echo $user['User']['login']; ?></td>
 			<td class="date"><?php echo $user['User']['created']; ?></td>

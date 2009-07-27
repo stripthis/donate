@@ -135,7 +135,6 @@ class DebuggableControllerTask extends ControllerTask {
  */
 	function {$admin}index() {
 		\$this->paginate['{$currentModelName}']['order'] = array('{$currentModelName}.{$orderName}' => 'asc');
-		\$this->paginate['{$currentModelName}'] = am(Configure::read('App.pagination'), \$this->paginate['{$currentModelName}']);
 		\${$pluralName} = \$this->paginate(\$this->{$currentModelName});
 		\$this->set(compact('{$pluralName}'));
 	}
@@ -147,12 +146,11 @@ class DebuggableControllerTask extends ControllerTask {
  * @access public
  */
 	function {$admin}view(\$id = null) {
-		\$this->{$currentModelName}->set('id', \$id);
-		Assert::true(\$this->{$currentModelName}->exists(), '404');
-
-		\$conditions = array('{$currentModelName}.id' => \$id);
-		\$contain = false;
-		\${$singularName} = \$this->{$currentModelName}->find('first', compact('conditions', 'contain'));
+		\${$singularName} = \$this->{$currentModelName}->find('first', array(
+			'conditions' => array('{$currentModelName}.id' => \$id),
+			'contain' => false
+		));
+		Assert::notEmpty(\${$singularName}, '404');
 		\$this->set(compact('{$singularName}'));
 	}
 /**
@@ -175,12 +173,13 @@ class DebuggableControllerTask extends ControllerTask {
 		\${$singularName} = \$this->{$currentModelName}->create();
 		\$action = 'add';
 		if (\$this->action == '{$admin}edit') {
-			\$this->{$currentModelName}->set(compact('id'));
-			Assert::true(\$this->{$currentModelName}->exists(), '404');
 			\${$singularName} = \$this->{$currentModelName}->find('first', array(
-				'{$currentModelName}.id' => \$id,
+				'conditions' => array(
+					'{$currentModelName}.id' => \$id
+				),
 				'contain' => false,
 			));
+			Assert::notEmpty(\${$singularName}, '404');
 			\$action = 'edit';
 		}
 PHP;
@@ -223,17 +222,19 @@ PHP;
 			\$this->data['{$currentModelName}']['user_id'] = User::get('id');
 		}
 
-		\$result = \$this->{$currentModelName}->save(\$this->data['{$currentModelName}']);
+		\$this->{$currentModelName}->set(\$this->data['{$currentModelName}']);
+		\$result = \$this->{$currentModelName}->save();
 		if (\$this->{$currentModelName}->validationErrors) {
-			return \$this->Message->add('Please fill out all fields', 'error');
+			return \$this->Message->add(__('Please fill out all fields', true), 'error');
 		}
 		Assert::notEmpty(\$result);
+
+		\$msg = __('{$currentModelName} was saved successfully.', true);
 		if (\$action == 'add') {
-			\$this->Message->add('New {$currentModelName} _'.\$result['{$currentModelName}']['{$displayField}'].'_ was added successfully.', 'ok', true);
-			return \$this->redirect(array('action' => '{$admin}edit', \$this->{$currentModelName}->id));
+			\$url = array('action' => '{$admin}edit', \$this->{$currentModelName}->id);
+			return \$this->Message->add(\$msg, 'ok', true, \$url);
 		}
-		\$this->Message->add('{$currentModelName} was saved successfully.', 'ok', true);
-		\$this->redirect(array('action' => '{$admin}index'));
+		\$this->Message->add(\$msg, 'ok', true, array('action' => '{$admin}index'));
 	}
 /**
  * delete action
@@ -244,23 +245,23 @@ PHP;
  * @access public
  */
 	function {$admin}delete(\$id = null, \$undelete = false) {
-		\$this->{$currentModelName}->set(compact('id'));
-		Assert::true(\$this->{$currentModelName}->exists(), '404');
-		
-		\$conditions = compact('id');
-		\$recursive = -1;
-		\${$singularName} = \$this->{$currentModelName}->find('first', compact('conditions', 'recursive'));
+		\${$singularName} = \$this->{$currentModelName}->find('first', array(
+			'conditions' => compact('id'),
+			'contain' => false
+		));
+		Assert::notEmpty(\${$singularName}, '404');
 		Assert::true(AppModel::isOwn(\${$singularName}, '{$currentModelName}'), '403');
 
+		\$url = array('action' => '{$admin}index');
 		if (!\$undelete) {
 			\$this->{$currentModelName}->del(\$id);
-			\$this->Message->add('The {$singularHumanName} has been deleted.', 'ok', true);
+			\$msg = 'The {$singularHumanName} has been deleted.';
+			\$this->Message->add(__(\$msg, true), 'ok', true, \$url);
 		} else {
 			\$this->{$currentModelName}->undelete(\$id);
-			\$this->Message->add('The {$singularHumanName} has been undeleted.', 'ok', true);
+			\$msg = 'The {$singularHumanName} has been undeleted.';
+			\$this->Message->add(__(\$msg, true), 'ok', true, \$url);
 		}
-
-		\$this->redirect(array('action' => '{$admin}index'));
 	}
 
 PHP;

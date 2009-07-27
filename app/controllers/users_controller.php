@@ -17,7 +17,8 @@ class UsersController extends AppController {
 			'contain' => false
 		));
 		if (empty($user)) {
-			$this->set('response', 'Sorry, but we have no record of an account for ' . $this->data['User']['login'] . '.');
+			$msg = __('Sorry, but we have no record of an account for ' . $this->data['User']['login'] . '.');
+			$this->set('response', $msg);
 			return $this->render('response');
 		}
 
@@ -44,7 +45,8 @@ class UsersController extends AppController {
 			)
 		);
 		Mailer::deliver('forgot_pw', $emailSettings);
-		$this->Message->add('A message has been sent to ' . $user['User']['username'] . '.', 'ok');
+		$msg = __('A message has been sent to ' . $user['User']['username'] . '.', true);
+		$this->Message->add($msg, 'ok');
 
 	}
 /**
@@ -87,7 +89,8 @@ class UsersController extends AppController {
 		$this->data['User']['login'] = trim($this->data['User']['login']);
 
 		if ($this->data['User']['eula'] != 1) {
-			return $this->Message->add('You have to accept the terms of conditions.', 'error');
+			$msg = __('You have to accept the terms of conditions.', true);
+			return $this->Message->add($msg, 'error');
 		}
 
 		App::import('Vendor', 'recaptchalib');
@@ -97,7 +100,8 @@ class UsersController extends AppController {
 			$_POST["recaptcha_challenge_field"], $_POST["recaptcha_response_field"]
 		);
 		if (!$resp->is_valid) {
-			return $this->Message->add('Sorry, you have not inserted the proper anti spam code.', 'error');
+			$msg = __('Sorry, you have not inserted the proper anti spam code.');
+			return $this->Message->add($msg, 'error');
 		}
 
 		$useEmailActivation = Configure::read('App.use_email_activation');
@@ -123,12 +127,13 @@ class UsersController extends AppController {
 	
 		// $this->Silverpop->UserSignUp(); // signup for newsletter (real time)
 	
-		$msg = 'Thank you for signing up! You are now logged in.';
+		$msg = __('Thank you for signing up! You are now logged in.', true);
 		$url = array('controller' => 'users', 'action' => 'dashboard');
 		if ($useEmailActivation) {
 			$this->User->activationEmail($this->User->id, $this->data);
 			$msg = 'Thank you for signing up! To activate your account, please click on the link in the email sent to you.';
 			$msg .= ' Make sure to check your spam folder, too.';
+			$msg = __($msg, true);
 			$url = array('controller' => 'users', 'action' => 'register');
 		} else {
 			User::login($id, true, true);
@@ -153,10 +158,7 @@ class UsersController extends AppController {
 		$this->User->set($this->data);
 		if ($this->User->save()) {
 			User::restore();
-			pr($this->referer());
-			//$this->Message->add(__('Your profile has been updated.', true), 'ok', true, $this->referer());
-			$this->Session->setFlash(__('Your profile has been updated.', true));
-			$this->redirect(array('action'=>'dashboard'));
+			$this->Message->add(__('Your profile has been updated.', true), 'ok', true, array('action'=>'dashboard'));
 		}
 		$this->Message->add(__('There was an error updating your profile.', true), 'error', true, $this->referer());
 	}
@@ -229,7 +231,7 @@ class UsersController extends AppController {
 			$this->User->save(null, false);
 			User::restore();
 			$this->Session->del('lost_password');
-			return $this->Message->add('Your password has been updated successfully.', 'ok');
+			return $this->Message->add(__('Your password has been updated successfully.', true), 'ok');
 		}
 		$messages = $this->User->validationErrors;
 		$this->Message->add(join(', ', $messages), 'error');
@@ -270,7 +272,7 @@ class UsersController extends AppController {
 		}
 
 		$msg = 'A new activation email was sent to you. Make sure to check your spam/junk folders, too.';
-		$this->Message->add($msg, 'ok', true, $this->referer());
+		$this->Message->add(__($msg, true), 'ok', true, $this->referer());
 	}
 /**
  * undocumented function
@@ -283,7 +285,8 @@ class UsersController extends AppController {
 		$this->User->delete(User::get('id'));
 		$this->Silverpop->UserOptOut();
 		User::logout();
-		$this->Message->add('Your account was successfully deleted.', 'ok', true, '/');
+		$msg = __('Your account was successfully deleted.', true);
+		$this->Message->add($msg, 'ok', true, '/');
 	}
 /**
  * undocumented function
@@ -292,6 +295,12 @@ class UsersController extends AppController {
  * @access public
  */
 	function admin_index() {
+		$this->paginate = array(
+			'conditions' => array(
+				'User.login <>' => Configure::read('App.guestAccount')
+			),
+			'contain' => false
+		);
 		$users = $this->paginate();
 		$this->set(compact('users'));
 	}
@@ -318,7 +327,7 @@ class UsersController extends AppController {
 	function admin_view($id = null) {
 		$user = $this->User->find('first', array(
 			'conditions' => array('User.id' => $id),
-			'contain' => array('ScoringHistory')
+			'contain' => false
 		));
 		$this->set(compact('user'));
 	}

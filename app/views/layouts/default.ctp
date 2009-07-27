@@ -35,6 +35,7 @@
 <?php echo $this->element('banner'); ?>
   <div id="content_wrapper">
     <div id="content">
+	<?php echo $this->element('messages')?>
     <div id="general_msg"></div>
 <?php echo $content_for_layout; ?>
     </div>

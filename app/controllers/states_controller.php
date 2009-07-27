@@ -11,7 +11,7 @@ class StatesController extends AppController {
 		$cachekey = 'states_' . $countryId;
 		$states = Cache::read($cachekey);
 
-		if (true || !$states) {
+		if (!$states) {
 			$states = $this->State->find('all', array(
 				'conditions' => array('State.country_id' => $countryId),
 				'contain' => false,

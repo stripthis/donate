@@ -12,6 +12,7 @@ class AppController extends Controller {
 		'RequestHandler',
 		'Message',
 		'Cookie',
+		'Ssl',
 		'AppSession',
 		'Json',
 		'Email',
@@ -46,19 +47,22 @@ class AppController extends Controller {
  * @access public
  */
 	function beforeFilter() {
-		Assert::false($this->name == 'App', '404');
-		Assert::true(!!$this->action, '404');
+		if (!defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
+			Assert::false($this->name == 'App', '404');
+			Assert::true(!!$this->action, '404');
+		}
 
 		$this->Session = $this->AppSession;
-
 		$this->_setLanguage();
-
 		ClassRegistry::addObject('Component.Session', $this->Session);
 		ClassRegistry::addObject('Component.Cookie', $this->Cookie);
 		ClassRegistry::addObject('Component.Email', $this->Email);
 
-		$this->RequestHandler->setContent('list', 'text/html');
+		if (defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
+			return;
+		}
 
+		$this->RequestHandler->setContent('list', 'text/html');
 		if (empty($this->ignoreUserSession)) {
 			$canAccess = User::canAccess($this->name, $this->action);
 			if (!$canAccess) {
@@ -315,7 +319,7 @@ class AppController extends Controller {
  * @access public
  */
 	function cleanupDate($data) {
-		return $data['year'] . '-' . $data['month'] . '-' . $data['day'];
+		return $data['year'] . '-' . $data['month'] . '-01';
 	}
 /**
  * undocumented function

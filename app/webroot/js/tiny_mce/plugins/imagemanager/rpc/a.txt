@@ -1,0 +1,63 @@
+Array
+(
+    [MCManager_im_lastPath] => {0}/Timbo
+    [MCManagerHistoryCookie_im] => /Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/49e04880-0c4c-4c06-b106-35464834cda3.gif,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/1240466588.28.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/bg_1238722207_9_randal.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/2897706759_5e40bf9353.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/2897684179_052bac80e9.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/2897684179_052bac80e9.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/2898577952_8c9927f6c2.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/2897697739_fe2c998e69.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/teddybear.jpg
+    [__utma] => 107219103.1458417249177391600.1238613127.1241165570.1241213708.80
+    [__utmz] => 107219103.1238613127.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+    [_csuid] => 490da8632d0b2b15
+    [CakeCookie] => Array
+        (
+            [Auth] => Array
+                (
+                    [name] => tim@wildfiregames.com
+                    [key] => Q2FrZQ==.+jfXfHc7c9yAVko0m6XR+1aR4YcYvXxMootO0y03ILvJ1IXCg51b1w==
+                )
+
+        )
+
+    [__utmc] => 107219103
+    [__utmb] => 107219103.16.10.1241213708
+    [CAKEPHP_LB_23123adadads] => d2796823d47ccf9ed62bb44b66ca92b2
+)
+Array
+(
+    [MCManager_im_lastPath] => {0}/Timbo
+    [MCManagerHistoryCookie_im] => /Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/49e04880-0c4c-4c06-b106-35464834cda3.gif,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/1240466588.28.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/bg_1238722207_9_randal.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/2897706759_5e40bf9353.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/2897684179_052bac80e9.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/2897684179_052bac80e9.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/2898577952_8c9927f6c2.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/2897697739_fe2c998e69.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/teddybear.jpg
+    [__utma] => 107219103.1458417249177391600.1238613127.1241165570.1241213708.80
+    [__utmz] => 107219103.1238613127.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+    [_csuid] => 490da8632d0b2b15
+    [CakeCookie] => Array
+        (
+            [Auth] => Array
+                (
+                    [name] => tim@wildfiregames.com
+                    [key] => Q2FrZQ==.+jfXfHc7c9yAVko0m6XR+1aR4YcYvXxMootO0y03ILvJ1IXCg51b1w==
+                )
+
+        )
+
+    [__utmc] => 107219103
+    [__utmb] => 107219103.16.10.1241213708
+    [CAKEPHP_LB_23123adadads] => d2796823d47ccf9ed62bb44b66ca92b2
+)
+Array
+(
+    [MCManager_im_lastPath] => {0}/Timbo
+    [MCManagerHistoryCookie_im] => /Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/49e04880-0c4c-4c06-b106-35464834cda3.gif,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/1240466588.28.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/bg_1238722207_9_randal.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/2897706759_5e40bf9353.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo/2897684179_052bac80e9.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/Timbo,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/2897684179_052bac80e9.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/2898577952_8c9927f6c2.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/2897697739_fe2c998e69.jpg,/Applications/MAMP/htdocs/lookbooks/lookbooks.com/app/webroot/js/tiny_mce/plugins/imagemanager/files/teddybear.jpg
+    [__utma] => 107219103.1458417249177391600.1238613127.1241165570.1241213708.80
+    [__utmz] => 107219103.1238613127.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+    [_csuid] => 490da8632d0b2b15
+    [CakeCookie] => Array
+        (
+            [Auth] => Array
+                (
+                    [name] => tim@wildfiregames.com
+                    [key] => Q2FrZQ==.+jfXfHc7c9yAVko0m6XR+1aR4YcYvXxMootO0y03ILvJ1IXCg51b1w==
+                )
+
+        )
+
+    [__utmc] => 107219103
+    [__utmb] => 107219103.16.10.1241213708
+    [CAKEPHP_LB_23123adadads] => d2796823d47ccf9ed62bb44b66ca92b2
+)

@@ -28,9 +28,9 @@ class SettingsController extends AppController {
 
 		$this->Setting->set($this->data);
 		if (!$this->Setting->save()) {
-			return $this->Message->add('The settings could not be updated.', 'error');
+			return $this->Message->add(__('The settings could not be updated.', true), 'error');
 		}
-		$this->Message->add('The settings were saved', 'ok');
+		$this->Message->add(__('The settings were saved', true), 'ok');
 	}
 }
 ?>

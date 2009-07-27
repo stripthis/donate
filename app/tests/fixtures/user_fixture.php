@@ -1,26 +1,43 @@
-<?php 
-/* SVN FILE: $Id$ */
-/* User Fixture generated on: 2009-04-19 10:04:01 : 1240130701*/
+<?php
 
 class UserFixture extends CakeTestFixture {
 	var $name = 'User';
-	var $table = 'users';
-	var $fields = array(
-		'id' => array('type'=>'integer', 'null' => false, 'default' => NULL, 'length' => 10, 'key' => 'primary'),
-		'login' => array('type'=>'string', 'null' => false, 'default' => NULL, 'length' => 50),
-		'password' => array('type'=>'string', 'null' => false, 'default' => NULL, 'length' => 50),
-		'active' => array('type'=>'boolean', 'null' => false, 'default' => '1'),
-		'created' => array('type'=>'datetime', 'null' => false, 'default' => NULL),
-		'modified' => array('type'=>'datetime', 'null' => false, 'default' => NULL),
-		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
+	var $records = array(
+		array(
+			'id' => '4a0b051f-f704-47c3-8200-834323c1de0a',
+			'name' => '',
+			'login' => 'guest@greenpeace.org',
+			'password' => '',
+			'active' => '0',
+			'level' => 'guest',
+			'office_id' => '',
+			'referral_key' => '',
+			'first_name' => '',
+			'last_name' => '0',
+			'gender' => '',
+			'locale' => '5',
+			'has_donated' => '0',
+			'created' => '2009-05-13 19:36:31',
+			'modified' => '2009-05-13 21:44:13',
+		),
+		array(
+			'id' => '4a65cf8b-bfc8-4c87-b27d-4d1fa7f05a6e',
+			'name' => 'Tim Koschuetzki',
+			'login' => 'tim@debuggable.com',
+			'password' => 'dcc7ad428afbf7ebc069c434347141190a215d64',
+			'active' => '1',
+			'level' => 'admin',
+			'office_id' => '4a6458a6-6ea0-4080-ad53-4a89a7f05a6e',
+			'referral_key' => '',
+			'first_name' => 'Tim',
+			'last_name' => 'Koschuetzki',
+			'gender' => 'male',
+			'locale' => '5',
+			'has_donated' => '0',
+			'created' => '2009-05-13 19:36:31',
+			'modified' => '2009-05-13 21:44:13',
+		),
 	);
-	var $records = array(array(
-		'id'  => 1,
-		'login'  => 'Lorem ipsum dolor sit amet',
-		'password'  => 'Lorem ipsum dolor sit amet',
-		'active'  => 1,
-		'created'  => '2009-04-19 10:45:01',
-		'modified'  => '2009-04-19 10:45:01'
-	));
 }
+
 ?>

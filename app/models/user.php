@@ -139,13 +139,13 @@ class User extends AppModel {
 		$Cookie = Common::getComponent('Cookie');
 		$Cookie->write('Auth.name', $user['User']['login'], false, Configure::read('App.loginCookieLife'));
 
-		if ($user['User']['login'] != Configure::read('App.guestAccount')) {
-			$oldDomain = $Cookie->domain;
-			$Cookie->domain = '.greenpeace.org';
-			$Cookie->write('User.name', $user['User']['name'], false, Configure::read('App.loginCookieLife'));
-			$Cookie->write('User.country', $user['Country']['name'], false, Configure::read('App.loginCookieLife'));
-			$Cookie->domain = $oldDomain;
-		}
+		// if ($user['User']['login'] != Configure::read('App.guestAccount')) {
+		// 	$oldDomain = $Cookie->domain;
+		// 	$Cookie->domain = '.greenpeace.org';
+		// 	$Cookie->write('User.name', $user['User']['name'], false, Configure::read('App.loginCookieLife'));
+		// 	$Cookie->write('User.country', $user['Address']['Country']['name'], false, Configure::read('App.loginCookieLife'));
+		// 	$Cookie->domain = $oldDomain;
+		// }
 
 		if (!$generateAuthCookie) {
 			return true;
