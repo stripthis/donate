@@ -1,0 +1,277 @@
+/***********************************************************************************
+ * Default GPI Donation page CSS
+ * @author: white rabbit team rocket!
+ * appeal.name: default
+ * appeal.id: 4a686dd2-8c64-45a0-99ee-4507a7f05a6e
+/***********************************************************************************
+ * Website Commons
+ ***********************************************************************************/
+* {
+	margin:0;
+	padding:0;
+}
+html, body {
+	background: #EED;
+	font-family:verdana, helvetica, arial, sans-serif;
+	margin:0;
+	padding:0;
+}
+body {
+	font-size:80%;
+}
+
+/* spacers */
+.clear {
+	clear: both;
+	font-size: 0;
+	line-height: 0;
+	width: 0;
+	height: 0;
+}
+.clear_left {
+	clear:left;
+}
+
+/* links */
+a {
+	color: #003300;
+	text-decoration: none;
+	font-weight: bold;
+}
+a:hover {
+	color: #eb6528;
+}
+a img {
+	border:none;
+}
+
+/* titles */
+h1, h2, h3, h4 {
+	font-weight: normal;
+  font-family:'Helvetica Neue', helvetica, arial, sans-serif;
+}
+h2{
+	font-size:1.7em;
+	margin:0 0 3px 0;
+  line-height:1.2em;
+  color:#777;
+}
+h3{
+  font-size:1.6em;
+  color:#777;
+}
+
+/* lists */
+ul, li {
+}
+
+/* Forms */
+form {
+  clear: both;
+  margin:0;
+  padding:0;
+}
+fieldset {
+  border: 1px solid #EEE;
+  margin-top: 10px;
+  padding: 0px 20px 10px 10px;
+}
+fieldset legend {
+  background:#fff;
+  font-size: 1.4em;
+  padding: 0 10px;
+  color:#777;
+}
+fieldset fieldset {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  padding: 10px 10px;
+}
+fieldset fieldset legend {
+  font-size: 120%;
+  font-weight: normal;
+}
+fieldset fieldset div {
+  clear: left;
+  margin: 0 10px;
+}
+form div {
+  clear: both;
+  margin:0;
+  padding:5px;
+  vertical-align: text-top;
+}
+form div.input {
+  color: #444;
+}
+form div.required {
+  color: #333;
+  font-weight: bold;
+}
+
+/* generic input stuffs */
+form div.submit{
+  border: 0;
+  clear: none;
+}
+label {
+  display: block;
+  font-size: 1.2em;
+  padding: 5px 0px;
+}
+input, textarea {
+  clear: both;
+  font-size: 140%;
+  font-family: "frutiger linotype", "lucida grande", "verdana", sans-serif;
+  padding: 2px;
+  width: 100%;
+}
+select {
+  clear: both;
+  font-size: 120%;
+  vertical-align: text-bottom;
+}
+select[multiple=multiple] {
+  width: 100%;
+}
+option {
+  font-size: 120%;
+  padding: 0 3px;
+}
+input[type=checkbox] {
+  clear: left;
+  float: left;
+  width: auto;
+  margin-top:0;
+}
+div.checkbox label{
+  margin: -3px 0 0 20px;
+  padding:0;
+  font-size:1.3em;
+}
+input[type=radio] {
+  float:left;
+  width:auto;
+  margin: 0 3px 7px 0;
+}
+div.radio label {
+  margin: 0 0 6px 20px;
+}
+input[type=submit] {
+  display: inline;
+  font-size: 150%;
+  padding: 5px;
+  margin:5px 0px 5px 5px;
+  width: auto;
+  vertical-align: bottom;
+  float:right;
+}
+
+/* chessboxin' */
+form .checkbox_wrapper{
+  padding:2px;
+  margin:0;
+}
+form .checkbox_wrapper span{
+  font-size:1em;
+  padding:0;
+  margin: -3px 0 0 10px;
+  color:#333;
+}
+form .checkbox_wrapper label{
+  padding-bottom:0;
+}
+form input.checkbox {
+  font-size:1.3em;
+  padding:0 10px;
+  margin:5px 0px 0px 5px;
+}
+form .checkbox_wrapper p{
+  font-style:italic;
+  padding:0;
+  padding: 0 0 0 30px;
+}
+form .checkbox_wrapper a{
+  cursor:help;
+}
+form input[type=text], form textarea{
+	border:2px solid #CCC;
+}
+form .error input{
+	border:2px solid red;
+}
+form .error .error-message{
+	color:#F22;
+}
+form label strong.required{
+	color:red;
+}
+
+/***********************************************************************************
+ * Layout 
+ ***********************************************************************************/
+#container{
+  width:749px;
+  margin:auto;
+  background:#FFF;
+  margin-bottom:10px;
+}
+
+/* main content (form++) */
+#content_wrapper{
+}
+#content{
+	float:left;
+  width:730px;
+  margin: 0;
+  padding:5px;
+  background: #FFF;
+  margin-left:4px;
+}
+#content .mission{
+	font-size:1.3em;
+	line-height: 1.5em;
+	color:#777;
+}
+
+/* footer */
+#footer {
+  color:#FFF;
+  background:#66CC00 url(/img/layout/gplogobottomright.gif) center right no-repeat;
+  clear: both;
+  padding: 5px 10px;
+  margin-top:20px;
+  text-align: left;
+}
+#footer a{
+	color:#FFF;
+}
+#footer a:hover{
+	color: #006600;
+}
+
+/* banner */
+#banner{
+	float:left;
+	padding:5px;
+	padding-bottom:0;
+}
+#banner a{
+	float:left;
+	height:80px;
+	margin: 0px;
+}
+#banner a.greenpeace{
+	width:151px;
+	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/banner.png) 0 0 no-repeat;
+}
+#banner a.donate{
+	width:588px;
+	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/banner.png) -152px 0 no-repeat;
+}
+#banner a span{
+	visibility:hidden;
+}
+#banner h1{
+	display:none;
+}
