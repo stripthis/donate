@@ -46,8 +46,8 @@ h1, h2, h3, h4 {
   font-family:'Helvetica Neue', helvetica, arial, sans-serif;
 }
 h2{
-  font-size:1.7em;
-  margin:1.7em 0 2px 0;
+  font-size:2em;
+  margin:0 0 2px 0;
 }
 h3{
   font-weight:normal;
@@ -213,8 +213,8 @@ input[type=checkbox] {
   width: auto;
   margin-top:0;
 }
-div.checkbox label{
-  margin: -3px 0 0 20px;
+label input.checkbox{
+  margin: 2px 5px 0 0px;
   padding:0;
   font-size:1.3em;
 }
@@ -275,10 +275,9 @@ input[type=submit] {
   float:left;
   margin: 10px 0px;
   margin-right:22%;
-  padding: 5px 0px 20px 20px;
+  padding: 0px 0px 20px 20px;
   background: #FFF;
 }
-
 
 /*
 .sidebar_wrapper#left{
@@ -543,6 +542,20 @@ p.error em {
 .success {
   background: green;
   color: #fff;
+}
+ul.messages{
+	margin:0;
+	padding:0;
+}
+ul.messages li.error{
+	list-style-type:none;
+	border:1px solid red;
+	border-left:0;
+	border-right:0;
+	padding:15px 5px 15px 50px;
+	margin:5px 0;
+	font-size:1.3em;
+	background: #FEE url(/img/icons/M/message_error.png) 10px center no-repeat;
 }
 
 /*  Actions  */

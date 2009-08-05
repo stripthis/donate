@@ -1,3 +1,5 @@
+<div id="content_wrapper">
+<div id="content">
 <h1>Create A Gift</h1>
 
 <p>* indicates a required field</p>
@@ -119,3 +121,5 @@ echo $form->input('terms', array(
 
 echo $form->end('Save');
 ?>
+</div>
+</div>

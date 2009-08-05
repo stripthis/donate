@@ -61,7 +61,11 @@ class AppController extends Controller {
 		if (defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
 			return;
 		}
-
+		
+		if ($this->isAdmin()) {
+			$this->layout = 'admin';
+		}
+		
 		$this->RequestHandler->setContent('list', 'text/html');
 		if (empty($this->ignoreUserSession)) {
 			$canAccess = User::canAccess($this->name, $this->action);
@@ -72,7 +76,6 @@ class AppController extends Controller {
 				}
 				return $this->redirect('/auth/login', '403', true);
 			}
-
 
 			if (!User::isGuest() && $this->name == 'auth' && $this->action == 'login') {
 				$url = array('controller' => 'users', 'action' => 'dashboard');
@@ -95,6 +98,7 @@ class AppController extends Controller {
 			$ajax = $isAjax = true;
 		}
 		$this->set(compact('ajax', 'isAjax', 'here'));
+		
 	}
 /**
  * undocumented function
@@ -106,19 +110,23 @@ class AppController extends Controller {
 		if ($this->isAjax()) {
 			return false;
 		}
-
+	
 		$unwantedControllers = array('Auth');
-		$unwantedActions = array('login');
+		$unwantedActions = array('login','admin_login');
+		
 		if (!isset($this->name) || !isset($this->action)) {
 			return true;
 		}
 
-		$count = count($unwantedControllers);
-		for ($i = 0; $i < $count; $i++) {
-			if (
-				$unwantedControllers[$i] == $this->name &&
-				$unwantedActions[$i] == $this->action) {
-				return false;
+		$countC = count($unwantedControllers);
+		$countA = count($unwantedActions);
+		for($j = 0; $j < $countC; $j++) {
+			if($unwantedControllers[$j] == $this->name) {
+				for ($i = 0; $i < $countA; $i++) {
+					if ($unwantedActions[$i] == $this->action) {
+						return false;
+					}
+				}
 			}
 		}
 		return true;
@@ -235,6 +243,15 @@ class AppController extends Controller {
 			return false;
 		}
 		return $this->RequestHandler->isAjax();
+	}
+	
+/**
+ * Is the controller call in an Admin context?
+ * @return bool
+ * @access public 
+ */	
+	function isAdmin(){
+		return (isset($this->params['admin']) && $this->params['admin']);
 	}
 /**
  * undocumented function

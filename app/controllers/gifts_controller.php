@@ -20,22 +20,32 @@ class GiftsController extends AppController {
 /**
  * undocumented function
  *
+ * @param $appealCode id, name or campaign_code
  * @param string $step 
  * @return void
  */
-	function add($step = null) {
+	function add($appealCode = null, $step = null) {
 		$appealOptions = $this->Appeal->find('list');
 		$countryOptions = $this->Country->find('list');
 		$officeOptions = $this->Office->find('list');
-		$this->set(compact('appealOptions', 'countryOptions', 'officeOptions'));
-
+		
+		// try to find the requested appeal or the default one
+		$currentAppeal = $this->Appeal->getAppeal($appealCode);
+		if($currentAppeal == null){
+			//@todo no appeal in db => empty page + warning in admin space
+		} else {
+			$this->viewPath = "templates" . DS . $currentAppeal["Appeal"]["id"];
+		}
+		$this->set(compact('appealOptions', 'countryOptions', 'officeOptions','currentAppeal'));
+		
+		// no data was given so we render the selected/default view
 		if ($this->isGet()) {
 			return;
 		}
 
-
+		//Some data where given, we try to save
 		$this->_reuseDataInCookie();
-
+		
 		$this->Gift->create($this->data);
 		if (!$this->Gift->validates()) {
 			$msg = 'Sorry, something went wrong processing your gift data. ';
@@ -47,7 +57,8 @@ class GiftsController extends AppController {
 		$giftId = $this->Gift->getLastInsertId();
 		$officeId = $this->data['Gift']['office_id'];
 
-		//@todo dont always use the first one, make it dependent on the payment method
+		//@todo dont always use the first one, make it dependent on the payment method 
+		//@todo make it also dependent of the amount / payment gateway fee
 		$gateway = $this->GatewayOffice->find('first', array(
 			'conditions' => array('office_id' => $officeId),
 			'contain' => false

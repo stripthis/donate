@@ -10,7 +10,7 @@ class AuthController extends AppController{
 	function login() {
 		Assert::true(User::isGuest(), '403');
 		if ($this->isGet()) {
-			$msg = "Good to see you again... But how come you are not logged in yet?!";
+			$msg = "Good to see you again... But how come you are not logged in yet?!"; //@todo l18n use codes
 			return $this->Message->add(__($msg, true), 'error');
 		}
 
@@ -55,23 +55,27 @@ class AuthController extends AppController{
 					$url = $sessUrl;
 					$this->Session->del($this->loginRedirectSesskey);
 				}
-				$msg = 'You have successfully logged in. Please wait while you\'re redirected.';
+				$msg = 'You have successfully logged in. Please wait while you\'re redirected.'; //@todo l18n use codes
 				return $this->Message->add(__($msg, true), 'ok', false, $url);
 			}
 
-			$msg = 'Sorry, but there is no activated user with these login credentials.';
+			$msg = 'Sorry, but there is no activated user with these login credentials.'; //@todo l18n use codes
 			return $this->Message->add(__($msg, true), 'error');
 		}
 
 		if ($success) {
-			return $this->redirect(array('controller' => 'users', 'action' => 'dashboard'));
+			if (!User::isAdmin()) {
+				return $this->redirect(array('controller' => 'users', 'action' => 'dashboard'));
+			} else {
+				return $this->redirect(array('controller' => 'statistics', 'action' => 'index', 'admin' => 1));
+			}
 		}
 
 		if (!empty($userSession) && !empty($authId)) {
 			return $this->set('existingSession', true);
 		}
 
-		$msg = 'Sorry, but there is no activated user with these login credentials.';
+		$msg = 'Sorry, but there is no activated user with these login credentials.'; //@todo l18n use codes
 		$this->Message->add(__($msg, true), 'error');
 		$this->set('invalidAccount', true);
 	}
@@ -87,6 +91,23 @@ class AuthController extends AppController{
 		$this->Cookie->del('User');
 		$this->redirect('/');
 	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */	
+	function admin_login() {
+		$this->login();
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */	
+	function admin_logout() {
+		$this->logout();
+	}
 }
-
 ?>

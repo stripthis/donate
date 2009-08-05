@@ -4,14 +4,14 @@ if (!defined('FULL_BASE_URL')) {
 }
 $config = array(
 	'App.name' => 'Greenpeace White Rabbit',
-	'App.domain' => 'http://coolit.greenpeace.org',
-	'App.stagingDomain' => 'http://coolit.river01.org',
-	'App.mirrorDomain' => 'http://www.greenpeace.org/international/campaigns/climate-change/cool-it-challenge/',
+	'App.domain' => 'http://donate.greenpeace.org',
+	'App.stagingDomain' => 'http://donate.greenpeace.org',
+	'App.mirrorDomain' => 'http://www.greenpeace.org/international/donate/',
 	'App.usingMirror' => true,
 	'App.title' => 'Greenpeace White Rabbit',
 	'App.browserTitle' => 'Greenpeace White Rabbit | ',
 	'App.guestAccount' => 'guest@greenpeace.org',
-	'App.supportEmail' => 'general.support@greenpeace.org',
+	'App.supportEmail' => 'supporter-services@greenpeace.org',
 	'App.feedbackEmail' => 'feedback@greenpeace.org',
 	'App.bugEmail' => 'general.support@greenpeace.org',
 	'App.registrationEmail' => 'Greenpeace White Rabbit <no-reply@greenpeace.org>',
@@ -21,8 +21,8 @@ $config = array(
 	'App.smtpOptions' => array(
 		'port' => '25',
 		'timeout' => '30',
-		'host' => 'smtp.river01.org',
-		'username' => 'no-reply@river01.org',
+		'host' => 'smtp.greenpeace.org',
+		'username' => 'no-reply@greenpeace.org',
 		'password' => ''
 	),
 	'App.use_email_activation' => false,
@@ -39,11 +39,11 @@ $config = array(
 	'App.ipBanTime' => '600',
 	'App.maxEmailsSentFromIp' => '50',
 	'App.spamEmailTimeLimit' => '600', //Time in seconds in which one email can get referral.
-	'App.emailsPerDay' => '5'
+	'App.emailsPerDay' => '5',
 	'App.ssl' => array(
 		'enabled' => false,
 		'actions' => array(
-			'/',
+			'/'
 		)
 	),
 	'Stats.startDate' => '-1 year',

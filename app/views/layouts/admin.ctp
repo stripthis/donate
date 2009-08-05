@@ -1,45 +1,50 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <?php echo $html->charset()."\n"; ?>
-  <title><?php __('Greenpeace - Cool IT Challenge'); ?> » <?php echo $title_for_layout; ?></title>
-<?php echo $this->renderElement("public/header/banner"); ?>
-  <?php foreach($css as $sheet) e($html->css($sheet)."\n  "); ?>
-<?php foreach($js as $scrpt) e($javascript->link($scrpt)."\n  "); ?>
-<meta name="robots" content="noindex,nofollow" />
+  <title><?php echo Configure::read('App.browserTitle'); ?> Admin <?php echo h($title_for_layout); ?></title>
+  <?php echo $this->renderElement("meta_banner"); ?>
+  <?php echo $html->charset('utf-8'); ?>
+  <link href="/favicon.ico" type="image/x-icon" rel="icon"/>
+	<link href="/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+  <base href="<?php echo r('www.', '', Router::url('/', true)); ?>" rel="<?php echo $this->here ?>" />
+<?php //echo $this->element('css_includes'); ?>
+  <link rel="stylesheet" type="text/css" href="/css/admin.css" />
+<?php
+  if (isset($javascript)): 
+    echo $this->element('js_includes');
+  endif;
+  echo $scripts_for_layout;
+?>
+  <meta name="robots" content="noindex,nofollow" />
 </head>
 <body>
 <div id="container">
   <div id="header">
     <h1><?php 
-      echo $html->link( $html->image("logo.jpg", array("alt"=>"greenpeace")) ." | ".__("International",array(false)), 
-              '/admin/home', array('escape' => 
-false)); ?> 
+      echo $html->link( $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")) ." | ".__("International",array(false)), 
+              '/admin/dashboard', array('escape' => false)); ?>
     </h1>
+<?php if (User::isAdmin()) : ?>
     <ul id="menu">
       <li><a href="<?= Router::Url("/admin/home",true) ?>"  <?php if(isset($this->viewVars["page"]) && $this->viewVars["page"]=="admin_home") echo 'class="selected"'?>><?= __("Home"); ?></li>
-      <li><a href="<?= Router::Url("/admin/challenges/index",true) ?>" <?php if($this->name=="Challenges") echo 'class="selected"';?>><?= __("Challenges");?></a></li>
-      <li><a href="<?= Router::Url("/admin/criteria/index",true) ?>" <?php if($this->name=="Criteria") echo 'class="selected"';?>><?= __("Rules");?></a></li>
-      <li><a href="<?= Router::Url("/admin/leaders/index",true) ?>" <?php if($this->name=="Leaders") echo 'class="selected"';?>><?= __("Leaders");?></a></li>
-      <li><a href="<?= Router::Url("/admin/posts/index",true) ?>" <?php if($this->name=="Posts") echo 'class="selected"';?>><?= __("Posts");?></a></li>
-      <li><a href="<?= Router::Url("/admin/users/index",true) ?>" <?php if($this->name=="Users") echo 'class="selected"';?>><?= __("Users");?></a></li>
-      <li><a href="<?= Router::Url("/admin/logout",true) ?>" class="logout"><?= __("Logout");?></a></li>
+      <li><a href="<?= Router::Url("/admin/appeals/index",true) ?>" <?php if($this->name=="Appeals") echo 'class="selected"';?>><?= __("Appeals");?></a></li>
+      <li><a href="<?= Router::Url("/admin/gifts/index",true) ?>" <?php if($this->name=="Gifts") echo 'class="selected"';?>><?= __("Gifts");?></a></li>
+      <li><a href="<?= Router::Url("/admin/transactions/index",true) ?>" <?php if($this->name=="Transactions") echo 'class="selected"';?>><?= __("Transactions");?></a></li>
+      <li><a href="<?= Router::Url("/admin/donors/index",true) ?>" <?php if($this->name=="Donors") echo 'class="selected"';?>><?= __("Donors");?></a></li>
+      <li><a href="<?= Router::Url("/admin/config/index",true) ?>" <?php if($this->name=="Config") echo 'class="selected"';?>><?= __("Config");?></a></li>
+      <li><a href="<?= Router::Url("/admin/auth/logout",true) ?>" class="logout"><?= __("Logout");?></a></li>
     </ul>
     <div id="search">
       <?php echo $form->create('search',array('action' => 'search','id'=>'search'))."\n";?>
       <?php echo $form->input('search')."\n";?>
       <?php echo $form->end('Submit')."\n";?>
     </div>
+<?php endif; ?>
   </div>
   <div id="content_wrapper">
-  <div id="content">
-	<?php echo $this->element('messages'); ?>
 <?php echo $content_for_layout; ?>
   </div>
-  </div>
-  <?php echo $this->element('footer') ?>
 </div>
-<?php echo $this->element('analytics') ?>
 <?php echo $cakeDebug; ?>
 </body>
 </html>

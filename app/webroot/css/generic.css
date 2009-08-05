@@ -287,11 +287,11 @@ form .checkbox_wrapper a{
 #content_wrapper{
 }
 #content{
-	float:right;
+	/*float:right;
 	width:583px;
   margin: 0;
   padding:0px 0px 5px 5px;
-  background: #FFF;
+  background: #FFF;*/
 }
 #sidebar{
 	float:right;
