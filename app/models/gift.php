@@ -76,7 +76,7 @@ class Gift extends AppModel {
 		'address' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
-				'message' => 'The address name is required!',
+				'message' => 'The address is required!',
 				'required' => true,
 				'last' => true
 			),
@@ -88,7 +88,7 @@ class Gift extends AppModel {
 		'zip' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
-				'message' => 'The zip is required!',
+				'message' => 'The zip code is required!',
 				'required' => true,
 				'last' => true
 			),

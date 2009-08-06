@@ -25,7 +25,6 @@
        <h3><?php echo __("Need some help?"); ?></h3>
        <ul>
          <li> I bet you <a href="/users/forgot_pw" name="help" id="help">forgot your password</a>? </li>
-         <li> Don't tell me you <a href="/users/register">haven't registered yet</a>? (c'mon it's easy!)</li>
          <li> Or you need some more <a href="http://www.youtube.com/watch?v=NfqL7bwx9fs" target="_blank" rel="nofollow">power?</a></li>
        </ul>
      </div>
