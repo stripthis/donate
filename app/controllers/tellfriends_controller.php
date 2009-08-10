@@ -9,13 +9,18 @@
 class TellfriendsController extends AppController {
 	var $uses = array('Tellfriend');
 	var $components = array('Caplimit');
-
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	function refer() {
 		if ($this->isGet()) {
 			return;
 		}
 
-		$allowedCharInEmail = array('@',',','.','-','_');
+		$allowedCharInEmail = array('@', ',', '.', '-', '_');
 		App::import('Sanitize');
 		$this->data['Tellfriend']['receiver'] = Sanitize::paranoid(
 			$this->data['Tellfriend']['receiver'], $allowedCharInEmail
