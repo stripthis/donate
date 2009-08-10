@@ -6,9 +6,6 @@ class Contact extends AppModel {
 	
 	var $belongsTo = array(
 		'User',
-		'Country',
-		'State',
-		'City'
 	);
 	
 	var $validate = array(

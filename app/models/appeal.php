@@ -14,27 +14,29 @@ class Appeal extends AppModel {
  * @param $appeal
  * @return unknown_type
  */
-	function getAppeal($appeal){
-		$currentAppeal = null;
-		if (isset($appealCode)) {
-			$currentAppeal = $this->find('first', array(
-				'conditions' => array(
-					'OR' => array(
-						'Appeal.id' => $appealCode,
-						'Appeal.campaign_code' => $appealCode,
-						'Appeal.name' => $appealCode //@todo use proper label instead of name (cf. ' ')
-					)),
-				'contain' => array("Office")
-			));
+	function find($type, $query = array()) {
+		$args = func_get_args();
+		switch ($type) {
+			case 'concrete_or_default':
+				$id = isset($query['id']) ? $query['id'] : false;
+
+				$conditions = array('Appeal.default' => '1');
+				if ($id) {
+					$conditions = array(
+						'OR' => array(
+							'Appeal.id' => $id,
+							'Appeal.campaign_code' => $id,
+							'Appeal.name' => $id //@todo use proper label instead of name (cf. ' ')
+						)
+					);
+				}
+
+				return $currentAppeal = $this->find('first', array(
+					'conditions' => $conditions,
+					'contain' => array('Office')
+				));
 		}
-		// appeal not found use the default one
-		if ($currentAppeal == null) {
-			$currentAppeal = $this->find('first', array(
-				'conditions' => array('default' => 1),
-				'contain' => array("Office")
-			));
-		}
-		return $currentAppeal;
+		return call_user_func_array(array('parent', 'find'), $args);
 	}
 }
 ?>

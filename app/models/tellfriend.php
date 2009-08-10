@@ -6,7 +6,7 @@ class Tellfriend extends AppModel {
 			VALID_NOT_EMPTY,
 			'email' => array(
 				'rule' => 'notEmpty',
-				'message' => 'Please enter atleast one email address that is correct'
+				'message' => 'Please enter at least one email address that is correct'
 			)
 		),
 	);

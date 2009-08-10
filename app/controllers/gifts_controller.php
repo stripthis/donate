@@ -22,21 +22,22 @@ class GiftsController extends AppController {
 /**
  * Add a Gift - Catch All!
  */
-	function add($appealIdentifier = null, $step = null) {
+	function add($appealId = null, $step = null) {
 		$appealOptions = $this->Appeal->find('list'); 
 		$countryOptions = $this->Country->find('list');
 		$officeOptions = $this->Office->find('list');
 
 		// try to find the requested appeal or the default one
-		$currentAppeal = $this->Appeal->getAppeal($appealIdentifier);
-		if(!isset($currentAppeal)){
-			//@todo no appeal in db => empty page + warning in admin space
-		} else {
-			$this->data["Gift"]["appeal_id"] = $currentAppeal["Appeal"]["id"];
-			$this->viewPath = "templates" . DS . $currentAppeal["Appeal"]["id"];
-			$officeId = $currentAppeal['Appeal']['office_id'];
-		}
-		$this->set(compact('appealOptions', 'countryOptions', 'officeOptions','currentAppeal'));
+		$currentAppeal = $this->Appeal->find('concrete_or_default', array('id' => $appealId));
+		Assert::notEmpty($currentAppeal, '500');
+
+		$this->data['Gift']['appeal_id'] = $currentAppeal['Appeal']['id'];
+		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['id'];
+		$officeId = $currentAppeal['Appeal']['office_id'];
+		$this->set(compact(
+			'appealOptions', 'countryOptions',
+			'officeOptions', 'currentAppeal'
+		));
 		
 		// no data was given so we render the selected/default view
 		if ($this->isGet()) {
@@ -128,13 +129,13 @@ class GiftsController extends AppController {
  * @param string $step 
  * @return void
  */
-	function add_v1($appealIdentifier = null, $step = null) {
+	function add_v1($appealId = null, $step = null) {
 		$appealOptions = $this->Appeal->find('list');
 		$countryOptions = $this->Country->find('list');
 		$officeOptions = $this->Office->find('list');
 		
 		// try to find the requested appeal or the default one
-		$currentAppeal = $this->Appeal->getAppeal($appealIdentifier);
+		$currentAppeal = $this->Appeal->find('concrete_or_default', array('id' => $appealId));
 		if($currentAppeal == null){
 			//@todo no appeal in db => empty page + warning in admin space
 		} else {
