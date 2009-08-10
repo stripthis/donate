@@ -94,6 +94,9 @@ class Contact extends AppModel {
 				$this->Address->save();
 				$addressId = $this->Address->getLastInsertId();
 
+				if (empty($data['Phone']['phone'])) {
+					return $contactId;
+				}
 				$this->Phone->create(am($data['Phone'], array('contact_id' => $contactId, 'address_id' => $addressId)));
 				if ($this->Phone->save()) {
 					return $contactId;
