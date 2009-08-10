@@ -40,6 +40,11 @@ class Gift extends AppModel {
 				'required' => true,
 				'last' => true
 			),
+			'mini' => array(
+				'rule' => array('validateAmount'),
+				'message' => 'Sorry, this amount is too small.',
+				'required' => true,
+			)
 		),/*
 		'office_id' => array(
 			'required' => array(
@@ -89,6 +94,14 @@ class Gift extends AppModel {
  */
 	function validateType($check) {
 		return array_key_exists($check['type'], Configure::read('App.gift_types'));
+	}
+/**
+ * Validate amount - to avoid small amounts
+ * @param $check
+ * @return unknown_type
+ */
+	function validateAmount($check){
+		return (isset($check['amount']) && $check['amount'] >= Configure::read('App.gift_mini'));
 	}
 /**
  * undocumented function

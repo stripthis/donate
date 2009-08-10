@@ -25,7 +25,6 @@
 	if (!empty($cData)) {
 	  $cData = $cData['Gift'];
 	}
-	
 ?>
   <div id="content_wrapper">
     <div id="banner">
@@ -52,15 +51,15 @@
         <legend><?php echo __("Gift Information"); ?></legend>
         <div class="input_wrapper radio">
           <label for="amount" class="option_title"><strong>Amount: </strong><strong class="required">*</strong></label>
-          <label class="option"><input name="data[Gift][amount]" value="5" class="radio" type="radio"> 5€</label>
-          <label class="option"><input name="data[Gift][amount]" value="10" class="radio" type="radio"> 10€</label>
-          <label class="option"><input name="data[Gift][amount]" value="15" class="radio" type="radio"> 15€</label>
+          <label class="option"><input name="data[Gift][amount]" value="5" class="radio" type="radio" <?php echo $common->giftRadioSelected(5); ?>> 5€</label>
+          <label class="option"><input name="data[Gift][amount]" value="10" class="radio" type="radio" <?php echo $common->giftRadioSelected(10); ?>> 10€</label>
+          <label class="option"><input name="data[Gift][amount]" value="15" class="radio" type="radio" <?php echo $common->giftRadioSelected(15); ?>> 15€</label>
         </div>
         <div class="input_wrapper radio" id="other_amount">
           <label class="option">
-            <input name="data[Gift][amount]" value="other" class="form-radio" type="radio" > Other
+            <input name="data[Gift][amount]" value="other" class="form-radio" type="radio" <?php echo $common->giftRadioSelected('other'); ?>> Other
           </label>
-          <input name="data[Gift][amount_other]" type="text" class="text" id="txtOtherAmount"/> 
+          <input name="data[Gift][amount_other]" type="text" class="text" id="txtOtherAmount" value="<?php echo $common->giftTextAmount(); ?>"/> 
           <?php
             $currency= $cookie->read('currency');
             echo $form->input('currency', array(

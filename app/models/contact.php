@@ -17,20 +17,12 @@ class Contact extends AppModel {
 			'on' => 'create'
 		),
 		'fname' => array(
-			'required' => array(
-				'rule' => 'notEmpty',
-				'message' => 'The first name is required!',
-				'required' => true,
-				'last' => true
-			),
 			'valid' => array(
 				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+[\-,]?[ ]?[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+$/'),
 				'message' => 'Please provide a valid first name.',
-			),
-			'length' => array(
-				'rule' => array('minLength', '2'),
-				'message' => 'Your first name must have at least 2 characters.',
-			),
+				'required' => false,
+				'allowEmpty' => true,
+			)
 		),
 		'lname' => array(
 			'required' => array(

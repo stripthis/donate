@@ -31,39 +31,37 @@ class CommonHelper extends Apphelper {
 		return $name;
 	}
 /**
- * undocumented function
- *
- * @param string $score 
- * @return void
- * @access public
+ * Gift Amount selection process -
+ * Indicates if a radio button is appropriate for a given gift amount .
+ * @param $amount int, the amount associated with the radio button 
+ * @return "checked='checked'" if the radio seems ok, null otherwise
  */
-	function loadingColor($score){
-		if ($score <= 10) return 'red';
-		if ($score <= 40) return 'orange';
-		if ($score <= 60) return 'yellow';
-		return 'green';
-	}
-/**
- * Get the url of a leader's page (cf. P2 mirroring) 
- * @param $leader
- * @return $url string
- */
-	function getLeaderUrl($leader){
-		$url = "";
-		if(isset($leader["Leader"]) && !empty($leader["Leader"])) {
-			if(Configure::read("App.usingMirror")){
-				$url = Configure::read('App.mirrorDomain');
-				$url.= preg_replace('/(\w\. )/','',low($leader['Leader']['name']));
-				$url.= '-'.str_replace(' ','-',low($leader['Leader']['company']));
-				$url = str_replace(' ','-',$url);
-				if($leader['Leader']['company'] == "Dell") {
-					$url = str_replace('-dell-dell','-dell',$url);
+	function giftRadioSelected($amount){
+		if (isset($this->Form->params['data']['Gift'])) {
+			if($amount != "other") {
+				if(isset($this->Form->params['data']['Gift']) && $this->Form->params['data']['Gift']['amount'] == $amount) {
+					return "checked='checked'";
 				}
 			} else {
-				$url = "/leaders/view/".$leader['Leader']['id'];
+				if($this->Form->params['data']['Gift']['amount'] == $this->Form->params['data']['Gift']['amount_other']) {
+					return "checked='checked'";
+				}
 			}
 		}
-		return $url;
+		return '';
+	}
+/**
+ * Gift Amount selection process - 
+ * Help repopulate the 'other' text field 
+ * @return the text to be put in the other textfield, null otherwise
+ */
+	function giftTextAmount(){
+		if (isset($this->Form->params['data']['Gift'])) {
+			if($this->Form->params['data']['Gift']['amount'] == $this->Form->params['data']['Gift']['amount_other']) {
+				return $this->Form->params['data']['Gift']['amount_other'];
+			}
+		}
+		return '';
 	}
 }
 ?>
