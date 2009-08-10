@@ -119,7 +119,9 @@ class GiftsController extends AppController {
 
 		$transaction = $this->Transaction->find('first', array(
 			'conditions' => array('Transaction.id' => $tId),
-			'contain' => array('Gift.Country')
+			'contain' => array(
+				'Gift.Contact.Address.Phone', 'Gift.Contact.Phone'
+			)
 		));
 		$this->set(compact('transaction'));
 	}
