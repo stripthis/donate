@@ -26,7 +26,7 @@ class GiftsController extends AppController {
 		$appealOptions = $this->Appeal->find('list'); 
 		$countryOptions = $this->Country->find('list');
 		$officeOptions = $this->Office->find('list');
-		
+
 		// try to find the requested appeal or the default one
 		$currentAppeal = $this->Appeal->getAppeal($appealIdentifier);
 		if(!isset($currentAppeal)){
@@ -43,7 +43,7 @@ class GiftsController extends AppController {
 			return;
 		}
 		
-		//Some data where given, we try to save
+		// Some data was given, we try to save
 		$this->_reuseDataInCookie();
 		
 		// try to validate and save contact data
@@ -54,7 +54,7 @@ class GiftsController extends AppController {
 					'contain' => false
 				)));
 				if (!isset($contactFound)) {
-		  		$errorStep[] = 'Contact';
+		  			$errorStep[] = 'Contact';
 				} else {
 					$contactId = $this->data['Gift']['contact_id'] = $this->data['Contact']['id'];
 				}
@@ -66,8 +66,8 @@ class GiftsController extends AppController {
 					// update gift relationship with contact
 					$contactId = $this->data['Gift']['contact_id'] = $this->Contact->getLastInsertId();
 				} else {
-			  	$errorStep[] = 'Contact';
-			  }
+					$errorStep[] = 'Contact';
+				}
 			}
 		}
 		
@@ -79,16 +79,16 @@ class GiftsController extends AppController {
 				$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
 			}
 			$this->Gift->create($this->data);
-		  if ($this->Gift->validates()) {
+			if ($this->Gift->validates()) {
 				$this->Gift->save();
 				$giftId = $this->data['Gift']['id'] = $this->Gift->getLastInsertId();
-		  } else {
-		  	$errorStep[] = 'Gift';
-		  }
+			} else {
+				$errorStep[] = 'Gift';
+			}
 		}
-		
+
 		if (isset($errorStep) && count($errorStep)) {
-		  $msg= 'Sorry, something went wrong, please correct the errors below.';
+			$msg = 'Sorry, something went wrong, please correct the errors below.';
 			return $this->Message->add(__($msg, true), 'error');
 		}
 		
@@ -111,8 +111,7 @@ class GiftsController extends AppController {
 
 		$result = $this->Transaction->process($tId);
 		if ($result !== true) {
-			$msg = 'There was a problem processing the transaction: ';
-			$msg .= $result;
+			$msg = 'There was a problem processing the transaction: ' . $result;
 			return $this->Message->add(__($msg, true));
 		}
 
