@@ -48,8 +48,6 @@ class Mailer{
 		}
 		$Email->Controller->set($options['vars']);
 
-
-		//echo "DELIVERY : ".$options['mail']['delivery'];
 		if ($options['store']) {
 			$hash = sha1(json_encode($options));
 			$folder = substr($hash, 0, 2);
@@ -69,8 +67,6 @@ class Mailer{
 			$html = $View->renderLayout($html);
 			file_put_contents($path, $html);
 		}
-
-		//echo "OPTIONS : ";pr($Email->smtpOptions);
 		return $Email->send();
 	}
 }

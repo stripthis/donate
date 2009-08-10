@@ -71,7 +71,7 @@ class GiftsController extends AppController {
 			}
 		}
 		
-		//try to save gift data
+		// try to save gift data
 		if (isset($this->data['Gift'])) {
 			// radio + textfield mode (cf. other)
 			if (isset($this->data['Gift']['amount']) && $this->data['Gift']['amount'] == "other" 
