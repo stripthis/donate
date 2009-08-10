@@ -1,8 +1,7 @@
 <?php
 class User extends AppModel {
 	var $hasMany = array(
-		'AuthKey' => array('dependent' => true),
-		'Address' => array('dependent' => true),
+		'AuthKey' => array('dependent' => true)
 	);
 
 	var $validate = array(
@@ -120,9 +119,10 @@ class User extends AppModel {
 			$_this = ClassRegistry::init('User');
 			$user = $_this->find('first', array(
 				'conditions' => array('User.id' => $user),
-				'contain' => array(
+				/* @todo use contact instead
+				 * 'contain' => array(
 					'Address.State(id, name)', 'Address.Country(id, name)', 'Address.City(id, name)'
-				),
+				)*/
 			));
 		}
 

@@ -14,9 +14,114 @@ class GiftsController extends AppController {
 		$this->AuthKeyType = $this->AuthKey->AuthKeyType;
 		$this->Office = ClassRegistry::init('Office');
 		$this->GatewayOffice = $this->Office->GatewayOffice;
-		$this->Country = $this->Gift->Country;
+		$this->Contact = $this->Gift->Contact;
+		$this->Country = $this->Gift->Contact->Country;
 		$this->Transaction = $this->Gift->Transaction;
 	}
+	
+/**
+ * Add a Gift - Catch All!
+ */
+	function add($appealIdentifier = null, $step = null) {
+		$appealOptions = $this->Appeal->find('list'); 
+		$countryOptions = $this->Country->find('list');
+		$officeOptions = $this->Office->find('list');
+		
+		// try to find the requested appeal or the default one
+		$currentAppeal = $this->Appeal->getAppeal($appealIdentifier);
+		if(!isset($currentAppeal)){
+			//@todo no appeal in db => empty page + warning in admin space
+		} else {
+			$this->data["Gift"]["appeal_id"] = $currentAppeal["Appeal"]["id"];
+			$this->viewPath = "templates" . DS . $currentAppeal["Appeal"]["id"];
+			$officeId = $currentAppeal['Appeal']['office_id'];
+		}
+		$this->set(compact('appealOptions', 'countryOptions', 'officeOptions','currentAppeal'));
+		
+		// no data was given so we render the selected/default view
+		if ($this->isGet()) {
+			return;
+		}
+		
+		//Some data where given, we try to save
+		$this->_reuseDataInCookie();
+		
+		// try to validate and save contact data
+		if (isset($this->data['Contact'])) {
+			if (isset($this->data['Contact']['id'])) {
+				$contactFound = $this->Contact->find('first', array(
+					'conditions' => array('id' => $this->data['Contact']['id'],
+					'contain' => false
+				)));
+				if (!isset($contactFound)) {
+		  		$errorStep[] = 'Contact';
+				} else {
+					$contactId = $this->data['Gift']['contact_id'] = $this->data['Contact']['id'];
+				}
+			} else {
+				//@todo city validation & save
+				$this->Contact->create($this->data);
+				if ($this->Contact->validates()) {
+					$this->Contact->save();
+					// update gift relationship with contact
+					$contactId = $this->data['Gift']['contact_id'] = $this->Contact->getLastInsertId();
+				} else {
+			  	$errorStep[] = 'Contact';
+			  }
+			}
+		}
+		
+		//try to save gift data
+		if (isset($this->data['Gift'])) {
+			// radio + textfield mode (cf. other)
+			if (isset($this->data['Gift']['amount']) && $this->data['Gift']['amount'] == "other" 
+				&& isset($this->data['Gift']['amount_other'])) {
+				$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
+			}
+			$this->Gift->create($this->data);
+		  if ($this->Gift->validates()) {
+				$this->Gift->save();
+				$giftId = $this->data['Gift']['id'] = $this->Gift->getLastInsertId();
+		  } else {
+		  	$errorStep[] = 'Gift';
+		  }
+		}
+		
+		if (isset($errorStep) && count($errorStep)) {
+		  $msg= 'Sorry, something went wrong, please correct the errors below.';
+			return $this->Message->add(__($msg, true), 'error');
+		}
+		
+		// everything ok prepare / perform the transaction
+		//@todo dont always use the first one, make it dependent on the payment method 
+		//@todo && the amount / currency vs. payment gateway fee by offices
+		$gateway = $this->GatewayOffice->find('first', array(
+			'conditions' => array('office_id' => $officeId,
+			'contain' => false
+		)));
+
+		//@todo save payment data here?
+		$this->Transaction->create(array(
+			'gift_id' => $giftId,
+			'amount' => $this->data['Gift']['amount'],
+			'gateway_id' => $gateway['GatewayOffice']['gateway_id']
+		));
+		$this->Transaction->save();
+		$tId = $this->Transaction->getLastInsertId();
+
+		$result = $this->Transaction->process($tId);
+		if ($result !== true) {
+			$msg = 'There was a problem processing the transaction: ';
+			$msg .= $result;
+			return $this->Message->add(__($msg, true));
+		}
+
+		$keyData = $this->_addAuthkeyToSession($tId);
+		$this->Gift->emailReceipt($this->data['Gift']['email'], $keyData);
+
+		$this->redirect(array('action' => 'thanks'));
+	}
+
 /**
  * undocumented function
  *
@@ -24,13 +129,13 @@ class GiftsController extends AppController {
  * @param string $step 
  * @return void
  */
-	function add($appealCode = null, $step = null) {
+	function add_v1($appealIdentifier = null, $step = null) {
 		$appealOptions = $this->Appeal->find('list');
 		$countryOptions = $this->Country->find('list');
 		$officeOptions = $this->Office->find('list');
 		
 		// try to find the requested appeal or the default one
-		$currentAppeal = $this->Appeal->getAppeal($appealCode);
+		$currentAppeal = $this->Appeal->getAppeal($appealIdentifier);
 		if($currentAppeal == null){
 			//@todo no appeal in db => empty page + warning in admin space
 		} else {
@@ -45,7 +150,8 @@ class GiftsController extends AppController {
 
 		//Some data where given, we try to save
 		$this->_reuseDataInCookie();
-		
+				
+		/* gift */
 		$this->Gift->create($this->data);
 		if (!$this->Gift->validates()) {
 			$msg = 'Sorry, something went wrong processing your gift data. ';

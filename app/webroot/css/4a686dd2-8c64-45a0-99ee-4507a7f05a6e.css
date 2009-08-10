@@ -87,7 +87,7 @@ form {
 fieldset {
   border: 1px solid #DDD;
   margin-top: 10px;
-  padding: 0px 20px 15px 10px;
+  padding: 0px 20px 15px 15px;
 }
 fieldset legend {
   background:#FFF;
@@ -125,7 +125,7 @@ form div.submit{
 }
 input[type=submit] {
   display: inline;
-  font-size: 150%;
+  font-size: 160%;
   padding: 5px 15px;
   margin:5px 0px 5px 5px;
   width: auto;
@@ -223,16 +223,16 @@ form .error .error-message{
 }
 #content form .input_wrapper.half{
 	float:left;
-	width:277px;
+	width:290px;
 	margin:0;
 	clear:none;
 }
 #content form .input_wrapper.half input[type=text], 
 #content form .input_wrapper.half textarea{
-	max-width:250px;
+	max-width:260px;
 }
 #content form .input_wrapper.full{
-	width:530px;
+	width:552px;
 }
 
 /* special fieldset layout */
