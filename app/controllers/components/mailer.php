@@ -2,8 +2,9 @@
 
 class Mailer{
 	static function deliver($template, $options = array()) {
-		if (Common::isDevelopment() && !class_exists('ShellDispatcher')) {
-			//return true;
+		$isDebug = isset($options['mail']['delivery']) && $options['mail']['delivery'] == 'debug';
+		if (Common::isDevelopment() && !class_exists('ShellDispatcher') && !$isDebug) {
+			return true;
 		}
 
 		$options = Set::merge(array(
