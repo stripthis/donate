@@ -194,7 +194,7 @@
         <div class="input_wrapper half">
           <?php
             $city = $cookie->read('city');
-            echo $form->input('City.name', array(
+            echo $form->input('Address.city_id', array(
               'label' => 'City'. ': ' . "<strong class='required'>*</strong>",
               'value' => !empty($city) ? $city : ''
             ))."\n";

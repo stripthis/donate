@@ -69,35 +69,38 @@ class Contact extends AppModel {
 
 		// mechanisms to prevent duplication will be added later
 		$this->create($data['Contact']);
-		if (!$this->save()) {
-			return false;
+		$this->Address->create($data['Address']);
+		$this->Phone->create($data['Phone']);
+		$this->Address->validates();
+		$this->Phone->validates();
+
+		if ($this->validates()) {
+			$this->save();
+			$contactId = $this->getLastInsertId();
+
+			$addressData = am($data['Address'], array('contact_id' => $contactId));
+
+			$conditions = array(
+				'country_id' => $data['Address']['country_id'],
+				'name' => $data['Address']['city_id']
+			);
+			if (isset($data['Address']['state_id'])) {
+				$conditions['state_id'] = $data['Address']['state_id'];
+			}
+			$addressData['city_id'] = $this->Address->City->lookup($conditions, 'id', true);
+
+			$this->Address->create($addressData);
+			if ($this->Address->validates()) {
+				$this->Address->save();
+				$addressId = $this->Address->getLastInsertId();
+
+				$this->Phone->create(am($data['Phone'], array('contact_id' => $contactId, 'address_id' => $addressId)));
+				if ($this->Phone->save()) {
+					return $contactId;
+				}
+			}
 		}
-
-		$contactId = $this->getLastInsertId();
-
-		$addressData = am($data['Address'], array('contact_id' => $contactId));
-
-		$conditions = array(
-			'country_id' => $data['Address']['country_id'],
-			'name' => $data['City']['name']
-		);
-		if (isset($data['Address']['state_id'])) {
-			$conditions['state_id'] = $data['Address']['state_id'];
-		}
-		$addressData['city_id'] = $this->Address->City->lookup($conditions, 'id', true);
-
-		$this->Address->create($addressData);
-		if (!$this->Address->save()) {
-			return false;
-		}
-		$addressId = $this->Address->getLastInsertId();
-
-		$this->Phone->create(am($data['Phone'], array('contact_id' => $contactId, 'address_id' => $addressId)));
-		if (!$this->Phone->save()) {
-			return false;
-		}
-
-		return $contactId;
+		return false;
 	}
 }
 ?>
