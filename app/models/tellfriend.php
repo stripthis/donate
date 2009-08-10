@@ -38,6 +38,7 @@ class Tellfriend extends AppModel {
 				'TellFriend.time_sent BETWEEN ? AND ?' => array($timeBefore, $currentTime)
 			)
 		));
+
 		return $noOfEmails > Configure::read('App.maxEmailsSentFromIp');
 	}
 /**
@@ -59,7 +60,7 @@ class Tellfriend extends AppModel {
 		));
 
 		$emails = Set::extract('/InvitedFriend/email', $emails);
-		return array_count_values($emailArray);
+		return array_count_values($emails);
 	}
 /**
  * undocumented function
@@ -73,12 +74,15 @@ class Tellfriend extends AppModel {
 		$inviteFriend = ClassRegistry::init('InvitedFriend');
 
 		$this->save($data);
-		$invitedFriendsEmails = array();
+
 		foreach ($emails as $key => $val) {
-			$invitedFriendsEmails['InvitedFriend']['email'] = $val;
-			$invitedFriendsEmails['InvitedFriend']['tellfriend_id'] = $this->id;
-			$inviteFriend->create();
-			if (!$inviteFriend->save($invitedFriendsEmails)) {
+			$invitedFriendsEmails = array(
+				'email' => $val,
+				'tellfriend_id' => $this->id,
+				'time_sent' => date('Y-m-d H:i:s')
+			);
+			$inviteFriend->create($invitedFriendsEmails);
+			if (!$inviteFriend->save()) {
 				return false;
 			}
 		}

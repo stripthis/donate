@@ -15,15 +15,15 @@ foreach ($inclusionRules as $include => $rules) {
 
 // Appeal context, having it's own css?
 if (isset($currentAppeal)) {
-	$viewFile = CSS.DS.$currentAppeal["Appeal"]["id"].'.css';
+	$viewFile = CSS . DS . $currentAppeal['Appeal']['id'] . '.css';
 	if (file_exists($viewFile)) {
-		$cssIncludes[] = $currentAppeal["Appeal"]["id"].'.css';
+		$cssIncludes[] = $currentAppeal['Appeal']['id'] . '.css';
 	}
 }
 
-$viewFile = CSS.DS.$this->layout.'.css';
+$viewFile = CSS . DS . $this->layout . '.css';
 if (file_exists($viewFile)) {
-	$cssIncludes[] = $this->layout.'.css';
+	$cssIncludes[] = $this->layout . '.css';
 }
 
 $viewFile = CSS . 'views' . DS . $controller . DS . $action . '.css';
@@ -33,7 +33,7 @@ if (file_exists($viewFile)) {
 
 if (Common::isDevelopment()) {
 	foreach ($cssIncludes as $include) {
-		echo "  ".$html->css($include)."\n";
+		echo "  " . $html->css($include) . "\n";
 	}
 	return;
 }

@@ -33,7 +33,7 @@ class TellfriendsController extends AppController {
 		$saveData['Tellfriend']['ip'] = $this->RequestHandler->getClientIP();
 
 		if ($this->Caplimit->checkCaps($toEmail) == false)  {
-			return $this->render('refer_not_allowed');			 
+			return $this->render('refer_not_allowed');
 		}
 
 		if ($this->Tellfriend->saveReference($saveData, $toEmail)) {
