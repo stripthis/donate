@@ -39,11 +39,11 @@ class CommonHelper extends Apphelper {
 	function giftRadioSelected($amount){
 		if (isset($this->Form->params['data']['Gift'])) {
 			if($amount != "other") {
-				if(isset($this->Form->params['data']['Gift']) && $this->Form->params['data']['Gift']['amount'] == $amount) {
+				if(isset($this->Form->params['data']['Gift']['amount']) && $this->Form->params['data']['Gift']['amount'] == $amount) {
 					return "checked='checked'";
 				}
 			} else {
-				if($this->Form->params['data']['Gift']['amount'] == $this->Form->params['data']['Gift']['amount_other']) {
+				if(isset($this->Form->params['data']['Gift']['amount']) && $this->Form->params['data']['Gift']['amount'] == $this->Form->params['data']['Gift']['amount_other']) {
 					return "checked='checked'";
 				}
 			}
@@ -57,7 +57,7 @@ class CommonHelper extends Apphelper {
  */
 	function giftTextAmount(){
 		if (isset($this->Form->params['data']['Gift'])) {
-			if($this->Form->params['data']['Gift']['amount'] == $this->Form->params['data']['Gift']['amount_other']) {
+			if(isset($this->Form->params['data']['Gift']['amount']) && $this->Form->params['data']['Gift']['amount'] == $this->Form->params['data']['Gift']['amount_other']) {
 				return $this->Form->params['data']['Gift']['amount_other'];
 			}
 		}
