@@ -170,13 +170,13 @@
         <div class="input_wrapper full">
           <?php
             $address = $cookie->read('address');
-            echo $form->input('Contact.address', array(
+            echo $form->input('Address.line_1', array(
               'label' => 'Address'. ': ' . "<strong class='required'>*</strong>",
               'value' => !empty($address) ? $address : ''
             ))."\n";
           ?>
           <?php
-            echo $form->input('Contact.address2', array(
+            echo $form->input('Address.line_2', array(
               'label' => "",
               'value' => !empty($address2) ? $address2 : ''
             ))."\n";
@@ -185,7 +185,7 @@
         <div  class="input_wrapper half">
           <?php
           $zip = $cookie->read('zip');
-          echo $form->input('Contact.City.zip', array(
+          echo $form->input('Address.zip', array(
             'label' => 'Zip Code'. ': ' . "<strong class='required'>*</strong>",
             'value' => !empty($zip) ? $zip : ''
           ))."\n";
@@ -194,7 +194,7 @@
         <div class="input_wrapper half">
           <?php
             $city = $cookie->read('city');
-            echo $form->input('Contact.City.name', array(
+            echo $form->input('City.name', array(
               'label' => 'City'. ': ' . "<strong class='required'>*</strong>",
               'value' => !empty($city) ? $city : ''
             ))."\n";
@@ -212,7 +212,7 @@
         <div class="input_wrapper">
           <?php 
             $countryId = $cookie->read('country_id');
-            echo $form->input('Contact.country_id', array(
+            echo $form->input('Address.country_id', array(
               'label' => 'Country'. ': ' . "<strong class='required'>*</strong>", 'options' => $countryOptions,
               'selected' => !empty($countryId) ? $countryId : ''
             ))."\n";
@@ -236,13 +236,13 @@
         <div class="input_wrapper half">
           <?php 
             $email = $cookie->read('phone');
-            echo $form->input('Contact.phone', array(
+            echo $form->input('Phone.phone', array(
               'label' => 'Phone'. ': ',
               'value' => !empty($phone) ? $phone : ''
             ))."\n";
           ?>
           <?php
-            echo $form->input('Contact.contactable', array(
+            echo $form->input('Phone.contactable', array(
               'label' => 'Yes, it\'s ok to call me at this number', 'type' => 'checkbox',
               'class' => 'checkbox', 'div' => false
             ))."\n";

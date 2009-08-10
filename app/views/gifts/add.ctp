@@ -26,49 +26,49 @@ echo $form->create('Gift', array('url' => $this->here));
 echo '<fieldset><legend>Contact Information</legend></fieldset>';
 
 $salutation = $cookie->read('salutation');
-echo $form->input('salutation', array(
+echo $form->input('Contact.salutation', array(
 	'label' => 'Salutation:', 'options' => $saluteOptions,
 	'selected' => !empty($salutation) ? $salutation : ''
 ));
 
 $title = $cookie->read('title');
-echo $form->input('title', array(
+echo $form->input('Contact.title', array(
 	'label' => 'Title:', 'options' => $titleOptions, 'empty' => '',
 	'selected' => !empty($title) ? $title : ''
 ));
 
 $fname = $cookie->read('fname');
-echo $form->input('fname', array(
+echo $form->input('Contact.fname', array(
 	'label' => 'First Name*:',
 	'value' => !empty($fname) ? $fname : ''
 ));
 
 $lname = $cookie->read('lname');
-echo $form->input('lname', array(
+echo $form->input('Contact.lname', array(
 	'label' => 'Last Name*:',
 	'value' => !empty($lname) ? $lname : ''
 ));
 
 $address = $cookie->read('address');
-echo $form->input('address', array(
+echo $form->input('Address.address', array(
 	'label' => 'Address / Postbox*:',
 	'value' => !empty($address) ? $address : ''
 ));
 
 $zip = $cookie->read('zip');
-echo $form->input('zip', array(
+echo $form->input('Address.zip', array(
 	'label' => 'Zip Code*:',
 	'value' => !empty($zip) ? $zip : ''
 ));
 
 $countryId = $cookie->read('country_id');
-echo $form->input('country_id', array(
+echo $form->input('Address.country_id', array(
 	'label' => 'Country*:', 'options' => $countryOptions,
 	'selected' => !empty($countryId) ? $countryId : ''
 ));
 
 $email = $cookie->read('email');
-echo $form->input('email', array(
+echo $form->input('Contact.email', array(
 	'label' => 'Email*:',
 	'value' => !empty($email) ? $email : ''
 ));

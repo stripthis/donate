@@ -15,7 +15,7 @@ class Gift extends AppModel {
 	var $validate = array(
 		'id' => array(
 			'rule' => 'blank',
-			'on' => 'create'
+			'on' => 'update'
 		),
 		'type' => array(
 			'required' => array(

@@ -25,14 +25,6 @@ class City extends AppModel{
 				'message' => 'Your city name must have at least 2 characters.',
 			),
 		),
-		'zip' => array(
-			'valid' => array(
-				'rule' => array('validateZip'),
-				'message' => 'Please provide a valid zip code.',
-				'required' => false,
-				'allowEmpty' => true,
-			)
-		),
 		'country_id' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
@@ -58,12 +50,5 @@ class City extends AppModel{
 			)
 		)
 	);
-	
-	function validateZip($check) {
-		//echo "validate zip";
-		//pr($this->data['City']);
-		//exit;
-		return true;
-	}
 }
 ?>

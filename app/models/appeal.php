@@ -31,7 +31,7 @@ class Appeal extends AppModel {
 					);
 				}
 
-				return $currentAppeal = $this->find('first', array(
+				return $this->find('first', array(
 					'conditions' => $conditions,
 					'contain' => array('Office')
 				));

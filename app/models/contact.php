@@ -1,9 +1,10 @@
 <?php
 class Contact extends AppModel {
 	var $hasMany = array(
-		'Address'
+		'Address',
+		'Phone'
 	);
-	
+
 	var $belongsTo = array(
 		'User',
 	);
@@ -43,74 +44,60 @@ class Contact extends AppModel {
 				'message' => 'Please enter a valid email address.',
 				'required' => true,
 			)
-		),
-		'address' => array(
-			'required' => array(
-				'rule' => 'notEmpty',
-				'message' => 'The address is required!',
-				'required' => true,
-				'last' => true
-			),
-			'valid' => array(
-				'rule' => 'notEmpty',
-				'message' => 'Please provide a valid address.',
-			)
-		),
-		/*'address2' => array(
-			// allow empty
-		),*/
-		'city' => array(
-			'required' => array(
-				'rule' => 'notEmpty',
-				'message' => 'The city is required!',
-				'required' => true,
-				'last' => true
-			),
-			'notEmpty' => array(
-				'rule' => 'notEmpty',
-				'message' => 'Please provide a city.',
-			),
-			'valid' => array(
-				'rule' => array('validateCity'),
-				'message' => 'Please provide a valid city.'
-			)
-		),
-		'zip' => array(
-			'notEmpty' => array(
-				'rule' => 'notEmpty',
-				'message' => 'Please provide a zip code.',
-			),
-			'valid' => array(
-				'rule' => array('validateZip'),
-				'message' => 'Please provide a valid zip code.',
-				'required' => false,
-				'allowEmpty' => true,
-			)
-		),
-		'state_id' => array(
-			'valid' => array(
-				'rule' => array('validateState'),
-				'message' => 'Please provide a valid state.',
-				'required' => false,
-				'allowEmpty' => true,
-			)
-		),
-		'country_id' => array(
-			'required' => array(
-				'rule' => 'notEmpty',
-				'message' => 'The country is required!',
-				'required' => true,
-				'last' => true
-			),
-			'notEmpty' => array(
-				'rule' => 'notEmpty',
-				'message' => 'Please provide a country.',
-			),
-			'valid' => array(
-				'rule' => array('validateCountry'),
-				'message' => 'Please provide a valid country.'
-			)
 		)
 	);
+/**
+ * undocumented function
+ *
+ * @param string $data 
+ * @return void
+ * @access public
+ */
+	function addFromGift($data) {
+		if (!isset($data['Contact'])) {
+			return false;
+		}
+
+		if (isset($data['Contact']['id'])) {
+			$contactFound = $this->find('count', array(
+				'conditions' => array('id' => $data['Contact']['id']),
+				'contain' => false
+			)) > 0;
+			Assert::true($contactFound, '404');
+			return $data['Contact']['id'];
+		}
+
+		// mechanisms to prevent duplication will be added later
+		$this->create($data['Contact']);
+		if (!$this->save()) {
+			return false;
+		}
+
+		$contactId = $this->getLastInsertId();
+
+		$addressData = am($data['Address'], array('contact_id' => $contactId));
+
+		$conditions = array(
+			'country_id' => $data['Address']['country_id'],
+			'name' => $data['City']['name']
+		);
+		if (isset($data['Address']['state_id'])) {
+			$conditions['state_id'] = $data['Address']['state_id'];
+		}
+		$addressData['city_id'] = $this->Address->City->lookup($conditions, 'id', true);
+
+		$this->Address->create($addressData);
+		if (!$this->Address->save()) {
+			return false;
+		}
+		$addressId = $this->Address->getLastInsertId();
+
+		$this->Phone->create(am($data['Phone'], array('contact_id' => $contactId, 'address_id' => $addressId)));
+		if (!$this->Phone->save()) {
+			return false;
+		}
+
+		return $contactId;
+	}
 }
 ?>
