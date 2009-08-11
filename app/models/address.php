@@ -23,19 +23,11 @@ class Address extends AppModel {
 			)
 		),
 		'city_id' => array(
-			'required' => array(
+			'notEmpty' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The city is required!',
 				'required' => true,
 				'last' => true
-			),
-			'notEmpty' => array(
-				'rule' => 'notEmpty',
-				'message' => 'Please provide a city.',
-			),
-			'valid' => array(
-				'rule' => array('validateCity'),
-				'message' => 'Please provide a valid city.'
 			)
 		),
 		'zip' => array(

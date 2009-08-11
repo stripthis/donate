@@ -6,7 +6,7 @@ $url = '/admin/statistics/index.json?startDate=' . $startDate . '&endDate=' . $e
 ?>
 <script type="text/javascript">
 swfobject.embedSWF(
-  "/open-flash-chart.swf", "my_chart", "550", "300",
+  "/open-flash-chart.swf", "my_chart", "900", "300",
   "9.0.0", "expressInstall.swf",
   {"data-file":"<?php echo urlencode($url) ?>"}
 );
