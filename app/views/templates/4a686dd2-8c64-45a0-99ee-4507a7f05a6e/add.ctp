@@ -21,6 +21,8 @@
 	$currencyOptions = array("EUR","USD","GBP");
 	$frequencyOptions = Configure::read('App.frequency_options');
 	$cookie = Common::getComponent('Cookie');
+	$monthOptions = Gift::getMonthOptions();
+	$yearOptions = Gift::getYearOptions();
 	
 	if (!empty($cData)) {
 	  $cData = $cData['Gift'];
@@ -61,10 +63,9 @@
           </label>
           <input name="data[Gift][amount_other]" type="text" class="text" id="txtOtherAmount" value="<?php echo $common->giftTextAmount(); ?>"/> 
           <?php
-            $currency= $cookie->read('currency');
-            echo $form->input('currency', array(
-              'label' => '', 'options' => $currencyOptions,
-              'selected' => !empty($currency) ? $currency : ''
+             echo $form->input('currency', array(
+              'label' => '', 
+              'options' => $currencyOptions
             ))."\n";
           ?>
           <?php 
@@ -128,14 +129,13 @@
         </p>
       </div>
       <div class="spacer"></div>
-      <fieldset>
+      <fieldset id="contact">
         <legend><?php echo __("Contact Information"); ?></legend>
         <div class="input_wrapper">
           <?php
-            $salutation = $cookie->read('salutation');
             echo $form->input('Contact.salutation', array(
-              'label' => 'Salutation:', 'options' => $saluteOptions,
-              'selected' => !empty($salutation) ? $salutation : ''
+              'label' => 'Salutation:', 
+              'options' => $saluteOptions
             ))."\n";
           ?>
         </div>
@@ -151,52 +151,41 @@
         ?>
         <div class="input_wrapper half">
           <?php
-            $fname = $cookie->read('fname');
             echo $form->input('Contact.fname', array(
-              'label' => 'First Name'. ': ' ,
-              'value' => !empty($fname) ? $fname : ''
+              'label' => 'First Name'. ': ' 
             ))."\n";
           ?>
         </div>
         <div class="input_wrapper half">
           <?php
-            $lname = $cookie->read('lname');
             echo $form->input('Contact.lname', array(
               'label' => 'Last Name'. ': ' . "<strong class='required'>*</strong>",
-              'value' => !empty($lname) ? $lname : ''
             ))."\n";
           ?>
         </div>
         <div class="input_wrapper full">
           <?php
-            $address = $cookie->read('address');
             echo $form->input('Address.line_1', array(
-              'label' => 'Address'. ': ' . "<strong class='required'>*</strong>",
-              'value' => !empty($address) ? $address : ''
+              'label' => 'Address'. ': ' . "<strong class='required'>*</strong>"
             ))."\n";
           ?>
           <?php
             echo $form->input('Address.line_2', array(
-              'label' => "",
-              'value' => !empty($address2) ? $address2 : ''
+              'label' => ""
             ))."\n";
           ?>
         </div>
         <div  class="input_wrapper half">
           <?php
-          $zip = $cookie->read('zip');
           echo $form->input('Address.zip', array(
-            'label' => 'Zip Code'. ': ' . "<strong class='required'>*</strong>",
-            'value' => !empty($zip) ? $zip : ''
+            'label' => 'Zip Code'. ': ' . "<strong class='required'>*</strong>"
           ))."\n";
           ?>
         </div>
         <div class="input_wrapper half">
           <?php
-            $city = $cookie->read('city');
             echo $form->input('Address.city_id', array(
-              'label' => 'City'. ': ' . "<strong class='required'>*</strong>",
-              'value' => !empty($city) ? $city : ''
+              'label' => 'City'. ': ' . "<strong class='required'>*</strong>"
             ))."\n";
           ?>
         </div>
@@ -211,19 +200,16 @@
         ?>
         <div class="input_wrapper">
           <?php 
-            $countryId = $cookie->read('country_id');
             echo $form->input('Address.country_id', array(
-              'label' => 'Country'. ': ' . "<strong class='required'>*</strong>", 'options' => $countryOptions,
-              'selected' => !empty($countryId) ? $countryId : ''
+              'label' => 'Country'. ': ' . "<strong class='required'>*</strong>", 
+              'options' => $countryOptions
             ))."\n";
           ?>
         </div>
         <div class="input_wrapper half">
           <?php
-            $email = $cookie->read('email');
             echo $form->input('Contact.email', array(
-              'label' => 'Email'. ': ' . "<strong class='required'>*</strong>",
-              'value' => !empty($email) ? $email : ''
+              'label' => 'Email'. ': ' . "<strong class='required'>*</strong>"
             ))."\n";
           ?>
           <?php
@@ -235,10 +221,8 @@
         </div>
         <div class="input_wrapper half">
           <?php 
-            $email = $cookie->read('phone');
             echo $form->input('Phone.phone', array(
-              'label' => 'Phone'. ': ',
-              'value' => !empty($phone) ? $phone : ''
+              'label' => 'Phone'. ': '
             ))."\n";
           ?>
           <?php
@@ -248,7 +232,47 @@
             ))."\n";
           ?>
         </div>
-        
+      </fieldset>
+      <fieldset>
+      	<legend>Payment Information:</legend>
+      	<div class="input_wrapper radio" id="card">
+          <label for="amount" class="option_title"><strong>Card type: </strong><strong class="required">*</strong></label>
+          <label class="option" id="mastercard"><input name="data[Card][type]" value="mastercard" class="radio" type="radio" <?php echo $common->creditCardSelected('mastercard'); ?>><span>mastercard</span></label>
+          <label class="option" id="visa"><input name="data[Card][type]" value="visa" class="radio" type="radio" <?php echo $common->creditCardSelected('visa'); ?>><span>visa</span></label>
+          <label class="option" id="visa_electron"><input name="data[Card][type]" value="visa_electron" class="radio" type="radio" <?php echo $common->creditCardSelected('visa_electron'); ?>><span>visa electron</span></label>
+          <label class="option" id="diners_club"><input name="data[Card][type]" value="diners_club" class="radio" type="radio" <?php echo $common->creditCardSelected('diners_club'); ?>><span>diners club</span></label>
+        </div>
+        <div class="input_wrapper">
+          <?php
+            echo $form->input('Card.number', array(
+              'label' => 'Card number'. ': ' . "<strong class='required'>*</strong>", 
+            ))."\n";
+          ?>
+        </div>
+        <div class="input_wrapper" id="expire">
+        	<label><strong>Expiracy date</strong> <strong class='required'>*</strong></label>
+        	<div>
+        	<?php 
+		        echo $form->input('Card.expire_month', array(
+		          'label' => '',
+		          'options' => $monthOptions,
+		        ))."\n";
+        	?>
+        	<?php 
+		        echo $form->input('Card.expire_year', array(
+		          'label' => '',
+		          'options' => $yearOptions,
+		        ))."\n";
+        	?>
+        	</div>
+        </div>
+        <div class="input_wrapper">
+          <?php
+            echo $form->input('Card.verification_code', array(
+              'label' => 'Verification code'. ': ' . "<strong class='required'>*</strong>", 
+            ))."\n";
+          ?>
+        </div>
       </fieldset>
       <?php echo $form->end('Donate'); ?>
     </div>

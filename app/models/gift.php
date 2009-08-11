@@ -124,5 +124,31 @@ class Gift extends AppModel {
 		);
 		Mailer::deliver('receipt', $emailSettings);
 	}
+/**
+ * Get Months for gift date select options (credit card)
+ * @return key value for month selection
+ */
+	static function getMonthOptions(){
+		$months = array(
+			"01" => "01", "02" => "02", "03" => "03",
+			"04" => "04",	"05" => "05",	"06" => "06",
+			"07" => "07",	"08" => "08",	"09" => "09",
+			"10" => "10",	"11" => "11",	"12" => "12",
+		);
+		return $months;
+	}
+/**
+ * Get Years for gift date select options (credit card)
+ * @return key value for year selection
+ */
+	static function getYearOptions(){
+		$years = array();
+		$y = (date("Y", strtotime("now")));
+		//for($i=1;$i<=12;$i++) $monthOptions[] = $i;
+		for ($i=$y;$i<=$y+10;$i++) {
+			$years[$i] = $i;
+		}
+		return $years;
+	}
 }
 ?>
