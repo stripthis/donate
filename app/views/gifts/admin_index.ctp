@@ -21,8 +21,6 @@
     	<th><?php echo $paginator->sort('appeal_id');?></th>
     	<th><?php echo $paginator->sort('fname');?></th>
     	<th><?php echo $paginator->sort('lname');?></th>
-    	<th><?php echo $paginator->sort('zip');?></th>
-    	<th><?php echo $paginator->sort('country_id');?></th>
     	<th><?php echo $paginator->sort('email');?></th>
     	<th><?php echo $paginator->sort('created');?></th>
     	<th class="actions"><?php __('Actions');?></th>
@@ -52,19 +50,13 @@ foreach ($gifts as $gift):
       <?php echo $html->link($gift['Appeal']['name'], array('controller'=> 'appeals', 'action'=>'view', $gift['Appeal']['id'])); ?>
     </td>
     <td>
-      <?php echo $gift['Gift']['fname']; ?>
+      <?php echo $gift['Contact']['fname']; ?>
     </td>
     <td>
-      <?php echo $gift['Gift']['lname']; ?>
+      <?php echo $gift['Contact']['lname']; ?>
     </td>
     <td>
-      <?php echo $gift['Gift']['zip']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Country']['name']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['email']; ?>
+      <?php echo $gift['Contact']['email']; ?>
     </td>
     <td>
       <?php echo $gift['Gift']['created']; ?>

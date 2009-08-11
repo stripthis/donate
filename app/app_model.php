@@ -222,19 +222,6 @@ class AppModel extends Model {
 		return !empty($country);
 	}
 /**
- * Validate City - check if it exist based on the id
- *
- * @param string $check 
- * @return void
- * @access public
- */
-	function validateCity($check) {
-		$city = ClassRegistry::init('City')->lookup(
-			array('id' => current($check)), 'id', false
-		);
-		return !empty($city);
-	}
-/**
  * Validate State - check if it exist based on the id
  *
  * @param string $check 

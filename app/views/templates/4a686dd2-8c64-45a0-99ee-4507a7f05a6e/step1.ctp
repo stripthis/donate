@@ -20,8 +20,7 @@
 	);
 	$currencyOptions = array("EUR","USD","GBP");
 	$frequencyOptions = Configure::read('App.frequency_options');
-	$cookie = Common::getComponent('Cookie');
-	
+
 	if (!empty($cData)) {
 	  $cData = $cData['Gift'];
 	}
@@ -79,7 +78,6 @@
 			<?php echo !in_array($amount, array(5, 10, 15)) ? $checked : ''?> 
 	      /> 
           <?php
-            $currency= $cookie->read('currency');
             echo $form->input('currency', array(
               'label' => '', 'options' => $currencyOptions,
               'selected' => $giftForm->value('Gift', 'currency', '', $form->data)

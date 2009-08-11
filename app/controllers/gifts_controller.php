@@ -1,6 +1,7 @@
 <?php
 class GiftsController extends AppController {
 	var $helpers = array('Fpdf', 'GiftForm');
+	var $models = array('Gift', 'Contact', 'Address', 'Phone');
 /**
  * undocumented function
  *
@@ -26,8 +27,8 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function add($appealId = null, $step = null) {
-		$appealOptions = $this->Appeal->find('list'); 
+	function add($appealId = null, $step = 1) {
+		$appealOptions = $this->Appeal->find('list');
 		$countryOptions = $this->Country->find('list');
 		$officeOptions = $this->Office->find('list');
 
@@ -45,10 +46,12 @@ class GiftsController extends AppController {
 
 		// no data was given so we render the selected/default view
 		if ($this->isGet()) {
-			return;
+			return $this->render('step' . $step);
 		}
 
 		$errors = false;
+
+		$this->loadSessionData($this->data);
 		$contactId = $this->Contact->addFromGift($this->data);
 
 		if (Common::isUuid($contactId)) {
@@ -61,8 +64,14 @@ class GiftsController extends AppController {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
 		}
 
-		$this->_reuseData();
+		$this->saveSessionData();
 
+		// @todo: will be refactored when admin panel ready to create multistep forms
+		if ($step < $currentAppeal['Appeal']['steps']) {
+			return $this->render('step' . ($step + 1));
+		}
+
+		unset($this->data['Gift']['id']);
 		$this->Gift->create($this->data);
 		if ($this->Gift->save()) {
 			$giftId = $this->data['Gift']['id'] = $this->Gift->getLastInsertId();
@@ -72,7 +81,8 @@ class GiftsController extends AppController {
 
 		if ($errors) {
 			$msg = 'Sorry, something went wrong, please correct the errors below.';
-			return $this->Message->add(__($msg, true), 'error');
+			$this->Message->add(__($msg, true), 'error');
+			return $this->render('step' . $step);
 		}
 
 		// everything ok prepare / perform the transaction
@@ -95,7 +105,8 @@ class GiftsController extends AppController {
 		$result = $this->Transaction->process($tId);
 		if ($result !== true) {
 			$msg = 'There was a problem processing the transaction: ' . $result;
-			return $this->Message->add(__($msg, true));
+			$this->Message->add(__($msg, true));
+			return $this->render('step' . $step);
 		}
 
 		$keyData = $this->_addAuthkeyToSession($tId);
@@ -172,7 +183,7 @@ class GiftsController extends AppController {
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,
 			'contain' => array(
-				'Country(name)', 'Office(id, name)', 'Appeal(id, name)'
+				'Contact(fname, lname, email)', 'Office(id, name)', 'Appeal(id, name)'
 			),
 			'limit' => 20
 		);
@@ -246,9 +257,25 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function _reuseData() {
-		$models = array('Gift', 'Contact', 'Address', 'Phone');
-		foreach ($models as $model) {
+	function loadSessionData($formData) {
+		foreach ($this->models as $model) {
+			if (!$this->Session->check($model)) {
+				continue;
+			}
+			if (!isset($this->data[$model])) {
+				$this->data[$model] = array();
+			}
+			$this->data[$model] = am($this->Session->read($model), $this->data[$model]);
+		}
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function saveSessionData() {
+		foreach ($this->models as $model) {
 			if (!isset($this->data[$model])) {
 				continue;
 			}
