@@ -44,9 +44,9 @@
       <p class="message <?php echo $message['type']; ?>"><?php echo $simpleTextile->toHtml($message['text']); ?></p>
 <?php endforeach; ?>
       <?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
-      <?php echo $form->input( 'Gift.id', array('type' => 'hidden'))."\n"; ?>
-      <?php echo $form->input( 'Gift.type', array('type' => 'hidden', "value" => "donation"))."\n"; ?>
-      <?php echo $form->input( 'Gift.appeal_id', array('type' => 'hidden'))."\n"; ?>
+      <?php echo $form->input('Gift.id', array('type' => 'hidden'))."\n"; ?>
+      <?php echo $form->input('Gift.type', array('type' => 'hidden', "value" => "donation"))."\n"; ?>
+      <?php echo $form->input('Gift.appeal_id', array('type' => 'hidden'))."\n"; ?>
       <fieldset class="left" id="gift_type">
         <legend><?php echo __("Gift Information"); ?></legend>
         <div class="input_wrapper radio">
@@ -94,7 +94,7 @@
         </div>
 		<?php
 		$options = array(
-			'label' => 'Frequency'. ': ' . $required,
+			'label' => 'Frequency' . ': ' . $required,
 			'options' => $frequencyOptions,
 			'selected' => $giftForm->value('Gift', 'frequency', 'monthly', $form->data)
         );
