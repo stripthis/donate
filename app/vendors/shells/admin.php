@@ -121,15 +121,24 @@ class AdminShell extends Shell {
 		$data['User']['repeat_password'] = $pwData[1];
 
 		if (!$this->User->save($data)) {
-			pr($this->User->validationErrors);
 			return $this->out('Sorry, an error has occurred while saving the user data.');
 		}
 
+		$officeUrl = Configure::read('App.domain');
+		$options = array(
+			'mail' => array(
+				'to' => $login,
+				'subject' => 'New Account for Greenpeace White Rabbit'
+			),
+			'vars' => array(
+				'url' => $officeUrl,
+				'password' => $password
+			)
+		);
+		Mailer::deliver('created_admin', $options);
+
 		$msg = 'The admin account for ' . $login . ' has been created/reset successfully. ';
 		$msg = 'An email has been sent to the email address.';
-
-		// @todo email sending
-
 		$this->out($msg);
 		$this->out('password is: ' . $password);
 	}

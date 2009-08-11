@@ -41,7 +41,7 @@ class Common extends Object
 			$Component =& ClassRegistry::getObject($componentKey);
 		} else {
 			Assert::true(App::import('Component', $component));
-			$class = $component.'Component';
+			$class = $component . 'Component';
 			$Component = new $class;
 			$Controller = new Controller();
 			$Component->initialize($Controller, array());
