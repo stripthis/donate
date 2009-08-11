@@ -18,6 +18,7 @@ class GiftsController extends AppController {
 		$this->Contact = $this->Gift->Contact;
 		$this->Country = $this->Gift->Contact->Address->Country;
 		$this->Transaction = $this->Gift->Transaction;
+		$this->Card = ClassRegistry::init('Card');
 	}
 /**
  * Add a catch
@@ -30,7 +31,6 @@ class GiftsController extends AppController {
 	function add($appealId = null, $step = 1) {
 		$appealOptions = $this->Appeal->find('list');
 		$countryOptions = $this->Country->find('list');
-		$officeOptions = $this->Office->find('list');
 
 		// try to find the requested appeal or the default one
 		$currentAppeal = $this->Appeal->find('concrete_or_default', array('id' => $appealId));
@@ -78,7 +78,18 @@ class GiftsController extends AppController {
 		} else {
 			$errors = true;
 		}
-
+		
+		// credit card data is given
+		//@todo if appeal or payment gateway use redirect model then redirect
+		//else if the credit data is given, validates 
+		$this->Card->set($this->data);
+		if ($this->Card->validates()) {
+			//@todo if application used in manual/direct debit mode, save credit card details
+			//But for now: *WE DON'T SAVE*
+		} else {
+			$errors = true;
+		}
+		
 		if ($errors) {
 			$msg = 'Sorry, something went wrong, please correct the errors below.';
 			$this->Message->add(__($msg, true), 'error');

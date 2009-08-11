@@ -21,12 +21,12 @@ class CommonHelper extends Apphelper {
 	function shortenName($name){
 		$maxNameLength = 0;
 		if (strlen($name) > $maxNameLength) {
-	 		$name = explode(" ",$name);
+	 		$name = explode(' ',$name);
 			$length = count($name);
 	 		for ($i = 0; $i< $length - 1; $i++) {
-	 			$name[0] = $name[0][0].".";
+	 			$name[0] = $name[0][0].'.';
 	 		}
-	 		$name = implode(" ",$name);
+	 		$name = implode(' ',$name);
 		}
 		return $name;
 	}
@@ -39,6 +39,18 @@ class CommonHelper extends Apphelper {
 		if (isset($this->Form->params['data']['Gift'])) {
 			if(isset($this->Form->params['data']['Gift']['amount']) && $this->Form->params['data']['Gift']['amount'] == $this->Form->params['data']['Gift']['amount_other']) {
 				return $this->Form->params['data']['Gift']['amount_other'];
+			}
+		}
+		return '';
+	}
+/**
+ * Payment card selection repopulation
+ * @return "checked='checked'" if the radio seems ok, null otherwise
+ */
+	function creditCardSelected($cc){
+		if (isset($this->Form->params['data']['Payment']['card']['name'])) {
+			if($this->Form->params['data']['Payment']['card']['name'] == $cc) {
+				return 'checked=\'checked\'';
 			}
 		}
 		return '';

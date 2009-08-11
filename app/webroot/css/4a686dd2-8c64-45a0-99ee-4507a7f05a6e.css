@@ -126,7 +126,7 @@ form div.submit{
 input[type=submit] {
   display: inline;
   font-size: 160%;
-  padding: 5px 15px;
+  padding: 5px 18px;
   margin:5px 0px 5px 5px;
   width: auto;
   vertical-align: bottom;
@@ -297,6 +297,7 @@ form .error .error-message{
 	border-right:0;
 	border-left:0;
 }
+/* text decoration */
 #content #activist{
 	float:left;
 	clear:none;
@@ -336,6 +337,63 @@ form .error .error-message{
 #content .mission strong{
 	color:#FF6600;
 }
+
+/* credit card selector */
+#content .input_wrapper.radio#card{
+}
+#content .input_wrapper.radio#card label.option{
+	width:120px;
+	float:left;
+	border:1px solid #FFF;
+}
+#content .input_wrapper.radio#card label.option#mastercard{
+	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/mastercard.png) center 7px no-repeat;
+}
+#content .input_wrapper.radio#card label.option#visa{
+	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/visa.png) center 7px no-repeat;
+}
+#content .input_wrapper.radio#card label.option#visa_electron{
+	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/visa.png) center 7px no-repeat;
+}
+#content .input_wrapper.radio#card label.option#diners_club{
+	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/diners.png) center 7px no-repeat;
+}
+#content .input_wrapper.radio#card label.option:hover{
+	border:1px solid #DDD;
+	-moz-border-radius:5px;
+}
+#content .input_wrapper.radio#card label.option span{
+	width:120px;
+	float:left;
+	text-align:center;
+	padding-top:5px;
+	margin-top: 0;
+	margin-top: -43px;
+	color:#777;
+}
+#content .input_wrapper.radio#card label.option input{
+	float:left;
+	margin-left:54px;
+	margin-top: 58px;
+}
+/* year month selector */
+#content .input_wrapper#expire{
+	width:100%;
+	clear:both;
+}
+#content .input_wrapper#expire .input label{
+	display:none;
+}
+#content .input_wrapper#expire .input{
+	float:left;
+	clear:none;
+	margin:0;
+	padding:0 3px 0 0;
+}
+#content .input_wrapper#cvc{
+	border:1px solid blue;
+}
+
 /* banner */
 #banner{
 	float:left;

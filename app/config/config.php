@@ -25,16 +25,16 @@ $config = array(
 		'username' => 'no-reply@greenpeace.org',
 		'password' => ''
 	),*/
+	//'App.newsURL' => 'http://weblog.greenpeace.org/makingwaves/',
+	//'App.newsFeed' => 'http://weblog.greenpeace.org/makingwaves/itclimateleaders.xml',
+	//'App.twitterURL' => 'http://www.twitter.com/greenpeace',
+	//'App.twitterFeed' => 'http://twitter.com/statuses/user_timeline/39753217.rss',
 	'App.use_email_activation' => false,
 	'App.lead_dev_email' => 'rbertot@greenpeace.org',
 	'App.recaptcha_key' => '6LfXQgYAAAAAAHH3k76pZcBsbmsI6uustwK4lBF2',
 	'App.recaptcha_privkey' => '6LfXQgYAAAAAANChwyDVWumArldovDFn1O8G1TpW',
 	'App.avatarSize' => '52', //Avatar stuffs
 	'App.avatarDefault' => '/img/layout/defaultAvatar.png',
-	'App.newsURL' => 'http://weblog.greenpeace.org/makingwaves/',
-	//'App.newsFeed' => 'http://weblog.greenpeace.org/makingwaves/itclimateleaders.xml',
-	//'App.twitterURL' => 'http://www.twitter.com/greenpeace',
-	//'App.twitterFeed' => 'http://twitter.com/statuses/user_timeline/39753217.rss',
 	'App.ipBanTime' => '600',
 	'App.maxEmailsSentFromIp' => '50',
 	'App.spamEmailTimeLimit' => '600', //Time in seconds in which one email can get referral.
@@ -46,10 +46,26 @@ $config = array(
 		)
 	),
 	'Stats.startDate' => '-1 year',
+	//@todo group under a gift config object?
 	'App.gift_types' => array(
 		'donation' => 'Donation'
 	),
 	'App.gift_mini' => "5",
+	'App.frequency_options' => array(
+		'onetime' => 'One Time',
+		'monthly' => 'Monthly',
+		//'quarterly' => 'Quarterly',
+		//'biannually' => 'Biannually',
+		'annualy' => 'Annualy'
+	),	
+	'App.card_types' => array(
+		'mastercard' => 'Mastercard',
+		'visa' => 'Visa',
+		'visa_electron' => 'Visa Electron',
+		'diners_club' => 'diners club',
+		'amex' => 'American Express',
+		'JCB' => 'JCB'
+	),
 	'Stats.defaultChartOptions' => array(
 		'type' => 'bar_filled',
 		'color' => '#006600',
@@ -67,13 +83,6 @@ $config = array(
 		'y_axis' => array(
 			'colors' => array('#BED4F4', '#BED4F4')
 		),
-	),
-	'App.frequency_options' => array(
-		'onetime' => 'One Time',
-		'monthly' => 'Monthly',
-		//'quarterly' => 'Quarterly',
-		//'biannually' => 'Biannually',
-		'annualy' => 'Annualy'
 	)
 );
 ?>
