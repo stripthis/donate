@@ -18,9 +18,13 @@ class GiftsController extends AppController {
 		$this->Country = $this->Gift->Contact->Address->Country;
 		$this->Transaction = $this->Gift->Transaction;
 	}
-	
 /**
- * Add a Gift - Catch All!
+ * Add a catch
+ *
+ * @param string $appealId 
+ * @param string $step 
+ * @return void
+ * @access public
  */
 	function add($appealId = null, $step = null) {
 		$appealOptions = $this->Appeal->find('list'); 
@@ -245,17 +249,22 @@ class GiftsController extends AppController {
 	function _reuseData() {
 		$models = array('Gift', 'Contact', 'Address', 'Phone');
 		foreach ($models as $model) {
+			if (!isset($this->data[$model])) {
+				continue;
+			}
 			foreach ($this->data[$model] as $field => $value) {
 				$this->Cookie->write($model . '.' . $field, $value);
 				$this->Session->write($model . '.' . $field, $value);
 			}
 		}
 
-		$countryName = $this->Country->lookup(array(
-			'name' => $this->data['Address']['country_id']
-		), 'id', false);
-		$this->Cookie->write('Address.country_name', $countryName);
-		$this->Session->write('Address.country_name', $countryName);
+		if (isset($this->data['Address']['country_id'])) {
+			$countryName = $this->Country->lookup(array(
+				'name' => $this->data['Address']['country_id']
+			), 'id', false);
+			$this->Cookie->write('Address.country_name', $countryName);
+			$this->Session->write('Address.country_name', $countryName);
+		}
 	}
 }
 ?>
