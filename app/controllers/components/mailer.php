@@ -31,7 +31,7 @@ class Mailer{
 		}
 
 		
-		if ($options['mail']['delivery'] == 'smtp') {
+		if (isset($options['mail']['delivery']) && $options['mail']['delivery'] == 'smtp') {
 			$options['mail']['smtpOptions'] = Configure::read('App.smtpOptions');
 		}
 

@@ -31,26 +31,6 @@ class CommonHelper extends Apphelper {
 		return $name;
 	}
 /**
- * Gift Amount selection process -
- * Indicates if a radio button is appropriate for a given gift amount .
- * @param $amount int, the amount associated with the radio button 
- * @return "checked='checked'" if the radio seems ok, null otherwise
- */
-	function giftRadioSelected($amount){
-		if (isset($this->Form->params['data']['Gift'])) {
-			if($amount != "other") {
-				if(isset($this->Form->params['data']['Gift']['amount']) && $this->Form->params['data']['Gift']['amount'] == $amount) {
-					return "checked='checked'";
-				}
-			} else {
-				if(isset($this->Form->params['data']['Gift']['amount']) && $this->Form->params['data']['Gift']['amount'] == $this->Form->params['data']['Gift']['amount_other']) {
-					return "checked='checked'";
-				}
-			}
-		}
-		return '';
-	}
-/**
  * Gift Amount selection process - 
  * Help repopulate the 'other' text field 
  * @return the text to be put in the other textfield, null otherwise

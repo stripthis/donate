@@ -25,6 +25,7 @@
 	if (!empty($cData)) {
 	  $cData = $cData['Gift'];
 	}
+	$required = '<strong class="required">*</strong>';
 ?>
   <div id="content_wrapper">
     <div id="banner">
@@ -50,76 +51,57 @@
       <fieldset class="left" id="gift_type">
         <legend><?php echo __("Gift Information"); ?></legend>
         <div class="input_wrapper radio">
-          <label for="amount" class="option_title"><strong>Amount: </strong><strong class="required">*</strong></label>
-          <label class="option"><input name="data[Gift][amount]" value="5" class="radio" type="radio" <?php echo $common->giftRadioSelected(5); ?>> 5€</label>
-          <label class="option"><input name="data[Gift][amount]" value="10" class="radio" type="radio" <?php echo $common->giftRadioSelected(10); ?>> 10€</label>
-          <label class="option"><input name="data[Gift][amount]" value="15" class="radio" type="radio" <?php echo $common->giftRadioSelected(15); ?>> 15€</label>
+		<?php
+		$amount = $giftForm->value('Gift', 'amount', '10', $form->data);
+		$checked = 'checked="checked"';
+		$nonChecked = 'checked=""';
+		?>
+		<label for="amount" class="option_title"><strong>Amount: </strong><strong class="required">*</strong></label>
+		<label class="option">
+			<input 
+				name="data[Gift][amount]" value="5" class="radio amount" type="radio" 
+				<?php echo $amount == 5 ? $checked : ''?>> 5€
+		</label>
+		<label class="option">
+			<input name="data[Gift][amount]" value="10" class="radio amount" type="radio" 
+			<?php echo $amount == 10 ? $checked : ''?>> 10€
+		</label>
+		<label class="option">
+			<input name="data[Gift][amount]" value="15" class="radio amount" type="radio" 
+			<?php echo $amount == 15 ? $checked : ''?>> 15€</label>
         </div>
         <div class="input_wrapper radio" id="other_amount">
           <label class="option">
-            <input name="data[Gift][amount]" value="other" class="form-radio" type="radio" <?php echo $common->giftRadioSelected('other'); ?>> Other
+            <input name="data[Gift][amount]" value="other" class="form-radio otheramount" type="radio"> Other
           </label>
-          <input name="data[Gift][amount_other]" type="text" class="text" id="txtOtherAmount" value="<?php echo $common->giftTextAmount(); ?>"/> 
+          <input name="data[Gift][amount_other]" type="text" class="text" id="txtOtherAmount" 
+			value="<?php echo !in_array($amount, array(5, 10, 15)) ? $amount : ''?>"
+			<?php echo !in_array($amount, array(5, 10, 15)) ? $checked : ''?> 
+	      /> 
           <?php
             $currency= $cookie->read('currency');
             echo $form->input('currency', array(
               'label' => '', 'options' => $currencyOptions,
-              'selected' => !empty($currency) ? $currency : ''
+              'selected' => $giftForm->value('Gift', 'currency', '', $form->data)
             ))."\n";
           ?>
           <?php 
-          	if($form->isFieldError('Gift.amount')) {
+          	if($form->isFieldError('amount')) {
           		echo '<div class="error">' . $form->error("Gift.amount") . '</div>';
           	}
-          	if($form->isFieldError('Gift.currency')) {
+          	if($form->isFieldError('currency')) {
           		echo '<div class="error">' . $form->error("Gift.currency"). '</div>';
           	}
           ?>
         </div>
-        <?php
-        /*
-        $type = $cookie->read('type');
-        echo $form->input('type', array(
-          'label' => 'Type:', 'options' => Configure::read('App.gift_types'),
-          'selected' => !empty($type) ? $type : false
-        ));
-        */
-        /*
-        $amount = $cookie->read('amount');
-        echo $form->input('amount', array(
-          'label' => 'Amount:',
-          'value' => !empty($amount) ? $amount : ''
-        ));
-        */
-        $frequency = $cookie->read('frequency');
-        echo $form->input('frequency', array(
-          'label' => 'Frequency'. ': ' . "<strong class='required'>*</strong>",
-          'options' => $frequencyOptions,
-          'selected' => !empty($frequency) ? $frequency : 'monthly'
-        ))."\n";
-        
-        /*
-        $officeId = $cookie->read('office_id');
-        echo $form->input('office_id', array(
-          'label' => 'Office:', 'options' => $officeOptions,
-          'selected' => !empty($officeId) ? $officeId : false
-        ));
-        */
-        /*
-        $appealId = $cookie->read('appeal_id');
-        echo $form->input('appeal_id', array(
-          'label' => 'Appeal:', 'options' => $appealOptions, 'empty' => '--',
-          'selected' => !empty($appealId) ? $appealId : false
-        ));
-        */
-        /*
-        $description = $cookie->read('description');
-        echo $form->input('description', array(
-          'label' => 'Comments:',
-          'value' => !empty($description) ? $description : ''
-        ));
-        */
-        ?>
+		<?php
+		$options = array(
+			'label' => 'Frequency'. ': ' . $required,
+			'options' => $frequencyOptions,
+			'selected' => $giftForm->value('Gift', 'frequency', 'monthly', $form->data)
+        );
+        echo $form->input('frequency', $options);
+		?>
       </fieldset>
       <div class="form_decoration half left" id="activist">
         <p>
@@ -132,119 +114,96 @@
         <legend><?php echo __("Contact Information"); ?></legend>
         <div class="input_wrapper">
           <?php
-            $salutation = $cookie->read('salutation');
             echo $form->input('Contact.salutation', array(
               'label' => 'Salutation:', 'options' => $saluteOptions,
-              'selected' => !empty($salutation) ? $salutation : ''
+              'selected' => $giftForm->value('Contact', 'salutation', '', $form->data)
             ))."\n";
           ?>
         </div>
         <div class="spacer"></div>
-        <?php
-          /*
-          $title = $cookie->read('title');
-          echo $form->input('title', array(
-            'label' => 'Title:', 'options' => $titleOptions, 'empty' => '',
-            'selected' => !empty($title) ? $title : ''
-          ));
-          */
-        ?>
         <div class="input_wrapper half">
           <?php
-            $fname = $cookie->read('fname');
             echo $form->input('Contact.fname', array(
               'label' => 'First Name'. ': ' ,
-              'value' => !empty($fname) ? $fname : ''
+              'value' => $giftForm->value('Contact', 'fname', '', $form->data)
             ))."\n";
           ?>
         </div>
         <div class="input_wrapper half">
           <?php
-            $lname = $cookie->read('lname');
             echo $form->input('Contact.lname', array(
-              'label' => 'Last Name'. ': ' . "<strong class='required'>*</strong>",
-              'value' => !empty($lname) ? $lname : ''
+              'label' => 'Last Name'. ': ' . $required,
+              'value' => $giftForm->value('Contact', 'lname', '', $form->data)
             ))."\n";
           ?>
         </div>
         <div class="input_wrapper full">
-          <?php
-            $address = $cookie->read('address');
+          <?php         
             echo $form->input('Address.line_1', array(
-              'label' => 'Address'. ': ' . "<strong class='required'>*</strong>",
-              'value' => !empty($address) ? $address : ''
-            ))."\n";
+				'label' => 'Address'. ': ' . $required,
+				'value' => $giftForm->value('Address', 'line_1', '', $form->data)
+			))."\n";
           ?>
           <?php
             echo $form->input('Address.line_2', array(
               'label' => "",
-              'value' => !empty($address2) ? $address2 : ''
+				'value' => $giftForm->value('Address', 'line_2', '', $form->data)
             ))."\n";
           ?>
         </div>
         <div  class="input_wrapper half">
           <?php
-          $zip = $cookie->read('zip');
           echo $form->input('Address.zip', array(
-            'label' => 'Zip Code'. ': ' . "<strong class='required'>*</strong>",
-            'value' => !empty($zip) ? $zip : ''
+            'label' => 'Zip Code'. ': ' . $required,
+			'value' => $giftForm->value('Address', 'zip', '', $form->data)
           ))."\n";
           ?>
         </div>
         <div class="input_wrapper half">
           <?php
-            $city = $cookie->read('city');
             echo $form->input('Address.city_id', array(
-              'label' => 'City'. ': ' . "<strong class='required'>*</strong>",
-              'value' => !empty($city) ? $city : ''
+              'label' => 'City'. ': ' . $required,
+				'value' => $giftForm->value('Address', 'city_id', '', $form->data)
             ))."\n";
           ?>
         </div>
-        <?php
-        /* <div class="input_wrapper">
-        $stateId = $cookie->read('state_id');
-        echo $form->input('state_id', array(
-          'label' => 'State:', 'options' => $stateOptions, 'empty' => '--',
-          'selected' => !empty($stateId) ? $stateId : false
-        ));
-        </div> */
-        ?>
         <div class="input_wrapper">
           <?php 
-            $countryId = $cookie->read('country_id');
             echo $form->input('Address.country_id', array(
-              'label' => 'Country'. ': ' . "<strong class='required'>*</strong>", 'options' => $countryOptions,
-              'selected' => !empty($countryId) ? $countryId : ''
+              'label' => 'Country'. ': ' . $required, 'options' => $countryOptions,
+				'selected' => $giftForm->value('Address', 'country_id', '', $form->data)
             ))."\n";
           ?>
         </div>
         <div class="input_wrapper half">
           <?php
-            $email = $cookie->read('email');
             echo $form->input('Contact.email', array(
-              'label' => 'Email'. ': ' . "<strong class='required'>*</strong>",
-              'value' => !empty($email) ? $email : ''
+              'label' => 'Email'. ': ' . $required,
+				'value' => $giftForm->value('Contact', 'email', '', $form->data)
             ))."\n";
           ?>
           <?php
+			$value = $giftForm->value('Contact', 'newsletter', '', $form->data);
             echo $form->input('Contact.newsletter', array(
               'label' => 'Yes, send me updates by email', 'type' => 'checkbox', 
-              'class' => 'checkbox', 'div' => false
+              'class' => 'checkbox', 'div' => false,
+				'checked' => $value ? 'checked' : ''
             ))."\n";
           ?>
         </div>
         <div class="input_wrapper half">
           <?php 
-            $email = $cookie->read('phone');
             echo $form->input('Phone.phone', array(
               'label' => 'Phone'. ': ',
-              'value' => !empty($phone) ? $phone : ''
+				'value' => $giftForm->value('Phone', 'phone', '', $form->data)
             ))."\n";
           ?>
           <?php
+			$value = $giftForm->value('Phone', 'contactable', '', $form->data);
             echo $form->input('Phone.contactable', array(
               'label' => 'Yes, it\'s ok to call me at this number', 'type' => 'checkbox',
-              'class' => 'checkbox', 'div' => false
+              'class' => 'checkbox', 'div' => false,
+				'checked' => $value ? 'checked' : ''
             ))."\n";
           ?>
         </div>

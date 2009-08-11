@@ -1,6 +1,6 @@
 <?php
 class GiftsController extends AppController {
-	var $helpers = array('Fpdf');
+	var $helpers = array('Fpdf', 'GiftForm');
 /**
  * undocumented function
  *
@@ -38,28 +38,26 @@ class GiftsController extends AppController {
 			'appealOptions', 'countryOptions',
 			'officeOptions', 'currentAppeal'
 		));
-		
+
 		// no data was given so we render the selected/default view
 		if ($this->isGet()) {
 			return;
 		}
-		
-		// Some data was given, we try to save
-		$this->_reuseDataInCookie();
 
 		$errors = false;
 		$contactId = $this->Contact->addFromGift($this->data);
+
 		if (Common::isUuid($contactId)) {
 			$this->data['Gift']['contact_id'] = $contactId;
 		} else {
 			$errors = true;
 		}
 
-		// radio + textfield mode (cf. other)
-		if (isset($this->data['Gift']['amount']) && $this->data['Gift']['amount'] == "other" 
-			&& isset($this->data['Gift']['amount_other'])) {
+		if (!empty($this->data['Gift']['amount_other'])) {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
 		}
+
+		$this->_reuseData();
 
 		$this->Gift->create($this->data);
 		if ($this->Gift->save()) {
@@ -244,12 +242,20 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function _reuseDataInCookie() {
-		if (isset($this->data['Gift'])) {
-			foreach ($this->data['Gift'] as $field => $value) {
-				$this->Cookie->write($field, $value);
+	function _reuseData() {
+		$models = array('Gift', 'Contact', 'Address', 'Phone');
+		foreach ($models as $model) {
+			foreach ($this->data[$model] as $field => $value) {
+				$this->Cookie->write($model . '.' . $field, $value);
+				$this->Session->write($model . '.' . $field, $value);
 			}
 		}
+
+		$countryName = $this->Country->lookup(array(
+			'name' => $this->data['Address']['country_id']
+		), 'id', false);
+		$this->Cookie->write('Address.country_name', $countryName);
+		$this->Session->write('Address.country_name', $countryName);
 	}
 }
 ?>
