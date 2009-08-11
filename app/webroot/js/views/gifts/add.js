@@ -4,7 +4,12 @@ $(function() {
 	};
 	$('#txtOtherAmount').focus(function() {
 		checkOtherAmount();
-	})
+	});
+
+	$('input.amount').click(function() {
+		$('#txtOtherAmount').attr('checked', false);
+		$('#txtOtherAmount').attr('value', '');
+	});
 
 	function checkOtherAmount() {
 		$('input.otheramount').attr('checked', true);
