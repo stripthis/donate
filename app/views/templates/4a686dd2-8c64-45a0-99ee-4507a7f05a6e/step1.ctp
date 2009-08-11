@@ -231,13 +231,13 @@
         	<div>
         	<?php 
 		        echo $form->input('Card.expire_month', array(
-		          'label' => '',
+		          'label' => 'month',
 		          'options' => $monthOptions,
 		        ))."\n";
         	?>
         	<?php 
 		        echo $form->input('Card.expire_year', array(
-		          'label' => '',
+		          'label' => 'year',
 		          'options' => $yearOptions,
 		        ))."\n";
         	?>

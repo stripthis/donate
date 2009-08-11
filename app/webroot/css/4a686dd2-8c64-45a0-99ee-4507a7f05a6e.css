@@ -376,11 +376,22 @@ form .error .error-message{
 	margin-left:54px;
 	margin-top: 58px;
 }
-
 /* year month selector */
 #content .input_wrapper#expire{
-	border:1px solid blue;
+	width:100%;
 	clear:both;
+}
+#content .input_wrapper#expire .input label{
+	display:none;
+}
+#content .input_wrapper#expire .input{
+	float:left;
+	clear:none;
+	margin:0;
+	padding:0 3px 0 0;
+}
+#content .input_wrapper#cvc{
+	border:1px solid blue;
 }
 
 /* banner */
