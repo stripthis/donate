@@ -478,5 +478,15 @@ class User extends AppModel {
 			? sprintf('http://www.gravatar.com/avatar/%s.jpg', md5(strtolower($user['User']['login']))).$param
 			: false;
   }
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function generatePassword() {
+		$pw = substr(md5(microtime()), 0, 9);
+		return array($pw, User::hashPw($pw));
+	}
 }
 ?>

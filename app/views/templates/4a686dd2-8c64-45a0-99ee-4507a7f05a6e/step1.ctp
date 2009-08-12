@@ -48,9 +48,9 @@
       <p class="message <?php echo $message['type']; ?>"><?php echo $simpleTextile->toHtml($message['text']); ?></p>
 <?php endforeach; ?>
       <?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
-      <?php echo $form->input( 'Gift.id', array('type' => 'hidden'))."\n"; ?>
-      <?php echo $form->input( 'Gift.type', array('type' => 'hidden', "value" => "donation"))."\n"; ?>
-      <?php echo $form->input( 'Gift.appeal_id', array('type' => 'hidden'))."\n"; ?>
+      <?php echo $form->input('Gift.id', array('type' => 'hidden'))."\n"; ?>
+      <?php echo $form->input('Gift.type', array('type' => 'hidden', "value" => "donation"))."\n"; ?>
+      <?php echo $form->input('Gift.appeal_id', array('type' => 'hidden'))."\n"; ?>
       <fieldset class="left" id="gift_type">
         <legend><?php echo __("Gift Information"); ?></legend>
         <div class="input_wrapper radio">
@@ -97,14 +97,14 @@
             }
           ?>
         </div>
-    <?php
-    $options = array(
-      'label' => 'Frequency'. ': ' . $required,
-      'options' => $frequencyOptions,
-      'selected' => $giftForm->value('Gift', 'frequency', 'monthly', $form->data)
-        );
-        echo $form->input('frequency', $options);
-    ?>
+        <?php
+          $options = array(
+            'label' => 'Frequency' . ': ' . $required,
+            'options' => $frequencyOptions,
+            'selected' => $giftForm->value('Gift', 'frequency', 'monthly', $form->data)
+            );
+          echo $form->input('frequency', $options);
+        ?>
       </fieldset>
       <div class="form_decoration half left" id="activist">
         <p>
@@ -182,7 +182,7 @@
           <?php
             echo $form->input('Contact.email', array(
               'label' => 'Email'. ': ' . $required . 
-            		$giftForm->hint('<strong>Q: Why do we need my email address?</strong><br/>A: We need your email address to send you a receipt or get in touch if something goes wrong.'),
+                $giftForm->hint('<strong>Q: Why do we need my email address?</strong><br/>A: We need your email address to send you a receipt or get in touch if something goes wrong.'),
               'value' => $giftForm->value('Contact', 'email', '', $form->data)
             ))."\n";
           ?>
@@ -231,18 +231,18 @@
         <div class="input_wrapper" id="expire">
           <label>Expiracy date <strong class='required'>*</strong></label>
           <div>
-	          <?php 
-	            echo $form->input('Card.expire_month', array(
-	              'label' => 'month',
-	              'options' => $monthOptions,
-	            ))."\n";
-	          ?>
-	          <?php 
-	            echo $form->input('Card.expire_year', array(
-	              'label' => 'year',
-	              'options' => $yearOptions,
-	            ))."\n";
-	          ?>
+            <?php 
+              echo $form->input('Card.expire_month', array(
+                'label' => 'month',
+                'options' => $monthOptions,
+              ))."\n";
+            ?>
+            <?php 
+              echo $form->input('Card.expire_year', array(
+                'label' => 'year',
+                'options' => $yearOptions,
+              ))."\n";
+            ?>
           </div>
         </div>
         <div class="input_wrapper" id="cvc">
