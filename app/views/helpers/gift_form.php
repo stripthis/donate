@@ -14,13 +14,13 @@ class GiftFormHelper extends AppHelper {
 		$result = $default;
 
 		$this->Cookie = Common::getComponent('Cookie');
-        $cookieValue = $this->Cookie->read($model . '.' . $field);
+		$cookieValue = $this->Cookie->read($model . '.' . $field);
 		if (!empty($cookieValue)) {
 			$result = $cookieValue;
 		}
 
 		$this->Session = Common::getComponent('Session');
-        $sessValue = $this->Session->read($model . '.' . $field);
+		$sessValue = $this->Session->read($model . '.' . $field);
 		if (!empty($sessValue)) {
 			$result = $sessValue;
 		}

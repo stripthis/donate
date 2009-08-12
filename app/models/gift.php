@@ -144,7 +144,6 @@ class Gift extends AppModel {
 	static function getYearOptions(){
 		$years = array();
 		$y = (date("Y", strtotime("now")));
-		//for($i=1;$i<=12;$i++) $monthOptions[] = $i;
 		for ($i=$y;$i<=$y+10;$i++) {
 			$years[$i] = $i;
 		}

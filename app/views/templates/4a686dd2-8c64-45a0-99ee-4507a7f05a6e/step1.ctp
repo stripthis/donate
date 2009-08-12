@@ -57,12 +57,10 @@
           <?php
             $amount = $giftForm->value('Gift', 'amount', '10', $form->data);
             $checked = 'checked="checked"';
-            $nonChecked = 'checked=""';
           ?>
           <label for="amount" class="option_title">Amount: <strong class="required">*</strong></label>
           <label class="option">
-            <input 
-              name="data[Gift][amount]" value="5" class="radio amount" type="radio" 
+            <input name="data[Gift][amount]" value="5" class="radio amount" type="radio" 
               <?php echo $amount == 5 ? $checked : ''?>> 5€
           </label>
           <label class="option">
@@ -79,9 +77,9 @@
             <input name="data[Gift][amount]" value="other" class="form-radio otheramount" type="radio"> Other
           </label>
           <input name="data[Gift][amount_other]" type="text" class="text" id="txtOtherAmount" 
-      value="<?php echo !in_array($amount, array(5, 10, 15)) ? $amount : ''?>"
-      <?php echo !in_array($amount, array(5, 10, 15)) ? $checked : ''?> 
-        /> 
+      			value="<?php echo !in_array($amount, array(5, 10, 15)) ? $amount : ''?>"
+		      	<?php echo !in_array($amount, array(5, 10, 15)) ? $checked : ''?> 
+		      /> 
           <?php
             echo $form->input('currency', array(
               'label' => '', 'options' => $currencyOptions,
@@ -216,10 +214,34 @@
         <legend>Payment Information:</legend>
         <div class="input_wrapper radio" id="card">
           <label for="amount" class="option_title">Card type: <strong class="required">*</strong></label>
-          <label class="option" id="mastercard"><input name="data[Card][type]" value="mastercard" class="radio" type="radio" <?php echo $common->creditCardSelected('mastercard'); ?>><span>mastercard</span></label>
-          <label class="option" id="visa"><input name="data[Card][type]" value="visa" class="radio" type="radio" <?php echo $common->creditCardSelected('visa'); ?>><span>visa</span></label>
-          <label class="option" id="visa_electron"><input name="data[Card][type]" value="visa_electron" class="radio" type="radio" <?php echo $common->creditCardSelected('visa_electron'); ?>><span>visa electron</span></label>
-          <label class="option" id="diners_club"><input name="data[Card][type]" value="diners_club" class="radio" type="radio" <?php echo $common->creditCardSelected('diners_club'); ?>><span>diners club</span></label>
+          <?php
+            $cardType = $giftForm->value('Card', 'type', 'visa', $form->data);
+          ?>
+          <label class="option" id="mastercard">
+          	<input name="data[Card][type]" value="mastercard" class="radio" type="radio" 
+          	<?php echo $cardType == 'mastercard' ? $checked : ''; ?>>
+          	<span>Mastercard</span>
+          </label>
+          <label class="option" id="visa">
+          	<input name="data[Card][type]" value="visa" class="radio" type="radio" 
+          	<?php echo $cardType == 'visa' ? $checked : ''; ?>>
+          	<span>Visa</span>
+          </label>
+          <label class="option" id="visa_electron">
+          	<input name="data[Card][type]" value="visa_electron" class="radio" type="radio" 
+          	<?php echo $cardType == 'visa_electron' ? $checked : ''; ?>>
+          	<span>Visa Electron</span>
+          </label>
+          <label class="option" id="diners_club">
+          	<input name="data[Card][type]" value="diners_club" class="radio" type="radio" 
+          	<?php echo $cardType == 'diners_club' ? $checked : ''; ?>>
+          	<span>Diners Club</span>
+          </label>
+          <?php 
+            if($form->isFieldError('Card.type')) {
+              echo '<div class="error">' . $form->error("Card.type") . '</div>';
+            }
+          ?>
         </div>
         <div class="input_wrapper">
           <?php
