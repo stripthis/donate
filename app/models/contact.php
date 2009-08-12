@@ -105,5 +105,11 @@ class Contact extends AppModel {
 		}
 		return false;
 	}
+/**
+ * Get Salutations
+ */
+	static function getSalutations() {
+		return Configure::read("App.contact.salutations");
+	}
 }
 ?>

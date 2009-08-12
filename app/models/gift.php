@@ -45,23 +45,7 @@ class Gift extends AppModel {
 				'message' => 'Sorry, this amount is too small.',
 				'required' => true,
 			)
-		),/*
-		'office_id' => array(
-			'required' => array(
-				'rule' => 'notEmpty',
-				'message' => 'The office is required!',
-				'required' => true,
-				'last' => true
-			),
-			'notEmpty' => array(
-				'rule' => 'notEmpty',
-				'message' => 'Please provide an office.',
-			),
-			'valid' => array(
-				'rule' => array('validateOffice'),
-				'message' => 'Please provide a valid office.'
-			)
-		),*/
+		),
 		'frequency' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
@@ -76,36 +60,7 @@ class Gift extends AppModel {
 		)
 	);
 /**
- * undocumented function
- *
- * @param string $check 
- * @return void
- * @access public
- */
-	function validateFrequency($check) {
-		return array_key_exists(current($check), Configure::read('App.frequency_options'));
-	}
-/**
- * undocumented function
- *
- * @param string $check 
- * @return void
- * @access public
- */
-	function validateType($check) {
-		return array_key_exists($check['type'], Configure::read('App.gift_types'));
-	}
-/**
- * Validate amount - to avoid small amounts
- * @param $check
- * @return unknown_type
- */
-	function validateAmount($check){
-		return (isset($check['amount']) && $check['amount'] >= Configure::read('App.gift_mini'));
-	}
-/**
- * undocumented function
- *
+ * Deliver mail receipt
  * @param string $email 
  * @param string $authKey 
  * @return void
@@ -125,29 +80,68 @@ class Gift extends AppModel {
 		Mailer::deliver('receipt', $emailSettings);
 	}
 /**
- * Get Months for gift date select options (credit card)
- * @return key value for month selection
+ * undocumented function
+ *
+ * @param string $check 
+ * @return void
+ * @access public
  */
-	static function getMonthOptions(){
-		$months = array(
-			"01" => "01", "02" => "02", "03" => "03",
-			"04" => "04",	"05" => "05",	"06" => "06",
-			"07" => "07",	"08" => "08",	"09" => "09",
-			"10" => "10",	"11" => "11",	"12" => "12",
-		);
-		return $months;
+	function validateFrequency($check) {
+		return array_key_exists(current($check), Gift::getFrequencies());
 	}
 /**
- * Get Years for gift date select options (credit card)
- * @return key value for year selection
+ * Validate a gift type
+ * @param string $check 
+ * @return void
+ * @access public
  */
-	static function getYearOptions(){
-		$years = array();
-		$y = (date("Y", strtotime("now")));
-		for ($i=$y;$i<=$y+10;$i++) {
-			$years[$i] = $i;
-		}
-		return $years;
+	function validateType($check) {
+		return array_key_exists($check['type'], Gift::getTypes());
+	}
+/**
+ * Validate amount - to avoid small amounts
+ * @param $check
+ * @return unknown_type
+ */
+	function validateAmount($check){
+		return (isset($check['amount']) && $check['amount'] >= Gift::getMinimumAmount());
+	}
+/**
+ * Return the default proposed frequencies
+ * @return array, allowed frequency options
+ */
+	static function getTypes(){
+		 return Configure::read('App.gift.types');
+	}
+/**
+ * Return the default proposed frequencies
+ * @return array, allowed frequency options
+ */
+	static function getFrequencies(){
+		 return Configure::read('App.gift.frequencies');
+	}
+/**
+ * Return the different amounts proposed by default 
+ * @return array, allowed amount options
+ */
+	static function getAmounts(){
+		 return Configure::read('App.gift.amounts');
+	}
+/**
+ * 
+ * @return number, minimal amount as defined in the configuration file
+ */
+	static function getMinimumAmount(){
+		 $amounts = Configure::read('App.gift.amounts');
+		 return $amounts[0];
+	}
+/**
+ * Return the allowed currencies
+ * @return array, allowed currencies as defined in the configuration file
+ */
+	static function getCurrencies(){
+		//@todo to be based on payment gateway(s) capability
+		return Configure::read('App.gift.currencies');
 	}
 }
 ?>

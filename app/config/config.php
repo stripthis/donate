@@ -46,25 +46,49 @@ $config = array(
 		)
 	),
 	'Stats.startDate' => '-1 year',
-	//@todo group under a gift config object?
-	'App.gift_types' => array(
-		'donation' => 'Donation'
+	'App.contact' => array(
+		'saluations' => array(
+			'ms' => 'Ms.', 
+			'mrs' => 'Mrs.', 
+			'mr' => 'Mr.'
+		),
+		'titles' => array(
+	    'dr' => 'Dr.',
+	    'drdr' => 'Dr. Dr.',
+	    'prof' => 'Prof.',
+	    'profdr' => 'Prof. Dr.',
+	    'profdrdr' => 'Prof. Dr. Dr.',
+	    'dipl' => 'Dipl.'
+  	)
 	),
-	'App.gift_mini' => "5",
-	'App.frequency_options' => array(
-		'onetime' => 'One Time',
-		'monthly' => 'Monthly',
-		//'quarterly' => 'Quarterly',
-		//'biannually' => 'Biannually',
-		'annualy' => 'Annualy'
-	),	
-	'App.card_types' => array(
+	'App.gift' => array(
+		'types' => array(
+			'donation' => 'Donation'
+			//,'inkind' => 'In-kind gift'
+			//,'legacy' => 'Legacy'
+		),
+		'amounts' => array(
+			'5', '10', '15' //minimal amount + next steps
+		),
+		'currencies' => array(
+			'EUR', 'USD', 'GBP'
+		),
+		'frequencies' => array(
+			'onetime' => 'One Time',
+			'monthly' => 'Monthly',
+			//'quarterly' => 'Quarterly',
+			//'biannually' => 'Biannually',
+			'annualy' => 'Annualy'
+		)
+	),
+	'App.cards' => array(
 		'mastercard' => 'Mastercard',
 		'visa' => 'Visa',
 		'visa_electron' => 'Visa Electron',
-		'diners_club' => 'diners club',
-		'amex' => 'American Express',
-		'JCB' => 'JCB'
+		'diners_club' => 'Diners Club',
+		'amex' => '<small>American Express</small>',
+		'JCB' => 'JCB',
+		'discover' => 'Discover'
 	),
 	'Stats.defaultChartOptions' => array(
 		'type' => 'bar_filled',

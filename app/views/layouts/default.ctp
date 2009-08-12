@@ -17,8 +17,7 @@
 ?>
 </head>
 <body>
-	<?php echo $html->link('Single Form Example', array('controller' => 'gifts', 'action' => 'add'))?> | 
-	<?php echo $html->link('Multi Step Form Example', array('controller' => 'gifts', 'action' => 'add', '4a815eff-8a8c-40fa-9b65-72b6a7f05a6e'))?>
+<?php echo $this->element('admin/debug_header') ?>
 <div id="container">
 <?php echo $content_for_layout; ?>
 </div>
