@@ -32,7 +32,7 @@
       <li><a href="<?php echo Router::Url("/admin/appeals/index",true) ?>" <?php if($this->name=="Appeals") echo 'class="selected"';?>><?php echo __("Appeals");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/gifts/index",true) ?>" <?php if($this->name=="Gifts") echo 'class="selected"';?>><?php echo __("Gifts");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/transactions/index",true) ?>" <?php if($this->name=="Transactions") echo 'class="selected"';?>><?php echo __("Transactions");?></a></li>
-      <li><a href="<?php echo Router::Url("/admin/donors/index",true) ?>" <?php if($this->name=="Donors") echo 'class="selected"';?>><?php echo __("Donors");?></a></li>
+      <li><a href="<?php echo Router::Url("/admin/supporters/index",true) ?>" <?php if($this->name=="Supporters") echo 'class="selected"';?>><?php echo __("Supporters");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/config/index",true) ?>" <?php if($this->name=="Config") echo 'class="selected"';?>><?php echo __("Config");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/auth/logout",true) ?>" class="logout"><?php echo __("Logout");?></a></li>
     </ul>
