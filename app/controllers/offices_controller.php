@@ -1,6 +1,46 @@
 <?php
 class OfficesController extends AppController {
 /**
+ * undocumented function
+ *
+ * @param string $officeId 
+ * @return void
+ * @access public
+ */
+	function admin_activate($officeId = null) {
+		if ($officeId == Configure::read('Office.id')) {
+			$msg = __('This office is already active.', true);
+			return $this->Message->add($msg, 'ok');
+		}
+
+		$isMyOffice = $officeId == User::get('office_id');
+
+		// @todo: currently only 2 levels of recursion
+		$subOffices = $this->Office->find('all', array(
+			'conditions' => array('parent_id' => User::get('office_id')),
+			'contain' => false,
+			'fields' => array('id')
+		));
+		$isValidSubOffice = in_array($officeId, Set::extract('/Office/id', $subOffices));
+
+		Assert::true($isValidSubOffice || $isMyOffice, '403');
+
+		$office = $this->Office->find('first', array(
+			'conditions' => array('Office.id' => $officeId),
+			'contain' => array('SubOffice', 'ParentOffice')
+		));
+		Assert::notEmpty($office, '404');
+
+		$newOffice = $office['Office'];
+		$newOffice['ParentOffice'] = $office['ParentOffice'];
+		$newOffice['SubOffice'] = $office['SubOffice'];
+		$office = $newOffice;
+
+		Configure::write('Office', $office);
+		$msg = __('The office was successfully activated!', true);
+		return $this->Message->add($msg, 'ok');
+	}
+/**
  * index action
  *
  * @return void

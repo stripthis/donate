@@ -1,5 +1,14 @@
-  <div class="transactions index">
-  <h2><?php __('Transactions');?></h2>
+<div class="transactions index">
+<h2>
+	<?php
+	$headline = __('Transactions', true);
+	if (!empty($contact)) {
+		$name = $common->contactName($contact);
+		$headline = sprintf(__('%s\'s Transactions', true), $name);
+	}
+	echo $headline;
+	?>
+</h2>
   <table cellpadding="0" cellspacing="0">
   <tr>
     	<th><?php echo $paginator->sort('parent_id');?></th>

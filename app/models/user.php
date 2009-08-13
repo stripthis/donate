@@ -1,5 +1,10 @@
 <?php
 class User extends AppModel {
+	var $belongsTo = array(
+		'Contact',
+		'Office'
+	);
+
 	var $hasMany = array(
 		'AuthKey' => array('dependent' => true)
 	);
@@ -119,16 +124,23 @@ class User extends AppModel {
 			$_this = ClassRegistry::init('User');
 			$user = $_this->find('first', array(
 				'conditions' => array('User.id' => $user),
-				/* @todo use contact instead
-				 * 'contain' => array(
-					'Address.State(id, name)', 'Address.Country(id, name)', 'Address.City(id, name)'
-				)*/
+				'contain' => array(
+					'Contact.Address.State(id, name)',
+					'Contact.Address.Country(id, name)',
+					'Contact.Address.City(id, name)',
+					'Office.SubOffice', 'Office.ParentOffice'
+				)
 			));
 		}
 
 		Assert::true(Common::isUuid($user['User']['id']));
 		Configure::write('User', $user);
 		Assert::identical(Configure::read('User'), $user);
+
+		if ($user['User']['level'] == 'admin' && isset($user['Office'])) {
+			Configure::write('Office', $user['Office']);
+		}
+
 		if (!$updateSession && !$generateAuthCookie) {
 			return true;
 		}

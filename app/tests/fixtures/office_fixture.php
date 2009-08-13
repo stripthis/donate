@@ -2,7 +2,8 @@
 
 class OfficeFixture extends CakeTestFixture {
 	var $name = 'Office';
-	var $records = array(		array(
+	var $records = array(
+		array(
 			'id' => '4a6458a6-6ea0-4080-ad53-4a89a7f05a6e',
 			'name' => 'Greenpeace International',
 			'parent_id' => '',
@@ -11,7 +12,27 @@ class OfficeFixture extends CakeTestFixture {
 			'city_id' => '4a1161c9-53cc-48c6-8154-80641030b5da',
 			'created' => '2009-07-20 16:29:10',
 			'modified' => '2009-07-20 16:29:10',
-		),	);
+		),
+		array(
+			'id' => '4a841f89-570c-45d0-be84-7a2ea7f05a6e',
+			'name' => 'GPI Suboffice 1',
+			'parent_id' => '4a6458a6-6ea0-4080-ad53-4a89a7f05a6e',
+			'country_id' => '4936948a-f700-4670-9721-4d641030b5da',
+			'state_id' => '4936908c-35fc-4a27-95e2-4a391030b5da',
+			'city_id' => '4a1161c9-53cc-48c6-8154-80641030b5da',
+			'created' => '2009-07-20 16:29:10',
+			'modified' => '2009-07-20 16:29:10',
+		),
+		array(
+			'id' => '4a841f89-caac-4107-a247-7a2ea7f05a6e',
+			'name' => 'GPI Suboffice 2',
+			'parent_id' => '4a6458a6-6ea0-4080-ad53-4a89a7f05a6e',
+			'country_id' => '4936948a-f700-4670-9721-4d641030b5da',
+			'state_id' => '4936908c-35fc-4a27-95e2-4a391030b5da',
+			'city_id' => '4a1161c9-53cc-48c6-8154-80641030b5da',
+			'created' => '2009-07-20 16:29:10',
+			'modified' => '2009-07-20 16:29:10',
+		),
+	);
 }
-
 ?>
