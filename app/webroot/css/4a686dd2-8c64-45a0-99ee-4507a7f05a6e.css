@@ -382,10 +382,19 @@ form .error .error-message{
 	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/visa.png) center 7px no-repeat;
 }
 #content .input_wrapper.radio#card label.option#visa_electron{
-	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/visa.png) center 7px no-repeat;
+	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/visa_electron.png) center 7px no-repeat;
 }
 #content .input_wrapper.radio#card label.option#diners_club{
 	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/diners.png) center 7px no-repeat;
+}
+#content .input_wrapper.radio#card label.option#discover{
+	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/discover.png) center 7px no-repeat;
+}
+#content .input_wrapper.radio#card label.option#amex{
+	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/amex.png) center 7px no-repeat;
+}
+#content .input_wrapper.radio#card label.option#JCB{
+	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/jcb.png) center 7px no-repeat;
 }
 #content .input_wrapper.radio#card label.option:hover{
 	border:1px solid #DDD;

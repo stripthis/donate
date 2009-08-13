@@ -27,10 +27,17 @@
 					<div class="error"><?php echo $form->error("Card.type"); ?></div>
 <?php endif; ?>
         </div>
-        <div class="input_wrapper">
+        <div class="input_wrapper half">
           <?php
             echo $form->input('Card.number', array(
               'label' => 'Card number'. ': ' . $required, 
+            ))."\n";
+          ?>
+        </div><div class="input_wrapper half" id="cvc">
+          <?php
+            echo $form->input('Card.verification_code', array(
+              'label' => 'Verification code'. ': ' . $required . 
+            	$giftForm->hint('The verification code is generally a 3 digit number located on the back of your card, or a 4 digit number located in front of american express card'), 
             ))."\n";
           ?>
         </div>
@@ -51,11 +58,5 @@
             ?>
         	</div>
         </div>
-        <div class="input_wrapper" id="cvc">
-          <?php
-            echo $form->input('Card.verification_code', array(
-              'label' => 'Verification code'. ': ' . $required, 
-            ))."\n";
-          ?>
-        </div>
+        
       </fieldset>
