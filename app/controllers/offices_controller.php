@@ -13,17 +13,7 @@ class OfficesController extends AppController {
 			return $this->Message->add($msg, 'ok');
 		}
 
-		$isMyOffice = $officeId == User::get('office_id');
-
-		// @todo: currently only 2 levels of recursion
-		$subOffices = $this->Office->find('all', array(
-			'conditions' => array('parent_id' => User::get('office_id')),
-			'contain' => false,
-			'fields' => array('id')
-		));
-		$isValidSubOffice = in_array($officeId, Set::extract('/Office/id', $subOffices));
-
-		Assert::true($isValidSubOffice || $isMyOffice, '403');
+		Assert::true(Office::isOwn($officeId), '403');
 
 		$office = $this->Office->find('first', array(
 			'conditions' => array('Office.id' => $officeId),
@@ -91,6 +81,8 @@ class OfficesController extends AppController {
 				'contain' => false,
 			));
 			Assert::notEmpty($office, '404');
+			Assert::true(Office::isOwn($id), '403');
+
 			$action = 'edit';
 		}
 
