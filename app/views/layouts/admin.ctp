@@ -23,7 +23,8 @@
     <h1><?php 
       echo $html->link( $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")) ." | ".__("International",array(false)), 
               '/admin/dashboard', array('escape' => false)); ?>
-	<?php echo ' | Logged in as: ' . User::get('login'); ?>
+	<?php echo ' | Logged in as: ' . User::get('login') . ' | '; ?>
+	<?php echo $html->link('Logout', array('controller' => 'auth', 'action' => 'logout'))?>
     </h1>
 
     <ul id="menu">
