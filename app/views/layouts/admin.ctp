@@ -31,7 +31,7 @@
       <li><a href="<?php echo Router::Url("/admin/gifts/index",true) ?>" <?php if($this->name=="Gifts") echo 'class="selected"';?>><?php echo __("Gifts");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/transactions/index",true) ?>" <?php if($this->name=="Transactions") echo 'class="selected"';?>><?php echo __("Transactions");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/supporters/index",true) ?>" <?php if($this->name=="Supporters") echo 'class="selected"';?>><?php echo __("Supporters");?></a></li>
-      <li><a href="<?php echo Router::Url("/admin/offices/edit/" . Configure::read('Office.id'),true) ?>" <?php if($this->name=="Config") echo 'class="selected"';?>><?php echo __("Config");?></a></li>
+      <li><a href="<?php echo Router::Url("/admin/offices/edit/" . Configure::read('Office.id'),true) ?>" <?php if($this->name=="Offices") echo 'class="selected"';?>><?php echo __("Config");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/auth/logout",true) ?>" class="logout"><?php echo __("Logout");?></a></li>
     </ul>
     <div id="search">
