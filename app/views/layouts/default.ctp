@@ -17,7 +17,6 @@
 ?>
 </head>
 <body>
-<?php echo $this->element('admin/debug_header') ?>
 <div id="container">
 <?php echo $content_for_layout; ?>
 </div>

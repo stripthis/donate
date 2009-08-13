@@ -7,7 +7,7 @@ class AuthController extends AppController{
  * @return void
  * @access public
  */
-	function login() {
+	function admin_login() {
 		Assert::true(User::isGuest(), '403');
 		if ($this->isGet()) {
 			$msg = "Good to see you again... But how come you are not logged in yet?!"; //@todo l18n use codes
@@ -64,11 +64,10 @@ class AuthController extends AppController{
 		}
 
 		if ($success) {
-			if (!User::isAdmin()) {
-				return $this->redirect(array('controller' => 'users', 'action' => 'dashboard'));
-			} else {
-				return $this->redirect(array('controller' => 'statistics', 'action' => 'index', 'admin' => 1));
-			}
+			$url = !User::isAdmin() 
+					? array('controller' => 'users', 'action' => 'dashboard')
+					: array('controller' => 'statistics', 'action' => 'index', 'admin' => 1);
+			return $this->redirect($url);
 		}
 
 		if (!empty($userSession) && !empty($authId)) {
@@ -90,15 +89,6 @@ class AuthController extends AppController{
 		User::logout();
 		$this->Cookie->del('User');
 		$this->redirect('/');
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */	
-	function admin_login() {
-		$this->login();
 	}
 /**
  * undocumented function

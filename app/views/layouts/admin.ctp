@@ -23,8 +23,9 @@
     <h1><?php 
       echo $html->link( $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")) ." | ".__("International",array(false)), 
               '/admin/dashboard', array('escape' => false)); ?>
+	<?php echo ' | Logged in as: ' . User::get('login'); ?>
     </h1>
-<?php if (User::isAdmin()) : ?>
+
     <ul id="menu">
       <li><a href="<?php echo Router::Url("/admin/home",true) ?>"  <?php if(isset($this->viewVars["page"]) && $this->viewVars["page"]=="admin_home") echo 'class="selected"'?>><?php echo __("Home"); ?></li>
       <li><a href="<?php echo Router::Url("/admin/appeals/index",true) ?>" <?php if($this->name=="Appeals") echo 'class="selected"';?>><?php echo __("Appeals");?></a></li>
@@ -39,7 +40,6 @@
       <?php echo $form->input('search')."\n";?>
       <?php echo $form->end('Submit')."\n";?>
     </div>
-<?php endif; ?>
   </div>
   <div id="content_wrapper">
 <?php echo $content_for_layout; ?>

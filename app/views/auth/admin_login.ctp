@@ -6,7 +6,7 @@
       <cake:nocache>
 <?php echo $this->element('messages'); ?>
       </cake:nocache>
-      <?php echo $form->create('User', array('url' => '/auth/login', 'id' => 'LoginForm'))."\n";?>
+      <?php echo $form->create('User', array('url' => '/admin/auth/login', 'id' => 'LoginForm'))."\n";?>
         <fieldset>
           <legend><?php echo __("Please enter your login details"); ?></legend>
           <?php echo $form->input('login', array('label' => __('Email',true).':',"tabindex" => $tabindex++))."\n";?>
