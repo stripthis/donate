@@ -55,5 +55,21 @@ class CommonHelper extends Apphelper {
 		}
 		return '';
 	}
+/**
+ * undocumented function
+ *
+ * @param string $contact 
+ * @return void
+ * @access public
+ */
+	function contactName($contact) {
+		return sprintf(
+			'%s %s %s %s', 
+			ucfirst($contact['Contact']['salutation']),
+			$contact['Contact']['title'],
+			$contact['Contact']['fname'],
+			$contact['Contact']['lname']
+		);
+	}
 }
 ?>

@@ -12,13 +12,14 @@
 			<dt>When</dt><dd><?php echo $gift['Gift']['created']; ?></dd>
 			<h2>Contact Data</h2>
 			<dt>
-			<dt>Name</dt>
-			<dd>
-				<?php
-				echo sprintf('%s %s %s %s', 
-				ucfirst($gift['Contact']['salutation']), $gift['Contact']['title'], $gift['Contact']['fname'], $gift['Contact']['lname']) ?>
-			</dd>
+			<dt>Name</dt><dd> <?php echo $common->contactName($gift) ?></dd>
 			<dt>Email</dt><dd><?php echo $gift['Contact']['email']?></dd>
+			<dt>Actions</dt>
+			<dd>
+				<?php echo $html->link('See all Transactions', array(
+					'controller' => 'transactions', 'action' => 'index', $gift['Contact']['id']
+				))?>
+			</dd>
 			<hr/>
 		<?php endforeach; ?>
 	</dl>
