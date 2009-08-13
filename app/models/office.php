@@ -77,14 +77,14 @@ class Office extends AppModel {
 			return $ids;
 		}
 
-		$subParentOffices = $this->find('list', array(
+		$subParentOffices = $this->find('all', array(
 			'conditions' => array(
 				'parent_id' => $ids
 			),
 			'contain' => false,
-			'fields' => 'parent_id'
+			'fields' => array('parent_id')
 		));
-		$ids = array_keys($subParentOffices);
+		$ids = Set::extract('/Office/parent_id', $subParentOffices);
 
 		foreach ($subOffices as $id => $name) {
 			if (in_array($id, $ids)) {

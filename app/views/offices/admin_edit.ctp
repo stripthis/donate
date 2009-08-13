@@ -10,7 +10,12 @@
 <?php
 echo $form->input('id');
 echo $form->input('name');
-echo $form->input('parent_id', array('label' => 'Parent Office', 'options' => $parentOptions, 'empty' => '--', 'selected' => $office['Office']['parent_id']));
+
+$selected = !empty($office) ? $office['Office']['parent_id'] : false;
+echo $form->input('parent_id', array(
+	'label' => 'Parent Office', 'options' => $parentOptions,
+	'empty' => '--', 'selected' => $selected
+));
 
 if (empty($subOptions)) {
 	$subOptions[''] = 'No Options Available';

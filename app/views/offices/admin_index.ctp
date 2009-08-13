@@ -4,8 +4,6 @@
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
       <li><?php echo $html->link(__('New Office', true), array('action'=>'add'),array('class'=>'add')); ?></li>
-      <li><?php echo $html->link(__('List Gateways', true), array('controller'=> 'gateways', 'action'=>'index')); ?> </li>
-    <li><?php echo $html->link(__('New Gateway', true), array('controller'=> 'gateways', 'action'=>'add')); ?> </li>
     </ul>
   </div>
   <table cellpadding="0" cellspacing="0">
