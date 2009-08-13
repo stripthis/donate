@@ -9,7 +9,7 @@ Router::connect('/login', array('controller' => 'auth', 'action' => 'login'));
 Router::connect('/admin/login', array('controller' => 'auth', 'action'=>'login', 'admin'=>1));
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 Router::connect('/admin', array('controller' => 'pages', 'action' => 'display', 'page'=>'home'));
-Router::connect('/admin/home', array( 'controller' => 'pages','action' => 'display', 'admin_home', 'layout'=>'admin')); 
-Router::connect('/about', array( 'controller' => 'pages','action' => 'display', 'about')); 
+Router::connect('/admin/home', array('controller' => 'statistics', 'action' => 'index', 'admin' => true));
+Router::connect('/about', array( 'controller' => 'pages','action' => 'display', 'about'));
 Router::connect('/news', array( 'controller' => 'posts','action' => 'index')); 
 ?>

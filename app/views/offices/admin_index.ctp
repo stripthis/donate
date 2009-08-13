@@ -4,18 +4,12 @@
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
       <li><?php echo $html->link(__('New Office', true), array('action'=>'add'),array('class'=>'add')); ?></li>
-      <li><?php echo $html->link(__('List Gateways', true), array('controller'=> 'gateways', 'action'=>'index')); ?> </li>
-    <li><?php echo $html->link(__('New Gateway', true), array('controller'=> 'gateways', 'action'=>'add')); ?> </li>
     </ul>
   </div>
   <table cellpadding="0" cellspacing="0">
   <tr>
-    	<th><?php echo $paginator->sort('id');?></th>
     	<th><?php echo $paginator->sort('name');?></th>
     	<th><?php echo $paginator->sort('parent_id');?></th>
-    	<th><?php echo $paginator->sort('country_id');?></th>
-    	<th><?php echo $paginator->sort('state_id');?></th>
-    	<th><?php echo $paginator->sort('city_id');?></th>
     	<th><?php echo $paginator->sort('created');?></th>
     	<th><?php echo $paginator->sort('modified');?></th>
     	<th class="actions"><?php __('Actions');?></th>
@@ -30,22 +24,10 @@ foreach ($offices as $office):
 ?>
   <tr<?php echo $class;?>>
     <td>
-      <?php echo $office['Office']['id']; ?>
-    </td>
-    <td>
       <?php echo $office['Office']['name']; ?>
     </td>
     <td>
-      <?php echo $office['Office']['parent_id']; ?>
-    </td>
-    <td>
-      <?php echo $office['Office']['country_id']; ?>
-    </td>
-    <td>
-      <?php echo $office['Office']['state_id']; ?>
-    </td>
-    <td>
-      <?php echo $office['Office']['city_id']; ?>
+      <?php echo $office['ParentOffice']['name']; ?>
     </td>
     <td>
       <?php echo $office['Office']['created']; ?>
