@@ -94,5 +94,45 @@ class Office extends AppModel {
 
 		return $subOffices;
 	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	function activate($id) {
+		if (is_array($id)) {
+			$office = $id;
+		} else {
+			$office = $this->find('first', array(
+				'conditions' => array('Office.id' => $id),
+				'contain' => array('SubOffice', 'ParentOffice')
+			));
+		}
+
+		if (isset($office['Office'])) {
+			$newOffice = $office['Office'];
+			$newOffice['ParentOffice'] = $office['ParentOffice'];
+			$newOffice['SubOffice'] = $office['SubOffice'];
+			$office = $newOffice;
+		}
+
+		$Session = Common::getComponent('Session');
+		$Session->write('Office', $office);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	function reload($id) {
+		$Session = Common::getComponent('Session');
+		if ($id == $Session->read('Office.id')) {
+			$this->activate($id);
+		}
+	}
 }
 ?>

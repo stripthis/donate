@@ -120,8 +120,8 @@ class User extends AppModel {
  * @access public
  */
 	static function setActive($user = null, $updateSession = false, $generateAuthCookie = false) {
+		$_this = ClassRegistry::init('User');
 		if (Common::isUuid($user)) {
-			$_this = ClassRegistry::init('User');
 			$user = $_this->find('first', array(
 				'conditions' => array('User.id' => $user),
 				'contain' => array(
@@ -137,12 +137,12 @@ class User extends AppModel {
 		Configure::write('User', $user);
 		Assert::identical(Configure::read('User'), $user);
 
-		if ($user['User']['level'] == 'admin' && isset($user['Office'])) {
-			Configure::write('Office', $user['Office']);
-		}
-
 		if (!$updateSession && !$generateAuthCookie) {
 			return true;
+		}
+
+		if ($user['User']['level'] == 'admin' && isset($user['Office'])) {
+			$_this->Office->activate($user['Office']);
 		}
 
 		$Session = Common::getComponent('Session');

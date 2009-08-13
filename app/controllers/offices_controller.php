@@ -21,12 +21,7 @@ class OfficesController extends AppController {
 		));
 		Assert::notEmpty($office, '404');
 
-		$newOffice = $office['Office'];
-		$newOffice['ParentOffice'] = $office['ParentOffice'];
-		$newOffice['SubOffice'] = $office['SubOffice'];
-		$office = $newOffice;
-
-		Configure::write('Office', $office);
+		$this->Office->activate($office);
 		$msg = __('The office was successfully activated!', true);
 		return $this->Message->add($msg, 'ok');
 	}
@@ -117,7 +112,9 @@ class OfficesController extends AppController {
 		Assert::notEmpty($result);
 
 		$officeId = $this->Office->id;
+
 		$this->subRelations($officeId);
+		$this->Office->reload($officeId);
 
 		$msg = 'Office was saved successfully.';
 		if ($action == 'add') {
