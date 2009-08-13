@@ -40,5 +40,59 @@ class Office extends AppModel {
 
 		return $isValidSubOffice || $isMyOffice;
 	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	function parentOfficeOptions($id) {
+		return $this->find('list', array(
+			'conditions' => array(
+				'id <>' => $id,
+				'parent_id' => ''
+			),
+			'contain' => false
+		));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	function subOfficeOptions($id, $type = 'normal') {
+		$subOffices = $this->find('list', array(
+			'conditions' => array(
+				'id <>' => $id,
+				'parent_id' => array('', $id)
+			),
+			'contain' => false
+		));
+
+		$ids = array_keys($subOffices);
+		if ($type == 'selected') {
+			return $ids;
+		}
+
+		$subParentOffices = $this->find('list', array(
+			'conditions' => array(
+				'parent_id' => $ids
+			),
+			'contain' => false,
+			'fields' => 'parent_id'
+		));
+		$ids = array_keys($subParentOffices);
+
+		foreach ($subOffices as $id => $name) {
+			if (in_array($id, $ids)) {
+				unset($subOffices[$id]);
+			}
+		}
+
+		return $subOffices;
+	}
 }
 ?>

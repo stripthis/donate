@@ -37,7 +37,13 @@ class OfficesController extends AppController {
  * @access public
  */
 	function admin_index() {
-		$this->paginate['Office']['order'] = array('Office.name' => 'asc');
+		$this->paginate['Office'] = array(
+			'contain' => array('ParentOffice(name)'),
+			'order' => array(
+				'Office.parent_id' => 'asc',
+				'Office.name' => 'asc'
+			)
+		);
 		$offices = $this->paginate($this->Office);
 		$this->set(compact('offices'));
 	}
@@ -74,11 +80,12 @@ class OfficesController extends AppController {
  */
 	function admin_edit($id = null) {
 		$office = $this->Office->create();
+
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			$office = $this->Office->find('first', array(
-				'Office.id' => $id,
-				'contain' => false,
+				'conditions' => array('Office.id' => $id),
+				'contain' => false
 			));
 			Assert::notEmpty($office, '404');
 			Assert::true(Office::isOwn($id), '403');
@@ -86,8 +93,12 @@ class OfficesController extends AppController {
 			$action = 'edit';
 		}
 
+		$parentOptions = $this->Office->parentOfficeOptions($id);
+		$subOptions = $this->Office->subOfficeOptions($id);
+		$selectedSubs = $this->Office->subOfficeOptions($id, 'selected');
+
 		$gateways = $this->Office->Gateway->find('list');
-		$this->set(compact('action', 'gateways'));
+		$this->set(compact('action', 'office', 'gateways', 'parentOptions', 'subOptions', 'selectedSubs'));
 
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
@@ -104,6 +115,9 @@ class OfficesController extends AppController {
 			return $this->Message->add(__('Please fill out all fields', true), 'error');
 		}
 		Assert::notEmpty($result);
+
+		$officeId = $this->Office->id;
+		$this->subRelations($officeId);
 
 		$msg = 'Office was saved successfully.';
 		if ($action == 'add') {
@@ -129,6 +143,31 @@ class OfficesController extends AppController {
 		$this->Office->del($id);
 		$this->Message->add(__('The Office has been deleted.', true), 'ok', true);
 		$this->redirect(array('action' => 'admin_index'));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	private function subRelations($id) {
+		$this->Office->updateAll(
+			array('Office.parent_id' => "''"),
+			array('Office.parent_id' => $id)
+		);
+
+		if (!is_array($this->data['Office']['suboffice_id'])) {
+			return false;
+		}
+
+		foreach ($this->data['Office']['suboffice_id'] as $subOfficeId) {
+			$this->Office->set(array(
+				'id' => $subOfficeId,
+				'parent_id' => $id
+			));
+			$this->Office->save();
+		}
 	}
 }
 ?>

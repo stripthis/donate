@@ -7,18 +7,23 @@
 </ul>
   </div>
 <?php echo $form->create('Office');?>
-	<fieldset>
- 		<legend><?php __('Edit Office');?></legend>
-  <?php
-    echo $form->input('id');
-    echo $form->input('name');
-    echo $form->input('parent_id');
-    echo $form->input('country_id');
-    echo $form->input('state_id');
-    echo $form->input('city_id');
-    echo $form->input('Gateway');
-  ?>
-	</fieldset>
-<?php echo $form->end('Submit');?>
-</div>
+<?php
+echo $form->input('id');
+echo $form->input('name');
+echo $form->input('parent_id', array('label' => 'Parent Office', 'options' => $parentOptions, 'empty' => '--', 'selected' => $office['Office']['parent_id']));
 
+if (empty($subOptions)) {
+	$subOptions[''] = 'No Options Available';
+}
+echo $form->input('suboffice_id', array(
+	'label' => 'Sub Offices', 'options' => $subOptions, 'multiple' => true,
+	'selected' => $selectedSubs
+));
+?>
+
+<fieldset><legend>Gateways</legend>
+	<?php echo $form->input('Gateway'); ?>
+</fieldset>
+
+<?php echo $form->end('Save');?>
+</div>
