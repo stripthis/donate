@@ -8,6 +8,8 @@ class AuthController extends AppController{
  * @access public
  */
 	function admin_login() {
+		$this->layout = 'admin_login';
+
 		Assert::true(User::isGuest(), '403');
 		if ($this->isGet()) {
 			$msg = "Good to see you again... But how come you are not logged in yet?!"; //@todo l18n use codes
@@ -97,7 +99,10 @@ class AuthController extends AppController{
  * @access public
  */	
 	function admin_logout() {
-		$this->logout();
+		$name = User::name();
+		User::logout();
+		$this->Cookie->del('User');
+		$this->redirect('/');
 	}
 }
 ?>

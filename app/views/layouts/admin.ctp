@@ -23,10 +23,8 @@
     <h1><?php 
       echo $html->link( $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")) ." | ".__("International",array(false)), 
               '/admin/dashboard', array('escape' => false)); ?>
-	<?php echo ' | Logged in as: ' . User::get('login') . ' | '; ?>
-	<?php echo $html->link('Logout', array('controller' => 'auth', 'action' => 'logout'))?>
+	<?php echo ' | Logged in as: ' . User::get('login'); ?>
     </h1>
-
     <ul id="menu">
       <li><a href="<?php echo Router::Url("/admin/home",true) ?>"  <?php if(isset($this->viewVars["page"]) && $this->viewVars["page"]=="admin_home") echo 'class="selected"'?>><?php echo __("Home"); ?></li>
       <li><a href="<?php echo Router::Url("/admin/appeals/index",true) ?>" <?php if($this->name=="Appeals") echo 'class="selected"';?>><?php echo __("Appeals");?></a></li>
@@ -42,7 +40,39 @@
       <?php echo $form->end('Submit')."\n";?>
     </div>
   </div>
+  <div id="right">
+	<h3>Current Office</h3>
+	<?php
+	echo Configure::read('Office.name') . '<br />';
+	$parent = Configure::read('Office.ParentOffice');
+
+	if (!empty($parent)) {
+		$parent = AppModel::normalize('Office', $parent);
+		echo $html->link('Back to ' . $parent['Office']['name'], array(
+			'controller' => 'offices', 'action' => 'activate', $parent['Office']['id']
+		));
+	}
+	?>
+	
+	<h3>Available Child Offices</h3>
+	<?php
+	$subOffices = Configure::read('Office.SubOffice');
+	if (empty($subOffices)) {
+		echo '<p>' . __('The office has no suboffices.', true);
+	} else {
+		echo '<ul>';
+		foreach ($subOffices as $office) {
+			$office = AppModel::normalize('Office', $office);
+			echo '<li>' . $html->link('Activate ' . $office['Office']['name'], array(
+				'controller' => 'offices', 'action' => 'activate', $office['Office']['id']
+			)) . '</li>';
+		}
+		echo '</ul>';
+	}
+	?>
+  </div>
   <div id="content_wrapper">
+	<?php echo $this->element('messages')?>
 <?php echo $content_for_layout; ?>
   </div>
 </div>
