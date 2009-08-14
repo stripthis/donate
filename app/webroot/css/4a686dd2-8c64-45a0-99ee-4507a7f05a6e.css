@@ -49,10 +49,10 @@ a img {
 h1, h2, h3, h4 {
 	font-weight: normal;
   font-family:'Helvetica Neue', helvetica, arial, sans-serif;
+	margin:2px 0 2px 5px;
 }
 h2{
 	font-size:1.7em;
-	margin:0 0 3px 0;
   line-height:1.2em;
   color:#777;
 }
@@ -89,7 +89,6 @@ fieldset legend {
   background:#FFF;
   font-size: 1.5em;
   padding: 0 10px;
-  color:#777;
 }
 fieldset fieldset {
   margin-top: 0px;
@@ -110,20 +109,23 @@ form div {
   padding:5px;
   vertical-align: text-top;
 }
-
+form div div{
+  margin:0;
+  padding:0;
+}
 /* generic input stuffs */
 form div.input {
-  color: #444;
 }
 form div.submit{
   border: 0;
   clear: none;
+  float:right;
 }
 input[type=submit] {
   display: inline;
   font-size: 160%;
-  padding: 5px 18px;
-  margin:5px 0px 5px 5px;
+  padding: 7px 22px;
+  margin:7px 0px 5px 5px;
   width: auto;
   vertical-align: bottom;
   float:right;
@@ -132,6 +134,7 @@ label {
   display: block;
   font-size: 1.2em;
   padding: 5px 0px;
+  color:#444;
 }
 input, textarea {
   clear: both;
@@ -330,7 +333,18 @@ form .error .error-message{
 #content .mission strong{
 	color:#FF6600;
 }
-
+#content .verisign{
+	background:#FFF url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/verisign.gif) -10px center no-repeat;
+	width:400px;
+	height:55px;
+	padding:5px 0px;
+	float:left;
+}
+#content .verisign a{
+	margin-left:150px;
+	float:left;
+	padding-top:15px;
+}
 /* Tooltips */
 #content .tooltip{
 	background:#FFF url(/img/icons/S/help.png) left center no-repeat;
@@ -368,67 +382,62 @@ form .error .error-message{
 }
 
 /* credit card selector */
-#content .input_wrapper.radio#card{
+#content #card .input_wrapper.radio{
 }
-#content .input_wrapper.radio#card label.option{
+#content #card .input_wrapper.radio label.option{
 	width:120px;
 	float:left;
 	border:1px solid #FFF;
 }
-#content .input_wrapper.radio#card label.option#mastercard{
+#content #card .input_wrapper.radio label.option#mastercard{
 	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/mastercard.png) center 7px no-repeat;
 }
-#content .input_wrapper.radio#card label.option#visa{
+#content #card .input_wrapper.radio label.option#visa{
 	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/visa.png) center 7px no-repeat;
 }
-#content .input_wrapper.radio#card label.option#visa_electron{
+#content #card .input_wrapper.radio label.option#visa_electron{
 	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/visa_electron.png) center 7px no-repeat;
 }
-#content .input_wrapper.radio#card label.option#diners_club{
+#content #card .input_wrapper.radio label.option#diners_club{
 	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/diners.png) center 7px no-repeat;
 }
-#content .input_wrapper.radio#card label.option#discover{
+#content #card .input_wrapper.radio label.option#discover{
 	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/discover.png) center 7px no-repeat;
 }
-#content .input_wrapper.radio#card label.option#amex{
+#content #card .input_wrapper.radio label.option#amex{
 	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/amex.png) center 7px no-repeat;
 }
-#content .input_wrapper.radio#card label.option#JCB{
+#content #card .input_wrapper.radio label.option#JCB{
 	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/jcb.png) center 7px no-repeat;
 }
-#content .input_wrapper.radio#card label.option:hover{
+#content #card .input_wrapper.radio label.option:hover{
 	border:1px solid #DDD;
 	-moz-border-radius:5px;
 }
-#content .input_wrapper.radio#card label.option span{
+#content #card .input_wrapper.radio label.option span{
 	width:120px;
 	float:left;
 	text-align:center;
 	padding-top:5px;
 	margin-top: 0;
 	margin-top: -43px;
-	color:#444;
 }
-#content .input_wrapper.radio#card label.option input{
+#content #card .input_wrapper.radio label.option input{
 	float:left;
 	margin-left:54px;
 	margin-top: 58px;
 }
 /* year month selector */
-#content .input_wrapper#expire{
-	width:100%;
-	clear:both;
-}
-#content .input_wrapper#expire .input label{
+#content #card .input_wrapper#expire .input label{
 	display:none;
 }
-#content .input_wrapper#expire .input{
+#content #card .input_wrapper#expire .input{
 	float:left;
 	clear:none;
 	margin:0;
 	padding:0 3px 0 0;
 }
-#content .input_wrapper#cvc .input input{
+#content #card .input_wrapper#cvc .input input{
 	width:50px;
 }
 

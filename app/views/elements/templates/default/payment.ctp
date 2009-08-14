@@ -12,9 +12,9 @@
   $yearOptions = Card::getYearOptions();
   $cardSelected =  $giftForm->value('Card', 'type', 'visa', $form->data);
 ?>
-    <fieldset>
+    <fieldset id="card">
         <legend>Payment Information:</legend>
-        <div class="input_wrapper radio" id="card">
+        <div class="input_wrapper radio">
           <label for="amount" class="option_title">Card type: <?php echo $required; ?></label>
 <?php foreach ($cardOptions as $cardId => $cardName): ?>
           <label class="option" id="<?php echo $cardId; ?>">
@@ -29,19 +29,12 @@
         </div>
         <div class="input_wrapper half">
           <?php
-            echo $form->input('Card.number', array(
-              'label' => 'Card number'. ': ' . $required, 
-            ))."\n";
-          ?>
-        </div><div class="input_wrapper half" id="cvc">
-          <?php
-            echo $form->input('Card.verification_code', array(
-              'label' => 'Verification code'. ': ' . $required . 
-            	$giftForm->hint('The verification code is generally a 3 digit number located on the back of your card, or a 4 digit number located in front of american express card'), 
+            echo $form->input('Card.cardholder_name', array(
+              'label' => 'Card holder name'. ': ' . $required, 
             ))."\n";
           ?>
         </div>
-        <div class="input_wrapper" id="expire">
+        <div class="input_wrapper half" id="expire">
           <label class="option">Expiracy date <?php echo $required; ?></label>
           <div>
             <?php 
@@ -58,5 +51,23 @@
             ?>
         	</div>
         </div>
-        
+        <div class="spacer"></div>
+        <div class="input_wrapper half">
+          <?php
+            echo $form->input('Card.number', array(
+              'label' => 'Card number'. ': ' . $required, 
+            ))."\n";
+          ?>
+        </div>
+        <div class="input_wrapper half" id="cvc">
+          <?php
+            echo $form->input('Card.verification_code', array(
+              'label' => 'Verification code'. ': ' . $required . 
+            	$giftForm->hint('The verification code is generally a 3 digit number located on the back of your card.'), 
+            ))."\n";
+          ?>
+        </div>
       </fieldset>
+      <div class="verisign">
+      	<a href="/" class="">This form is secured with a SSL certificate.</a>
+      </div>

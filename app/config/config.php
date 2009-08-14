@@ -47,7 +47,7 @@ $config = array(
 	),
 	'Stats.startDate' => '-1 year',
 	'App.contact' => array(
-		'saluations' => array(
+		'salutations' => array(
 			'ms' => 'Ms.', 
 			'mrs' => 'Mrs.', 
 			'mr' => 'Mr.'

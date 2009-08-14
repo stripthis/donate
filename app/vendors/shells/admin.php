@@ -135,7 +135,7 @@ class AdminShell extends Shell {
 				'password' => $password
 			)
 		);
-		Mailer::deliver('created_admin', $options);
+		//Mailer::deliver('created_admin', $options);
 
 		$msg = 'The admin account for ' . $login . ' has been created/reset successfully. ';
 		$msg = 'An email has been sent to the email address.';

@@ -1,6 +1,5 @@
 <?php
   $saluteOptions = Contact::getSalutations();
-
 ?>
 			<fieldset id="contact">
         <legend><?php echo __("Contact Information"); ?></legend>
