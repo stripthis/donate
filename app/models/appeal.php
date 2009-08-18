@@ -38,25 +38,6 @@ class Appeal extends AppModel {
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
 	}
-/**
- * @return array appeals key/name
- */
-	static function getAppeals(){
-		return Appeal::_get()->find('list');
-	}
-/**
- * 
- * @param $name
- * @return unknown_type
- */	
-	static function _get($name='appeal') {
-		ClassRegistry::removeObject($name);
-		if (ClassRegistry::isKeySet($name)) {
-			$appeal = ClassRegistry::getObject($name);
-		} else {
-			$appeal = ClassRegistry::init(array('class' => $name, 'alias' => $name));
-		}
-		return $appeal;
-	}
+
 }
 ?>
