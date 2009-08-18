@@ -2249,7 +2249,7 @@ class Model extends Overloadable {
 							!is_numeric($data[$fieldName])) && $validator['allowEmpty'] === false
 						)
 					);
-	
+
 					if ($required) {
 						$this->invalidate($fieldName, $message);
 						if ($validator['last']) {

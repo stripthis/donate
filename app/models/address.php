@@ -14,7 +14,7 @@ class Address extends AppModel {
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The address is required!',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			),
 			'valid' => array(
@@ -26,7 +26,7 @@ class Address extends AppModel {
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The city is required!',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			)
 		),
@@ -54,7 +54,7 @@ class Address extends AppModel {
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The country is required!',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			),
 			'notEmpty' => array(

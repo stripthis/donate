@@ -13,7 +13,7 @@ class City extends AppModel{
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The city name is required!',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			),
 			'valid' => array(
@@ -29,7 +29,7 @@ class City extends AppModel{
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The country is required!',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			),
 			'notEmpty' => array(
@@ -45,7 +45,7 @@ class City extends AppModel{
 			'valid' => array(
 				'rule' => array('validateState'),
 				'message' => 'Please provide a valid state.',
-				'required' => false,
+				'is_required' => false,
 				'allowEmpty' => true,
 			)
 		)

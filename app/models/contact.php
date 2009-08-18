@@ -18,7 +18,7 @@ class Contact extends AppModel {
 			'valid' => array(
 				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+[\-,]?[ ]?[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+$/'),
 				'message' => 'Please provide a valid first name.',
-				'required' => false,
+				'is_required' => false,
 				'allowEmpty' => true,
 			)
 		),
@@ -26,7 +26,7 @@ class Contact extends AppModel {
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The last name is required!',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			),
 			'valid' => array(
@@ -42,7 +42,7 @@ class Contact extends AppModel {
 			'valid' => array(
 				'rule' => 'email', 
 				'message' => 'Please enter a valid email address.',
-				'required' => true,
+				'is_required' => true,
 			)
 		)
 	);
