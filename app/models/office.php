@@ -11,12 +11,15 @@ class Office extends AppModel {
 		'SubOffice' => array(
 			'className' => 'Office',
 			'foreignKey' => 'parent_id'
+		),
+		'GatewaysOffice' => array(
+			'dependent' => true
 		)
 	);
 
 	var $hasAndBelongsToMany = array(
 		'Gateway' => array(
-			'with' => 'GatewayOffice'
+			'with' => 'GatewaysOffice'
 		)
 	);
 
@@ -46,6 +49,30 @@ class Office extends AppModel {
  */
 	function beforeSave() {
 		$this->data['Office']['amounts'] = r(' ', '', $this->data['Office']['amounts']);
+
+		$this->GatewaysOffice->deleteAll(array('office_id' => $this->id));
+		if (!empty($this->data['Office']['gateways'][0])) {
+			foreach ($this->data['Office']['gateways'] as $gatewayId) {
+				$this->GatewaysOffice->create(array(
+					'office_id' => $this->id,
+					'gateway_id' => $gatewayId
+				));
+				$this->GatewaysOffice->save();
+			}
+		}
+		return true;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function beforeValidate() {
+		if (empty($this->data['Office']['frequencies'])) {
+			$this->data['Office']['frequencies'] = array();
+		}
+		$this->data['Office']['frequencies'] = implode(',', $this->data['Office']['frequencies']);
 		return true;
 	}
 /**

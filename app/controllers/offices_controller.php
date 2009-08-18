@@ -10,6 +10,7 @@ class OfficesController extends AppController {
 		parent::beforeFilter();
 
 		$this->Gift = ClassRegistry::init('Gift');
+		$this->Gateway = $this->Office->Gateway;
 	}
 /**
  * undocumented function
@@ -86,19 +87,22 @@ class OfficesController extends AppController {
  */
 	function admin_edit($id = null) {
 		$office = $this->Office->create();
+		$selectedGateways = array();
 
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			$office = $this->Office->find('first', array(
 				'conditions' => array('Office.id' => $id),
-				'contain' => false
+				'contain' => array('GatewaysOffice(gateway_id)')
 			));
 			Assert::notEmpty($office, '404');
 			Assert::true(Office::isOwn($id), '403');
 
+			$selectedGateways = Set::extract('/GatewaysOffice/gateway_id', $office);
 			$action = 'edit';
 		}
 
+		$gatewayOptions = $this->Gateway->find('list');
 		$parentOptions = $this->Office->parentOfficeOptions($id);
 		$subOptions = $this->Office->subOfficeOptions($id);
 		$selectedSubs = $this->Office->subOfficeOptions($id, 'selected');
@@ -106,7 +110,8 @@ class OfficesController extends AppController {
 		$gateways = $this->Office->Gateway->find('list');
 		$this->set(compact(
 			'action', 'office', 'gateways', 'parentOptions',
-			'subOptions', 'selectedSubs'
+			'subOptions', 'selectedSubs', 'gatewayOptions',
+			'selectedGateways'
 		));
 
 		$this->action = 'admin_edit';
@@ -117,11 +122,6 @@ class OfficesController extends AppController {
 		if ($action == 'add') {
 			$this->data['Office']['user_id'] = User::get('id');
 		}
-
-		if (empty($this->data['Office']['frequencies'])) {
-			$this->data['Office']['frequencies'] = array();
-		}
-		$this->data['Office']['frequencies'] = implode(',', $this->data['Office']['frequencies']);
 
 		$this->Office->set($this->data['Office']);
 		$result = $this->Office->save();
