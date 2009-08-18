@@ -87,8 +87,8 @@ class GiftsController extends AppController {
 
 		// credit card data is given
 		//@todo if appeal or payment gateway use redirect model then redirect
-		//else if the credit data is given, validates 
-		if (isset($this->data["Card"]) && $currentAppeal['Appeal']['processing'] == 'manual') {
+		//else if the credit data is given, validates
+		if (isset($this->data['Card']) && $currentAppeal['Appeal']['processing'] == 'manual') {
 			$this->Card->set($this->data);
 			if ($this->Card->validates()) {
 				//@todo if application used in manual/direct debit mode, save credit card details
@@ -97,7 +97,7 @@ class GiftsController extends AppController {
 				$errors = true;
 			}
 		}
-		
+
 		if ($errors) {
 			$msg = 'Sorry, something went wrong, please correct the errors below.';
 			$this->Message->add(__($msg, true), 'error');
