@@ -14,13 +14,19 @@ class Office extends AppModel {
 		),
 		'GatewaysOffice' => array(
 			'dependent' => true
-		)
+		),
+		'CountriesOffice' => array(
+			'dependent' => true
+		),
 	);
 
 	var $hasAndBelongsToMany = array(
 		'Gateway' => array(
 			'with' => 'GatewaysOffice'
-		)
+		),
+		'Country' => array(
+			'with' => 'CountriesOffice'
+		),
 	);
 
 	var $validate = array(
@@ -170,7 +176,9 @@ class Office extends AppModel {
 		} else {
 			$office = $this->find('first', array(
 				'conditions' => array('Office.id' => $id),
-				'contain' => array('SubOffice', 'ParentOffice')
+				'contain' => array(
+					'SubOffice', 'ParentOffice'
+				)
 			));
 		}
 

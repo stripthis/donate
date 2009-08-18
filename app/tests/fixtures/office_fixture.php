@@ -37,7 +37,7 @@ class OfficeFixture extends CakeTestFixture {
 			'modified' => '2009-08-18 11:45:48',
 		),		array(
 			'id' => '4a8a766c-9588-44b0-b952-3714a7f05a6e',
-			'name' => 'Libanon Office (Level 3)',
+			'name' => 'Lebanon Office (Level 3)',
 			'parent_id' => '4a8a6ff2-83cc-4d63-b0dd-2dc8a7f05a6e',
 			'country_id' => '',
 			'state_id' => '',
