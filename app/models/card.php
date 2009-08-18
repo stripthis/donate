@@ -17,6 +17,14 @@ class Card extends AppModel {
 				'message' => 'This is an invalid type.',
 			)
 		),
+		'cardholder_name' => array(
+			'valid' => array(
+				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+[\-,]?[ ]?[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+$/'),
+				'message' => 'Please provide a valid cardholder name.',
+				'required' => false,
+				'allowEmpty' => false,
+			)
+		),
 		'number' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
@@ -25,7 +33,7 @@ class Card extends AppModel {
 				'last' => true
 			),
 			'valid' => array(
-				'rule' => array("validateCardNumber"),
+				'rule' => 'cc',
 				'message' => 'This is an invalid card number.',
 				'required' => true
 			)
@@ -59,8 +67,7 @@ class Card extends AppModel {
 		)
 	);
 /**
- * undocumented function
- *
+ * Validate card type from configuration
  * @param string $check 
  * @return void
  * @access public

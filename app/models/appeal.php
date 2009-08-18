@@ -38,5 +38,6 @@ class Appeal extends AppModel {
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
 	}
+
 }
 ?>

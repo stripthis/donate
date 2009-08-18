@@ -65,8 +65,11 @@ class GiftsController extends AppController {
 
 		if (!empty($this->data['Gift']['amount_other'])) {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
+		} elseif ($this->data['Gift']['amount'] == 'other') {
+			$this->data['Gift']['amount'] = '';
+			$this->data['Gift']['amount_other'] = '';
 		}
-
+		
 		$this->saveSessionData();
 
 		// @todo: will be refactored when admin panel ready to create multistep forms
@@ -85,12 +88,14 @@ class GiftsController extends AppController {
 		// credit card data is given
 		//@todo if appeal or payment gateway use redirect model then redirect
 		//else if the credit data is given, validates 
-		$this->Card->set($this->data);
-		if ($this->Card->validates()) {
-			//@todo if application used in manual/direct debit mode, save credit card details
-			//But for now: *WE DON'T SAVE*
-		} else {
-			$errors = true;
+		if (isset($this->data["Card"]) && $currentAppeal['Appeal']['processing'] == 'manual') {
+			$this->Card->set($this->data);
+			if ($this->Card->validates()) {
+				//@todo if application used in manual/direct debit mode, save credit card details
+				//But for now: *WE DON'T SAVE*
+			} else {
+				$errors = true;
+			}
 		}
 		
 		if ($errors) {

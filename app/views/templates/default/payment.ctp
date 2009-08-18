@@ -16,6 +16,9 @@
         <legend>Payment Information:</legend>
         <div class="input_wrapper radio">
           <label for="amount" class="option_title">Card type: <?php echo $required; ?></label>
+<?php if ($form->isFieldError('Card.type')):?>
+					<div class="error"><?php echo $form->error("Card.type"); ?></div>
+<?php endif; ?>
 <?php foreach ($cardOptions as $cardId => $cardName): ?>
           <label class="option" id="<?php echo $cardId; ?>">
           	<input name="data[Card][type]" value="mastercard" class="radio" type="radio" 
@@ -23,14 +26,11 @@
           	<span><?php echo $cardName; ?></span>
           </label>
 <?php endforeach; ?>
-<?php if ($form->isFieldError('Card.type')):?>
-					<div class="error"><?php echo $form->error("Card.type"); ?></div>
-<?php endif; ?>
         </div>
         <div class="input_wrapper half">
           <?php
             echo $form->input('Card.cardholder_name', array(
-              'label' => 'Card holder name'. ': ' . $required, 
+              'label' => 'Cardholder name'. ': ' . $required, 
             ))."\n";
           ?>
         </div>

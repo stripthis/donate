@@ -4,8 +4,8 @@ if (!defined('FULL_BASE_URL')) {
 }
 $config = array(
 	'App.name' => 'Greenpeace White Rabbit',
-	'App.domain' => 'http://donate.greenpeace.org',
-	'App.stagingDomain' => 'http://donate.greenpeace.org',
+	'App.domain' => 'https://donate.greenpeace2.org',
+	'App.stagingDomain' => 'https://donate.greenpeace.org',
 	'App.mirrorDomain' => 'http://www.greenpeace.org/international',
 	'App.usingMirror' => true,
 	'App.title' => 'Greenpeace (White Rabbit)',
@@ -64,10 +64,10 @@ $config = array(
 	'App.cards' => array(
 		'mastercard' => 'Mastercard',
 		'visa' => 'Visa',
-		'visa_electron' => 'Visa Electron',
-		'diners_club' => 'Diners Club',
+		'electron' => 'Visa Electron',
+		'diners' => 'Diners Club',
 		'amex' => '<small>American Express</small>',
-		'JCB' => 'JCB',
+		'jcb' => 'JCB',
 		'discover' => 'Discover'
 	),
 	'Stats.defaultChartOptions' => array(
@@ -86,7 +86,7 @@ $config = array(
 		),
 		'y_axis' => array(
 			'colors' => array('#BED4F4', '#BED4F4')
-		),
+		)
 	)
 );
 ?>

@@ -1,12 +1,12 @@
 <?php
 /**
- * "One Step" Donation page (cf. redirect model)
+ * Name: White Rabbit default template
+ * Description: Once step donation page using direct model
+ * Author: white rabbit team rocket!
+ * Version: 0.1
  * 
- * Copyright (c)  GREENPEACE INTERNATIONAL 2009
- * Redistributions of files must retain the above copyright notice.
- *
  * @copyright   GREENPEACE INTERNATIONAL (c) 2009
- * @link        http://www.greenpeace.org/international/supportus
+ * Redistributions of files must retain the above copyright notice.
  */
   $this->pageTitle = "Support Us | Greenpeace International";
   $titleOptions = '';
@@ -37,7 +37,7 @@
       <p class="message <?php echo $message['type']; ?>"><?php echo $simpleTextile->toHtml($message['text']); ?></p>
 <?php endforeach; ?>
       <?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
-<?php 
+<?php
 			echo $this->element('../templates/default/gift', array(
 				"required" => $required, 
 				"checked" => $checked
@@ -50,13 +50,13 @@
         </p>
       </div>
       <div class="spacer"></div>
-<?php 
+<?php
 			echo $this->element('../templates/default/contact', array(
 				"required" => $required, 
 				"checked" => $checked
 			));
 ?>
-<?php 
+<?php
 			echo $this->element('../templates/default/payment', array(
 				"required" => $required, 
 				"checked" => $checked
