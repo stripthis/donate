@@ -32,7 +32,11 @@
       <li><a href="<?php echo Router::Url("/admin/gifts/index",true) ?>" <?php if($this->name=="Gifts") echo 'class="selected"';?>><?php echo __("Gifts");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/transactions/index",true) ?>" <?php if($this->name=="Transactions") echo 'class="selected"';?>><?php echo __("Transactions");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/supporters/index",true) ?>" <?php if($this->name=="Supporters") echo 'class="selected"';?>><?php echo __("Supporters");?></a></li>
-      <li><a href="<?php echo Router::Url("/admin/offices/edit/" . $Session->read('Office.id'),true) ?>" <?php if($this->name=="Offices") echo 'class="selected"';?>><?php echo __("Config");?></a></li>
+	<?php if (User::isRoot()) : ?>
+      <li><a href="<?php echo Router::Url("/admin/offices") ?>" <?php if($this->name=="Offices") echo 'class="selected"';?>><?php echo __("Offices");?></a></li>
+	<?php else : ?>
+      <li><a href="<?php echo Router::Url("/admin/offices/edit/" . $Session->read('Office.id'),true) ?>" <?php if($this->name=="Offices") echo 'class="selected"';?>><?php echo __("Office Config");?></a></li>
+	<?php endif; ?>
       <li><a href="<?php echo Router::Url("/admin/auth/logout",true) ?>" class="logout"><?php echo __("Logout");?></a></li>
     </ul>
     <div id="search">
@@ -41,37 +45,7 @@
       <?php echo $form->end('Submit')."\n";?>
     </div>
   </div>
-  <div id="right">
-	<h3>Current Office</h3>
-	<?php
-	echo $Session->read('Office.name') . '<br />';
-	$parent = $Session->read('Office.ParentOffice');
-
-	if (!empty($parent)) {
-		$parent = AppModel::normalize('Office', $parent);
-		echo $html->link('Back to ' . $parent['Office']['name'], array(
-			'controller' => 'offices', 'action' => 'activate', $parent['Office']['id']
-		));
-	}
-	?>
-	
-	<h3>Available Child Offices</h3>
-	<?php
-	$subOffices = $Session->read('Office.SubOffice');
-	if (empty($subOffices)) {
-		echo '<p>' . __('The office has no suboffices.', true);
-	} else {
-		echo '<ul>';
-		foreach ($subOffices as $office) {
-			$office = AppModel::normalize('Office', $office);
-			echo '<li>' . $html->link('Activate ' . $office['Office']['name'], array(
-				'controller' => 'offices', 'action' => 'activate', $office['Office']['id']
-			)) . '</li>';
-		}
-		echo '</ul>';
-	}
-	?>
-  </div>
+	<?php echo $this->element('admin_rightcol')?>
   <div id="content_wrapper">
 	<?php echo $this->element('messages')?>
 <?php echo $content_for_layout; ?>

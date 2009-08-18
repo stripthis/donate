@@ -14,13 +14,19 @@ class Office extends AppModel {
 		),
 		'GatewaysOffice' => array(
 			'dependent' => true
-		)
+		),
+		'CountriesOffice' => array(
+			'dependent' => true
+		),
 	);
 
 	var $hasAndBelongsToMany = array(
 		'Gateway' => array(
 			'with' => 'GatewaysOffice'
-		)
+		),
+		'Country' => array(
+			'with' => 'CountriesOffice'
+		),
 	);
 
 	var $validate = array(
@@ -28,7 +34,6 @@ class Office extends AppModel {
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'Please specify at least one frequency option!',
-				'required' => true,
 				'last' => true
 			)
 		),
@@ -36,7 +41,6 @@ class Office extends AppModel {
 			'required' => array(
 				'rule' => array('validateAmounts'),
 				'message' => 'Please specify valid amount options!',
-				'required' => true,
 				'last' => true
 			),
 		),
@@ -48,18 +52,23 @@ class Office extends AppModel {
  * @access public
  */
 	function beforeSave() {
-		$this->data['Office']['amounts'] = r(' ', '', $this->data['Office']['amounts']);
+		if (isset($this->data['Office']['amounts'])) {
+			$this->data['Office']['amounts'] = r(' ', '', $this->data['Office']['amounts']);
+		}
 
-		$this->GatewaysOffice->deleteAll(array('office_id' => $this->id));
-		if (!empty($this->data['Office']['gateways'][0])) {
-			foreach ($this->data['Office']['gateways'] as $gatewayId) {
-				$this->GatewaysOffice->create(array(
-					'office_id' => $this->id,
-					'gateway_id' => $gatewayId
-				));
-				$this->GatewaysOffice->save();
+		if (isset($this->data['Office']['gateways'])) {
+			$this->GatewaysOffice->deleteAll(array('office_id' => $this->id));
+			if (!empty($this->data['Office']['gateways'][0])) {
+				foreach ($this->data['Office']['gateways'] as $gatewayId) {
+					$this->GatewaysOffice->create(array(
+						'office_id' => $this->id,
+						'gateway_id' => $gatewayId
+					));
+					$this->GatewaysOffice->save();
+				}
 			}
 		}
+
 		return true;
 	}
 /**
@@ -108,7 +117,7 @@ class Office extends AppModel {
 		));
 		$isValidSubOffice = in_array($id, Set::extract('/Office/id', $subOffices));
 
-		return $isValidSubOffice || $isMyOffice;
+		return $isValidSubOffice || $isMyOffice || User::isRoot();
 	}
 /**
  * undocumented function
@@ -119,10 +128,7 @@ class Office extends AppModel {
  */
 	function parentOfficeOptions($id) {
 		return $this->find('list', array(
-			'conditions' => array(
-				'id <>' => $id,
-				'parent_id' => ''
-			),
+			'conditions' => array('id <>' => $id),
 			'contain' => false
 		));
 	}
@@ -134,34 +140,27 @@ class Office extends AppModel {
  * @access public
  */
 	function subOfficeOptions($id, $type = 'normal') {
+		$conditions = array(
+			'id <>' => $id
+		);
+		if ($type == 'selected') {
+			$conditions['parent_id'] = $id;
+		}
 		$subOffices = $this->find('list', array(
-			'conditions' => array(
-				'id <>' => $id,
-				'parent_id' => array('', $id)
-			),
+			'conditions' => $conditions,
 			'contain' => false
 		));
 
 		$ids = array_keys($subOffices);
 		if ($type == 'selected') {
+			if (!$id) {
+				return array();
+			}
 			return $ids;
 		}
 
-		$subParentOffices = $this->find('all', array(
-			'conditions' => array(
-				'parent_id' => $ids
-			),
-			'contain' => false,
-			'fields' => array('parent_id')
-		));
-		$ids = Set::extract('/Office/parent_id', $subParentOffices);
-
-		foreach ($subOffices as $id => $name) {
-			if (in_array($id, $ids)) {
-				unset($subOffices[$id]);
-			}
-		}
-
+		// @todo this is simplified; could do MPTT-Pattern here with the tree behavior
+		// however, since only roots edit the office tree, we simplify this
 		return $subOffices;
 	}
 /**
@@ -177,7 +176,9 @@ class Office extends AppModel {
 		} else {
 			$office = $this->find('first', array(
 				'conditions' => array('Office.id' => $id),
-				'contain' => array('SubOffice', 'ParentOffice')
+				'contain' => array(
+					'SubOffice', 'ParentOffice'
+				)
 			));
 		}
 
@@ -202,6 +203,28 @@ class Office extends AppModel {
 		$Session = Common::getComponent('Session');
 		if ($id == $Session->read('Office.id')) {
 			$this->activate($id);
+		}
+	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	public function subRelations($id, $data) {
+		$this->updateAll(
+			array('Office.parent_id' => "''"),
+			array('Office.parent_id' => $id)
+		);
+
+		if (!is_array($data['Office']['suboffice_id'])) {
+			return false;
+		}
+
+		foreach ($data['Office']['suboffice_id'] as $subOfficeId) {
+			$this->id = $subOfficeId;
+			$this->saveField('parent_id', $id);
 		}
 	}
 }

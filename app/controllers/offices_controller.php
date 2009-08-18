@@ -103,16 +103,9 @@ class OfficesController extends AppController {
 		}
 
 		$gatewayOptions = $this->Gateway->find('list');
-		$parentOptions = $this->Office->parentOfficeOptions($id);
-		$subOptions = $this->Office->subOfficeOptions($id);
-		$selectedSubs = $this->Office->subOfficeOptions($id, 'selected');
-
+		$this->treeSelections($id);
 		$gateways = $this->Office->Gateway->find('list');
-		$this->set(compact(
-			'action', 'office', 'gateways', 'parentOptions',
-			'subOptions', 'selectedSubs', 'gatewayOptions',
-			'selectedGateways'
-		));
+		$this->set(compact('action', 'office', 'gateways', 'gatewayOptions', 'selectedGateways'));
 
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
@@ -124,20 +117,19 @@ class OfficesController extends AppController {
 		}
 
 		$this->Office->set($this->data['Office']);
-		$result = $this->Office->save();
-		if ($this->Office->validationErrors) {
+		if (!$this->Office->save()) {
 			return $this->Message->add(__('Please fill out all fields', true), 'error');
 		}
-		Assert::notEmpty($result);
 
 		$officeId = $this->Office->id;
-
-		$this->subRelations($officeId);
+		if (User::isRoot()) {
+			$this->Office->subRelations($officeId, $this->data);
+		}
 		$this->Office->reload($officeId);
 
 		$msg = 'Office was saved successfully.';
 		if ($action == 'add') {
-			$url = array('action' => 'admin_edit', $this->Office->id);
+			$url = array('action' => 'admin_edit', $officeId);
 			return $this->Message->add(__($msg, true), 'ok', true, $url);
 		}
 		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'admin_index'));
@@ -167,22 +159,12 @@ class OfficesController extends AppController {
  * @return void
  * @access public
  */
-	private function subRelations($id) {
-		$this->Office->updateAll(
-			array('Office.parent_id' => "''"),
-			array('Office.parent_id' => $id)
-		);
-
-		if (!is_array($this->data['Office']['suboffice_id'])) {
-			return false;
-		}
-
-		foreach ($this->data['Office']['suboffice_id'] as $subOfficeId) {
-			$this->Office->set(array(
-				'id' => $subOfficeId,
-				'parent_id' => $id
-			));
-			$this->Office->save();
+	private function treeSelections($id) {
+		if (User::isRoot()) {
+			$parentOptions = $this->Office->parentOfficeOptions($id);
+			$subOptions = $this->Office->subOfficeOptions($id);
+			$selectedSubs = $this->Office->subOfficeOptions($id, 'selected');
+			$this->set(compact('parentOptions', 'subOptions', 'selectedSubs'));
 		}
 	}
 }
