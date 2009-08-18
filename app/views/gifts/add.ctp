@@ -13,7 +13,7 @@ $titleOptions = array(
 	'profdrdr' => 'Prof. Dr. Dr.',
 	'dipl' => 'Dipl.'
 );
-$frequencyOptions = Configure::read('App.frequency_options');
+$frequencyOptions = Gift::find('frequencyOptions');
 
 $cookie = Common::getComponent('Cookie');
 

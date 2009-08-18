@@ -8,9 +8,9 @@
  * @copyright   GREENPEACE INTERNATIONAL (c) 2009
  * @link        http://www.greenpeace.org/international/supportus
  */
-  $currencyOptions = Gift::getCurrencies();
-  $frequencyOptions = Gift::getFrequencies();  
-  $amountOptions = Gift::getAmounts();
+  $currencyOptions = Gift::find('currencies');
+  $frequencyOptions = Gift::find('frequencies');
+  $amountOptions = Gift::find('amounts');
   $amountSelected = $giftForm->value('Gift', 'amount', '10', $form->data);
 ?>
       <fieldset class="left" id="gift_type">
@@ -20,12 +20,12 @@
         <?php echo $form->input('Gift.type', array('type' => 'hidden', "value" => "donation"))."\n"; ?>
         <div class="input_wrapper radio">
           <label for="amount" class="option_title">Amount: <strong class="required">*</strong></label>
-<?php foreach ($amountOptions as $amountOption): ?>
+		<?php foreach ($amountOptions as $amountOption): ?>
           <label class="option">
             <input name="data[Gift][amount]" value="<?php echo $amountOption; ?>" class="radio amount" type="radio" 
               <?php echo $amountSelected == $amountOption ? $checked : ''?>> <?php echo $amountOption; ?>€
           </label>
-<?php endforeach; ?>
+		<?php endforeach; ?>
         </div>
         <div class="input_wrapper radio" id="other_amount">
           <label class="option">
@@ -42,10 +42,10 @@
             ))."\n";
           ?>
           <?php 
-            if($form->isFieldError('amount')) {
+            if ($form->isFieldError('amount')) {
               echo '<div class="error">' . $form->error("Gift.amount") . '</div>';
             }
-            if($form->isFieldError('currency')) {
+            if ($form->isFieldError('currency')) {
               echo '<div class="error">' . $form->error("Gift.currency"). '</div>';
             }
           ?>

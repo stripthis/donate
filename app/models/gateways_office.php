@@ -1,5 +1,5 @@
 <?php
-class GatewayOffice extends AppModel {
+class GatewaysOffice extends AppModel {
 	var $belongsTo = array(
 		'Office',
 		'Gateway'

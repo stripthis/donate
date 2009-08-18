@@ -24,11 +24,23 @@ echo $form->input('suboffice_id', array(
 	'label' => 'Sub Offices', 'options' => $subOptions, 'multiple' => true,
 	'selected' => $selectedSubs
 ));
-?>
 
-<fieldset><legend>Gateways</legend>
-	<?php echo $form->input('Gateway'); ?>
-</fieldset>
+echo $form->input('frequencies', array(
+	'label' => '', 'options' => Gift::find('frequencies', array('options' => true)), 'multiple' => true,
+	'selected' => explode(',', $form->data['Office']['frequencies'])
+));
+
+echo $form->input('amounts', array(
+	'value' => $form->data['Office']['amounts'], 'label' => 'Possible Amount Selections:'
+));
+
+echo $form->input('gateways', array(
+	'options' => $gatewayOptions,
+	'selected' => $selectedGateways, 'multiple' => true,
+	'label' => 'Supported Gateways (leave empty if none):',
+	'empty' => '-- None --'
+));
+?>
 
 <?php echo $form->end('Save');?>
 </div>

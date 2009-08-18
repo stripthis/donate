@@ -3,6 +3,18 @@ class OfficesController extends AppController {
 /**
  * undocumented function
  *
+ * @return void
+ * @access public
+ */
+	function beforeFilter() {
+		parent::beforeFilter();
+
+		$this->Gift = ClassRegistry::init('Gift');
+		$this->Gateway = $this->Office->Gateway;
+	}
+/**
+ * undocumented function
+ *
  * @param string $officeId 
  * @return void
  * @access public
@@ -75,25 +87,32 @@ class OfficesController extends AppController {
  */
 	function admin_edit($id = null) {
 		$office = $this->Office->create();
+		$selectedGateways = array();
 
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			$office = $this->Office->find('first', array(
 				'conditions' => array('Office.id' => $id),
-				'contain' => false
+				'contain' => array('GatewaysOffice(gateway_id)')
 			));
 			Assert::notEmpty($office, '404');
 			Assert::true(Office::isOwn($id), '403');
 
+			$selectedGateways = Set::extract('/GatewaysOffice/gateway_id', $office);
 			$action = 'edit';
 		}
 
+		$gatewayOptions = $this->Gateway->find('list');
 		$parentOptions = $this->Office->parentOfficeOptions($id);
 		$subOptions = $this->Office->subOfficeOptions($id);
 		$selectedSubs = $this->Office->subOfficeOptions($id, 'selected');
 
 		$gateways = $this->Office->Gateway->find('list');
-		$this->set(compact('action', 'office', 'gateways', 'parentOptions', 'subOptions', 'selectedSubs'));
+		$this->set(compact(
+			'action', 'office', 'gateways', 'parentOptions',
+			'subOptions', 'selectedSubs', 'gatewayOptions',
+			'selectedGateways'
+		));
 
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {

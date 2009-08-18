@@ -11,14 +11,84 @@ class Office extends AppModel {
 		'SubOffice' => array(
 			'className' => 'Office',
 			'foreignKey' => 'parent_id'
+		),
+		'GatewaysOffice' => array(
+			'dependent' => true
 		)
 	);
 
 	var $hasAndBelongsToMany = array(
 		'Gateway' => array(
-			'with' => 'GatewayOffice'
+			'with' => 'GatewaysOffice'
 		)
 	);
+
+	var $validate = array(
+		'frequencies' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'Please specify at least one frequency option!',
+				'required' => true,
+				'last' => true
+			)
+		),
+		'amounts' => array(
+			'required' => array(
+				'rule' => array('validateAmounts'),
+				'message' => 'Please specify valid amount options!',
+				'required' => true,
+				'last' => true
+			),
+		),
+	);
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function beforeSave() {
+		$this->data['Office']['amounts'] = r(' ', '', $this->data['Office']['amounts']);
+
+		$this->GatewaysOffice->deleteAll(array('office_id' => $this->id));
+		if (!empty($this->data['Office']['gateways'][0])) {
+			foreach ($this->data['Office']['gateways'] as $gatewayId) {
+				$this->GatewaysOffice->create(array(
+					'office_id' => $this->id,
+					'gateway_id' => $gatewayId
+				));
+				$this->GatewaysOffice->save();
+			}
+		}
+		return true;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function beforeValidate() {
+		if (empty($this->data['Office']['frequencies'])) {
+			$this->data['Office']['frequencies'] = array();
+		}
+		$this->data['Office']['frequencies'] = implode(',', $this->data['Office']['frequencies']);
+		return true;
+	}
+/**
+ * Validate amount - to avoid small amounts
+ * @param $check
+ * @return unknown_type
+ */
+	function validateAmounts($check) {
+		$check = explode(',', current($check));
+		foreach ($check as $amount) {
+			if (!is_numeric($amount)) {
+				return false;
+			}
+		}
+		return true;
+	}
 /**
  * undocumented function
  *

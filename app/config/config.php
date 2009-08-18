@@ -59,6 +59,7 @@ $config = array(
 	    'profdr' => 'Prof. Dr.',
 	    'profdrdr' => 'Prof. Dr. Dr.',
 	    'dipl' => 'Dipl.'
+<<<<<<< HEAD:app/config/config.php
   	)
 	),
 	'App.gift' => array(
@@ -79,6 +80,8 @@ $config = array(
 			//'quarterly' => 'Quarterly',
 			//'biannually' => 'Biannually',
 			'annually' => 'Annually'
+=======
+>>>>>>> f7e9e8686be94d0f2d8b1d965ea0e2bf3c884ff8:app/config/config.php
 		)
 	),
 	'App.cards' => array(
