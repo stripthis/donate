@@ -25,8 +25,8 @@ class GiftFormHelper extends AppHelper {
 			$result = $sessValue;
 		}
 
-		if (isset($form->data[$model][$field])) {
-			$result = $form->data[$model][$field];
+		if (isset($data[$model][$field])) {
+			$result = $data[$model][$field];
 		}
 		return $result;
 	}
