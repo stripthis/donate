@@ -132,7 +132,7 @@ class Gift extends AppModel {
 					$frequencies = ClassRegistry::init('Office')->find('first', array(
 						'conditions' => array('id' => $query['id']),
 						'contain' => false,
-						'fields' => array('types')
+						'fields' => array('frequencies')
 					));
 					$frequencies = explode(',', $frequencies['Office']['frequencies']);
 				}
@@ -148,7 +148,7 @@ class Gift extends AppModel {
 					$amounts = ClassRegistry::init('Office')->find('first', array(
 						'conditions' => array('id' => $query['id']),
 						'contain' => false,
-						'fields' => array('types')
+						'fields' => array('amounts')
 					));
 					$amounts = $amounts['Office']['amounts'];
 				}
