@@ -108,7 +108,7 @@ class Office extends AppModel {
 		));
 		$isValidSubOffice = in_array($id, Set::extract('/Office/id', $subOffices));
 
-		return $isValidSubOffice || $isMyOffice;
+		return $isValidSubOffice || $isMyOffice || User::isRoot();
 	}
 /**
  * undocumented function
@@ -144,6 +144,9 @@ class Office extends AppModel {
 
 		$ids = array_keys($subOffices);
 		if ($type == 'selected') {
+			if (!$id) {
+				return array();
+			}
 			return $ids;
 		}
 

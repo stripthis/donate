@@ -388,7 +388,16 @@ class User extends AppModel {
  * @access public
  */
 	static function isAdmin() {
-		return User::get('level') == 'admin';
+		return User::get('level') == 'admin' || User::isRoot();
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	static function isRoot() {
+		return User::get('level') == 'root';
 	}
 /**
  * Generic function that determines if the current User can access the $property of a given $object

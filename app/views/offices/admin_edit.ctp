@@ -11,7 +11,7 @@
 echo $form->input('id');
 echo $form->input('name');
 
-$selected = !empty($office) ? $office['Office']['parent_id'] : false;
+$selected = !empty($office['Office']['parent_id']) ? $office['Office']['parent_id'] : false;
 echo $form->input('parent_id', array(
 	'label' => 'Parent Office', 'options' => $parentOptions,
 	'empty' => '--', 'selected' => $selected

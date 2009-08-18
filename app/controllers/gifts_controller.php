@@ -14,7 +14,7 @@ class GiftsController extends AppController {
 		$this->AuthKey = ClassRegistry::init('AuthKey');
 		$this->AuthKeyType = $this->AuthKey->AuthKeyType;
 		$this->Office = ClassRegistry::init('Office');
-		$this->GatewayOffice = $this->Office->GatewayOffice;
+		$this->GatewaysOffice = $this->Office->GatewaysOffice;
 		$this->Contact = $this->Gift->Contact;
 		$this->Country = $this->Gift->Contact->Address->Country;
 		$this->Transaction = $this->Gift->Transaction;
@@ -99,7 +99,7 @@ class GiftsController extends AppController {
 		// everything ok prepare / perform the transaction
 		//@todo dont always use the first one, make it dependent on the payment method 
 		//@todo && the amount / currency vs. payment gateway fee by offices
-		$gateway = $this->GatewayOffice->find('first', array(
+		$gateway = $this->GatewaysOffice->find('first', array(
 			'conditions' => array('office_id' => $officeId),
 			'contain' => false
 		));
@@ -108,7 +108,7 @@ class GiftsController extends AppController {
 		$this->Transaction->create(array(
 			'gift_id' => $giftId,
 			'amount' => $this->data['Gift']['amount'],
-			'gateway_id' => $gateway['GatewayOffice']['gateway_id']
+			'gateway_id' => $gateway['GatewaysOffice']['gateway_id']
 		));
 		$this->Transaction->save();
 		$tId = $this->Transaction->getLastInsertId();

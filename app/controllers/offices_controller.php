@@ -124,20 +124,17 @@ class OfficesController extends AppController {
 		}
 
 		$this->Office->set($this->data['Office']);
-		$result = $this->Office->save();
-		if ($this->Office->validationErrors) {
+		if (!$this->Office->save()) {
 			return $this->Message->add(__('Please fill out all fields', true), 'error');
 		}
-		Assert::notEmpty($result);
 
 		$officeId = $this->Office->id;
-
 		$this->subRelations($officeId);
 		$this->Office->reload($officeId);
 
 		$msg = 'Office was saved successfully.';
 		if ($action == 'add') {
-			$url = array('action' => 'admin_edit', $this->Office->id);
+			$url = array('action' => 'admin_edit', $officeId);
 			return $this->Message->add(__($msg, true), 'ok', true, $url);
 		}
 		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'admin_index'));
