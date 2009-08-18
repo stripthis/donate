@@ -3,7 +3,7 @@
   <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
-      <li><?php echo $html->link(__('New Office', true), array('action'=>'add'),array('class'=>'add')); ?></li>
+      <li><?php echo $html->link(__('New Office', true), array('action' => 'add'), array('class' => 'add')); ?></li>
     </ul>
   </div>
   <table cellpadding="0" cellspacing="0">

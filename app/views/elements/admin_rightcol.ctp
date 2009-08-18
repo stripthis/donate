@@ -6,7 +6,7 @@
 
 	$parent = $Session->read('Office.ParentOffice');
 
-	if (!empty($parent)) {
+	if (!empty($parent['id'])) {
 		$parent = AppModel::normalize('Office', $parent);
 		echo $html->link('Back to ' . $parent['Office']['name'], array(
 			'controller' => 'offices', 'action' => 'activate', $parent['Office']['id']
