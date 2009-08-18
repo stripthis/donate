@@ -29,6 +29,10 @@ echo $form->input('frequencies', array(
 	'label' => '', 'options' => Gift::find('frequencies', array('options' => true)), 'multiple' => true,
 	'selected' => explode(',', $form->data['Office']['frequencies'])
 ));
+
+echo $form->input('amounts', array(
+	'value' => $form->data['Office']['amounts'], 'label' => 'Possible Amount Selections:'
+));
 ?>
 
 <fieldset><legend>Gateways</legend>

@@ -143,9 +143,18 @@ class Gift extends AppModel {
 				}
 				return $result;
 			case 'amounts':
-				return array('5', '10', '15');
+				$amounts = '5,10,15';
+				if (!isset($query['options']) && isset($query['id'])) {
+					$amounts = ClassRegistry::init('Office')->find('first', array(
+						'conditions' => array('id' => $query['id']),
+						'contain' => false,
+						'fields' => array('types')
+					));
+					$amounts = $amounts['Office']['amounts'];
+				}
+				return $amounts;
 			case 'min_amount':
-				$amounts = Gift::find('amounts');
+				$amounts = Gift::find('amounts', $query);
 				return $amounts[0];
 			case 'currencies':
 				return array('EUR', 'USD', 'GBP');

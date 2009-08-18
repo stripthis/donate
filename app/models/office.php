@@ -28,8 +28,40 @@ class Office extends AppModel {
 				'required' => true,
 				'last' => true
 			)
-		)
+		),
+		'amounts' => array(
+			'required' => array(
+				'rule' => array('validateAmounts'),
+				'message' => 'Please specify valid amount options!',
+				'required' => true,
+				'last' => true
+			),
+		),
 	);
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function beforeSave() {
+		$this->data['Office']['amounts'] = r(' ', '', $this->data['Office']['amounts']);
+		return true;
+	}
+/**
+ * Validate amount - to avoid small amounts
+ * @param $check
+ * @return unknown_type
+ */
+	function validateAmounts($check) {
+		$check = explode(',', current($check));
+		foreach ($check as $amount) {
+			if (!is_numeric($amount)) {
+				return false;
+			}
+		}
+		return true;
+	}
 /**
  * undocumented function
  *
