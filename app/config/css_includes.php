@@ -3,6 +3,7 @@ $config = array(
 	'CssIncludes' => array(
 		//'generic.css' => '*:*',
     'admin.css' => "*:admin_*",
+    'debug.css' => "*:*",
     //'home.css' => '*:!admin_*',
     //'ceo.css' => '*:*',     
     //'leaders.css' => '*:*',        

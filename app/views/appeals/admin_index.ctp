@@ -1,3 +1,4 @@
+  <div class="content" id="appeals_index">
   <h2><?php __('Appeals');?></h2>
   <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>
@@ -7,14 +8,12 @@
   </div>
   <table cellpadding="0" cellspacing="0">
   <tr>
-    	<th><?php echo $paginator->sort('parent_id');?></th>
-    	<th><?php echo $paginator->sort('name');?></th>
-    	<th><?php echo $paginator->sort('campaign_code');?></th>
-    	<th><?php echo $paginator->sort('default');?></th>
     	<th><?php echo $paginator->sort('starred');?></th>
-    	<th><?php echo $paginator->sort('cost');?></th>
-    	<th><?php echo $paginator->sort('reviewed');?></th>
     	<th><?php echo $paginator->sort('status');?></th>
+    	<th><?php echo $paginator->sort('campaign_code');?></th>
+    	<th><?php echo $paginator->sort('name');?></th>
+    	<th><?php echo $paginator->sort('default');?></th>
+    	<th><?php echo $paginator->sort('reviewed');?></th>
     	<th><?php echo $paginator->sort('country_id');?></th>
     	<th><?php echo $paginator->sort('Created By', 'user_id');?></th>
     	<th><?php echo $paginator->sort('created');?></th>
@@ -31,28 +30,23 @@ foreach ($appeals as $appeal):
 ?>
   <tr<?php echo $class;?>>
     <td>
-      <?php echo $html->link($appeal['Parent']['name'], array('controller'=> 'appeals', 'action'=>'view', $appeal['Parent']['id'])); ?>
+      <?php echo $appeal['Appeal']['starred']; ?>
     </td>
     <td>
-      <?php echo $appeal['Appeal']['name']; ?>
+      <?php echo $appeal['Appeal']['status']; ?>
     </td>
     <td>
       <?php echo $appeal['Appeal']['campaign_code']; ?>
+    </td>
+    <?php //echo $html->link($appeal['Parent']['name'], array('controller'=> 'appeals', 'action'=>'view', $appeal['Parent']['id'])); ?>
+    <td>
+      <?php echo $appeal['Appeal']['name']; ?>
     </td>
     <td>
       <?php echo $appeal['Appeal']['default']; ?>
     </td>
     <td>
-      <?php echo $appeal['Appeal']['starred']; ?>
-    </td>
-    <td>
-      <?php echo $appeal['Appeal']['cost']; ?>
-    </td>
-    <td>
       <?php echo $appeal['Appeal']['reviewed']; ?>
-    </td>
-    <td>
-      <?php echo $appeal['Appeal']['status']; ?>
     </td>
     <td>
       <?php echo $appeal['Country']['name']; ?>
@@ -74,7 +68,6 @@ foreach ($appeals as $appeal):
   </tr>
 <?php endforeach; ?>
   </table>
-  </div>
   <div class="paging">
     <?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
    |   <?php echo $paginator->numbers();?>
@@ -86,3 +79,4 @@ foreach ($appeals as $appeal):
   'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
   ));
   ?>  </p>
+	</div>

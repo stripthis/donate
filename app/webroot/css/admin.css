@@ -52,11 +52,22 @@ h2{
 h3{
   font-weight:normal;
   font-size:1.4em;
-  border-bottom:1px dotted #66CC00;
   margin:0 0 8px 2px;
   padding:0px 2px 2px 20px;
-  background: transparent url("../img/layout/arrow1_003300.png") 0 7px no-repeat;
 }
+
+/* high level shortcut*/
+.clear {
+	clear: both; 
+	font-size: 0; 
+	line-height: 0; 
+	width: 0; 
+	height: 0;
+}
+.clear_left {clear:left;}
+.left {float: left;}
+.right {float: right;}
+.hidden {display: none;}
 
 /* lists */
 ul, li {
@@ -261,7 +272,7 @@ input[type=submit] {
 #container{
   min-width:850px;
 }
-.content_wrapper{
+#content_wrapper{
   float: left;
   width: 100%;
   background: #fff;
@@ -271,15 +282,15 @@ input[type=submit] {
   float:left;
   margin: 10px 0px;
   margin-right:22%;
+  /*margin-left:21%*/
   padding: 0px 0px 20px 20px;
   background: #FFF;
 }
-
 /*
-.sidebar_wrapper#left{
+.sidebar_wrapper#left_sidebar{
   float: left;
   margin-left: -100%;
-  width: 185px;
+  width: 21%;
 }*/
 .sidebar_wrapper#right_sidebar{
   float: left;
@@ -329,11 +340,11 @@ input[type=submit] {
   font-weight: normal;
   text-decoration: none;
 }
-#header h1 a img{
+#header img{
   margin-top:10px;
   vertical-align:bottom;
 }
-#header h1 a:hover {
+#header a:hover {
   color: #003300;
 }
 
@@ -385,35 +396,32 @@ input[type=submit] {
 #header #searchbox .submit input{
   font-size:1em;
 }
-*/
+
 /* menu */
-ul#menu{
-  padding: 5px 5px 5px 5px;
+#menu_top{
+	clear:both;
+	float:left;
+	padding:10px 0 5px 10px;
+	width:auto;
 }
-ul#menu li{
+ul.menu li{
   display:inline;
   margin:0;
 }
-ul#menu li a{
+ul.menu li a{
   font-size:1.2em;
   color: #FFF;
   background:#1d791d;
   padding:5px 10px;
   -moz-border-radius:3px 3px 0 0;
 }
-ul#menu li a.selected, ul#menu li a.selected:hover{
+ul.menu li a.selected, ul.menu li a.selected:hover{
   background:#FFF;
   color:#003300;
 }
-ul#menu li a:hover{
+ul.menu li a:hover{
   background:#196119;
   padding:5px 10px;
-}
-ul#menu.bottom li a{
-  -moz-border-radius:0 0 3px 3px ;
-}
-ul#menu.bottom{
-  clear:both;
 }
 
 /* sidebar */
@@ -509,6 +517,16 @@ div.error-message {
   clear: both;
   color: #900;
   font-weight: bold;
+}
+div.input label.error {
+	display: block; 
+	float: left; 
+	width: 350px; 
+	color: red; 
+	font-size: 9px; 
+	font-weight: normal; 
+	font-family: Arial, Helvetica, Verdana, sans-serif; 
+	text-transform: uppercase;
 }
 p.error {
   background-color: #e32;
@@ -645,16 +663,8 @@ ul.messages li.error{
 .quicklinks ul li a:hover img{
   border:1px solid #66CC00;
 }
-
 /* Related */
 div.related {
   clear: both;
   display: block;
 }
-
-div.input label.error {display: block; float: left; width: 350px; color: red; font-size: 9px; font-weight: normal; font-family: Arial, Helvetica, Verdana, sans-serif; text-transform: uppercase;}
-.clear {clear: both; font-size: 0; line-height: 0; width: 0; height: 0;}
-.clear_left {clear:left;}
-.left {float: left;}
-.right {float: right;}
-.hidden {display: none;}

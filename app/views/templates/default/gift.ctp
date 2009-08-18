@@ -23,7 +23,7 @@
 		<?php foreach ($amountOptions as $amountOption): ?>
           <label class="option">
             <input name="data[Gift][amount]" value="<?php echo $amountOption; ?>" class="radio amount" type="radio" 
-              <?php echo $amountSelected == $amountOption ? $checked : ''?>> <?php echo $amountOption; ?>€
+              <?php echo $amountSelected == $amountOption ? $giftForm->checked() : ''?>> <?php echo $amountOption; ?>€
           </label>
 		<?php endforeach; ?>
         </div>
@@ -33,7 +33,7 @@
           </label>
           <input name="data[Gift][amount_other]" type="text" class="text" id="txtOtherAmount" 
             value="<?php echo !in_array($amountSelected, $amountOptions) ? $amountSelected : ''?>"
-            <?php echo !in_array($amountSelected, $amountOptions) ? $checked : ''?> 
+            <?php echo !in_array($amountSelected, $amountOptions) ? $giftForm->checked() : ''?> 
           /> 
           <?php
             echo $form->input('currency', array(
@@ -52,7 +52,7 @@
         </div>
         <?php
           $options = array(
-            'label' => 'Frequency' . ': ' . $required,
+            'label' => 'Frequency' . ': ' . $giftForm->required(),
             'options' => $frequencyOptions,
             'selected' => $giftForm->value('Gift', 'frequency', 'monthly', $form->data)
             );

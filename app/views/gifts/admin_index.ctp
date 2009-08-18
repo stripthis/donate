@@ -1,4 +1,4 @@
-<div class="gifts index">
+<div class="content" id="gifts_index">
   <h2><?php __('Gifts');?></h2>
 	<?php
 	echo $form->create('Gift', array('url' => '/admin/gifts/index', 'type' => 'get'));
@@ -69,7 +69,6 @@ foreach ($gifts as $gift):
   </tr>
 <?php endforeach; ?>
   </table>
-  </div>
   <div class="paging">
     <?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
    |   <?php echo $paginator->numbers();?>
@@ -81,3 +80,4 @@ foreach ($gifts as $gift):
   'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
   ));
   ?>  </p>
+  </div>

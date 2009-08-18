@@ -1,4 +1,4 @@
-<div class="offices form">
+<div class="content" id="offices_settings">
   <h2><?php __('Edit Office');?></h2>
   <div class="actions">
     <h3><?php echo __('Actions');?></h3>

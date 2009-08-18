@@ -16,8 +16,6 @@
   if (!empty($cData)) {
     $cData = $cData['Gift'];
   }
-  $required = '<strong class="required">*</strong>';
-  $checked = 'checked="checked"';
 ?>
   <div id="content_wrapper">
     <div id="banner">
@@ -37,12 +35,7 @@
       <p class="message <?php echo $message['type']; ?>"><?php echo $simpleTextile->toHtml($message['text']); ?></p>
 <?php endforeach; ?>
       <?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
-<?php
-			echo $this->element('../templates/default/gift', array(
-				"required" => $required, 
-				"checked" => $checked
-			));
-?>
+<?php echo $this->element('../templates/default/gift'); ?>
       <div class="form_decoration half left" id="activist">
         <p>
           &#x201c; Greenpeace exists because this fragile Earth deserves a voice. 
@@ -50,18 +43,8 @@
         </p>
       </div>
       <div class="spacer"></div>
-<?php
-			echo $this->element('../templates/default/contact', array(
-				"required" => $required, 
-				"checked" => $checked
-			));
-?>
-<?php
-			echo $this->element('../templates/default/payment', array(
-				"required" => $required, 
-				"checked" => $checked
-			));
-?>
+<?php echo $this->element('../templates/default/contact'); ?>
+<?php	echo $this->element('../templates/default/payment'); ?>
       <?php echo $form->end('Donate'); ?>
     </div>
   </div>

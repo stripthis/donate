@@ -1,0 +1,9 @@
+.debug_header{
+	text-align:center;
+	background:#FFF;
+	margin-bottom:10px;
+	padding:5px;
+}
+.debug_header strong{
+	color:#66ee00;
+}
