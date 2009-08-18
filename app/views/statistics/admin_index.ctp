@@ -1,3 +1,4 @@
+<div class="content" id="statistic_index">
 <h2>Users Statistics</h2>
 <?php echo $this->element('../statistics/sidebar') ?>
 
@@ -33,3 +34,4 @@ swfobject.embedSWF(
 		<?php endforeach; ?>
 	</tbody>
 </table>
+</div>

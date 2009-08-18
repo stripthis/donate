@@ -1,4 +1,3 @@
-  <div class="content" id="appeals_index">
   <h2><?php __('Appeals');?></h2>
   <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>
@@ -8,7 +7,6 @@
   </div>
   <table cellpadding="0" cellspacing="0">
   <tr>
-    	<th><?php echo $paginator->sort('id');?></th>
     	<th><?php echo $paginator->sort('parent_id');?></th>
     	<th><?php echo $paginator->sort('name');?></th>
     	<th><?php echo $paginator->sort('campaign_code');?></th>
@@ -32,9 +30,6 @@ foreach ($appeals as $appeal):
 	}
 ?>
   <tr<?php echo $class;?>>
-    <td>
-      <?php echo $appeal['Appeal']['id']; ?>
-    </td>
     <td>
       <?php echo $html->link($appeal['Parent']['name'], array('controller'=> 'appeals', 'action'=>'view', $appeal['Parent']['id'])); ?>
     </td>

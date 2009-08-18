@@ -28,7 +28,9 @@
   </div>
   <div id="content_wrapper">
 <?php echo $this->element('messages')?>
+		<div class="content">
 <?php echo $content_for_layout; ?>
+		</div>
   	<div class="sidebar_wrapper" id="right">
      <div class="help">
        <h3><?php echo __("Need some help?"); ?></h3>

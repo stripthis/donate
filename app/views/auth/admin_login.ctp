@@ -19,7 +19,7 @@
       <?php echo $form->end()."\n";?>
       <div class="clear"></div>
     </div>
-    <div class="sidebar_wrapper" id="right">
+    <div class="sidebar_wrapper" id="right_sidebar">
      <div class="help">
        <h3><?php echo __("Need some help?"); ?></h3>
        <ul>
