@@ -1,3 +1,7 @@
+<?php 
+	$appeals = Appeal::getAppeals();
+	pr($appeals);
+?>
 <div style="text-align:center;background:#FFF;margin-bottom:10px;border-bottom:1px solid #CCC;padding:5px;">
 	<strong style="color:red;">Beta Test</strong> :
 	<?php echo $html->link('Single Form Example', array('controller' => 'gifts', 'action' => 'add'))?> | 

@@ -106,10 +106,18 @@ class Contact extends AppModel {
 		return false;
 	}
 /**
- * Get Salutations
+ * Get the list of allowed salutations
+ * @return array
  */
 	static function getSalutations() {
 		return Configure::read("App.contact.salutations");
+	}
+/**
+ * Get the list of allowed titles
+ * @return array
+ */
+	static function getTitles() {
+		return Configure::read("App.contact.titles");
 	}
 }
 ?>

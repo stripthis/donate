@@ -133,7 +133,7 @@ input[type=submit] {
 label {
   display: block;
   font-size: 1.2em;
-  padding: 5px 0px;
+  padding: 8px 0px;
   color:#444;
 }
 input, textarea {
@@ -158,7 +158,7 @@ option {
 input.checkbox, input[type=checkbox]  {
   font-size:1.3em;
   padding:0 10px;
-  margin:0.4em 5px 0px 5px;
+  margin:10px 5px 0px 5px;
   clear: left;
   float: left;
   width: auto;
@@ -182,6 +182,7 @@ form .error .error-message{
 	font-size:1.1em;
 	padding-bottom:0;
 	margin-bottom:0;
+	margin-top:2px;
 }
 
 /***********************************************************************************
@@ -219,7 +220,7 @@ form .error .error-message{
 }
 #content form .input_wrapper.half{
 	float:left;
-	width:290px;
+	width:300px;
 	margin:0;
 	clear:none;
 }
@@ -395,10 +396,10 @@ form .error .error-message{
 #content #card .input_wrapper.radio label.option#visa{
 	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/visa.png) center 7px no-repeat;
 }
-#content #card .input_wrapper.radio label.option#visa_electron{
+#content #card .input_wrapper.radio label.option#electron{
 	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/visa_electron.png) center 7px no-repeat;
 }
-#content #card .input_wrapper.radio label.option#diners_club{
+#content #card .input_wrapper.radio label.option#diners{
 	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/diners.png) center 7px no-repeat;
 }
 #content #card .input_wrapper.radio label.option#discover{
@@ -407,7 +408,7 @@ form .error .error-message{
 #content #card .input_wrapper.radio label.option#amex{
 	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/amex.png) center 7px no-repeat;
 }
-#content #card .input_wrapper.radio label.option#JCB{
+#content #card .input_wrapper.radio label.option#jcb{
 	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/jcb.png) center 7px no-repeat;
 }
 #content #card .input_wrapper.radio label.option:hover{
