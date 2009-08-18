@@ -427,7 +427,7 @@ class Common extends Object
 		$domain = r('staging.', '', $domain);
 		$host = r('www.', '', env('HTTP_HOST'));
 		return !Common::isProduction() && !Common::isStaging()
-				|| strpos($host, 'localcoolit') !== false
+				|| strpos($host, 'localwhiterabbit') !== false
 				|| strpos($host, 'dev.' . $domain) !== false;
 	}
 	

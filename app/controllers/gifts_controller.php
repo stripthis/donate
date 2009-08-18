@@ -52,7 +52,10 @@ class GiftsController extends AppController {
 		$errors = false;
 
 		$this->loadSessionData($this->data);
-		$contactId = $this->Contact->addFromGift($this->data);
+		$contactId = false;
+		if (isset($data['Contact'])) {
+			$contactId = $this->Contact->addFromGift($this->data);
+		}
 
 		if (Common::isUuid($contactId)) {
 			$this->data['Gift']['contact_id'] = $contactId;
