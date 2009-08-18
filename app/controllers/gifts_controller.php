@@ -52,7 +52,10 @@ class GiftsController extends AppController {
 		$errors = false;
 
 		$this->loadSessionData($this->data);
-		$contactId = $this->Contact->addFromGift($this->data);
+		$contactId = false;
+		if (isset($this->data['Contact'])) {
+			$contactId = $this->Contact->addFromGift($this->data);
+		}
 
 		if (Common::isUuid($contactId)) {
 			$this->data['Gift']['contact_id'] = $contactId;
@@ -66,7 +69,7 @@ class GiftsController extends AppController {
 			$this->data['Gift']['amount'] = '';
 			$this->data['Gift']['amount_other'] = '';
 		}
-		
+
 		$this->saveSessionData();
 
 		// @todo: will be refactored when admin panel ready to create multistep forms
@@ -81,7 +84,7 @@ class GiftsController extends AppController {
 		} else {
 			$errors = true;
 		}
-		
+
 		// credit card data is given
 		//@todo if appeal or payment gateway use redirect model then redirect
 		//else if the credit data is given, validates 

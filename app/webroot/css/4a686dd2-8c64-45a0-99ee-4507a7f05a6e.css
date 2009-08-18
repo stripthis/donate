@@ -488,3 +488,10 @@ form .error .error-message{
 	display:inline;
 	padding:0 7px;
 }
+.debug_header {
+	text-align:center;
+	background:#FFF;
+	margin-bottom:10px;
+	border-bottom:1px solid #CCC;
+	padding:5px;
+}

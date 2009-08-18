@@ -54,10 +54,6 @@ class Contact extends AppModel {
  * @access public
  */
 	function addFromGift($data) {
-		if (!isset($data['Contact'])) {
-			return false;
-		}
-
 		if (isset($data['Contact']['id'])) {
 			$contactFound = $this->find('count', array(
 				'conditions' => array('id' => $data['Contact']['id']),
