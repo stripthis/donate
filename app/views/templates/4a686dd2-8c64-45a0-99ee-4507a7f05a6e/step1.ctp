@@ -38,7 +38,7 @@
 <?php endforeach; ?>
       <?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
 <?php 
-			echo $this->element('templates/default/gift', array(
+			echo $this->element('../templates/default/gift', array(
 				"required" => $required, 
 				"checked" => $checked
 			));
@@ -51,13 +51,13 @@
       </div>
       <div class="spacer"></div>
 <?php 
-			echo $this->element('templates/default/contact', array(
+			echo $this->element('../templates/default/contact', array(
 				"required" => $required, 
 				"checked" => $checked
 			));
 ?>
 <?php 
-			echo $this->element('templates/default/payment', array(
+			echo $this->element('../templates/default/payment', array(
 				"required" => $required, 
 				"checked" => $checked
 			));

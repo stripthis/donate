@@ -59,26 +59,6 @@ $config = array(
 	    'profdr' => 'Prof. Dr.',
 	    'profdrdr' => 'Prof. Dr. Dr.',
 	    'dipl' => 'Dipl.'
-  	)
-	),
-	'App.gift' => array(
-		'types' => array(
-			'donation' => 'Donation'
-			//,'inkind' => 'In-kind gift'
-			//,'legacy' => 'Legacy'
-		),
-		'amounts' => array(
-			'5', '10', '15' //minimal amount + next steps
-		),
-		'currencies' => array(
-			'EUR', 'USD', 'GBP'
-		),
-		'frequencies' => array(
-			'onetime' => 'One Time',
-			'monthly' => 'Monthly',
-			//'quarterly' => 'Quarterly',
-			//'biannually' => 'Biannually',
-			'annualy' => 'Annualy'
 		)
 	),
 	'App.cards' => array(

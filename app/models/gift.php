@@ -87,7 +87,7 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateFrequency($check) {
-		return array_key_exists(current($check), Gift::getFrequencies());
+		return array_key_exists(current($check), Gift::find('frequencies'));
 	}
 /**
  * Validate a gift type
@@ -96,7 +96,7 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateType($check) {
-		return array_key_exists($check['type'], Gift::getTypes());
+		return array_key_exists($check['type'], Gift::find('types'));
 	}
 /**
  * Validate amount - to avoid small amounts
@@ -104,44 +104,42 @@ class Gift extends AppModel {
  * @return unknown_type
  */
 	function validateAmount($check){
-		return (isset($check['amount']) && $check['amount'] >= Gift::getMinimumAmount());
+		return (isset($check['amount']) && $check['amount'] >= Gift::find('min_amount'));
 	}
 /**
- * Return the default proposed frequencies
- * @return array, allowed frequency options
+ * undocumented function
+ *
+ * @param string $type 
+ * @param string $query 
+ * @return void
+ * @access public
  */
-	static function getTypes(){
-		 return Configure::read('App.gift.types');
-	}
-/**
- * Return the default proposed frequencies
- * @return array, allowed frequency options
- */
-	static function getFrequencies(){
-		 return Configure::read('App.gift.frequencies');
-	}
-/**
- * Return the different amounts proposed by default 
- * @return array, allowed amount options
- */
-	static function getAmounts(){
-		 return Configure::read('App.gift.amounts');
-	}
-/**
- * 
- * @return number, minimal amount as defined in the configuration file
- */
-	static function getMinimumAmount(){
-		 $amounts = Configure::read('App.gift.amounts');
-		 return $amounts[0];
-	}
-/**
- * Return the allowed currencies
- * @return array, allowed currencies as defined in the configuration file
- */
-	static function getCurrencies(){
-		//@todo to be based on payment gateway(s) capability
-		return Configure::read('App.gift.currencies');
+	function find($type, $query = array()) {
+		$args = func_get_args();
+		switch ($type) {
+			case 'types':
+				return array(
+					'donation' => 'Donation'
+					//,'inkind' => 'In-kind gift'
+					//,'legacy' => 'Legacy'
+				);
+			case 'frequencies':
+				return array(
+					'onetime' => 'One Time',
+					'monthly' => 'Monthly',
+					//'quarterly' => 'Quarterly',
+					//'biannually' => 'Biannually',
+					'annualy' => 'Annualy'
+				);
+			case 'amounts':
+				return array('5', '10', '15');
+			case 'min_amount':
+				$amounts = Gift::find('amounts');
+				return $amounts[0];
+			case 'currencies':
+				return array('EUR', 'USD', 'GBP');
+		}
+		return call_user_func_array(array('parent', 'find'), $args);
 	}
 }
 ?>

@@ -93,7 +93,10 @@ class OfficesController extends AppController {
 		$selectedSubs = $this->Office->subOfficeOptions($id, 'selected');
 
 		$gateways = $this->Office->Gateway->find('list');
-		$this->set(compact('action', 'office', 'gateways', 'parentOptions', 'subOptions', 'selectedSubs'));
+		$this->set(compact(
+			'action', 'office', 'gateways', 'parentOptions',
+			'subOptions', 'selectedSubs'
+		));
 
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
