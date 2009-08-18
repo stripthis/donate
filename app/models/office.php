@@ -19,6 +19,17 @@ class Office extends AppModel {
 			'with' => 'GatewayOffice'
 		)
 	);
+
+	var $validate = array(
+		'frequencies' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'Please specify at least one frequency option!',
+				'required' => true,
+				'last' => true
+			)
+		)
+	);
 /**
  * undocumented function
  *

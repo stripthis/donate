@@ -87,6 +87,7 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateFrequency($check) {
+		// @todo attach current office id here
 		return array_key_exists(current($check), Gift::find('frequencies'));
 	}
 /**
@@ -96,6 +97,7 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateType($check) {
+		// @todo attach current office id here
 		return array_key_exists($check['type'], Gift::find('types'));
 	}
 /**
@@ -104,6 +106,7 @@ class Gift extends AppModel {
  * @return unknown_type
  */
 	function validateAmount($check){
+		// @todo attach current office id here
 		return (isset($check['amount']) && $check['amount'] >= Gift::find('min_amount'));
 	}
 /**
@@ -124,13 +127,21 @@ class Gift extends AppModel {
 					//,'legacy' => 'Legacy'
 				);
 			case 'frequencies':
-				return array(
-					'onetime' => 'One Time',
-					'monthly' => 'Monthly',
-					//'quarterly' => 'Quarterly',
-					//'biannually' => 'Biannually',
-					'annualy' => 'Annualy'
-				);
+				$frequencies = array('onetime', 'monthly', 'quarterly', 'biannually', 'annualy');
+				if (!isset($query['options']) && isset($query['id'])) {
+					$frequencies = ClassRegistry::init('Office')->find('first', array(
+						'conditions' => array('id' => $query['id']),
+						'contain' => false,
+						'fields' => array('types')
+					));
+					$frequencies = explode(',', $frequencies['Office']['frequencies']);
+				}
+
+				$result = array();
+				foreach ($frequencies as $frequency) {
+					$result[$frequency] = Inflector::humanize($frequency);
+				}
+				return $result;
 			case 'amounts':
 				return array('5', '10', '15');
 			case 'min_amount':

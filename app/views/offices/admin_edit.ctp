@@ -24,6 +24,11 @@ echo $form->input('suboffice_id', array(
 	'label' => 'Sub Offices', 'options' => $subOptions, 'multiple' => true,
 	'selected' => $selectedSubs
 ));
+
+echo $form->input('frequencies', array(
+	'label' => '', 'options' => Gift::find('frequencies', array('options' => true)), 'multiple' => true,
+	'selected' => explode(',', $form->data['Office']['frequencies'])
+));
 ?>
 
 <fieldset><legend>Gateways</legend>

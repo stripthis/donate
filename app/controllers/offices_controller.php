@@ -3,6 +3,17 @@ class OfficesController extends AppController {
 /**
  * undocumented function
  *
+ * @return void
+ * @access public
+ */
+	function beforeFilter() {
+		parent::beforeFilter();
+
+		$this->Gift = ClassRegistry::init('Gift');
+	}
+/**
+ * undocumented function
+ *
  * @param string $officeId 
  * @return void
  * @access public
@@ -106,6 +117,11 @@ class OfficesController extends AppController {
 		if ($action == 'add') {
 			$this->data['Office']['user_id'] = User::get('id');
 		}
+
+		if (empty($this->data['Office']['frequencies'])) {
+			$this->data['Office']['frequencies'] = array();
+		}
+		$this->data['Office']['frequencies'] = implode(',', $this->data['Office']['frequencies']);
 
 		$this->Office->set($this->data['Office']);
 		$result = $this->Office->save();
