@@ -1,7 +1,6 @@
 <?php $this->pageTitle = 'Admin Login'; ?>
 <?php if(!isset($tabindex)) $tabindex = 1; ?>
-  <div id="admin_login" class="landing_page">
-    <div id="content">
+  	<div id="admin_login" class="content">
       <h2><?php echo __("Sign in"); ?></h2>
       <cake:nocache>
 <?php echo $this->element('messages'); ?>
@@ -29,5 +28,4 @@
        </ul>
      </div>
      <div class="clear"></div>
-   </div>
-  </div>
+  	</div>

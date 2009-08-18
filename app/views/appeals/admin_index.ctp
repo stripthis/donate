@@ -1,4 +1,4 @@
-  <div class="appeals index">
+  <div class="content" id="appeals_index">
   <h2><?php __('Appeals');?></h2>
   <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>

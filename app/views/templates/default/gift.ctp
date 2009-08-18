@@ -4,7 +4,7 @@
  * Allows selection based on predefined amounts, frequencies, currencies
  * Note: requires the help of /js/views/gifts/add.js
  * 
- * @author       white rabbit team rocket!
+ * @author      white rabbit team rocket!
  * @copyright   GREENPEACE INTERNATIONAL (c) 2009
  * @link        http://www.greenpeace.org/international/supportus
  */
