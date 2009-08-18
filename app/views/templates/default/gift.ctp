@@ -10,7 +10,7 @@
  */
   $currencyOptions = Gift::find('currencies');
   $frequencyOptions = Gift::find('frequencies');
-  $amountOptions = Gift::find('amounts');
+  $amountOptions = explode(',', Gift::find('amounts'));
   $amountSelected = $giftForm->value('Gift', 'amount', '10', $form->data);
 ?>
       <fieldset class="left" id="gift_type">
