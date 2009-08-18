@@ -247,5 +247,37 @@ class AppModel extends Model {
 		);
 		return !empty($office);
 	}
+/**
+ * undocumented function
+ *
+ * @param string $models 
+ * @param string $data 
+ * @return void
+ * @access public
+ */
+	function bulkValidate($models, $data, $resetRequired = false) {
+		$validates = true;
+		foreach ($models as $model) {
+			if (!isset($this->data[$model])) {
+				continue;
+			}
+
+			$modelObj = ClassRegistry::init($model);
+
+			if ($resetRequired) {
+				foreach ($modelObj->validate as $field => $rules) {
+					foreach ($rules as $name => $rule) {
+						if (isset($rule['is_required'])) {
+							$modelObj->validate[$field][$name]['required'] = true;
+						}
+					}
+				}
+			}
+
+			$modelObj->set($data[$model]);
+			$validates = $modelObj->validates() && $validates;
+		}
+		return $validates;
+	}
 }
 ?>

@@ -49,19 +49,7 @@ class GiftsController extends AppController {
 			return $this->render('step' . $step);
 		}
 
-		$errors = false;
-
 		$this->loadSessionData($this->data);
-		$contactId = false;
-		if (isset($this->data['Contact'])) {
-			$contactId = $this->Contact->addFromGift($this->data);
-		}
-
-		if (Common::isUuid($contactId)) {
-			$this->data['Gift']['contact_id'] = $contactId;
-		} else {
-			$errors = true;
-		}
 
 		if (!empty($this->data['Gift']['amount_other'])) {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
@@ -70,24 +58,56 @@ class GiftsController extends AppController {
 			$this->data['Gift']['amount_other'] = '';
 		}
 
-		$this->saveSessionData();
+		$isLastStep = $step == $currentAppeal['Appeal']['steps'];
+		$validates = AppModel::bulkValidate($this->models, $this->data);
 
-		// @todo: will be refactored when admin panel ready to create multistep forms
-		if ($step < $currentAppeal['Appeal']['steps']) {
+		if (!$isLastStep && !$validates) {
+			$msg = 'There are problems with the form.';
+			$this->Message->add($msg, 'error');
+			return $this->render('step' . $step);
+		}
+
+		if (!$isLastStep && $validates) {
+			$this->saveSessionData();
 			return $this->render('step' . ($step + 1));
 		}
 
-		unset($this->data['Gift']['id']);
-		$this->Gift->create($this->data);
-		if ($this->Gift->save()) {
-			$giftId = $this->data['Gift']['id'] = $this->Gift->getLastInsertId();
-		} else {
+		// for the last step, reset is_required to required to prevent hacking attemps
+		$validates = AppModel::bulkValidate($this->models, $this->data, true);
+		if (!$validates) {
+			$msg = 'There are problems with the form. This is a possible hacking attempt.';
+			$this->Message->add($msg, 'error');
+			return $this->render('step' . $step);
+		}
+		$this->saveSessionData();
+
+		// save data with transactions
+		$db = ConnectionManager::getDataSource('default');
+		$db->begin($this->Gift);
+		$errors = false;
+
+		$contactId = false;
+		if (isset($this->data['Contact'])) {
+			$contactId = $this->Contact->addFromGift($this->data, false);
+		}
+		if (!Common::isUuid($contactId)) {
 			$errors = true;
 		}
 
+		if (!$errors) {
+			$this->data['Gift']['contact_id'] = $contactId;
+			unset($this->data['Gift']['id']);
+			$this->Gift->create($this->data);
+			if ($this->Gift->save()) {
+				$giftId = $this->data['Gift']['id'] = $this->Gift->getLastInsertId();
+			} else {
+				$errors = true;
+			}
+		}
+
 		// credit card data is given
-		//@todo if appeal or payment gateway use redirect model then redirect
-		//else if the credit data is given, validates
+		// @todo if appeal or payment gateway use redirect model then redirect
+		// else if the credit data is given, validates
 		if (isset($this->data['Card']) && $currentAppeal['Appeal']['processing'] == 'manual') {
 			$this->Card->set($this->data);
 			if ($this->Card->validates()) {
@@ -99,10 +119,13 @@ class GiftsController extends AppController {
 		}
 
 		if ($errors) {
+			$db->rollback($this->Gift);
 			$msg = 'Sorry, something went wrong, please correct the errors below.';
 			$this->Message->add(__($msg, true), 'error');
 			return $this->render('step' . $step);
 		}
+
+		$db->commit($this->Gift);
 
 		// everything ok prepare / perform the transaction
 		//@todo dont always use the first one, make it dependent on the payment method 

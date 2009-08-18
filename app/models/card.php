@@ -9,7 +9,7 @@ class Card extends AppModel {
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'Please select a card.',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			),
 			'valid' => array(
@@ -21,7 +21,7 @@ class Card extends AppModel {
 			'valid' => array(
 				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+[\-,]?[ ]?[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+$/'),
 				'message' => 'Please provide a valid cardholder name.',
-				'required' => false,
+				'is_required' => false,
 				'allowEmpty' => false,
 			)
 		),
@@ -29,39 +29,39 @@ class Card extends AppModel {
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The card number is required!',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			),
 			'valid' => array(
 				'rule' => 'cc',
 				'message' => 'This is an invalid card number.',
-				'required' => true
+				'is_required' => true
 			)
 		),
 		'verification_code' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The card verification code is required!',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			),
 			'valid' => array(
 				'rule' => array("validateCardCode"),
 				'message' => 'This is an invalid card verification code.',
-				'required' => true
+				'is_required' => true
 			)
 		),
 		'expire_month' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			)
 		),
 		'expire_year' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			)
 		)

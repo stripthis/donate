@@ -21,7 +21,7 @@ class Gift extends AppModel {
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The type is required!',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			),
 			'valid' => array(
@@ -37,20 +37,20 @@ class Gift extends AppModel {
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The amount is required!',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			),
 			'mini' => array(
 				'rule' => array('validateAmount'),
 				'message' => 'Sorry, this amount is too small.',
-				'required' => true,
+				'is_required' => true,
 			)
 		),
 		'frequency' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The frequency is required!',
-				'required' => true,
+				'is_required' => true,
 				'last' => true
 			),
 			'valid' => array(
