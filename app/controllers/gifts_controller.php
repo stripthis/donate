@@ -97,6 +97,7 @@ class GiftsController extends AppController {
 		if (!$errors) {
 			$this->data['Gift']['contact_id'] = $contactId;
 			unset($this->data['Gift']['id']);
+
 			$this->Gift->create($this->data);
 			if ($this->Gift->save()) {
 				$giftId = $this->data['Gift']['id'] = $this->Gift->getLastInsertId();
