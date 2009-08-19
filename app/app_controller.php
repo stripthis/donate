@@ -53,10 +53,10 @@ class AppController extends Controller {
 		}
 
 		$this->Session = $this->AppSession;
-		$this->_setLanguage();
 		ClassRegistry::addObject('Component.Session', $this->Session);
 		ClassRegistry::addObject('Component.Cookie', $this->Cookie);
 		ClassRegistry::addObject('Component.Email', $this->Email);
+		$this->_setLanguage();
 
 		if (defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
 			return;
@@ -65,7 +65,7 @@ class AppController extends Controller {
 		if ($this->isAdmin()) {
 			$this->layout = 'admin';
 		}
-		
+
 		$this->RequestHandler->setContent('list', 'text/html');
 		if (empty($this->ignoreUserSession)) {
 			$canAccess = User::canAccess($this->name, $this->action);
@@ -98,7 +98,6 @@ class AppController extends Controller {
 			$ajax = $isAjax = true;
 		}
 		$this->set(compact('ajax', 'isAjax', 'here'));
-		
 	}
 /**
  * undocumented function
@@ -265,8 +264,8 @@ class AppController extends Controller {
 		if (!$lang && isset($this->params['language'])) {
 			$lang = $this->params['language'];
 		}
-		if (!$lang && $this->Session->check('Config.language')) {
-			$lang = $this->Session->read('Config.language');
+		if (!$lang && $this->Session->check('language')) {
+			$lang = $this->Session->read('language');
 		}
 		if (!$lang && $this->Cookie->read('lang')) {
 			$lang = $this->Cookie->read('lang');
@@ -290,9 +289,9 @@ class AppController extends Controller {
 			}
 		}
 
+		$this->Session->write('language', $lang);
+		$this->Cookie->write('lang', $lang, true, '20 days');
 		Configure::write('Config.language', $lang);
-		$this->Session->write('Config.language', $lang);
-		$this->Cookie->write('lang', $lang, null, '20 days');
 	}
 /**
  * Fixing stupid behavior of cake core

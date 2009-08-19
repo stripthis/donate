@@ -163,12 +163,13 @@ class OfficesController extends AppController {
  * @access public
  */
 	private function treeSelections($id) {
-		if (User::isRoot()) {
-			$parentOptions = $this->Office->parentOfficeOptions($id);
-			$subOptions = $this->Office->subOfficeOptions($id);
-			$selectedSubs = $this->Office->subOfficeOptions($id, 'selected');
-			$this->set(compact('parentOptions', 'subOptions', 'selectedSubs'));
+		if (!User::isRoot()) {
+			return;
 		}
+		$parentOptions = $this->Office->parentOfficeOptions($id);
+		$subOptions = $this->Office->subOfficeOptions($id);
+		$selectedSubs = $this->Office->subOfficeOptions($id, 'selected');
+		$this->set(compact('parentOptions', 'subOptions', 'selectedSubs'));
 	}
 }
 ?>
