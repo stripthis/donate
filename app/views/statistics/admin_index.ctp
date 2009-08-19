@@ -1,6 +1,5 @@
 		<div class="content" id="statistic_index">
 <?php echo $this->element("admin/quicklinks"); ?>
-		</div>
 		<h2>Users Statistics</h2>
 		<?php echo $this->element('../statistics/sidebar') ?>
 		<?php

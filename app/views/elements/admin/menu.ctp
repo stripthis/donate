@@ -12,7 +12,6 @@
 	<?php else : ?>
       <li><a href="<?php echo Router::Url("/admin/offices/edit/" . $Session->read('Office.id'),true) ?>" <?php if($this->name=="Offices") echo 'class="selected"';?>><?php echo __("Office Config");?></a></li>
 	<?php endif; ?>
-      <li><a href="<?php echo Router::Url("/admin/auth/logout",true) ?>" class="logout"><?php echo __("Logout");?></a></li>
     </ul>
   <?php /*<!-- menu -->
       <ul class="menu" id="top">
