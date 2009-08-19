@@ -15,10 +15,15 @@ class Contact extends AppModel {
 			'on' => 'create'
 		),
 		'fname' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'The first name is required!',
+				'last' => true
+			),
 			'valid' => array(
 				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+[\-,]?[ ]?[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+$/'),
 				'message' => 'Please provide a valid first name.',
-				'is_required' => false,
+				'is_required' => true,
 				'allowEmpty' => true,
 			)
 		),
@@ -40,7 +45,7 @@ class Contact extends AppModel {
 		),
 		'email' => array(
 			'valid' => array(
-				'rule' => 'email', 
+				'rule' => 'email',
 				'message' => 'Please enter a valid email address.',
 				'is_required' => true,
 			)
