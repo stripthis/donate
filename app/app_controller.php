@@ -259,11 +259,10 @@ class AppController extends Controller {
  * @return void
  * @access public
  */
-	function _setLanguage() {
-		Configure::write('Config.language', 'eng');
+	function _setLanguage($lang = false) {
+		$default = 'eng';
 
-		$lang = false;
-		if (isset($this->params['language'])) {
+		if (!$lang && isset($this->params['language'])) {
 			$lang = $this->params['language'];
 		}
 		if (!$lang && $this->Session->check('Config.language')) {
@@ -285,12 +284,13 @@ class AppController extends Controller {
 			$settings = explode(',', $settings);
 			$settings = $settings[0];
 
-			$lang = 'eng';
+			$lang = $default;
 			if (array_key_exists($settings, $acceptedLanguages)) {
 				$lang = $acceptedLanguages[$settings];
 			}
 		}
 
+		Configure::write('Config.language', $lang);
 		$this->Session->write('Config.language', $lang);
 		$this->Cookie->write('lang', $lang, null, '20 days');
 	}

@@ -33,6 +33,9 @@ class OfficesController extends AppController {
 		));
 		Assert::notEmpty($office, '404');
 
+		$lang = strpos($office['Office']['name'], 'France') !== false ? 'fre' : 'eng';
+		$this->_setlanguage($lang);
+
 		$this->Office->activate($office);
 		$msg = __('The office was successfully activated!', true);
 		return $this->Message->add($msg, 'ok');

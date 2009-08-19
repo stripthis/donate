@@ -27,7 +27,7 @@
 <?php echo $this->element('admin/menu'); ?>
   </div>
   <div id="content_wrapper">
-<?php //echo $this->element('messages')?>
+<?php echo $this->element('messages')?>
 <?php echo $content_for_layout; ?>
 <?php echo $this->element("admin/sidebar"); ?>
 	</div>
