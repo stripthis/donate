@@ -1,5 +1,18 @@
 		<div id="country_selector">
-			
+			<ul class="selector">
+        <li>
+          <div class="item">
+            <a href="/admin/home">International</a>
+            <a href="<?php echo Router::url(); ?>#" class="trigger">
+              <?php echo $html->image('layout/tab_arrow_down.png'); ?>
+            </a>
+          </div>
+          <ul style="visibility:hidden;" class="subitem">
+            <li><a href="/admin/home">test</a></li>
+            <li><a href="/admin/home">test1</a></li>
+            <li><a href="/admin/home">test2</a></li>
+          </ul>
+        </li>
 	  </div>
 	  <?php
 	/*
