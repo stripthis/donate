@@ -17,27 +17,33 @@ class Appeal extends AppModel {
 	function find($type, $query = array()) {
 		$args = func_get_args();
 		switch ($type) {
-			case 'concrete_or_default':
-				$id = isset($query['id']) ? $query['id'] : false;
+			case 'by_office':
+				$officeId = isset($query['office_id']) ? $query['office_id'] : false;
 
-				$conditions = array('Appeal.default' => '1');
-				if ($id) {
-					$conditions = array(
-						'OR' => array(
-							'Appeal.id' => $id,
-							'Appeal.campaign_code' => $id,
-							'Appeal.name' => $id //@todo use proper label instead of name (cf. ' ')
-						)
-					);
+				$appeal = false;
+				if ($officeId) {
+					$appeal = $this->find('first', array(
+						'conditions' => array(
+							'OR' => array(
+								'Appeal.office_id' => $officeId,
+								'Appeal.campaign_code' => $officeId,
+								'Appeal.name' => $officeId, //@todo use proper label instead of name (cf. ' ')
+							),
+							'default' => '0'
+						),
+						'contain' => array('Office')
+					));
 				}
 
-				return $this->find('first', array(
-					'conditions' => $conditions,
-					'contain' => array('Office')
-				));
+				if (empty($appeal)) {
+					$appeal = $this->find('first', array(
+						'conditions' => array('Appeal.default' => '1'),
+						'contain' => array('Office')
+					));
+				}
+				return $appeal;
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
 	}
-
 }
 ?>
