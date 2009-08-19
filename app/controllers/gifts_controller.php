@@ -28,17 +28,21 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function add($appealId = null, $step = 1) {
+	function add($step = 1) {
 		$appealOptions = $this->Appeal->find('list');
 		$countryOptions = $this->Country->find('list');
 
-		// try to find the requested appeal or the default one
-		$currentAppeal = $this->Appeal->find('concrete_or_default', array('id' => $appealId));
+		$this->checkForValidOfficeId($step);
+		$officeId = $this->Session->read('gift_process_office_id');
+
+		$currentAppeal = $this->Appeal->find('by_office', array(
+			'office_id' => $officeId
+		));
 		Assert::notEmpty($currentAppeal, '500');
 
 		$this->data['Gift']['appeal_id'] = $currentAppeal['Appeal']['id'];
 		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['id'];
-		$officeId = $currentAppeal['Appeal']['office_id'];
+
 		$this->set(compact(
 			'appealOptions', 'countryOptions',
 			'officeOptions', 'currentAppeal'
@@ -96,6 +100,7 @@ class GiftsController extends AppController {
 
 		if (!$errors) {
 			$this->data['Gift']['contact_id'] = $contactId;
+			$this->data['Gift']['office_id'] = $officeId;
 			unset($this->data['Gift']['id']);
 
 			$this->Gift->create($this->data);
@@ -334,6 +339,21 @@ class GiftsController extends AppController {
 			), 'id', false);
 			$this->Cookie->write('Address.country_name', $countryName);
 			$this->Session->write('Address.country_name', $countryName);
+		}
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function checkForValidOfficeId($step) {
+		if ($step == 1 && $this->isGet() && !isset($this->params['named']['office_id'])) {
+			$msg = __('Please choose a country first!', true);
+			return $this->Message->add($msg, 'error', true, '/');
+		}
+		if (isset($this->params['named']['office_id'])) {
+			$this->Session->write('gift_process_office_id', $this->params['named']['office_id']);
 		}
 	}
 }
