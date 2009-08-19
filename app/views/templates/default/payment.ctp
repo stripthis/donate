@@ -11,12 +11,11 @@
   $monthOptions = Card::getMonthOptions();
   $yearOptions = Card::getYearOptions();
   $cardSelected = $giftForm->value('Card', 'type', 'visa', $form->data);
-  $checked = 'checked="checked"';
 ?>
     <fieldset id="card">
         <legend>Payment Information:</legend>
         <div class="input_wrapper radio">
-          <label for="amount" class="option_title">Card type: <?php echo $required; ?></label>
+          <label for="amount" class="option_title">Card type: <?php echo $giftForm->required(); ?></label>
 <?php if ($form->isFieldError('Card.type')):?>
 					<div class="error"><?php echo $form->error("Card.type"); ?></div>
 <?php endif; ?>
@@ -24,7 +23,7 @@
 		<?php foreach ($cardOptions as $cardId => $cardName): ?>
           <label class="option" id="<?php echo $cardId; ?>">
           	<input name="data[Card][type]" value="<?php echo low($cardName) ?>" class="radio" type="radio" 
-          	<?php echo $cardSelected == low($cardName) ? $checked : ''; ?>>
+          	<?php echo $cardSelected == low($cardName) ? $giftForm->checked() : ''; ?>>
           	<span><?php echo $cardName; ?></span>
           </label>
 		<?php endforeach; ?>
@@ -32,12 +31,12 @@
         <div class="input_wrapper half">
           <?php
             echo $form->input('Card.cardholder_name', array(
-              'label' => 'Cardholder name'. ': ' . $required, 
+              'label' => 'Cardholder name'. ': ' . $giftForm->required(), 
             ))."\n";
           ?>
         </div>
         <div class="input_wrapper half" id="expire">
-          <label class="option">Expiration date <?php echo $required; ?></label>
+          <label class="option">Expiration date <?php echo $giftForm->required(); ?></label>
           <div>
             <?php 
               echo $form->input('Card.expire_month', array(
@@ -57,14 +56,14 @@
         <div class="input_wrapper half">
           <?php
             echo $form->input('Card.number', array(
-              'label' => 'Card number'. ': ' . $required, 
+              'label' => 'Card number'. ': ' . $giftForm->required(), 
             ))."\n";
           ?>
         </div>
         <div class="input_wrapper half" id="cvc">
           <?php
             echo $form->input('Card.verification_code', array(
-              'label' => 'Verification code'. ': ' . $required . 
+              'label' => 'Verification code'. ': ' . $giftForm->required() . 
             	$giftForm->hint('The verification code is generally a 3 digit number located on the back of your card.'), 
             ))."\n";
           ?>

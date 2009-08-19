@@ -1,4 +1,4 @@
-<div class="transactions index">
+<div class="content" id="transactions_index">
 <h2>
 	<?php
 	$headline = __('Transactions', true);
@@ -93,7 +93,6 @@
 	<?php endif; ?>
 <?php endforeach; ?>
   </table>
-  </div>
   <div class="paging">
     <?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
    |   <?php echo $paginator->numbers();?>
@@ -105,3 +104,4 @@
   'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
   ));
   ?>  </p>
+  </div>

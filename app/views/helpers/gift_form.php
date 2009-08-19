@@ -31,10 +31,22 @@ class GiftFormHelper extends AppHelper {
 		return $result;
 	}
 /**
- * 
+ * undocumented function
  */
 	function hint($txt){
 		return "<span class='tooltip with_img information' title='$txt'>&nbsp;</span>";         	
+	}
+/**
+ * undocumented function
+ */
+	static function checked(){
+		return 'checked="checked"';
+	}
+/**
+ * undocumented function
+ */
+	static function required(){
+		return '<strong class="required">*</strong>';
 	}
 }
 ?>

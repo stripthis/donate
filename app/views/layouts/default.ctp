@@ -21,7 +21,7 @@
 <div id="container">
 <?php echo $content_for_layout; ?>
 </div>
-<?php echo $this->element('analytics') ?>
+<?php //echo $this->element('analytics') ?>
 <?php echo $cakeDebug; ?>
 </body>
 </html>

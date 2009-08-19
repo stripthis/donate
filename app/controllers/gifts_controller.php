@@ -217,7 +217,7 @@ class GiftsController extends AppController {
 					$conditions['Office.name LIKE'] = '%' . $keyword . '%';
 					break;
 				default:
-					$key = "CONCAT(Gift.fname,' ',Gift.lname)";
+					$key = "CONCAT(Contact.fname,' ',Contact.lname)";
 					$conditions[$key . ' LIKE'] = '%' . $keyword . '%';
 					break;
 			}

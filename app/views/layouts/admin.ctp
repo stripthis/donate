@@ -20,36 +20,18 @@
 <body>
 <div id="container">
   <div id="header">
-    <h1><?php 
-	$Session = Common::getComponent('Session');
-      echo $html->link( $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")) ." | ".__("International",array(false)), 
-              '/admin/dashboard', array('escape' => false)); ?>
-	<?php echo ' | Logged in as: ' . User::get('login'); ?>
-    </h1>
-    <ul id="menu">
-      <li><a href="<?php echo Router::Url("/admin/home",true) ?>"  <?php if(isset($this->viewVars["page"]) && $this->viewVars["page"]=="admin_home") echo 'class="selected"'?>><?php echo __("Home"); ?></li>
-      <li><a href="<?php echo Router::Url("/admin/appeals/index",true) ?>" <?php if($this->name=="Appeals") echo 'class="selected"';?>><?php echo __("Appeals");?></a></li>
-      <li><a href="<?php echo Router::Url("/admin/gifts/index",true) ?>" <?php if($this->name=="Gifts") echo 'class="selected"';?>><?php echo __("Gifts");?></a></li>
-      <li><a href="<?php echo Router::Url("/admin/transactions/index",true) ?>" <?php if($this->name=="Transactions") echo 'class="selected"';?>><?php echo __("Transactions");?></a></li>
-      <li><a href="<?php echo Router::Url("/admin/supporters/index",true) ?>" <?php if($this->name=="Supporters") echo 'class="selected"';?>><?php echo __("Supporters");?></a></li>
-	<?php if (User::isRoot()) : ?>
-      <li><a href="<?php echo Router::Url("/admin/offices") ?>" <?php if($this->name=="Offices") echo 'class="selected"';?>><?php echo __("Offices");?></a></li>
-	<?php else : ?>
-      <li><a href="<?php echo Router::Url("/admin/offices/edit/" . $Session->read('Office.id'),true) ?>" <?php if($this->name=="Offices") echo 'class="selected"';?>><?php echo __("Office Config");?></a></li>
-	<?php endif; ?>
-      <li><a href="<?php echo Router::Url("/admin/auth/logout",true) ?>" class="logout"><?php echo __("Logout");?></a></li>
-    </ul>
-    <div id="search">
-      <?php echo $form->create('search',array('action' => 'search','id'=>'search'))."\n";?>
-      <?php echo $form->input('search')."\n";?>
-      <?php echo $form->end('Submit')."\n";?>
-    </div>
+    <h1><?php echo $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")); ?></h1>
+<?php echo $this->element('admin/country_selector'); ?>
+<?php //echo $this->element('admin/user_badge'); ?>
+<?php //echo $this->element('admin/search'); ?>
+<?php echo $this->element('admin/menu'); ?>
   </div>
-	<?php echo $this->element('admin_rightcol')?>
   <div id="content_wrapper">
-	<?php echo $this->element('messages')?>
+<?php //echo $this->element('messages')?>
 <?php echo $content_for_layout; ?>
-  </div>
+<?php echo $this->element("admin/sidebar"); ?>
+	</div>
+  <div id="footer">2009 &copy; Greenpeace International - v.0.1 (Esperanza)</div>
 </div>
 <?php echo $cakeDebug; ?>
 </body>

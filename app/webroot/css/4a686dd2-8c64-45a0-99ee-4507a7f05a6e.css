@@ -1,6 +1,6 @@
 /***********************************************************************************
  * Default GPI Donation page CSS
- * @author: white rabbit team rocket!
+ * appeal.author: white rabbit team rocket!
  * appeal.name: default
  * appeal.id: 4a686dd2-8c64-45a0-99ee-4507a7f05a6e
 /***********************************************************************************
@@ -376,7 +376,7 @@ form .error .error-message{
 #tooltip_spacer{
 	position: absolute;
 	z-index: 3000;
-  background:transparent url(../img/layout/bg_tooltip_blue.png) left center no-repeat;
+  background:transparent url(../img/layout/bg_tooltip_left_blue.png) left center no-repeat;
   width:16px;
   height:16px;
   margin:-25px 0 0 0;
@@ -487,11 +487,4 @@ form .error .error-message{
 	list-style-type:none;
 	display:inline;
 	padding:0 7px;
-}
-.debug_header {
-	text-align:center;
-	background:#FFF;
-	margin-bottom:10px;
-	border-bottom:1px solid #CCC;
-	padding:5px;
 }

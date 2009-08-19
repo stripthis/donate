@@ -23,7 +23,7 @@
         <div class="input_wrapper half">
           <?php
             echo $form->input('Contact.lname', array(
-              'label' => 'Last Name'. ': ' . $required,
+              'label' => 'Last Name'. ': ' . $giftForm->required(),
               'value' => $giftForm->value('Contact', 'lname', '', $form->data)
             ))."\n";
           ?>
@@ -31,7 +31,7 @@
         <div class="input_wrapper full">
           <?php         
             echo $form->input('Address.line_1', array(
-              'label' => 'Address'. ': ' . $required,
+              'label' => 'Address'. ': ' . $giftForm->required(),
               'value' => $giftForm->value('Address', 'line_1', '', $form->data)
             ))."\n";
           ?>
@@ -45,7 +45,7 @@
         <div  class="input_wrapper half">
           <?php
           echo $form->input('Address.zip', array(
-            'label' => 'Zip Code'. ': ' . $required,
+            'label' => 'Zip Code'. ': ' . $giftForm->required(),
             'value' => $giftForm->value('Address', 'zip', '', $form->data)
           ))."\n";
           ?>
@@ -53,7 +53,7 @@
         <div class="input_wrapper half">
           <?php
             echo $form->input('Address.city_id', array(
-              'label' => 'City'. ': ' . $required,
+              'label' => 'City'. ': ' . $giftForm->required(),
               'value' => $giftForm->value('Address', 'city_id', '', $form->data)
             ))."\n";
           ?>
@@ -61,7 +61,7 @@
         <div class="input_wrapper">
           <?php 
             echo $form->input('Address.country_id', array(
-              'label' => 'Country'. ': ' . $required, 'options' => $countryOptions,
+              'label' => 'Country'. ': ' . $giftForm->required(), 'options' => $countryOptions,
               'selected' => $giftForm->value('Address', 'country_id', '', $form->data)
             ))."\n";
           ?>
@@ -69,7 +69,7 @@
         <div class="input_wrapper half">
           <?php
             echo $form->input('Contact.email', array(
-              'label' => 'Email'. ': ' . $required . 
+              'label' => 'Email'. ': ' . $giftForm->required() . 
                 $giftForm->hint('<strong>Q: Why do you need my email address?</strong><br/>A: We need your email address to send you a receipt or get in touch if something goes wrong.'),
               'value' => $giftForm->value('Contact', 'email', '', $form->data)
             ))."\n";
