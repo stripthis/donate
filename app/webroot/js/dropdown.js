@@ -12,7 +12,7 @@
  * Hide and show submenu when pressing arrow down button
  * Acts like a dropdown list as far as the user interactions goes
  */
-$(document).ready(function(){
+$(function() {
   var _current = null;
   var _visible = false;
   var _img = null;
@@ -21,7 +21,9 @@ $(document).ready(function(){
    * Hide / show
    */
   function hide(){
-  	_current.css("visibility","hidden");
+	if (_current != null) {
+  		_current.css("visibility","hidden");
+	}
   	_visible=false;
   	_current= null;
   }
@@ -34,8 +36,10 @@ $(document).ready(function(){
   /**
    * Events handler
    */
-  $(".selector li a.trigger").mouseover(function(){
-	 _img.css("border-style","outset");
+  $(".selector li a.trigger").mouseover(function() {
+	if (_img != null) {
+	 	_img.css("border-style", "outset");
+	}
   });
   
   $(".selector li a.trigger").click(function(){
@@ -50,14 +54,13 @@ $(document).ready(function(){
     }
   });
   
-  $(".selector li a.trigger").blur(function(){
-    if(_current!=null && _visible){
-      _img.css("border-style","solid");
-      hide();
-    }
-  });
-  
-  $(".selector ul.subitem").click(function(){
+	$('.subitem a').click(function() {
+	    if(_current!=null && _visible){
+	      _img.css("border-style","solid");
+	      hide();
+	    }
+	});
+  $(".selector ul.subitem a").click(function(){
     _img.css("border-style","solid");
     hide();
   });

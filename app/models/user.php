@@ -141,7 +141,7 @@ class User extends AppModel {
 			return true;
 		}
 
-		if ($user['User']['level'] == 'admin' && isset($user['Office'])) {
+		if (in_array($user['User']['level'], array('admin', 'root')) && isset($user['Office'])) {
 			$_this->Office->activate($user['Office']);
 		}
 
