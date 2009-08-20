@@ -14,19 +14,6 @@ class Contact extends AppModel {
 			'rule' => 'blank',
 			'on' => 'create'
 		),
-		'fname' => array(
-			'required' => array(
-				'rule' => 'notEmpty',
-				'message' => 'The first name is required!',
-				'last' => true
-			),
-			'valid' => array(
-				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+[\-,]?[ ]?[\p{Ll}\p{Lo}\p{Lt}\p{Lu} ]+$/'),
-				'message' => 'Please provide a valid first name.',
-				'is_required' => true,
-				'allowEmpty' => true,
-			)
-		),
 		'lname' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
@@ -71,9 +58,12 @@ class Contact extends AppModel {
 		// mechanisms to prevent duplication will be added later
 		$this->create($data['Contact']);
 		$this->Address->create($data['Address']);
-		$this->Phone->create($data['Phone']);
 		$this->Address->validates();
-		$this->Phone->validates();
+
+		if (isset($data['Phone'])) {
+			$this->Phone->create($data['Phone']);
+			$this->Phone->validates();
+		}
 
 		if ($this->validates()) {
 			$this->save();
@@ -81,21 +71,12 @@ class Contact extends AppModel {
 
 			$addressData = am($data['Address'], array('contact_id' => $contactId));
 
-			$conditions = array(
-				'country_id' => $data['Address']['country_id'],
-				'name' => $data['Address']['city_id']
-			);
-			if (isset($data['Address']['state_id'])) {
-				$conditions['state_id'] = $data['Address']['state_id'];
-			}
-			$addressData['city_id'] = $this->Address->City->lookup($conditions, 'id', true);
-
 			$this->Address->create($addressData);
 			if ($this->Address->validates()) {
 				$this->Address->save();
 				$addressId = $this->Address->getLastInsertId();
 
-				if (empty($data['Phone']['phone'])) {
+				if (!isset($data['Phone']) || empty($data['Phone']['phone'])) {
 					return $contactId;
 				}
 				$this->Phone->create(am($data['Phone'], array('contact_id' => $contactId, 'address_id' => $addressId)));

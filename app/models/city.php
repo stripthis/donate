@@ -50,5 +50,29 @@ class City extends AppModel{
 			)
 		)
 	);
+/**
+ * undocumented function
+ *
+ * @param string $data 
+ * @return void
+ * @access public
+ */
+	function injectCityId(&$data) {
+		if (!isset($data['Address'])) {
+			return false;
+		}
+
+		$city = isset($data['Address']['city'])
+				? $data['Address']['city']
+				: $data['Address']['city_id'];
+		$conditions = array(
+			'country_id' => $data['Address']['country_id'],
+			'name' => $city
+		);
+		if (isset($data['Address']['state_id'])) {
+			$conditions['state_id'] = $data['Address']['state_id'];
+		}
+		$data['Address']['city_id'] = $this->lookup($conditions, 'id', true);
+	}
 }
 ?>

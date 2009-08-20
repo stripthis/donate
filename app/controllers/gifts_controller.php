@@ -18,6 +18,7 @@ class GiftsController extends AppController {
 		$this->GatewaysOffice = $this->Office->GatewaysOffice;
 		$this->Contact = $this->Gift->Contact;
 		$this->Country = $this->Gift->Contact->Address->Country;
+		$this->City = $this->Gift->Contact->Address->City;
 		$this->Transaction = $this->Gift->Transaction;
 		$this->Card = ClassRegistry::init('Card');
 	}
@@ -51,9 +52,10 @@ class GiftsController extends AppController {
 
 		$this->loadSessionData($this->data);
 
+		$this->City->injectCityId($this->data);
 		if (!empty($this->data['Gift']['amount_other'])) {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
-		} elseif ($this->data['Gift']['amount'] == 'other') {
+		} elseif (isset($this->data['Gift']['amount']) && $this->data['Gift']['amount'] == 'other') {
 			$this->data['Gift']['amount'] = '';
 			$this->data['Gift']['amount_other'] = '';
 		}
@@ -132,9 +134,8 @@ class GiftsController extends AppController {
 		// everything ok prepare / perform the transaction
 		//@todo dont always use the first one, make it dependent on the payment method 
 		//@todo && the amount / currency vs. payment gateway fee by offices
-		$gateway = $this->GatewaysOffice->find('first', array(
-			'conditions' => array('office_id' => $officeId),
-			'contain' => false
+		$gateway = $this->GatewaysOffice->find('by_office', array(
+			'office_id' => $officeId
 		));
 
 		//@todo save payment data here?
@@ -335,6 +336,17 @@ class GiftsController extends AppController {
 			), 'id', false);
 			$this->Cookie->write('Address.country_name', $countryName);
 			$this->Session->write('Address.country_name', $countryName);
+		}
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function dropSessionData() {
+		foreach ($this->models as $model) {
+			$this->Session->del($model);
 		}
 	}
 /**
