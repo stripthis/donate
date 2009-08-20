@@ -116,7 +116,7 @@ echo $form->input('terms', array(
 	'label' => false, 'type' => 'checkbox', 'class' => 'required checkbox', 'div' => false));
 ?>
   <span class="terms"><?php echo __("I've read and accept the fascinating"); ?> 
-	<a href='http://www.greenpeace.org/international/campaigns/climate-change/cool-it-challenge/about/faq#community_guidelines' target="_blank"><?php echo __("Community Guidelines");?></a>.</span>
+	<a href='http://www.greenpeace.org' target="_blank"><?php echo __("Community Guidelines");?></a>.</span>
 <?php
 
 echo $form->end('Save');

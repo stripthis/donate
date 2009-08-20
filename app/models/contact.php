@@ -14,6 +14,13 @@ class Contact extends AppModel {
 			'rule' => 'blank',
 			'on' => 'create'
 		),
+		'fname' => array(
+			'valid' => array(
+				'allowEmpty' => true,
+				'rule' => array('custom', '/^[\p{Ll}\p{Lo}\p{Lt}\p{Lu}\s]+[\-,]?[ ]?[\p{Ll}\p{Lo}\p{Lt}\p{Lu}]+$/'),
+				'message' => 'Please provide a valid last name.',
+			)
+		),
 		'lname' => array(
 			'required' => array(
 				'rule' => 'notEmpty',

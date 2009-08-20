@@ -118,7 +118,7 @@
 /**
  * The name of CakePHP's session cookie.
  */
-	Configure::write('Session.cookie', 'GP_COOLIT');
+	Configure::write('Session.cookie', 'GP_WHITE_RABBIT');
 /**
  * Session time out time (in seconds).
  * Actual value depends on 'Security.level' setting.

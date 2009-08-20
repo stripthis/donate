@@ -408,10 +408,6 @@ form .checkbox_wrapper a{
 	width:152px;
 	background: url(/img/layout/banner.jpg) 0 0 no-repeat;
 }
-#banner a.coolit{
-	width:588px;
-	background: url(/img/layout/banner.jpg) -152px 0 no-repeat;
-}
 #banner a span{
 	visibility:hidden;
 }
