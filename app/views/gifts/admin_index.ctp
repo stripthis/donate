@@ -63,7 +63,6 @@ foreach ($gifts as $gift):
     </td>
     <td class="actions">
       <?php echo $html->link(__('View', true), array('action'=>'view', $gift['Gift']['id']),array('class'=>'view')); ?>
-      <?php echo $html->link(__('Edit', true), array('action'=>'edit', $gift['Gift']['id']),array('class'=>'edit')); ?>
       <?php echo $html->link(__('Delete', true), array('action'=>'delete', $gift['Gift']['id']), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $gift['Gift']['id'])); ?>
     </td>
   </tr>

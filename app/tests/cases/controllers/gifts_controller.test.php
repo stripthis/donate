@@ -37,6 +37,17 @@ class GiftsControllerTest extends MyTestCase {
 				array('name LIKE' => '%Greenpeace International%'), 'id', false
 			);
 		}
+
+		$this->Sut->params['named']['office_id'] = $this->belgiumOfficeId;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function endTest() {
+		$this->Sut->Session->del($this->Sut->Message->sessKey);
 	}
 /**
  * undocumented function
@@ -48,6 +59,7 @@ class GiftsControllerTest extends MyTestCase {
 		$this->fakeRequest('get');
 
 		// no office id
+		$this->Sut->params['named']['office_id'] = '';
 		$this->Sut->add();
 		$this->is($this->Sut->redirectUrl, '/');
 

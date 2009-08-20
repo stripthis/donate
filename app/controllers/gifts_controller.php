@@ -243,9 +243,7 @@ class GiftsController extends AppController {
  * @access public
  */
 	function admin_delete($id = null) {
-		$user = $this->User->find('first', $id);
-		$this->User->delete($id);
-		$this->Silverpop->UserOptOut($user);
+		$this->Gift->delete($id);
 		$this->Message->add(DEFAULT_FORM_DELETE_SUCCESS, 'ok', true, array('action' => 'index'));
 	}
 /**
@@ -259,8 +257,10 @@ class GiftsController extends AppController {
 		$gift = $this->Gift->find('first', array(
 			'conditions' => array('Gift.id' => $id),
 			'contain' => array(
-				'Country(name)', 'Office(id, name)', 'Appeal(id, name)',
-				'Comment(id, created, body, user_id)' => 'User(login, id)' 
+				'Contact.Address.Phone', 'Contact.Address.Country(id, name)',
+				'Contact.Address.State(id, name)', 'Contact.Address.City(id, name)',
+				'Office(id, name)', 'Appeal',
+				'Comment(id, created, body, user_id)' => 'User(login, id)'
 			)
 		));
 		$this->set(compact('gift'));
