@@ -140,17 +140,6 @@ class GiftsControllerTest extends MyTestCase {
  * @return void
  * @access public
  */
-	function getTests() {
-		$methods = array('testAddSavesSessionDataProperly');
-		$methods = array_merge(array_merge(array('start', 'startCase'), $methods), array('endCase', 'end'));
-		return $methods;
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
 	function testAmountRecalculation() {
 		$this->Sut->data = array(
 			'Gift' => array(
