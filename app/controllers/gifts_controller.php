@@ -2,6 +2,7 @@
 class GiftsController extends AppController {
 	var $helpers = array('Fpdf', 'GiftForm');
 	var $models = array('Gift', 'Contact', 'Address', 'Phone');
+	var $sessOfficeKey = 'gift_process_office_id';
 /**
  * undocumented function
  *
@@ -29,11 +30,8 @@ class GiftsController extends AppController {
  * @access public
  */
 	function add($step = 1) {
-		$appealOptions = $this->Appeal->find('list');
-		$countryOptions = $this->Country->find('list');
-
 		$this->checkForValidOfficeId($step);
-		$officeId = $this->Session->read('gift_process_office_id');
+		$officeId = $this->Session->read($this->sessOfficeKey);
 
 		$currentAppeal = $this->Appeal->find('by_office', array(
 			'office_id' => $officeId
@@ -43,10 +41,8 @@ class GiftsController extends AppController {
 		$this->data['Gift']['appeal_id'] = $currentAppeal['Appeal']['id'];
 		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['id'];
 
-		$this->set(compact(
-			'appealOptions', 'countryOptions',
-			'officeOptions', 'currentAppeal'
-		));
+		$countryOptions = $this->Country->find('list');
+		$this->set(compact('countryOptions', 'currentAppeal'));
 
 		// no data was given so we render the selected/default view
 		if ($this->isGet()) {
@@ -348,12 +344,23 @@ class GiftsController extends AppController {
  * @access public
  */
 	function checkForValidOfficeId($step) {
+		$msg = __('Please choose a country first!', true);
+
 		if ($step == 1 && $this->isGet() && !isset($this->params['named']['office_id'])) {
-			$msg = __('Please choose a country first!', true);
 			return $this->Message->add($msg, 'error', true, '/');
 		}
+
 		if (isset($this->params['named']['office_id'])) {
-			$this->Session->write('gift_process_office_id', $this->params['named']['office_id']);
+			$existingOffice = $this->Office->lookup(
+				array('id' => $this->params['named']['office_id']),
+				'id', false
+			);
+
+			if (!$existingOffice || $step != 1) {
+				return $this->Message->add($msg, 'error', true, '/');
+			}
+
+			$this->Session->write($this->sessOfficeKey, $this->params['named']['office_id']);
 		}
 	}
 }

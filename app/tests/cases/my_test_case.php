@@ -8,8 +8,56 @@ class MyTestCase extends CakeTestcase {
  * @return void
  * @access public
  */
-	function _fakeRequest($method = 'post') {
+	function fakeRequest($method = 'post') {
 		$_SERVER['REQUEST_METHOD'] = strtoupper($method);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $a 
+ * @param string $b 
+ * @param string $msg 
+ * @return void
+ * @access public
+ */
+	function is($a, $b, $msg = '') {
+		return $this->assertIdentical($a, $b, $msg);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $a 
+ * @param string $b 
+ * @param string $msg 
+ * @return void
+ * @access public
+ */
+	function e($a, $b, $msg = '') {
+		return $this->assertEqual($a, $b, $msg);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $a 
+ * @param string $b 
+ * @param string $msg 
+ * @return void
+ * @access public
+ */
+	function false($a, $msg = '') {
+		return $this->assertFalse($a, $msg);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $a 
+ * @param string $b 
+ * @param string $msg 
+ * @return void
+ * @access public
+ */
+	function true($a, $msg = '') {
+		return $this->assertTrue($a, $msg);
 	}
 }
 ?>

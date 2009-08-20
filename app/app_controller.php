@@ -186,11 +186,15 @@ class AppController extends Controller {
  * @return void
  * @access public
  */
-	function redirect($url, $status = null) {
+	function redirect($url, $status = null, $exit = true) {
+		if (defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
+			$this->redirectUrl = Router::url($url);
+			return false;
+		}
 		if ($this->isAjax()) {
 			return $this->setJson('redirectUrl', $url);
 		}
-		parent::redirect($url, $status);
+		parent::redirect($url, $status, $exit);
 	}
 /**
  * undocumented function
