@@ -367,8 +367,8 @@ class GiftsController extends AppController {
 				array('id' => $this->params['named']['office_id']),
 				'id', false
 			);
-
-			if (!$existingOffice || $step != 1) {
+			$sessOfficeId = $this->Session->read($this->sessOfficeKey);
+			if (!$existingOffice || $step != 1 && $sessOfficeId != $existingOffice) {
 				return $this->Message->add($msg, 'error', true, '/');
 			}
 
