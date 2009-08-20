@@ -61,7 +61,7 @@ class TransactionsController extends AppController {
 	function admin_view($id = null) {
 		$transaction = $this->Transaction->find('first', array(
 			'conditions' => array('Transaction.id' => $id),
-			'contain' => false
+			'contain' => array('ParentTransaction', 'Gift', 'Gateway')
 		));
 		Assert::notEmpty($transaction, '404');
 		$this->set(compact('transaction'));
