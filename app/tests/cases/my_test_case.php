@@ -32,7 +32,7 @@ class MyTestCase extends CakeTestcase {
  * @return void
  * @access public
  */
-	function e($a, $b, $msg = '') {
+	function eq($a, $b, $msg = '') {
 		return $this->assertEqual($a, $b, $msg);
 	}
 /**
