@@ -26,7 +26,8 @@ class SupportersController extends AppController {
 				'Office(id, name)',
 				'Appeal(id, name)'
 			),
-			'limit' => 10
+			'limit' => 10,
+			'order' => array('Gift.created' => 'desc')
 		);
 		$gifts = $this->paginate('Gift');
 		$this->set(compact('gifts', 'keyword', 'type'));

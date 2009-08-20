@@ -230,7 +230,8 @@ class GiftsController extends AppController {
 			'contain' => array(
 				'Contact(fname, lname, email)', 'Office(id, name)', 'Appeal(id, name)'
 			),
-			'limit' => 20
+			'limit' => 20,
+			'order' => array('Gift.created' => 'desc')
 		);
 		$gifts = $this->paginate();
 		$this->set(compact('gifts', 'keyword', 'type'));
