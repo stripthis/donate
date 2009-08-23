@@ -52,9 +52,9 @@
         </div>
         <div class="input_wrapper half">
           <?php
-            echo $form->input('Address.city_id', array(
+            echo $form->input('Address.city', array(
               'label' => 'City'. ': ' . $giftForm->required(),
-              'value' => $giftForm->value('Address', 'city_id', '', $form->data)
+              'value' => $giftForm->value('Address', 'city', '', $form->data)
             ))."\n";
           ?>
         </div>

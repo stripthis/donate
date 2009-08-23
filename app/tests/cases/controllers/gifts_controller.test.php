@@ -75,14 +75,24 @@ class GiftsControllerTest extends MyTestCase {
 		$this->Sut->add();
 		$this->false($this->Sut->redirectUrl);
 
-		// setting office id allowed only at step 1
+		// setting office id allowed only at step 1 if different from session office id
 		$this->Sut->redirectUrl = false;
 		$this->Sut->params['named']['office_id'] = $this->gpiOfficeId;
 		$this->Sut->add();
 		$this->false($this->Sut->redirectUrl);
 
+		$this->Sut->params['named']['office_id'] = $this->belgiumOfficeId;
 		$this->Sut->add(2);
 		$this->is($this->Sut->redirectUrl, '/');
+
+		$this->Sut->redirectUrl = false;
+		$this->Sut->params['named']['office_id'] = $this->gpiOfficeId;
+		$this->Sut->add();
+		$this->false($this->Sut->redirectUrl);
+
+		$this->Sut->params['named']['office_id'] = $this->gpiOfficeId;
+		$this->Sut->add(2);
+		$this->false($this->Sut->redirectUrl);
 	}
 /**
  * undocumented function

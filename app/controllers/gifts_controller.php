@@ -230,7 +230,8 @@ class GiftsController extends AppController {
 			'contain' => array(
 				'Contact(fname, lname, email)', 'Office(id, name)', 'Appeal(id, name)'
 			),
-			'limit' => 20
+			'limit' => 20,
+			'order' => array('Gift.created' => 'desc')
 		);
 		$gifts = $this->paginate();
 		$this->set(compact('gifts', 'keyword', 'type'));
@@ -367,8 +368,8 @@ class GiftsController extends AppController {
 				array('id' => $this->params['named']['office_id']),
 				'id', false
 			);
-
-			if (!$existingOffice || $step != 1) {
+			$sessOfficeId = $this->Session->read($this->sessOfficeKey);
+			if (!$existingOffice || $step != 1 && $sessOfficeId != $existingOffice) {
 				return $this->Message->add($msg, 'error', true, '/');
 			}
 

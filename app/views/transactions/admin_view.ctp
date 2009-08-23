@@ -6,49 +6,64 @@
       <li><?php echo $html->link(__('Delete Transaction', true), array('action'=>'delete', $transaction['Transaction']['id']),  array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $transaction['Transaction']['id'])); ?> </li>
     </ul>
   </div>
-	<dl><?php $i = 0; $class = ' class="altrow"';?>
-    <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Id'); ?></dt>
-    <dd<?php if ($i++ % 2 == 0) echo $class;?>>
+	<dl>
+    <dt><?php __('Id'); ?></dt>
+    <dd>
       <?php echo $transaction['Transaction']['id']; ?>
       &nbsp;
     </dd>
-    <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Parent Transaction'); ?></dt>
-    <dd<?php if ($i++ % 2 == 0) echo $class;?>>
-      <?php echo $html->link($transaction['ParentTransaction']['id'], array('controller'=> 'transactions', 'action'=>'view', $transaction['ParentTransaction']['id'])); ?>
+    <dt><?php __('Parent Trans.'); ?></dt>
+    <dd>
+      <?php
+		if (!empty($transaction['ParentTransaction']['id'])) {
+			$url = array(
+				'controller'=> 'transactions', 'action'=>'view',
+				$transaction['ParentTransaction']['id']
+			);
+			echo $html->link($transaction['ParentTransaction']['id'], $url);
+		} else {
+			echo '--';
+		}
+		?>
       &nbsp;
     </dd>
-    <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Gateway'); ?></dt>
-    <dd<?php if ($i++ % 2 == 0) echo $class;?>>
+    <dt><?php __('Gateway'); ?></dt>
+    <dd>
       <?php echo $html->link($transaction['Gateway']['name'], array('controller'=> 'gateways', 'action'=>'view', $transaction['Gateway']['id'])); ?>
       &nbsp;
     </dd>
-    <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('External Id'); ?></dt>
-    <dd<?php if ($i++ % 2 == 0) echo $class;?>>
+    <dt><?php __('External Id'); ?></dt>
+    <dd>
       <?php echo $transaction['Transaction']['external_id']; ?>
       &nbsp;
     </dd>
-    <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Gift'); ?></dt>
-    <dd<?php if ($i++ % 2 == 0) echo $class;?>>
-      <?php echo $html->link($transaction['Gift']['title'], array('controller'=> 'gifts', 'action'=>'view', $transaction['Gift']['id'])); ?>
+    <dt><?php __('Gift'); ?></dt>
+    <dd>
+      <?php
+      $amount = $transaction['Gift']['amount'];
+      $frequency = $transaction['Gift']['frequency'];
+      $type = $transaction['Gift']['type'];
+		echo sprintf('%s %s, %s EUR', ucfirst($frequency), ucfirst($type), $amount);
+      ?>
       &nbsp;
     </dd>
-    <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Status'); ?></dt>
-    <dd<?php if ($i++ % 2 == 0) echo $class;?>>
+    <dt><?php __('Status'); ?></dt>
+    <dd>
       <?php echo $transaction['Transaction']['status']; ?>
       &nbsp;
     </dd>
-    <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Amount'); ?></dt>
-    <dd<?php if ($i++ % 2 == 0) echo $class;?>>
+    <dt><?php __('Amount'); ?></dt>
+    <dd>
       <?php echo $transaction['Transaction']['amount']; ?>
       &nbsp;
     </dd>
-    <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
-    <dd<?php if ($i++ % 2 == 0) echo $class;?>>
+    <dt><?php __('Created'); ?></dt>
+    <dd>
       <?php echo $transaction['Transaction']['created']; ?>
       &nbsp;
     </dd>
-    <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
-    <dd<?php if ($i++ % 2 == 0) echo $class;?>>
+    <dt><?php __('Modified'); ?></dt>
+    <dd>
       <?php echo $transaction['Transaction']['modified']; ?>
       &nbsp;
     </dd>

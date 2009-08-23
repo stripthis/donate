@@ -40,7 +40,7 @@ if (!empty($cData)) {
 		<?php echo $form->input( 'Gift.type', array('type' => 'hidden', "value" => "donation"))."\n"; ?>
 		<?php echo $form->input( 'Gift.appeal_id', array('type' => 'hidden'))."\n"; ?>
 
-<?php echo $this->element('../templates/default/contact'); ?>
+		<?php echo $this->element('../templates/default/contact'); ?>
      <?php echo $form->end('Donate'); ?>
 	</div>
 </div>
