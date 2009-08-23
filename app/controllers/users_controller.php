@@ -73,7 +73,7 @@ class UsersController extends AppController {
  *
  * @return void
  * @access public
- */
+ 
 	function register($email = '') {
 		//$countries = $this->User->Country->find('list');
 		$email = isset($this->params['url']['email'])
@@ -140,6 +140,7 @@ class UsersController extends AppController {
 		}
 		$this->Message->add($msg, 'ok', true, $url, array('forceNonAjax' => true, 'dontShow' => true));
 	}
+	*/
 /**
  * undocumented function
  *

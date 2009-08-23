@@ -29,7 +29,9 @@
   <div id="content_wrapper">
 <?php echo $this->element('messages')?>
 <?php echo $content_for_layout; ?>
+    <div class="sidebar_wrapper">
 <?php echo $this->element("admin/sidebar"); ?>
+    </div>
 	</div>
   <div id="footer">
   	<p><strong>2009 &copy; Greenpeace International</strong>  &#149; v.0.1 (Esperanza)  &#149;</p>

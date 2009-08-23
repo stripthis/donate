@@ -7,7 +7,7 @@
  *
  * @copyright   Greenpeace International
  * @license     GPL3 onwards - http://www.opensource.org/licenses/gpl-license.php
- * @author      remy.bertot@greenpeace.org
+ * @author      white rabbit team rocket!
  * @credit      holy grail, cake.generic, etc.
  */
 /***********************************************************************************
@@ -18,7 +18,6 @@
   margin:0;
   padding:0;
 }
-
 body {
   background: #66CC00;
   font-family:verdana, helvetica, arial, sans-serif;
@@ -264,6 +263,18 @@ input[type=submit] {
   -moz-border-radius:5px;
 }
 
+/* icons shortcuts */
+a.iconic {
+	padding-left:30px;
+	background-position: 5px center;
+	background-repeat:no-repeat;
+}
+a.iconic.print{
+  background-image:url(../img/icons/S/printer.png);
+}
+a.iconic.bookmark{
+  background-image:url(../img/icons/S/tag_blue_add.png);
+}
 /***********************************************************************************
  * Layout 
  ***********************************************************************************/
@@ -291,14 +302,13 @@ input[type=submit] {
   margin-left: -100%;
   width: 21%;
 }*/
-.sidebar_wrapper#right_sidebar{
+.sidebar#right_sidebar{
   float: left;
   margin: 0px;
   margin-left:-21%;
-  margin-top:60px;
-  width: 21%;
+  width: 20%;
 }
-* html .sidebar_wrapper#right_sidebar{
+* html .sidebar#right_sidebar{
   margin-left: -20%;
 }
 
@@ -323,9 +333,8 @@ input[type=submit] {
 /* */
 
 /***********************************************************************************
- * Website Commons
+ * Header
  ***********************************************************************************/
-/* header */
 #header{
   padding: 0px;
 }
@@ -350,57 +359,24 @@ input[type=submit] {
 #header a.selected {
   color: #006600;
 }
-
-
-/* searchbox */
-#header div#searchbox {
-  width: 370px;
-  position:absolute;
-  right:1%;
-  top:2px;
-  padding:0;
-  background:#369636;
-  padding:8px;
-  -moz-border-radius:5px;
+/* country selector : uses selector */
+#country_selector ul.selector{
+	float:left;
+	font-size:1.3em;
+	margin:10px 0;
 }
-#searchbox input{
-  clear:none;
-  display:inline;
-  margin:0;
+#country_selector .selector{
+	font-size:1.3em;
 }
-#header #searchbox .text{
-  float:left;
-  clear:none;
-  padding:0;
-  margin:0;
+#country_selector .item{
+  border-left:2px solid #FFF;
 }
-#header #searchbox .text label{
-  float:left;
-  width:80px;
-  margin:0;
-  padding:5px;
-  color:white;
-  font-size:1.2em;
-  font-weight:bold;
+#country_selector .subitem a{
+  color:#66CC00;
 }
-#header #searchbox .text input{
-  clear:none;
-  font-size:1.2em;
-  background:white;
-  border: 3px solid #66CC00;
-  -moz-border-radius:3px;
-  width:190px;
+#country_selector .subitem a:hover{
+  color:#006600;
 }
-#header #searchbox .submit{
-  float:left;
-  clear:none;
-  padding:0;
-  margin:0 0 0 5px;
-}
-#header #searchbox .submit input{
-  font-size:1em;
-}
-
 /* use badge */
 #header #userbadge{
 	position:absolute;
@@ -446,26 +422,6 @@ ul.menu li a:hover{
   background:#196119;
   padding:5px 10px;
 }
-
-/*******/
-#country_selector ul.selector{
-	float:left;
-	font-size:1.3em;
-	margin:10px 0;
-	
-}
-#country_selector ul.selector{
-	font-size:1.3em;
-}
-#country_selector ul.selector li .item{
-  border-left:2px solid #FFF;
-}
-#country_selector .subitem a{
-  color:#66CC00;
-}
-#country_selector .subitem a:hover{
-  color:#006600;
-}
 /* selector */
 ul.selector{
   float:left;
@@ -503,8 +459,6 @@ ul.selector li .item a img{
 ul.selector li .item a.trigger:hover img{
   border:1px outset #66CC00;
 }
-
-/* submenu */
 ul.selector li ul.subitem{
   position:absolute;
   visibility:hidden;  
@@ -512,9 +466,8 @@ ul.selector li ul.subitem{
   display:block;
   background: #FFF;
   border:1px solid #66CC00;
-  margin:2px 0 0 0px;
   z-index:5;
-  width:170px;
+  width:auto;
   border-width:0 1px 0 1px;
   padding:0;
 }
@@ -535,12 +488,43 @@ ul.selector li ul.subitem li a{
   border-bottom:1px solid #66CC00;
 }
 
-/*******/
-
-/* sidebar */
+/***********************************************************************************
+ * Sidebar
+ ***********************************************************************************/
 .sidebar{
+	padding-bottom:20px;
 }
-.sidebar ul{
+.sidebar div{
+	margin:10px 0;
+}
+.sidebar div div{
+	margin:0;
+}
+/* side bar header*/
+.sidebar h3{
+	margin:0;
+	padding:0;
+}
+.sidebar h3 a.toggle{
+	display:block;
+	margin:0;
+	padding: 2px;
+	padding-left:30px;
+	-moz-border-radius:5px;
+}
+.sidebar h3 a.toggle.open{
+	background: transparent url(/img/layout/widget_open.png) right center no-repeat;
+	margin-right:10px;
+}
+.sidebar h3 a.toggle.close{
+	background: transparent url(/img/layout/widget_close.png) right center no-repeat;
+	margin-right:10px;
+}
+.sidebar .toggle_wrapper{
+	-moz-border-radius:0 0 5px 5px;
+}
+/* menu */
+.sidebar ul.menu{
   list-style: none;
   padding:5px 0;
   margin:0;
@@ -548,11 +532,11 @@ ul.selector li ul.subitem li a{
   background:#EEE;
   -moz-border-radius:5px;
 }
-.sidebar ul li{
+.sidebar ul.menu li{
   padding:0;
   margin:0;
 }
-.sidebar ul li a{
+.sidebar ul.menu li a{
   background:#FCFCFC;
   display:block;
   padding:5px 5px 5px 10px;
@@ -560,37 +544,114 @@ ul.selector li ul.subitem li a{
   border-left:0;
   border-right:0;
 }
-.sidebar ul li a.first{
+.sidebar ul.menu li a.first{
   border-bottom:0;
 }
-.sidebar ul li a:hover{
+.sidebar ul.menu li a:hover{
   background:#F2F2F2;
 }
+/* widget */
+.widget{
+	-moz-border-radius:5px;
+	border:1px double #EEE;
+	padding:2px;
+}
+.widget_header{
+	background:#EEE url(/img/layout/bg_widget.png) 0 0 repeat-x;
+	-moz-border-radius:3px 3px 0 0;
+}
+.widget_content{
+	background:#FFF;
+	-moz-border-radius:0 0 3px 3px;
+}
+.widget_content .toggle_wrapper{
+	padding:5px;
+}
 
-/* content */
+/* shortcuts */
+.sidebar .shortcuts{
+	margin-top:20px;
+}
+.sidebar .shortcuts h3{
+	background:transparent url(/img/icons/S/favorites.png) 6px center no-repeat;
+}
+.sidebar .shortcuts ul {
+	margin:0;
+	padding:4px 0 0 5px;
+	font-size:1.1em;
+}
+.sidebar .shortcuts ul li{
+	list-style-type:none;
+	padding:0;
+	margin:0;
+}
+.sidebar .shortcuts ul li a{
+	display:block;
+	padding-top:4px;
+	padding-bottom:4px;
+}
+/* searchbox */
+.sidebar .search form{
+	padding:5px;
+	float:left;
+}
+.sidebar .search h3{
+  background:transparent url(/img/icons/S/magnifier.png) 6px center no-repeat;
+}
+.sidebar .search .input.text input{
+	border:2px solid #CCC;
+	padding-left: 25px;
+	width:80%;
+	background:#FFF url(/img/icons/S/search_mini.jpg) 4px center no-repeat;
+}
+.sidebar .search .input{
+	margin:0;
+	padding:0;
+  float:left;
+}
+.sidebar .search .submit{
+	float:left;
+	margin:10px 0 0 5px;
+	padding:0;
+}
+
+/* helpbox */
+.sidebar .help{
+	margin-top:15px;
+}
+.sidebar .help h3{
+	padding: 2px;
+	padding-left: 30px;
+	background:transparent url(/img/icons/S/help.png) 5px center no-repeat;
+	border-bottom:1px dotted #CCC;
+	font-weight:bold;
+}
+.sidebar .help ul{
+	font-size:1.1em;
+	padding:5px;
+}
+
+
+/***********************************************************************************
+ * Content
+ ***********************************************************************************/
 .content .view, .content .edit{
 }
 .content div.actions{
 }
-
-/* footer */
-#footer {
-  color:#FFF;
-  clear: both;
-  padding: 10px 20px;
-  text-align: left;
+/* hubblebubble */
+.bubble{
+	border:1px solid #CCC;
+	-moz-border-radius:5px;
+	padding-bottom:10px;
 }
-#footer p{
-	float:left;
+.bubble_spacer{
+	right:20px;
+	position:absolute;
+	width:40px;
+	height:30px;
+	background: transparent url(/img/layout/bg_tooltip_bottom_grey.png) left bottom no-repeat;
 }
-#footer a.cakephpower{
-	float:left;
-	padding:3px 4px 4px 5px;
-}
-#footer a img{
-	float:left;
-}
-
 /* Paging */
 div.paging {
   background:#fff;
@@ -790,4 +851,24 @@ ul.messages li.error{
 div.related {
   clear: both;
   display: block;
+}
+
+/***********************************************************************************
+ * Footer
+ ***********************************************************************************/
+#footer {
+  color:#FFF;
+  clear: both;
+  padding: 10px 20px;
+  text-align: left;
+}
+#footer p{
+	float:left;
+}
+#footer a.cakephpower{
+	float:left;
+	padding:3px 4px 4px 5px;
+}
+#footer a img{
+	float:left;
 }

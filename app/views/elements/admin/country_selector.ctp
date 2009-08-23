@@ -21,7 +21,7 @@
 			if (!empty($subOffices)) {
 				foreach ($subOffices as $office) {
 					$office = AppModel::normalize('Office', $office);
-					echo '<li>' . $html->link('Activate ' . $office['Office']['name'], array(
+					echo '<li>' . $html->link( $office['Office']['name'], array(
 						'controller' => 'offices', 'action' => 'activate', $office['Office']['id']
 					)) . '</li>';
 				}
