@@ -402,22 +402,22 @@ a.iconic.bookmark{
 	padding:10px 0 5px 10px;
 	width:auto;
 }
-ul.menu li{
+.menu#menu_top  li{
   display:inline;
   margin:0;
 }
-ul.menu li a{
+.menu#menu_top li a{
   font-size:1.2em;
   color: #FFF;
   background:#1d791d;
   padding:5px 10px;
   -moz-border-radius:3px 3px 0 0;
 }
-ul.menu li a.selected, ul.menu li a.selected:hover{
+.menu#menu_top li a.selected, .menu#menu_top li a.selected:hover{
   background:#FFF;
   color:#003300;
 }
-ul.menu li a:hover{
+.menu#menu_top li a:hover{
   background:#196119;
   padding:5px 10px;
 }
@@ -635,6 +635,40 @@ ul.selector li ul.subitem li a{
 .content .view, .content .edit{
 }
 .content div.actions{
+}
+
+/* menu */
+.content .menu{
+	padding:10px 10px 5px 0px;
+  margin:5px 10px 5px 0px;
+	width:90%;
+  float:left;
+  clear:both;
+	border-bottom:1px solid #CCC;
+}
+.content .menu  li{
+  float:left;
+  margin:0 0 0 10px;
+  list-style-type:none;
+}
+.content .menu li a{
+  font-size:1.2em;
+  color: #003300;
+  background:#DDD;
+  padding:5px 10px;
+  -moz-border-radius:3px 3px 0 0;
+	border:1px solid #CCC;
+}
+.content .menu li a.selected, .content .menu li a.selected:hover{
+  background:#FFF;
+  color:#003300;
+	border-bottom:1px solid #FFF;
+}
+.content .menu li a:hover{
+  background:#FFF;
+  color:#003300;
+  padding:5px 10px;
+	border-bottom:1px solid #FFF;
 }
 /* filter form */
 .filter{

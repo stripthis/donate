@@ -72,11 +72,11 @@ $config = array(
 	),
 	'Stats.defaultChartOptions' => array(
 		'type' => 'bar_filled',
-		'color' => '#006600',
-		'outline_col' => '#551285',
+		'color' => '#66CC00',
+		'outline_col' => '#006600',
 		'chart' => array('bg' => '#FFFFFF'),
 		'title' => array(
-			'style' => 'font-size: 16px; color: gray; padding: 10px;'
+			'style' => 'font-size: 16px; color: gray; padding: 15px;'
 		),
 		'x_axis' => array(
 			'color' => '#BED4F4',

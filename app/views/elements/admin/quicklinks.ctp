@@ -1,17 +1,32 @@
     <h2><?= __("What do you feel like doing?"); ?></h2>
     <div class="quicklinks">
       <ul>
-        <li><?php echo $html->link( $html->image("icons/XL/challenges.png", array("alt"=>"challenges"))." Manage challenges", 
-                  array("admin"=>true,"controller"=>"challenges"), array('escape' => false)); ?> 
+        <li><?php echo $html->link( $html->image("icons/XL/help.png", array("alt"=>"help"))."Help me get started...", 
+                  array("admin"=>true,"controller"=>"help"), array('escape' => false)); ?> 
         </li>
-        <li><?php echo $html->link( $html->image("icons/XL/rules.png", array("alt"=>"rules"))." Manage rules", 
+        <li><?php echo $html->link( $html->image("icons/XL/appeals.png", array("alt"=>"appeals"))." Manage appeals", 
                   array("admin"=>true,"controller"=>"criteria"), array('escape' => false)); ?> 
         </li>
-        <li><?php echo $html->link( $html->image("icons/XL/leaders.png", array("alt"=>"leaders"))." Manage Leaders", 
-                  array("admin"=>true,"controller"=>"leaders"), array('escape' => false)); ?> 
+        <li><?php echo $html->link( $html->image("icons/XL/templates.png", array("alt"=>"appeals"))." Manage templates", 
+                  array("admin"=>true,"controller"=>"criteria"), array('escape' => false)); ?> 
         </li>
-        <li><?php echo $html->link( $html->image("icons/XL/users.png", array("alt"=>"users"))." Manage Users", 
+        <li><?php echo $html->link( $html->image("icons/XL/users.png", array("alt"=>"users"))." Manage Supporters", 
                   array("admin"=>true,"controller"=>"users"), array('escape' => false)); ?> 
+        </li>
+        <li><?php echo $html->link( $html->image("icons/XL/kexi.png", array("alt"=>"help"))."Browse Gifts", 
+                  array("admin"=>true,"controller"=>"gifts"), array('escape' => false)); ?> 
+        </li>
+        <li><?php echo $html->link( $html->image("icons/XL/vcard.png", array("alt"=>"help"))."Browse Transactions", 
+                  array("admin"=>true,"controller"=>"transactions"), array('escape' => false)); ?> 
+        </li>
+        <li><?php echo $html->link( $html->image("icons/XL/statistics.png", array("alt"=>"help"))."Browse Statistics", 
+                  array("admin"=>true,"controller"=>"statistics"), array('escape' => false)); ?> 
+        </li>
+        <li><?php echo $html->link( $html->image("icons/XL/bug.png", array("alt"=>"bug"))."Report a Bug", 
+                  array("admin"=>true,"controller"=>"bug"), array('escape' => false)); ?> 
+        </li>
+        <li><?php echo $html->link( $html->image("icons/XL/office_config.png", array("alt"=>"office config"))."Office Config", 
+                  array("admin"=>true,"controller"=>"offices"), array('escape' => false)); ?> 
         </li>
       </ul>
     </div>
