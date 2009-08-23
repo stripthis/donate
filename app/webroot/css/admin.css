@@ -241,15 +241,14 @@ input[type=submit] {
 }
 
 /* custom inputs */
-.content div.submit input{  
+.content .submit input{  
   min-width:150px;
   font-size:1.3em;
   margin:10px 0px 0px 0px;
-  float:left;
   clear:none;
   cursor:pointer;
 }
-.content div.cancel a{  
+.content .cancel a{  
  border:1px solid #CCC;
   font-size:1.2em;
   min-width:150px;
@@ -288,10 +287,10 @@ a.iconic.bookmark{
   background: #fff;
 }
 .content{
-  width: 76%;
+  width: 75%;
   float:left;
   margin: 10px 0px;
-  margin-right:22%;
+  margin-right:23%;
   /*margin-left:21%*/
   padding: 0px 0px 20px 20px;
   background: #FFF;
@@ -592,8 +591,6 @@ ul.selector li ul.subitem li a{
 }
 /* searchbox */
 .sidebar .search form{
-	padding:5px;
-	float:left;
 }
 .sidebar .search h3{
   background:transparent url(/img/icons/S/magnifier.png) 6px center no-repeat;
@@ -601,20 +598,20 @@ ul.selector li ul.subitem li a{
 .sidebar .search .input.text input{
 	border:2px solid #CCC;
 	padding-left: 25px;
-	width:80%;
+	margin:0;
+	width:87%;
 	background:#FFF url(/img/icons/S/search_mini.jpg) 4px center no-repeat;
 }
-.sidebar .search .input{
+.sidebar .search .input select{
+	width:100%;
+	margin:-10px 0 0 0;
+	padding:0;
+}
+.sidebar .search .submit input{
 	margin:0;
-	padding:0;
-  float:left;
+	font-size:1.3em;
+	width:100%;
 }
-.sidebar .search .submit{
-	float:left;
-	margin:10px 0 0 5px;
-	padding:0;
-}
-
 /* helpbox */
 .sidebar .help{
 	margin-top:15px;
@@ -639,6 +636,23 @@ ul.selector li ul.subitem li a{
 }
 .content div.actions{
 }
+/* filter form */
+.filter{
+	float:left;
+	width:100%;
+	clear:both;
+}
+.filter .input, .filter .submit{
+	width:250px;
+	float:left;
+	clear:none;
+}
+.filter .submit{
+	width:250px;
+	clear:right;
+	margin-top:1.4em;
+}
+
 /* hubblebubble */
 .bubble{
 	border:1px solid #CCC;

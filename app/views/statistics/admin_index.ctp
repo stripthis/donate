@@ -1,7 +1,7 @@
 		<div class="content" id="statistic_index">
 <?php echo $this->element("admin/quicklinks"); ?>
-		<h2>Users Statistics</h2>
-		<?php echo $this->element('../statistics/sidebar') ?>
+		<h2><?php echo __('Statistics'); ?></h2>
+		<?php echo $this->element('../statistics/filter') ?>
 		<?php
 		$url = '/admin/statistics/index.json?startDate=' . $startDate . '&endDate=' . $endDate;
 		?>
@@ -14,6 +14,7 @@
 		</script>
 		<div id="my_chart"></div>
 		<div class="divider"></div>
+<?php /*
 		<dl class="stats">
 			<dt>Number of gifts in the timeperiod</dt>
 			<dd><?php echo count($gifts) ?></dd>
@@ -33,4 +34,5 @@
 				<?php endforeach; ?>
 			</tbody>
 		</table>
-		</div>
+*/ ?>
+	</div>

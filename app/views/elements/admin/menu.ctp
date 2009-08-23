@@ -2,7 +2,7 @@
   $Session = Common::getComponent('Session');
 ?>
     <ul class="menu" id="menu_top">
-      <li><a href="<?php echo Router::Url("/admin/home",true) ?>"  <?php if(isset($this->viewVars["page"]) && $this->viewVars["page"]=="admin_home") echo 'class="selected"'?>><?php echo __("Home"); ?></li>
+      <li><a href="<?php echo Router::Url("/admin/home",true) ?>"  <?php if($this->name=="Statistics") echo 'class="selected"'?>><?php echo __("Home"); ?></li>
       <li><a href="<?php echo Router::Url("/admin/appeals/index",true) ?>" <?php if($this->name=="Appeals") echo 'class="selected"';?>><?php echo __("Appeals");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/gifts/index",true) ?>" <?php if($this->name=="Gifts") echo 'class="selected"';?>><?php echo __("Gifts");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/transactions/index",true) ?>" <?php if($this->name=="Transactions") echo 'class="selected"';?>><?php echo __("Transactions");?></a></li>

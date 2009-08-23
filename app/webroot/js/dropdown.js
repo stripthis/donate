@@ -32,7 +32,9 @@ $(function() {
 		if (_img != null) {
 			_img.css("border-style", "outset");
 		}
-	}).click(function(){
+	}).mouseout(function(){
+		_hover = false;
+    }).click(function(){
 		if(!_visible){
 			_subitem = $(this).parent().next();
 			_trigger = $(this);

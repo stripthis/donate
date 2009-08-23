@@ -21,6 +21,5 @@
 	        ?>
 	        <?php echo $form->end('Search!')."\n";?>
 	      </div>
-	      <div class="clear"></div>
       </div>
     </div>
