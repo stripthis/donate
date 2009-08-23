@@ -274,6 +274,9 @@ a.iconic.print{
 a.iconic.bookmark{
   background-image:url(../img/icons/S/tag_blue_add.png);
 }
+a.iconic.profile{
+  background-image:url(../img/icons/S/profile.png);
+}
 /***********************************************************************************
  * Layout 
  ***********************************************************************************/
