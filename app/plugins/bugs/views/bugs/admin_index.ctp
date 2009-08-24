@@ -1,9 +1,8 @@
 <h1>Bugs</h1>
+<?php echo $html->link('Resent All Bugs As Email', array('action' => 'resent_all')); ?>
 <table>
 <?php
-echo $html->link('Resent All Bugs As Email', array('action' => 'resent_all'));
 $th = array('Id', 'Created', 'User', 'Last thing that was done', 'Description', 'actions');
-
 echo $html->tableHeaders($th);
 foreach ($bugs as $bug) {
 	$actions = array(
