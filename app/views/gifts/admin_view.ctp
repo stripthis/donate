@@ -96,4 +96,4 @@
 	</dl>
 </div>
 
-<?php echo $this->element('comments', array('item' => $gift, 'plugin' => 'Comments'))?>
+<?php echo $this->element('comments', array('item' => $gift, 'items' => $comments, 'plugin' => 'Comments'))?>

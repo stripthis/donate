@@ -1,18 +1,22 @@
 <?php
 $headline = isset($headline) ? $headline : 'Comments';
 $showForm = isset($showForm) ? $showForm : true;
+$items = !isset($items) ? $item['Comment'] : $items;
 ?>
 <?php if ($headline !== false) : ?>
 	<h2 style="border: 0px;"><?php echo $headline ?></h2>
 <?php endif;?>
 
-<?php if (empty($item['Comment'])): ?>
+<?php if (empty($items)): ?>
 	<?php
  	$emptyMsg = !empty($emptyMsg) ? $emptyMsg : 'There are currently no comments posted.';
 	echo $this->element('warning', array('txt' => $emptyMsg));
 	?>
 <?php else: ?>
-	<?php foreach ($item['Comment'] as $comment) : ?>
+	<?php foreach ($items as $comment) : ?>
+		<?php
+		$comment = AppModel::normalize('Comment', $comment, true);
+		?>
 		<a name="comment-<?php echo $comment['id']; ?>"></a>
 		<div class="comments discussion" id="comment-<?php echo $comment['id']; ?>">
 			<div class="comment_name">

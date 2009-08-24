@@ -1,11 +1,6 @@
 <?php
 class Comment extends CommentsAppModel {
-	var $belongsTo = array(
-		'User',
-		'Gift' => array(
-			'foreignKey' => 'foreign_id'
-		)
-	);
+	var $belongsTo = array('User');
 /**
  * undocumented function
  *

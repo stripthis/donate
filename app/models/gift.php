@@ -6,11 +6,6 @@ class Gift extends AppModel {
 
 	var $hasMany = array(
 		'Transaction' => array('dependent' => true),
-		'Comment' => array(
-			'className' => 'Comments.Comment',
-			'dependent' => true,
-			'foreignKey' => 'foreign_id'
-		)
 	);
 
 	var $validate = array(

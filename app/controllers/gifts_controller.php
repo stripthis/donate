@@ -257,11 +257,16 @@ class GiftsController extends AppController {
 			'contain' => array(
 				'Contact.Address.Phone', 'Contact.Address.Country(id, name)',
 				'Contact.Address.State(id, name)', 'Contact.Address.City(id, name)',
-				'Office(id, name)', 'Appeal',
-				'Comment(id, created, body, user_id)' => 'User(login, id)'
+				'Office(id, name)', 'Appeal'
 			)
 		));
-		$this->set(compact('gift'));
+
+		$method = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
+		$comments = $this->Gift->Comment->find($method, array(
+			'conditions' => array('Comment.foreign_id' => $id),
+			'contain' => array('User(login, id)')
+		));
+		$this->set(compact('gift', 'comments'));
 	}
 /**
  * undocumented function
