@@ -7,15 +7,6 @@ class BugsController extends BugsAppController {
  * @return void
  * @access public
  */
-	function beforeFilter() {
-		parent::beforeFilter();
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
 	function admin_index() {
 		$bugs = $this->Bug->find('all', array(
 			'contain' => array('User(login)'),

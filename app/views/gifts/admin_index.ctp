@@ -1,3 +1,11 @@
+<?php
+$favConfig = Configure::read('Favorites');
+$doFavorites = false;
+if (!empty($favConfig)) {
+	$model = 'Gift';
+	$doFavorites = in_array($model, array_keys($favConfig['models']));
+}
+?>
 <div class="content" id="gifts_index">
   <h2><?php __('Gifts');?></h2>
 	<?php
@@ -34,7 +42,11 @@ foreach ($gifts as $gift) {
 		$html->link(__('Delete', true), array(
 			'action' => 'delete', $gift['Gift']['id']), array('class' => 'delete'), 'Are you sure?')
 	);
-
+	if ($doFavorites) {
+		$actions[] = $html->link(__(ucfirst($favConfig['verb']), true), array(
+			'controller' => 'favorites', 'action' => 'add', $gift['Gift']['id']
+		));
+	}
 	$office = $html->link($gift['Office']['name'], array(
 		'controller' => 'offices', 'action' => 'view', $gift['Office']['id']
 	));
