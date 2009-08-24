@@ -6,8 +6,7 @@
  * @author 		Mayank Bhramar <mayank.bhramar@enova-tech.net>, Refactorings by Tim Koschuetzki (tim@debuggable.com)
  * @copyright 	Enova
  */
-class TellfriendsController extends AppController {
-	var $uses = array('Tellfriend');
+class TellfriendsController extends TellfriendsAppController {
 	var $components = array('Caplimit');
 /**
  * undocumented function
@@ -45,7 +44,7 @@ class TellfriendsController extends AppController {
 					),
 					'mail' => array(
 						'to' => $email
-						, 'subject' => 'Friend suggested you ' . $appName
+						, 'subject' => 'A Friend suggested you check out ' . $appName
 					)
 				);
 				if (Mailer::deliver('tellfriend', $emailSettings)) {

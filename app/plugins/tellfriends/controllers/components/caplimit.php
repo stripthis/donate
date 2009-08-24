@@ -14,8 +14,7 @@
  *
  */
 class CaplimitComponent extends Object {
-	var $name = 'Caplimit';
-	var $TellFriend;
+	var $Tellfriend;
 /**
  * undocumented function
  *
@@ -25,7 +24,7 @@ class CaplimitComponent extends Object {
  */
 	function initialize(&$controller) {
 		$this->controller =& $controller;
-		$this->TellFriend = ClassRegistry::init('TellFriend');
+		$this->Tellfriend = ClassRegistry::init('Tellfriend');
 	}
 /**
  * undocumented function
@@ -59,7 +58,7 @@ class CaplimitComponent extends Object {
  * @access public
  */
 	function checkForSpamEmail($emails) {
-		$toCheck = $this->TellFriend->getEmailsSentInTime();
+		$toCheck = $this->Tellfriend->getEmailsSentInTime();
 
 		foreach ($emails as $email) {
 			foreach ($toCheck as $emailToCheck => $counts) {
@@ -80,7 +79,7 @@ class CaplimitComponent extends Object {
  */
 	function checkForIpSpam() {
 		$ip = RequestHandlerComponent::getClientIP();
-		return $this->TellFriend->isIpSpamming($ip) == 0;
+		return $this->Tellfriend->isIpSpamming($ip) == 0;
 	}
 /**
  * undocumented function
