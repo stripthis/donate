@@ -55,9 +55,6 @@ class GiftsController extends AppController {
 		$this->City->injectCityId($this->data);
 		if (!empty($this->data['Gift']['amount_other'])) {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
-		} elseif (isset($this->data['Gift']['amount']) && $this->data['Gift']['amount'] == 'other') {
-			$this->data['Gift']['amount'] = '';
-			$this->data['Gift']['amount_other'] = '';
 		}
 
 		$isLastStep = $step == $currentAppeal['Appeal']['steps'];

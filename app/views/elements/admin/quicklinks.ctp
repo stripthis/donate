@@ -23,7 +23,7 @@
                   array("admin"=>true,"controller"=>"statistics"), array('escape' => false)); ?> 
         </li>
         <li><?php echo $html->link( $html->image("icons/XL/bug.png", array("alt"=>"bug"))."Report a Bug", 
-                  array("admin"=>true,"controller"=>"bug"), array('escape' => false)); ?> 
+                  array("admin"=>true,"controller"=>"bugs", 'action' => 'add', 'plugin' => 'bugs'), array('escape' => false)); ?> 
         </li>
         <li><?php echo $html->link( $html->image("icons/XL/office_config.png", array("alt"=>"office config"))."Office Config", 
                   array("admin"=>true,"controller"=>"offices"), array('escape' => false)); ?> 
