@@ -261,12 +261,12 @@ class GiftsController extends AppController {
 			)
 		));
 
-		$method = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
-		$comments = $this->Gift->Comment->find($method, array(
+		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
+		$comments = $this->Gift->Comment->find($commentMethod, array(
 			'conditions' => array('Comment.foreign_id' => $id),
 			'contain' => array('User(login, id)')
 		));
-		$this->set(compact('gift', 'comments'));
+		$this->set(compact('gift', 'comments', 'commentMethod'));
 	}
 /**
  * undocumented function

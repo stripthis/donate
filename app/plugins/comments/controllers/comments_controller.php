@@ -16,7 +16,7 @@ class CommentsController extends CommentsAppController {
  * @return void
  * @access public
  */
-	function edit($id = null) {
+	function edit($id = null, $parentId = null) {
 		$action = 'add';
 		if ($this->action == 'edit') {
 			$Comment = $this->Comment->find('first', array(
@@ -31,7 +31,13 @@ class CommentsController extends CommentsAppController {
 		}
 
 		$referer = $this->referer();
-		$this->set(compact('action', 'referer'));
+		$parentId = isset($this->params['named']['parent_id'])
+						? $this->params['named']['parent_id']
+						: false;
+		$foreignId = isset($this->params['named']['foreign_id'])
+						? $this->params['named']['foreign_id']
+						: false;
+		$this->set(compact('action', 'referer', 'parentId', 'foreignId'));
 
 		$this->action = 'edit';
 		if ($this->isGet()) {
