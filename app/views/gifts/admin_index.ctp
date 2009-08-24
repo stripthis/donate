@@ -1,10 +1,6 @@
 <?php
+$doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
 $favConfig = Configure::read('Favorites');
-$doFavorites = false;
-if (!empty($favConfig)) {
-	$model = 'Gift';
-	$doFavorites = in_array($model, array_keys($favConfig['models']));
-}
 ?>
 <div class="content" id="gifts_index">
   <h2><?php __('Gifts');?></h2>
@@ -44,7 +40,7 @@ foreach ($gifts as $gift) {
 	);
 	if ($doFavorites) {
 		$actions[] = $html->link(__(ucfirst($favConfig['verb']), true), array(
-			'controller' => 'favorites', 'action' => 'add', $gift['Gift']['id']
+			'controller' => 'favorites', 'action' => 'add', $gift['Gift']['id'], 'Gift'
 		));
 	}
 	$office = $html->link($gift['Office']['name'], array(

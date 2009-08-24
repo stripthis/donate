@@ -34,7 +34,8 @@ if ($isSingle) {
 
 		$field = $config['models'][$m];
 		$item = $html->link($favorite[$m][$field], array(
-			'controller' => Inflector::pluralize($m), 'action' => 'view', $favorite[$m]['id']
+			'plugin' => '', 'controller' => Inflector::pluralize(low($m)),
+			'action' => 'view', $favorite[$m]['id']
 		));
 		$tr = array(
 			$favorite['Favorite']['created'],

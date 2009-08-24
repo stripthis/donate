@@ -1,3 +1,7 @@
+<?php
+$doFavorites = class_exists('Favorite') && Favorite::doForModel('Transaction');
+$favConfig = Configure::read('Favorites');
+?>
 <div class="content" id="transactions_index">
 <h2>
 	<?php
@@ -19,6 +23,7 @@ $th = array(
 	$paginator->sort('gift_id'),
 	$paginator->sort('status'),
 	$paginator->sort('amount'),
+	'Serial',
 	$paginator->sort('created'),
 	'Actions'
 );
@@ -31,6 +36,11 @@ foreach ($transactions as $t) {
 		$html->link(__('Delete', true), array('action' => 'delete', $t['Transaction']['id']),
 			array('class'=>'delete'), __('Are you sure?', true))
 	);
+	if ($doFavorites) {
+		$actions[] = $html->link(__(ucfirst($favConfig['verb']), true), array(
+			'controller' => 'favorites', 'action' => 'add', $t['Transaction']['id'], 'Transaction'
+		));
+	}
 
 	$parent = '';
 	if (!empty($t['ParentTransaction']['id'])) {
@@ -47,6 +57,7 @@ foreach ($transactions as $t) {
 		$gift,
 		$t['Transaction']['status'],
 		$t['Transaction']['amount'],
+		$t['Transaction']['serial'],
 		$t['Transaction']['created'],
 		implode(' - ', $actions)
 	);
@@ -73,6 +84,7 @@ foreach ($transactions as $t) {
 				$gift,
 				$t['Transaction']['status'],
 				$t['Transaction']['amount'],
+				$t['Transaction']['serial'],
 				$t['Transaction']['created'],
 				$actions
 			);
