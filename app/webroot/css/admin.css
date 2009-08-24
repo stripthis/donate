@@ -364,7 +364,7 @@ a.iconic.profile{
 /* country selector : uses selector */
 #country_selector ul.selector{
 	float:left;
-	font-size:1.3em;
+	font-size:1.5em;
 	margin:10px 0;
 }
 #country_selector .selector{
@@ -372,6 +372,7 @@ a.iconic.profile{
 }
 #country_selector .item{
   border-left:2px solid #FFF;
+  padding-left:.5em;
 }
 #country_selector .subitem a{
   color:#66CC00;

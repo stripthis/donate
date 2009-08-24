@@ -3,8 +3,8 @@
   <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
-      <li><?php echo $html->link(__('New Gift', true), array('action'=>'add'),array('class'=>'add')); ?></li>
-      <li><?php echo $html->link(__('List Users', true), array('controller'=> 'users', 'action'=>'index')); ?> </li>
+    <li><?php echo $html->link(__('New Gift', true), array('action'=>'add'),array('class'=>'add')); ?></li>
+    <li><?php echo $html->link(__('List Users', true), array('controller'=> 'users', 'action'=>'index')); ?> </li>
     <li><?php echo $html->link(__('New User', true), array('controller'=> 'users', 'action'=>'add')); ?> </li>
     <li><?php echo $html->link(__('List Appeals', true), array('controller'=> 'appeals', 'action'=>'index')); ?> </li>
     <li><?php echo $html->link(__('New Appeal', true), array('controller'=> 'appeals', 'action'=>'add')); ?> </li>
