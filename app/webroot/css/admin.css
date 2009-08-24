@@ -806,7 +806,16 @@ ul.messages li.error{
 	font-size:1.3em;
 	background: #FEE url(/img/icons/M/message_error.png) 10px center no-repeat;
 }
-
+ul.messages li.success, ul.messages li.ok{
+	list-style-type:none;
+	border:1px solid green;
+	border-left:0;
+	border-right:0;
+	padding:15px 5px 15px 50px;
+	margin:5px 0;
+	font-size:1.3em;
+	background: #efe url(/img/icons/M/message_info.png) 10px center no-repeat;
+}
 /*  Actions  */
 .actions ul {
   margin: 0;

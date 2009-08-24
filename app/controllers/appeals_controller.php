@@ -31,7 +31,7 @@ class AppealsController extends AppController {
 	function admin_view($id = null) {
 		$appeal = $this->Appeal->find('first', array(
 			'conditions' => array('Appeal.id' => $id),
-			'contain' => false
+			'contain' => array('Parent', 'User', 'Country')
 		));
 		$this->set(compact('appeal'));
 	}

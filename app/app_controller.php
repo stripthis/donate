@@ -24,6 +24,8 @@ class AppController extends Controller {
 		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
 	);
 
+	var $plugins = array('Bugs', 'Favorites');
+
 	var $ignoreUserSession = false;
 	var $loginRedirectSesskey = 'login_redirect';
 /**
@@ -57,6 +59,7 @@ class AppController extends Controller {
 		ClassRegistry::addObject('Component.Cookie', $this->Cookie);
 		ClassRegistry::addObject('Component.Email', $this->Email);
 		$this->_setLanguage();
+		$this->_loadPluginConfigs();
 
 		if (defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
 			return;
@@ -129,6 +132,18 @@ class AppController extends Controller {
 			}
 		}
 		return true;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function _loadPluginConfigs() {
+		foreach ($this->plugins as $plugin) {
+			include(APP . 'plugins' . DS . low($plugin) . DS . 'config.php');
+			Configure::write($config);
+		}
 	}
 /**
  * undocumented function

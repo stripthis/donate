@@ -1,3 +1,11 @@
+<?php
+$favConfig = Configure::read('Favorites');
+$doFavorites = false;
+if (!empty($favConfig)) {
+	$model = 'Gift';
+	$doFavorites = in_array($model, array_keys($favConfig['models']));
+}
+?>
 <div class="content" id="gifts_index">
   <h2><?php __('Gifts');?></h2>
 	<?php
@@ -12,71 +20,54 @@
 	echo $form->input('type', array('label' => 'Type:', 'selected' => $type, 'options' => $typeOptions));
 	echo $form->end('Filter');
 	?>
-  <table cellpadding="0" cellspacing="0">
-  <tr>
-    	<th><?php echo $paginator->sort('office_id');?></th>
-    	<th><?php echo $paginator->sort('type');?></th>
-    	<th><?php echo $paginator->sort('amount');?></th>
-    	<th><?php echo $paginator->sort('frequency');?></th>
-    	<th><?php echo $paginator->sort('appeal_id');?></th>
-    	<th><?php echo $paginator->sort('fname');?></th>
-    	<th><?php echo $paginator->sort('lname');?></th>
-    	<th><?php echo $paginator->sort('email');?></th>
-    	<th><?php echo $paginator->sort('created');?></th>
-    	<th class="actions"><?php __('Actions');?></th>
-  </tr>
+
+<table>
 <?php
-$i = 0;
-foreach ($gifts as $gift):
-	$class = null;
-	if ($i++ % 2 == 0) {
-		$class = ' class="altrow"';
+$th = array(
+	$paginator->sort('office_id'),
+	$paginator->sort('type'),
+	$paginator->sort('amount'),
+	$paginator->sort('frequency'),
+	$paginator->sort('appeal_id'),
+	$paginator->sort('fname'),
+	$paginator->sort('lname'),
+	$paginator->sort('email'),
+	$paginator->sort('created'),
+	'Actions'
+);
+echo $html->tableHeaders($th);
+foreach ($gifts as $gift) {
+	$actions = array(
+		$html->link(__('View', true), array('action'=>'view', $gift['Gift']['id']),array('class'=>'view')),
+		$html->link(__('Delete', true), array(
+			'action' => 'delete', $gift['Gift']['id']), array('class' => 'delete'), 'Are you sure?')
+	);
+	if ($doFavorites) {
+		$actions[] = $html->link(__(ucfirst($favConfig['verb']), true), array(
+			'controller' => 'favorites', 'action' => 'add', $gift['Gift']['id']
+		));
 	}
+	$office = $html->link($gift['Office']['name'], array(
+		'controller' => 'offices', 'action' => 'view', $gift['Office']['id']
+	));
+	$appeal = $html->link($gift['Appeal']['name'], array(
+		'controller' => 'appeals', 'action'=>'view', $gift['Appeal']['id']
+	));
+	$tr = array(
+		$office,
+		$gift['Gift']['type'],
+		$gift['Gift']['frequency'],
+		$gift['Gift']['amount'],
+		$appeal,
+		$gift['Contact']['fname'],
+		$gift['Contact']['lname'],
+		$gift['Contact']['email'],
+		$gift['Gift']['created'],
+		implode(' - ', $actions)
+	);
+	echo $html->tableCells($tr);
+}
 ?>
-  <tr<?php echo $class;?>>
-    <td>
-      <?php echo $html->link($gift['Office']['name'], array('controller'=> 'offices', 'action' => 'view', $gift['Office']['id'])); ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['type']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['amount']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['frequency']; ?>
-    </td>
-    <td>
-      <?php echo $html->link($gift['Appeal']['name'], array('controller'=> 'appeals', 'action'=>'view', $gift['Appeal']['id'])); ?>
-    </td>
-    <td>
-      <?php echo $gift['Contact']['fname']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Contact']['lname']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Contact']['email']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['created']; ?>
-    </td>
-    <td class="actions">
-      <?php echo $html->link(__('View', true), array('action'=>'view', $gift['Gift']['id']),array('class'=>'view')); ?>
-      <?php echo $html->link(__('Delete', true), array('action'=>'delete', $gift['Gift']['id']), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $gift['Gift']['id'])); ?>
-    </td>
-  </tr>
-<?php endforeach; ?>
-  </table>
-  <div class="paging">
-    <?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
-   |   <?php echo $paginator->numbers();?>
-    <?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
-  </div>
-  <p>
-  <?php
-  echo $paginator->counter(array(
-  'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-  ));
-  ?>  </p>
-  </div>
+</table>
+<?php echo $this->element('paging', array('model' => 'Gift'))?>
+</div>

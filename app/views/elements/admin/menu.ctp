@@ -9,6 +9,7 @@
       <li><a href="<?php echo Router::Url("/admin/supporters/index",true) ?>" <?php if($this->name=="Supporters") echo 'class="selected"';?>><?php echo __("Supporters");?></a></li>
 	<?php if (User::isRoot()) : ?>
       <li><a href="<?php echo Router::Url("/admin/offices") ?>" <?php if($this->name=="Offices") echo 'class="selected"';?>><?php echo __("Offices");?></a></li>
+      <li><a href="<?php echo Router::Url("/admin/bugs") ?>" <?php if($this->name=="Bugs") echo 'class="selected"';?>><?php echo __("Bugs");?></a></li>
 	<?php else : ?>
       <li><a href="<?php echo Router::Url("/admin/offices/edit/" . $Session->read('Office.id'),true) ?>" <?php if($this->name=="Offices") echo 'class="selected"';?>><?php echo __("Office Config");?></a></li>
 	<?php endif; ?>

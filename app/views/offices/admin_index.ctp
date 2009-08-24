@@ -6,35 +6,34 @@
       <li><?php echo $html->link(__('New Office', true), array('action' => 'add'), array('class' => 'add')); ?></li>
     </ul>
   </div>
-  <table cellpadding="0" cellspacing="0">
-  <tr>
-    	<th><?php echo $paginator->sort('name');?></th>
-    	<th><?php echo $paginator->sort('parent_id');?></th>
-    	<th><?php echo $paginator->sort('created');?></th>
-    	<th><?php echo $paginator->sort('modified');?></th>
-    	<th class="actions"><?php __('Actions');?></th>
-  </tr>
-<?php foreach ($offices as $office) : ?>
-  <tr>
-    <td>
-      <?php echo $office['Office']['name']; ?>
-    </td>
-    <td>
-      <?php echo $office['ParentOffice']['name']; ?>
-    </td>
-    <td>
-      <?php echo $office['Office']['created']; ?>
-    </td>
-    <td>
-      <?php echo $office['Office']['modified']; ?>
-    </td>
-    <td class="actions">
-      <?php echo $html->link(__('View', true), array('action'=>'view', $office['Office']['id']),array('class'=>'view')); ?>
-      <?php echo $html->link(__('Edit', true), array('action'=>'edit', $office['Office']['id']),array('class'=>'edit')); ?>
-      <?php echo $html->link(__('Delete', true), array('action'=>'delete', $office['Office']['id']), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $office['Office']['name'])); ?>
-    </td>
-  </tr>
-<?php endforeach; ?>
-  </table>
-  </div>
+<table>
+<?php
+$th = array(
+	$paginator->sort('name'),
+	$paginator->sort('parent_id'),
+	$paginator->sort('created'),
+	$paginator->sort('modified'),
+	'Actions'
+);
+echo $html->tableHeaders($th);
+foreach ($offices as $office) {
+	$actions = array(
+		$html->link(__('View', true), array('action' => 'view', $office['Office']['id']), array('class'=>'view')),
+		$html->link(__('Edit', true), array('action' => 'edit', $office['Office']['id']), array('class'=>'edit')),
+		$html->link(__('Delete', true), array('action' => 'delete', $office['Office']['id']),
+			array('class' => 'delete'), __('Are you sure?', true))
+	);
+
+	$tr = array(
+		$office['Office']['name'],
+		$office['ParentOffice']['name'],
+		$office['Office']['created'],
+		$office['Office']['modified'],
+		implode(' - ', $actions)
+	);
+	echo $html->tableCells($tr);
+}
+?>
+</table>
 <?php echo $this->element('paging', array('model' => 'Office'))?>
+</div>
