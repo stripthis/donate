@@ -57,7 +57,7 @@ $showForm = isset($showForm) ? $showForm : true;
 		} else {
 			$modelId = $item['id'];
 		}
-		echo $this->element('comment_form', array('id' => $modelId));
+		echo $this->element('comment_form', array('id' => $modelId, 'plugin' => 'Comments'));
 	}
 	?>
 </div>
