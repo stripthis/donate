@@ -122,8 +122,8 @@ class AppController extends Controller {
 
 		$countC = count($unwantedControllers);
 		$countA = count($unwantedActions);
-		for($j = 0; $j < $countC; $j++) {
-			if($unwantedControllers[$j] == $this->name) {
+		for ($j = 0; $j < $countC; $j++) {
+			if ($unwantedControllers[$j] == $this->name) {
 				for ($i = 0; $i < $countA; $i++) {
 					if ($unwantedActions[$i] == $this->action) {
 						return false;

@@ -111,7 +111,7 @@ class GiftsController extends AppController {
 		// else if the credit data is given, validates
 		if (isset($this->data['Card']) && $currentAppeal['Appeal']['processing'] == 'manual') {
 			$this->Card->set($this->data);
-			if ($this->Card->validates()) {
+			if (true || $this->Card->validates()) {
 				//@todo if application used in manual/direct debit mode, save credit card details
 				//But for now: *WE DON'T SAVE*
 			} else {

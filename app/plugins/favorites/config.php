@@ -1,4 +1,5 @@
 <?php
+App::import('Model', 'Favorites.Favorite');
 $config = array(
 	'Favorites' => array(
 		'subject' => 'starred item',

@@ -2,13 +2,14 @@
 class Contact extends AppModel {
 	var $hasMany = array(
 		'Address',
-		'Phone'
+		'Phone',
+		'Gift'
 	);
 
 	var $belongsTo = array(
-		'User',
+		'User'
 	);
-	
+
 	var $validate = array(
 		'id' => array(
 			'rule' => 'blank',
@@ -45,6 +46,28 @@ class Contact extends AppModel {
 			)
 		)
 	);
+/**
+ * undocumented function
+ *
+ * @param string $created 
+ * @return void
+ * @access public
+ */
+	function afterSave($created) {
+		if ($created) {
+			return true;
+		}
+
+		$ids = $this->Gift->find('all', array(
+			'conditions' => array('Gift.contact_id' => $this->id),
+			'contain' => false,
+			'fields' => array('id')
+		));
+		$ids = Set::extract('/Gift/id', $ids);
+		foreach ($ids as $id) {
+			$this->Gift->name($id);
+		}
+	}
 /**
  * undocumented function
  *

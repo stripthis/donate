@@ -13,10 +13,6 @@ class Gift extends AppModel {
 	);
 
 	var $validate = array(
-		'id' => array(
-			'rule' => 'blank',
-			'on' => 'update'
-		),
 		'type' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
@@ -160,6 +156,42 @@ class Gift extends AppModel {
 				return array('EUR', 'USD', 'GBP');
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
+	}
+/**
+ * @todo: add currency support
+ *
+ * @access public
+ */
+	function name($id) {
+		$gift = $this->find('first', array(
+			'conditions' => array('Gift.id' => $id),
+			'contain' => array('Contact(fname, lname)'),
+			'fields' => array('Gift.type', 'Gift.amount', 'Gift.created')
+		));
+
+		if (empty($gift)) {
+			return false;
+		}
+
+		$name = sprintf('%s %s by %s %s on %s',
+			$gift['Gift']['amount'],
+			$gift['Gift']['type'],
+			$gift['Contact']['fname'],
+			$gift['Contact']['lname'],
+			date('Y-m-d H:i', strtotime($gift['Gift']['created']))
+		);
+		$this->recursive = -1;
+		return $this->updateAll(array('name' => '"' . $name . '"'), array('Gift.id' => $id));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $created 
+ * @return void
+ * @access public
+ */
+	function afterSave($created) {
+		return $this->name($this->id);
 	}
 }
 ?>

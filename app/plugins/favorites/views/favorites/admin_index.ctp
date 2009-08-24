@@ -5,9 +5,8 @@ $isSingle = count($model) == 1;
 if ($isSingle) {
 	$headline = 'My ' . $config['adjective'] . ' ' . Inflector::pluralize($model[0]);
 }
-echo '<h1>' . $this->pageTitle = $headline . '</h1>';
 ?>
-
+<h1><?php echo $this->pageTitle = $headline; ?></h1>
 <?php foreach ($model as $m) : ?>
 	<?php
 	if (!$isSingle) {
@@ -35,7 +34,8 @@ echo '<h1>' . $this->pageTitle = $headline . '</h1>';
 
 		$field = $config['models'][$m];
 		$item = $html->link($favorite[$m][$field], array(
-			'controller' => Inflector::pluralize($m), 'action' => 'view', $favorite[$m]['id']
+			'plugin' => '', 'controller' => Inflector::pluralize(low($m)),
+			'action' => 'view', $favorite[$m]['id']
 		));
 		$tr = array(
 			$favorite['Favorite']['created'],
