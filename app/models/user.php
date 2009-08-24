@@ -488,13 +488,10 @@ class User extends AppModel {
  * @scope static 
  */
 	static function gravatarUrl($user) {
-		$user= AppModel::normalize('User', $user);
-		
-		/* Gravatar */
+		$user = AppModel::normalize('User', $user);
 		$param = "?&rating=G";
-		$param.= "&size=".Configure::read('App.avatarSize');;
+		$param .= "&size=".Configure::read('App.avatarSize');;
 		//$param.= "&default=".Configure::read('App.domain').Configure::read('Avatar.avatarDefault');
-		
 		return ($user)
 			? sprintf('http://www.gravatar.com/avatar/%s.jpg', md5(strtolower($user['User']['login']))).$param
 			: false;

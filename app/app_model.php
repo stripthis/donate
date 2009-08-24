@@ -92,22 +92,16 @@ class AppModel extends Model {
  * @return void
  * @access public
  */
-	static function normalize($model, $id, $query = array()) {
-		if (is_array($id)) {
-			$record = $id;
+	static function normalize($model, $id, $inverse = false) {
+		$record = $id;
+		if (!$inverse) {
 			if (!isset($record[$model])) {
 				$record = array($model => $record);
 			}
-		}
-		if (!isset($record)) {
-			$Model = ClassRegistry::init($model);
-			$record = $Model->find('first', am(array(
-				'conditions' => array($model.'.id' => $id),
-				'contain' => false,
-			), $query));
-		}
-		if (empty($record)) {
-			return false;
+		} else {
+			foreach ($id[$model] as $field => $value) {
+				$record[$field] = $value;
+			}
 		}
 		return $record;
 	}

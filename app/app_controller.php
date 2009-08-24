@@ -24,7 +24,7 @@ class AppController extends Controller {
 		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
 	);
 
-	var $plugins = array('Bugs', 'Favorites');
+	var $plugins = array('Bugs', 'Favorites', 'Comments');
 
 	var $ignoreUserSession = false;
 	var $loginRedirectSesskey = 'login_redirect';
@@ -143,6 +143,15 @@ class AppController extends Controller {
 		foreach ($this->plugins as $plugin) {
 			include(APP . 'plugins' . DS . low($plugin) . DS . 'config.php');
 			Configure::write($config);
+
+			$controller = $plugin . 'AppController';
+			if (!class_exists($controller)) {
+				App::import('Controller', $plugin . '.' . $plugin . 'AppController');
+			}
+			$Controller = new $controller();
+			if (method_exists($Controller, 'init')) {
+				$Controller->init();
+			}
 		}
 	}
 /**

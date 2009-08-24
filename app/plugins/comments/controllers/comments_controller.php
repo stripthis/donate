@@ -1,5 +1,5 @@
 <?php
-class CommentsController extends AppController {
+class CommentsController extends CommentsAppController {
 /**
  * undocumented function
  *
@@ -16,7 +16,7 @@ class CommentsController extends AppController {
  * @return void
  * @access public
  */
-	function edit($id = null) {
+	function edit($id = null, $parentId = null) {
 		$action = 'add';
 		if ($this->action == 'edit') {
 			$Comment = $this->Comment->find('first', array(
@@ -31,7 +31,13 @@ class CommentsController extends AppController {
 		}
 
 		$referer = $this->referer();
-		$this->set(compact('action', 'referer'));
+		$parentId = isset($this->params['named']['parent_id'])
+						? $this->params['named']['parent_id']
+						: false;
+		$foreignId = isset($this->params['named']['foreign_id'])
+						? $this->params['named']['foreign_id']
+						: false;
+		$this->set(compact('action', 'referer', 'parentId', 'foreignId'));
 
 		$this->action = 'edit';
 		if ($this->isGet()) {
@@ -62,22 +68,7 @@ class CommentsController extends AppController {
 			'conditions' => array('Comment.id' => $id),
 			'contain' => false
 		));
-
-		if (!$this->Comment->isOwn($comment, 'Comment')) {
-			$isOwned = false;
-			$models = $this->Comment->belongsTo;
-			foreach ($models as $model => $data) {
-				$row = $this->Comment->{$model}->find('first', array(
-					'conditions' => array($model . '.id' => $comment['Comment']['foreign_id'])
-				));
-
-				if (!empty($row) && $this->Comment->{$model}->isOwn($row, $model)) {
-					$isOwned = true;
-					break;
-				}
-			}
-			Assert::true($isOwned, '403');
-		}
+		Assert::true(Comment::isOwn($comment));
 
 		if (!$this->Comment->delete($id)) {
 			if ($this->isAjax()) {
