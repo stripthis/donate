@@ -81,13 +81,12 @@ table {
   color: #333;
   margin-bottom: 10px;
   width: 100%;
+  border-collapse:collapse;
 }
 th {
   background: #f2f2f2;
   border:1px solid #bbb;
-  border-top: 1px solid #fff;
-  border-left: 1px solid #fff;
-  text-align: left;
+  text-align: center;
 }
 th a {
   background:#f2f2f2;
@@ -102,42 +101,10 @@ th a:hover {
 }
 table tr td {
   background: #fff;
-  border-right: 1px solid #ccc;
+  border: 1px solid #ccc;
   padding: 4px;
   text-align: center;
   vertical-align: top;
-}
-table tr.altrow td {
-  background: #fcfcfc;
-}
-td.actions {
-  text-align: left;
-  white-space: nowrap;
-}
-td.actions a {
-  margin: 0px 3px;
-  text-align:center;
-}
-th.date{
-  width:160px;
-  text-align: center;
-}
-table tr th.id, table tr td.id{
-  width:25px;
-  text-align: center;
-}
-table tr td.left,table tr td.text{
-  text-align: left;
-  padding-left:8px;
-}
-table tr td.numeric{
-  text-align: right;
-  padding-left:0;
-  padding-right:8px;
-}
-th.actions{
-  text-align:center;
-  width:150px;
 }
 
 /* Forms */
@@ -341,7 +308,8 @@ a.iconic.profile{
   padding: 0px;
 }
 #header h1 {
-  padding: 0px 5px 10px 15px;
+  padding: 0px 0px 10px 15px;
+  margin-top:5px;
   font-size:19px;
   color:#FFF;
   width:170px;
@@ -362,10 +330,13 @@ a.iconic.profile{
   color: #006600;
 }
 /* country selector : uses selector */
+#country_selector{
+	float:left;
+	margin:15px 0 0 0;
+}
 #country_selector ul.selector{
 	float:left;
 	font-size:1.5em;
-	margin:10px 0;
 }
 #country_selector .selector{
 	font-size:1.3em;
@@ -373,6 +344,10 @@ a.iconic.profile{
 #country_selector .item{
   border-left:2px solid #FFF;
   padding-left:.5em;
+}
+#country_selector .subitem {
+  margin:5px 0 0 15px;
+  width:200px;
 }
 #country_selector .subitem a{
   color:#66CC00;
@@ -382,9 +357,11 @@ a.iconic.profile{
 }
 /* use badge */
 #header #userbadge{
-	position:absolute;
+	/*position:absolute;
 	top:0;
-	right: 20px;
+	right: 20px;*/
+	float:right;
+	margin-right:20px;
   background:#1d791d;
   color:white;
   font-size:1.1em;
@@ -427,9 +404,8 @@ a.iconic.profile{
 }
 /* selector */
 ul.selector{
-  float:left;
-  display:inline;
   z-index:6;
+  float:left;
   margin:0px 0px 0px 10px;
   list-style-type:none;
 }
@@ -473,6 +449,7 @@ ul.selector li ul.subitem{
   width:auto;
   border-width:0 1px 0 1px;
   padding:0;
+  margin:5px 0 0 25px;
 }
 ul.selector li ul.subitem li{
   float:none;
@@ -679,16 +656,21 @@ ul.selector li ul.subitem li a{
 	float:left;
 	width:100%;
 	clear:both;
+	margin:5px;
 }
 .filter .input, .filter .submit{
 	width:250px;
 	float:left;
 	clear:none;
+	margin-right:10px;
 }
 .filter .submit{
 	width:250px;
 	clear:right;
-	margin-top:1.4em;
+	margin-top:20px;
+}
+.filter .full{
+	width:240px;
 }
 
 /* hubblebubble */
@@ -720,6 +702,64 @@ div.paging span.current {
   color: #000;
 }
 div.paging span a {
+}
+
+/* index GMail style */
+.index_wrapper{
+	padding:0;
+	margin:10px 0 0 0;
+}
+.index_wrapper table{
+	padding:0;
+	margin:0;
+}
+.index_wrapper table td{
+	padding:1px 2px 0 2px;
+	border:0;
+	border-top:1px solid #d6d6d6;
+	border-bottom:1px solid #d6d6d6;
+	background:#EFEFEF;
+}
+.index_wrapper .grab{
+	width:5px;
+}
+.index_wrapper .grab a{
+	width:6px;
+	height:16px;
+	display:block;
+	background:transparent url(../img/layout/grab.png) 0 2px no-repeat;
+}
+.index_wrapper .checkbox{
+	width:10px;
+	padding-top:3px;
+}
+.index_wrapper .favorites{
+	width:10px;
+}
+.index_wrapper .amount{
+	text-align:right;
+	width:50px;
+}
+.index_wrapper .currency{
+	text-align:left;
+	width:30px;
+}
+.index_wrapper .frequency{
+	width:70px;
+	text-align:left;
+	font-weight:bold;
+}
+.index_wrapper .body{
+	text-align:left;
+}
+.index_wrapper .date{
+	text-align:right;
+	width:100px;
+	padding-right:5px;
+}
+.index_wrapper .notifications{
+	width:50px;
+	text-align:left;
 }
 
 /* Scaffold View */
@@ -802,19 +842,17 @@ ul.messages li.error{
 	border-left:0;
 	border-right:0;
 	padding:15px 5px 15px 50px;
-	margin:5px 0;
+	margin:0;
 	font-size:1.3em;
 	background: #FEE url(/img/icons/M/message_error.png) 10px center no-repeat;
 }
 ul.messages li.success, ul.messages li.ok{
 	list-style-type:none;
-	border:1px solid green;
-	border-left:0;
-	border-right:0;
-	padding:15px 5px 15px 50px;
-	margin:5px 0;
+	border-bottom:1px solid #003300;
+	padding:15px 5px 15px 70px;
+	margin:0;
 	font-size:1.3em;
-	background: #efe url(/img/icons/M/message_info.png) 10px center no-repeat;
+	background: #efe url(/img/icons/M/message_info.png) 20px center no-repeat;
 }
 /*  Actions  */
 .actions ul {

@@ -19,6 +19,7 @@
 </head>
 <body>
 <div id="container">
+<?php echo $this->element('messages')?>
   <div id="header">
     <h1><?php echo $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")); ?></h1>
 <?php echo $this->element('admin/country_selector'); ?>
@@ -27,7 +28,6 @@
 <?php echo $this->element('admin/menu'); ?>
   </div>
   <div id="content_wrapper">
-<?php echo $this->element('messages')?>
 <?php echo $content_for_layout; ?>
     <div class="sidebar_wrapper">
 <?php echo $this->element("admin/sidebar"); ?>
