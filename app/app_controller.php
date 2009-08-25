@@ -24,7 +24,7 @@ class AppController extends Controller {
 		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
 	);
 
-	var $plugins = array('Bugs', 'Favorites', 'Comments');
+	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends');
 
 	var $ignoreUserSession = false;
 	var $loginRedirectSesskey = 'login_redirect';

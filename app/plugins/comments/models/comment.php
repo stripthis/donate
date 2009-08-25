@@ -9,7 +9,7 @@ class Comment extends CommentsAppModel {
  * @access public
  */
 	static function isOwn($comment) {
-		$isAuthor = $isOwned = AppModel::isOwn($comment, 'Comment');
+		$isAuthor = $comment['Comment']['user_id'] == User::get('id');
 		if (!$isAuthor) {
 			$isOwned = false;
 			$models = $this->belongsTo;

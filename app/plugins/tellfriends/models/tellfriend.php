@@ -1,6 +1,5 @@
 <?php
-class Tellfriend extends AppModel {
-	var $name = 'Tellfriend';
+class Tellfriend extends TellfriendsAppModel {
 	var $validate = array(
 		'receiver' =>  array(
 			VALID_NOT_EMPTY,
@@ -34,8 +33,8 @@ class Tellfriend extends AppModel {
 		$noOfEmails = $this->find('count', array(
 			'contain' => false,
 			'conditions' => array(
-				'TellFriend.ip' => $currentIP,
-				'TellFriend.time_sent BETWEEN ? AND ?' => array($timeBefore, $currentTime)
+				'Tellfriend.ip' => $currentIP,
+				'Tellfriend.time_sent BETWEEN ? AND ?' => array($timeBefore, $currentTime)
 			)
 		));
 
