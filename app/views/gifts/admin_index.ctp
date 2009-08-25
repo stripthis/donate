@@ -2,6 +2,7 @@
 $doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
 $favConfig = Configure::read('Favorites');
 //pr($gifts);
+
 ?>
     <div class="content" id="gifts_index">
       <h2><?php __('Online Donations');?></h2>
@@ -9,13 +10,14 @@ $favConfig = Configure::read('Favorites');
       <?php echo $this->element('../gifts/elements/filter'); ?>
       <div class="index_wrapper">
         <table>
+        <tbody>
 <?php foreach ($gifts as $gift): ?>
       		<tr>
       			<td class="grab">
-             <a href="<?php echo Router::url(); ?>#">&nbsp;</a>
+              <a href="<?php echo Router::url(); ?>#">&nbsp;</a>
             </td>
       			<td class="checkbox">
-            <?php echo $form->checkbox($gift['Gift']['id'], array("class"=>"checkbox"));?>
+              <?php echo $form->checkbox($gift['Gift']['id'], array("class"=>"checkbox"));?>
             </td>
             <td class="favorites">
       			<?php 
@@ -31,19 +33,21 @@ $favConfig = Configure::read('Favorites');
             <?php //echo $html->image('/img/icons/S/bullet_green.png'); ?>
             </td>
             <td class="amount">
-            <?php //echo $gift['Gift']['type'];?>
-            <?php echo $gift['Gift']['amount'];?>
+              <?php //echo $gift['Gift']['type'];?>
+              <?php echo $gift['Gift']['amount'];?>
             </td>
             <td class="currency">
               EUR <?php //@todo currencies?>
             </td>
             <td class="frequency">
-            <?php echo $gift['Gift']['frequency'];?>
+              <?php echo $gift['Gift']['frequency'];?>
             </td>
             <td class="body">
-            <?php echo ucfirst($gift['Contact']['fname']);?>
-            <?php echo ucfirst($gift['Contact']['lname']);?> 
-            (<?php echo low($gift['Contact']['email']);?>)
+              <a href="<?php echo Router::url('/admin/supporters/view/').$gift['Gift']['contact_id'] ; ?>">
+                <?php echo ucfirst($gift['Contact']['fname']);?>
+                <?php echo ucfirst($gift['Contact']['lname']);?> 
+                (<?php echo low($gift['Contact']['email']);?>)
+              </a>
             </td>
             <td class="notifications">
               <?php echo $html->image('icons/S/attach.png'); //@todo if attachment only ?>
@@ -54,8 +58,20 @@ $favConfig = Configure::read('Favorites');
             </td>
       		</tr>
 <?php endforeach; ?>
+				</tbody>
       	</table>
     <?php echo $this->element('paging', array('model' => 'Gift'))?>
+    <div class="actions">
+      <h3>Actions</h3>
+      <ul>
+        <li><a href="/admin/group_delete" class="delete" onclick="return confirm('Are you sure you want to delete # 4a6458a6-6ea0-4080-ad53-4a89a7f05a6e?');">Delete</a></li>
+        <li><a href="/admin/group_edit" class="edit">New Donation</a></li>
+        <?php 
+        	/* @todo add from admin 
+        	<li><a href="/admin/gift/add" class="add donation">Add Donation</a></li>*/
+        ?>
+       </ul>
+    </div>
     </div>
   </div>
 <?php /*

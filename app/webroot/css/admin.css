@@ -622,30 +622,30 @@ ul.selector li ul.subitem li a{
 .content .menu{
 	padding:10px 10px 5px 0px;
   margin:5px 10px 5px 0px;
-	width:90%;
+	width:99%;
   float:left;
   clear:both;
 	border-bottom:1px solid #CCC;
 }
-.content .menu  li{
+.content .menu.with_tabs  li{
   float:left;
   margin:0 0 0 10px;
   list-style-type:none;
 }
-.content .menu li a{
-  font-size:1.2em;
+.content .menu.with_tabs li a{
+  font-size:1.1em;
   color: #003300;
-  background:#DDD;
+  background:#EFEFEF;
   padding:5px 10px;
   -moz-border-radius:3px 3px 0 0;
 	border:1px solid #CCC;
 }
-.content .menu li a.selected, .content .menu li a.selected:hover{
+.content .menu.with_tabs li a.selected, .content .menu li a.selected:hover{
   background:#FFF;
   color:#003300;
 	border-bottom:1px solid #FFF;
 }
-.content .menu li a:hover{
+.content .menu.with_tabs li a:hover{
   background:#FFF;
   color:#003300;
   padding:5px 10px;
