@@ -268,6 +268,8 @@ class GiftsController extends AppController {
 				'Office(id, name)', 'Appeal'
 			)
 		));
+		Assert::notEmpty($gift, '404');
+		Assert::equal($gift['Gift']['office_id'], $this->Session->read('Office.id'), '403');
 
 		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
 		$comments = $this->Gift->Comment->find($commentMethod, array(

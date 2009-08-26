@@ -52,7 +52,7 @@ $favConfig = Configure::read('Favorites');
               <?php echo $gift['Gift']['frequency'];?>
             </td>
             <td class="body">
-              <a href="<?php echo Router::url('/admin/supporters/view/').$gift['Gift']['contact_id'] ; ?>">
+              <a href="<?php echo Router::url('/admin/gifts/view/') . $gift['Gift']['id'] ; ?>">
                 <?php echo ucfirst($gift['Contact']['fname']);?>
                 <?php echo ucfirst($gift['Contact']['lname']);?> 
                 (<?php echo low($gift['Contact']['email']);?>)
