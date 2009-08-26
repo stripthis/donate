@@ -21,14 +21,23 @@ $favConfig = Configure::read('Favorites');
             </td>
             <td class="favorites">
       			<?php 
-      				// star / favorites
-      			  if ($doFavorites) {
-	      				echo $html->link(
-	      					$html->image('/img/icons/S/rate.png', array('alt'=>__(ucfirst($favConfig['verb']), true))), 
-	      					array('controller' => 'favorites', 'action' => 'add', $gift['Gift']['id'], 'Gift'),
-	              	array('class' => 'star', 'escape'=>false)
-	            	);
-      			  }
+				// star / favorites
+				if ($doFavorites) {
+					$isFavorited = ClassRegistry::init('Favorite')->isFavorited($gift['Gift']['id']);
+					if (!$isFavorited) {
+						$img = $html->image('/img/icons/S/rate.png', array('alt'=>__(ucfirst($favConfig['verb']), true)));
+						echo $html->link($img, array(
+							'controller' => 'favorites', 'action' => 'add', $gift['Gift']['id'], 'Gift'
+							), array('class' => 'star', 'escape'=>false
+						));
+					} else {
+						$img = $html->image('/img/icons/S/rate.png', array('alt'=>__(ucfirst($favConfig['verb']), true)));
+						echo $html->link($img, array(
+							'controller' => 'favorites', 'action' => 'delete', $gift['Gift']['id'], 'Gift'
+							), array('class' => 'star', 'escape'=>false
+						));
+					}
+				}
             ?>
             <?php //echo $html->image('/img/icons/S/bullet_green.png'); ?>
             </td>

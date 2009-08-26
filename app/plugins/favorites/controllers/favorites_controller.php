@@ -64,6 +64,7 @@ class FavoritesController extends FavoritesAppController {
 				'foreign_id' => $id
 			));
 			$this->Favorite->save();
+			$this->Favorite->load(User::get('id'));
 
 			$msg = __('This ' . $model . ' was successfully ' . $adj . '!', true);
 			return $this->Message->add($msg, 'ok', true, $this->referer());
@@ -91,12 +92,14 @@ class FavoritesController extends FavoritesAppController {
 
 		$adj = Configure::read('Favorites.adjective');
 		$model = empty($model) ? 'object' : low($model);
-		if (!empty($favorite)) {
+		if (empty($favorite)) {
 			$msg = __('This ' . $model . ' was not ' . $adj . ' in the first place.', true);
 			return $this->Message->add($msg, 'error', true, $this->referer());
 		}
 
 		$this->Favorite->del($favorite['Favorite']['id']);
+		$this->Favorite->load(User::get('id'));
+
 		$subject = Configure::read('Favorites.subject');
 		$msg = __('This ' . $model . ' was successfully removed from your ' . Inflector::pluralize($subject) . '.', true);
 		$this->Message->add($msg, 'ok', true, $this->referer());
