@@ -17,7 +17,13 @@ class AppealsController extends AppController {
  * @access public
  */
 	function admin_index() {
-		$this->paginate['Appeal']['order'] = array('Appeal.name' => 'asc');
+		$this->paginate['Appeal'] = array(
+			'conditions' => array(
+				'Appeal.office_id' => $this->Session->read('Office.id')
+			),
+			'contain' => array('User(id, login)', 'Country(name)'),
+			'order' => array('Appeal.name' => 'asc')
+		);
 		$appeals = $this->paginate($this->Appeal);
 		$this->set(compact('appeals'));
 	}
@@ -33,6 +39,8 @@ class AppealsController extends AppController {
 			'conditions' => array('Appeal.id' => $id),
 			'contain' => array('Parent', 'User', 'Country')
 		));
+		Assert::notEmpty($appeal, '404');
+		Assert::true(User::allowed($appeal), '403');
 		$this->set(compact('appeal'));
 	}
 /**
@@ -60,6 +68,7 @@ class AppealsController extends AppController {
 				'contain' => false,
 			));
 			Assert::notEmpty($appeal, '404');
+			Assert::true(User::allowed($appeal), '403');
 			$action = 'edit';
 		}
 
@@ -101,6 +110,7 @@ class AppealsController extends AppController {
 			'contain' => false
 		));
 		Assert::notEmpty($appeal, '404');
+		Assert::true(User::allowed($appeal), '403');
 
 		$this->Appeal->del($id);
 		$msg = __('The Appeal has been deleted.', true);

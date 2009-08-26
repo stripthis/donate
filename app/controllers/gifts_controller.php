@@ -249,6 +249,13 @@ class GiftsController extends AppController {
  * @access public
  */
 	function admin_delete($id = null) {
+		$gift = $this->Gift->find('first', array(
+			'conditions' => compact('id'),
+			'contain' => false
+		));
+		Assert::notEmpty($gift, '404');
+		Assert::true(User::allowed($gift), '403');
+
 		$this->Gift->delete($id);
 		$this->Message->add(DEFAULT_FORM_DELETE_SUCCESS, 'ok', true, array('action' => 'index'));
 	}

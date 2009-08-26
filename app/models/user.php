@@ -473,6 +473,9 @@ class User extends AppModel {
 		if (isset($obj['Gift']['office_id'])) {
 			return $obj['Gift']['office_id'] == $this->Session->read('Office.id');
 		}
+		if (isset($obj['Appeal']['office_id'])) {
+			return $obj['Appeal']['office_id'] == $this->Session->read('Office.id');
+		}
 		return false;
 	}
 }
