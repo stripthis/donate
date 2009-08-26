@@ -34,7 +34,7 @@ class GiftsControllerTest extends MyTestCase {
 		}
 		if (!$this->gpiOfficeId) {
 			$this->gpiOfficeId = $this->Office->lookup(
-				array('name LIKE' => '%Greenpeace International%'), 'id', false
+				array('name LIKE' => '%International%'), 'id', false
 			);
 		}
 
@@ -58,7 +58,6 @@ class GiftsControllerTest extends MyTestCase {
 	function testGiftsAddRedirectsIfNoValidOfficeGiven() {
 		$this->fakeRequest('get');
 
-		// no office id
 		$this->Sut->params['named']['office_id'] = '';
 		$this->Sut->add();
 		$this->is($this->Sut->redirectUrl, '/');

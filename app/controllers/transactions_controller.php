@@ -37,6 +37,7 @@ class TransactionsController extends AppController {
 			$conditions['Transaction.gift_id'] = Set::extract('/Gift/id', $giftIds);
 		}
 
+		$conditions['Gift.office_id'] = $this->Session->read('Office.id');
 		$this->paginate['Transaction'] = array(
 			'conditions' => $conditions,
 			'order' => array('Transaction.created' => 'desc'),
@@ -64,6 +65,7 @@ class TransactionsController extends AppController {
 			'contain' => array('ParentTransaction', 'Gift', 'Gateway')
 		));
 		Assert::notEmpty($transaction, '404');
+		Assert::true(User::allowed($transaction), '403');
 		$this->set(compact('transaction'));
 	}
 /**
@@ -75,10 +77,11 @@ class TransactionsController extends AppController {
  */
 	function admin_delete($id = null) {
 		$transaction = $this->Transaction->find('first', array(
-			'conditions' => compact('id'),
-			'contain' => false
+			'conditions' => array('Transaction.id' => $id),
+			'contain' => array('Gift')
 		));
 		Assert::notEmpty($transaction, '404');
+		Assert::true(User::allowed($transaction), '403');
 
 		$this->Transaction->del($id);
 		$msg = __('The Transaction has been deleted.', true);

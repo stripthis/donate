@@ -205,50 +205,6 @@ class User extends AppModel {
 /**
  * undocumented function
  *
- * @return void
- * @access public
- */
-	function handleReferral($justRegisteredId) {
-		$Session = Common::getComponent('Session');
-		$key = 'referral_user';
-		if (!$Session->check($key)) {
-			return;
-		}
-
-		$user = $this->find('first', array(
-			'conditions' => array(
-				'id' => $Session->read($key)
-			),
-			'contain' => false,
-			'fields' => array('id', 'login', 'score')
-		));
-
-		$scoreIncrease = Configure::read('App.referral_score_increase');
-		$this->set(array(
-			'id' => $user['User']['id'],
-			'score' => $user['User']['score'] + $scoreIncrease
-		));
-		$this->save();
-
-		$this->Referral->create(array(
-			'user_id' => $user['User']['id'],
-			'referred_id' => $justRegisteredId
-		));
-		$this->Referral->save();
-
-		$this->ScoringHistory->create(array(
-			'user_id' => $user['User']['id'],
-			'type' => 'referral',
-			'foreign_id' => $justRegisteredId,
-			'score' => $scoreIncrease
-		));
-		$this->ScoringHistory->save();
-
-		$Session->del($key);
-	}
-/**
- * undocumented function
- *
  * @param string $userId 
  * @return void
  * @access public
@@ -505,6 +461,22 @@ class User extends AppModel {
 	function generatePassword() {
 		$pw = substr(md5(microtime()), 0, 9);
 		return array($pw, User::hashPw($pw));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $obj 
+ * @return void
+ * @access public
+ */
+	function allowed($obj) {
+		if (isset($obj['Gift']['office_id'])) {
+			return $obj['Gift']['office_id'] == $this->Session->read('Office.id');
+		}
+		if (isset($obj['Appeal']['office_id'])) {
+			return $obj['Appeal']['office_id'] == $this->Session->read('Office.id');
+		}
+		return false;
 	}
 }
 ?>

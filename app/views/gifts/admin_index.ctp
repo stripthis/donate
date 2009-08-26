@@ -30,8 +30,8 @@ $favConfig = Configure::read('Favorites');
               </a>
             </td>
             <td class="notifications">
-              <img src="/img/icons/S/attach.png" alt="" />
-              <img src="/img/icons/S/comments.png" alt="" />
+              <img src="/img/icons/S/attach.png" class="attach" alt="" />
+              <img src="/img/icons/S/comments.png" class="comment" alt="" />
             </td>
             <td class="date">Aug 20th, 15:42</td>
             <td class="grab">
@@ -42,6 +42,34 @@ $favConfig = Configure::read('Favorites');
       </li>
       <li class="toggle_wrapper" id="wrapper_trigger_4a8d52e3-838c-4700-84a1-1b1b7f000102">
         <ul class="folded">
+        <li>
+			  <table class="gift">
+          <tr id='4a8d52e3-13c8-4cc1-87bb-1b1b7f000102'>
+            <td class="favorites"><a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift" class="star"><img src="/img/icons/S/rate.png" alt="Star" /></a></td>
+            <td class="status">
+            	<a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift">
+            		<img src="/img/icons/S/error.png" alt="Star" />
+            	</a>
+            </td>
+            <td class="gift">
+              <a href="/admin/supporters/view/4a8d52e3-13c8-4cc1-87bb-1b1b7f000102" class="iconic gift">
+                view gift details
+              </a>
+            </td>
+            <td class="amount">10</td>
+            <td class="currency">EUR </td>
+            <td class="frequency">monthly</td>
+            <td class="notifications">
+              <img src="/img/icons/S/attach.png" class="attach" alt="" />
+              <img src="/img/icons/S/comments.png" class="comment" alt="" />
+            </td>
+            <td class="date">Aug 20th, 15:42</td>
+            <td class="grab">
+              <a href="/admin/gifts/index#">&nbsp;</a>
+            </td>
+          </tr>
+        </table> 
+        </li>
         <li>
 			  <table class="profile">
           <tr id='4a8d52e3-13c8-4cc1-87bb-1b1b7f000102'>
@@ -64,8 +92,6 @@ $favConfig = Configure::read('Favorites');
             <?php //echo $html->image('/img/icons/S/bullet_green.png'); ?>
             </td>
             <td class="notifications">
-              <img src="/img/icons/S/attach.png" alt="" />
-              <img src="/img/icons/S/comments.png" alt="" />
             </td>
             <td class="date">Aug 20th, 15:42</td>
             <td class="grab">
@@ -92,8 +118,7 @@ $favConfig = Configure::read('Favorites');
               RBS Worldpay / Bibit Payment Gateway
             </td>
             <td class="notifications">
-              <img src="/img/icons/S/attach.png" alt="" />
-              <img src="/img/icons/S/comments.png" alt="" />
+              <img src="/img/icons/S/comments.png" class="comment" alt="" />
             </td>
             <td class="date">Aug 20th, 15:42</td>
             <td class="grab">
@@ -120,8 +145,7 @@ $favConfig = Configure::read('Favorites');
               RBS Worldpay / Bibit Payment Gateway
             </td>
             <td class="notifications">
-              <img src="/img/icons/S/attach.png" alt="" />
-              <img src="/img/icons/S/comments.png" alt="" />
+              <img src="/img/icons/S/attach.png" class="attach" alt="" />
             </td>
             <td class="date">Aug 20th, 15:42</td>
             <td class="grab">
@@ -164,8 +188,9 @@ $favConfig = Configure::read('Favorites');
             <td class="currency">EUR <?php //@todo currencies?></td>
             <td class="frequency"><?php echo $gift['Gift']['frequency'];?></td>
             <td class="name">
-              <a href="<?php echo Router::url('/admin/supporters/view/').$gift['Gift']['contact_id']; ?>">
-                <?php echo ucfirst($gift['Contact']['fname']);?> <?php echo ucfirst($gift['Contact']['lname']);?> 
+              <a href="<?php echo Router::url('/admin/gifts/view/') . $gift['Gift']['id'] ; ?>">
+                <?php echo ucfirst($gift['Contact']['fname']);?>
+                <?php echo ucfirst($gift['Contact']['lname']);?> 
                 (<?php echo low($gift['Contact']['email']);?>)
               </a>
             </td>

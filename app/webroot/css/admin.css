@@ -229,26 +229,29 @@ input[type=submit] {
   -moz-border-radius:5px;
 }
 
-/* icons shortcuts */
-a.iconic {
+/* iconic polution */
+.iconic {
 	padding-left:30px;
 	background-position: 5px center;
 	background-repeat:no-repeat;
 }
-a.iconic.print{
+.iconic.print{
   background-image:url(../img/icons/S/printer.png);
 }
-a.iconic.bookmark{
+.iconic.bookmark{
   background-image:url(../img/icons/S/tag_blue_add.png);
 }
-a.iconic.profile{
+.iconic.profile{
   background-image:url(../img/icons/S/profile.png);
 }
-a.iconic.transaction.up{
+.iconic.transaction.up{
   background-image:url(../img/icons/S/arrow_right.png);
 }
-a.iconic.transaction.down{
+.iconic.transaction.down{
   background-image:url(../img/icons/S/arrow_left.png);
+}
+.iconic.gift{
+  background-image:url(../img/icons/S/coins.png);
 }
 /***********************************************************************************
  * Layout 
@@ -766,7 +769,13 @@ div.paging span a {
 .index_wrapper .fold a.toggle.open{
 	background:transparent url(../img/icons/S/text_indent.png) 0 0 no-repeat;
 }
+.index_wrapper .folded li:hover table td{
+	background:#E4FFE4;
+}
 /* gift */
+.index_wrapper .gift{
+	text-align:left;
+}
 .index_wrapper .amount{
 	text-align:right;
 	width:50px;
@@ -804,9 +813,15 @@ div.paging span a {
 	width:20px;
 }
 .index_wrapper .notifications{
-	width:50px;
-	text-align:right;
-	width:50px;
+	width:40px;
+	padding-left:10px;
+	padding-right:5px;
+}
+.index_wrapper .notifications img.attach {
+	float:left;
+}
+.index_wrapper .notifications img.comment{
+	float:right;
 }
 .index_wrapper .date{
 	text-align:right;
