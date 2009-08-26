@@ -79,8 +79,10 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateFrequency($check) {
-		// @todo attach current office id here
-		return array_key_exists(current($check), Gift::find('frequencies'));
+		$Session = Common::getComponent('Session');
+		return array_key_exists(current($check), Gift::find('frequencies', array(
+			'id' => $Session->read('gift_process_office_id')
+		)));
 	}
 /**
  * Validate a gift type
@@ -89,8 +91,10 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateType($check) {
-		// @todo attach current office id here
-		return array_key_exists($check['type'], Gift::find('types'));
+		$Session = Common::getComponent('Session');
+		return array_key_exists($check['type'], Gift::find('types', array(
+			'id' => $Session->read('gift_process_office_id')
+		)));
 	}
 /**
  * Validate amount - to avoid small amounts
@@ -98,8 +102,10 @@ class Gift extends AppModel {
  * @return unknown_type
  */
 	function validateAmount($check){
-		// @todo attach current office id here
-		return (isset($check['amount']) && $check['amount'] >= Gift::find('min_amount'));
+		$Session = Common::getComponent('Session');
+		return (isset($check['amount']) && $check['amount'] >= Gift::find('min_amount', array(
+			'id' => $Session->read('gift_process_office_id')
+		)));
 	}
 /**
  * undocumented function
