@@ -32,8 +32,8 @@ class GiftsController extends AppController {
  */
 	function add($step = 1) {
 		$this->checkForValidOfficeId($step);
-		$officeId = $this->Session->read($this->sessOfficeKey);
 
+		$officeId = $this->Session->read($this->sessOfficeKey);
 		$currentAppeal = $this->Appeal->find('by_office', array(
 			'office_id' => $officeId
 		));
@@ -187,6 +187,12 @@ class GiftsController extends AppController {
  * @access public
  */
 	function thanks() {
+		$officeId = $this->Session->read($this->sessOfficeKey);
+		$currentAppeal = $this->Appeal->find('by_office', array(
+			'office_id' => $officeId
+		));
+		Assert::notEmpty($currentAppeal, '500');
+		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['id'];
 	}
 /**
  * undocumented function
@@ -202,7 +208,9 @@ class GiftsController extends AppController {
 					? $this->params['url']['type']
 					: 'person';
 
-		$conditions = array();
+		$conditions = array(
+			'Gift.office_id' => $this->Session->read('Office.id')
+		);
 		if (!empty($keyword)) {
 			$keyword = trim($keyword);
 			switch ($type) {
