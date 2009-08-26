@@ -244,6 +244,12 @@ a.iconic.bookmark{
 a.iconic.profile{
   background-image:url(../img/icons/S/profile.png);
 }
+a.iconic.transaction.up{
+  background-image:url(../img/icons/S/arrow_right.png);
+}
+a.iconic.transaction.down{
+  background-image:url(../img/icons/S/arrow_left.png);
+}
 /***********************************************************************************
  * Layout 
  ***********************************************************************************/
@@ -732,8 +738,8 @@ div.paging span a {
 	background:#EFEFEF;
 }
 .index_wrapper .folded li{
-	padding-left:60px;
-  background:transparent url(../img/layout/folded.png) 45px 0 no-repeat;
+	padding-left:38px;
+  background:transparent url(../img/layout/folded.png) 22px 0 no-repeat;
 }
 .index_wrapper .folded table{
 	background:0;
@@ -778,11 +784,21 @@ div.paging span a {
 .index_wrapper .name{
 	text-align:left;
 }
-/* */
+/* transactions */
+.index_wrapper .transaction{
+	text-align:left;
+}
+.index_wrapper .bank{
+	text-align:right;
+}
 /* generic */
 .index_wrapper .selection{
 	width:10px;
 	padding-top:3px;
+}
+.index_wrapper .status{
+	width:25px;
+	text-align:center;
 }
 .index_wrapper .favorites{
 	width:20px;

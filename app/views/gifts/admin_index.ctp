@@ -13,8 +13,13 @@ $favConfig = Configure::read('Favorites');
         <table class="gift">
           <tr id="">
             <td class="selection"><input type="hidden" name="data[4a8d52e3-838c-4700-84a1-1b1b7f000102]" id="4a8d52e3-838c-4700-84a1-1b1b7f000102_" value="0" /><input type="checkbox" name="data[4a8d52e3-838c-4700-84a1-1b1b7f000102]" class="checkbox" value="1" id="4a8d52e3-838c-4700-84a1-1b1b7f000102" /></td>
-            <td class="favorites"><a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift" class="star"><img src="/img/icons/S/rate.png" alt="Star" /></a></td>
             <td class="fold"><a href="<?php echo Router::url(); ?>#" class="toggle close" id="trigger_4a8d52e3-838c-4700-84a1-1b1b7f000102">&nbsp;</a></td>
+            <td class="favorites"><a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift" class="star"><img src="/img/icons/S/rate.png" alt="Star" /></a></td>
+            <td class="status">
+            	<a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift">
+            		<img src="/img/icons/S/error.png" alt="Star" />
+            	</a>
+            </td>
             <td class="amount">10</td>
             <td class="currency">EUR </td>
             <td class="frequency">monthly</td>
@@ -41,13 +46,22 @@ $favConfig = Configure::read('Favorites');
 			  <table class="profile">
           <tr id='4a8d52e3-13c8-4cc1-87bb-1b1b7f000102'>
             <td class="favorites"><a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift" class="star"><img src="/img/icons/S/rate.png" alt="Star" /></a></td>
+            <td class="status">
+            	<a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift">
+            		<img src="/img/icons/S/tick.png" alt="This profile is complete" />
+            	</a>
+            </td>
             <td class="name">
               <a href="/admin/supporters/view/4a8d52e3-13c8-4cc1-87bb-1b1b7f000102" class="iconic profile">
                 Remy Bertot 
+                (remy@stripthis.com)
               </a>
             </td>
-            <td class="email>
-                (remy@stripthis.com)
+            <td class="postcode">33113</td>
+            <td class="city">Cazalis</td>
+            <td class="country">France</td>
+            <td class="favorites">
+            <?php //echo $html->image('/img/icons/S/bullet_green.png'); ?>
             </td>
             <td class="notifications">
               <img src="/img/icons/S/attach.png" alt="" />
@@ -64,13 +78,46 @@ $favConfig = Configure::read('Favorites');
         <table class="transaction">
           <tr id='4a8d52e3-13c8-4cc1-87bb-1b1b7f000102'>
             <td class="favorites"><a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift" class="star"><img src="/img/icons/S/rate.png" alt="Star" /></a></td>
+            <td class="status">
+            	<a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift">
+            		<img src="/img/icons/S/tick.png" alt="This profile is complete" />
+            	</a>
+            </td>
             <td class="transaction">
-              <a href="/admin/supporters/view/4a8d52e3-13c8-4cc1-87bb-1b1b7f000102" class="iconic transaction">
-                ger56g4e63rg4eg
+              <a href="/admin/transactions/view/" class="iconic transaction up">
+                Transaction/Batch id: #fez4654fez
               </a>
             </td>
             <td class="bank">
-               Bibit Payment Gateway
+              RBS Worldpay / Bibit Payment Gateway
+            </td>
+            <td class="notifications">
+              <img src="/img/icons/S/attach.png" alt="" />
+              <img src="/img/icons/S/comments.png" alt="" />
+            </td>
+            <td class="date">Aug 20th, 15:42</td>
+            <td class="grab">
+              <a href="/admin/gifts/index#">&nbsp;</a>
+            </td>
+          </tr>
+        </table> 
+        </li>
+        <li>
+        <table class="transaction">
+          <tr id='4a8d52e3-13c8-4cc1-87bb-1b1b7f000102'>
+            <td class="favorites"><a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift" class="star"><img src="/img/icons/S/rate.png" alt="Star" /></a></td>
+            <td class="status">
+            	<a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift">
+            		<img src="/img/icons/S/error.png" alt="This profile is complete" />
+            	</a>
+            </td>
+            <td class="transaction">
+              <a href="/admin/transactions/view/" class="iconic transaction down">
+                Transaction/Batch id: #fez4654fez
+              </a>
+            </td>
+            <td class="bank">
+              RBS Worldpay / Bibit Payment Gateway
             </td>
             <td class="notifications">
               <img src="/img/icons/S/attach.png" alt="" />
@@ -86,20 +133,32 @@ $favConfig = Configure::read('Favorites');
         </ul>
       </li>
       </ul>
+      <br/><p>Real Data bellow :)</p><br/>
 			<table>
 <?php foreach ($gifts as $gift): ?>
           <tr class="gift" id='<?php echo $gift['Gift']['id'];?>'>
             <td class="checkbox"><?php echo $form->checkbox($gift['Gift']['id'], array("class"=>"checkbox"));?></td>
-            <td class="favorites"><?php 
-                // star / favorites
-                if ($doFavorites) {
-                  echo $html->link(
-                    $html->image('/img/icons/S/rate.png', array('alt'=>__(ucfirst($favConfig['verb']), true))), 
-                    array('controller' => 'favorites', 'action' => 'add', $gift['Gift']['id'], 'Gift'),
-                    array('class' => 'star', 'escape'=>false)
-                  );
-                }
-              ?></td>
+            <td class="favorites">
+            <?php 
+						// star / favorites
+						if ($doFavorites) {
+							$isFavorited = ClassRegistry::init('Favorite')->isFavorited($gift['Gift']['id']);
+							if (!$isFavorited) {
+								$img = $html->image('/img/icons/S/unrate.png', array('alt'=>__(ucfirst($favConfig['verb']), true)));
+								echo $html->link($img, array(
+									'controller' => 'favorites', 'action' => 'add', $gift['Gift']['id'], 'Gift'
+									), array('class' => 'star', 'escape'=>false
+								));
+							} else {
+								$img = $html->image('/img/icons/S/rate.png', array('alt'=>__(ucfirst($favConfig['verb']), true)));
+								echo $html->link($img, array(
+									'controller' => 'favorites', 'action' => 'delete', $gift['Gift']['id'], 'Gift'
+									), array('class' => 'star', 'escape'=>false
+								));
+							}
+						}
+		        ?>
+		        </td>
             <td class="fold"><a href="<?php echo Router::url(); ?>#">show/hide</a></td>
             <td class="amount"><?php echo $gift['Gift']['amount'];?></td>
             <td class="currency">EUR <?php //@todo currencies?></td>

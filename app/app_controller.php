@@ -148,6 +148,7 @@ class AppController extends Controller {
 			if (!class_exists($controller)) {
 				App::import('Controller', $plugin . '.' . $plugin . 'AppController');
 			}
+
 			$Controller = new $controller();
 			if (method_exists($Controller, 'init')) {
 				$Controller->init();
