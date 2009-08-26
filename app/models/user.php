@@ -462,5 +462,18 @@ class User extends AppModel {
 		$pw = substr(md5(microtime()), 0, 9);
 		return array($pw, User::hashPw($pw));
 	}
+/**
+ * undocumented function
+ *
+ * @param string $obj 
+ * @return void
+ * @access public
+ */
+	function allowed($obj) {
+		if (isset($obj['Gift']['office_id'])) {
+			return $obj['Gift']['office_id'] == $this->Session->read('Office.id');
+		}
+		return false;
+	}
 }
 ?>

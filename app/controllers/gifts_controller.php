@@ -269,7 +269,7 @@ class GiftsController extends AppController {
 			)
 		));
 		Assert::notEmpty($gift, '404');
-		Assert::equal($gift['Gift']['office_id'], $this->Session->read('Office.id'), '403');
+		Assert::true(User::allowed($gift), '403');
 
 		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
 		$comments = $this->Gift->Comment->find($commentMethod, array(
