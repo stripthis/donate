@@ -3,6 +3,10 @@ App::import('Controller', 'Gifts');
 ini_set('memory_limit', '512M');
 require_once(dirname(dirname(__FILE__)) . DS . 'my_test_case.php');
 class GiftsControllerTest extends MyTestCase {
+	var $fixtures = array(
+		'app.office', 'app.gift', 'app.appeal', 'app.gateway',
+		'app.gateways_office', 'app.auth_key_type'
+	);
 	var $dropTables = false;
 	var $Sut = null;
 	var $belgiumOfficeId = false;
@@ -20,10 +24,10 @@ class GiftsControllerTest extends MyTestCase {
 		$this->Sut->beforeFilter();
 		$this->Sut->Component->startup($this->Sut);
 
-		$this->Gift = $this->Sut->Gift;
-		$this->Contact = $this->Gift->Contact;
-		$this->Address = $this->Contact->Address;
-		$this->Office = $this->Sut->Office;
+		$this->Gift = ClassRegistry::init('Gift');
+		$this->Contact = ClassRegistry::init('Contact');
+		$this->Address = ClassRegistry::init('Address');
+		$this->Office = ClassRegistry::init('Office');
 		$this->Country = ClassRegistry::init('Country');
 		$this->City = ClassRegistry::init('City');
 
