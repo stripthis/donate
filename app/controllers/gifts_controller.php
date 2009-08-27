@@ -203,6 +203,8 @@ class GiftsController extends AppController {
  * @access public
  */
 	function admin_index() {
+		Assert::true(User::allowed($this->name, 'admin_view'), '403');
+
 		$keyword = isset($this->params['url']['keyword'])
 					? $this->params['url']['keyword']
 					: '';

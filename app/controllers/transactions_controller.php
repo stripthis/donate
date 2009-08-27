@@ -19,8 +19,9 @@ class TransactionsController extends AppController {
  * @access public
  */
 	function admin_index($contactId = null) {
-		$conditions = array('Transaction.parent_id' => '');
+		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
+		$conditions = array('Transaction.parent_id' => '');
 		$contact = false;
 		if (!empty($contactId)) {
 			$contact = $this->Contact->find('first', array(
