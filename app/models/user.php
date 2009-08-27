@@ -479,7 +479,7 @@ class User extends AppModel {
  * @access public
  */
 	function allowed($controller, $action, $obj = null) {
-		$result = false;
+		$result = true;
 		if (!empty($obj)) {
 			if (isset($obj['Gift']['office_id'])) {
 				$result = $obj['Gift']['office_id'] == $this->Session->read('Office.id');
