@@ -65,7 +65,7 @@ class TransactionsController extends AppController {
 			'contain' => array('ParentTransaction', 'Gift', 'Gateway')
 		));
 		Assert::notEmpty($transaction, '404');
-		Assert::true(User::allowed($transaction), '403');
+		Assert::true(User::allowed($this->name, $this->action,$transaction), '403');
 		$this->set(compact('transaction'));
 	}
 /**
@@ -81,7 +81,7 @@ class TransactionsController extends AppController {
 			'contain' => array('Gift')
 		));
 		Assert::notEmpty($transaction, '404');
-		Assert::true(User::allowed($transaction), '403');
+		Assert::true(User::allowed($this->name, $this->action, $transaction), '403');
 
 		$this->Transaction->del($id);
 		$msg = __('The Transaction has been deleted.', true);

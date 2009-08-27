@@ -40,7 +40,7 @@ class AppealsController extends AppController {
 			'contain' => array('Parent', 'User', 'Country')
 		));
 		Assert::notEmpty($appeal, '404');
-		Assert::true(User::allowed($appeal), '403');
+		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
 		$this->set(compact('appeal'));
 	}
 /**
@@ -68,7 +68,7 @@ class AppealsController extends AppController {
 				'contain' => false,
 			));
 			Assert::notEmpty($appeal, '404');
-			Assert::true(User::allowed($appeal), '403');
+			Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
 			$action = 'edit';
 		}
 
@@ -110,7 +110,7 @@ class AppealsController extends AppController {
 			'contain' => false
 		));
 		Assert::notEmpty($appeal, '404');
-		Assert::true(User::allowed($appeal), '403');
+		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
 
 		$this->Appeal->del($id);
 		$msg = __('The Appeal has been deleted.', true);

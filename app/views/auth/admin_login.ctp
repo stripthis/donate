@@ -19,13 +19,3 @@
       <?php echo $form->end()."\n";?>
       <div class="clear"></div>
     </div>
-    <div class="sidebar_wrapper" id="right_sidebar">
-     <div class="help">
-       <h3><?php echo __("Need some help?"); ?></h3>
-       <ul>
-         <li> I bet you <a href="/users/forgot_pw" name="help" id="help">forgot your password</a>? </li>
-         <li> Or you need some more <a href="http://www.youtube.com/watch?v=NfqL7bwx9fs" target="_blank" rel="nofollow">power?</a></li>
-       </ul>
-     </div>
-     <div class="clear"></div>
-  	</div>

@@ -6,10 +6,6 @@ class Contact extends AppModel {
 		'Gift'
 	);
 
-	var $belongsTo = array(
-		'User'
-	);
-
 	var $validate = array(
 		'id' => array(
 			'rule' => 'blank',

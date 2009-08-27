@@ -1,4 +1,4 @@
-<div class="gifts view">
+<div class="content view" id="gifts_view">
 <h2><?php  __('Gift');?></h2>
   <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>
@@ -95,5 +95,5 @@
     </dd>
 	</dl>
 </div>
-
 <?php echo $this->element('comments', array('item' => $gift, 'items' => $comments, 'plugin' => 'Comments'))?>
+</div>

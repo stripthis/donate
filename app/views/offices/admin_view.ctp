@@ -1,4 +1,4 @@
-<div class="offices view">
+<div class="content" id="offices_view">
 <h2><?php  __('Office');?></h2>
   <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>
@@ -53,8 +53,6 @@
       &nbsp;
     </dd>
 	</dl>
-</div>
-
 <div class="related">
 	<h3><?php __('Related Gateways');?></h3>
 	<?php if (!empty($office['Gateway'])):?>
@@ -92,10 +90,6 @@
   <?php endforeach; ?>
 	</table>
 <?php endif; ?>
+</div>
 
-	<div class="actions">
-		<ul>
-			<li><?php echo $html->link(__('New Gateway', true), array('controller'=> 'gateways', 'action'=>'add'));?> </li>
-		</ul>
-	</div>
 </div>

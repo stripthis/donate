@@ -344,7 +344,7 @@ class User extends AppModel {
  * @access public
  */
 	static function isAdmin() {
-		return User::get('level') == 'admin' || User::isRoot();
+		return User::get('level') == 'admin' || User::isSuperAdmin() || User::isRoot();
 	}
 /**
  * undocumented function
@@ -354,6 +354,15 @@ class User extends AppModel {
  */
 	static function isRoot() {
 		return User::get('level') == 'root';
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	static function isSuperAdmin() {
+		return User::get('level') == 'superadmin' || User::isRoot();
 	}
 /**
  * Generic function that determines if the current User can access the $property of a given $object
@@ -469,14 +478,17 @@ class User extends AppModel {
  * @return void
  * @access public
  */
-	function allowed($obj) {
-		if (isset($obj['Gift']['office_id'])) {
-			return $obj['Gift']['office_id'] == $this->Session->read('Office.id');
+	function allowed($controller, $action, $obj = null) {
+		$result = true;
+		if (!empty($obj)) {
+			if (isset($obj['Gift']['office_id'])) {
+				$result = $obj['Gift']['office_id'] == $this->Session->read('Office.id');
+			}
+			if (isset($obj['Appeal']['office_id'])) {
+				$result = $obj['Appeal']['office_id'] == $this->Session->read('Office.id');
+			}
 		}
-		if (isset($obj['Appeal']['office_id'])) {
-			return $obj['Appeal']['office_id'] == $this->Session->read('Office.id');
-		}
-		return false;
+		return $result && Common::requestAllowed($controller, $action, User::get('permissions'), true);
 	}
 }
 ?>

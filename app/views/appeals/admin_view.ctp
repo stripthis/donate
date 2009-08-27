@@ -1,4 +1,4 @@
-<div class="appeals view">
+<div class="content" id="appeals view">
 <h2><?php  __('Appeal');?></h2>
   <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>
