@@ -77,7 +77,7 @@ class AppController extends Controller {
 				if ($this->isOkForSessionRedirect()) {
 					$this->Session->write($this->loginRedirectSesskey, $this->here);
 				}
-				return $this->redirect('/auth/login', '403', true);
+				return $this->redirect('/admin/auth/login', '403', true);
 			}
 
 			if (!User::isGuest() && $this->name == 'auth' && $this->action == 'login') {

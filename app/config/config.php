@@ -29,6 +29,12 @@ $config = array(
 	//'App.newsFeed' => 'http://weblog.greenpeace.org/makingwaves/itclimateleaders.xml',
 	//'App.twitterURL' => 'http://www.twitter.com/greenpeace',
 	//'App.twitterFeed' => 'http://twitter.com/statuses/user_timeline/39753217.rss',
+	'App.permission_options' => array(
+		'Appeals:admin_add', 'Appeals:admin_edit', 'Appeals:admin_delete', 'Appeals:admin_view',
+		'Gifts:admin_add', 'Gifts:admin_edit', 'Gifts:admin_delete', 'Gifts:admin_view',
+		'Transactions:admin_add', 'Transactions:admin_edit', 'Transactions:admin_delete',
+		'Transactions:admin_view', 'Transactions:admin_export', 'Transactions:admin_import'
+	),
 	'App.use_email_activation' => false,
 	'App.lead_dev_email' => 'rbertot@greenpeace.org',
 	'App.recaptcha_key' => '6LfXQgYAAAAAAHH3k76pZcBsbmsI6uustwK4lBF2',

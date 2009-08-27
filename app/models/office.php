@@ -18,6 +18,7 @@ class Office extends AppModel {
 		'CountriesOffice' => array(
 			'dependent' => true
 		),
+		'User'
 	);
 
 	var $hasAndBelongsToMany = array(
@@ -69,6 +70,38 @@ class Office extends AppModel {
 			}
 		}
 
+		return true;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function afterSave() {
+		if (!isset($this->data['Office']['permissions'])) {
+			return true;
+		}
+
+		$permissions = Configure::read('App.permission_options');
+		foreach ($this->data['Office']['permissions'] as $userId => $perms) {
+			$diff = array_diff($permissions, $perms);
+			if (empty($diff)) {
+				continue;
+			}
+
+			$s = '';
+			foreach ($diff as $perm) {
+				$s .= '!' . $perm . ',';
+			}
+			$s = substr($s, 0, -1);
+
+			$this->User->set(array(
+				'id' => $userId,
+				'permissions' => $s
+			));
+			$this->User->save();
+		}
 		return true;
 	}
 /**

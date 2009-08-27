@@ -96,10 +96,17 @@ class OfficesController extends AppController {
 		if ($this->action == 'admin_edit') {
 			$office = $this->Office->find('first', array(
 				'conditions' => array('Office.id' => $id),
-				'contain' => array('GatewaysOffice(gateway_id)')
+				'contain' => array(
+					'GatewaysOffice(gateway_id)',
+					'User' => array(
+						'fields' => array('id', 'name', 'permissions', 'office_id'),
+						'conditions' => array('User.id <>' => User::get('id'))
+					)
+				)
 			));
 			Assert::notEmpty($office, '404');
 			Assert::true(Office::isOwn($id), '403');
+			Assert::true(User::isSuperAdmin(), '403');
 
 			$selectedGateways = Set::extract('/GatewaysOffice/gateway_id', $office);
 			$action = 'edit';

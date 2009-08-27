@@ -256,7 +256,7 @@ class GiftsController extends AppController {
 			'contain' => false
 		));
 		Assert::notEmpty($gift, '404');
-		Assert::true(User::allowed($gift), '403');
+		Assert::true(User::allowed($this->name, $this->action, $gift), '403');
 
 		$this->Gift->delete($id);
 		$this->Message->add(DEFAULT_FORM_DELETE_SUCCESS, 'ok', true, array('action' => 'index'));
@@ -278,7 +278,7 @@ class GiftsController extends AppController {
 			)
 		));
 		Assert::notEmpty($gift, '404');
-		Assert::true(User::allowed($gift), '403');
+		Assert::true(User::allowed($this->name, $this->action, $gift), '403');
 
 		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
 		$comments = $this->Gift->Comment->find($commentMethod, array(
