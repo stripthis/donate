@@ -2,7 +2,7 @@
 class GiftsController extends AppController {
 	var $helpers = array('Fpdf', 'GiftForm');
 	var $models = array('Gift', 'Contact', 'Address', 'Phone');
-	var $sessOfficeKey = 'gift_process_office_id';
+	var $sessAppealKey = 'gift_process_appeal_id';
 /**
  * undocumented function
  *
@@ -31,13 +31,12 @@ class GiftsController extends AppController {
  * @access public
  */
 	function add($step = 1) {
-		$this->checkForValidOfficeId($step);
+		$this->checkForValidAppealId($step);
 
-		$officeId = $this->Session->read($this->sessOfficeKey);
-		$currentAppeal = $this->Appeal->find('by_office', array(
-			'office_id' => $officeId
-		));
+		$appealId = $this->Session->read($this->sessAppealKey);
+		$currentAppeal = $this->Appeal->find('default', array('id' => $appealId));
 		Assert::notEmpty($currentAppeal, '500');
+		$officeId = $currentAppeal['Appeal']['office_id'];
 
 		$this->data['Gift']['appeal_id'] = $currentAppeal['Appeal']['id'];
 		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['id'];
@@ -47,6 +46,9 @@ class GiftsController extends AppController {
 
 		// no data was given so we render the selected/default view
 		if ($this->isGet()) {
+			if (!file_exists(VIEWS . $this->viewPath . DS . 'step' . $step . '.ctp')) {
+				return;
+			}
 			return $this->render('step' . $step);
 		}
 
@@ -187,9 +189,9 @@ class GiftsController extends AppController {
  * @access public
  */
 	function thanks() {
-		$officeId = $this->Session->read($this->sessOfficeKey);
-		$currentAppeal = $this->Appeal->find('by_office', array(
-			'office_id' => $officeId
+		$appealId = $this->Session->read($this->sessAppealKey);
+		$currentAppeal = $this->Appeal->find('default', array(
+			'id' => $appealId
 		));
 		Assert::notEmpty($currentAppeal, '500');
 		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['id'];
@@ -375,24 +377,24 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function checkForValidOfficeId($step) {
+	function checkForValidAppealId($step) {
 		$msg = __('Please choose a country first!', true);
 
-		if ($step == 1 && $this->isGet() && !isset($this->params['named']['office_id'])) {
+		if ($step == 1 && $this->isGet() && !isset($this->params['named']['appeal_id'])) {
 			return $this->Message->add($msg, 'error', true, '/');
 		}
 
-		if (isset($this->params['named']['office_id'])) {
-			$existingOffice = $this->Office->lookup(
-				array('id' => $this->params['named']['office_id']),
+		if (isset($this->params['named']['appeal_id'])) {
+			$existingAppeal = $this->Appeal->lookup(
+				array('id' => $this->params['named']['appeal_id']),
 				'id', false
 			);
-			$sessOfficeId = $this->Session->read($this->sessOfficeKey);
-			if (!$existingOffice || $step != 1 && $sessOfficeId != $existingOffice) {
+			$sessAppealId = $this->Session->read($this->sessAppealKey);
+			if (!$existingAppeal || $step != 1 && $sessAppealId != $existingAppeal) {
 				return $this->Message->add($msg, 'error', true, '/');
 			}
 
-			$this->Session->write($this->sessOfficeKey, $this->params['named']['office_id']);
+			$this->Session->write($this->sessAppealKey, $this->params['named']['appeal_id']);
 		}
 	}
 }

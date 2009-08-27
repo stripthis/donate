@@ -17,17 +17,17 @@ class Appeal extends AppModel {
 	function find($type, $query = array()) {
 		$args = func_get_args();
 		switch ($type) {
-			case 'by_office':
-				$officeId = isset($query['office_id']) ? $query['office_id'] : false;
+			case 'default':
+				$id = isset($query['id']) ? $query['id'] : false;
 
 				$appeal = false;
-				if ($officeId) {
+				if ($id) {
 					$appeal = $this->find('first', array(
 						'conditions' => array(
 							'OR' => array(
-								'Appeal.office_id' => $officeId,
-								'Appeal.campaign_code' => $officeId,
-								'Appeal.name' => $officeId, //@todo use proper label instead of name (cf. ' ')
+								'Appeal.id' => $id,
+								'Appeal.campaign_code' => $id,
+								'Appeal.name' => $id, //@todo use proper label instead of name (cf. ' ')
 							),
 							'default' => '0'
 						),

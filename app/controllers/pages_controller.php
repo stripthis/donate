@@ -2,7 +2,7 @@
 class PagesController extends AppController {
 	var $name = 'Pages';
 	var $helpers = array('Html');
-	var $uses = array('User');
+	var $uses = array('User', 'Appeal');
 /**
  * Displays a view
  *
@@ -22,6 +22,14 @@ class PagesController extends AppController {
 			$page = $path[0];
 		}
 
+		if ($page == 'home') {
+			$appeals = $this->Appeal->find('all', array(
+				'contain' => false,
+				'fields' => array('name', 'id'),
+				'order' => array('name' => 'asc')
+			));
+			$this->set(compact('appeals'));
+		}
 		if (!empty($path[1])) {
 			$subpage = $path[1];
 		}

@@ -11,6 +11,8 @@ class GiftsControllerTest extends MyTestCase {
 	var $Sut = null;
 	var $belgiumOfficeId = false;
 	var $gpiOfficeId = false;
+	var $gpiAppealId = false;
+	var $exampleAppealId = false;
 /**
  * undocumented function
  *
@@ -27,9 +29,22 @@ class GiftsControllerTest extends MyTestCase {
 		$this->Gift = ClassRegistry::init('Gift');
 		$this->Contact = ClassRegistry::init('Contact');
 		$this->Address = ClassRegistry::init('Address');
+		$this->Appeal = ClassRegistry::init('Appeal');
 		$this->Office = ClassRegistry::init('Office');
 		$this->Country = ClassRegistry::init('Country');
 		$this->City = ClassRegistry::init('City');
+
+		if (!$this->gpiAppealId) {
+			$this->gpiAppealId = $this->Appeal->lookup(
+				array('name LIKE' => '%default GPI appeal%'), 'id', false
+			);
+		}
+
+		if (!$this->exampleAppealId) {
+			$this->exampleAppealId = $this->Appeal->lookup(
+				array('name LIKE' => '%Example%'), 'id', false
+			);
+		}
 
 		if (!$this->belgiumOfficeId) {
 			$this->belgiumOfficeId = $this->Office->lookup(
@@ -42,7 +57,7 @@ class GiftsControllerTest extends MyTestCase {
 			);
 		}
 
-		$this->Sut->params['named']['office_id'] = $this->belgiumOfficeId;
+		$this->Sut->params['named']['office_id'] = $this->gpiAppealId;
 	}
 /**
  * undocumented function
@@ -59,41 +74,41 @@ class GiftsControllerTest extends MyTestCase {
  * @return void
  * @access public
  */
-	function testGiftsAddRedirectsIfNoValidOfficeGiven() {
+	function testGiftsAddRedirectsIfNoValidAppealGiven() {
 		$this->fakeRequest('get');
 
-		$this->Sut->params['named']['office_id'] = '';
+		$this->Sut->params['named']['appeal_id'] = '';
 		$this->Sut->add();
 		$this->is($this->Sut->redirectUrl, '/');
 
-		// any non existant office id
+		// any non existant appeal id
 		$this->Sut->redirectUrl = '';
-		$this->Sut->params['named']['office_id'] = String::uuid();
+		$this->Sut->params['named']['appeal_id'] = String::uuid();
 		$this->Sut->add();
 		$this->is($this->Sut->redirectUrl, '/');
 
-		// valid office id
+		// valid appeal id
 		$this->Sut->redirectUrl = false;
-		$this->Sut->params['named']['office_id'] = $this->belgiumOfficeId;
+		$this->Sut->params['named']['appeal_id'] = $this->gpiAppealId;
 		$this->Sut->add();
 		$this->false($this->Sut->redirectUrl);
 
-		// setting office id allowed only at step 1 if different from session office id
+		// setting appeal id allowed only at step 1 if different from session office id
 		$this->Sut->redirectUrl = false;
-		$this->Sut->params['named']['office_id'] = $this->gpiOfficeId;
+		$this->Sut->params['named']['appeal_id'] = $this->gpiAppealId;
 		$this->Sut->add();
 		$this->false($this->Sut->redirectUrl);
 
-		$this->Sut->params['named']['office_id'] = $this->belgiumOfficeId;
+		$this->Sut->params['named']['appeal_id'] = $this->exampleAppealId;
 		$this->Sut->add(2);
 		$this->is($this->Sut->redirectUrl, '/');
 
 		$this->Sut->redirectUrl = false;
-		$this->Sut->params['named']['office_id'] = $this->gpiOfficeId;
+		$this->Sut->params['named']['appeal_id'] = $this->gpiAppealId;
 		$this->Sut->add();
 		$this->false($this->Sut->redirectUrl);
 
-		$this->Sut->params['named']['office_id'] = $this->gpiOfficeId;
+		$this->Sut->params['named']['appeal_id'] = $this->gpiAppealId;
 		$this->Sut->add(2);
 		$this->false($this->Sut->redirectUrl);
 	}
@@ -103,11 +118,11 @@ class GiftsControllerTest extends MyTestCase {
  * @return void
  * @access public
  */
-	function testAddSavesOfficeIdInSession() {
-		$officeId = $this->belgiumOfficeId;
-		$vars = $this->testAction('/gifts/add/office_id:' . $officeId, array('return' => 'vars'));
-		$sessOfficeId = $this->Sut->Session->read($this->Sut->sessOfficeKey);
-		$this->is($officeId, $sessOfficeId);
+	function testAddSavesAppealIdInSession() {
+		$appealId = $this->gpiAppealId;
+		$vars = $this->testAction('/gifts/add/appeal_id:' . $appealId, array('return' => 'vars'));
+		$sessAppealId = $this->Sut->Session->read($this->Sut->sessAppealKey);
+		$this->is($appealId, $sessAppealId);
 	}
 /**
  * undocumented function
@@ -279,7 +294,7 @@ class GiftsControllerTest extends MyTestCase {
  */
 	function testTheSingleFormIsValidated() {
 		$this->fakeRequest('get');
-		$this->Sut->params['named']['office_id'] = $this->belgiumOfficeId;
+		$this->Sut->params['named']['appeal_id'] = $this->gpiAppealId;
 		$this->Sut->add();
 
 		$this->Sut->dropSessionData();
