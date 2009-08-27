@@ -17,6 +17,7 @@ class AppealsController extends AppController {
  * @access public
  */
 	function admin_index() {
+		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 		$this->paginate['Appeal'] = array(
 			'conditions' => array(
 				'Appeal.office_id' => $this->Session->read('Office.id')
@@ -35,12 +36,13 @@ class AppealsController extends AppController {
  * @access public
  */
 	function admin_view($id = null) {
+		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
+
 		$appeal = $this->Appeal->find('first', array(
 			'conditions' => array('Appeal.id' => $id),
 			'contain' => array('Parent', 'User', 'Country')
 		));
 		Assert::notEmpty($appeal, '404');
-		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
 		$this->set(compact('appeal'));
 	}
 /**
@@ -50,6 +52,7 @@ class AppealsController extends AppController {
  * @access public
  */
 	function admin_add() {
+		Assert::true(User::allowed($this->name, $this->action), '403');
 		$this->admin_edit();
 	}
 /**
