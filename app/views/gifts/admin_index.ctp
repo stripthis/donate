@@ -8,6 +8,7 @@ $favConfig = Configure::read('Favorites');
 <?php echo $this->element('../gifts/elements/menu'); ?>
 <?php echo $this->element('../gifts/elements/actions'); ?>
       <div class="index_wrapper">
+      <br/><p>Fake Data for CSS test :)</p><br/>
       <ul>
       <li>
         <table class="gift">
@@ -17,7 +18,7 @@ $favConfig = Configure::read('Favorites');
             <td class="favorites"><a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift" class="star"><img src="/img/icons/S/rate.png" alt="Star" /></a></td>
             <td class="status">
             	<a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift">
-            		<img src="/img/icons/S/error.png" alt="Star" />
+            		<img src="/img/icons/S/warning.png" alt="Star" />
             	</a>
             </td>
             <td class="amount">10</td>
@@ -27,6 +28,11 @@ $favConfig = Configure::read('Favorites');
               <a href="/admin/supporters/view/4a8d52e3-13c8-4cc1-87bb-1b1b7f000102">
                 Remy Bertot 
                 (remy@stripthis.com)
+              </a>
+            </td>
+            <td class="transaction">
+              <a href="/admin/transaction/view/">
+                Status: pending bank response
               </a>
             </td>
             <td class="notifications">
@@ -48,17 +54,14 @@ $favConfig = Configure::read('Favorites');
             <td class="favorites"><a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift" class="star"><img src="/img/icons/S/rate.png" alt="Star" /></a></td>
             <td class="status">
             	<a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift">
-            		<img src="/img/icons/S/error.png" alt="Star" />
+            		<img src="/img/icons/S/tick.png" alt="Star" />
             	</a>
             </td>
             <td class="gift">
-              <a href="/admin/supporters/view/4a8d52e3-13c8-4cc1-87bb-1b1b7f000102" class="iconic gift">
-                view gift details
+              <a href="/admin/supporters/view/4a8d52e3-13c8-4cc1-87bb-1b1b7f000102" class="iconic gift card">
+                10 EUR <strong>monthly</strong> (Online Donation)
               </a>
             </td>
-            <td class="amount">10</td>
-            <td class="currency">EUR </td>
-            <td class="frequency">monthly</td>
             <td class="notifications">
               <img src="/img/icons/S/attach.png" class="attach" alt="" />
               <img src="/img/icons/S/comments.png" class="comment" alt="" />
@@ -111,7 +114,7 @@ $favConfig = Configure::read('Favorites');
             </td>
             <td class="transaction">
               <a href="/admin/transactions/view/" class="iconic transaction up">
-                Transaction/Batch id: #fez4654fez
+                 August batch: #fez4654fez (status: ok)
               </a>
             </td>
             <td class="bank">
@@ -133,12 +136,12 @@ $favConfig = Configure::read('Favorites');
             <td class="favorites"><a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift" class="star"><img src="/img/icons/S/rate.png" alt="Star" /></a></td>
             <td class="status">
             	<a href="/admin/favorites/add/4a8d52e3-838c-4700-84a1-1b1b7f000102/Gift">
-            		<img src="/img/icons/S/error.png" alt="This profile is complete" />
+            		<img src="/img/icons/S/warning.png" alt="This profile is complete" />
             	</a>
             </td>
             <td class="transaction">
               <a href="/admin/transactions/view/" class="iconic transaction down">
-                Transaction/Batch id: #fez4654fez
+                August batch: #fez4654fez (status: pending)
               </a>
             </td>
             <td class="bank">
@@ -158,6 +161,12 @@ $favConfig = Configure::read('Favorites');
       </li>
       </ul>
       <br/><p>Real Data bellow :)</p><br/>
+      <div class="paginator sort">
+      
+      	<?php echo $paginator->sort('Contact.lname', array('')); ?>
+      	<?php echo $paginator->sort('Contact.fname'); ?>
+      	<?php echo $paginator->sort('Gift.amount'); ?>
+      </div>
 			<table>
 <?php foreach ($gifts as $gift): ?>
           <tr class="gift" id='<?php echo $gift['Gift']['id'];?>'>

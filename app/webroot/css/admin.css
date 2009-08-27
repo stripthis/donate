@@ -250,8 +250,14 @@ input[type=submit] {
 .iconic.transaction.down{
   background-image:url(../img/icons/S/arrow_left.png);
 }
-.iconic.gift{
+.iconic.gift.card{
+  background-image:url(../img/icons/S/creditcards.png);
+}
+.iconic.gift.cash.small{
   background-image:url(../img/icons/S/coins.png);
+}
+.iconic.gift.cash.big{
+  background-image:url(../img/icons/S/money.png);
 }
 /***********************************************************************************
  * Layout 
@@ -734,7 +740,7 @@ div.paging span a {
 	margin:0;
 }
 .index_wrapper tr td{
-	padding:1px 2px 0 2px;
+	padding:2px 2px 0 2px;
 	border:0;
 	border-top:1px solid #d6d6d6;
 	border-bottom:1px solid #d6d6d6;
