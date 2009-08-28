@@ -32,7 +32,8 @@ class SavedByBehavior extends ModelBehavior {
 	function setup(&$Model, $settings = array()) {
 		$defaults = array(
 			'createdField' => 'created_by',
-			'modifiedField' => 'modified_by'
+			'modifiedField' => 'modified_by',
+			'model' => 'User'
 		);
 		if (!isset($this->__settings[$Model->alias])) {
 			$this->__settings[$Model->alias] = $defaults;
@@ -57,6 +58,28 @@ class SavedByBehavior extends ModelBehavior {
 		$modifiedField = $this->__settings[$Model->alias]['modifiedField'];
 		$Model->data[$Model->alias][$modifiedField] = User::get('id');
 		return true;
-    }
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function beforeFind(&$Model, $query = array()) {
+		$createdField = $this->__settings[$Model->alias]['createdField'];
+		$modifiedField = $this->__settings[$Model->alias]['modifiedField'];
+		$model = $this->__settings[$Model->alias]['model'];
+
+		$Model->bindModel(array('belongsTo' => array(
+			'CreatedBy' => array(
+				'className' => $model,
+				'foreignKey' => $createdField
+			),
+			'ModifiedBy' => array(
+				'className' => $model,
+				'foreignKey' => $modifiedField
+			),
+		)));
+	}
 }
 ?>

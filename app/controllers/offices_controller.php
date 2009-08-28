@@ -83,9 +83,10 @@ class OfficesController extends AppController {
 			'conditions' => array(
 				'User.office_id' => $this->Session->read('Office.id')
 			),
-			'contain' => false,
+			'contain' => array('CreatedBy'),
 			'fields' => array(
-				'User.name', 'User.level', 'User.created'
+				'User.name', 'User.level', 'User.created',
+				'User.created_by', 'CreatedBy.login'
 			),
 			'order' => array(
 				'User.level' => 'asc'

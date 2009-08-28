@@ -87,7 +87,7 @@ class UsersController extends AppController {
 			'conditions' => array(
 				'User.login <>' => Configure::read('App.guestAccount')
 			),
-			'contain' => false
+			'contain' => array('CreatedBy(login)', 'ModifiedBy(login)')
 		);
 		$users = $this->paginate();
 		$this->set(compact('users'));

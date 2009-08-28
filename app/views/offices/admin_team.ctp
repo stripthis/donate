@@ -9,10 +9,13 @@
 	);
 	echo $html->tableHeaders($th);
 	foreach ($users as $user) {
+		$date = date('Y-m-d', strtotime($user['User']['created']));
+		$creator = $user['CreatedBy']['login'];
+		$created = sprintf('%s by %s', $date, $creator);
 		$tr = array(
 			$user['User']['level'],
 			$user['User']['name'],
-			date('Y-m-d', strtotime($user['User']['created'])),
+			$created,
 		);
 		echo $html->tableCells($tr);
 	}
