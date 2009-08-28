@@ -1,5 +1,7 @@
 <?php
 class User extends AppModel {
+	var $actsAs = array('Containable', 'Lookupable', 'Enumerable');
+
 	var $belongsTo = array(
 		'Contact',
 		'Office'

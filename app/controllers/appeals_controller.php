@@ -86,6 +86,7 @@ class AppealsController extends AppController {
 			$this->data['Appeal']['user_id'] = User::get('id');
 		}
 
+		$this->data['Appeal']['office_id'] = $this->Session->read('Office.id');
 		$this->Appeal->set($this->data['Appeal']);
 		$result = $this->Appeal->save();
 		if ($this->Appeal->validationErrors) {
