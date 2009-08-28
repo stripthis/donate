@@ -49,26 +49,8 @@ class AuthController extends AppController{
 			$this->Session->write('User.justLoggedIn', true);
 		}
 
-		if ($this->isAjax()) {
-			if ($success) {
-				$url = '/users/dashboard';
-				$sessUrl = $this->Session->read($this->loginRedirectSesskey);
-				if (!empty($sessUrl)) {
-					$url = $sessUrl;
-					$this->Session->del($this->loginRedirectSesskey);
-				}
-				$msg = 'You have successfully logged in. Please wait while you\'re redirected.'; //@todo l18n use codes
-				return $this->Message->add(__($msg, true), 'ok', false, $url);
-			}
-
-			$msg = 'Sorry, but there is no activated user with these login credentials.'; //@todo l18n use codes
-			return $this->Message->add(__($msg, true), 'error');
-		}
-
 		if ($success) {
-			$url = !User::isAdmin() 
-					? array('controller' => 'users', 'action' => 'dashboard')
-					: array('controller' => 'statistics', 'action' => 'index', 'admin' => 1);
+			$url = array('controller' => 'statistics', 'action' => 'index', 'admin' => 1);
 			return $this->redirect($url);
 		}
 
