@@ -78,6 +78,28 @@ class OfficesController extends AppController {
  * @return void
  * @access public
  */
+	function admin_team() {
+		$this->paginate['User'] = array(
+			'conditions' => array(
+				'User.office_id' => $this->Session->read('Office.id')
+			),
+			'contain' => false,
+			'fields' => array(
+				'User.name', 'User.level', 'User.created'
+			),
+			'order' => array(
+				'User.level' => 'asc'
+			)
+		);
+		$users = $this->paginate('User');
+		$this->set(compact('users'));
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	function admin_add() {
 		$this->admin_edit();
 	}
