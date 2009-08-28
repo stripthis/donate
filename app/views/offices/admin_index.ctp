@@ -4,6 +4,9 @@
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
       <li><?php echo $html->link(__('New Office', true), array('action' => 'add'), array('class' => 'add')); ?></li>
+		<?php if (USer::isRoot()) : ?>
+      		<li><?php echo $html->link(__('Manage Tree', true), array('action' => 'manage_tree'), array('class' => 'tree')); ?></li>
+		<?php endif; ?>
     </ul>
   </div>
 <table>

@@ -159,50 +159,6 @@ class Office extends AppModel {
  * @return void
  * @access public
  */
-	function parentOfficeOptions($id) {
-		return $this->find('list', array(
-			'conditions' => array('id <>' => $id),
-			'contain' => false
-		));
-	}
-/**
- * undocumented function
- *
- * @param string $id 
- * @return void
- * @access public
- */
-	function subOfficeOptions($id, $type = 'normal') {
-		$conditions = array(
-			'id <>' => $id
-		);
-		if ($type == 'selected') {
-			$conditions['parent_id'] = $id;
-		}
-		$subOffices = $this->find('list', array(
-			'conditions' => $conditions,
-			'contain' => false
-		));
-
-		$ids = array_keys($subOffices);
-		if ($type == 'selected') {
-			if (!$id) {
-				return array();
-			}
-			return $ids;
-		}
-
-		// @todo this is simplified; could do MPTT-Pattern here with the tree behavior
-		// however, since only roots edit the office tree, we simplify this
-		return $subOffices;
-	}
-/**
- * undocumented function
- *
- * @param string $id 
- * @return void
- * @access public
- */
 	function activate($id) {
 		if (is_array($id)) {
 			$office = $id;

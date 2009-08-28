@@ -113,7 +113,6 @@ class OfficesController extends AppController {
 		}
 
 		$gatewayOptions = $this->Gateway->find('list');
-		$this->treeSelections($id);
 		$gateways = $this->Office->Gateway->find('list');
 		$this->set(compact('action', 'office', 'gateways', 'gatewayOptions', 'selectedGateways'));
 
@@ -132,11 +131,6 @@ class OfficesController extends AppController {
 		}
 
 		$officeId = $this->Office->id;
-		if (User::isRoot()) {
-			$this->Office->subRelations($officeId, $this->data);
-		}
-		$this->Office->reload($officeId);
-
 		$msg = 'Office was saved successfully.';
 		if ($action == 'add') {
 			$url = array('action' => 'admin_edit', $officeId);
@@ -165,18 +159,35 @@ class OfficesController extends AppController {
 /**
  * undocumented function
  *
- * @param string $id 
  * @return void
  * @access public
  */
-	private function treeSelections($id) {
-		if (!User::isRoot()) {
+	function admin_manage_tree() {
+		Assert::true(User::isRoot(), '403');
+		$treeOffices = $this->Office->find('threaded', array(
+			'contain' => false,
+			'order' => array('name' => 'asc'),
+			'fields' => array('parent_id', 'id', 'name')
+		));
+		$offices = $this->Office->find('all', array(
+			'contain' => false,
+			'order' => array('name' => 'asc'),
+			'fields' => array('parent_id', 'id', 'name')
+		));
+		$this->set(compact('offices', 'treeOffices'));
+		if ($this->isGet()) {
 			return;
 		}
-		$parentOptions = $this->Office->parentOfficeOptions($id);
-		$subOptions = $this->Office->subOfficeOptions($id);
-		$selectedSubs = $this->Office->subOfficeOptions($id, 'selected');
-		$this->set(compact('parentOptions', 'subOptions', 'selectedSubs'));
+
+		foreach ($this->data['options'] as $id => $parentId) {
+			$this->Office->set(array(
+				'id' => $id,
+				'parent_id' => $parentId
+			));
+			$this->Office->save(null, false);
+		}
+		$msg = 'Tree updated!';
+		$this->Message->add($msg, 'ok', true, $this->here);
 	}
 }
 ?>
