@@ -1,3 +1,4 @@
+<div class="content">
 <h1>Bugs</h1>
 <?php echo $html->link('Resent All Bugs As Email', array('action' => 'resent_all')); ?>
 <table>
@@ -20,3 +21,4 @@ foreach ($bugs as $bug) {
 }
 ?>
 </table>
+</div>

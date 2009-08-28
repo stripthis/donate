@@ -1,3 +1,4 @@
+<div class="content edit" id="users_edit">
 <?php echo $this->element('messages')?>
 <?php if(!isset($tabindex)) $tabindex = 1; ?>
 <?php echo $form->create('User', array('action' => 'edit', 'autocomplete' => 'off'))?>
@@ -11,3 +12,4 @@
   </fieldset>
 <?php echo $form->submit(__('Save',true)." »",array("tabindex"=>$tabindex++));?>
 <?php echo $form->end()?>
+</div>

@@ -1,4 +1,4 @@
-  <div class="offices index">
+  <div class="content" id="offices_index">
   <h2><?php __('Offices');?></h2>
   <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>

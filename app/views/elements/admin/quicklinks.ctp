@@ -7,9 +7,6 @@
         <li><?php echo $html->link( $html->image("icons/XL/appeals.png", array("alt"=>"appeals"))." Manage appeals", 
                   array("admin"=>true,"controller"=>"appeals"), array('escape' => false)); ?> 
         </li>
-        <li><?php echo $html->link( $html->image("icons/XL/templates.png", array("alt"=>"appeals"))." Manage templates", 
-                  array("admin"=>true,"controller"=>"templates"), array('escape' => false)); ?> 
-        </li>
         <li><?php echo $html->link( $html->image("icons/XL/users.png", array("alt"=>"users"))." Manage Supporters", 
                   array("admin"=>true,"controller"=>"users"), array('escape' => false)); ?> 
         </li>
@@ -19,6 +16,7 @@
         <li><?php echo $html->link( $html->image("icons/XL/vcard.png", array("alt"=>"help"))."Browse Transactions", 
                   array("admin"=>true,"controller"=>"transactions"), array('escape' => false)); ?> 
         </li>
+        <div class="clear"></div>
         <li><?php echo $html->link( $html->image("icons/XL/statistics.png", array("alt"=>"help"))."Browse Statistics", 
                   array("admin"=>true,"controller"=>"statistics"), array('escape' => false)); ?> 
         </li>

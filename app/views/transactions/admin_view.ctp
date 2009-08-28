@@ -1,4 +1,4 @@
-<div class="transactions view">
+<div class="content" id="transactions_view">
 <h2><?php  __('Transaction');?></h2>
   <div class="actions">
     <h3><?php echo __('Actions'); ?></h3>

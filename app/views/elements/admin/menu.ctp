@@ -7,14 +7,15 @@
       <li><a href="<?php echo Router::Url("/admin/gifts/index",true) ?>" <?php if($this->name=="Gifts") echo 'class="selected"';?>><?php echo __("Gifts");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/transactions/index",true) ?>" <?php if($this->name=="Transactions") echo 'class="selected"';?>><?php echo __("Transactions");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/supporters/index",true) ?>" <?php if($this->name=="Supporters") echo 'class="selected"';?>><?php echo __("Supporters");?></a></li>
-	<?php if (User::isRoot()) : ?>
+<?php if (User::isRoot()) : ?>
       <li><a href="<?php echo Router::Url("/admin/offices") ?>" <?php if($this->name=="Offices") echo 'class="selected"';?>><?php echo __("Offices");?></a></li>
+      <li><a href="<?php echo Router::Url("/admin/users") ?>" <?php if($this->name=="Users") echo 'class="selected"';?>><?php echo __("Users");?></a></li>
       <li><a href="<?php echo Router::Url("/admin/bugs") ?>" <?php if($this->name=="Bugs") echo 'class="selected"';?>><?php echo __("Bugs");?></a></li>
-	<?php elseif (User::isSuperAdmin()) : ?>
+<?php elseif (User::isSuperAdmin()) : ?>
       <li><a href="<?php echo Router::Url("/admin/offices/edit/" . $Session->read('Office.id'),true) ?>" <?php if($this->name=="Offices") echo 'class="selected"';?>><?php echo __("Office Config");?></a></li>
-	<?php endif; ?>
+<?php endif; ?>
     </ul>
-  <?php /*<!-- menu -->
+<?php /*<!-- menu -->
       <ul class="menu" id="top">
         <li class="selected">
           <div class="tab" id="single">

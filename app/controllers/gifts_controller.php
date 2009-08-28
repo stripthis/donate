@@ -41,7 +41,7 @@ class GiftsController extends AppController {
 		$this->data['Gift']['appeal_id'] = $currentAppeal['Appeal']['id'];
 		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['id'];
 
-		$countryOptions = $this->Country->find('list');
+		$countryOptions = $this->Country->find('list', array('order' => array('Country.name' => 'asc')));
 		$this->set(compact('countryOptions', 'currentAppeal'));
 
 		// no data was given so we render the selected/default view

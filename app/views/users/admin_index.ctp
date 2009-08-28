@@ -1,4 +1,4 @@
-<div class="users index">
+<div class="content users index">
 	<h2><?php __('Users');?></h2>
 	<div class="actions">
 		<h3><?php echo __('Actions'); ?></h3>
@@ -21,7 +21,6 @@
 			}
 		?>
 		<tr<?php echo $class;?>>
-			<td><?php echo $user['User']['id']; ?></td>
 			<td class="text"><?php echo $user['User']['login']; ?></td>
 			<td class="date"><?php echo $user['User']['created']; ?></td>
 			<td class="date"><?php echo $user['User']['modified']; ?></td>

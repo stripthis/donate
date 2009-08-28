@@ -229,20 +229,35 @@ input[type=submit] {
   -moz-border-radius:5px;
 }
 
-/* icons shortcuts */
-a.iconic {
+/* iconic polution */
+.iconic {
 	padding-left:30px;
 	background-position: 5px center;
 	background-repeat:no-repeat;
 }
-a.iconic.print{
+.iconic.print{
   background-image:url(../img/icons/S/printer.png);
 }
-a.iconic.bookmark{
+.iconic.bookmark{
   background-image:url(../img/icons/S/tag_blue_add.png);
 }
-a.iconic.profile{
+.iconic.profile{
   background-image:url(../img/icons/S/profile.png);
+}
+.iconic.transaction.up{
+  background-image:url(../img/icons/S/arrow_right.png);
+}
+.iconic.transaction.down{
+  background-image:url(../img/icons/S/arrow_left.png);
+}
+.iconic.gift.card{
+  background-image:url(../img/icons/S/creditcards.png);
+}
+.iconic.gift.cash.small{
+  background-image:url(../img/icons/S/coins.png);
+}
+.iconic.gift.cash.big{
+  background-image:url(../img/icons/S/money.png);
 }
 /***********************************************************************************
  * Layout 
@@ -553,7 +568,7 @@ ul.selector li ul.subitem li a{
 	margin-top:20px;
 }
 .sidebar .shortcuts h3{
-	background:transparent url(/img/icons/S/favorites.png) 6px center no-repeat;
+	background:transparent url(/img/icons/S/keyboard.png) 6px center no-repeat;
 }
 .sidebar .shortcuts ul {
 	margin:0;
@@ -704,37 +719,68 @@ div.paging span.current {
 div.paging span a {
 }
 
-/* index GMail style */
+/* index kind of GMail like */
 .index_wrapper{
 	padding:0;
-	margin:10px 0 0 0;
+	margin:10px 0 0 2px;
+}
+.index_wrapper li, .index_wrapper ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
 }
 .index_wrapper table{
 	padding:0;
 	margin:0;
+	border-left:0;
 }
-.index_wrapper table td{
-	padding:1px 2px 0 2px;
+.index_wrapper tr{
+	border:0;
+	padding:0;
+	margin:0;
+}
+.index_wrapper tr td{
+	padding:2px 2px 0 2px;
 	border:0;
 	border-top:1px solid #d6d6d6;
 	border-bottom:1px solid #d6d6d6;
 	background:#EFEFEF;
 }
+.index_wrapper .folded li{
+	padding-left:38px;
+  background:transparent url(../img/layout/folded.png) 22px 0 no-repeat;
+}
+.index_wrapper .folded table{
+	background:0;
+	border:0;
+	padding:0;
+}
+.index_wrapper .folded tr td{
+	background:#FFF;
+	margin:0;
+	border:0;
+}
 .index_wrapper .grab{
 	width:5px;
 }
-.index_wrapper .grab a{
-	width:6px;
+.index_wrapper .fold{
+	width:15px;
+}
+.index_wrapper .fold a.toggle{
+	width:16px;
 	height:16px;
 	display:block;
-	background:transparent url(../img/layout/grab.png) 0 2px no-repeat;
+	background:transparent url(../img/icons/S/text_indent_remove.png) 0 0 no-repeat;
 }
-.index_wrapper .checkbox{
-	width:10px;
-	padding-top:3px;
+.index_wrapper .fold a.toggle.open{
+	background:transparent url(../img/icons/S/text_indent.png) 0 0 no-repeat;
 }
-.index_wrapper .favorites{
-	width:10px;
+.index_wrapper .folded li:hover table td{
+	background:#E4FFE4;
+}
+/* gift */
+.index_wrapper .gift{
+	text-align:left;
 }
 .index_wrapper .amount{
 	text-align:right;
@@ -749,17 +795,50 @@ div.paging span a {
 	text-align:left;
 	font-weight:bold;
 }
-.index_wrapper .body{
+/* contact */
+.index_wrapper .name{
 	text-align:left;
+}
+/* transactions */
+.index_wrapper .transaction{
+	text-align:left;
+}
+.index_wrapper .bank{
+	text-align:right;
+}
+/* generic */
+.index_wrapper .selection{
+	width:10px;
+	padding-top:3px;
+}
+.index_wrapper .status{
+	width:25px;
+	text-align:center;
+}
+.index_wrapper .favorites{
+	width:20px;
+}
+.index_wrapper .notifications{
+	width:40px;
+	padding-left:10px;
+	padding-right:5px;
+}
+.index_wrapper .notifications img.attach {
+	float:left;
+}
+.index_wrapper .notifications img.comment{
+	float:right;
 }
 .index_wrapper .date{
 	text-align:right;
-	width:100px;
+	width:120px;
 	padding-right:5px;
 }
-.index_wrapper .notifications{
-	width:50px;
-	text-align:left;
+.index_wrapper .grab a{
+	width:6px;
+	height:16px;
+	display:block;
+	background:transparent url(../img/layout/grab.png) 0 2px no-repeat;
 }
 
 /* Scaffold View */
