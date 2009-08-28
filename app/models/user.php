@@ -1,6 +1,11 @@
 <?php
 class User extends AppModel {
-	var $actsAs = array('Containable', 'Lookupable', 'Enumerable');
+	var $actsAs = array(
+		'Containable',
+		'Lookupable',
+		'Enumerable',
+		'SavedBy'
+	);
 
 	var $belongsTo = array(
 		'Contact',
@@ -488,6 +493,9 @@ class User extends AppModel {
 			}
 			if (isset($obj['Appeal']['office_id'])) {
 				$result = $obj['Appeal']['office_id'] == $this->Session->read('Office.id');
+			}
+			if (isset($obj['User']['office_id'])) {
+				$result = $obj['User']['office_id'] == $this->Session->read('Office.id');
 			}
 		}
 		return $result && Common::requestAllowed($controller, $action, User::get('permissions'), true);

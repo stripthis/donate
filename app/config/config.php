@@ -33,7 +33,8 @@ $config = array(
 		'Appeals:admin_add', 'Appeals:admin_edit', 'Appeals:admin_delete', 'Appeals:admin_view',
 		'Gifts:admin_add', 'Gifts:admin_edit', 'Gifts:admin_delete', 'Gifts:admin_view',
 		'Transactions:admin_add', 'Transactions:admin_edit', 'Transactions:admin_delete',
-		'Transactions:admin_view', 'Transactions:admin_export', 'Transactions:admin_import'
+		'Transactions:admin_view', 'Transactions:admin_export', 'Transactions:admin_import',
+		'Users:admin_add', 'Users:admin_edit'
 	),
 	'App.use_email_activation' => false,
 	'App.lead_dev_email' => 'rbertot@greenpeace.org',
