@@ -250,7 +250,7 @@ input[type=submit] {
 .iconic.transaction.down{
   background-image:url(../img/icons/S/arrow_left.png);
 }
-.iconic.gift.card{
+.iconic.gift.creditcard{
   background-image:url(../img/icons/S/creditcards.png);
 }
 .iconic.gift.cash.small{
@@ -782,9 +782,21 @@ div.paging span a {
 .index_wrapper .gift{
 	text-align:left;
 }
+.index_wrapper .gift .details{
+	text-align:left;
+	width:150px;
+}
+.index_wrapper .gift .description{
+	text-align:left;
+}
 .index_wrapper .amount{
 	text-align:right;
 	width:50px;
+}
+.index_wrapper .amount a.iconic{
+	text-align:right;
+	width:50px;
+	display:block;
 }
 .index_wrapper .currency{
 	text-align:left;

@@ -80,17 +80,6 @@ $(function() {
  * Slick annimation -  Slide, fade and toggle (and make cofee if you're nice)
  */
 	jQuery.fn.slideFadeToggle = function(speed, easing, callback) {
-		/*
-		// Seems jquery cannot animate width/height with target auto.
-		var smallWidth = boxHeader.css('width'); // So first remember the current (collapsed) width
-		boxHeader.css('width', 'auto'); // then temporarily set to auto
-		var newWidth = boxHeader.width(); // to calculate the desired width
-		boxHeader.css('width', smallWidth); // then set the collapsed width again
-		boxHeader.animate({width : newWidth + "px"}, 'fast', // and animate to the fixed expanded width
-		function() {boxHeader.css('width',
-		'auto');} // but set to auto again when animation is complete
-		);
-		*/
 		return this.animate({opacity: 'toggle', height: 'toggle'}, speed, easing, callback); 
 	};
 /** 
@@ -98,7 +87,7 @@ $(function() {
  * How it works: a.toggle#<id> closes/open .toggle_wrapper#wrapper_<id> easy hey ?
  */
 	$(".toggle.close").each(function() {
-		//$(".toggle_wrapper#wrapper_"+$(this).attr("id")).hide();
+		$(".toggle_wrapper#wrapper_"+$(this).attr("id")).hide();
 	})
 
 	$('a.toggle').click(function() {

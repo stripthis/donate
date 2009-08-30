@@ -22,6 +22,7 @@ class AppController extends Controller {
 	var $helpers = array(
 		'Html','Javascript', 'Time', 'Form', 'Common', 'Text',
 		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
+		'Favorites'
 	);
 
 	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends');
