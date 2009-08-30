@@ -3,8 +3,8 @@
 	$contact['Contact']['status'] = 'tick';
 ?>
           <tr>
-<?php echo $this->element('tableset/collumns/status', array('model'=>'Gift', 'status'=> $contact['Contact']['status'])); ?>
 <?php echo $this->element('tableset/collumns/favorites', array('model'=>'Contact', 'id'=> $contact['Contact']['id'])); ?>
+<?php echo $this->element('tableset/collumns/status', array('model'=>'Gift', 'status'=> $contact['Contact']['status'])); ?>
             <td class="name">
               <a href="/admin/supporters/view/<?php echo $contact['Contact']['id']; ?>" class="iconic profile">
                 <?php echo $contact['Contact']['fname']; ?>

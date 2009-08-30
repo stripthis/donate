@@ -740,7 +740,7 @@ div.paging span a {
 	margin:0;
 }
 .index_wrapper tr td{
-	padding:2px 2px 0 2px;
+	padding:3px 2px 2px 2px;
 	border:0;
 	border-top:1px solid #d6d6d6;
 	border-bottom:1px solid #d6d6d6;
@@ -778,6 +778,9 @@ div.paging span a {
 .index_wrapper .folded li:hover table td{
 	background:#E4FFE4;
 }
+/* header - dirty */
+.index_wrapper .header td{
+}
 /* gift */
 .index_wrapper .gift{
 	text-align:left;
@@ -786,7 +789,7 @@ div.paging span a {
 	text-align:left;
 	width:150px;
 }
-.index_wrapper .gift .description{
+.index_wrapper .description{
 	text-align:left;
 }
 .index_wrapper .amount{

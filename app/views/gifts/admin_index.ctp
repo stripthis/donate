@@ -7,18 +7,21 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
 <?php echo $this->element('../gifts/elements/menu'); ?>
 <?php echo $this->element('../gifts/elements/actions'); ?>
       <div class="index_wrapper">
-<?php echo $this->element('/admin/css_tests/gift_index'); ?>
-      <div class="paginator sort">
+<?php //echo $this->element('/admin/css_tests/gift_index'); ?>
+      <div class="paginator sort header">
       	<table>
       		<tr>
       			<td>&nbsp;</td>
       			<td>&nbsp;</td>
+      			<td>&nbsp;</td>
       			<td class="favorites">&nbsp;</td>
       			<td class="status">&nbsp;</td>
-      			<td class="amount"><?php echo $paginator->sort(__('amount',true),'Gift.amount'); ?></td>
-      			<td class="fname"><?php echo $paginator->sort(__('firstname',true),'Contact.fname'); ?></td>
-      			<td class="lname"><?php echo $paginator->sort(__('last name',true),'Contact.lname'); ?></td>
-      			<td class="email"><?php echo $paginator->sort(__('email',true),'Contact.email'); ?></td>
+      			<td class="name"><?php echo $paginator->sort(__('amount',true),'Gift.amount'); ?></td>
+      			<td class="description">
+      				<?php echo $paginator->sort(__('firstname',true),'Contact.fname'); ?> 
+      				<?php echo $paginator->sort(__('last name',true),'Contact.lname'); ?>
+      				(<?php echo $paginator->sort(__('email',true),'Contact.email'); ?>)
+      			</td>
       			<td class="date"><?php echo $paginator->sort(__('date',true),'Gift.modified'); ?></td>
       			<td></td>
       		</tr>
