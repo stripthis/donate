@@ -15,37 +15,13 @@
   endif;
   echo $scripts_for_layout;
 ?>
-  <meta name="robots" content="noindex,nofollow" />
 </head>
 <body>
-<noscript>
-  <div class="error">
-    <strong><?php echo __("Warning"); ?>:</strong> 
-    <?php echo __("It seems that you have Javascript disabled. While we are doing our best to avoid it, some features may although be broken...")."\n"; ?>
-  </div>
-</noscript>
-    <?php echo $this->element('messages'); ?>
-
-<div id="header_wrapper">
-  <div id="header">
-<?php echo $this->element('header'); ?>
-  </div>
-</div>
+<?php echo $this->element('admin/debug_header'); ?>
 <div id="container">
-<?php echo $this->element('banner'); ?>
-  <div id="content_wrapper">
-    <div id="content">
-	<?php echo $this->element('messages')?>
-    <div id="general_msg"></div>
 <?php echo $content_for_layout; ?>
-    </div>
-  </div>
-  <div id="sidebar">
-<?php echo $this->element('menu'); ?>
-  </div>
-<?php echo $this->element('footer') ?>
 </div>
-<?php echo $this->element('analytics') ?>
+<?php //echo $this->element('analytics') ?>
 <?php echo $cakeDebug; ?>
 </body>
 </html>

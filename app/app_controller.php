@@ -22,7 +22,10 @@ class AppController extends Controller {
 	var $helpers = array(
 		'Html','Javascript', 'Time', 'Form', 'Common', 'Text',
 		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
+		'Favorites'
 	);
+
+	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends');
 
 	var $ignoreUserSession = false;
 	var $loginRedirectSesskey = 'login_redirect';
@@ -53,13 +56,18 @@ class AppController extends Controller {
 		}
 
 		$this->Session = $this->AppSession;
-		$this->_setLanguage();
 		ClassRegistry::addObject('Component.Session', $this->Session);
 		ClassRegistry::addObject('Component.Cookie', $this->Cookie);
 		ClassRegistry::addObject('Component.Email', $this->Email);
+		$this->_setLanguage();
+		$this->_loadPluginConfigs();
 
 		if (defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
 			return;
+		}
+		
+		if ($this->isAdmin()) {
+			$this->layout = 'admin';
 		}
 
 		$this->RequestHandler->setContent('list', 'text/html');
@@ -70,9 +78,8 @@ class AppController extends Controller {
 				if ($this->isOkForSessionRedirect()) {
 					$this->Session->write($this->loginRedirectSesskey, $this->here);
 				}
-				return $this->redirect('/auth/login', '403', true);
+				return $this->redirect('/admin/auth/login', '403', true);
 			}
-
 
 			if (!User::isGuest() && $this->name == 'auth' && $this->action == 'login') {
 				$url = array('controller' => 'users', 'action' => 'dashboard');
@@ -106,22 +113,48 @@ class AppController extends Controller {
 		if ($this->isAjax()) {
 			return false;
 		}
-
+	
 		$unwantedControllers = array('Auth');
-		$unwantedActions = array('login');
+		$unwantedActions = array('login','admin_login');
+		
 		if (!isset($this->name) || !isset($this->action)) {
 			return true;
 		}
 
-		$count = count($unwantedControllers);
-		for ($i = 0; $i < $count; $i++) {
-			if (
-				$unwantedControllers[$i] == $this->name &&
-				$unwantedActions[$i] == $this->action) {
-				return false;
+		$countC = count($unwantedControllers);
+		$countA = count($unwantedActions);
+		for ($j = 0; $j < $countC; $j++) {
+			if ($unwantedControllers[$j] == $this->name) {
+				for ($i = 0; $i < $countA; $i++) {
+					if ($unwantedActions[$i] == $this->action) {
+						return false;
+					}
+				}
 			}
 		}
 		return true;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function _loadPluginConfigs() {
+		foreach ($this->plugins as $plugin) {
+			include(APP . 'plugins' . DS . low($plugin) . DS . 'config.php');
+			Configure::write($config);
+
+			$controller = $plugin . 'AppController';
+			if (!class_exists($controller)) {
+				App::import('Controller', $plugin . '.' . $plugin . 'AppController');
+			}
+
+			$Controller = new $controller();
+			if (method_exists($Controller, 'init')) {
+				$Controller->init();
+			}
+		}
 	}
 /**
  * undocumented function
@@ -179,11 +212,15 @@ class AppController extends Controller {
  * @return void
  * @access public
  */
-	function redirect($url, $status = null) {
+	function redirect($url, $status = null, $exit = true) {
+		if (defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
+			$this->redirectUrl = Router::url($url);
+			return false;
+		}
 		if ($this->isAjax()) {
 			return $this->setJson('redirectUrl', $url);
 		}
-		parent::redirect($url, $status);
+		parent::redirect($url, $status, $exit);
 	}
 /**
  * undocumented function
@@ -236,21 +273,29 @@ class AppController extends Controller {
 		}
 		return $this->RequestHandler->isAjax();
 	}
+	
+/**
+ * Is the controller call in an Admin context?
+ * @return bool
+ * @access public 
+ */	
+	function isAdmin(){
+		return (isset($this->params['admin']) && $this->params['admin']);
+	}
 /**
  * undocumented function
  *
  * @return void
  * @access public
  */
-	function _setLanguage() {
-		Configure::write('Config.language', 'eng');
+	function _setLanguage($lang = false) {
+		$default = 'eng';
 
-		$lang = false;
-		if (isset($this->params['language'])) {
+		if (!$lang && isset($this->params['language'])) {
 			$lang = $this->params['language'];
 		}
-		if (!$lang && $this->Session->check('Config.language')) {
-			$lang = $this->Session->read('Config.language');
+		if (!$lang && $this->Session->check('language')) {
+			$lang = $this->Session->read('language');
 		}
 		if (!$lang && $this->Cookie->read('lang')) {
 			$lang = $this->Cookie->read('lang');
@@ -268,14 +313,15 @@ class AppController extends Controller {
 			$settings = explode(',', $settings);
 			$settings = $settings[0];
 
-			$lang = 'eng';
+			$lang = $default;
 			if (array_key_exists($settings, $acceptedLanguages)) {
 				$lang = $acceptedLanguages[$settings];
 			}
 		}
 
-		$this->Session->write('Config.language', $lang);
-		$this->Cookie->write('lang', $lang, null, '20 days');
+		$this->Session->write('language', $lang);
+		$this->Cookie->write('lang', $lang, true, '20 days');
+		Configure::write('Config.language', $lang);
 	}
 /**
  * Fixing stupid behavior of cake core

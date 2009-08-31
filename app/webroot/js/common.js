@@ -1,3 +1,30 @@
+/**
+ * launch browser add to favorite dialog
+ */
+function addFavorite(){
+  var title=document.title; var url=location.href;               // default page url and title
+  if(window.sidebar) window.sidebar.addPanel(title, url, "");    // firefox
+  else if(document.all) window.external.AddFavorite(url, title); // evil
+  else if(window.opera && window.print){                         // opera
+    var box = document.createElement('a');
+    box.setAttribute('href',url); box.setAttribute('title',title); box.setAttribute('rel','sidebar');
+    box.click();
+  }
+}
+
+/**
+ * launch browser print dialog
+ */
+function printThis(){
+  if(window.print) window.print();  
+  else{
+    var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+    document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+    WebBrowser1.ExecWB(6, 2);  
+    WebBrowser1.outerHTML = "";  
+  }
+}
+
 $(function() {
 /**
  * Cake SQL Log (app debug mode)

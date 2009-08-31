@@ -1,14 +1,11 @@
-<div class="appeals form">
-  <h2><?php __('Edit Appeal');?></h2>
-  <div class="actions">
-    <h3><?php echo __('Actions');?></h3>
-    <ul>
-      <li><?php echo $html->link(__('Delete', true), array('action'=>'delete', $form->value('Appeal.id')), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Appeal.id'))); ?></li>
-    </ul>
-  </div>
+<?php 
+	$context = ($this->here != '/admin/appeal/add') ?  __('Add Appeal',true) : __('Edit Appeal',true);
+?>
+<div class="content" id="appeal_form">
+  <h1><?php echo $context; ?></h1>
 <?php echo $form->create('Appeal');?>
 	<fieldset>
- 		<legend><?php __('Edit Appeal');?></legend>
+ 		<legend><?php echo $context;?></legend>
   <?php
     echo $form->input('id');
     echo $form->input('name');
@@ -23,4 +20,3 @@
 	</fieldset>
 <?php echo $form->end('Submit');?>
 </div>
-

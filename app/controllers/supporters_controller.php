@@ -10,6 +10,7 @@ class SupportersController extends AppController {
 		parent::beforeFilter();
 
 		$this->User = ClassRegistry::init('User');
+		$this->Gift = ClassRegistry::init('Gift');
 	}
 /**
  * undocumented function
@@ -18,15 +19,18 @@ class SupportersController extends AppController {
  * @access public
  */
 	function admin_index() {
-		$this->paginate['User'] = array(
-			'conditions' => array(
-				'User.has_donated' => '1'
+		$this->paginate['Gift'] = array(
+			'contain' => array(
+				'Contact(fname, lname, email, salutation, title)',
+				'Contact.Address',
+				'Office(id, name)',
+				'Appeal(id, name)'
 			),
-			'contain' => false,
-			'limit' => 20
+			'limit' => 10,
+			'order' => array('Gift.created' => 'desc')
 		);
-		$supporters = $this->paginate();
-		$this->set(compact('supporters'));
+		$gifts = $this->paginate('Gift');
+		$this->set(compact('gifts', 'keyword', 'type'));
 	}
 /**
  * undocumented function
@@ -51,7 +55,7 @@ class SupportersController extends AppController {
 	function admin_view($id = null) {
 		$user = $this->User->find('first', array(
 			'conditions' => array('User.id' => $id),
-			'contain' => array('ScoringHistory')
+			'contain' => false
 		));
 		$this->set(compact('user'));
 	}

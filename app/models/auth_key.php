@@ -87,7 +87,7 @@ class AuthKey extends AppModel{
  * @access public
  */
 	static function verify($key, $user_id, $auth_key_type_id, $foreign_id = null) {
-		$_this = Common::getModel('AuthKey');
+		$_this = ClassRegistry::init('AuthKey');
 		AuthKey::purgeExpired();
 
 		if (!Common::isUuid($auth_key_type_id)) {

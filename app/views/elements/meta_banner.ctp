@@ -9,6 +9,6 @@
   
   -->
   <meta name="copyright" content="Copyright 2009 - Greenpeace International" />
-  <meta name="keywords" content="greenpeace,cool,it,challenge,cool it challenge,climate change,copenhagen 2009" />
-  <meta name="description" content="COOL IT CHALLENGE is Greenpeace's campaign to turn IT industry leaders into climate advocates and solution providers. It's also a game. Get Involved!" />
+  <meta name="keywords" content="green, greenpeace, climate change, energy revolution, donate, support, support us" />
+  <meta name="description" content="Join Greenpeace today and add your voice to the movement that's committed to defending our planet. Our vision of a better future is only as strong as the people who support us. Your support will make all the difference." />
   <?php echo $html->meta('icon')."\n"; ?>

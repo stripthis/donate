@@ -348,13 +348,17 @@ class SimpleStackTrace {
      */
     function traceMethod($stack = false) {
         $stack = $stack ? $stack : $this->_captureTrace();
+
         foreach ($stack as $frame) {
             if ($this->_frameLiesWithinSimpleTestFolder($frame)) {
                 continue;
             }
+
             if ($this->_frameMatchesPrefix($frame)) {
-                return ' at [' . $frame['file'] . ' line ' . $frame['line'] . ']';
+				$frame = defined('CAKEPHP_UNIT_TEST_EXECUTION') ? $lastFrame : $frame;
+               	return ' at [' . $frame['file'] . ' line ' . $frame['line'] . ']';
             }
+			$lastFrame = $frame;
         }
         return '';
     }

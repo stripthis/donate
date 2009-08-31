@@ -92,22 +92,16 @@ class AppModel extends Model {
  * @return void
  * @access public
  */
-	static function normalize($model, $id, $query = array()) {
-		if (is_array($id)) {
-			$record = $id;
+	static function normalize($model, $id, $inverse = false) {
+		$record = $id;
+		if (!$inverse) {
 			if (!isset($record[$model])) {
 				$record = array($model => $record);
 			}
-		}
-		if (!isset($record)) {
-			$Model = ClassRegistry::init($model);
-			$record = $Model->find('first', am(array(
-				'conditions' => array($model.'.id' => $id),
-				'contain' => false,
-			), $query));
-		}
-		if (empty($record)) {
-			return false;
+		} else {
+			foreach ($id[$model] as $field => $value) {
+				$record[$field] = $value;
+			}
 		}
 		return $record;
 	}
@@ -207,6 +201,77 @@ class AppModel extends Model {
 			$value = array_pop(array_reverse($value));
 		}
 		return $value;
+	}
+/**
+ * undocumented function
+ *
+ * @param string $check 
+ * @return void
+ * @access public
+ */
+	function validateCountry($check) {
+		$country = ClassRegistry::init('Country')->lookup(
+			array('id' => current($check)), 'id', false
+		);
+		return !empty($country);
+	}
+/**
+ * Validate State - check if it exist based on the id
+ *
+ * @param string $check 
+ * @return void
+ * @access public
+ */
+	function validateState($check) {
+		$state = ClassRegistry::init('State')->lookup(
+			array('id' => current($check)), 'id', false
+		);
+		return !empty($state);
+	}
+/**
+ * Validate Office
+ *
+ * @param string $check 
+ * @return void
+ * @access public
+ */
+	function validateOffice($check) {
+		$office = ClassRegistry::init('Office')->lookup(
+			array('id' => current($check)), 'id', false
+		);
+		return !empty($office);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $models 
+ * @param string $data 
+ * @return void
+ * @access public
+ */
+	function bulkValidate($models, $data, $resetRequired = false) {
+		$validates = true;
+		foreach ($models as $model) {
+			if (!isset($this->data[$model])) {
+				continue;
+			}
+
+			$modelObj = ClassRegistry::init($model);
+
+			if ($resetRequired) {
+				foreach ($modelObj->validate as $field => $rules) {
+					foreach ($rules as $name => $rule) {
+						if (isset($rule['is_required'])) {
+							$modelObj->validate[$field][$name]['required'] = true;
+						}
+					}
+				}
+			}
+
+			$modelObj->set($data[$model]);
+			$validates = $modelObj->validates() && $validates;
+		}
+		return $validates;
 	}
 }
 ?>

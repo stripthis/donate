@@ -66,7 +66,7 @@ class FilterComponent extends Object {
 			}
 
 			if (empty($filter)){
-				$filter = $this->_checkParams($controller);  	
+				$filter = $this->_checkParams($controller); 
 			}
 			$controller->data = $filter;
 		}

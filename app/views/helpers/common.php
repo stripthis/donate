@@ -21,49 +21,55 @@ class CommonHelper extends Apphelper {
 	function shortenName($name){
 		$maxNameLength = 0;
 		if (strlen($name) > $maxNameLength) {
-	 		$name = explode(" ",$name);
+	 		$name = explode(' ',$name);
 			$length = count($name);
 	 		for ($i = 0; $i< $length - 1; $i++) {
-	 			$name[0] = $name[0][0].".";
+	 			$name[0] = $name[0][0].'.';
 	 		}
-	 		$name = implode(" ",$name);
+	 		$name = implode(' ',$name);
 		}
 		return $name;
 	}
 /**
+ * Gift Amount selection process - 
+ * Help repopulate the 'other' text field 
+ * @return the text to be put in the other textfield, null otherwise
+ */
+	function giftTextAmount(){
+		if (isset($this->Form->params['data']['Gift'])) {
+			if(isset($this->Form->params['data']['Gift']['amount']) && $this->Form->params['data']['Gift']['amount'] == $this->Form->params['data']['Gift']['amount_other']) {
+				return $this->Form->params['data']['Gift']['amount_other'];
+			}
+		}
+		return '';
+	}
+/**
+ * Payment card selection repopulation
+ * @return "checked='checked'" if the radio seems ok, null otherwise
+ */
+	function creditCardSelected($cc){
+		if (isset($this->Form->params['data']['Payment']['card']['name'])) {
+			if($this->Form->params['data']['Payment']['card']['name'] == $cc) {
+				return 'checked=\'checked\'';
+			}
+		}
+		return '';
+	}
+/**
  * undocumented function
  *
- * @param string $score 
+ * @param string $contact 
  * @return void
  * @access public
  */
-	function loadingColor($score){
-		if ($score <= 10) return 'red';
-		if ($score <= 40) return 'orange';
-		if ($score <= 60) return 'yellow';
-		return 'green';
-	}
-/**
- * Get the url of a leader's page (cf. P2 mirroring) 
- * @param $leader
- * @return $url string
- */
-	function getLeaderUrl($leader){
-		$url = "";
-		if(isset($leader["Leader"]) && !empty($leader["Leader"])) {
-			if(Configure::read("App.usingMirror")){
-				$url = Configure::read('App.mirrorDomain');
-				$url.= preg_replace('/(\w\. )/','',low($leader['Leader']['name']));
-				$url.= '-'.str_replace(' ','-',low($leader['Leader']['company']));
-				$url = str_replace(' ','-',$url);
-				if($leader['Leader']['company'] == "Dell") {
-					$url = str_replace('-dell-dell','-dell',$url);
-				}
-			} else {
-				$url = "/leaders/view/".$leader['Leader']['id'];
-			}
-		}
-		return $url;
+	function contactName($contact) {
+		return sprintf(
+			'%s %s %s %s', 
+			ucfirst($contact['Contact']['salutation']),
+			$contact['Contact']['title'],
+			$contact['Contact']['fname'],
+			$contact['Contact']['lname']
+		);
 	}
 }
 ?>

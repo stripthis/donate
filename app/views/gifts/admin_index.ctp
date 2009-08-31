@@ -1,91 +1,70 @@
-<div class="gifts index">
-  <h2><?php __('Gifts');?></h2>
-	<?php
-	echo $form->create('Gift', array('url' => '/admin/gifts/index', 'type' => 'get'));
-	echo $form->input('keyword', array('label' => 'Keyword:', 'value' => $keyword));
-	$typeOptions = array(
-		'gift' => 'Gift Id',
-		'person' => 'Person Name',
-		'appeal' => 'Appeal Name',
-		'office' => 'Office Name'
-	);
-	echo $form->input('type', array('label' => 'Type:', 'selected' => $type, 'options' => $typeOptions));
-	echo $form->end('Filter');
-	?>
-  <table cellpadding="0" cellspacing="0">
-  <tr>
-    	<th><?php echo $paginator->sort('office_id');?></th>
-    	<th><?php echo $paginator->sort('type');?></th>
-    	<th><?php echo $paginator->sort('amount');?></th>
-    	<th><?php echo $paginator->sort('frequency');?></th>
-    	<th><?php echo $paginator->sort('appeal_id');?></th>
-    	<th><?php echo $paginator->sort('fname');?></th>
-    	<th><?php echo $paginator->sort('lname');?></th>
-    	<th><?php echo $paginator->sort('zip');?></th>
-    	<th><?php echo $paginator->sort('country_id');?></th>
-    	<th><?php echo $paginator->sort('email');?></th>
-    	<th><?php echo $paginator->sort('created');?></th>
-    	<th class="actions"><?php __('Actions');?></th>
-  </tr>
 <?php
-$i = 0;
-foreach ($gifts as $gift):
-	$class = null;
-	if ($i++ % 2 == 0) {
-		$class = ' class="altrow"';
-	}
+$doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
+//pr($gifts);
 ?>
-  <tr<?php echo $class;?>>
-    <td>
-      <?php echo $html->link($gift['Office']['name'], array('controller'=> 'offices', 'action' => 'view', $gift['Office']['id'])); ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['type']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['amount']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['frequency']; ?>
-    </td>
-    <td>
-      <?php echo $html->link($gift['Appeal']['name'], array('controller'=> 'appeals', 'action'=>'view', $gift['Appeal']['id'])); ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['fname']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['lname']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['zip']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Country']['name']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['email']; ?>
-    </td>
-    <td>
-      <?php echo $gift['Gift']['created']; ?>
-    </td>
-    <td class="actions">
-      <?php echo $html->link(__('View', true), array('action'=>'view', $gift['Gift']['id']),array('class'=>'view')); ?>
-      <?php echo $html->link(__('Edit', true), array('action'=>'edit', $gift['Gift']['id']),array('class'=>'edit')); ?>
-      <?php echo $html->link(__('Delete', true), array('action'=>'delete', $gift['Gift']['id']), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $gift['Gift']['id'])); ?>
-    </td>
-  </tr>
+    <div class="content" id="gifts_index">
+      <h2><?php __('Online Donations');?></h2>
+<?php echo $this->element('../gifts/elements/menu'); ?>
+<?php echo $this->element('../gifts/elements/actions'); ?>
+      <div class="index_wrapper">
+<?php //echo $this->element('/admin/css_tests/gift_index'); ?>
+      <div class="paginator sort header">
+      	<table>
+      		<tr>
+      			<td>&nbsp;</td>
+      			<td>&nbsp;</td>
+      			<td>&nbsp;</td>
+      			<td class="id">Id</td>
+      			<td class="favorites">&nbsp;</td>
+      			<td class="status">&nbsp;</td>
+      			<td class="name"><?php echo $paginator->sort(__('amount',true),'Gift.amount'); ?></td>
+      			<td class="description">
+      				<?php echo $paginator->sort(__('firstname',true),'Contact.fname'); ?> 
+      				<?php echo $paginator->sort(__('last name',true),'Contact.lname'); ?>
+      				(<?php echo $paginator->sort(__('email',true),'Contact.email'); ?>)
+      			</td>
+      			<td class="date"><?php echo $paginator->sort(__('date',true),'Gift.modified'); ?></td>
+      			<td></td>
+      		</tr>
+      	</table>
+      </div>
+      <ul>
+<?php foreach ($gifts as $gift): ?>
+				<!-- header -->
+				<li>
+				<table class="gift">
+<?php			echo $this->element('tableset/rows/gift', array('gift' => $gift, 'doFavorites'=>$doFavorites, 'folded'=>true)); ?>
+        </table>
+      	</li>
+				<!-- folded sets -->
+      	<li class="toggle_wrapper" id="wrapper_trigger_<?php echo $gift['Gift']['id'];?>">
+      	<ul class="folded">
+<?php 	if(isset($gift)): ?>
+					<li>
+					<table>
+<?php			echo $this->element('tableset/rows/gift', array('gift'=>$gift, 'doFavorites'=>$doFavorites,'leaf'=>true)); ?>
+					</table>
+					</li>
+<?php 	endif; ?>
+<?php 	if(isset($gift['Contact'])): ?>
+					<li>
+					<table>
+<?php			echo $this->element('tableset/rows/contact', array('contact'=>$gift, 'doFavorites'=>$doFavorites)); ?>
+					</table>
+					</li>
+<?php 	endif; ?>
+<?php 	foreach ($gift['Transaction'] as $transaction): ?>
+					<li>
+					<table>
+<?php			echo $this->element('tableset/rows/transaction', array('transaction'=>$transaction, 'doFavorites'=>$doFavorites)); ?>
+					</table>
+					</li>
+<?php 	endforeach; ?>
+				</ul>
+				</li>
 <?php endforeach; ?>
-  </table>
+			</ul>
+      <?php echo $this->element('paging', array('model' => 'Gift'))?>
+      <?php echo $this->element('../gifts/elements/filter', compact('keyword', 'type')); ?>
+    </div>
   </div>
-  <div class="paging">
-    <?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled'));?>
-   |   <?php echo $paginator->numbers();?>
-    <?php echo $paginator->next(__('next', true).' >>', array(), null, array('class'=>'disabled'));?>
-  </div>
-  <p>
-  <?php
-  echo $paginator->counter(array(
-  'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%', true)
-  ));
-  ?>  </p>

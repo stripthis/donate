@@ -287,11 +287,11 @@ form .checkbox_wrapper a{
 #content_wrapper{
 }
 #content{
-	float:right;
+	/*float:right;
 	width:583px;
   margin: 0;
   padding:0px 0px 5px 5px;
-  background: #FFF;
+  background: #FFF;*/
 }
 #sidebar{
 	float:right;
@@ -407,10 +407,6 @@ form .checkbox_wrapper a{
 #banner a.greenpeace{
 	width:152px;
 	background: url(/img/layout/banner.jpg) 0 0 no-repeat;
-}
-#banner a.coolit{
-	width:588px;
-	background: url(/img/layout/banner.jpg) -152px 0 no-repeat;
 }
 #banner a span{
 	visibility:hidden;

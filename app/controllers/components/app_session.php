@@ -85,7 +85,7 @@ class AppSessionComponent extends SessionComponent {
  * @access private
  */
 	function __modelWrite($key, $value) {
-		switch(Configure::read('Security.level')) {
+		switch (Configure::read('Security.level')) {
 			case 'high':
 				$factor = 10;
 			break;

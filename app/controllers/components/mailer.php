@@ -2,8 +2,9 @@
 
 class Mailer{
 	static function deliver($template, $options = array()) {
-		if (Common::isDevelopment() && !class_exists('ShellDispatcher')) {
-			//return true;
+		$isDebug = isset($options['mail']['delivery']) && $options['mail']['delivery'] == 'debug';
+		if (Common::isDevelopment() && !class_exists('ShellDispatcher') && !$isDebug) {
+			return true;
 		}
 
 		$options = Set::merge(array(
@@ -30,7 +31,7 @@ class Mailer{
 		}
 
 		
-		if ($options['mail']['delivery'] == 'smtp') {
+		if (isset($options['mail']['delivery']) && $options['mail']['delivery'] == 'smtp') {
 			$options['mail']['smtpOptions'] = Configure::read('App.smtpOptions');
 		}
 
@@ -47,8 +48,6 @@ class Mailer{
 		}
 		$Email->Controller->set($options['vars']);
 
-
-		//echo "DELIVERY : ".$options['mail']['delivery'];
 		if ($options['store']) {
 			$hash = sha1(json_encode($options));
 			$folder = substr($hash, 0, 2);
@@ -68,8 +67,6 @@ class Mailer{
 			$html = $View->renderLayout($html);
 			file_put_contents($path, $html);
 		}
-
-		//echo "OPTIONS : ";pr($Email->smtpOptions);
 		return $Email->send();
 	}
 }

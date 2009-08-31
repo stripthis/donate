@@ -1,8 +1,19 @@
 <?php
 class User extends AppModel {
+	var $actsAs = array(
+		'Containable',
+		'Lookupable',
+		'Enumerable',
+		'SavedBy'
+	);
+
+	var $belongsTo = array(
+		'Contact',
+		'Office'
+	);
+
 	var $hasMany = array(
-		'AuthKey' => array('dependent' => true),
-		'Address' => array('dependent' => true),
+		'AuthKey' => array('dependent' => true)
 	);
 
 	var $validate = array(
@@ -116,21 +127,29 @@ class User extends AppModel {
  * @access public
  */
 	static function setActive($user = null, $updateSession = false, $generateAuthCookie = false) {
+		$_this = ClassRegistry::init('User');
 		if (Common::isUuid($user)) {
-			$_this = ClassRegistry::init('User');
 			$user = $_this->find('first', array(
 				'conditions' => array('User.id' => $user),
 				'contain' => array(
-					'Address.State(id, name)', 'Address.Country(id, name)', 'Address.City(id, name)'
-				),
+					'Contact.Address.State(id, name)',
+					'Contact.Address.Country(id, name)',
+					'Contact.Address.City(id, name)',
+					'Office.SubOffice', 'Office.ParentOffice'
+				)
 			));
 		}
 
 		Assert::true(Common::isUuid($user['User']['id']));
 		Configure::write('User', $user);
 		Assert::identical(Configure::read('User'), $user);
+
 		if (!$updateSession && !$generateAuthCookie) {
 			return true;
+		}
+
+		if (in_array($user['User']['level'], array('admin', 'root')) && isset($user['Office'])) {
+			$_this->Office->activate($user['Office']);
 		}
 
 		$Session = Common::getComponent('Session');
@@ -189,50 +208,6 @@ class User extends AppModel {
 		// 	'store' => false
 		// );
 		// Mailer::deliver('register', $emailSettings);
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
-	function handleReferral($justRegisteredId) {
-		$Session = Common::getComponent('Session');
-		$key = 'referral_user';
-		if (!$Session->check($key)) {
-			return;
-		}
-
-		$user = $this->find('first', array(
-			'conditions' => array(
-				'id' => $Session->read($key)
-			),
-			'contain' => false,
-			'fields' => array('id', 'login', 'score')
-		));
-
-		$scoreIncrease = Configure::read('App.referral_score_increase');
-		$this->set(array(
-			'id' => $user['User']['id'],
-			'score' => $user['User']['score'] + $scoreIncrease
-		));
-		$this->save();
-
-		$this->Referral->create(array(
-			'user_id' => $user['User']['id'],
-			'referred_id' => $justRegisteredId
-		));
-		$this->Referral->save();
-
-		$this->ScoringHistory->create(array(
-			'user_id' => $user['User']['id'],
-			'type' => 'referral',
-			'foreign_id' => $justRegisteredId,
-			'score' => $scoreIncrease
-		));
-		$this->ScoringHistory->save();
-
-		$Session->del($key);
 	}
 /**
  * undocumented function
@@ -376,7 +351,25 @@ class User extends AppModel {
  * @access public
  */
 	static function isAdmin() {
-		return User::get('level') == 'admin';
+		return User::get('level') == 'admin' || User::isSuperAdmin() || User::isRoot();
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	static function isRoot() {
+		return User::get('level') == 'root';
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	static function isSuperAdmin() {
+		return User::get('level') == 'superadmin' || User::isRoot();
 	}
 /**
  * Generic function that determines if the current User can access the $property of a given $object
@@ -467,16 +460,45 @@ class User extends AppModel {
  * @scope static 
  */
 	static function gravatarUrl($user) {
-		$user= AppModel::normalize('User', $user);
-		
-		/* Gravatar */
+		$user = AppModel::normalize('User', $user);
 		$param = "?&rating=G";
-		$param.= "&size=".Configure::read('App.avatarSize');;
+		$param .= "&size=".Configure::read('App.avatarSize');;
 		//$param.= "&default=".Configure::read('App.domain').Configure::read('Avatar.avatarDefault');
-		
 		return ($user)
 			? sprintf('http://www.gravatar.com/avatar/%s.jpg', md5(strtolower($user['User']['login']))).$param
 			: false;
   }
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function generatePassword() {
+		$pw = substr(md5(microtime()), 0, 9);
+		return array($pw, User::hashPw($pw));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $obj 
+ * @return void
+ * @access public
+ */
+	function allowed($controller, $action, $obj = null) {
+		$result = true;
+		if (!empty($obj)) {
+			if (isset($obj['Gift']['office_id'])) {
+				$result = $obj['Gift']['office_id'] == $this->Session->read('Office.id');
+			}
+			if (isset($obj['Appeal']['office_id'])) {
+				$result = $obj['Appeal']['office_id'] == $this->Session->read('Office.id');
+			}
+			if (isset($obj['User']['office_id'])) {
+				$result = $obj['User']['office_id'] == $this->Session->read('Office.id');
+			}
+		}
+		return $result && Common::requestAllowed($controller, $action, User::get('permissions'), true);
+	}
 }
 ?>

@@ -7,10 +7,12 @@ class AuthController extends AppController{
  * @return void
  * @access public
  */
-	function login() {
+	function admin_login() {
+		$this->layout = 'admin_login';
+
 		Assert::true(User::isGuest(), '403');
 		if ($this->isGet()) {
-			$msg = "Good to see you again... But how come you are not logged in yet?!";
+			$msg = "Good to see you again... But how come you are not logged in yet?!"; //@todo l18n use codes
 			return $this->Message->add(__($msg, true), 'error');
 		}
 
@@ -47,31 +49,16 @@ class AuthController extends AppController{
 			$this->Session->write('User.justLoggedIn', true);
 		}
 
-		if ($this->isAjax()) {
-			if ($success) {
-				$url = '/users/dashboard';
-				$sessUrl = $this->Session->read($this->loginRedirectSesskey);
-				if (!empty($sessUrl)) {
-					$url = $sessUrl;
-					$this->Session->del($this->loginRedirectSesskey);
-				}
-				$msg = 'You have successfully logged in. Please wait while you\'re redirected.';
-				return $this->Message->add(__($msg, true), 'ok', false, $url);
-			}
-
-			$msg = 'Sorry, but there is no activated user with these login credentials.';
-			return $this->Message->add(__($msg, true), 'error');
-		}
-
 		if ($success) {
-			return $this->redirect(array('controller' => 'users', 'action' => 'dashboard'));
+			$url = array('controller' => 'statistics', 'action' => 'index', 'admin' => 1);
+			return $this->redirect($url);
 		}
 
 		if (!empty($userSession) && !empty($authId)) {
 			return $this->set('existingSession', true);
 		}
 
-		$msg = 'Sorry, but there is no activated user with these login credentials.';
+		$msg = 'Sorry, but there is no activated user with these login credentials.'; //@todo l18n use codes
 		$this->Message->add(__($msg, true), 'error');
 		$this->set('invalidAccount', true);
 	}
@@ -87,6 +74,17 @@ class AuthController extends AppController{
 		$this->Cookie->del('User');
 		$this->redirect('/');
 	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */	
+	function admin_logout() {
+		$name = User::name();
+		User::logout();
+		$this->Cookie->del('User');
+		$this->redirect('/');
+	}
 }
-
 ?>

@@ -17,7 +17,14 @@ class AppealsController extends AppController {
  * @access public
  */
 	function admin_index() {
-		$this->paginate['Appeal']['order'] = array('Appeal.name' => 'asc');
+		Assert::true(User::allowed($this->name, 'admin_view'), '403');
+		$this->paginate['Appeal'] = array(
+			'conditions' => array(
+				'Appeal.office_id' => $this->Session->read('Office.id')
+			),
+			'contain' => array('User(id, login)', 'Country(name)'),
+			'order' => array('Appeal.name' => 'asc')
+		);
 		$appeals = $this->paginate($this->Appeal);
 		$this->set(compact('appeals'));
 	}
@@ -29,10 +36,13 @@ class AppealsController extends AppController {
  * @access public
  */
 	function admin_view($id = null) {
+		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
+
 		$appeal = $this->Appeal->find('first', array(
 			'conditions' => array('Appeal.id' => $id),
-			'contain' => false
+			'contain' => array('Parent', 'User', 'Country')
 		));
+		Assert::notEmpty($appeal, '404');
 		$this->set(compact('appeal'));
 	}
 /**
@@ -42,6 +52,7 @@ class AppealsController extends AppController {
  * @access public
  */
 	function admin_add() {
+		Assert::true(User::allowed($this->name, $this->action), '403');
 		$this->admin_edit();
 	}
 /**
@@ -60,6 +71,7 @@ class AppealsController extends AppController {
 				'contain' => false,
 			));
 			Assert::notEmpty($appeal, '404');
+			Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
 			$action = 'edit';
 		}
 
@@ -74,6 +86,7 @@ class AppealsController extends AppController {
 			$this->data['Appeal']['user_id'] = User::get('id');
 		}
 
+		$this->data['Appeal']['office_id'] = $this->Session->read('Office.id');
 		$this->Appeal->set($this->data['Appeal']);
 		$result = $this->Appeal->save();
 		if ($this->Appeal->validationErrors) {
@@ -101,6 +114,7 @@ class AppealsController extends AppController {
 			'contain' => false
 		));
 		Assert::notEmpty($appeal, '404');
+		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
 
 		$this->Appeal->del($id);
 		$msg = __('The Appeal has been deleted.', true);
