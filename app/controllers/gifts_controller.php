@@ -228,7 +228,7 @@ class GiftsController extends AppController {
 					: '';
 		$searchType = isset($this->params['url']['search_type'])
 					? $this->params['url']['search_type']
-					: 'person';
+					: 'all';
 
 		// search was submitted
 		if (!empty($keyword)) {
@@ -243,9 +243,17 @@ class GiftsController extends AppController {
 				case 'office':
 					$conditions['Office.name LIKE'] = '%' . $keyword . '%';
 					break;
-				default:
+				case 'person':
 					$key = "CONCAT(Contact.fname,' ',Contact.lname)";
 					$conditions[$key . ' LIKE'] = '%' . $keyword . '%';
+					break;
+				default:
+					$conditions['or'] = array(
+						'Gift.serial LIKE' => '%' . $keyword . '%',
+						'Appeal.name LIKE' => '%' . $keyword . '%',
+						'Office.name LIKE' => '%' . $keyword . '%',
+						"CONCAT(Contact.fname,' ',Contact.lname) LIKE" => '%' . $keyword . '%'
+					);
 					break;
 			}
 		}

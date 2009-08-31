@@ -1,5 +1,6 @@
 <?php
   $typeOptions = array(
+    'all' => 'All',
     'gift' => 'Gift Id',
     'person' => 'Person Name',
     'appeal' => 'Appeal Name',
