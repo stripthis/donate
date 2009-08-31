@@ -1,11 +1,23 @@
 <?php
 class Gift extends AppModel {
+	var $actsAs = array(
+		'Containable', 'Lookupable', 'Serialable'
+	);
+
 	var $belongsTo = array(
 		'User', 'Appeal', 'Office', 'Contact'
 	);
 
 	var $hasMany = array(
 		'Transaction' => array('dependent' => true),
+	);
+
+	var $hasOne = array(
+		'LastTransaction' => array(
+			'className' => 'Transaction',
+			'type' => 'left',
+			'limit' => 1
+		)
 	);
 
 	var $validate = array(

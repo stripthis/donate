@@ -1,5 +1,9 @@
 <?php
 class Transaction extends AppModel {
+	var $actsAs = array(
+		'Containable', 'Lookupable', 'Serialable'
+	);
+
 	var $belongsTo = array(
 		'Gateway',
 		'Gift',
@@ -15,19 +19,6 @@ class Transaction extends AppModel {
 			'foreignKey' => 'parent_id'
 		)
 	);
-/**
- * undocumented function
- *
- * @param string $created 
- * @return void
- * @access public
- */
-	function afterSave($created) {
-		if ($created) {
-			$this->serial($this->id, true);
-		}
-		return true;
-	}
 /**
  * undocumented function
  *
@@ -47,35 +38,6 @@ class Transaction extends AppModel {
 			return 'invalid';
 		}
 		return true;
-	}
-/**
- * undocumented function
- *
- * @param string $userId 
- * @param string $forceCreate 
- * @return void
- * @access public
- */
-	function serial($id, $forceCreate = false) {
-		App::import('Core', 'Security');
-		if (!$forceCreate) {
-			$key = $this->lookup(compact('id'), 'serial', false);
-			if (!empty($key)) {
-				return $key;
-			}
-		}
-
-		do {
-			$key = Security::generateAuthKey();
-			$key = substr($key, 0, 5);
-		} while (!$this->isUnique(array('serial' => $key)));
-
-		$this->set(array(
-			'id' => $id,
-			'serial' => $key
-		));
-		$this->save();
-		return $key;
 	}
 }
 ?>

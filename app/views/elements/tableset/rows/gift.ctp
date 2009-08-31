@@ -24,6 +24,10 @@
             <td class="selection">&nbsp;</td>
             <td class="fold">&nbsp;</td>
 <?php endif; ?>
+			<td><?php echo $gift['Gift']['serial']?></td>
+			<?php if ($type != 'onetime') : ?>
+				<td><?php echo $gift['Gift']['due'] ? 'Yes' : 'No'?></td>
+			<?php endif; ?>
 <?php echo $this->element('tableset/collumns/favorites', array('model'=>'Gift', 'id'=> $gift['Gift']['id'])); ?>
 <?php echo $this->element('tableset/collumns/status', array('model'=>'Gift', 'status'=> $gift['Gift']['status'])); ?>
             <td class="title" >

@@ -12,9 +12,16 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
       		<thead>
       			<th class="select">&nbsp;</td>
       			<th class="fold">&nbsp;</td>
+      			
+      			<td class="id">Id</td>
+				<?php if ($type != 'onetime') : ?>
+      				<td class="due"><?php echo $paginator->sort(__('Due?',true), 'Gift.due'); ?></td>
+				<?php endif; ?>
       			<th class="favorites">&nbsp;</td>
       			<th class="status">&nbsp;</td>
-      			<th class="title"><?php echo $paginator->sort(__('amount',true),'Gift.amount'); ?></td>
+      			<th class="title">
+      				<?php echo $paginator->sort(__('amount',true),'Gift.amount'); ?>
+      			</td>
       			<th class="description">
       				<?php echo $paginator->sort(__('firstname',true),'Contact.fname'); ?> 
       				<?php echo $paginator->sort(__('last name',true),'Contact.lname'); ?>
@@ -43,6 +50,6 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
 				</tbody>
 			</table>
       <?php echo $this->element('paging', array('model' => 'Gift'))?>
-      <?php echo $this->element('../gifts/elements/filter'); ?>
+      <?php echo $this->element('../gifts/elements/filter', compact('keyword', 'type')); ?>
     </div>
   </div>
