@@ -1,29 +1,38 @@
 <?php
-	//@todo missing field
+	//@todo missing field in db
 	$contact['Contact']['status'] = 'tick';
+	$options = array(
+		'model'=>'Contact', 
+		'id'=> $contact['Contact']['id'],
+		'status'=> $contact['Contact']['status'],
+    'allowEmpty' => (isset($allowEmpty) ? $allowEmpty : true),
+    'leaf' => (isset($leaf) ? $leaf : true),
+  	'parent_id' => (isset($parent_id) ? $parent_id : false)
+	);
 ?>
-          <tr class="contact">
-          	<td class="select"></td>
-          	<td class="folded"></td>
-<?php echo $this->element('tableset/collumns/favorites', array('model'=>'Contact', 'id'=> $contact['Contact']['id'])); ?>
-<?php echo $this->element('tableset/collumns/status', array('model'=>'Gift', 'status'=> $contact['Contact']['status'])); ?>
+          <tr class="<?php echo $common->getFoldClass($options); ?>">
+<?php echo $this->element('tableset/collumns/selection', $options); ?>
+<?php echo $this->element('tableset/collumns/fold', $options); ?>
+<?php echo $this->element('tableset/collumns/favorites',$options); ?>
+<?php echo $this->element('tableset/collumns/status', $options); ?>
             <td class="title">
               <a href="/admin/supporters/view/<?php echo $contact['Contact']['id']; ?>" class="iconic profile">
-                <?php echo $contact['Contact']['fname']; ?>
-                <?php echo $contact['Contact']['lname']; ?>   
+                <?php echo ucfirst($contact['Contact']['fname']); ?>
+                <?php echo ucfirst($contact['Contact']['lname']); ?>  
+                (<?php echo $contact['Contact']['email']; ?>)
               </a>
             </td>
             <td class="description">
 <?php	if(isset($contact['Contact']['Address'][0])) : //@todo multiple address ?>
-            <?php $contact['Contact']['Address'][0]['zip']; ?>
-            <?php $contact['Contact']['Address'][0]['City']['name']; ?>
-            <?php $contact['Contact']['Address'][0]['Country']['name']; ?>
+            <?php echo $contact['Contact']['Address'][0]['zip']; ?>
+            <?php echo $contact['Contact']['Address'][0]['City']['name']; ?> - 
+            <?php echo $contact['Contact']['Address'][0]['Country']['name']; ?>
 <?php else: ?>
 							&nbsp;
 <?php endif; ?>
  						</td>
-<?php echo $this->element('tableset/collumns/attachments',array('model'=>'Contact', 'id'=> $contact['Contact']['id'], 'allowEmpty'=>true)); ?>
-<?php echo $this->element('tableset/collumns/comments',array('model'=>'Contact', 'id'=> $contact['Contact']['id'], 'allowEmpty'=>true)); ?>
-<?php echo $this->element('tableset/collumns/date',array('model'=>'Contact', 'date'=> $contact['Contact']['modified'])); ?>
+<?php echo $this->element('tableset/collumns/attachments',$options); ?>
+<?php echo $this->element('tableset/collumns/comments',$options); ?>
+<?php echo $this->element('tableset/collumns/date',am($options,array('date'=> $contact['Contact']['modified']))); ?>
 <?php echo $this->element('tableset/collumns/grab'); ?>
           </tr>

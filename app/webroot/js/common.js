@@ -84,12 +84,10 @@ $(function() {
 	};
 /** 
  * Toogles
- * How it works: a.toggle#<id> closes/open .toggle_wrapper#wrapper_<id>
- * OR  a.toggle#<id> closes/open .toggle_wrapper.wrapper_<id> easy hey ?
+ * How it works: a.toggle#<id> closes/open .wrapper_<id> easy hey ?
  */
 	$(".toggle.close").each(function() {
-		$(".toggle_wrapper#wrapper_"+$(this).attr("id")).hide();
-		$(".toggle_wrapper.wrapper_"+$(this).attr("id")).hide();
+		$(".wrapper_"+$(this).attr("id")).hide();
 	})
 
 	$('a.toggle').click(function() {
@@ -97,18 +95,18 @@ $(function() {
 		//$(".toggle_wrapper#wrapper_"+$(this).attr("id")).slideFadeToggle(300);
 		if($('a.toggle#'+$(this).attr("id")).hasClass("close")) {
 			$('a.toggle#'+$(this).attr("id")).addClass("open").removeClass("close");
-			$(".toggle_wrapper#wrapper_"+$(this).attr("id")).show();
+			$(".wrapper_"+$(this).attr("id")).show();
 		} else {
 			$('a.toggle#'+$(this).attr("id")).addClass("close").removeClass("open");
-			$(".toggle_wrapper#wrapper_"+$(this).attr("id")).hide();
+			$(".wrapper_"+$(this).attr("id")).hide();
 		}
 		return false;
 	});
-
-	/**
-	 * Form select/unselect all
-	 */
-	$('input.select_all').click(function(){
+/**
+ * Form select/unselect all
+ * How it works: 
+ */
+	$('input.select_all').click(function() {
 		var check = false;
 		if($(this).attr("checked")!= undefined && $(this).attr("checked")){
 			check = true;
