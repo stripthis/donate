@@ -15,7 +15,9 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
       			<td>&nbsp;</td>
       			<td>&nbsp;</td>
       			<td class="id">Id</td>
-      			<td class="due"><?php echo $paginator->sort(__('Due?',true), 'Gift.due'); ?></td>
+				<?php if ($type != 'onetime') : ?>
+      				<td class="due"><?php echo $paginator->sort(__('Due?',true), 'Gift.due'); ?></td>
+				<?php endif; ?>
       			<td class="favorites">&nbsp;</td>
       			<td class="status">&nbsp;</td>
       			<td class="name"><?php echo $paginator->sort(__('amount',true),'Gift.amount'); ?></td>
@@ -34,7 +36,9 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
 				<!-- header -->
 				<li>
 				<table class="gift">
-<?php			echo $this->element('tableset/rows/gift', array('gift' => $gift, 'doFavorites'=>$doFavorites, 'folded'=>true)); ?>
+<?php			echo $this->element('tableset/rows/gift', array(
+					'gift' => $gift, 'doFavorites'=>$doFavorites, 'folded'=>true, 'type' => $type));
+				?>
         </table>
       	</li>
 				<!-- folded sets -->

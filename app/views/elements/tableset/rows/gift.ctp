@@ -22,7 +22,9 @@
             <td class="fold"><a href="<?php echo Router::url(); ?>#" class="toggle close" id="trigger_<?php echo $gift['Gift']['id'];?>">&nbsp;</a></td>
 <?php endif; ?>
 			<td><?php echo $gift['Gift']['serial']?></td>
-			<td><?php echo $gift['Gift']['due'] ? 'Yes' : 'No'?></td>
+			<?php if ($type != 'onetime') : ?>
+				<td><?php echo $gift['Gift']['due'] ? 'Yes' : 'No'?></td>
+			<?php endif; ?>
 <?php echo $this->element('tableset/collumns/favorites', array('model'=>'Gift', 'id'=> $gift['Gift']['id'])); ?>
 <?php echo $this->element('tableset/collumns/status', array('model'=>'Gift', 'status'=> $gift['Gift']['status'])); ?>
             <td class="details" >
