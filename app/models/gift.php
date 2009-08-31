@@ -1,5 +1,9 @@
 <?php
 class Gift extends AppModel {
+	var $actsAs = array(
+		'Containable', 'Lookupable', 'Serialable'
+	);
+
 	var $belongsTo = array(
 		'User', 'Appeal', 'Office', 'Contact'
 	);
