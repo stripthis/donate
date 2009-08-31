@@ -94,9 +94,13 @@ $favConfig = Configure::read('Favorites');
 	}
 	?>
 	</table>
+	<?php
+	$urlParams = $params;
+	$urlParams['merge'] = true;
+	echo $this->element('paging', array('model' => 'Transaction', 'url' => $urlParams));
+	?>
 <?php else : ?>
 	<p>Sorry, nothing to show here.</p>
 <?php endif; ?>
-<?php echo $this->element('paging', array('model' => 'Transaction'))?>
-<?php echo $this->element('../transactions/elements/filter', compact('keyword', 'type')); ?>
+<?php echo $this->element('../transactions/elements/filter', compact('params')); ?>
 </div>
