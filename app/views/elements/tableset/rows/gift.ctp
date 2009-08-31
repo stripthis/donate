@@ -21,6 +21,7 @@
             <td class="selection"><?php echo $form->checkbox($gift['Gift']['id'], array("class"=>"checkbox"));?></td>
             <td class="fold"><a href="<?php echo Router::url(); ?>#" class="toggle close" id="trigger_<?php echo $gift['Gift']['id'];?>">&nbsp;</a></td>
 <?php endif; ?>
+			<td><?php echo $gift['Gift']['serial']?></td>
 <?php echo $this->element('tableset/collumns/favorites', array('model'=>'Gift', 'id'=> $gift['Gift']['id'])); ?>
 <?php echo $this->element('tableset/collumns/status', array('model'=>'Gift', 'status'=> $gift['Gift']['status'])); ?>
             <td class="details" >

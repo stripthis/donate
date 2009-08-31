@@ -232,7 +232,7 @@ class GiftsController extends AppController {
 			$keyword = trim($keyword);
 			switch ($searchType) {
 				case 'gift':
-					$conditions['Gift.id LIKE'] = '%' . $keyword . '%';
+					$conditions['Gift.serial LIKE'] = '%' . $keyword . '%';
 					break;
 				case 'appeal':
 					$conditions['Appeal.name LIKE'] = '%' . $keyword . '%';
