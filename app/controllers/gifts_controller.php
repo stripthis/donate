@@ -252,9 +252,6 @@ class GiftsController extends AppController {
 				case 'appeal':
 					$conditions['Appeal.name LIKE'] = '%' . $keyword . '%';
 					break;
-				case 'office':
-					$conditions['Office.name LIKE'] = '%' . $keyword . '%';
-					break;
 				case 'person':
 					$key = "CONCAT(Contact.fname,' ',Contact.lname)";
 					$conditions[$key . ' LIKE'] = '%' . $keyword . '%';

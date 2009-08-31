@@ -5,7 +5,7 @@ class Gift extends AppModel {
 	);
 
 	var $belongsTo = array(
-		'User', 'Appeal', 'Office', 'Contact'
+		'Contact', 'User', 'Appeal', 'Office'
 	);
 
 	var $hasMany = array(

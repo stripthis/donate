@@ -94,4 +94,5 @@ foreach ($transactions as $t) {
 ?>
 </table>
 <?php echo $this->element('paging', array('model' => 'Transaction'))?>
+<?php echo $this->element('../transactions/elements/filter', compact('keyword', 'type')); ?>
 </div>
