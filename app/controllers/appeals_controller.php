@@ -18,15 +18,66 @@ class AppealsController extends AppController {
  */
 	function admin_index() {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
+		$conditions = array(
+			'Appeal.office_id' => $this->Session->read('Office.id')
+		);
+
+		$keyword = isset($this->params['url']['keyword'])
+					? $this->params['url']['keyword']
+					: '';
+		$searchType = isset($this->params['url']['search_type'])
+					? $this->params['url']['search_type']
+					: 'all';
+		$limit = isset($this->params['url']['my_limit'])
+					? $this->params['url']['my_limit']
+					: 20;
+		$customLimit = isset($this->params['url']['custom_limit'])
+					? $this->params['url']['custom_limit']
+					: false;
+		if (is_numeric($customLimit)) {
+			if ($customLimit > 75) {
+				$customLimit = 75;
+			}
+			$limit = $customLimit;
+		}
+
+		// search was submitted
+		if (!empty($keyword)) {
+			$keyword = trim($keyword);
+
+			switch ($searchType) {
+				case 'name':
+					$conditions['Appeal.name LIKE'] = '%' . $keyword . '%';
+					break;
+				case 'campaign_code':
+					$conditions['Appeal.campaign_code LIKE'] = '%' . $keyword . '%';
+					break;
+				case 'country':
+					$conditions['Country.name LIKE'] = '%' . $keyword . '%';
+					break;
+				case 'author_email':
+					$conditions['User.login LIKE'] = '%' . $keyword . '%';
+					break;
+				default:
+					$conditions['or'] = array(
+						'Appeal.name LIKE' => '%' . $keyword . '%',
+						'Appeal.campaign_code LIKE' => '%' . $keyword . '%',
+						'Country.name LIKE' => '%' . $keyword . '%',
+						'User.login LIKE' => '%' . $keyword . '%'
+					);
+					break;
+			}
+		}
+
 		$this->paginate['Appeal'] = array(
-			'conditions' => array(
-				'Appeal.office_id' => $this->Session->read('Office.id')
-			),
+			'conditions' => $conditions,
 			'contain' => array('User(id, login)', 'Country(name)'),
 			'order' => array('Appeal.name' => 'asc')
 		);
 		$appeals = $this->paginate($this->Appeal);
-		$this->set(compact('appeals'));
+		$this->set(compact(
+			'appeals', 'type', 'searchType', 'keyword', 'limit', 'customLimit'
+		));
 	}
 /**
  * view action
