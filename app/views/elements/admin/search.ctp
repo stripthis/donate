@@ -2,7 +2,8 @@
 $searchOptions = array(
 	'gifts' => __('Gifts',true),
 	'transactions' => __('Transactions',true),
-	'users' => __('Users',true)
+	'users' => __('Users',true),
+	'appeals' => __('Appeals',true),
 );
 if (!User::allowed('Gifts', 'admin_view')) {
 	unset($searchOptions['gifts']);
@@ -12,6 +13,9 @@ if (!User::allowed('Transactions', 'admin_view')) {
 }
 if (!User::allowed('Users', 'admin_view')) {
 	unset($searchOptions['users']);
+}
+if (!User::allowed('Appeals', 'admin_view')) {
+	unset($searchOptions['appeals']);
 }
 ?>
 <div class="search widget">

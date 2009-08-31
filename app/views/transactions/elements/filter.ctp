@@ -6,7 +6,7 @@ $paginateOptions = array(10, 20, 40, 50, 75);
 $paginateOptions = array_combine($paginateOptions, $paginateOptions);
 ?>
     <div class="filter">
-      <?php echo $form->create('Gift', array('url' => '/admin/transactions', 'type' => 'get')); ?>
+      <?php echo $form->create('Transaction', array('url' => '/admin/transactions', 'type' => 'get')); ?>
       <?php echo $form->input('keyword', array('label' => 'Keyword:', 'value' => $keyword)); ?>  
       <?php echo $form->input('search_type', array('label' => 'Type:', 'selected' => $searchType, 'options' => $typeOptions, 'class'=>'full')); ?>
       <?php echo $form->input('my_limit', array(
@@ -23,7 +23,8 @@ $paginateOptions = array_combine($paginateOptions, $paginateOptions);
         'type' => 'date',
         'selected' => $startDate,
         'dateFormat' => 'MY',
-        'maxYear' => date('Y')
+        'maxYear' => date('Y'),
+		'empty' => '--'
       ));
       ?>
       <?php echo $form->input('endDate', array(
@@ -31,7 +32,8 @@ $paginateOptions = array_combine($paginateOptions, $paginateOptions);
         'type' => 'date',
         'selected' => $endDate,
         'dateFormat' => 'MY',
-        'maxYear' => date('Y')
+        'maxYear' => date('Y'),
+		'empty' => '--'
       ));
       ?>
       <?php echo $form->end('Filter');  ?>

@@ -10,7 +10,7 @@ class SearchController extends AppController {
 	function admin_go() {
 		Assert::false($this->isGet(), '404');
 
-		$validTypes = array('gifts', 'transactions', 'users');
+		$validTypes = array('gifts', 'transactions', 'users', 'appeals');
 		$type = $this->data['Search']['resource'];
 		Assert::true(in_array($type, $validTypes), '404');
 
