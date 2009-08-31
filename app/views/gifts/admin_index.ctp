@@ -10,34 +10,34 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
 <?php //echo $this->element('/admin/css_tests/gift_index'); ?>
       	<table>
       		<thead>
-      			<th class="select">&nbsp;</td>
-      			<th class="fold">&nbsp;</td>
-      			
-      			<td class="id">Id</td>
-				<?php if ($type != 'onetime') : ?>
-      				<td class="due"><?php echo $paginator->sort(__('Due?',true), 'Gift.due'); ?></td>
-				<?php endif; ?>
-      			<th class="favorites">&nbsp;</td>
-      			<th class="status">&nbsp;</td>
+      		<tr>
+      			<th class="selection"><input name="gift" class="select_all checkbox" type="checkbox"></th>
+      			<th class="fold">&nbsp;</th>
+      			<th class="favorites">&nbsp;</th>
+      			<th class="status">&nbsp;</th>
       			<th class="title">
       				<?php echo $paginator->sort(__('amount',true),'Gift.amount'); ?>
-      			</td>
+							<?php if ($type != 'onetime') : ?>
+      					<?php //@todo due date goes here) ?>
+							<?php endif; ?>
+      			</th>
       			<th class="description">
       				<?php echo $paginator->sort(__('firstname',true),'Contact.fname'); ?> 
       				<?php echo $paginator->sort(__('last name',true),'Contact.lname'); ?>
       				(<?php echo $paginator->sort(__('email',true),'Contact.email'); ?>)
       			</th>
-      			<th class="attachments"></th>
-      			<th class="comments"></th>
-      			<th class="date"><?php echo $paginator->sort(__('date',true),'Gift.modified'); ?></td>
+      			<th class="attachments">&nbsp;</th>
+      			<th class="comments">&nbsp;</th>
+      			<th class="date"><?php echo $paginator->sort(__('date',true),'Gift.modified'); ?></th>
       			<th class="grab"></th>
+      		</tr>
       		</thead>
       		<tbody>
 <?php
 	foreach ($gifts as $gift) {
-		echo $this->element('tableset/rows/gift', array('gift' => $gift, 'doFavorites'=>$doFavorites, 'folded'=>true));
+		echo $this->element('tableset/rows/gift', array('gift' => $gift, 'doFavorites'=>$doFavorites, 'leaf'=>false));
 		if(isset($gift)) {
-			echo $this->element('tableset/rows/gift', array('gift'=>$gift, 'doFavorites'=>$doFavorites,'leaf'=>true));
+			echo $this->element('tableset/rows/gift', array('gift'=>$gift, 'doFavorites'=>$doFavorites,'leaf'=>true, 'parent_id'=>$gift['Gift']['id']));
 			if(isset($gift['Contact'])) {
 				echo $this->element('tableset/rows/contact', array('contact'=>$gift, 'doFavorites'=>$doFavorites)); 
 			}
