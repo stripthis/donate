@@ -10,6 +10,7 @@
 		<tr>
 			<th class="text"><?php echo $paginator->sort('login');?></th>
 			<th class="date"><?php echo $paginator->sort('created');?></th>
+			<th class="date"><?php echo $paginator->sort('modified');?></th>
 			<th class="actions"><?php __('Actions');?></th>
 		</tr>
 		<?php
