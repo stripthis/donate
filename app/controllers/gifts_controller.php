@@ -223,45 +223,44 @@ class GiftsController extends AppController {
 				break;
 		}
 
-		$keyword = isset($this->params['url']['keyword'])
-					? $this->params['url']['keyword']
-					: '';
-		$searchType = isset($this->params['url']['search_type'])
-					? $this->params['url']['search_type']
-					: 'all';
-		$limit = isset($this->params['url']['my_limit'])
-					? $this->params['url']['my_limit']
-					: 20;
-		$customLimit = isset($this->params['url']['custom_limit'])
-					? $this->params['url']['custom_limit']
-					: false;
-		if (is_numeric($customLimit)) {
-			if ($customLimit > 75) {
-				$customLimit = 75;
+		$defaults = array(
+			'keyword' => '',
+			'search_type' => 'all',
+			'my_limit' => 20,
+			'custom_limit' => false
+		);
+		$params = am($defaults, $this->params['url'], $this->params['named']);
+
+		if (is_numeric($params['custom_limit'])) {
+			if ($params['custom_limit'] > 75) {
+				$params['custom_limit'] = 75;
 			}
-			$limit = $customLimit;
+			if ($params['custom_limit'] == 0) {
+				$params['custom_limit'] = 50;
+			}
+			$params['my_limit'] = $params['custom_limit'];
 		}
 
 		// search was submitted
-		if (!empty($keyword)) {
-			$keyword = trim($keyword);
-			switch ($searchType) {
+		if (!empty($params['keyword'])) {
+			$params['keyword'] = trim($params['keyword']);
+			switch ($params['search_type']) {
 				case 'gift':
-					$conditions['Gift.serial LIKE'] = '%' . $keyword . '%';
+					$conditions['Gift.serial LIKE'] = '%' . $params['keyword'] . '%';
 					break;
 				case 'appeal':
-					$conditions['Appeal.name LIKE'] = '%' . $keyword . '%';
+					$conditions['Appeal.name LIKE'] = '%' . $params['keyword'] . '%';
 					break;
 				case 'person':
 					$key = "CONCAT(Contact.fname,' ',Contact.lname)";
-					$conditions[$key . ' LIKE'] = '%' . $keyword . '%';
+					$conditions[$key . ' LIKE'] = '%' . $params['keyword'] . '%';
 					break;
 				default:
 					$conditions['or'] = array(
-						'Gift.serial LIKE' => '%' . $keyword . '%',
-						'Appeal.name LIKE' => '%' . $keyword . '%',
-						'Office.name LIKE' => '%' . $keyword . '%',
-						"CONCAT(Contact.fname,' ',Contact.lname) LIKE" => '%' . $keyword . '%'
+						'Gift.serial LIKE' => '%' . $params['keyword'] . '%',
+						'Appeal.name LIKE' => '%' . $params['keyword'] . '%',
+						'Office.name LIKE' => '%' . $params['keyword'] . '%',
+						"CONCAT(Contact.fname,' ',Contact.lname) LIKE" => '%' . $params['keyword'] . '%'
 					);
 					break;
 			}
@@ -278,12 +277,12 @@ class GiftsController extends AppController {
 				'Transaction(id,status,gateway_id,created,modified)',
 				'Transaction.Gateway(id,name)'
 			),
-			'limit' => $limit,
+			'limit' => $params['my_limit'],
 			'order' => $order
 		);
 
 		$gifts = $this->paginate();
-		$this->set(compact('gifts', 'keyword', 'searchType', 'type', 'limit', 'customLimit'));
+		$this->set(compact('gifts', 'type', 'params'));
 	}
 /**
  * undocumented function

@@ -1,9 +1,13 @@
 <?php
-//pr($gifts);
-$options = array(
-  'doFavorites' => class_exists('Favorite') && Favorite::doForModel('Gift'),
-	'model' => 'gift'
-);
+  //pr($gifts);
+  $options = array(
+    'doFavorites' => class_exists('Favorite') && Favorite::doForModel('Gift'),
+	  'model' => 'gift'
+  );
+  $urlParams = $params;
+  $urlParams['merge'] = true;
+  unset($urlParams['ext']);
+  unset($urlParams['page']);
 ?>
     <div class="content" id="gifts_index">
       <h2><?php __('Online Donations');?></h2>
@@ -56,7 +60,7 @@ $options = array(
 ?>
         </tbody>
       </table>
-      <?php echo $this->element('paging', array('model' => 'Gift'))?>
-      <?php echo $this->element('../gifts/elements/filter', compact('keyword', 'type')); ?>
+	  	<?php	echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));?>
+      <?php echo $this->element('../gifts/elements/filter', compact('params')); ?>
     </div>
   </div>

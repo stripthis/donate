@@ -6,6 +6,8 @@ class Contact extends AppModel {
 		'Gift'
 	);
 
+	var $hasOne = array('User');
+
 	var $validate = array(
 		'id' => array(
 			'rule' => 'blank',
@@ -63,6 +65,18 @@ class Contact extends AppModel {
 		foreach ($ids as $id) {
 			$this->Gift->name($id);
 		}
+
+		$user = $this->User->find('first', array(
+			'conditions' => array('User.contact_id' => $this->id),
+			'contain' => false,
+			'fields' => array('id')
+		));
+
+		$this->User->set(array(
+			'id' => $user['User']['id'],
+			'name' => $this->data['Contact']['fname'] . ' ' . $this->data['Contact']['lname']
+		));
+		$this->User->save(null, false);
 	}
 /**
  * undocumented function

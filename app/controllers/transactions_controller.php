@@ -42,46 +42,41 @@ class TransactionsController extends AppController {
 			$conditions['Transaction.gift_id'] = Set::extract('/Gift/id', $giftIds);
 		}
 
-		$keyword = isset($this->params['url']['keyword'])
-					? $this->params['url']['keyword']
-					: '';
-		$searchType = isset($this->params['url']['search_type'])
-					? $this->params['url']['search_type']
-					: 'all';
-		$startDate = isset($this->params['url']['start_date'])
-					? $this->params['url']['start_date']
-					: false;
-		$endDate = isset($this->params['url']['end_date'])
-					? $this->params['url']['end_date']
-					: false;
-		$limit = isset($this->params['url']['my_limit'])
-					? $this->params['url']['my_limit']
-					: 20;
-		$customLimit = isset($this->params['url']['custom_limit'])
-					? $this->params['url']['custom_limit']
-					: false;
-		if (is_numeric($customLimit)) {
-			if ($customLimit > 75) {
-				$customLimit = 75;
+		$defaults = array(
+			'keyword' => '',
+			'search_type' => 'all',
+			'start_date' => false,
+			'end_date' => false,
+			'my_limit' => 20,
+			'custom_limit' => false
+		);
+		$params = am($defaults, $this->params['url'], $this->params['named']);
+
+		if (is_numeric($params['custom_limit'])) {
+			if ($params['custom_limit'] > 75) {
+				$params['custom_limit'] = 75;
 			}
-			$limit = $customLimit;
+			if ($params['custom_limit'] == 0) {
+				$params['custom_limit'] = 50;
+			}
+			$params['my_limit'] = $params['custom_limit'];
 		}
 
 		// search was submitted
-		if (!empty($keyword)) {
-			$keyword = trim($keyword);
-			switch ($searchType) {
+		if (!empty($params['keyword'])) {
+			$params['keyword'] = trim($params['keyword']);
+			switch ($params['search_type']) {
 				default:
-					$conditions['Transaction.serial LIKE'] = '%' . $keyword . '%';
+					$conditions['Transaction.serial LIKE'] = '%' . $params['keyword'] . '%';
 					break;
 			}
 		}
 
-		if (!empty($startDate)) {
-			$conditions['Transaction.created >='] = $startDate;
+		if (!empty($params['start_date'])) {
+			$conditions['Transaction.created >='] = $params['start_date'];
 		}
-		if (!empty($endDate)) {
-			$conditions['Transaction.created <='] = $endDate;
+		if (!empty($params['end_date'])) {
+			$conditions['Transaction.created <='] = $params['end_date'];
 		}
 
 		$this->paginate['Transaction'] = array(
@@ -93,14 +88,12 @@ class TransactionsController extends AppController {
 				'ChildTransaction.Gateway',
 				'ChildTransaction.Gift',
 				'ParentTransaction'
-			)
+			),
+			'limit' => $params['my_limit']
 		);
 		$transactions = $this->paginate($this->Transaction);
 
-		$this->set(compact(
-			'transactions', 'contact', 'type', 'searchType', 'keyword', 'limit', 'customLimit',
-			'startDate', 'endDate'
-		));
+		$this->set(compact('transactions', 'contact', 'type', 'params'));
 	}
 /**
  * view action

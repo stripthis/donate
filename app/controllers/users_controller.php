@@ -83,14 +83,57 @@ class UsersController extends AppController {
  * @access public
  */
 	function admin_index() {
+		$conditions = array(
+			'User.login <>' => Configure::read('App.guestAccount'),
+			'User.active' => '1'
+		);
+
+		$defaults = array(
+			'keyword' => '',
+			'search_type' => 'all',
+			'my_limit' => 20,
+			'custom_limit' => false
+		);
+		$params = am($defaults, $this->params['url'], $this->params['named']);
+
+		if (is_numeric($params['custom_limit'])) {
+			if ($params['custom_limit'] > 75) {
+				$params['custom_limit'] = 75;
+			}
+			if ($params['custom_limit'] == 0) {
+				$params['custom_limit'] = 50;
+			}
+			$params['my_limit'] = $params['custom_limit'];
+		}
+
+		// search was submitted
+		if (!empty($params['keyword'])) {
+			$params['keyword'] = trim($params['keyword']);
+
+			switch ($params['search_type']) {
+				case 'name':
+					$conditions['User.name LIKE'] = '%' . $params['keyword'] . '%';
+					break;
+				case 'email':
+					$conditions['User.login LIKE'] = '%' . $params['keyword'] . '%';
+					break;
+				default:
+					$conditions['or'] = array(
+						'User.name LIKE' => '%' . $params['keyword'] . '%',
+						'User.login LIKE' => '%' . $params['keyword'] . '%'
+					);
+					break;
+			}
+		}
+
 		$this->paginate = array(
-			'conditions' => array(
-				'User.login <>' => Configure::read('App.guestAccount')
-			),
-			'contain' => array('CreatedBy(login)', 'ModifiedBy(login)')
+			'conditions' => $conditions,
+			'contain' => array('CreatedBy(login)', 'ModifiedBy(login)'),
+			'order' => array('User.login' => 'asc'),
+			'limit' => $params['my_limit']
 		);
 		$users = $this->paginate();
-		$this->set(compact('users'));
+		$this->set(compact('users', 'params'));
 	}
 /**
  * undocumented function
