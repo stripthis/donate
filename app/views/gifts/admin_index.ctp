@@ -15,6 +15,7 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
       			<td>&nbsp;</td>
       			<td>&nbsp;</td>
       			<td class="id">Id</td>
+      			<td class="due"><?php echo $paginator->sort(__('Due?',true), 'Gift.due'); ?></td>
       			<td class="favorites">&nbsp;</td>
       			<td class="status">&nbsp;</td>
       			<td class="name"><?php echo $paginator->sort(__('amount',true),'Gift.amount'); ?></td>
