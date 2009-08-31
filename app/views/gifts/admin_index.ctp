@@ -69,7 +69,13 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
 				</li>
 <?php endforeach; ?>
 			</ul>
-      <?php echo $this->element('paging', array('model' => 'Gift'))?>
-      <?php echo $this->element('../gifts/elements/filter', compact('keyword', 'type')); ?>
+		<?php
+		$urlParams = $params;
+		$urlParams['merge'] = true;
+		unset($urlParams['ext']);
+		unset($urlParams['page']);
+		echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));
+		?>
+      <?php echo $this->element('../gifts/elements/filter', compact('params')); ?>
     </div>
   </div>

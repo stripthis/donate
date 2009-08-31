@@ -22,48 +22,47 @@ class AppealsController extends AppController {
 			'Appeal.office_id' => $this->Session->read('Office.id')
 		);
 
-		$keyword = isset($this->params['url']['keyword'])
-					? $this->params['url']['keyword']
-					: '';
-		$searchType = isset($this->params['url']['search_type'])
-					? $this->params['url']['search_type']
-					: 'all';
-		$limit = isset($this->params['url']['my_limit'])
-					? $this->params['url']['my_limit']
-					: 20;
-		$customLimit = isset($this->params['url']['custom_limit'])
-					? $this->params['url']['custom_limit']
-					: false;
-		if (is_numeric($customLimit)) {
-			if ($customLimit > 75) {
-				$customLimit = 75;
+		$defaults = array(
+			'keyword' => '',
+			'search_type' => 'all',
+			'my_limit' => 20,
+			'custom_limit' => false
+		);
+		$params = am($defaults, $this->params['url'], $this->params['named']);
+
+		if (is_numeric($params['custom_limit'])) {
+			if ($params['custom_limit'] > 75) {
+				$params['custom_limit'] = 75;
 			}
-			$limit = $customLimit;
+			if ($params['custom_limit'] == 0) {
+				$params['custom_limit'] = 50;
+			}
+			$params['my_limit'] = $params['custom_limit'];
 		}
 
 		// search was submitted
-		if (!empty($keyword)) {
-			$keyword = trim($keyword);
+		if (!empty($params['keyword'])) {
+			$params['keyword'] = trim($params['keyword']);
 
-			switch ($searchType) {
+			switch ($params['search_type']) {
 				case 'name':
-					$conditions['Appeal.name LIKE'] = '%' . $keyword . '%';
+					$conditions['Appeal.name LIKE'] = '%' . $params['keyword'] . '%';
 					break;
 				case 'campaign_code':
-					$conditions['Appeal.campaign_code LIKE'] = '%' . $keyword . '%';
+					$conditions['Appeal.campaign_code LIKE'] = '%' . $params['keyword'] . '%';
 					break;
 				case 'country':
-					$conditions['Country.name LIKE'] = '%' . $keyword . '%';
+					$conditions['Country.name LIKE'] = '%' . $params['keyword'] . '%';
 					break;
 				case 'author_email':
-					$conditions['User.login LIKE'] = '%' . $keyword . '%';
+					$conditions['User.login LIKE'] = '%' . $params['keyword'] . '%';
 					break;
 				default:
 					$conditions['or'] = array(
-						'Appeal.name LIKE' => '%' . $keyword . '%',
-						'Appeal.campaign_code LIKE' => '%' . $keyword . '%',
-						'Country.name LIKE' => '%' . $keyword . '%',
-						'User.login LIKE' => '%' . $keyword . '%'
+						'Appeal.name LIKE' => '%' . $params['keyword'] . '%',
+						'Appeal.campaign_code LIKE' => '%' . $params['keyword'] . '%',
+						'Country.name LIKE' => '%' . $params['keyword'] . '%',
+						'User.login LIKE' => '%' . $params['keyword'] . '%'
 					);
 					break;
 			}
@@ -73,12 +72,10 @@ class AppealsController extends AppController {
 			'conditions' => $conditions,
 			'contain' => array('User(id, login)', 'Country(name)'),
 			'order' => array('Appeal.name' => 'asc'),
-			'limit' => $limit
+			'limit' => $params['my_limit']
 		);
 		$appeals = $this->paginate($this->Appeal);
-		$this->set(compact(
-			'appeals', 'type', 'searchType', 'keyword', 'limit', 'customLimit'
-		));
+		$this->set(compact('appeals', 'type', 'params'));
 	}
 /**
  * view action

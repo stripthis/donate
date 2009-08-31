@@ -34,6 +34,8 @@
 		<?php
 		$urlParams = $params;
 		$urlParams['merge'] = true;
+		unset($urlParams['ext']);
+		unset($urlParams['page']);
 		echo $this->element('paging', array('model' => 'User', 'url' => $urlParams));
 		?>
 	<?php else : ?>

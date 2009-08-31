@@ -50,9 +50,15 @@
 		}
 		?>
 		</table>
+		<?php
+		$urlParams = $params;
+		$urlParams['merge'] = true;
+		unset($urlParams['ext']);
+		unset($urlParams['page']);
+		echo $this->element('paging', array('model' => 'Appeal', 'url' => $urlParams));
+		?>
 	<?php else : ?>
 		<p>Sorry, nothing to show here.</p>
 	<?php endif; ?>
-	<?php echo $this->element('paging', array('model' => 'Appeal'))?>
-	<?php echo $this->element('../appeals/elements/filter', compact('keyword', 'type')); ?>
+	<?php echo $this->element('../appeals/elements/filter', compact('params')); ?>
 </div>

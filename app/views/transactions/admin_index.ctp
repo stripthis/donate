@@ -96,6 +96,8 @@ $favConfig = Configure::read('Favorites');
 	</table>
 	<?php
 	$urlParams = $params;
+	unset($urlParams['ext']);
+	unset($urlParams['page']);
 	$urlParams['merge'] = true;
 	echo $this->element('paging', array('model' => 'Transaction', 'url' => $urlParams));
 	?>
