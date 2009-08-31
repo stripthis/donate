@@ -64,6 +64,6 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
 <?php endforeach; ?>
 			</ul>
       <?php echo $this->element('paging', array('model' => 'Gift'))?>
-      <?php echo $this->element('../gifts/elements/filter'); ?>
+      <?php echo $this->element('../gifts/elements/filter', compact('keyword')); ?>
     </div>
   </div>

@@ -202,22 +202,35 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index() {
+	function admin_index($type = 'monthly') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
-
-		$keyword = isset($this->params['url']['keyword'])
-					? $this->params['url']['keyword']
-					: '';
-		$type = isset($this->params['url']['type'])
-					? $this->params['url']['type']
-					: 'person';
 
 		$conditions = array(
 			'Gift.office_id' => $this->Session->read('Office.id')
 		);
+
+		switch ($type) {
+			case 'monthly':
+				
+				break;
+			case 'oneoff':
+				break;
+			case 'starred':
+				$conditions['Gift.id'] = $this->Session->read('favorites');
+				break;
+		}
+
+		$keyword = isset($this->params['url']['keyword'])
+					? $this->params['url']['keyword']
+					: '';
+		$searchType = isset($this->params['url']['search_type'])
+					? $this->params['url']['search_type']
+					: 'person';
+
+		// search was submitted
 		if (!empty($keyword)) {
 			$keyword = trim($keyword);
-			switch ($type) {
+			switch ($searchType) {
 				case 'gift':
 					$conditions['Gift.id LIKE'] = '%' . $keyword . '%';
 					break;
@@ -245,7 +258,7 @@ class GiftsController extends AppController {
 			'order' => array('Gift.created' => 'desc')
 		);
 		$gifts = $this->paginate();
-		$this->set(compact('gifts', 'keyword', 'type'));
+		$this->set(compact('gifts', 'keyword', 'searchType', 'type'));
 	}
 /**
  * undocumented function

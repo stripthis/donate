@@ -23,7 +23,7 @@ class SavedByBehavior extends ModelBehavior {
  */
 	var $__settings = array();
 /**
- * Initiate behaviour for the model using settings.
+ * Initiate behavior for the model using settings.
  *
  * @param object $Model Model using the behaviour
  * @param array $settings Settings to override for model.
