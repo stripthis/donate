@@ -202,18 +202,21 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index($type = 'monthly') {
+	function admin_index($type = '') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
 		$conditions = array(
 			'Gift.office_id' => $this->Session->read('Office.id')
 		);
 
+		$order = array('Gift.created' => 'desc');
 		switch ($type) {
-			case 'monthly':
-				
+			case 'recurring':
+				$conditions['Gift.frequency <>'] = 'onetime';
+				$order = array('Gift.due' => 'desc');
 				break;
-			case 'oneoff':
+			case 'onetime':
+				$conditions['Gift.frequency'] = 'onetime';
 				break;
 			case 'starred':
 				$conditions['Gift.id'] = $this->Session->read('favorites');
@@ -250,12 +253,16 @@ class GiftsController extends AppController {
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,
 			'contain' => array(
+				'LastTransaction(created)',
 				'Office(id, name)', 'Appeal(id, name)', 
-				'Contact(fname, lname, email,created,modified)', 'Contact.Address.Country(id,name)', 'Contact.Address.City(id,name)',
-				'Transaction(id,status,gateway_id,created,modified)','Transaction.Gateway(id,name)',
+				'Contact(fname, lname, email,created,modified)',
+				'Contact.Address.Country(id,name)',
+				'Contact.Address.City(id,name)',
+				'Transaction(id,status,gateway_id,created,modified)',
+				'Transaction.Gateway(id,name)'
 			),
 			'limit' => 20,
-			'order' => array('Gift.created' => 'desc')
+			'order' => $order
 		);
 		$gifts = $this->paginate();
 		$this->set(compact('gifts', 'keyword', 'searchType', 'type'));

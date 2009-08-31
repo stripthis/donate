@@ -1,16 +1,23 @@
 <div class="menu_wrapper">
   <ul class="menu with_tabs">
+	<li>
+		<?php
+		$selected = array('class' => 'selected');
+		$options = $type == '' ? $selected : array();
+		echo $html->link(__('All',true), array('action'=>'index', 'admin' => true), $options);
+		?>
+	</li>
     <li>
 		<?php
-		$selected = array('class'=>'selected');
-		$options = $type == 'monthly' ? $selected : array();
-		echo $html->link(__('Monthly',true), array('action'=>'index', 'admin' => true), $options);
+		$selected = array('class' => 'selected');
+		$options = $type == 'recurring' ? $selected : array();
+		echo $html->link(__('Recurring',true), array('action'=>'index', 'recurring', 'admin' => true), $options);
 		?>
 	</li>
 	<li>
 		<?php
-		$options = $type == 'oneoff' ? $selected : array();
-		echo $html->link(__('One-off',true), array('action'=>'index', 'oneoff', 'admin' => true), $options);
+		$options = $type == 'onetime' ? $selected : array();
+		echo $html->link(__('One Time',true), array('action'=>'index', 'onetime', 'admin' => true), $options);
 		?>
 	</li>
 	<li>

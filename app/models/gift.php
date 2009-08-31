@@ -12,6 +12,14 @@ class Gift extends AppModel {
 		'Transaction' => array('dependent' => true),
 	);
 
+	var $hasOne = array(
+		'LastTransaction' => array(
+			'className' => 'Transaction',
+			'type' => 'left',
+			'limit' => 1
+		)
+	);
+
 	var $validate = array(
 		'type' => array(
 			'required' => array(
