@@ -229,6 +229,18 @@ class GiftsController extends AppController {
 		$searchType = isset($this->params['url']['search_type'])
 					? $this->params['url']['search_type']
 					: 'all';
+		$limit = isset($this->params['url']['limit'])
+					? $this->params['url']['limit']
+					: 20;
+		$customLimit = isset($this->params['url']['custom_limit'])
+					? $this->params['url']['custom_limit']
+					: false;
+		if (is_numeric($customLimit)) {
+			if ($customLimit > 75) {
+				$customLimit = 75;
+			}
+			$limit = $customLimit;
+		}
 
 		// search was submitted
 		if (!empty($keyword)) {
@@ -269,11 +281,12 @@ class GiftsController extends AppController {
 				'Transaction(id,status,gateway_id,created,modified)',
 				'Transaction.Gateway(id,name)'
 			),
-			'limit' => 20,
+			'limit' => $limit,
 			'order' => $order
 		);
+
 		$gifts = $this->paginate();
-		$this->set(compact('gifts', 'keyword', 'searchType', 'type'));
+		$this->set(compact('gifts', 'keyword', 'searchType', 'type', 'limit', 'customLimit'));
 	}
 /**
  * undocumented function
