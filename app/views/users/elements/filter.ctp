@@ -1,37 +1,24 @@
-<?php 
-$searchOptions = array(
-	'gifts' => __('Gifts',true),
-	'transactions' => __('Transactions',true),
-	'users' => __('Users',true),
-	'appeals' => __('Appeals',true),
+<?php
+$typeOptions = array(
+	'name' => __('Name', true),
+	'email' => __('Email', true)
 );
-if (!User::allowed('Gifts', 'admin_view')) {
-	unset($searchOptions['gifts']);
-}
-if (!User::allowed('Transactions', 'admin_view')) {
-	unset($searchOptions['transactions']);
-}
-if (!User::allowed('Users', 'admin_view')) {
-	unset($searchOptions['users']);
-}
-if (!User::allowed('Appeals', 'admin_view')) {
-	unset($searchOptions['appeals']);
-}
+$paginateOptions = array(10, 20, 40, 50, 75);
+$paginateOptions = array_combine($paginateOptions, $paginateOptions);
 ?>
-<div class="search widget">
-	<div class="widget_header">
-	  <h3><a href="<?php echo Router::url(); ?>#" class="toggle open" id="trigger_search"><?php echo __('Search'); ?></a></h3>
-  </div>
-  <div class="widget_content">
-   <div class="toggle_wrapper" id="wrapper_trigger_search">
- 	  <?php echo $form->create('search', array('url' => '/admin/search/go', 'id'=>'search'))."\n";?>
-     <?php echo $form->input('Search.keyword', array('label' => __('Enter an id or a keyword',true)))."\n";?>
-     <?php
-         echo $form->input('Search.resource', array(
-           'label' => '', 'options' => $searchOptions
-         ))."\n";
-     ?>
-     <?php echo $form->end('Search!')."\n";?>
-   </div>
-  </div>
+<div class="filter">
+	<?php echo $form->create('User', array('url' => '/admin/users', 'type' => 'get')); ?>
+	<?php echo $form->input('keyword', array('label' => 'Keyword:', 'value' => $params['keyword'])); ?>  
+	<?php echo $form->input('search_type', array('label' => 'Type:', 'selected' => $params['search_type'], 'options' => $typeOptions, 'class'=>'full')); ?>
+  <?php echo $form->input('my_limit', array(
+'label' => 'Results per Page:',
+'selected' => $params['my_limit'],
+'options' => $paginateOptions,
+)); ?>
+  <?php echo $form->input('custom_limit', array(
+'label' => 'or custom:',
+'value' => $params['custom_limit']
+)); ?>
+	<?php echo $form->end('Filter');  ?>
 </div>
+<div class="clear"></div>

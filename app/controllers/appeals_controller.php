@@ -72,7 +72,8 @@ class AppealsController extends AppController {
 		$this->paginate['Appeal'] = array(
 			'conditions' => $conditions,
 			'contain' => array('User(id, login)', 'Country(name)'),
-			'order' => array('Appeal.name' => 'asc')
+			'order' => array('Appeal.name' => 'asc'),
+			'limit' => $limit
 		);
 		$appeals = $this->paginate($this->Appeal);
 		$this->set(compact(

@@ -93,7 +93,8 @@ class TransactionsController extends AppController {
 				'ChildTransaction.Gateway',
 				'ChildTransaction.Gift',
 				'ParentTransaction'
-			)
+			),
+			'limit' => $limit
 		);
 		$transactions = $this->paginate($this->Transaction);
 

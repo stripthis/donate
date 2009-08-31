@@ -19,8 +19,14 @@ $class = isset($class) ? ' '.$class : '';
 
 $numberOptions = $options;
 if (isset($url)) {
-	$options['url'][] = $url;
-	$numberOptions['url'][] = $url;
+	if (is_string($url) || !isset($url['merge'])) {
+		$options['url'][] = $url;
+		$numberOptions['url'][] = $url;
+	} else {
+		unset($url['merge']);
+		$options['url'] = am($options['url'], $url);
+		$numberOptions['url'] = am($numberOptions['url'], $url);
+	}
 }
 ?>
 
