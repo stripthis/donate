@@ -229,8 +229,8 @@ class GiftsController extends AppController {
 		$searchType = isset($this->params['url']['search_type'])
 					? $this->params['url']['search_type']
 					: 'all';
-		$limit = isset($this->params['url']['limit'])
-					? $this->params['url']['limit']
+		$limit = isset($this->params['url']['my_limit'])
+					? $this->params['url']['my_limit']
 					: 20;
 		$customLimit = isset($this->params['url']['custom_limit'])
 					? $this->params['url']['custom_limit']

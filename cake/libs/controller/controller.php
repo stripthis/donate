@@ -1005,8 +1005,8 @@ class Controller extends Object {
 		if (!isset($defaults['conditions'])) {
 			$defaults['conditions'] = array();
 		}
-		extract($options = array_merge(array('page' => 1, 'limit' => 20), $defaults, $options));
 
+		extract($options = array_merge(array('page' => 1, 'limit' => 20), $defaults, $options));
 		if (is_array($scope) && !empty($scope)) {
 			$conditions = array_merge($conditions, $scope);
 		} elseif (is_string($scope)) {

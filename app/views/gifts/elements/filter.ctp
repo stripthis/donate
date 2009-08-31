@@ -13,7 +13,7 @@ $paginateOptions = array_combine($paginateOptions, $paginateOptions);
       <?php echo $form->create('Gift', array('url' => '/admin/gifts/index/' . $type, 'type' => 'get')); ?>
       <?php echo $form->input('keyword', array('label' => 'Keyword:', 'value' => $keyword)); ?>  
       <?php echo $form->input('search_type', array('label' => 'Type:', 'selected' => $searchType, 'options' => $typeOptions, 'class'=>'full')); ?>
-      <?php echo $form->input('limit', array(
+      <?php echo $form->input('my_limit', array(
 		'label' => 'Results per Page:',
 		'selected' => $limit,
 		'options' => $paginateOptions,
