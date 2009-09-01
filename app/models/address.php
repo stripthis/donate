@@ -22,7 +22,7 @@ class Address extends AppModel {
 				'message' => 'Please provide a valid address.',
 			)
 		),
-		'city_id' => array(
+		'city' => array(
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The city is required!',

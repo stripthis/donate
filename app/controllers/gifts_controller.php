@@ -17,8 +17,10 @@ class GiftsController extends AppController {
 		$this->Office = ClassRegistry::init('Office');
 		$this->GatewaysOffice = $this->Office->GatewaysOffice;
 		$this->Contact = $this->Gift->Contact;
-		$this->Country = $this->Gift->Contact->Address->Country;
-		$this->City = $this->Gift->Contact->Address->City;
+		$this->Address = $this->Contact->Address;
+		$this->Phone = $this->Address->Phone;
+		$this->Country = $this->Address->Country;
+		$this->City = $this->Address->City;
 		$this->Transaction = $this->Gift->Transaction;
 		$this->Card = ClassRegistry::init('Card');
 	}
@@ -53,9 +55,15 @@ class GiftsController extends AppController {
 		}
 
 		$this->loadSessionData($this->data);
-
 		$this->City->injectCityId($this->data);
-		if (!empty($this->data['Gift']['amount_other'])) {
+
+		if (!isset($this->data['Gift']['id']) || empty($this->data['Gift']['id'])) {
+			$this->Gift->create(array('complete' => 0));
+			$this->Gift->save(null, false);
+			$this->data['Gift']['id'] = $this->Gift->getLastInsertId();
+		}
+
+		if (isset($this->data['Gift']['amount_other']) && !empty($this->data['Gift']['amount_other'])) {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
 		}
 
@@ -69,6 +77,7 @@ class GiftsController extends AppController {
 		}
 
 		if (!$isLastStep && $validates) {
+			$this->saveRelatedData();
 			$this->saveSessionData();
 			return $this->render('step' . ($step + 1));
 		}
@@ -80,33 +89,12 @@ class GiftsController extends AppController {
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
 		}
+		$this->saveRelatedData();
+
+		// since this is the last step, make the gift complete
+		$this->Gift->set(array('id' => $this->data['Gift']['id'], 'complete' => 1));
+		$this->Gift->save(null, false);
 		$this->saveSessionData();
-
-		// save data with transactions
-		$db = ConnectionManager::getDataSource('default');
-		$db->begin($this->Gift);
-		$errors = false;
-
-		$contactId = false;
-		if (isset($this->data['Contact'])) {
-			$contactId = $this->Contact->addFromGift($this->data, false);
-		}
-		if (!Common::isUuid($contactId)) {
-			$errors = true;
-		}
-
-		if (!$errors) {
-			$this->data['Gift']['contact_id'] = $contactId;
-			$this->data['Gift']['office_id'] = $officeId;
-			unset($this->data['Gift']['id']);
-
-			$this->Gift->create($this->data);
-			if ($this->Gift->save()) {
-				$giftId = $this->data['Gift']['id'] = $this->Gift->getLastInsertId();
-			} else {
-				$errors = true;
-			}
-		}
 
 		// credit card data is given
 		// @todo if appeal or payment gateway use redirect model then redirect
@@ -121,15 +109,6 @@ class GiftsController extends AppController {
 			}
 		}
 
-		if ($errors) {
-			$db->rollback($this->Gift);
-			$msg = 'Sorry, something went wrong, please correct the errors below.';
-			$this->Message->add(__($msg, true), 'error');
-			return $this->render('step' . $step);
-		}
-
-		$db->commit($this->Gift);
-
 		// everything ok prepare / perform the transaction
 		//@todo dont always use the first one, make it dependent on the payment method 
 		//@todo && the amount / currency vs. payment gateway fee by offices
@@ -139,7 +118,7 @@ class GiftsController extends AppController {
 
 		//@todo save payment data here?
 		$this->Transaction->create(array(
-			'gift_id' => $giftId,
+			'gift_id' => $this->data['Gift']['id'],
 			'amount' => $this->data['Gift']['amount'],
 			'gateway_id' => $gateway['GatewaysOffice']['gateway_id']
 		));
@@ -437,6 +416,48 @@ class GiftsController extends AppController {
 
 			$this->Session->write($this->sessAppealKey, $this->params['named']['appeal_id']);
 		}
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function saveRelatedData() {
+		$this->Gift->save($this->data, false);
+
+		if (!isset($this->data['Contact']['id'])) {
+			$this->Contact->create(array('gift_id' => $this->data['Gift']['id']));
+			$this->Contact->save(null, false);
+			$contactId = $this->Contact->getLastInsertId();
+			$this->data['Gift']['contact_id'] = $contactId;
+			$this->data['Contact']['id'] = $contactId;
+		} else {
+			$contactId = $this->data['Contact']['id'];
+		}
+		$this->Contact->save($this->data, false);
+
+		if (!isset($this->data['Address']['id'])) {
+			$this->Address->create(array('contact_id' => $contactId));;
+			$this->Address->save(null, false);
+			$addressId = $this->Address->getLastInsertId();
+			$this->data['Phone']['address_id'] = $addressId;
+			$this->data['Address']['id'] = $addressId;
+		} else {
+			$addressId = $this->data['Address']['id'];
+		}
+		$this->Address->save($this->data, false);
+
+		if (!isset($this->data['Phone']['id'])) {
+			$this->Phone->create(array(
+				'contact_id' => $contactId,
+				'address_id' => $addressId
+			));
+			$this->Phone->save(null, false);
+			$phoneId = $this->Phone->getLastInsertId();
+			$this->data['Phone']['id'] = $phoneId;
+		}
+		$this->Phone->save($this->data, false);
 	}
 }
 ?>

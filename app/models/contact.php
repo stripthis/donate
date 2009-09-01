@@ -9,10 +9,6 @@ class Contact extends AppModel {
 	var $hasOne = array('User');
 
 	var $validate = array(
-		'id' => array(
-			'rule' => 'blank',
-			'on' => 'create'
-		),
 		'fname' => array(
 			'valid' => array(
 				'allowEmpty' => true,
@@ -56,6 +52,9 @@ class Contact extends AppModel {
 			return true;
 		}
 
+		if (!isset($this->data['Contact']['fname']) || !isset($this->data['Contact']['lname'])) {
+			return true;
+		}
 		$ids = $this->Gift->find('all', array(
 			'conditions' => array('Gift.contact_id' => $this->id),
 			'contain' => false,
@@ -72,60 +71,11 @@ class Contact extends AppModel {
 			'fields' => array('id')
 		));
 
-		$this->User->set(array(
-			'id' => $user['User']['id'],
-			'name' => $this->data['Contact']['fname'] . ' ' . $this->data['Contact']['lname']
-		));
-		$this->User->save(null, false);
-	}
-/**
- * undocumented function
- *
- * @param string $data 
- * @return void
- * @access public
- */
-	function addFromGift($data) {
-		if (isset($data['Contact']['id'])) {
-			$contactFound = $this->find('count', array(
-				'conditions' => array('id' => $data['Contact']['id']),
-				'contain' => false
-			)) > 0;
-			Assert::true($contactFound, '404');
-			return $data['Contact']['id'];
-		}
-
-		// mechanisms to prevent duplication will be added later
-		$this->create($data['Contact']);
-		$this->Address->create($data['Address']);
-		$this->Address->validates();
-
-		if (isset($data['Phone'])) {
-			$this->Phone->create($data['Phone']);
-			$this->Phone->validates();
-		}
-
-		if ($this->validates()) {
-			$this->save();
-			$contactId = $this->getLastInsertId();
-
-			$addressData = am($data['Address'], array('contact_id' => $contactId));
-
-			$this->Address->create($addressData);
-			if ($this->Address->validates()) {
-				$this->Address->save();
-				$addressId = $this->Address->getLastInsertId();
-
-				if (!isset($data['Phone']) || empty($data['Phone']['phone'])) {
-					return $contactId;
-				}
-				$this->Phone->create(am($data['Phone'], array('contact_id' => $contactId, 'address_id' => $addressId)));
-				if ($this->Phone->save()) {
-					return $contactId;
-				}
-			}
-		}
-		return false;
+		$this->User->recursive = -1;
+		$this->User->updateAll(
+			array('name' => '"' . $this->data['Contact']['fname'] . ' ' . $this->data['Contact']['lname'] . '"'),
+			array('User.id' => $user['User']['id'])
+		);
 	}
 /**
  * Get the list of allowed salutations
