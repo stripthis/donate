@@ -6,6 +6,15 @@
 			<li><?php echo $html->link(__('New User', true), array('action'=>'add'),array('class'=>'add')); ?></li>
       </ul>
 	</div>
+<<<<<<< HEAD:app/views/users/admin_index.ctp
+	<table cellpadding="0" cellspacing="0">
+		<tr>
+			<th class="text"><?php echo $paginator->sort('login');?></th>
+			<th class="date"><?php echo $paginator->sort('created');?></th>
+			<th class="date"><?php echo $paginator->sort('modified');?></th>
+			<th class="actions"><?php __('Actions');?></th>
+		</tr>
+=======
 	<?php if (!empty($users)) : ?>
 		<table cellpadding="0" cellspacing="0">
 			<tr>
@@ -31,6 +40,7 @@
 			</tr>
 			<?php endforeach; ?>
 		</table>
+>>>>>>> 21da08259a161405966ea2dd03d625a869622274:app/views/users/admin_index.ctp
 		<?php
 		$urlParams = $params;
 		$urlParams['merge'] = true;

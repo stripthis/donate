@@ -71,5 +71,11 @@ class CommonHelper extends Apphelper {
 			$contact['Contact']['lname']
 		);
 	}
+/**
+ * undocumented function
+ */
+	function getFoldClass($options){
+		return (isset($options['leaf']) && isset($options['parent_id']) && $options['leaf']) ? 'leaf wrapper_toggle_'.$options['parent_id'] : '';
+	}
 }
 ?>

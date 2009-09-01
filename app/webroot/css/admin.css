@@ -719,15 +719,10 @@ div.paging span.current {
 div.paging span a {
 }
 
-/* index kind of GMail like */
+/* index */
 .index_wrapper{
 	padding:0;
 	margin:10px 0 0 2px;
-}
-.index_wrapper li, .index_wrapper ul{
-	list-style-type:none;
-	margin:0;
-	padding:0;
 }
 .index_wrapper table{
 	padding:0;
@@ -746,103 +741,54 @@ div.paging span a {
 	border-bottom:1px solid #d6d6d6;
 	background:#EFEFEF;
 }
-.index_wrapper .folded li{
-	padding-left:38px;
-  background:transparent url(../img/layout/folded.png) 22px 0 no-repeat;
-}
-.index_wrapper .folded table{
-	background:0;
-	border:0;
-	padding:0;
-}
-.index_wrapper .folded tr td{
-	background:#FFF;
-	margin:0;
-	border:0;
+.index_wrapper .leaf{
+  background:transparent;
 }
 .index_wrapper .grab{
 	width:5px;
 }
-.index_wrapper .fold{
-	width:15px;
+.index_wrapper .leaf .fold{
+		background:transparent url(../img/layout/folded.png) 5px 2px no-repeat;
 }
-.index_wrapper .fold a.toggle{
+.index_wrapper a.toggle{
 	width:16px;
 	height:16px;
 	display:block;
 	background:transparent url(../img/icons/S/text_indent_remove.png) 0 0 no-repeat;
 }
-.index_wrapper .fold a.toggle.open{
+.index_wrapper a.toggle.open{
 	background:transparent url(../img/icons/S/text_indent.png) 0 0 no-repeat;
 }
-.index_wrapper .folded li:hover table td{
-	background:#E4FFE4;
-}
-/* header - dirty */
-.index_wrapper .header td{
-}
 /* gift */
-.index_wrapper .gift{
+.index_wrapper th{
+	text-align:left;
+	padding:2px;
+	border:0;
+	background:transparent;
+}
+.index_wrapper th a{
+	display:inline;
+	background:transparent;
+}
+.index_wrapper td{
 	text-align:left;
 }
-.index_wrapper .gift .details{
-	text-align:left;
-	width:150px;
-}
-.index_wrapper .description{
-	text-align:left;
-}
-.index_wrapper .amount{
-	text-align:right;
-	width:50px;
-}
-.index_wrapper .amount a.iconic{
-	text-align:right;
-	width:50px;
-	display:block;
-}
-.index_wrapper .currency{
-	text-align:left;
-	width:30px;
-}
-.index_wrapper .frequency{
-	width:70px;
-	text-align:left;
-	font-weight:bold;
-}
-/* contact */
-.index_wrapper .name{
-	text-align:left;
-}
-/* transactions */
-.index_wrapper .transaction{
-	text-align:left;
-}
-.index_wrapper .bank{
-	text-align:right;
+.index_wrapper tr.leaf td{
+	background:#FFF;
 }
 /* generic */
-.index_wrapper .selection{
-	width:10px;
-	padding-top:3px;
-}
-.index_wrapper .status{
-	width:25px;
-	text-align:center;
-}
+.index_wrapper .selection,
+.index_wrapper .status,
+.index_wrapper .fold,
+.index_wrapper .comments,
+.index_wrapper .attachements,
 .index_wrapper .favorites{
-	width:20px;
+	width:16px;
 }
 .index_wrapper .notifications{
 	width:40px;
 	padding-left:10px;
 	padding-right:5px;
-}
-.index_wrapper .notifications img.attach {
-	float:left;
-}
-.index_wrapper .notifications img.comment{
-	float:right;
 }
 .index_wrapper .date{
 	text-align:right;

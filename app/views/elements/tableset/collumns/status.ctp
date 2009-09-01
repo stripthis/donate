@@ -6,6 +6,4 @@
 		$uri = $base . 'stop' . '.png';
 	}
 ?>
-            <td class="status">
-            		<img src="<?php echo $uri; ?>" alt="<?php echo $status; ?>" title="<?php echo $status; ?>"/>
-            </td>
+            <td class="status"><img src="<?php echo $uri; ?>" alt="<?php echo $status; ?>" title="<?php echo $status; ?>"/></td>
