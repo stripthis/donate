@@ -319,5 +319,25 @@ class UsersController extends AppController {
 		$messages = $this->User->validationErrors;
 		$this->Message->add(join(', ', $messages), 'error');
 	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	function admin_preferences($id = null) {
+		if ($this->isGet()) {
+			return $this->data = User::get();
+		}
+
+		$this->data['User']['id'] = User::get('id');
+		if (!$this->User->saveAll($this->data)) {
+			return $this->Message->add(__('Please fill out all fields', true), 'error');
+		}
+
+		$msg = 'Saved successfully.';
+		$this->Message->add(__($msg, true), 'ok', true, $this->here);
+	}
 }
 ?>

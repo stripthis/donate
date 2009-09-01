@@ -22,11 +22,11 @@ class User extends AppModel {
 		)
 		, 'login' => array(
 			'valid' => array('rule' => 'email', 'message' => 'Please enter a valid email address.')
-			, 'unique' => array(
-				'rule' => 'validateUnique',
-				'field' => 'login', 'message' =>
-				'This email is already used by another account.'
-			)
+			// , 'unique' => array(
+			// 	'rule' => 'validateUnique',
+			// 	'field' => 'login', 'message' =>
+			// 	'This email is already used by another account.'
+			// )
 		)
 		, 'password' => array(
 			'required' => array(
