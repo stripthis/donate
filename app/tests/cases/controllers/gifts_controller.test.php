@@ -165,10 +165,16 @@ class GiftsControllerTest extends MyTestCase {
 		));
 
 		$gift['Address'] = $gift['Contact']['Address'][0];
-		$this->is($gift['Address']['Phone'], array());
+		$phone = $gift['Address']['Phone'][0];
+		$this->is($phone['phone'], '');
+		$this->is($phone['address_id'], $gift['Address']['id']);
+		$this->is($phone['contact_id'], $gift['Contact']['id']);
 		$this->City->injectCityId($sutData);
 
 		foreach ($sutData as $model => $modelData) {
+			if ($model == 'Phone') {
+				continue;
+			}
 			foreach ($modelData as $field => $value) {
 				if ($field == 'city') {
 					continue;
@@ -177,23 +183,16 @@ class GiftsControllerTest extends MyTestCase {
 			}
 		}
 
-		// test if data was written to the session
+		// test that data is not preserved in the session
 		$data = array(
 			'Gift' => $this->Sut->Session->read('Gift'),
 			'Contact' => $this->Sut->Session->read('Contact'),
 			'Address' => $this->Sut->Session->read('Address'),
 		);
 
-		$this->is($data['Contact'], $sutData['Contact']);
-
-		unset($data['Address']['country_name']);
-		$this->is($data['Address'], $sutData['Address']);
-
-		unset($sutData['Gift']['contact_id']);
-		unset($sutData['Gift']['office_id']);
-		unset($sutData['Gift']['id']);
-
-		$this->is($data['Gift'], $sutData['Gift']);
+		$this->false($data['Gift']);
+		$this->false($data['Contact']);
+		$this->false($data['Address']);
 	}
 /**
  * undocumented function
@@ -249,25 +248,17 @@ class GiftsControllerTest extends MyTestCase {
 			}
 		}
 
-		// test if data was written to the session
+		// test that data is not preserved in the session
 		$data = array(
 			'Gift' => $this->Sut->Session->read('Gift'),
 			'Contact' => $this->Sut->Session->read('Contact'),
 			'Address' => $this->Sut->Session->read('Address'),
 			'Phone' => $this->Sut->Session->read('Phone'),
 		);
-
-		$this->is($data['Contact'], $sutData['Contact']);
-
-		unset($data['Address']['country_name']);
-		$this->is($data['Address'], $sutData['Address']);
-
-		unset($sutData['Gift']['contact_id']);
-		unset($sutData['Gift']['office_id']);
-		unset($sutData['Gift']['id']);
-
-		$this->is($data['Gift'], $sutData['Gift']);
-		$this->is($data['Phone'], $sutData['Phone']);
+		$this->false($data['Gift']);
+		$this->false($data['Contact']);
+		$this->false($data['Address']);
+		$this->false($data['Phone']);
 	}
 /**
  * undocumented function
@@ -292,7 +283,7 @@ class GiftsControllerTest extends MyTestCase {
  * @return void
  * @access public
  */
-	function testTheSingleFormIsValidated() {
+	function testAnIncompleteGiftIsAlwaysAdded() {
 		$this->fakeRequest('get');
 		$this->Sut->params['named']['appeal_id'] = $this->gpiAppealId;
 		$this->Sut->add();
@@ -307,7 +298,13 @@ class GiftsControllerTest extends MyTestCase {
 		$this->is(count($this->Sut->viewVars['flashMessages']), 1);
 
 		$newCount = $this->Sut->Gift->find('count');
-		$this->is($count, $newCount);
+		$this->is($count + 1, $newCount);
+
+		$last = $this->Sut->Gift->find('first', array(
+			'contain' => false,
+			'order' => array('created' => 'desc')
+		));
+		$this->is($last['Gift']['complete'], '0');
 	}
 }
 ?>

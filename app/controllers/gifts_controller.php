@@ -89,6 +89,7 @@ class GiftsController extends AppController {
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
 		}
+
 		$this->saveRelatedData();
 
 		// since this is the last step, make the gift complete
@@ -425,8 +426,6 @@ class GiftsController extends AppController {
  * @access public
  */
 	function saveRelatedData() {
-		$this->Gift->save($this->data, false);
-
 		if (!isset($this->data['Contact']['id'])) {
 			$this->Contact->create(array('gift_id' => $this->data['Gift']['id']));
 			$this->Contact->save(null, false);
@@ -437,6 +436,7 @@ class GiftsController extends AppController {
 			$contactId = $this->data['Contact']['id'];
 		}
 		$this->Contact->save($this->data, false);
+		$this->Gift->save($this->data, false);
 
 		if (!isset($this->data['Address']['id'])) {
 			$this->Address->create(array('contact_id' => $contactId));;
