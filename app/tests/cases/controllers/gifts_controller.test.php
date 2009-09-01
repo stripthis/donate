@@ -34,6 +34,9 @@ class GiftsControllerTest extends MyTestCase {
 		$this->Country = ClassRegistry::init('Country');
 		$this->City = ClassRegistry::init('City');
 
+		$models = array('Gift', 'Contact', 'Address', 'Phone');
+		AppModel::resetRequired($models);
+
 		if (!$this->gpiAppealId) {
 			$this->gpiAppealId = $this->Appeal->lookup(
 				array('name LIKE' => '%default GPI appeal%'), 'id', false
@@ -56,8 +59,6 @@ class GiftsControllerTest extends MyTestCase {
 				array('name LIKE' => '%International%'), 'id', false
 			);
 		}
-
-		$this->Sut->params['named']['office_id'] = $this->gpiAppealId;
 	}
 /**
  * undocumented function
@@ -130,77 +131,7 @@ class GiftsControllerTest extends MyTestCase {
  * @return void
  * @access public
  */
-	function testAddSavesDataProperlyWithoutPhone() {
-		$this->Sut->dropSessionData();
-		$this->fakeRequest('post');
-
-		$this->Sut->data = array(
-			'Gift' => array(
-				'type' => 'donation',
-				'amount' => 5,
-				'frequency' => 'monthly'
-			),
-			'Contact' => array(
-				'salutation' => 'mr',
-				'fname' => 'Tim',
-				'lname' => 'Koschuetzki',
-				'email' => 'tkoschuetzki@aol.com'
-			),
-			'Address' => array(
-				'line_1' => 'Hibiskusweg 26c',
-				'line_2' => '',
-				'city' => 'Berlin',
-				'zip' => '13089',
-				'country_id' => $this->Country->lookup('Germany'),
-			)
-		);
-		$this->Sut->add();
-
-		$sutData = $this->Sut->data;
-
-		// test if the proper db structure was added
-		$gift = $this->Gift->find('first', array(
-			'conditions' => array('Gift.id' => $this->Gift->getLastInsertId()),
-			'contain' => array('Contact.Address.Phone')
-		));
-
-		$gift['Address'] = $gift['Contact']['Address'][0];
-		$phone = $gift['Address']['Phone'][0];
-		$this->is($phone['phone'], '');
-		$this->is($phone['address_id'], $gift['Address']['id']);
-		$this->is($phone['contact_id'], $gift['Contact']['id']);
-		$this->City->injectCityId($sutData);
-
-		foreach ($sutData as $model => $modelData) {
-			if ($model == 'Phone') {
-				continue;
-			}
-			foreach ($modelData as $field => $value) {
-				if ($field == 'city') {
-					continue;
-				}
-				$this->eq($gift[$model][$field], $value);
-			}
-		}
-
-		// test that data is not preserved in the session
-		$data = array(
-			'Gift' => $this->Sut->Session->read('Gift'),
-			'Contact' => $this->Sut->Session->read('Contact'),
-			'Address' => $this->Sut->Session->read('Address'),
-		);
-
-		$this->false($data['Gift']);
-		$this->false($data['Contact']);
-		$this->false($data['Address']);
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
-	function testAddSavesDataProperlyWithPhone() {
+	function testAddSavesDataProperly() {
 		$this->Sut->dropSessionData();
 		$this->fakeRequest('post');
 
@@ -255,6 +186,7 @@ class GiftsControllerTest extends MyTestCase {
 			'Address' => $this->Sut->Session->read('Address'),
 			'Phone' => $this->Sut->Session->read('Phone'),
 		);
+
 		$this->false($data['Gift']);
 		$this->false($data['Contact']);
 		$this->false($data['Address']);
@@ -267,12 +199,10 @@ class GiftsControllerTest extends MyTestCase {
  * @access public
  */
 	function testAmountRecalculation() {
-		$this->Sut->data = array(
-			'Gift' => array(
-				'amount' => 5,
-				'amount_other' => 55
-			)
-		);
+		$this->Sut->data = array('Gift' => array(
+			'amount' => 5,
+			'amount_other' => 55
+		));
 		$this->fakeRequest('post');
 		$this->Sut->add();
 		$this->is($this->Sut->data['Gift']['amount'], 55);
@@ -305,6 +235,52 @@ class GiftsControllerTest extends MyTestCase {
 			'order' => array('created' => 'desc')
 		));
 		$this->is($last['Gift']['complete'], '0');
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function testMultiStepFormCreatesRelatedData() {
+		$this->fakeRequest('get');
+		$this->Sut->params['named']['appeal_id'] = $this->exampleAppealId;
+		$this->Sut->add();
+		$this->Sut->dropSessionData();
+
+		$count = $this->Gift->find('count');
+		$this->fakeRequest('post');
+		$this->Sut->data = array(
+			'Gift' => array(
+				'type' => 'donation',
+				'amount' => 23,
+				'frequency' => 'annually'
+			),
+			'Contact' => array(
+				'salutation' => 'mr',
+				'email' => 'tkoschuetzki@aol.com'
+			),
+			'Address' => array(
+				'line_1' => 'Hibiskusweg 26c',
+				'line_2' => '',
+				'country_id' => $this->Country->lookup('Germany'),
+			)
+		);
+		$sutData = $this->Sut->data;
+		$this->Sut->add();
+
+		$gift = $this->Gift->find('first', array(
+			'conditions' => array('Gift.id' => $this->Gift->getLastInsertId()),
+			'contain' => array('Contact.Address.Phone')
+		));
+
+		$this->eq($sutData['Gift']['type'], $gift['Gift']['type']);
+		$this->eq($sutData['Gift']['frequency'], $gift['Gift']['frequency']);
+		$this->eq($sutData['Gift']['amount'], $gift['Gift']['amount']);
+		$this->eq($sutData['Contact']['salutation'], $gift['Contact']['salutation']);
+		$this->eq($sutData['Contact']['email'], $gift['Contact']['email']);
+		$this->eq($sutData['Address']['line_1'], $gift['Contact']['Address'][0]['line_1']);
+		$this->eq($sutData['Address']['country_id'], $gift['Contact']['Address'][0]['country_id']);
 	}
 }
 ?>

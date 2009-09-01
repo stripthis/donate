@@ -42,14 +42,6 @@ class Address extends AppModel {
 				'allowEmpty' => true,
 			)
 		),
-		'state_id' => array(
-			'valid' => array(
-				'rule' => array('validateState'),
-				'message' => 'Please provide a valid state.',
-				'required' => false,
-				'allowEmpty' => true,
-			)
-		),
 		'country_id' => array(
 			'required' => array(
 				'rule' => 'notEmpty',

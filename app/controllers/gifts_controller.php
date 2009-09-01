@@ -3,6 +3,7 @@ class GiftsController extends AppController {
 	var $helpers = array('Fpdf', 'GiftForm');
 	var $models = array('Gift', 'Contact', 'Address', 'Phone');
 	var $sessAppealKey = 'gift_process_appeal_id';
+	var $sessOfficeKey = 'gift_process_office_id';
 /**
  * undocumented function
  *
@@ -39,6 +40,7 @@ class GiftsController extends AppController {
 		$currentAppeal = $this->Appeal->find('default', array('id' => $appealId));
 		Assert::notEmpty($currentAppeal, '500');
 		$officeId = $currentAppeal['Appeal']['office_id'];
+		$this->Session->write($this->sessOfficeKey, $officeId);
 
 		$this->data['Gift']['appeal_id'] = $currentAppeal['Appeal']['id'];
 		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['id'];
@@ -69,7 +71,6 @@ class GiftsController extends AppController {
 
 		$isLastStep = $step == $currentAppeal['Appeal']['steps'];
 		$validates = AppModel::bulkValidate($this->models, $this->data);
-
 		if (!$isLastStep && !$validates) {
 			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');

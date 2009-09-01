@@ -47,7 +47,6 @@ class Gift extends AppModel {
 			'mini' => array(
 				'rule' => array('validateAmount'),
 				'message' => 'Sorry, this amount is too small.',
-				'is_required' => true,
 			)
 		),
 		'frequency' => array(
