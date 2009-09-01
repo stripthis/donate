@@ -132,6 +132,7 @@ class GiftsController extends AppController {
 			return $this->render('step' . $step);
 		}
 
+		$this->dropSessionData();
 		$keyData = $this->_addAuthkeyToSession($tId);
 		$this->Gift->emailReceipt($this->data['Contact']['email'], $keyData);
 
