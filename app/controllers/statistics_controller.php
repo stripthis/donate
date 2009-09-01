@@ -82,6 +82,7 @@ class StatisticsController extends AppController {
  */
 	function _conditions($field = 'created', $model = 'User') {
 		return array(
+			'office_id' => $this->Session->read('Office.id'),
 			"DATE_FORMAT(" . $field. ", '%Y-%m-%d') >= '" . $this->startDate . "'",
 			"DATE_FORMAT(" . $field . ", '%Y-%m-%d') <= '" . $this->endDate . "'",
 		);
