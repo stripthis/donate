@@ -297,11 +297,11 @@ class User extends AppModel {
  */
 	function sessionLogin() {
 		$Session = Common::getComponent('Session');
-		if (!Configure::read('user_id')) {
+		$user = $Session->read('User');
+		if (!$user) {
 			return false;
 		}
-		$user = $Session->read('User');
-		return User::setActive(Configure::read('user_id'));
+		return User::setActive($user['User']['id']);
 	}
 /**
  * undocumented function
@@ -313,7 +313,7 @@ class User extends AppModel {
 		Configure::delete('User');
 		Assert::isNull(Configure::read('User'));
  		$Session = Common::getComponent('Session');
-		User::guestLogin();
+		$Session->del('User');
 		$Cookie = Common::getComponent('Cookie');
 		$Cookie->del('Auth.key');
 		Assert::isEmpty($Cookie->read('Auth.key'));

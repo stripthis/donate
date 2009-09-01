@@ -1,5 +1,6 @@
 <?php
-  $Session = Common::getComponent('Session');
+$Session = Common::getComponent('Session');
+$Session->read('Office.id');
 ?>
     <ul class="menu" id="menu_top">
       <li><a href="<?php echo Router::Url("/admin/home",true) ?>"  <?php if($this->name=="Statistics") echo 'class="selected"'?>><?php echo __("Home"); ?></li>

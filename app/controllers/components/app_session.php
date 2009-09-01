@@ -75,7 +75,6 @@ class AppSessionComponent extends SessionComponent {
 
 		if (!empty($row) && isset($row[$this->SessionInstance->alias]) && isset($row[$this->SessionInstance->alias]['data'])) {
 			$data = $row[$this->SessionInstance->alias]['data'];
-			Configure::write('user_id', $row[$this->SessionInstance->alias]['user_id']);
 		}
 		return $data;
 	}
