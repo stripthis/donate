@@ -919,4 +919,5 @@ class View extends Object {
 		return $this->element($name, $params, $loadHelpers);
 	}
 }
+
 ?>

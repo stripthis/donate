@@ -361,7 +361,7 @@ class CookieComponent extends Object {
  * @access private
  */
 	function __write($name, $value) {
-		setcookie($this->name . "$name", $this->__encrypt($value), $this->__expires, $this->path, $this->domain, $this->secure);
+		@setcookie($this->name . "$name", $this->__encrypt($value), $this->__expires, $this->path, $this->domain, $this->secure);
 
 		if (!is_null($this->__reset)) {
 			$this->__expires = $this->__reset;
@@ -375,7 +375,7 @@ class CookieComponent extends Object {
  * @access private
  */
 	function __delete($name) {
-		setcookie($this->name . $name, '', time() - 42000, $this->path, $this->domain, $this->secure);
+		@setcookie($this->name . $name, '', time() - 42000, $this->path, $this->domain, $this->secure);
 	}
 /**
  * Encrypts $value using var $type method in Security class
