@@ -65,7 +65,7 @@ class AppController extends Controller {
 		if (defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
 			return;
 		}
-		
+
 		if ($this->isAdmin()) {
 			$this->layout = 'admin';
 		}

@@ -99,7 +99,7 @@ class AppSessionComponent extends SessionComponent {
 				$factor = 10;
 			break;
 		}
-		$expires = time() +  Configure::read('Session.timeout') * $factor;
+		$expires = time() + Configure::read('Session.timeout') * $factor;
 		$time = time();
 		$rand = rand();
 		$row = array($this->SessionInstance->alias => array('key' => $key, 'data' => $value, 'expires' => $expires));
