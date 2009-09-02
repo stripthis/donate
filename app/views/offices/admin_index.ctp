@@ -12,10 +12,10 @@
 <table>
 <?php
 $th = array(
-	$myPaginator->sort('name'),
-	$myPaginator->sort('parent_id'),
-	$myPaginator->sort('created'),
-	$myPaginator->sort('modified'),
+	$myPaginator->sort(__('Name', true), 'name'),
+	$myPaginator->sort(__('Parent', true), 'parent_id'),
+	$myPaginator->sort(__('Created', true), 'created'),
+	$myPaginator->sort(__('Modified', true), 'modified'),
 	'Actions'
 );
 echo $html->tableHeaders($th);

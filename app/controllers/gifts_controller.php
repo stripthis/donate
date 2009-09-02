@@ -94,7 +94,7 @@ class GiftsController extends AppController {
 		// for the last step, reset is_required to required to prevent hacking attemps
 		$validates = AppModel::bulkValidate($this->models, $this->data, true);
 		if (!$validates) {
-			$msg = 'There are problems with the form. This is a possible hacking attempt.';
+			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
 		}
@@ -109,6 +109,7 @@ class GiftsController extends AppController {
 		// credit card data is given
 		// @todo if appeal or payment gateway use redirect model then redirect
 		// else if the credit data is given, validates
+		$errors = false;
 		if (isset($this->data['Card']) && $currentAppeal['Appeal']['processing'] == 'manual') {
 			$this->Card->set($this->data);
 			if ($this->Card->validates()) {
@@ -117,6 +118,11 @@ class GiftsController extends AppController {
 			} else {
 				$errors = true;
 			}
+		}
+		if ($errors) {
+			$msg = 'There are problems with the form.';
+			$this->Message->add($msg, 'error');
+			return $this->render('step' . $step);
 		}
 
 		// everything ok prepare / perform the transaction
@@ -230,7 +236,8 @@ class GiftsController extends AppController {
 			'custom_limit' => false
 		);
 		$params = am($defaults, $this->params['url'], $this->params['named']);
-
+		unset($params['ext']);
+		unset($params['url']);
 		if (is_numeric($params['custom_limit'])) {
 			if ($params['custom_limit'] > 75) {
 				$params['custom_limit'] = 75;

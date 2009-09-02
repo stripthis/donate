@@ -81,7 +81,7 @@ class Card extends AppModel {
  * @return bool, true if validation success
  */	
 	function validateCardNumber($check){
-		if(isset($this->data["Card"]["type"])){
+		if (isset($this->data["Card"]["type"])){
 			$type = $this->data["Card"]["type"];
 			$number = $check["number"];
 			switch($type){

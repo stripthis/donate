@@ -7,11 +7,15 @@
       </ul>
 	</div>
 	<?php if (!empty($users)) : ?>
+		<?php
+		unset($params['sort']);
+		unset($params['direction']);
+		?>
 		<table cellpadding="0" cellspacing="0">
 			<tr>
-				<th class="text"><?php echo $paginator->sort('login');?></th>
-				<th class="date"><?php echo $paginator->sort('created');?></th>
-			<th class="date"><?php echo $paginator->sort('modified');?></th>
+				<th class="text"><?php echo $paginator->sort(__('Login', true), 'login', array('url' => $params));?></th>
+				<th class="date"><?php echo $paginator->sort(__('Created', true), 'created', array('url' => $params));?></th>
+			<th class="date"><?php echo $paginator->sort(__('Last Update', true), 'modified', array('url' => $params));?></th>
 				<th class="actions"><?php __('Actions');?></th>
 			</tr>
 			<?php

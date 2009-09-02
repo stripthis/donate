@@ -9,17 +9,19 @@
 	<?php if (!empty($appeals)) : ?>
 		<table>
 		<?php
+		unset($params['sort']);
+		unset($params['direction']);
 		$th = array(
-			$paginator->sort('starred'),
-			$paginator->sort('status'),
-			$paginator->sort('campaign_code'),
-			$paginator->sort('name'),
-			$paginator->sort('default'),
-			$paginator->sort('reviewed'),
-			$paginator->sort('steps'),
-			$paginator->sort('Created By', 'user_id'),
-			$paginator->sort('created'),
-			$paginator->sort('modified'),
+			$paginator->sort('Starred', 'starred', array('url' => $params)),
+			$paginator->sort('Status', 'status', array('url' => $params)),
+			$paginator->sort('Campaign Code', 'campaign_code', array('url' => $params)),
+			$paginator->sort('Name', 'name', array('url' => $params)),
+			$paginator->sort('Default?', 'default', array('url' => $params)),
+			$paginator->sort('Reviewed?', 'reviewed', array('url' => $params)),
+			$paginator->sort('#Steps', 'steps', array('url' => $params)),
+			$paginator->sort('Created By', 'user_id', array('url' => $params)),
+			$paginator->sort('Created On', 'created', array('url' => $params)),
+			$paginator->sort('Last Update', 'modified', array('url' => $params)),
 			'Actions'
 		);
 		echo $html->tableHeaders($th);
