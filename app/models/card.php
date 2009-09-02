@@ -139,6 +139,19 @@ class Card extends AppModel {
 /**
  * undocumented function
  *
+ * @return void
+ * @access public
+ */
+	function beforeSave() {
+		if (isset($this->data['Card']['expire_date'])) {
+			$this->data['Card']['expire_month'] = $this->data['Card']['expire_date']['month'];
+			$this->data['Card']['expire_year'] = $this->data['Card']['expire_date']['year'];
+			unset($this->data['Card']['expire_date']);
+		}
+	}
+/**
+ * undocumented function
+ *
  * @param string $value 
  * @return void
  * @access public

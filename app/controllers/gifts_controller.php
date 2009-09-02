@@ -119,7 +119,7 @@ class GiftsController extends AppController {
 				$errors = true;
 			}
 		}
-		pr($this->data);
+
 		if ($errors) {
 			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');
