@@ -51,6 +51,9 @@ class SavedByBehavior extends ModelBehavior {
  * @access public
  */
 	function beforeSave(&$Model, $options = array()) {
+		if (class_exists('ShellDispatcher')) {
+			return true;
+		}
 		if (!$Model->id) {
 			$createdField = $this->__settings[$Model->alias]['createdField'];
 			$Model->data[$Model->alias][$createdField] = User::get('id');

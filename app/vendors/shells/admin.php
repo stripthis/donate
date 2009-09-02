@@ -5,7 +5,7 @@
  *
  */
 App::import('Core', 'Security');
-
+App::import('Core', 'Controller');
 class AdminShell extends Shell {
 	var $uses = array('User', 'Office', 'Contact');
 	var $components = array('Security');
@@ -132,7 +132,9 @@ class AdminShell extends Shell {
 				'password' => $password
 			)
 		);
-		//Mailer::deliver('created_admin', $options);
+		if (!Common::isDevelopment()) {
+			Mailer::deliver('created_admin', $options);
+		}
 
 		$msg = 'The admin account for ' . $login . ' has been created/reset successfully. ';
 		$msg .= 'An email has been sent to the email address.';
