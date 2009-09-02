@@ -60,7 +60,7 @@
 ?>
         </tbody>
       </table>
-	  	<?php	echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));?>
-      <?php echo $this->element('../gifts/elements/filter', compact('params')); ?>
     </div>
+	  <?php	echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));?>
+    <?php echo $this->element('../gifts/elements/filter', compact('params')); ?>
   </div>
