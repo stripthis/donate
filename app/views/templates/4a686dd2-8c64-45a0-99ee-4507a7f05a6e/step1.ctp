@@ -45,7 +45,8 @@
       <div class="spacer"></div>
 <?php echo $this->element('../templates/default/contact'); ?>
 <?php	echo $this->element('../templates/default/payment'); ?>
-      <?php echo $form->end('Donate'); ?>
+     	<?php echo $form->submit('Donate', array('class' => 'donate-submit')); ?>
+		<?php echo $form->end(); ?>
     </div>
   </div>
   <div class="clear"></div>
