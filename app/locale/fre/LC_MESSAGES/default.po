@@ -141,7 +141,7 @@ msgstr ""
 #: /views/elements/admin/menu.ctp:7
 #: /views/elements/admin/search.ctp:6
 msgid "Appeals"
-msgstr ""
+msgstr "Appels"
 
 #: /views/appeals/admin_index.ctp:6
 #: /views/gifts/admin_add.ctp:10
