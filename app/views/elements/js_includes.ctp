@@ -4,6 +4,9 @@ if (isset($jsonVars)):
 endif;
 
 $inclusionRules = Configure::read('JsIncludes');
+if (User::get('tooltips')) {
+	$inclusionRules['tooltip.js'] = '*:*';
+}
 $jsIncludes = array();
 
 $controller = @$this->params['controller'];

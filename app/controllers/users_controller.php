@@ -330,6 +330,7 @@ class UsersController extends AppController {
 		if (!$this->User->saveAll($this->data)) {
 			return $this->Message->add(__('Please fill out all fields', true), 'error');
 		}
+		User::restore();
 
 		$msg = 'Saved successfully.';
 		$this->Message->add(__($msg, true), 'ok', true, $this->here);

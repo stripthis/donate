@@ -7,6 +7,7 @@
 	echo $form->input('Contact.salutation', array('options' => Configure::read('App.contact.salutations')));
 	echo $form->input('Contact.fname', array('label' => 'First Name'));
 	echo $form->input('Contact.lname', array('label' => 'Last Name'));
+	echo $form->input('User.tooltips', array('label' => 'Show Toolstips?'));
 	echo $form->end('Save');
 	?>
 </div>
