@@ -179,7 +179,7 @@ class OfficesController extends AppController {
 
 		$this->Office->del($id);
 		$this->Message->add(__('The Office has been deleted.', true), 'ok', true);
-		$this->redirect(array('action' => 'admin_index'));
+		$this->redirect(array('action' => 'index'));
 	}
 /**
  * undocumented function

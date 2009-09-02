@@ -3,7 +3,7 @@
   <div class="actions">
     <h3><?php echo __('Actions');?></h3>
     <ul>
-      <li><?php echo $html->link(__('Delete', true), array('action'=>'delete', $form->value('Office.id')), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $form->value('Office.id'))); ?></li>
+      <li><?php echo $html->link(__('Delete', true), array('action'=>'delete', $form->value('Office.id')), array('class'=>'delete'), __('Are you sure?', true)); ?></li>
       <li><?php echo $html->link(__('New Office', true), array('action'=>'add'), array('class' => 'add')); ?></li>
 		<?php if (USer::isRoot()) : ?>
 			<li><?php echo $html->link(__('Manage Tree', true), array('action' => 'manage_tree'), array('class' => 'tree')); ?></li>
