@@ -1,4 +1,4 @@
-<?php $this->pageTitle = 'Admin Login'; ?>
+<?php $this->pageTitle = 'Login'; ?>
 <?php if(!isset($tabindex)) $tabindex = 1; ?>
   	<div id="admin_login" class="content">
       <h2><?php echo __("Sign in"); ?></h2>
@@ -18,4 +18,5 @@
       <?php echo $form->submit(__('Login',true).' »',array("tabindex" => $tabindex++))."\n";?>
       <?php echo $form->end()."\n";?>
       <div class="clear"></div>
+	<p><?php echo $html->link('I forgot my password!', array('controller' => 'users', 'action' => 'forgot_pw'))?></p>
     </div>

@@ -17,9 +17,7 @@ class SettingsController extends AppController {
 	 * @access public
 	 */
 	function admin_edit($id = null) {
-		$settings = $this->Setting->find('first', array(
-			'contain' => false,
-		));
+		$settings = $this->Setting->find('first');
 		Assert::notEmpty($settings, '404');
 
 		if ($this->isGet()) {

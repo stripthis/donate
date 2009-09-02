@@ -50,8 +50,7 @@ class AuthController extends AppController{
 		}
 
 		if ($success) {
-			$url = array('controller' => 'statistics', 'action' => 'index', 'admin' => 1);
-			return $this->redirect($url);
+			return $this->redirect('/admin/home');
 		}
 
 		if (!empty($userSession) && !empty($authId)) {

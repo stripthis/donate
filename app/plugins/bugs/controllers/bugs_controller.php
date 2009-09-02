@@ -31,7 +31,6 @@ class BugsController extends BugsAppController {
 
 		$this->Bug->id = false;
 		$lastBug = $this->Bug->find('first', array(
-			'contain' => false,
 			'order' => array('increment' => 'desc'),
 		));
 		$this->data['Bug']['increment'] = !empty($lastBug) 
@@ -78,9 +77,7 @@ class BugsController extends BugsAppController {
  */
 	function admin_resent_all($pw = null) {
 		Assert::true(User::isRoot(), '403');
-		$bugs = $this->Bug->find('all', array(
-			'contain' => false
-		));
+		$bugs = $this->Bug->find('all');
 
 		foreach ($bugs as $bug) {
 			$this->data['Bug'] = $bug['Bug'];

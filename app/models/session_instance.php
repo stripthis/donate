@@ -33,7 +33,11 @@ class SessionInstance extends AppModel {
 		$conditions = array_merge(array($this->alias . '.user_id' => $userId), $conditions);
 		$conditions[$rand] = $rand;
 		$recursive = -1;
-		return $this->find('first', compact('conditions', 'recursive'));
+		$result = $this->find('first', array(
+			'conditions' => $conditions,
+			'recursive' => -1
+		));
+		return $result;
 	}
 /**
  * Method used to read from a database session.

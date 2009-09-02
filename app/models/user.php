@@ -22,11 +22,11 @@ class User extends AppModel {
 		)
 		, 'login' => array(
 			'valid' => array('rule' => 'email', 'message' => 'Please enter a valid email address.')
-			, 'unique' => array(
-				'rule' => 'validateUnique',
-				'field' => 'login', 'message' =>
-				'This email is already used by another account.'
-			)
+			// , 'unique' => array(
+			// 	'rule' => 'validateUnique',
+			// 	'field' => 'login', 'message' =>
+			// 	'This email is already used by another account.'
+			// )
 		)
 		, 'password' => array(
 			'required' => array(
@@ -64,8 +64,7 @@ class User extends AppModel {
 			'conditions' => array(
 				'LOWER(' . $this->displayField . ')' => $name,
 				'password' => User::hashPw($password),
-			),
-			'contain' => false
+			)
 		));
 
 		if (!empty($user)) {
@@ -195,19 +194,6 @@ class User extends AppModel {
 			'store' => false
 		);
 		Mailer::deliver('register', $emailSettings);
-
-		// $emailSettings = array(
-		// 	'vars' => array(
-		// 		'id' => $id
-		// 		, 'authKey' => $authKey
-		// 	),
-		// 	'mail' => array(
-		// 		'to' => Configure::read('App.lead_dev_email')
-		// 		, 'subject' => 'Welcome to ' . Configure::read('App.name')
-		// 	),
-		// 	'store' => false
-		// );
-		// Mailer::deliver('register', $emailSettings);
 	}
 /**
  * undocumented function
@@ -219,7 +205,7 @@ class User extends AppModel {
 	function referral_key($userId, $forceCreate = false) {
 		App::import('Core', 'Security');
 		if (!$forceCreate) {
-			$key = $this->lookup(array('id' => $userId), 'referral_key', false);	
+			$key = $this->lookup(array('id' => $userId), 'referral_key', false);
 			if (!empty($key)) {
 				return $key;
 			}
@@ -265,12 +251,10 @@ class User extends AppModel {
  * @access public
  */
 	static function guestLogin() {
-		$_this = Common::getModel('User');
+		$_this = ClassRegistry::init(__CLASS__);
 		$backup = $_this->data;
 		$_this->id = $_this->lookup(
-			array(
-				'login' => Configure::read('App.guestAccount')
-			),
+			array('login' => Configure::read('App.guestAccount')),
 			'id', false
 		);
 
@@ -312,11 +296,11 @@ class User extends AppModel {
  */
 	function sessionLogin() {
 		$Session = Common::getComponent('Session');
-		if (!$Session->check('User')) {
+		$user = $Session->read('User');
+		if (!$user) {
 			return false;
 		}
-		$user = $Session->read('User');
-		return User::setActive($user);
+		return User::setActive($user['User']['id']);
 	}
 /**
  * undocumented function
@@ -328,7 +312,7 @@ class User extends AppModel {
 		Configure::delete('User');
 		Assert::isNull(Configure::read('User'));
  		$Session = Common::getComponent('Session');
-		Assert::true($Session->del('User'));
+		$Session->del('User');
 		$Cookie = Common::getComponent('Cookie');
 		$Cookie->del('Auth.key');
 		Assert::isEmpty($Cookie->read('Auth.key'));

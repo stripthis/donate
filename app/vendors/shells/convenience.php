@@ -10,10 +10,7 @@ class ConvenienceShell extends Shell {
 	function main() {
 		// gifts - convenience calculation in afterSave()
 		$this->out('Doing gifts now ..');
-		$gifts = $this->Gift->find('all', array(
-			'contain' => false,
-			'fields' => array('id')
-		));
+		$gifts = $this->Gift->find('all', array('fields' => array('id')));
 		foreach ($gifts as $gift) {
 			$this->Gift->set(array(
 				'id' => $gift['Gift']['id'],

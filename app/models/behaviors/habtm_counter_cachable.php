@@ -34,10 +34,7 @@ class HabtmCounterCachableBehavior extends ModelBehavior {
 			if (isset($params['counterScope'])) {
 				$conditions = am($conditions, (array)$params['counterScope']);
 			}
-			$count=$model->find('count', array(
-				'conditions' => $conditions,
-				'contain' => false
-			));
+			$count=$model->find('count', compact('conditions'));
 			$model->saveField($field, $count, array('callbacks' => false));
 		}
 	}

@@ -2,6 +2,13 @@
 class AppModel extends Model {
 	var $actsAs = array('Lookupable', 'Containable');
 /**
+ * Never fetch any recursive data from associated models
+ * Use containable for any assocs
+ *
+ * @var integer
+ */
+	public $recursive = -1;
+/**
  * undocumented function
  *
  * @return void
@@ -258,11 +265,16 @@ class AppModel extends Model {
 
 			$modelObj = ClassRegistry::init($model);
 
-			if ($resetRequired) {
-				foreach ($modelObj->validate as $field => $rules) {
-					foreach ($rules as $name => $rule) {
+			foreach ($modelObj->validate as $field => $rules) {
+				foreach ($rules as $name => $rule) {
+					if ($resetRequired) {
 						if (isset($rule['is_required'])) {
 							$modelObj->validate[$field][$name]['required'] = true;
+						}
+					} else {
+						if (isset($rule['required'])) {
+							$modelObj->validate[$field][$name]['is_required'] = true;
+							unset($modelObj->validate[$field][$name]['required']);
 						}
 					}
 				}
@@ -272,6 +284,28 @@ class AppModel extends Model {
 			$validates = $modelObj->validates() && $validates;
 		}
 		return $validates;
+	}
+/**
+ * undocumented function
+ *
+ * @param string $models 
+ * @return void
+ * @access public
+ */
+	function resetRequired($models) {
+		$validates = true;
+		foreach ($models as $model) {
+			$modelObj = ClassRegistry::init($model);
+
+			foreach ($modelObj->validate as $field => $rules) {
+				foreach ($rules as $name => $rule) {
+					if (isset($rule['required'])) {
+						$modelObj->validate[$field][$name]['is_required'] = true;
+						$modelObj->validate[$field][$name]['required'];
+					}
+				}
+			}
+		}
 	}
 }
 ?>

@@ -26,6 +26,12 @@ function printThis(){
 }
 
 $(function() {
+	$('.donate-submit').click(function() {
+		console.log('here');
+		$(this)
+			.attr('value', 'Processing ..')
+			.attr('disabled', true);
+	});
 /**
  * Cake SQL Log (app debug mode)
  */
@@ -77,26 +83,42 @@ $(function() {
 	};
 	$('.hint').hint();
 /**
- * Slick annimation -  Slide, fade and toggle (and make cofee if you're nice)
+ * Slick annimation -  Slide, fade and toggle (and will break your tables if you're nice)
  */
 	jQuery.fn.slideFadeToggle = function(speed, easing, callback) {
 		return this.animate({opacity: 'toggle', height: 'toggle'}, speed, easing, callback); 
 	};
 /** 
  * Toogles
- * How it works: a.toggle#<id> closes/open .toggle_wrapper#wrapper_<id> easy hey ?
+ * How it works: a.toggle#<id> closes/open .wrapper_<id> easy hey ?
  */
 	$(".toggle.close").each(function() {
-		$(".toggle_wrapper#wrapper_"+$(this).attr("id")).hide();
+		$(".wrapper_"+$(this).attr("id")).hide();
 	})
 
 	$('a.toggle').click(function() {
-		$(".toggle_wrapper#wrapper_"+$(this).attr("id")).slideFadeToggle(300);
+		//@todo annimation only if not table row...
+		//$(".toggle_wrapper#wrapper_"+$(this).attr("id")).slideFadeToggle(300);
 		if($('a.toggle#'+$(this).attr("id")).hasClass("close")) {
 			$('a.toggle#'+$(this).attr("id")).addClass("open").removeClass("close");
+			$(".wrapper_"+$(this).attr("id")).show();
 		} else {
 			$('a.toggle#'+$(this).attr("id")).addClass("close").removeClass("open");
+			$(".wrapper_"+$(this).attr("id")).hide();
 		}
 		return false;
+	});
+/**
+ * Form select/unselect all
+ * How it works: 
+ */
+	$('input.select_all').click(function() {
+		var check = false;
+		if($(this).attr("checked")!= undefined && $(this).attr("checked")){
+			check = true;
+		}
+		$("input[name=" + $(this).attr('name') + "]").each(function(){
+			this.checked = check;
+		})
 	});
 });

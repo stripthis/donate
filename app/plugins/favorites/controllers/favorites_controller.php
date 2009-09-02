@@ -49,11 +49,7 @@ class FavoritesController extends FavoritesAppController {
 	function admin_add($id = null, $model = false) {
 		$userId = User::get('id');
 		$favorite = $this->Favorite->find('first', array(
-			'conditions' => array(
-				'user_id' => $userId,
-				'foreign_id' => $id
-			),
-			'contain' => false
+			'conditions' => array('user_id' => $userId, 'foreign_id' => $id)
 		));
 
 		$adj = Configure::read('Favorites.adjective');
@@ -83,11 +79,7 @@ class FavoritesController extends FavoritesAppController {
 	function admin_delete($id = null, $model = false) {
 		$userId = User::get('id');
 		$favorite = $this->Favorite->find('first', array(
-			'conditions' => array(
-				'user_id' => $userId,
-				'foreign_id' => $id
-			),
-			'contain' => false
+			'conditions' => array('user_id' => $userId, 'foreign_id' => $id)
 		));
 
 		$adj = Configure::read('Favorites.adjective');

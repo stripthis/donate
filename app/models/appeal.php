@@ -45,5 +45,30 @@ class Appeal extends AppModel {
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
 	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function afterDelete() {
+		App::import('Core', 'Folder');
+		$folder = new Folder(VIEWS . 'templates');
+		$contents = $folder->read();
+		$toDelete = false;
+		foreach ($contents[0] as $dir) {
+			if (strpos($dir, $this->id) !== false) {
+				$toDelete = $dir;
+				break;
+			}
+		}
+
+		if ($toDelete) {
+			$oldPath = VIEWS . 'templates' . DS . $toDelete;
+			$folder = new Folder($oldPath);
+			$folder->delete();
+		}
+		return true;
+	}
 }
 ?>

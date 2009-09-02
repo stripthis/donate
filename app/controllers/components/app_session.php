@@ -67,13 +67,15 @@ class AppSessionComponent extends SessionComponent {
 		$row = $this->SessionInstance->find('first', array(
 			'recursive' => -1,
 			'conditions' => array($this->SessionInstance->alias . '.key' => $key, $rand => $rand, $time => $time),
-			'fields' => array($this->SessionInstance->alias . '.data')
+			'fields' => array(
+				$this->SessionInstance->alias . '.data',
+				$this->SessionInstance->alias . '.user_id'
+			)
 		));
 
 		if (!empty($row) && isset($row[$this->SessionInstance->alias]) && isset($row[$this->SessionInstance->alias]['data'])) {
 			$data = $row[$this->SessionInstance->alias]['data'];
 		}
-
 		return $data;
 	}
 /**
@@ -85,7 +87,7 @@ class AppSessionComponent extends SessionComponent {
  * @access private
  */
 	function __modelWrite($key, $value) {
-		switch (Configure::read('Security.level')) {
+		switch(Configure::read('Security.level')) {
 			case 'high':
 				$factor = 10;
 			break;
@@ -105,14 +107,12 @@ class AppSessionComponent extends SessionComponent {
 		$row = array($this->SessionInstance->alias => array('key' => $key, 'data' => $value, 'expires' => $expires));
 
 		// When session is being written at end of operation, DB might be closed
-
 		$Db =& ConnectionManager::getDataSource($this->SessionInstance->useDbConfig);
 		if (!$Db->isConnected()) {
 			$Db->connect();
 		}
 
 		// Proceed with saving
-
 		$id = $this->SessionInstance->field(
 			$this->SessionInstance->primaryKey,
 			array(
@@ -147,6 +147,10 @@ class AppSessionComponent extends SessionComponent {
  * @access private
  */
 	function __modelGc($expires = null) {
+		$Db =& ConnectionManager::getDataSource($this->SessionInstance->useDbConfig);
+		if (!$Db->isConnected()) {
+			$Db->connect();
+		}
 		return $this->SessionInstance->deleteAll(array($this->SessionInstance->alias . '.expires <' => time()));
 	 }
 }

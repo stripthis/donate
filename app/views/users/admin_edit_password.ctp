@@ -1,4 +1,4 @@
-<?php echo $form->create('User', array('url' => '/users/edit_password', 'id' => 'UserAddForm')); ?>
+<?php echo $form->create('User', array('url' => '/admin/users/edit_password', 'id' => 'UserAddForm')); ?>
 <fieldset>
 	<legend>Changing your Password</legend>
 	<br/>

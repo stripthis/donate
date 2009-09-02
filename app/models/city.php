@@ -58,7 +58,7 @@ class City extends AppModel{
  * @access public
  */
 	function injectCityId(&$data) {
-		if (!isset($data['Address'])) {
+		if (!isset($data['Address']['city']) && !isset($data['Address']['city_id'])) {
 			return false;
 		}
 

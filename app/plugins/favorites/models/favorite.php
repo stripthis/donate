@@ -22,7 +22,6 @@ class Favorite extends FavoritesAppModel{
 	function load($userId) {
 		$favorites = $this->find('all', array(
 			'conditions' => array('user_id' => $userId),
-			'contain' => false,
 			'fields' => array('foreign_id')
 		));
 

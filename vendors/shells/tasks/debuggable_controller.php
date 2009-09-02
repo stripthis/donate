@@ -147,8 +147,7 @@ class DebuggableControllerTask extends ControllerTask {
  */
 	function {$admin}view(\$id = null) {
 		\${$singularName} = \$this->{$currentModelName}->find('first', array(
-			'conditions' => array('{$currentModelName}.id' => \$id),
-			'contain' => false
+			'conditions' => array('{$currentModelName}.id' => \$id)
 		));
 		Assert::notEmpty(\${$singularName}, '404');
 		\$this->set(compact('{$singularName}'));
@@ -176,8 +175,7 @@ class DebuggableControllerTask extends ControllerTask {
 			\${$singularName} = \$this->{$currentModelName}->find('first', array(
 				'conditions' => array(
 					'{$currentModelName}.id' => \$id
-				),
-				'contain' => false,
+				)
 			));
 			Assert::notEmpty(\${$singularName}, '404');
 			\$action = 'edit';
@@ -245,10 +243,7 @@ PHP;
  * @access public
  */
 	function {$admin}delete(\$id = null, \$undelete = false) {
-		\${$singularName} = \$this->{$currentModelName}->find('first', array(
-			'conditions' => compact('id'),
-			'contain' => false
-		));
+		\${$singularName} = \$this->{$currentModelName}->find('first', array('conditions' => compact('id')));
 		Assert::notEmpty(\${$singularName}, '404');
 		Assert::true(AppModel::isOwn(\${$singularName}, '{$currentModelName}'), '403');
 

@@ -5,11 +5,19 @@ class Gift extends AppModel {
 	);
 
 	var $belongsTo = array(
-		'User', 'Appeal', 'Office', 'Contact'
+		'Contact', 'User', 'Appeal', 'Office'
 	);
 
 	var $hasMany = array(
 		'Transaction' => array('dependent' => true),
+	);
+
+	var $hasOne = array(
+		'LastTransaction' => array(
+			'className' => 'Transaction',
+			'type' => 'left',
+			'limit' => 1
+		)
 	);
 
 	var $validate = array(
@@ -39,7 +47,6 @@ class Gift extends AppModel {
 			'mini' => array(
 				'rule' => array('validateAmount'),
 				'message' => 'Sorry, this amount is too small.',
-				'is_required' => true,
 			)
 		),
 		'frequency' => array(
@@ -129,11 +136,16 @@ class Gift extends AppModel {
 					//,'legacy' => 'Legacy'
 				);
 			case 'frequencies':
-				$frequencies = array('onetime', 'monthly', 'quarterly', 'biannually', 'annualy');
+				$frequencies = array('onetime', 'monthly', 'quarterly', 'biannually', 'annually');
+
+				$Session = Common::getComponent('Session');
+				if ($Session->check('Office.id') && User::isAdmin()) {
+					$query['id'] = $Session->read('Office.id');
+				}
+
 				if (!isset($query['options']) && isset($query['id'])) {
 					$frequencies = ClassRegistry::init('Office')->find('first', array(
 						'conditions' => array('id' => $query['id']),
-						'contain' => false,
 						'fields' => array('frequencies')
 					));
 					$frequencies = explode(',', $frequencies['Office']['frequencies']);
@@ -145,11 +157,15 @@ class Gift extends AppModel {
 				}
 				return $result;
 			case 'amounts':
+				$Session = Common::getComponent('Session');
+				if ($Session->check('Office.id') && User::isAdmin()) {
+					$query['id'] = $Session->read('Office.id');
+				}
+
 				$amounts = '5,10,15';
 				if (!isset($query['options']) && isset($query['id'])) {
 					$amounts = ClassRegistry::init('Office')->find('first', array(
 						'conditions' => array('id' => $query['id']),
-						'contain' => false,
 						'fields' => array('amounts')
 					));
 					$amounts = $amounts['Office']['amounts'];
@@ -169,6 +185,8 @@ class Gift extends AppModel {
  * @access public
  */
 	function name($id) {
+		// !! form double submission depends on this so dont remove the created date!
+
 		$gift = $this->find('first', array(
 			'conditions' => array('Gift.id' => $id),
 			'contain' => array('Contact(fname, lname)'),

@@ -22,7 +22,7 @@
   <div id="header">
     <h1><?php 
       echo $html->link( $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")) ." | ".__("International",array(false)), 
-              '/admin/dashboard', array('escape' => false)); ?>
+              '/admin/home', array('escape' => false)); ?>
     </h1>
   </div>
   </div>

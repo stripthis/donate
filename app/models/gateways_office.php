@@ -21,15 +21,12 @@ class GatewaysOffice extends AppModel {
 				$gateway = false;
 				if ($officeId) {
 					$gateway = $this->find('first', array(
-						'conditions' => array('office_id' => $officeId),
-						'contain' => false
+						'conditions' => array('office_id' => $officeId)
 					));
 				}
 
 				if (empty($gateway)) {
-					$gateway = $this->find('first', array(
-						'contain' => false
-					));
+					$gateway = $this->find('first');
 				}
 				return $gateway;
 		}
