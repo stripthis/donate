@@ -80,6 +80,7 @@ class TransactionsController extends AppController {
 		$this->paginate['Transaction'] = array(
 			'conditions' => $conditions,
 			'order' => array('Transaction.created' => 'desc'),
+			'recursive' => 1,
 			'contain' => array(
 				'Gift',
 				'Gateway',

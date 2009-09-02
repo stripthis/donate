@@ -68,7 +68,8 @@ class OfficeFixture extends CakeTestFixture {
 			'amounts' => '5,10,15',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:45:48',
-		),	);
+		),
+	);
 }
 
 ?>

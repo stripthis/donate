@@ -136,7 +136,13 @@ class Gift extends AppModel {
 					//,'legacy' => 'Legacy'
 				);
 			case 'frequencies':
-				$frequencies = array('onetime', 'monthly', 'quarterly', 'biannually', 'annualy');
+				$frequencies = array('onetime', 'monthly', 'quarterly', 'biannually', 'annually');
+
+				$Session = Common::getComponent('Session');
+				if ($Session->check('Office.id') && User::isAdmin()) {
+					$query['id'] = $Session->read('Office.id');
+				}
+
 				if (!isset($query['options']) && isset($query['id'])) {
 					$frequencies = ClassRegistry::init('Office')->find('first', array(
 						'conditions' => array('id' => $query['id']),
@@ -151,6 +157,11 @@ class Gift extends AppModel {
 				}
 				return $result;
 			case 'amounts':
+				$Session = Common::getComponent('Session');
+				if ($Session->check('Office.id') && User::isAdmin()) {
+					$query['id'] = $Session->read('Office.id');
+				}
+
 				$amounts = '5,10,15';
 				if (!isset($query['options']) && isset($query['id'])) {
 					$amounts = ClassRegistry::init('Office')->find('first', array(
@@ -174,6 +185,8 @@ class Gift extends AppModel {
  * @access public
  */
 	function name($id) {
+		// !! form double submission depends on this so dont remove the created date!
+
 		$gift = $this->find('first', array(
 			'conditions' => array('Gift.id' => $id),
 			'contain' => array('Contact(fname, lname)'),

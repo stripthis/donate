@@ -43,7 +43,7 @@ class GiftsController extends AppController {
 		$this->Session->write($this->sessOfficeKey, $officeId);
 
 		$this->data['Gift']['appeal_id'] = $currentAppeal['Appeal']['id'];
-		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['id'];
+		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['campaign_code'] . '_' . $currentAppeal['Appeal']['id'];
 
 		$countryOptions = $this->Country->find('list', array('order' => array('Country.name' => 'asc')));
 		$this->set(compact('countryOptions', 'currentAppeal'));
@@ -60,7 +60,14 @@ class GiftsController extends AppController {
 		$this->City->injectCityId($this->data);
 
 		if (!isset($this->data['Gift']['id']) || empty($this->data['Gift']['id'])) {
-			$this->Gift->create(array('complete' => 0));
+			$data = array(
+				'complete' => 0,
+				'office_id' => $officeId
+			);
+			if (!User::isGuest()) {
+				$data['user_id'] = User::get('id');
+			}
+			$this->Gift->create($data);
 			$this->Gift->save(null, false);
 			$this->data['Gift']['id'] = $this->Gift->getLastInsertId();
 		}
@@ -184,6 +191,16 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
+	function admin_thanks() {
+		$msg = 'Donation added!';
+		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	function admin_index($type = '') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
@@ -265,6 +282,21 @@ class GiftsController extends AppController {
 
 		$gifts = $this->paginate();
 		$this->set(compact('gifts', 'type', 'params'));
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function admin_add() {
+		$this->params['named']['appeal_id'] = $this->Appeal->lookup(
+			array(
+				'office_id' => $this->Session->read('Office.id'),
+				'name LIKE' => '%Admin%'
+			), 'id', false
+		);
+		$this->add();
 	}
 /**
  * undocumented function
