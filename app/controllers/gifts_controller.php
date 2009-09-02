@@ -78,18 +78,20 @@ class GiftsController extends AppController {
 
 		$isLastStep = $step == $currentAppeal['Appeal']['appeal_step_count'];
 		$validates = AppModel::bulkValidate($this->models, $this->data);
+pr('here1');
 		if (!$isLastStep && !$validates) {
 			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
 		}
-
+pr('here2');
 		if (!$isLastStep && $validates) {
 			$this->saveRelatedData();
 			$this->saveSessionData();
+			pr($this->viewPath);
 			return $this->render('step' . ($step + 1));
 		}
-
+pr('here3');
 		// for the last step, reset is_required to required to prevent hacking attemps
 		$validates = AppModel::bulkValidate($this->models, $this->data, true);
 		if (!$validates) {
@@ -110,7 +112,7 @@ class GiftsController extends AppController {
 		// else if the credit data is given, validates
 		if (isset($this->data['Card']) && $currentAppeal['Appeal']['processing'] == 'manual') {
 			$this->Card->set($this->data);
-			if (true || $this->Card->validates()) {
+			if ($this->Card->validates()) {
 				//@todo if application used in manual/direct debit mode, save credit card details
 				//But for now: *WE DON'T SAVE*
 			} else {
@@ -267,6 +269,7 @@ class GiftsController extends AppController {
 
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,
+			'recursive' => 1,
 			'contain' => array(
 				'LastTransaction(created)',
 				'Office(id, name)', 'Appeal(id, name)', 
