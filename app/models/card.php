@@ -147,7 +147,7 @@ class Card extends AppModel {
 		$month = $val['expire_date']['month'];
 		$year = $val['expire_date']['year'];
 		$time = strtotime('01-' . $month . '-' . $year);
-		return $time >= time() + MONTH;
+		return $time >= time();
 	}
 }
 ?>
