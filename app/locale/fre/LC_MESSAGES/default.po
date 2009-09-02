@@ -358,7 +358,7 @@ msgstr ""
 #: /views/elements/admin/menu.ctp:8
 #: /views/elements/admin/search.ctp:3
 msgid "Gifts"
-msgstr "Cadeaus"
+msgstr "Cadeaux"
 
 #: /views/elements/admin/menu.ctp:9
 #: /views/elements/admin/search.ctp:4
@@ -374,7 +374,7 @@ msgstr "Soutiens"
 #: /views/elements/admin/menu.ctp:12
 #: /views/offices/admin_index.ctp:2
 msgid "Offices"
-msgstr "Bureaus"
+msgstr "Bureaux"
 
 #: /views/elements/admin/menu.ctp:13
 #: /views/elements/admin/search.ctp:5
