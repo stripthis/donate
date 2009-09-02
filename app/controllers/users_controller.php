@@ -330,6 +330,8 @@ class UsersController extends AppController {
 		if (!$this->User->saveAll($this->data)) {
 			return $this->Message->add(__('Please fill out all fields', true), 'error');
 		}
+
+		$this->_setLanguage(User::get('lang'));
 		User::restore();
 
 		$msg = 'Saved successfully.';
