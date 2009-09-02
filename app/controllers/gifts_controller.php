@@ -119,6 +119,7 @@ class GiftsController extends AppController {
 				$errors = true;
 			}
 		}
+		pr($this->data);
 		if ($errors) {
 			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');
@@ -238,6 +239,7 @@ class GiftsController extends AppController {
 		$params = am($defaults, $this->params['url'], $this->params['named']);
 		unset($params['ext']);
 		unset($params['url']);
+
 		if (is_numeric($params['custom_limit'])) {
 			if ($params['custom_limit'] > 75) {
 				$params['custom_limit'] = 75;

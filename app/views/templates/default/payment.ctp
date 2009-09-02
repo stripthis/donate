@@ -37,19 +37,13 @@
           <label class="option">Expiration date <?php echo $giftForm->required(); ?></label>
           <div>
             <?php 
-              echo $form->input('Card.expire_month', array(
-                'label' => 'month', 
-                'options' => $common->monthOptions(),
-              ))."\n";
-            ?>
-            <?php 
-              echo $form->input('Card.expire_year', array(
-                'label' => 'year',
+              echo r('>-<', '><', $form->input('Card.expire_date', array(
+                'label' => false,
 				'type' => 'date',
-				'dateFormat' => 'Y',
+				'dateFormat' => 'MY',
                 'minYear' => date('Y'),
 				'maxYear' => date('Y') + 10
-              ))."\n";
+              )))."\n";
             ?>
         	</div>
         </div>

@@ -51,16 +51,10 @@ class Card extends AppModel {
 				'is_required' => true
 			)
 		),
-		'expire_month' => array(
+		'expire_date' => array(
 			'required' => array(
-				'rule' => 'notEmpty',
-				'is_required' => true,
-				'last' => true
-			)
-		),
-		'expire_year' => array(
-			'required' => array(
-				'rule' => 'notEmpty',
+				'rule' => array('validateExpireDate'),
+				'message' => 'The expiration date must at least be one month in the future!',
 				'is_required' => true,
 				'last' => true
 			)
@@ -141,6 +135,19 @@ class Card extends AppModel {
  */
 	static function getTypes(){
 		return Configure::read("App.cards");
+	}
+/**
+ * undocumented function
+ *
+ * @param string $value 
+ * @return void
+ * @access public
+ */
+	function validateExpireDate($val) {
+		$month = $val['expire_date']['month'];
+		$year = $val['expire_date']['year'];
+		$time = strtotime('01-' . $month . '-' . $year);
+		return $time >= time() + MONTH;
 	}
 }
 ?>
