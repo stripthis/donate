@@ -626,9 +626,11 @@ ul.selector li ul.subitem li a{
 }
 .sidebar .help ul{
 	font-size:1.1em;
-	padding:5px;
+	padding:0;
 }
-
+.sidebar .help ul li{
+	padding:5px 5px 5px 0px;
+}
 
 /***********************************************************************************
  * Content
@@ -709,7 +711,7 @@ ul.selector li ul.subitem li a{
 /* Paging */
 .paging {
   background:#fff;
-  margin:1em 0;
+  margin:10px 5px;
 }
 .paging .counter{
 	color:#777;
@@ -743,6 +745,37 @@ ul.selector li ul.subitem li a{
 	padding:4px 8px;
   margin-right:2px;
 }
+/* filter */
+.filter {
+	padding:0;
+	margin:5px 0 0 0;
+	font-size:0.9em;
+}
+.filter fieldset{
+	margin:5px 10px 0 0;
+	padding:0;
+	border:0;
+}
+.filter fieldset legend{
+	margin:0;
+	padding:0;
+}
+.filter fieldset a.toggle{
+	padding-left:20px;	
+	background: transparent url(/img/layout/widget_open.png) left center no-repeat;
+}
+.filter fieldset a.toggle.close{
+	background: transparent url(/img/layout/widget_close.png) left center no-repeat;
+}
+.filter fieldset div{
+	background:#EFEFEF;
+	border:1px solid #EEE;
+	float:left;
+	width:100%;
+	margin:5px 0 0 0;
+	padding:2px 5px 5px 5px;
+}
+
 /* index */
 .index_wrapper{
 	padding:0;
@@ -774,13 +807,13 @@ ul.selector li ul.subitem li a{
 .index_wrapper .leaf .fold{
 		background:transparent url(../img/layout/folded.png) 5px 2px no-repeat;
 }
-.index_wrapper a.toggle{
+.index_wrapper table a.toggle{
 	width:16px;
 	height:16px;
 	display:block;
 	background:transparent url(../img/icons/S/text_indent_remove.png) 0 0 no-repeat;
 }
-.index_wrapper a.toggle.open{
+.index_wrapper table a.toggle.open{
 	background:transparent url(../img/icons/S/text_indent.png) 0 0 no-repeat;
 }
 .index_wrapper th{
