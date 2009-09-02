@@ -1,6 +1,6 @@
-<h1>My Preferences</h1>
 <div class="content edit" id="users_edit">
-	<?php echo $html->link('Change My password', array('action' => 'edit_password'))?>
+	<h2><?php echo __('My Account'); ?></h2>
+<?php echo $this->element('../users/elements/menu'); ?>
 	<?php echo $form->create('User', array('url' => $this->here));?>
 	<?php
 	echo $form->input('login', array('label' => 'Login / Email'));

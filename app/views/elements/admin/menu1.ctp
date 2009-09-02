@@ -9,13 +9,13 @@
 <?php foreach($links as $link):?>
           <li>
           <?php
-          if($selected!=false) {
-            if(!isset($link['option']['class'])) {
+            if(!isset($link['options']['class'])) {
               $link['options']['class'] = '';
             }
-            $link['options']['class'] .= ($selected == $link['label'] || $selected == $link['name']) ? "selected" : '';
-          }
-          echo $html->link($link['name'], $link['uri'], $link['options']);
+            if($selected!=false) {
+              $link['options']['class'] .= ($selected == $link['label'] || $selected == $link['name']) ? 'selected' : '';
+            }
+            echo $html->link($link['name'], $link['uri'], $link['options']);
           ?>
           </li>
 <?php endforeach; ?>
