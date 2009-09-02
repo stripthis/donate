@@ -13,19 +13,18 @@ $favConfig = Configure::read('Favorites');
 	echo $headline;
 	?>
 </h2>
-
 <?php if (!empty($transactions)) : ?>
 	<table>
 	<?php
 	$th = array(
-		$paginator->sort('parent_id'),
-		$paginator->sort('gateway_id'),
-		$paginator->sort('external_id'),
-		$paginator->sort('gift_id'),
-		$paginator->sort('status'),
-		$paginator->sort('amount'),
+		$myPaginator->sort(__('Parent',true),'Transaction.parent_id'),
+		$myPaginator->sort(__('Gateway',true),'Gateway.parent_id'),
+		$myPaginator->sort(__('External ID',true),'Transaction.external_id'),
+		$myPaginator->sort(__('Gift',true),'Transaction.gift_id'),
+		$myPaginator->sort(__('Status',true),'Transaction.status'),
+		$myPaginator->sort(__('Amount',true),'Transaction.amount'),
 		'Serial',
-		$paginator->sort('created'),
+		$myPaginator->sort(__('Created',true),'Transaction.created'),
 		'Actions'
 	);
 	echo $html->tableHeaders($th);

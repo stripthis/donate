@@ -23,19 +23,19 @@
             <th class="favorites">&nbsp;</th>
             <th class="status">&nbsp;</th>
             <th class="title">
-              <?php echo $paginator->sort(__('amount',true),'Gift.amount'); ?>
+              <?php echo $myPaginator->sort(__('Amount',true),'Gift.amount'); ?>
               <?php if ($type != 'onetime') : ?>
                 <?php //@todo due date goes here) ?>
               <?php endif; ?>
             </th>
             <th class="description">
-              <?php echo $paginator->sort(__('firstname',true),'Contact.fname'); ?> 
-              <?php echo $paginator->sort(__('last name',true),'Contact.lname'); ?>
-              (<?php echo $paginator->sort(__('email',true),'Contact.email'); ?>)
+              <?php echo $myPaginator->sort(__('firstname',true),'Contact.fname'); ?> 
+              <?php echo $myPaginator->sort(__('last name',true),'Contact.lname'); ?>
+              <?php echo $myPaginator->sort(__('email',true),'Contact.email'); ?>
             </th>
             <th class="attachments">&nbsp;</th>
             <th class="comments">&nbsp;</th>
-            <th class="date"><?php echo $paginator->sort(__('date',true),'Gift.modified'); ?></th>
+            <th class="date"><?php echo $myPaginator->sort(__('date',true),'Gift.modified'); ?></th>
             <th class="grab"></th>
           </tr>
           </thead>

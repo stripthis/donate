@@ -137,5 +137,26 @@ class MyPaginatorHelper extends PaginatorHelper {
 		}
 		return $title;
 	}
+	
+	/**
+	 * Adds and 'asc' or 'desc' class to the sort links
+	 * @see /cake/libs/view/helpers/PaginatorHelper#sort($title, $key, $options)
+	 */
+	function sort($title, $key = null, $options = array()) {
+		// get current sort key & direction
+		$sortKey = $this->sortKey();
+		$sortDir = $this->sortDir();
+		
+		// multiple mode stuffs
+		if(isset($key)){
+			// add $sortDir class if current column is sort column
+			if ($sortKey == $key) {
+				$options['class'] = $sortDir;
+			} else {
+				$options['class'] = "sortable";
+			}
+		}
+		return parent::sort($title, $key, $options);
+	}
 }
 ?>

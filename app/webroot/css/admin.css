@@ -31,7 +31,7 @@ a {
   text-decoration: none;
   font-weight: bold;
 }
- a:hover {
+a:hover {
   color: #ee6600;
 }
 a img {
@@ -88,17 +88,6 @@ th {
   border:1px solid #bbb;
   text-align: center;
 }
-th a {
-  background:#f2f2f2;
-  display: block;
-  padding: 2px 4px 2px 6px;
-  text-decoration: none;
-}
-th a:hover {
-  background: #ccc;
-  color: #333;
-  text-decoration: none;
-}
 table tr td {
   background: #fff;
   border: 1px solid #ccc;
@@ -106,7 +95,23 @@ table tr td {
   text-align: center;
   vertical-align: top;
 }
-
+table tr th a{
+  display: block;
+  padding: 2px 4px 2px 6px;
+  text-decoration: none;
+}
+table tr th a.sortable{
+	padding-right:20px;
+	background: transparent url(../img/layout/tablesort.gif) right center no-repeat;
+}
+table tr th a.asc{
+	padding-right:20px;
+	background: transparent url(../img/layout/tablesort_asc.gif) right center no-repeat;
+}
+table tr th a.desc{
+	padding-right:20px;
+	background: transparent url(../img/layout/tablesort_desc.gif) right center no-repeat;
+}
 /* Forms */
 form {
   clear: both;
@@ -702,23 +707,42 @@ ul.selector li ul.subitem li a{
 	background: transparent url(/img/layout/bg_tooltip_bottom_grey.png) left bottom no-repeat;
 }
 /* Paging */
-div.paging {
+.paging {
   background:#fff;
-  color: #ccc;
-  margin-bottom: 2em;
+  margin:1em 0;
 }
-div.paging div.disabled {
-  color: #ddd;
-  display: inline;
+.paging .counter{
+	color:#777;
+	margin:5px 0 5px 0;
 }
-div.paging span {
+.paging .pages *{
+  font-size:1em;
+  margin-right:2px;
+	float:left;
 }
-div.paging span.current {
-  color: #000;
+.paging .pages .number,
+.paging .pages .prev,
+.paging .pages .next {
+	border:1px solid #CCC;
+	background:#EFEFEF;
+	margin:0;
+	padding:4px 8px;
+  margin-right:4px;
 }
-div.paging span a {
+.paging .pages .disabled,
+.paging .pages .current {
+  color: #777;
+	padding:4px 8px;
+	border:1px solid #CCC;
+  font-weight:bold;
+  margin:0;
+  margin-right:4px;
+  background:#FFF;
 }
-
+.paging .pages .number{
+	padding:4px 8px;
+  margin-right:2px;
+}
 /* index */
 .index_wrapper{
 	padding:0;
@@ -759,29 +783,33 @@ div.paging span a {
 .index_wrapper a.toggle.open{
 	background:transparent url(../img/icons/S/text_indent.png) 0 0 no-repeat;
 }
-/* gift */
 .index_wrapper th{
 	text-align:left;
-	padding:2px;
+	padding:4px 2px;
 	border:0;
 	background:transparent;
 }
+.index_wrapper th.title a{
+	padding-left:45px;
+	background-position: 25px center;
+}
 .index_wrapper th a{
 	display:inline;
-	background:transparent;
 }
 .index_wrapper td{
 	text-align:left;
 }
 .index_wrapper tr.leaf td{
 	background:#FFF;
+	border:0;
+	border-top:1px dotted #EFEFEF;
 }
 /* generic */
 .index_wrapper .selection,
 .index_wrapper .status,
 .index_wrapper .fold,
 .index_wrapper .comments,
-.index_wrapper .attachements,
+.index_wrapper .attachments,
 .index_wrapper .favorites{
 	width:16px;
 }
