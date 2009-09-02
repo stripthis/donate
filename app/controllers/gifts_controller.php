@@ -16,6 +16,7 @@ class GiftsController extends AppController {
 		$this->AuthKey = ClassRegistry::init('AuthKey');
 		$this->AuthKeyType = $this->AuthKey->AuthKeyType;
 		$this->Office = ClassRegistry::init('Office');
+		$this->AppealStep = $this->Appeal->AppealStep;
 		$this->GatewaysOffice = $this->Office->GatewaysOffice;
 		$this->Contact = $this->Gift->Contact;
 		$this->Address = $this->Contact->Address;
@@ -47,6 +48,8 @@ class GiftsController extends AppController {
 
 		$countryOptions = $this->Country->find('list', array('order' => array('Country.name' => 'asc')));
 		$this->set(compact('countryOptions', 'currentAppeal'));
+
+		$this->AppealStep->addVisit($appealId, $step);
 
 		// no data was given so we render the selected/default view
 		if ($this->isGet()) {
