@@ -66,7 +66,11 @@ class OfficesController extends AppController {
  */
 	function admin_view($id = null) {
 		$office = $this->Office->find('first', array(
-			'conditions' => array('Office.id' => $id)
+			'conditions' => array('Office.id' => $id),
+			'contain' => array(
+				'ParentOffice',
+				'Gateway'
+			)
 		));
 		Assert::notEmpty($office, '404');
 		$this->set(compact('office'));
