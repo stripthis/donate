@@ -29,17 +29,18 @@ if (isset($url)) {
 	}
 }
 ?>
-
-<div class="paging<?php echo $class ?>">
-	<div class="p_stats">
+<div class="paging <?php echo $class ?>">
+	<div class="counter">
 	<?php
 	echo $paginator->counter(array(
 	        'format' => 'Page %page% of %pages% / showing %current% of %count% '
 	));?>
 	</div>
+	<div class="pages">
 	<?php
-	echo $paginator->prev('&laquo;Prev', array_merge(array('escape' => false, 'class' => 'prev'), $options), null, array('class' => 'disabled', 'escape' => false));
-	echo $myPaginator->numbers(am($numberOptions, array('before' => false, 'after' => false, 'separator' => false, 'modulus' => $modulus, 'fold' => 2)));
-	echo $paginator->next('Next&raquo;', array_merge(array('escape' => false, 'class' => 'next'), $options), null, array('class' => 'disabled', 'escape' => false));
+	echo $paginator->prev('&laquo;Prev', array_merge(array('escape' => false, 'class' => 'prev'), $options), null, array('class' => 'prev disabled', 'escape' => false));
+	echo $myPaginator->numbers(am($numberOptions, array('before' => false, 'after' => false, 'separator' => false, 'modulus' => $modulus, 'fold' => 2, 'class'=>'number')));
+	echo $paginator->next('Next&raquo;', array_merge(array('escape' => false, 'class' => 'next'), $options), null, array('class' => 'next disabled', 'escape' => false));
 	?>
+	</div>
 </div>
