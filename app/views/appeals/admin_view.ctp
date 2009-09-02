@@ -54,11 +54,6 @@
       <?php echo $appeal['Appeal']['status']; ?>
       &nbsp;
     </dd>
-    <dt><?php __('Country'); ?></dt>
-    <dd>
-      <?php echo $html->link($appeal['Country']['name'], array('controller'=> 'countries', 'action'=>'view', $appeal['Country']['id'])); ?>
-      &nbsp;
-    </dd>
     <dt><?php __('User'); ?></dt>
     <dd>
       <?php echo $html->link($appeal['User']['login'], array('controller'=> 'users', 'action'=>'view', $appeal['User']['id'])); ?>

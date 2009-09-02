@@ -21,7 +21,6 @@
 		$value = isset($steps[$i - 1]) ? $steps[$i - 1]['name'] : '';
     	echo $form->input('Appeal.steps.' . $i, compact('label', 'value'));
 	}
-    echo $form->input('country_id', array('options' => $countryOptions));
   ?>
 	</fieldset>
 <?php echo $form->end('Submit');?>

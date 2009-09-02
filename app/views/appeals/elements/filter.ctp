@@ -2,7 +2,6 @@
 $typeOptions = array(
 	'name' => 'Appeal Name',
 	'campaign_code' => 'Campaign Code',
-	'country' => 'Country',
 	'author_email' => 'Author Email'
 );
 $paginateOptions = array(10, 20, 40, 50, 75);

@@ -8,7 +8,7 @@ class AppealsController extends AppController {
  */
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Country = $this->Appeal->Country;
+		$this->Office = $this->Appeal->Office;
 	}
 /**
  * index action
@@ -51,9 +51,6 @@ class AppealsController extends AppController {
 				case 'campaign_code':
 					$conditions['Appeal.campaign_code LIKE'] = '%' . $params['keyword'] . '%';
 					break;
-				case 'country':
-					$conditions['Country.name LIKE'] = '%' . $params['keyword'] . '%';
-					break;
 				case 'author_email':
 					$conditions['User.login LIKE'] = '%' . $params['keyword'] . '%';
 					break;
@@ -61,7 +58,6 @@ class AppealsController extends AppController {
 					$conditions['or'] = array(
 						'Appeal.name LIKE' => '%' . $params['keyword'] . '%',
 						'Appeal.campaign_code LIKE' => '%' . $params['keyword'] . '%',
-						'Country.name LIKE' => '%' . $params['keyword'] . '%',
 						'User.login LIKE' => '%' . $params['keyword'] . '%'
 					);
 					break;
@@ -70,7 +66,7 @@ class AppealsController extends AppController {
 
 		$this->paginate['Appeal'] = array(
 			'conditions' => $conditions,
-			'contain' => array('User(id, login)', 'Country(name)'),
+			'contain' => array('User(id, login)'),
 			'order' => array('Appeal.name' => 'asc'),
 			'limit' => $params['my_limit']
 		);
@@ -85,13 +81,12 @@ class AppealsController extends AppController {
  * @access public
  */
 	function admin_view($id = null) {
-		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
-
 		$appeal = $this->Appeal->find('first', array(
 			'conditions' => array('Appeal.id' => $id),
-			'contain' => array('Parent', 'User', 'Country')
+			'contain' => array('Parent', 'User')
 		));
 		Assert::notEmpty($appeal, '404');
+		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
 		$this->set(compact('appeal'));
 	}
 /**
@@ -124,8 +119,7 @@ class AppealsController extends AppController {
 			$action = 'edit';
 		}
 
-		$countryOptions = $this->Country->find('list');
-		$this->set(compact('action', 'countryOptions'));
+		$this->set(compact('action'));
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
 			return $this->data = $appeal;

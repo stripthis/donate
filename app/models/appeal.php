@@ -2,7 +2,6 @@
 class Appeal extends AppModel {
 	var $belongsTo = array(
 		'User',
-		'Country',
 		'Office',
 		'Parent' => array(
 			'className' => 'Appeal',
