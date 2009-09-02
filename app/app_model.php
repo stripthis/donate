@@ -2,6 +2,13 @@
 class AppModel extends Model {
 	var $actsAs = array('Lookupable', 'Containable');
 /**
+ * Never fetch any recursive data from associated models
+ * Use containable for any assocs
+ *
+ * @var integer
+ */
+	public $recursive = -1;
+/**
  * undocumented function
  *
  * @return void

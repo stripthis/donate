@@ -145,7 +145,6 @@ class Office extends AppModel {
 		$_this = ClassRegistry::init(__CLASS__);
 		$subOffices = $_this->find('all', array(
 			'conditions' => array('parent_id' => User::get('office_id')),
-			'contain' => false,
 			'fields' => array('id')
 		));
 		$isValidSubOffice = in_array($id, Set::extract('/Office/id', $subOffices));

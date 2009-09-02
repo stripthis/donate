@@ -23,10 +23,7 @@ class AdminShell extends Shell {
 			exit(1);
 		}
 
-		$data = $this->User->find('first', array(
-			'conditions' => compact('login'),
-			'contain' => false
-		));
+		$data = $this->User->find('first', array('conditions' => compact('login')));
 
 		if (!$data) {
 			$this->out('The user ' . $login . ' does not exist yet. Please choose an office for this user:');

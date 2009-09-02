@@ -14,7 +14,6 @@ class StatesController extends AppController {
 		if (!$states) {
 			$states = $this->State->find('all', array(
 				'conditions' => array('State.country_id' => $countryId),
-				'contain' => false,
 				'order' => array('State.name' => 'asc'),
 				'fields' => array('id', 'name')
 			));

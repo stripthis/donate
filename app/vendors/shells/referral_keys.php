@@ -13,7 +13,6 @@ class CreateReferralKeysShell extends Shell {
 	function main() {
 		$users = $this->User->find('all', array(
 			'conditions' => array('referral_key' => ''),
-			'contain' => false,
 			'fields' => array('id')
 		));
 		$i = 0;

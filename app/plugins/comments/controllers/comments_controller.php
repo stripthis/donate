@@ -20,8 +20,7 @@ class CommentsController extends CommentsAppController {
 		$action = 'add';
 		if ($this->action == 'edit') {
 			$Comment = $this->Comment->find('first', array(
-				'conditions' => array('Comment.id' => $id),
-				'contain' => false
+				'conditions' => array('Comment.id' => $id)
 			));
 			Assert::notEmpty($Comment, '404');
 			Assert::true($this->Comment->isOwn($Comment, 'Comment'), '403');
@@ -65,8 +64,7 @@ class CommentsController extends CommentsAppController {
  */
 	 function delete($id = null) {
 		$comment = $this->Comment->find('first', array(
-			'conditions' => array('Comment.id' => $id),
-			'contain' => false
+			'conditions' => array('Comment.id' => $id)
 		));
 		Assert::true(Comment::isOwn($comment));
 

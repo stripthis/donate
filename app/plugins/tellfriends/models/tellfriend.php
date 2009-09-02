@@ -31,7 +31,6 @@ class Tellfriend extends TellfriendsAppModel {
 		$timeBefore = date('Y-m-d H:i:s', (time() - Configure::read('App.ipBanTime')));
 		$currentTime = date('Y-m-d H:i:s');
 		$noOfEmails = $this->find('count', array(
-			'contain' => false,
 			'conditions' => array(
 				'Tellfriend.ip' => $currentIP,
 				'Tellfriend.time_sent BETWEEN ? AND ?' => array($timeBefore, $currentTime)
@@ -54,8 +53,7 @@ class Tellfriend extends TellfriendsAppModel {
 			'conditions' => array(
 				'InvitedFriend.time_sent BETWEEN ? AND ?' => array($timeBefore, $currentTime)
 			),
-			'fields' => array('InvitedFriend.email'),
-			'contain' => false
+			'fields' => array('InvitedFriend.email')
 		));
 
 		$emails = Set::extract('/InvitedFriend/email', $emails);

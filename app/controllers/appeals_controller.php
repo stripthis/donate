@@ -116,8 +116,7 @@ class AppealsController extends AppController {
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			$appeal = $this->Appeal->find('first', array(
-				'conditions' => array('Appeal.id' => $id),
-				'contain' => false,
+				'conditions' => array('Appeal.id' => $id)
 			));
 			Assert::notEmpty($appeal, '404');
 			Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
@@ -159,8 +158,7 @@ class AppealsController extends AppController {
  */
 	function admin_delete($id = null, $undelete = false) {
 		$appeal = $this->Appeal->find('first', array(
-			'conditions' => compact('id'),
-			'contain' => false
+			'conditions' => compact('id')
 		));
 		Assert::notEmpty($appeal, '404');
 		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');

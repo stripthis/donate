@@ -54,8 +54,7 @@ class SupportersController extends AppController {
  */
 	function admin_view($id = null) {
 		$user = $this->User->find('first', array(
-			'conditions' => array('User.id' => $id),
-			'contain' => false
+			'conditions' => array('User.id' => $id)
 		));
 		$this->set(compact('user'));
 	}

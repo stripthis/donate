@@ -66,8 +66,7 @@ class OfficesController extends AppController {
  */
 	function admin_view($id = null) {
 		$office = $this->Office->find('first', array(
-			'conditions' => array('Office.id' => $id),
-			'contain' => false
+			'conditions' => array('Office.id' => $id)
 		));
 		Assert::notEmpty($office, '404');
 		$this->set(compact('office'));
@@ -170,8 +169,7 @@ class OfficesController extends AppController {
  */
 	function admin_delete($id = null, $undelete = false) {
 		$office = $this->Office->find('first', array(
-			'conditions' => compact('id'),
-			'contain' => false
+			'conditions' => compact('id')
 		));
 		Assert::notEmpty($office, '404');
 
@@ -188,12 +186,10 @@ class OfficesController extends AppController {
 	function admin_manage_tree() {
 		Assert::true(User::isRoot(), '403');
 		$treeOffices = $this->Office->find('threaded', array(
-			'contain' => false,
 			'order' => array('name' => 'asc'),
 			'fields' => array('parent_id', 'id', 'name')
 		));
 		$offices = $this->Office->find('all', array(
-			'contain' => false,
 			'order' => array('name' => 'asc'),
 			'fields' => array('parent_id', 'id', 'name')
 		));

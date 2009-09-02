@@ -21,8 +21,7 @@ class UsersController extends AppController {
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			$user = $this->User->find('first', array(
-				'conditions' => array('User.id' => $id),
-				'contain' => false
+				'conditions' => array('User.id' => $id)
 			));
 			Assert::notEmpty($user, '404');
 			Assert::true(User::allowed($this->name, $this->action, $user), '403');
@@ -157,8 +156,7 @@ class UsersController extends AppController {
  */
 	function admin_view($id = null) {
 		$user = $this->User->find('first', array(
-			'conditions' => array('User.id' => $id),
-			'contain' => false
+			'conditions' => array('User.id' => $id)
 		));
 		$this->set(compact('user'));
 	}
@@ -176,8 +174,7 @@ class UsersController extends AppController {
 		}
 
 		$user = $this->User->find('first', array(
-			'conditions' => array('User.login' => $this->data['User']['login']),
-			'contain' => false
+			'conditions' => array('User.login' => $this->data['User']['login'])
 		));
 
 		if (empty($user)) {
@@ -222,8 +219,7 @@ class UsersController extends AppController {
 	function checkEmail() {
 		$name = trim($this->params['url']['data']['User']['login']);
 		$user = $this->User->find('first', array(
-			'conditions' => array('LOWER(login)' => low($name)),
-			'contain' => false
+			'conditions' => array('LOWER(login)' => low($name))
 		));
 		$response = empty($user) ? 'true' : 'false';
 		$this->set(compact('response'));
@@ -272,7 +268,6 @@ class UsersController extends AppController {
 
 		$user = $this->User->find('first', array(
 			'conditions' => array('User.email' => $this->data['User']['email']),
-			'contain' => false,
 			'fields' => array('User.id', 'User.email', 'User.activated')
 		));
 

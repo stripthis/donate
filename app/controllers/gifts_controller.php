@@ -275,8 +275,7 @@ class GiftsController extends AppController {
  */
 	function admin_delete($id = null) {
 		$gift = $this->Gift->find('first', array(
-			'conditions' => compact('id'),
-			'contain' => false
+			'conditions' => compact('id')
 		));
 		Assert::notEmpty($gift, '404');
 		Assert::true(User::allowed($this->name, $this->action, $gift), '403');

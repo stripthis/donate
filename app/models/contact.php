@@ -58,7 +58,6 @@ class Contact extends AppModel {
 		}
 		$ids = $this->Gift->find('all', array(
 			'conditions' => array('Gift.contact_id' => $this->id),
-			'contain' => false,
 			'fields' => array('id')
 		));
 		$ids = Set::extract('/Gift/id', $ids);
@@ -68,7 +67,6 @@ class Contact extends AppModel {
 
 		$user = $this->User->find('first', array(
 			'conditions' => array('User.contact_id' => $this->id),
-			'contain' => false,
 			'fields' => array('id')
 		));
 

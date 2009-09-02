@@ -231,7 +231,6 @@ class GiftsControllerTest extends MyTestCase {
 		$this->is($count + 1, $newCount);
 
 		$last = $this->Sut->Gift->find('first', array(
-			'contain' => false,
 			'order' => array('created' => 'desc')
 		));
 		$this->is($last['Gift']['complete'], '0');

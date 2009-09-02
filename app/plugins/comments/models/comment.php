@@ -15,8 +15,7 @@ class Comment extends CommentsAppModel {
 			$models = $this->belongsTo;
 			foreach ($models as $model => $data) {
 				$row = $this->{$model}->find('first', array(
-					'conditions' => array($model . '.id' => $comment['Comment']['foreign_id']),
-					'contain' => false
+					'conditions' => array($model . '.id' => $comment['Comment']['foreign_id'])
 				));
 
 				if (!empty($row) && AppModel::isOwn($row, $model)) {

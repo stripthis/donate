@@ -30,13 +30,11 @@ class TransactionsController extends AppController {
 		if (!empty($contactId)) {
 			$contact = $this->Contact->find('first', array(
 				'conditions' => compact('id'),
-				'contain' => false,
 				'fields' => array('salutation', 'fname', 'lname', 'title')
 			));
 			
 			$giftIds = $this->Gift->find('all', array(
 				'conditions' => array('contact_id' => $contactId),
-				'contain' => false,
 				'fields' => 'id'
 			));
 			$conditions['Transaction.gift_id'] = Set::extract('/Gift/id', $giftIds);

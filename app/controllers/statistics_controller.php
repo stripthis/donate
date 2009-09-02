@@ -31,7 +31,6 @@ class StatisticsController extends AppController {
 	function admin_index() {
 		$gifts = $this->Gift->find('all', array(
 			'conditions' => $this->_conditions(),
-			'contain' => false,
 			'fields' => array('created', 'amount')
 		));
 
@@ -56,7 +55,6 @@ class StatisticsController extends AppController {
 	function admin_users() {
 		$result = array();
 		$users = $this->User->find('all', array(
-			'contain' => false,
 			'fields' => array('first_name', 'last_name', 'id', 'created')
 		));
 

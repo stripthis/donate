@@ -64,8 +64,7 @@ class User extends AppModel {
 			'conditions' => array(
 				'LOWER(' . $this->displayField . ')' => $name,
 				'password' => User::hashPw($password),
-			),
-			'contain' => false
+			)
 		));
 
 		if (!empty($user)) {

@@ -31,8 +31,7 @@ class Transaction extends AppModel {
 			'conditions' => array(
 				$this->alias . '.id' => $id,
 				'status' => 'new' // todo need 2 support more statuses based on error handling
-			),
-			'contain' => false
+			)
 		));
 		if (empty($transaction)) {
 			return 'invalid';

@@ -140,7 +140,6 @@ class Gift extends AppModel {
 				if (!isset($query['options']) && isset($query['id'])) {
 					$frequencies = ClassRegistry::init('Office')->find('first', array(
 						'conditions' => array('id' => $query['id']),
-						'contain' => false,
 						'fields' => array('frequencies')
 					));
 					$frequencies = explode(',', $frequencies['Office']['frequencies']);
@@ -156,7 +155,6 @@ class Gift extends AppModel {
 				if (!isset($query['options']) && isset($query['id'])) {
 					$amounts = ClassRegistry::init('Office')->find('first', array(
 						'conditions' => array('id' => $query['id']),
-						'contain' => false,
 						'fields' => array('amounts')
 					));
 					$amounts = $amounts['Office']['amounts'];
