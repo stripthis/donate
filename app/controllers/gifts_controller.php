@@ -234,7 +234,9 @@ class GiftsController extends AppController {
 			'keyword' => '',
 			'search_type' => 'all',
 			'my_limit' => 20,
-			'custom_limit' => false
+			'custom_limit' => false,
+			'start_date' => false,
+			'end_date' => false
 		);
 		$params = am($defaults, $this->params['url'], $this->params['named']);
 		unset($params['ext']);

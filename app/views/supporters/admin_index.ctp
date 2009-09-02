@@ -1,5 +1,7 @@
 <div class="content">
 <h2><?php __('Supporters');?></h2>
+<?php echo $this->element('../supporters/elements/menu'); ?>
+<?php echo $this->element('../supporters/elements/actions'); ?>
 <?php if (empty($gifts)) : ?>
 	<p><?php echo __('Sorry there are no gifts yet.')?></p>
 <?php else : ?>

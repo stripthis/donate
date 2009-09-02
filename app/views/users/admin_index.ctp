@@ -1,11 +1,7 @@
 <div class="content users index">
 	<h2><?php __('Users');?></h2>
-	<div class="actions">
-		<h3><?php echo __('Actions'); ?></h3>
-		<ul>
-			<li><?php echo $html->link(__('New User', true), array('action'=>'add'),array('class'=>'add')); ?></li>
-      </ul>
-	</div>
+<?php echo $this->element('../users/elements/menu'); ?>
+<?php echo $this->element('../users/elements/actions'); ?>
 	<?php if (!empty($users)) : ?>
 		<?php
 		unset($params['sort']);
@@ -15,7 +11,7 @@
 			<tr>
 				<th class="text"><?php echo $paginator->sort(__('Login', true), 'login', array('url' => $params));?></th>
 				<th class="date"><?php echo $paginator->sort(__('Created', true), 'created', array('url' => $params));?></th>
-			<th class="date"><?php echo $paginator->sort(__('Last Update', true), 'modified', array('url' => $params));?></th>
+			  <th class="date"><?php echo $paginator->sort(__('Last Update', true), 'modified', array('url' => $params));?></th>
 				<th class="actions"><?php __('Actions');?></th>
 			</tr>
 			<?php

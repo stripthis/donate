@@ -1,6 +1,8 @@
 <?php
-$paginateOptions = array(10, 20, 40, 50, 75);
-$paginateOptions = array_combine($paginateOptions, $paginateOptions);
+	if (!isset($paginateOptions)) {
+    $paginateOptions = array(10, 20, 40, 50, 75);
+    $paginateOptions = array_combine($paginateOptions, $paginateOptions);
+	}
 ?>
       <fieldset>
         <legend><a href="<?php echo Router::url();?>#" class="toggle close" id="display_settings">Pagination settings</a></legend>
