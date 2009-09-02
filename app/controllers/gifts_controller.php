@@ -78,20 +78,19 @@ class GiftsController extends AppController {
 
 		$isLastStep = $step == $currentAppeal['Appeal']['appeal_step_count'];
 		$validates = AppModel::bulkValidate($this->models, $this->data);
-pr('here1');
+
 		if (!$isLastStep && !$validates) {
 			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
 		}
-pr('here2');
+
 		if (!$isLastStep && $validates) {
 			$this->saveRelatedData();
 			$this->saveSessionData();
-			pr($this->viewPath);
 			return $this->render('step' . ($step + 1));
 		}
-pr('here3');
+
 		// for the last step, reset is_required to required to prevent hacking attemps
 		$validates = AppModel::bulkValidate($this->models, $this->data, true);
 		if (!$validates) {
@@ -185,7 +184,7 @@ pr('here3');
 			'id' => $appealId
 		));
 		Assert::notEmpty($currentAppeal, '500');
-		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['id'];
+		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['campaign_code'] . '_' . $currentAppeal['Appeal']['id'];
 	}
 /**
  * undocumented function
