@@ -116,7 +116,8 @@ class AppealsController extends AppController {
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			$appeal = $this->Appeal->find('first', array(
-				'conditions' => array('Appeal.id' => $id)
+				'conditions' => array('Appeal.id' => $id),
+				'contain' => array('AppealStep')
 			));
 			Assert::notEmpty($appeal, '404');
 			Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
@@ -144,10 +145,10 @@ class AppealsController extends AppController {
 
 		$msg = __('Appeal was saved successfully.', true);
 		if ($action == 'add') {
-			$url = array('action' => 'admin_edit', $this->Appeal->id);
+			$url = array('action' => 'edit', $this->Appeal->id);
 			return $this->Message->add($msg, 'ok', true, $url);
 		}
-		$this->Message->add($msg, 'ok', true, array('action' => 'admin_index'));
+		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}
 /**
  * delete action

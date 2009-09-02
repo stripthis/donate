@@ -9,6 +9,12 @@ class Appeal extends AppModel {
 			'foreignKey' => 'parent_id'
 		)
 	);
+
+	var $hasMany = array(
+		'AppealStep' => array(
+			'dependent' => true
+		)
+	);
 /**
  * Get appeal from id, campaign_code or name
  * @param $appeal
@@ -44,6 +50,31 @@ class Appeal extends AppModel {
 				return $appeal;
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function afterSave() {
+		if (isset($this->data['Appeal']['steps'])) {
+			$this->AppealStep->deleteAll(array('appeal_id' => $this->id));
+			$i = 0;
+			foreach ($this->data['Appeal']['steps'] as $name) {
+				if (empty($name)) {
+					continue;
+				}
+				$i++;
+				$this->AppealStep->create(array(
+					'appeal_id' => $this->id,
+					'num' => $i,
+					'name' => $name
+				));
+				$this->AppealStep->save();
+			}
+		}
+		return true;
 	}
 /**
  * undocumented function

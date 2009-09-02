@@ -5,7 +5,7 @@ class AppealFixture extends CakeTestFixture {
 	var $records = array(		array(
 			'id' => '4a686dd2-8c64-45a0-99ee-4507a7f05a6e',
 			'parent_id' => '',
-			'steps' => '1',
+			'appeal_step_count' => '1',
 			'name' => 'default GPI appeal',
 			'label' => 'support_us',
 			'campaign_code' => 'code',
@@ -22,7 +22,7 @@ class AppealFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4a815eff-8a8c-40fa-9b65-72b6a7f05a6e',
 			'parent_id' => '',
-			'steps' => '2',
+			'appeal_step_count' => '2',
 			'name' => 'New Example Appeal',
 			'label' => '',
 			'campaign_code' => 'appeal_2',
@@ -40,7 +40,7 @@ class AppealFixture extends CakeTestFixture {
 		array(
 			'id' => '4a9e2bc7-d82c-4f6a-b6da-587ca7f05a6e',
 			'parent_id' => '',
-			'steps' => '1',
+			'appeal_step_count' => '1',
 			'name' => 'International Admin Appeal',
 			'label' => '',
 			'campaign_code' => 'international_admin_appeal',
@@ -58,7 +58,7 @@ class AppealFixture extends CakeTestFixture {
 		array(
 			'id' => '4a9e2f24-9108-4ce9-89fc-5c04a7f05a6e',
 			'parent_id' => '',
-			'steps' => '1',
+			'appeal_step_count' => '1',
 			'name' => 'Med Office Admin Appeal',
 			'label' => '',
 			'campaign_code' => 'med_admin_appeal',
@@ -76,7 +76,7 @@ class AppealFixture extends CakeTestFixture {
 		array(
 			'id' => '4a9e2f24-515c-4cee-89bb-5c04a7f05a6e',
 			'parent_id' => '',
-			'steps' => '1',
+			'appeal_step_count' => '1',
 			'name' => 'France Office Admin Appeal',
 			'label' => '',
 			'campaign_code' => 'france_admin_appeal',
@@ -94,7 +94,7 @@ class AppealFixture extends CakeTestFixture {
 		array(
 			'id' => '4a9e2f24-c4bc-4f41-adef-5c04a7f05a6e',
 			'parent_id' => '',
-			'steps' => '1',
+			'appeal_step_count' => '1',
 			'name' => 'Lebanon Office Admin Appeal',
 			'label' => '',
 			'campaign_code' => 'lebanon_admin_appeal',
@@ -112,7 +112,7 @@ class AppealFixture extends CakeTestFixture {
 		array(
 			'id' => '4a9e2f24-98fc-4189-b115-5c04a7f05a6e',
 			'parent_id' => '',
-			'steps' => '1',
+			'appeal_step_count' => '1',
 			'name' => 'Belgium Office Admin Appeal',
 			'label' => '',
 			'campaign_code' => 'belgium_admin_appeal',
@@ -130,7 +130,7 @@ class AppealFixture extends CakeTestFixture {
 		array(
 			'id' => '4a9e2f24-6bac-41e0-ad66-5c04a7f05a6e',
 			'parent_id' => '',
-			'steps' => '1',
+			'appeal_step_count' => '1',
 			'name' => 'India Office Admin Appeal',
 			'label' => '',
 			'campaign_code' => 'india_admin_appeal',

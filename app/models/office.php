@@ -137,11 +137,16 @@ class Office extends AppModel {
 				'name' => $name,
 				'campaign_code' => $code,
 				'office_id' => $this->id,
-				'steps' => 1,
 				'user_id' => User::get('id')
 			));
 			$this->Appeal->save();
 			$appealId = $this->Appeal->getLastInsertId();
+
+			$this->Appeal->AppealStep->create(array(
+				'appeal_id' => $appealId,
+				'label' => 'Entire Process'
+			));
+			$this->Appeal->AppealStep->save();
 			$create = true;
 		}
 

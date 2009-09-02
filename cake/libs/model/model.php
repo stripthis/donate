@@ -1394,7 +1394,7 @@ class Model extends Overloadable {
 				}
 				$count = intval($this->find('count', compact('conditions', 'recursive')));
 
-				$this->{$parent}->updateAll(
+				$r = $this->{$parent}->updateAll(
 					array($assoc['counterCache'] => $count),
 					array($this->{$parent}->escapeField() => $keys[$foreignKey])
 				);

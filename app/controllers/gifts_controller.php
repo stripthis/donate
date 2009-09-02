@@ -76,7 +76,7 @@ class GiftsController extends AppController {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
 		}
 
-		$isLastStep = $step == $currentAppeal['Appeal']['steps'];
+		$isLastStep = $step == $currentAppeal['Appeal']['appeal_step_count'];
 		$validates = AppModel::bulkValidate($this->models, $this->data);
 		if (!$isLastStep && !$validates) {
 			$msg = 'There are problems with the form.';
