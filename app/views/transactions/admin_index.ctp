@@ -21,6 +21,7 @@ $favConfig = Configure::read('Favorites');
 	unset($params['sort']);
 	unset($params['direction']);
 	$th = array(
+		'<input name="Transaction" class="select_all checkbox" type="checkbox">',
 		$myPaginator->sort(__('Status',true),'Transaction.status', array('url' => $params)),
 		$myPaginator->sort(__('Id',true),'Transaction.serial', array('url' => $params)),
 		$myPaginator->sort(__('Parent',true),'Transaction.parent_id', array('url' => $params)),
@@ -32,6 +33,9 @@ $favConfig = Configure::read('Favorites');
 		$myPaginator->sort(__('Modified',true),'Transaction.modified', array('url' => $params)),
 		'Actions'
 	);
+	if ($doFavorites) {
+		array_unshift($th, $html->image('icons/S/rate.png'));
+	}
 	echo $html->tableHeaders($th);
 	foreach ($transactions as $t) {
 		$actions = array(
@@ -41,11 +45,7 @@ $favConfig = Configure::read('Favorites');
 			$html->link(__('Delete', true), array('action' => 'delete', $t['Transaction']['id']),
 				array('class'=>'delete'), __('Are you sure?', true))
 		);
-		if ($doFavorites) {
-			$actions[] = $html->link(__(ucfirst($favConfig['verb']), true), array(
-				'controller' => 'favorites', 'action' => 'add', $t['Transaction']['id'], 'Transaction'
-			));
-		}
+		
 
 		$parent = '';
 		if (!empty($t['ParentTransaction']['id'])) {
@@ -56,10 +56,11 @@ $favConfig = Configure::read('Favorites');
 
 		$gift = $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id']));
 		$tr = array(
+		  $form->checkbox($t['Transaction']['external_id'], array('class'=>'checkbox','name'=> 'Transaction')),
 			$t['Transaction']['status'],
 			$t['Transaction']['serial'],
 			$parent,
-			$t['Transaction']['amount'],
+			$t['Transaction']['amount'].' EUR', //@todo currency
 			$t['Gateway']['name'],
 			$t['Transaction']['external_id'],
 			$gift,
@@ -67,6 +68,9 @@ $favConfig = Configure::read('Favorites');
 			$t['Transaction']['modified'],
 			implode(' - ', $actions)
 		);
+		if ($doFavorites) {
+			array_unshift($tr, $favorites->link("Transaction", $t['Transaction']['id']));
+		}
 		echo $html->tableCells($tr);
 
 		if (!empty($t['ChildTransaction'])) {

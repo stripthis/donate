@@ -83,7 +83,7 @@ table {
   width:100%;
   border-collapse:collapse;
 }
-th {
+table th {
   background:#f2f2f2;
   border:1px solid #bbb;
   text-align:center;
@@ -111,6 +111,9 @@ table tr th a.asc{
 table tr th a.desc{
 	padding-right:20px;
 	background:transparent url(../img/layout/tablesort_desc.gif) right center no-repeat;
+}
+table tr th input[type=checkbox]{
+	margin:2px 0 0 6px;
 }
 /* Forms */
 form {
@@ -189,10 +192,9 @@ input[type=checkbox] {
   clear:left;
   float:left;
   width:auto;
-  margin-top:0;
+  margin:5px 5px 0 2px;
 }
 label input.checkbox{
-  margin:2px 5px 0 0px;
   padding:0;
   font-size:1.3em;
 }
@@ -881,6 +883,16 @@ ul.selector li ul.subitem li a{
 	height:16px;
 	display:block;
 	background:transparent url(../img/layout/grab.png) 0 2px no-repeat;
+}
+.index_wrapper .selection{
+	margin:0;
+	padding:0;
+	padding-left:3px;
+}
+.index_wrapper th input[type=checkbox]{
+	margin:0;
+	padding:0;
+	margin-left:2px;
 }
 
 /* Scaffold View */

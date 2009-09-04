@@ -47,7 +47,7 @@ $config = array(
 	'App.spamEmailTimeLimit' => '600', //Time in seconds in which one email can get referral.
 	'App.emailsPerDay' => '5',
 	'App.ssl' => array(
-		'enabled' => false,
+		'enabled' => true,
 		'actions' => array(
 			'/'
 		)
