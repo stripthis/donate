@@ -1,6 +1,19 @@
   <div id="home" class="landing_page">
     <h2><?php echo __("Donate")."\n"; ?></h2>
 <p class="decoration"><?php echo __('Join Greenpeace today and add your voice to the movement that\'s committed to defending our planet. Our vision of a better future is only as strong as the people who support us. Your support will make all the difference.!')?></p>
+<h3>Choose An Appeal!</h3>
+<ul>
+<?php foreach ($appeals as $appeal) : ?>
+	<li>
+		<?php
+		echo $html->link($appeal['Appeal']['name'], array(
+			'controller' => 'gifts', 'action' => 'add', 'appeal_id' => $appeal['Appeal']['id']
+		));
+		?>
+	</li>
+<?php endforeach ?>
+</ul>
+<h3>Default forms</h3>
 <ul>
 <li><a href="http://www.greenpeace.org/africa/donate?referrer=indexgpi" onclick="javascript: pageTracker._trackPageview('/outbound/main/donate/'+this.text);">Africa</a></li>
 <li><a href="https://unite.greenpeace.org.ar/?referrer=gpi_splash_web" onclick="javascript: pageTracker._trackPageview('/outbound/main/donate/'+this.text);">Argentina</a></font></li>
@@ -48,18 +61,6 @@
 <li><a href="http://www.greenpeace.org/turkey/kat-l-n" onclick="javascript: pageTracker._trackPageview('/outbound/main/donate/'+this.text);">Turkey</a></li>
 <li><a href="http://www.greenpeace.org.uk/donate" onclick="javascript: pageTracker._trackPageview('/outbound/main/donate/'+this.text);">United Kingdom</a></li>
 <li><a href="https://secureusa.greenpeace.org/securedonate/index.php?from=gpi" onclick="javascript: pageTracker._trackPageview('/outbound/main/donate/'+this.text);">United States</a></li>
-</ul>
-<h2>Choose An Appeal!</h2>
-<ul>
-<?php foreach ($appeals as $appeal) : ?>
-	<li>
-		<?php
-		echo $html->link($appeal['Appeal']['name'], array(
-			'controller' => 'gifts', 'action' => 'add', 'appeal_id' => $appeal['Appeal']['id']
-		));
-		?>
-	</li>
-<?php endforeach ?>
 </ul>
 
 </div>
