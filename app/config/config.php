@@ -62,6 +62,15 @@ $config = array(
 		'inkind' => 'In-kind gift',
 		'legacy' => 'Legacy'
 	),
+	'App.transaction_codes' => array(
+		'P' => 'Processing',
+		'R' => 'Resend',
+		'E' => 'Error',
+		'U' => 'Error',
+		'V' => 'Validate',
+		'F' => 'Finalised',
+		'C' => 'Completed',
+	),
 	'App.frequencies' => array('onetime', 'monthly', 'quarterly', 'biannually', 'annually'),
 	'App.currency_options' => array('USD', 'EUR'),
 	'Stats.startDate' => '-1 year',
