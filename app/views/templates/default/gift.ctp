@@ -10,6 +10,7 @@
  */
   $currencyOptions = Gift::find('currencies');
   $frequencyOptions = Gift::find('frequencies');
+  $typeOptions = Gift::find('gift_types');
   $amountOptions = explode(',', Gift::find('amounts'));
   $amountSelected = $giftForm->value('Gift', 'amount', '10', $form->data);
 ?>
@@ -17,7 +18,7 @@
         <legend><?php echo __("Gift Information"); ?></legend>
         <?php echo $form->input('Gift.id', array('type' => 'hidden'))."\n"; ?>
         <?php echo $form->input('Gift.appeal_id', array('type' => 'hidden'))."\n"; ?>
-        <?php echo $form->input('Gift.type', array('type' => 'hidden', "value" => "donation"))."\n"; ?>
+        <?php echo $form->input('Gift.type', array('options' => $typeOptions))."\n"; ?>
         <div class="input_wrapper radio">
           <label for="amount" class="option_title">Amount: <strong class="required">*</strong></label>
 		<?php foreach ($amountOptions as $amountOption): ?>

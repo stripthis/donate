@@ -103,7 +103,7 @@ class Gift extends AppModel {
  */
 	function validateType($check) {
 		$Session = Common::getComponent('Session');
-		return array_key_exists($check['type'], Gift::find('types', array(
+		return array_key_exists($check['type'], Gift::find('gift_types', array(
 			'id' => $Session->read('gift_process_office_id')
 		)));
 	}
@@ -129,14 +129,32 @@ class Gift extends AppModel {
 	function find($type, $query = array()) {
 		$args = func_get_args();
 		switch ($type) {
-			case 'types':
-				return array(
-					'donation' => 'Donation'
-					//,'inkind' => 'In-kind gift'
-					//,'legacy' => 'Legacy'
-				);
+			case 'gift_types':
+				$frequencies = Configure::read('App.gift_types');
+
+				$Session = Common::getComponent('Session');
+				if ($Session->check('Office.id') && User::isAdmin()) {
+					$query['id'] = $Session->read('Office.id');
+				}
+				if ($Session->check('gift_process_office_id') && User::isGuest()) {
+					$query['id'] = $Session->read('gift_process_office_id');
+				}
+
+				if (!isset($query['options']) && isset($query['id'])) {
+					$types = ClassRegistry::init('Office')->find('first', array(
+						'conditions' => array('id' => $query['id']),
+						'fields' => array('gift_types')
+					));
+					$types = explode(',', $types['Office']['gift_types']);
+				}
+
+				$result = array();
+				foreach ($types as $type) {
+					$result[$type] = Inflector::humanize($type);
+				}
+				return $result;
 			case 'frequencies':
-				$frequencies = array('onetime', 'monthly', 'quarterly', 'biannually', 'annually');
+				$frequencies = Configure::read('App.frequencies');
 
 				$Session = Common::getComponent('Session');
 				if ($Session->check('Office.id') && User::isAdmin()) {

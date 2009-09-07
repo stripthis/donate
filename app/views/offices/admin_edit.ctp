@@ -23,6 +23,13 @@ echo $form->input('amounts', array(
 	'value' => $form->data['Office']['amounts'], 'label' => 'Possible Amount Selections:'
 ));
 
+echo $form->input('gift_types', array(
+	'options' => Configure::read('App.gift_types'),
+	'selected' => explode(',', $form->data['Office']['gift_types']),
+	'multiple' => 'checkbox',
+	'label' => 'Gift Types:'
+));
+
 echo $form->input('languages', array(
 	'options' => Configure::read('App.lang_options'),
 	'selected' => explode(',', $form->data['Office']['languages']),

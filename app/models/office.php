@@ -68,6 +68,14 @@ class Office extends AppModel {
 			}
 		}
 
+		if (isset($this->data['Office']['gift_types'])) {
+			if (is_array($this->data['Office']['gift_types'])) {
+				$this->data['Office']['gift_types'] = implode(',', $this->data['Office']['gift_types']);
+			} else {
+				$this->data['Office']['gift_types'] = 'donation';
+			}
+		}
+
 		if (isset($this->data['Office']['currencies'])) {
 			if (is_array($this->data['Office']['currencies'])) {
 				$this->data['Office']['currencies'] = implode(',', $this->data['Office']['currencies']);

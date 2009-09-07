@@ -57,6 +57,12 @@ $config = array(
 		'eng' => 'English',
 		'fre' => 'French'
 	),
+	'App.gift_types' => array(
+		'donation' => 'Donation',
+		'inkind' => 'In-kind gift',
+		'legacy' => 'Legacy'
+	),
+	'App.frequencies' => array('onetime', 'monthly', 'quarterly', 'biannually', 'annually'),
 	'App.currency_options' => array('USD', 'EUR'),
 	'Stats.startDate' => '-1 year',
 	'App.contact' => array(
