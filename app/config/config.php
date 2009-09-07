@@ -53,6 +53,10 @@ $config = array(
 			'/'
 		)
 	),
+	'App.lang_options' => array(
+		'eng' => 'English',
+		'fre' => 'French'
+	),
 	'Stats.startDate' => '-1 year',
 	'App.contact' => array(
 		'salutations' => array(

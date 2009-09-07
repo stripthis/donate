@@ -12,11 +12,7 @@
 	echo $form->input('Contact.fname', array('label' => 'First Name'));
 	echo $form->input('Contact.lname', array('label' => 'Last Name'));
 	echo $form->input('User.tooltips', array('label' => 'Show Toolstips?'));
-	$langOptions = array(
-		'eng' => 'English',
-		'fre' => 'French'
-	);
-	echo $form->input('User.lang', array('label' => 'Language', 'options' => $langOptions));
+	echo $form->input('User.lang', array('label' => 'Language', 'options' => Configure::read('App.lang_options')));
 	echo $form->end('Save');
 	?>
 </div>

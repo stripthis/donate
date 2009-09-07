@@ -23,6 +23,13 @@ echo $form->input('amounts', array(
 	'value' => $form->data['Office']['amounts'], 'label' => 'Possible Amount Selections:'
 ));
 
+echo $form->input('languages', array(
+	'options' => Configure::read('App.lang_options'),
+	'selected' => explode(',', $form->data['Office']['languages']),
+	'multiple' => 'checkbox',
+	'label' => 'Languages:'
+));
+
 echo $form->input('gateways', array(
 	'options' => $gatewayOptions,
 	'selected' => $selectedGateways, 'multiple' => true,

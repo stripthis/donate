@@ -60,6 +60,14 @@ class Office extends AppModel {
 			$this->data['Office']['amounts'] = r(' ', '', $this->data['Office']['amounts']);
 		}
 
+		if (isset($this->data['Office']['languages'])) {
+			if (is_array($this->data['Office']['languages'])) {
+				$this->data['Office']['languages'] = implode(',', $this->data['Office']['languages']);
+			} else {
+				$this->data['Office']['languages'] = 'eng';
+			}
+		}
+
 		if (isset($this->data['Office']['gateways'])) {
 			$this->GatewaysOffice->deleteAll(array('office_id' => $this->id));
 			if (!empty($this->data['Office']['gateways'][0])) {
