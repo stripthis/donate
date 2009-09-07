@@ -20,7 +20,6 @@
     echo $form->input('name');
     echo $form->input('campaign_code');
     echo $form->input('default');
-    echo $form->input('starred');
     echo $form->input('cost');
     echo $form->input('reviewed');
     echo $form->input('status');

@@ -34,11 +34,6 @@
       <?php echo $appeal['Appeal']['default']; ?>
       &nbsp;
     </dd>
-    <dt><?php __('Starred'); ?></dt>
-    <dd>
-      <?php echo $appeal['Appeal']['starred']; ?>
-      &nbsp;
-    </dd>
     <dt><?php __('Cost'); ?></dt>
     <dd>
       <?php echo $appeal['Appeal']['cost']; ?>
