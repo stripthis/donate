@@ -14,6 +14,8 @@
 <?php
 echo $form->input('id');
 echo $form->input('name');
+echo $form->input('live');
+echo $form->input('external_url', array('label' => 'If not live, url to redirect to'));
 echo $form->input('frequencies', array(
 	'label' => '', 'options' => Gift::find('frequencies', array('options' => true)), 'multiple' => true,
 	'selected' => explode(',', $form->data['Office']['frequencies'])

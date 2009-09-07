@@ -39,6 +39,10 @@ class GiftsController extends AppController {
 		$appealId = $this->Session->read($this->sessAppealKey);
 		$currentAppeal = $this->Appeal->find('default', array('id' => $appealId));
 
+		if (!$currentAppeal['Office']['live']) {
+			return $this->redirect($currentAppeal['Office']['external_url']);
+		}
+
 		Assert::notEmpty($currentAppeal, '500');
 		$officeId = $currentAppeal['Appeal']['office_id'];
 		$this->Session->write($this->sessOfficeKey, $officeId);
