@@ -9,6 +9,9 @@
     echo $form->input('default');
     echo $form->input('cost');
     echo $form->input('reviewed');
+    echo $form->input('lang', array(
+		'options' => Configure::read('App.lang_options'), 'label' => 'Supported Language'
+	));
 
 	$infStatusOptions = array_map('ucfirst', $statusOptions);
 	$statusOptions = array_combine($statusOptions, $infStatusOptions);
