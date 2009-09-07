@@ -13,7 +13,11 @@ $favConfig = Configure::read('Favorites');
 	echo $headline;
 	?>
 </h2>
-<?php echo $this->element('../transactions/elements/menu'); ?>
+<?php
+echo $this->element('nav', array(
+	'type' => 'transaction_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+));
+?>
 <?php echo $this->element('../transactions/elements/actions'); ?>
 <?php if (!empty($transactions)) : ?>
 	<table>

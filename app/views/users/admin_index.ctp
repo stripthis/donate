@@ -1,6 +1,10 @@
 <div class="content users index">
 	<h2><?php __('Users');?></h2>
-<?php echo $this->element('../users/elements/menu'); ?>
+	<?php
+	echo $this->element('nav', array(
+		'type' => 'user_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+	));
+	?>
 <?php echo $this->element('../users/elements/actions'); ?>
 	<?php if (!empty($users)) : ?>
 		<?php

@@ -11,7 +11,11 @@
 ?>
     <div class="content" id="gifts_index">
       <h2><?php __('Online Donations');?></h2>
-<?php echo $this->element('../gifts/elements/menu'); ?>
+	<?php
+	echo $this->element('nav', array(
+		'type' => 'gift_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+	));
+	?>
 <?php echo $this->element('../gifts/elements/actions'); ?>
       <div class="index_wrapper">
 <?php //echo $this->element('/admin/css_tests/gift_index'); ?>

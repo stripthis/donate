@@ -406,7 +406,7 @@ input[type=submit] {
 }
 .menu#menu_top  li{
   display:inline;
-  margin:0;
+  margin:0 5px 0 0;
 }
 .menu#menu_top li a{
   font-size:1.2em;

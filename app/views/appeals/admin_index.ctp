@@ -4,7 +4,11 @@ $favConfig = Configure::read('Favorites');
 ?>
 <div class="content" id="appeals_index">
 	<h2><?php __('Appeals');?></h2>
-<?php echo $this->element('../appeals/elements/menu'); ?>
+	<?php
+	echo $this->element('nav', array(
+		'type' => 'appeal_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+	));
+	?>
 	<div class="actions">
 		<h3><?php echo __('Actions'); ?></h3>
 		<ul>

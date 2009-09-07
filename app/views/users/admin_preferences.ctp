@@ -1,6 +1,10 @@
 <div class="content edit" id="users_edit">
 	<h2><?php echo __('My Account'); ?></h2>
-<?php echo $this->element('../users/elements/menu'); ?>
+	<?php
+	echo $this->element('nav', array(
+		'type' => 'user_preferences', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+	));
+	?>
 	<?php echo $form->create('User', array('url' => $this->here));?>
 	<?php
 	echo $form->input('login', array('label' => 'Login / Email'));

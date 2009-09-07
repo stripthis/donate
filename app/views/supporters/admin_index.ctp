@@ -1,6 +1,10 @@
 <div class="content">
 <h2><?php __('Supporters');?></h2>
-<?php echo $this->element('../supporters/elements/menu'); ?>
+<?php
+echo $this->element('nav', array(
+	'type' => 'supporter_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+));
+?>
 <?php echo $this->element('../supporters/elements/actions'); ?>
 <?php if (empty($gifts)) : ?>
 	<p><?php echo __('Sorry there are no gifts yet.')?></p>
