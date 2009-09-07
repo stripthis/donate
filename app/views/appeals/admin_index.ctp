@@ -41,8 +41,12 @@ $favConfig = Configure::read('Favorites');
 				$html->link(__('Delete', true), array('action'=>'delete', $appeal['Appeal']['id']), array('class'=>'delete'), sprintf(__('Are you sure?', true), $appeal['Appeal']['id']))
 			);
 
-			if ($appeal['Appeal']['status'] == 'draft') {
-				$actions[] = $html->link(__('Preview', true), array('controller' => 'gifts', 'action'=>'add', 'appeal_id' =>$appeal['Appeal']['id'], 'admin' => '0'),array('class'=>'view'));
+			if ($appeal['Appeal']['status'] != 'published') {
+				$actions[] = $html->link(__('Preview', true), array(
+					'controller' => 'gifts', 'action' => 'add',
+					'appeal_id' => $appeal['Appeal']['id'], 'admin' => '0'),
+					array('class'=>'view'
+				));
 			}
 			$user = $html->link($appeal['User']['login'], array(
 				'controller' => 'users', 'action'=>'view', $appeal['User']['id']
