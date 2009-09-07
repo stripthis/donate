@@ -20,22 +20,24 @@ $favConfig = Configure::read('Favorites');
 	<?php
 	unset($params['sort']);
 	unset($params['direction']);
-	$th = array(
-		'<input name="Transaction" class="select_all checkbox" type="checkbox">',
+	$th = array();
+	$th[] = '<input name="Transaction" class="select_all checkbox" type="checkbox">';
+	if ($doFavorites) {
+		$th[] = $favorites->favall();
+	}
+	$th = am($th,array(
 		$myPaginator->sort(__('Status',true),'Transaction.status', array('url' => $params)),
 		$myPaginator->sort(__('Id',true),'Transaction.serial', array('url' => $params)),
-		$myPaginator->sort(__('Parent',true),'Transaction.parent_id', array('url' => $params)),
+		$myPaginator->sort(__('External ID',true),'Transaction.external_id', array('url' => $params)),
+		//$myPaginator->sort(__('Parent',true),'Transaction.parent_id', array('url' => $params)),
 		$myPaginator->sort(__('Amount',true),'Transaction.amount', array('url' => $params)),
 		$myPaginator->sort(__('Gateway',true),'Gateway.parent_id', array('url' => $params)),
-		$myPaginator->sort(__('External ID',true),'Transaction.external_id', array('url' => $params)),
 		$myPaginator->sort(__('Gift',true),'Transaction.gift_id', array('url' => $params)),
 		$myPaginator->sort(__('Created',true),'Transaction.created', array('url' => $params)),
 		$myPaginator->sort(__('Modified',true),'Transaction.modified', array('url' => $params)),
 		'Actions'
-	);
-	if ($doFavorites) {
-		array_unshift($th, $html->image('icons/S/rate.png'));
-	}
+	));
+
 	echo $html->tableHeaders($th);
 	foreach ($transactions as $t) {
 		$actions = array(
@@ -46,7 +48,6 @@ $favConfig = Configure::read('Favorites');
 				array('class'=>'delete'), __('Are you sure?', true))
 		);
 		
-
 		$parent = '';
 		if (!empty($t['ParentTransaction']['id'])) {
 			$parent = $html->link($t['ParentTransaction']['id'], array(
@@ -55,22 +56,23 @@ $favConfig = Configure::read('Favorites');
 		}
 
 		$gift = $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id']));
-		$tr = array(
-		  $form->checkbox($t['Transaction']['external_id'], array('class'=>'checkbox','name'=> 'Transaction')),
+		$tr = array();
+		$tr[] = $form->checkbox($t['Transaction']['id'], array('class'=>'checkbox','name'=> 'Transaction'));
+		if ($doFavorites) {
+			$tr[] = $favorites->link("Transaction", $t['Transaction']['id']);
+		}
+		$tr = am($tr,array(            
 			$t['Transaction']['status'],
 			$t['Transaction']['serial'],
-			$parent,
+			$t['Transaction']['external_id'],
+			//$parent,
 			$t['Transaction']['amount'].' EUR', //@todo currency
 			$t['Gateway']['name'],
-			$t['Transaction']['external_id'],
 			$gift,
 			$t['Transaction']['created'],
 			$t['Transaction']['modified'],
 			implode(' - ', $actions)
-		);
-		if ($doFavorites) {
-			array_unshift($tr, $favorites->link("Transaction", $t['Transaction']['id']));
-		}
+		));
 		echo $html->tableCells($tr);
 
 		if (!empty($t['ChildTransaction'])) {

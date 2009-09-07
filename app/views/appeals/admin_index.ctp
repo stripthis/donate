@@ -1,5 +1,10 @@
+<?php
+$doFavorites = class_exists('Favorite') && Favorite::doForModel('Appeal');
+$favConfig = Configure::read('Favorites');
+?>
 <div class="content" id="appeals_index">
 	<h2><?php __('Appeals');?></h2>
+<?php echo $this->element('../appeals/elements/menu'); ?>
 	<div class="actions">
 		<h3><?php echo __('Actions'); ?></h3>
 		<ul>
@@ -11,8 +16,11 @@
 		<?php
 		unset($params['sort']);
 		unset($params['direction']);
-		$th = array(
-			$paginator->sort('Starred', 'starred', array('url' => $params)),
+		$th = array();
+		if ($doFavorites) {
+			$th[] = $favorites->favall('Appeal');
+		}
+		$th = am($th, array(
 			$paginator->sort('Status', 'status', array('url' => $params)),
 			$paginator->sort('Campaign Code', 'campaign_code', array('url' => $params)),
 			$paginator->sort('Name', 'name', array('url' => $params)),
@@ -23,7 +31,7 @@
 			$paginator->sort('Created On', 'created', array('url' => $params)),
 			$paginator->sort('Last Update', 'modified', array('url' => $params)),
 			'Actions'
-		);
+		));
 		echo $html->tableHeaders($th);
 		foreach ($appeals as $appeal) {
 			$actions = array(
@@ -35,8 +43,11 @@
 			$user = $html->link($appeal['User']['login'], array(
 				'controller' => 'users', 'action'=>'view', $appeal['User']['id']
 			));
-			$tr = array(
-				$appeal['Appeal']['starred'],
+			$tr = array();
+			if ($doFavorites) {
+				$tr[] = $favorites->link("Appeal", $t['Appeal']['id']);
+			}
+			$tr = am($tr,array(
 				$appeal['Appeal']['status'],
 				$appeal['Appeal']['campaign_code'],
 				$appeal['Appeal']['name'],
@@ -47,7 +58,7 @@
 				$appeal['Appeal']['created'],
 				$appeal['Appeal']['modified'],
 				implode(' - ', $actions)
-			);
+			));
 			echo $html->tableCells($tr);
 		}
 		?>

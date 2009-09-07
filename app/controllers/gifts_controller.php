@@ -39,6 +39,7 @@ class GiftsController extends AppController {
 
 		$appealId = $this->Session->read($this->sessAppealKey);
 		$currentAppeal = $this->Appeal->find('default', array('id' => $appealId));
+		
 		Assert::notEmpty($currentAppeal, '500');
 		$officeId = $currentAppeal['Appeal']['office_id'];
 		$this->Session->write($this->sessOfficeKey, $officeId);
@@ -282,7 +283,7 @@ class GiftsController extends AppController {
 
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,
-			'recursive' => 1,
+			'recursive' => 3,
 			'contain' => array(
 				'LastTransaction(created)',
 				'Office(id, name)', 'Appeal(id, name)', 

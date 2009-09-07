@@ -20,7 +20,12 @@ class FavoritesHelper extends Apphelper {
 	  	'unfav' => '/img/icons/S/unrate.png'
 		);
 	}
-	
+/**
+ * 
+ * @param $model
+ * @param $uuid
+ * @return string link
+ */	
 	function link($model, $uuid){
 		$isFavorited = ClassRegistry::init('Favorite')->isFavorited($uuid);
 		if (!$isFavorited) {
@@ -42,6 +47,14 @@ class FavoritesHelper extends Apphelper {
 				), array('class' => 'star', 'escape'=>false
 			));
 		}
+	}
+/**
+ * 
+ * @param $model
+ * @return string link
+ */
+	function favall($model=null){
+		return $this->Html->image('icons/S/rate.png');
 	}
 }
 ?>

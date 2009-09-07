@@ -23,7 +23,7 @@
               </a>
             </td>
             <td class="description">
-<?php	if(isset($contact['Contact']['Address'][0])) : //@todo multiple address ?>
+<?php	if(isset($contact['Contact']['Address'])) : //@todo multiple address ?>
             <?php echo $contact['Contact']['Address'][0]['zip']; ?>
             <?php echo $contact['Contact']['Address'][0]['City']['name']; ?> - 
             <?php echo $contact['Contact']['Address'][0]['Country']['name']; ?>

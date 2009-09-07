@@ -14,13 +14,17 @@
 <?php echo $this->element('tableset/collumns/fold', $options); ?>
 <?php echo $this->element('tableset/collumns/favorites',$options); ?>
 <?php echo $this->element('tableset/collumns/status', array('model'=>'Gift', 'status'=> $transaction['status'])); ?>
-              <td class="transaction">
+              <td class="title">
                 <a href="/admin/transactions/view/" class="iconic transaction up">
                    Test Mode (status: <?php echo $transaction['status']; ?>)
                 </a>
               </td>
-              <td class="bank">
+              <td class="description">
+<?php if(isset($transaction['Gateway'])): ?>
                 <?php echo $transaction['Gateway']['name']; ?>
+<?php else: ?>
+                <strong class="error-message"><?php __('The payment gateway is missing') ?></strong>
+<?php endif; ?>
               </td>
 <?php echo $this->element('tableset/collumns/attachments', $options); ?>
 <?php echo $this->element('tableset/collumns/comments', $options); ?>

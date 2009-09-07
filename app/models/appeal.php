@@ -24,7 +24,9 @@ class Appeal extends AppModel {
 		switch ($type) {
 			case 'default':
 				$id = isset($query['id']) ? $query['id'] : false;
-
+				if(isset($query['admin']) && $query['admin']) {
+					$query['admin'] = User::isAdmin();
+				}
 				$appeal = false;
 				if ($id) {
 					$appeal = $this->find('first', array(
