@@ -14,7 +14,7 @@ class AppealFixture extends CakeTestFixture {
 			'cost' => '200',
 			'reviewed' => '1',
 			'status' => '',
-			'admin' => '1',
+			'admin' => '0',
 			'office_id' => '4a6458a6-6ea0-4080-ad53-4a89a7f05a6e',
 			'user_id' => '4a65cf8b-bfc8-4c87-b27d-4d1fa7f05a6e',
 			'created' => '2009-07-23 16:04:02',
