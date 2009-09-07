@@ -164,6 +164,9 @@ class Gift extends AppModel {
 				if ($Session->check('Office.id') && User::isAdmin()) {
 					$query['id'] = $Session->read('Office.id');
 				}
+				if ($Session->check('gift_process_office_id') && User::isGuest()) {
+					$query['id'] = $Session->read('gift_process_office_id');
+				}
 
 				$amounts = '5,10,15';
 				if (!isset($query['options']) && isset($query['id'])) {
@@ -178,7 +181,23 @@ class Gift extends AppModel {
 				$amounts = Gift::find('amounts', $query);
 				return $amounts[0];
 			case 'currencies':
-				return array('EUR', 'USD', 'GBP');
+				$Session = Common::getComponent('Session');
+				if ($Session->check('Office.id') && User::isAdmin()) {
+					$query['id'] = $Session->read('Office.id');
+				}
+				if ($Session->check('gift_process_office_id') && User::isGuest()) {
+					$query['id'] = $Session->read('gift_process_office_id');
+				}
+
+				$currencies = Configure::read('App.currency_options');
+				if (isset($query['id'])) {
+					$currencies = ClassRegistry::init('Office')->find('first', array(
+						'conditions' => array('id' => $query['id']),
+						'fields' => array('currencies')
+					));
+					$currencies = explode(',', $currencies['Office']['currencies']);
+				}
+				return $currencies;
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
 	}

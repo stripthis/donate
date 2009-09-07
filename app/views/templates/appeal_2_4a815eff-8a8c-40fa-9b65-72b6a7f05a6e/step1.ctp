@@ -18,9 +18,8 @@
 	  'profdrdr' => 'Prof. Dr. Dr.',
 	  'dipl' => 'Dipl.'
 	);
-	$currencyOptions = array("EUR","USD","GBP");
 	$frequencyOptions = Gift::find('frequencies');
-	
+	$currencyOptions = Gift::find('currencies');
 	if (!empty($cData)) {
 	  $cData = $cData['Gift'];
 	}

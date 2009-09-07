@@ -36,6 +36,15 @@ echo $form->input('gateways', array(
 	'label' => 'Supported Gateways (leave empty if none):',
 	'empty' => '-- None --'
 ));
+
+$options = Configure::read('App.currency_options');
+$options = array_combine($options, $options);
+echo $form->input('currencies', array(
+	'options' => $options,
+	'selected' => explode(',', $form->data['Office']['currencies']),
+	'multiple' => 'checkbox',
+	'label' => 'Currencies:'
+));
 ?>
 
 <h2>Users &amp; Permissions</h2>

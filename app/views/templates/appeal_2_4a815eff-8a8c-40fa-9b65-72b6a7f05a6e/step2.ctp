@@ -9,7 +9,7 @@ $titleOptions = array(
   'profdrdr' => 'Prof. Dr. Dr.',
   'dipl' => 'Dipl.'
 );
-$currencyOptions = array("EUR","USD","GBP");
+$currencyOptions = Gift::find('currencies');
 $frequencyOptions = Gift::find('frequencies');
 
 if (!empty($cData)) {

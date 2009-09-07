@@ -68,6 +68,14 @@ class Office extends AppModel {
 			}
 		}
 
+		if (isset($this->data['Office']['currencies'])) {
+			if (is_array($this->data['Office']['currencies'])) {
+				$this->data['Office']['currencies'] = implode(',', $this->data['Office']['currencies']);
+			} else {
+				$this->data['Office']['currencies'] = 'EUR';
+			}
+		}
+
 		if (isset($this->data['Office']['gateways'])) {
 			$this->GatewaysOffice->deleteAll(array('office_id' => $this->id));
 			if (!empty($this->data['Office']['gateways'][0])) {

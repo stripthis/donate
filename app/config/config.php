@@ -57,6 +57,7 @@ $config = array(
 		'eng' => 'English',
 		'fre' => 'French'
 	),
+	'App.currency_options' => array('USD', 'EUR'),
 	'Stats.startDate' => '-1 year',
 	'App.contact' => array(
 		'salutations' => array(
