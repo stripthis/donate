@@ -19,7 +19,7 @@
 	  'dipl' => 'Dipl.'
 	);
 	$currencyOptions = array("EUR","USD","GBP");
-	$frequencyOptions = Configure::read('App.frequency_options');
+	$frequencyOptions = Gift::find('frequencies');
 	
 	if (!empty($cData)) {
 	  $cData = $cData['Gift'];

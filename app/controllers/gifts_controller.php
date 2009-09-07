@@ -455,10 +455,11 @@ class GiftsController extends AppController {
 		}
 
 		if (isset($this->params['named']['appeal_id'])) {
-			$existingAppeal = $this->Appeal->lookup(
-				array('id' => $this->params['named']['appeal_id']),
-				'id', false
-			);
+			$conditions = array('id' => $this->params['named']['appeal_id']);
+			if (!User::isAdmin()) {
+				$conditions['admin'] = false;
+			}
+			$existingAppeal = $this->Appeal->lookup($conditions, 'id', false);
 			$sessAppealId = $this->Session->read($this->sessAppealKey);
 			if (!$existingAppeal || $step != 1 && $sessAppealId != $existingAppeal) {
 				return $this->Message->add($msg, 'error', true, '/');

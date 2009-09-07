@@ -24,7 +24,7 @@ class Appeal extends AppModel {
 		switch ($type) {
 			case 'default':
 				$id = isset($query['id']) ? $query['id'] : false;
-				if(isset($query['admin']) && $query['admin']) {
+				if (isset($query['admin']) && $query['admin']) {
 					$admin = User::isAdmin();
 				} else {
 					$admin = false;
@@ -39,7 +39,7 @@ class Appeal extends AppModel {
 								'Appeal.name' => $id, //@todo use proper label instead of name (cf. ' ')
 							),
 							'default' => '0',
-							'admin'=> $admin
+							'admin' => $admin
 						),
 						'contain' => array('Office')
 					));

@@ -142,6 +142,9 @@ class Gift extends AppModel {
 				if ($Session->check('Office.id') && User::isAdmin()) {
 					$query['id'] = $Session->read('Office.id');
 				}
+				if ($Session->check('gift_process_office_id') && User::isGuest()) {
+					$query['id'] = $Session->read('gift_process_office_id');
+				}
 
 				if (!isset($query['options']) && isset($query['id'])) {
 					$frequencies = ClassRegistry::init('Office')->find('first', array(
