@@ -9,7 +9,10 @@
     echo $form->input('default');
     echo $form->input('cost');
     echo $form->input('reviewed');
-    echo $form->input('status');
+
+	$infStatusOptions = array_map('ucfirst', $statusOptions);
+	$statusOptions = array_combine($statusOptions, $infStatusOptions);
+    echo $form->input('status', array('options' => $statusOptions));
 	$max = 5;
 	$steps = isset($form->data['AppealStep']) ? $form->data['AppealStep'] : array();
 	for ($i = 1; $i <= $max; $i++) {

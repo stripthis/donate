@@ -14,6 +14,8 @@ class Appeal extends AppModel {
 			'dependent' => true
 		)
 	);
+
+	var $actsAs = array('Containable', 'Lookupabable', 'Enumerable');
 /**
  * Get appeal from id, campaign_code or name
  * @param $appeal
@@ -29,16 +31,21 @@ class Appeal extends AppModel {
 				$appeal = false;
 
 				if ($id) {
-					$appeal = $this->find('first', array(
-						'conditions' => array(
-							'OR' => array(
-								'Appeal.id' => $id,
-								'Appeal.campaign_code' => $id,
-								'Appeal.name' => $id, //@todo use proper label instead of name (cf. ' ')
-							),
-							'default' => '0',
-							'admin' => $admin
+					$conditions = array(
+						'OR' => array(
+							'Appeal.id' => $id,
+							'Appeal.campaign_code' => $id,
+							'Appeal.name' => $id, //@todo use proper label instead of name (cf. ' ')
 						),
+						'default' => '0',
+						'admin' => $admin,
+						'status <>' => 'archived'
+					);
+					if (!User::isAdmin()) {
+						$conditions['status'] = 'published';
+					}
+					$appeal = $this->find('first', array(
+						'conditions' => $conditions,
 						'contain' => array('Office')
 					));
 				}
@@ -46,7 +53,9 @@ class Appeal extends AppModel {
 				if (empty($appeal)) {
 					$appeal = $this->find('first', array(
 						'conditions' => array('Appeal.default' => '1'),
-						'contain' => array('Office')
+						'contain' => array('Office'),
+						'status' => 'published',
+						'admin' => $admin
 					));
 				}
 				return $appeal;

@@ -120,7 +120,8 @@ class AppealsController extends AppController {
 			$action = 'edit';
 		}
 
-		$this->set(compact('action'));
+		$statusOptions = $this->Appeal->enumOptions('status');
+		$this->set(compact('action', 'statusOptions'));
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
 			return $this->data = $appeal;

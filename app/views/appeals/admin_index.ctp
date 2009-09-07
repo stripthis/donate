@@ -26,6 +26,7 @@ $favConfig = Configure::read('Favorites');
 			$paginator->sort('Name', 'name', array('url' => $params)),
 			$paginator->sort('Default?', 'default', array('url' => $params)),
 			$paginator->sort('Reviewed?', 'reviewed', array('url' => $params)),
+			$paginator->sort('Status', 'status', array('url' => $params)),
 			$paginator->sort('#Steps', 'steps', array('url' => $params)),
 			$paginator->sort('Created By', 'user_id', array('url' => $params)),
 			$paginator->sort('Created On', 'created', array('url' => $params)),
@@ -40,6 +41,9 @@ $favConfig = Configure::read('Favorites');
 				$html->link(__('Delete', true), array('action'=>'delete', $appeal['Appeal']['id']), array('class'=>'delete'), sprintf(__('Are you sure?', true), $appeal['Appeal']['id']))
 			);
 
+			if ($appeal['Appeal']['status'] == 'draft') {
+				$actions[] = $html->link(__('Preview', true), array('controller' => 'gifts', 'action'=>'add', 'appeal_id' =>$appeal['Appeal']['id'], 'admin' => '0'),array('class'=>'view'));
+			}
 			$user = $html->link($appeal['User']['login'], array(
 				'controller' => 'users', 'action'=>'view', $appeal['User']['id']
 			));
@@ -53,6 +57,7 @@ $favConfig = Configure::read('Favorites');
 				$appeal['Appeal']['name'],
 				$appeal['Appeal']['default'],
 				$appeal['Appeal']['reviewed'],
+				ucfirst($appeal['Appeal']['status']),
 				$appeal['Appeal']['appeal_step_count'],
 				$user,
 				$appeal['Appeal']['created'],
