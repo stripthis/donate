@@ -27,7 +27,7 @@ class Appeal extends AppModel {
 			case 'default':
 				$id = isset($query['id']) ? $query['id'] : false;
 
-				$admin = User::isAdmin();
+				$admin = User::isAdmin() ? '1' : '0';
 				$appeal = false;
 
 				if ($id) {
