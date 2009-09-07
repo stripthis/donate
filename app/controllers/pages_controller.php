@@ -25,7 +25,8 @@ class PagesController extends AppController {
 		if ($page == 'home') {
 			$appeals = $this->Appeal->find('all', array(
 				'fields' => array('name', 'id'),
-				'order' => array('name' => 'asc')
+				'order' => array('name' => 'asc'),
+				'conditions' => array('admin' => false)
 			));
 			$this->set(compact('appeals'));
 		}

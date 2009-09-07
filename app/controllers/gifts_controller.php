@@ -11,7 +11,6 @@ class GiftsController extends AppController {
  */
 	function beforeFilter() {
 		parent::beforeFilter();
-
 		$this->Appeal = ClassRegistry::init('Appeal');
 		$this->AuthKey = ClassRegistry::init('AuthKey');
 		$this->AuthKeyType = $this->AuthKey->AuthKeyType;
@@ -39,6 +38,9 @@ class GiftsController extends AppController {
 
 		$appealId = $this->Session->read($this->sessAppealKey);
 		$currentAppeal = $this->Appeal->find('default', array('id' => $appealId));
+		
+		pr($currentAppeal);
+		exit;
 		
 		Assert::notEmpty($currentAppeal, '500');
 		$officeId = $currentAppeal['Appeal']['office_id'];
