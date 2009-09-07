@@ -3,6 +3,7 @@ if (!defined('FULL_BASE_URL')) {
 	define('FULL_BASE_URL', '');
 }
 $config = array(
+	'App.environment' => 'production',
 	'App.name' => 'Greenpeace White Rabbit',
 	'App.domain' => 'https://donate.greenpeace2.org',
 	'App.stagingDomain' => 'https://donate.greenpeace.org',
