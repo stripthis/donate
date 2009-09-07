@@ -38,7 +38,7 @@ class GiftsController extends AppController {
 
 		$appealId = $this->Session->read($this->sessAppealKey);
 		$currentAppeal = $this->Appeal->find('default', array('id' => $appealId));
-		
+
 		Assert::notEmpty($currentAppeal, '500');
 		$officeId = $currentAppeal['Appeal']['office_id'];
 		$this->Session->write($this->sessOfficeKey, $officeId);
@@ -309,7 +309,8 @@ class GiftsController extends AppController {
 		$this->params['named']['appeal_id'] = $this->Appeal->lookup(
 			array(
 				'office_id' => $this->Session->read('Office.id'),
-				'name LIKE' => '%Admin%'
+				'name LIKE' => '%Admin%',
+				'admin' => true
 			), 'id', false
 		);
 		$this->add();
