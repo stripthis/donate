@@ -43,41 +43,41 @@ class Navigation extends AppModel{
 			, 'gift_sub' => array(
 				'All' => array(
 					'/admin/gifts'
-					, '#/^\/admin\/gifts.*$/iU'
+					, '#/^\/admin\/gifts$/iU'
 				)
 				, 'Recurring' => array(
-					'/admin/gifts/recurring'
+					'/admin/gifts/index/recurring'
 					, '#/^\/admin\/gifts\/recurring.*$/iU'
 				)
 				, 'Starred' => array(
-					'/admin/gifts/starred'
+					'/admin/gifts/index/starred'
 					, '#/^\/admin\/gifts\/starred.*$/iU'
 				)
 			)
 			, 'transaction_sub' => array(
 				'All' => array(
 					'/admin/transactions'
-					, '#/^\/admin\/transactions.*$/iU'
+					, '#/^\/admin\/transactions$/iU'
 				)
 				, 'Pending' => array(
-					'/admin/transactions/pending'
-					, '#/^\/admin\/transactions\/pending.*$/iU'
+					'/admin/transactions/index/pending'
+					, '#/^\/admin\/transactions\/index\/pending.*$/iU'
 				)
 				, 'Hard Errors' => array(
-					'/admin/transactions/harderrors'
-					, '#/^\/admin\/gifts\/transactions\/harderrors.*$/iU'
+					'/admin/transactions/index/harderrors'
+					, '#/^\/admin\/gifts\/transactions\/index\/harderrors.*$/iU'
 				)
 				, 'Soft Errors' => array(
-					'/admin/transactions/harderrors'
-					, '#/^\/admin\/gifts\/transactions\/softerrors.*$/iU'
+					'/admin/transactions/index/softerrors'
+					, '#/^\/admin\/gifts\/transactions\/index\/softerrors.*$/iU'
 				)
 				, 'Retried' => array(
-					'/admin/transactions/harderrors'
-					, '#/^\/admin\/gifts\/transactions\/retried.*$/iU'
+					'/admin/transactions/index/retried'
+					, '#/^\/admin\/gifts\/transactions\/index\/retried.*$/iU'
 				)
 				, 'Successful' => array(
-					'/admin/transactions/harderrors'
-					, '#/^\/admin\/gifts\/transactions\/successful.*$/iU'
+					'/admin/transactions/index/successful'
+					, '#/^\/admin\/gifts\/transactions\/index\/successful.*$/iU'
 				)
 			)
 			, 'user_sub' => array(
@@ -93,8 +93,16 @@ class Navigation extends AppModel{
 			, 'supporter_sub' => array(
 				'All' => array(
 					'/admin/supporters'
-					, '#/^\/admin\/supporters.*$/iU'
-				)
+					, '#/^\/admin\/supporters$/iU'
+				),
+				'Incomplete Gifts' => array(
+					'/admin/supporters/index/incomplete_gifts'
+					, '#/^\/admin\/supporters\/index\/incomplete_gifts.*$/iU'
+				),
+				'Complete Gifts' => array(
+					'/admin/supporters/index/complete_gifts'
+					, '#/^\/admin\/supporters\/index\/complete_gifts.*$/iU'
+				),
 			)
 			, 'user_preferences' => array(
 				'Preferences' => array(
@@ -129,7 +137,7 @@ class Navigation extends AppModel{
 				)
 				, 'Offices' => array(
 					'/admin/offices'
-					, '#/\/admin\/offices.*/iU'
+					, '#/\/admin\/offices$/iU'
 					, 'role' => 'Root'
 				)
 				, 'Users' => array(
@@ -143,8 +151,8 @@ class Navigation extends AppModel{
 					, 'role' => 'Root'
 				)
 				, 'Office Config' => array(
-					'/admin/offices/edit' . $Session->read('Office.id')
-					, '#/\/admin\/offices.*/iU'
+					'/admin/offices/edit/' . $Session->read('Office.id')
+					, '#/\/admin\/offices\/edit\/' . $Session->read('Office.id') . '.*/iU'
 					, 'role' => 'SuperAdmin'
 				)
 			)

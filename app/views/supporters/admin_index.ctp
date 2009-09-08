@@ -7,7 +7,7 @@ echo $this->element('nav', array(
 ?>
 <?php echo $this->element('../supporters/elements/actions'); ?>
 <?php if (empty($gifts)) : ?>
-	<p><?php echo __('Sorry there are no gifts yet.')?></p>
+	<p><?php echo __('Sorry there are no supporters yet.')?></p>
 <?php else : ?>
 	<dl>
 		<?php foreach ($gifts as $gift) : ?>
@@ -31,6 +31,6 @@ echo $this->element('nav', array(
 			<hr/>
 		<?php endforeach; ?>
 	</dl>
-	<?php echo $this->element('paging', array('model' => 'Gift'))?>
+	<?php echo $this->element('paging', array('model' => 'Gift', 'url' => $type))?>
 <?php endif;?>
 </div>

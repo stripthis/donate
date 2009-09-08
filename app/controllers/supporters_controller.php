@@ -18,8 +18,20 @@ class SupportersController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index() {
+	function admin_index($type = 'all') {
+		$conditions = array(
+			'Gift.office_id' => $this->Session->read('Office.id')
+		);
+		switch ($type) {
+			case 'incomplete_gifts':
+				$conditions['Gift.complete'] = '0';
+				break;
+			case 'complete_gifts':
+				$conditions['Gift.complete'] = '1';
+				break;
+		}
 		$this->paginate['Gift'] = array(
+			'conditions' => $conditions,
 			'contain' => array(
 				'Contact(fname, lname, email, salutation, title)',
 				'Contact.Address',
