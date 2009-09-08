@@ -81,12 +81,17 @@ class UsersController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index() {
+	function admin_index($type = 'all') {
 		$conditions = array(
 			'User.login <>' => Configure::read('App.guestAccount'),
 			'User.active' => '1'
 		);
 
+		switch ($type) {
+			case 'colleagues':
+				$conditions['User.office_id'] = $this->Session->read('Office.id');
+				break;
+		}
 		$defaults = array(
 			'keyword' => '',
 			'search_type' => 'all',
@@ -133,7 +138,7 @@ class UsersController extends AppController {
 			'limit' => $params['my_limit']
 		);
 		$users = $this->paginate();
-		$this->set(compact('users', 'params'));
+		$this->set(compact('users', 'params', 'type'));
 	}
 /**
  * undocumented function

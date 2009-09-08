@@ -81,13 +81,13 @@ class Navigation extends AppModel{
 				)
 			)
 			, 'user_sub' => array(
-				'My Colleagues' => array(
-					'/admin/users/index/office'
-					, '#/^\/admin\/users\/office.*$/iU'
-				)
-				, 'All Colleagues' => array(
+				'All' => array(
 					'/admin/users/index/all'
-					, '#/^\/admin\/users\/all.*$/iU'
+					, '#/^\/admin\/users\/index\/all.*$/iU'
+				)
+				, 'My Office Colleagues' => array(
+					'/admin/users/index/colleagues'
+					, '#/^\/admin\/users\/index\/colleagues.*$/iU'
 				)
 			)
 			, 'supporter_sub' => array(
@@ -141,7 +141,7 @@ class Navigation extends AppModel{
 					, 'role' => 'Root'
 				)
 				, 'Users' => array(
-					'/admin/users'
+					'/admin/users/index/all'
 					, '#/\/admin\/users.*/iU'
 					, 'role' => 'Root'
 				)

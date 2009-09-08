@@ -39,6 +39,7 @@
 		</table>
 		<?php
 		$urlParams = $params;
+		$urlParams[] = $type;
 		$urlParams['merge'] = true;
 		unset($urlParams['ext']);
 		unset($urlParams['page']);
@@ -47,5 +48,5 @@
 	<?php else : ?>
 		<p>Sorry, nothing to show here.</p>
 	<?php endif; ?>
-	<?php echo $this->element('../users/elements/filter', compact('params')); ?>
+	<?php echo $this->element('../users/elements/filter', compact('params', 'type')); ?>
 </div>
