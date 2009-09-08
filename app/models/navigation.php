@@ -31,13 +31,13 @@ class Navigation extends AppModel{
 
 			)
 			, 'appeal_sub' => array(
-				'My Office' => array(
-					'/admin/appeals/office'
-					, '#/^\/admin\/appeals\/office.*$/iU'
+				'All' => array(
+					'/admin/appeals/index/all'
+					, '#/^\/admin\/appeals\/index\/all.*$/iU'
 				)
-				, 'All Appeals' => array(
-					'/admin/appeals'
-					, '#/^\/admin\/appeals.*$/iU'
+				, 'My Office' => array(
+					'/admin/appeals/index/office'
+					, '#/^\/admin\/appeals\/index\/office.*$/iU'
 				)
 			)
 			, 'gift_sub' => array(
@@ -120,12 +120,12 @@ class Navigation extends AppModel{
 					, '#/^\/admin\/statistics.*$/iU'
 				),
 				'Appeals' => array(
-					'/admin/appeals/'
+					'/admin/appeals/index/all'
 					, '#/^\/admin\/appeals.*$/iU'
 				)
 				, 'Gifts' => array(
 					'/admin/gifts/index/all'
-					, '#/\/admin\/gifts\/index\/all.*/iU'
+					, '#/\/admin\/gifts.*/iU'
 				)
 				, 'Transactions' => array(
 					'/admin/transactions/index/all'

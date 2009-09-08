@@ -78,6 +78,7 @@ $favConfig = Configure::read('Favorites');
 		</table>
 		<?php
 		$urlParams = $params;
+		$urlParams[] = $type;
 		$urlParams['merge'] = true;
 		unset($urlParams['ext']);
 		unset($urlParams['page']);
@@ -86,5 +87,5 @@ $favConfig = Configure::read('Favorites');
 	<?php else : ?>
 		<p>Sorry, nothing to show here.</p>
 	<?php endif; ?>
-	<?php echo $this->element('../appeals/elements/filter', compact('params')); ?>
+	<?php echo $this->element('../appeals/elements/filter', compact('params', 'type')); ?>
 </div>

@@ -16,11 +16,14 @@ class AppealsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index() {
+	function admin_index($type = 'all') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
-		$conditions = array(
-			'Appeal.office_id' => $this->Session->read('Office.id')
-		);
+		$conditions = array();
+		switch ($type) {
+			case 'office':
+				$conditions['Appeal.office_id'] = $this->Session->read('Office.id');
+				break;
+		}
 
 		$defaults = array(
 			'keyword' => '',

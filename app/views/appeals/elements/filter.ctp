@@ -8,7 +8,7 @@ $paginateOptions = array(10, 20, 40, 50, 75);
 $paginateOptions = array_combine($paginateOptions, $paginateOptions);
 ?>
 <div class="filter">
-	<?php echo $form->create('Appeal', array('url' => '/admin/appeals', 'type' => 'get')); ?>
+	<?php echo $form->create('Appeal', array('url' => '/admin/appeals/index/' . $type, 'type' => 'get')); ?>
 	<?php echo $form->input('keyword', array('label' => 'Keyword:', 'value' => $params['keyword'])); ?>  
 	<?php echo $form->input('search_type', array('label' => 'Type:', 'selected' => $params['search_type'], 'options' => $typeOptions, 'class'=>'full')); ?>
   <?php echo $form->input('my_limit', array(
