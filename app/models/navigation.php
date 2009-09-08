@@ -137,7 +137,7 @@ class Navigation extends AppModel{
 				)
 				, 'Offices' => array(
 					'/admin/offices'
-					, '#/\/admin\/offices$/iU'
+					, '#/\/admin\/offices\/(index.*|manage_tree|add)?$/iU'
 					, 'role' => 'Root'
 				)
 				, 'Users' => array(
