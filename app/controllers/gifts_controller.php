@@ -288,11 +288,7 @@ class GiftsController extends AppController {
 			'conditions' => $conditions,
 			'recursive' => 3,
 			'contain' => array(
-				'LastTransaction(created)',
-				'Office(id, name)', 'Appeal(id, name)', 
-				'Contact(fname, lname, email,created,modified)',
-				'Contact.Address.Country(id,name)',
-				'Contact.Address.City(id,name)',
+				'Contact(fname, lname, email,created,modified,id)',
 				'Transaction(id,status,gateway_id,created,modified)',
 				'Transaction.Gateway(id,name)'
 			),
