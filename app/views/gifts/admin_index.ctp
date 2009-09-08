@@ -5,6 +5,7 @@
 	  'model' => 'gift'
   );
   $urlParams = $params;
+  $urlParams[] = $type;
   $urlParams['merge'] = true;
   unset($urlParams['ext']);
   unset($urlParams['page']);
@@ -67,5 +68,5 @@
       </table>
     </div>
 	  <?php	echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));?>
-    <?php echo $this->element('../gifts/elements/filter', compact('params')); ?>
+    <?php echo $this->element('../gifts/elements/filter', compact('params', 'type')); ?>
   </div>

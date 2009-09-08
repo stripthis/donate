@@ -18,7 +18,7 @@ class TransactionsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index($contactId = null) {
+	function admin_index($type = 'all', $contactId = null) {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
 		$conditions = array(

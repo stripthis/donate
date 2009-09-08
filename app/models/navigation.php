@@ -42,8 +42,8 @@ class Navigation extends AppModel{
 			)
 			, 'gift_sub' => array(
 				'All' => array(
-					'/admin/gifts'
-					, '#/^\/admin\/gifts$/iU'
+					'/admin/gifts/index/all'
+					, '#/^\/admin\/gifts\/index\/all.*$/iU'
 				)
 				, 'Recurring' => array(
 					'/admin/gifts/index/recurring'
@@ -56,8 +56,8 @@ class Navigation extends AppModel{
 			)
 			, 'transaction_sub' => array(
 				'All' => array(
-					'/admin/transactions'
-					, '#/^\/admin\/transactions$/iU'
+					'/admin/transactions/index/all'
+					, '#/^\/admin\/transactions\/index\/all.*$/iU'
 				)
 				, 'Pending' => array(
 					'/admin/transactions/index/pending'
@@ -124,11 +124,11 @@ class Navigation extends AppModel{
 					, '#/^\/admin\/appeals.*$/iU'
 				)
 				, 'Gifts' => array(
-					'/admin/gifts'
-					, '#/\/admin\/gifts.*/iU'
+					'/admin/gifts/index/all'
+					, '#/\/admin\/gifts\/index\/all.*/iU'
 				)
 				, 'Transactions' => array(
-					'/admin/transactions'
+					'/admin/transactions/index/all'
 					, '#/\/admin\/transactions.*/iU'
 				)
 				, 'Supporters' => array(

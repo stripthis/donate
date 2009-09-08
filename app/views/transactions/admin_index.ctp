@@ -111,6 +111,7 @@ echo $this->element('nav', array(
 	</table>
 	<?php
 	$urlParams = $params;
+	$urlParams[] = $type;
 	unset($urlParams['ext']);
 	unset($urlParams['page']);
 	$urlParams['merge'] = true;
@@ -119,5 +120,5 @@ echo $this->element('nav', array(
 <?php else : ?>
 	<p>Sorry, nothing to show here.</p>
 <?php endif; ?>
-<?php echo $this->element('../transactions/elements/filter', compact('params')); ?>
+<?php echo $this->element('../transactions/elements/filter', compact('params', 'type')); ?>
 </div>

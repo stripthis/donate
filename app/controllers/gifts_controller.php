@@ -216,7 +216,7 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index($type = '') {
+	function admin_index($type = 'all') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
 		$conditions = array(
