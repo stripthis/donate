@@ -12,6 +12,7 @@
 			'value' => $params['start_date_year'],
 			'dateFormat' => 'Y',
 			'maxYear' => date('Y'),
+			'minYear' => 2009,
 			'empty' => '--'
 		));
 		echo $form->input('start_date_month', array(
@@ -35,6 +36,7 @@
 			'value' => $params['end_date_year'],
 			'dateFormat' => 'Y',
 			'maxYear' => date('Y'),
+			'minYear' => 2009,
 			'empty' => '--'
 		));
 		echo $form->input('end_date_month', array(

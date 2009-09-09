@@ -3,7 +3,7 @@ class GridFilterComponent extends Object {
 /**
  * undocumented function
  *
- * @param string $condtiions 
+ * @param string $conditions
  * @param string $params 
  * @param string $model 
  * @param string $field 
