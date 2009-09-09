@@ -23,6 +23,7 @@ class ExportsController extends AppController {
  * @access public
  */
 	function admin_gifts() {
+		Assert::true(User::allowed($this->name, $this->action), '403');
 		Assert::true($this->isPost() || $this->Session->read($this->sessKeyModel) == 'Gift', '404');
 
 		$model = 'Gift';
