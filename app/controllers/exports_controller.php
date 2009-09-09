@@ -38,7 +38,9 @@ class ExportsController extends AppController {
 			$conditions['Gift.id'] = $selection;
 		}
 
+		$addedGiftId = false;
 		if (!in_array('Gift.id', (array) $this->data[$model]['fields'])) {
+			$addedGiftId = true;
 			$this->data[$model]['fields'][] = 'Gift.id';
 		}
 
@@ -48,17 +50,16 @@ class ExportsController extends AppController {
 			'fields' => $this->data[$model]['fields']
 		));
 
+		if ($addedGiftId) {
+			$key = array_search('Gift.id', $this->data[$model]['fields']);
+			unset($this->data[$model]['fields'][$key]);
+		}
+
 		if ($this->data[$model]['softdelete']) {
 			$this->Gift->softdelete($items);
 		}
 
-		if (!in_array('Gift.id', (array) $this->data[$model]['fields'])) {
-			$items = Common::remove($items, '{n}.Gift.id');
-		}
-
-		if (!in_array('Contact.id', (array) $this->data[$model]['fields'])) {
-			$items = Common::remove($items, '{n}.Contact.id');
-		}
+		$items = $this->filterFields($model, $items, array('Gift.id', 'Contact.id'));
 
 		if (isset($this->data[$model]['download']) && $this->data[$model]['download']) {
 			$name = 'gifts_export_' . date('Y_m_d_H_i');
@@ -115,6 +116,23 @@ class ExportsController extends AppController {
  */
 	function loadSelection() {
 		return $this->Session->read($this->sessKeySelection);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $model 
+ * @param string $items 
+ * @param string $fields 
+ * @return void
+ * @access public
+ */
+	function filterFields($model, $items, $fields) {
+		foreach ($fields as $field) {
+			if (!in_array($field, (array) $this->data[$model]['fields'])) {
+				$items = Common::remove($items, '{n}.' . $field);
+			}
+		}
+		return $items;
 	}
 }
 ?>
