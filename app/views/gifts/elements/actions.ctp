@@ -22,5 +22,6 @@ $export = isset($export) ? $export : false;
 
 if ($export) {
 	echo $form->submit('Export Selection');
+	echo $form->submit('Export All Pages', array('name' => $type));
 }
 ?>
