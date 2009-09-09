@@ -15,7 +15,7 @@ class GridFilterComponent extends Object {
 			if (empty($params['start_date_month'])) {
 				$params['start_date_month'] = '01';
 			}
-			$startDate = '01-' . $params['start_date_month'] . '-' . $params['start_date_year'];
+			$startDate = $params['start_date_year'] . '-' . $params['start_date_month'] . '-01';
 			$condtitions[] = "DATE_FORMAT(" . $model . "." . $field. ", '%Y-%m-%d') >= '" . $startDate . "'";
 		}
 
@@ -23,7 +23,7 @@ class GridFilterComponent extends Object {
 			if (empty($params['end_date_month'])) {
 				$params['end_date_month'] = '01';
 			}
-			$endDate = '01-' . $params['end_date_month'] . '-' . $params['end_date_year'];
+			$endDate = $params['end_date_year'] . '-' . $params['end_date_month'] . '-01';
 			$condtitions[] = "DATE_FORMAT(" . $model . "." . $field. ", '%Y-%m-%d') <= '" . $endDate . "'";
 		}
 
