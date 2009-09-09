@@ -257,5 +257,18 @@ class Gift extends AppModel {
 	function afterSave($created) {
 		return $this->name($this->id);
 	}
+/**
+ * undocumented function
+ *
+ * @param string $gifts 
+ * @return void
+ * @access public
+ */
+	function softdelete($gifts) {
+		return $this->updateAll(
+			array('Gift.archived' => '"1"'),
+			array('Gift.id' => Set::extract('/Gift/id', $gifts))
+		);
+	}
 }
 ?>

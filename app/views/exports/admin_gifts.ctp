@@ -27,6 +27,6 @@
 	echo $form->input('format', array(
 		'label' => 'Format:', 'options' => $formats
 	));
-	echo $form->end('Save');
+	echo $form->end('Export');
 	?>
 </div>

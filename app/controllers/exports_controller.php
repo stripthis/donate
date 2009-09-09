@@ -38,11 +38,23 @@ class ExportsController extends AppController {
 			$conditions['Gift.id'] = $selection;
 		}
 
+		if (!in_array('Gift.id', (array) $this->data[$model]['fields'])) {
+			$this->data[$model]['fields'][] = 'Gift.id';
+		}
+
 		$items = $this->$model->find('all', array(
 			'conditions' => $conditions,
 			'contain' => array('Contact'),
 			'fields' => $this->data[$model]['fields']
 		));
+
+		if ($this->data[$model]['softdelete']) {
+			$this->Gift->softdelete($items);
+		}
+
+		if (!in_array('Gift.id', (array) $this->data[$model]['fields'])) {
+			$items = Common::remove($items, '{n}.Gift.id');
+		}
 
 		if (!in_array('Contact.id', (array) $this->data[$model]['fields'])) {
 			$items = Common::remove($items, '{n}.Contact.id');

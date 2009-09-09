@@ -221,7 +221,8 @@ class GiftsController extends AppController {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
 		$conditions = array(
-			'Gift.office_id' => $this->Session->read('Office.id')
+			'Gift.office_id' => $this->Session->read('Office.id'),
+			'Gift.archived' => '0'
 		);
 
 		$order = array('Gift.created' => 'desc');

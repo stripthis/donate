@@ -20,6 +20,7 @@ class DueGiftsShell extends Shell {
 			'conditions' => array(
 				'Gift.frequency <>' => 'onetime',
 				'Gift.due' => '0',
+				'Gift.archived' => '0'
 			),
 			'contain' => array(
 				'LastTransaction'

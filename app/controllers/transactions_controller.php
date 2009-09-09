@@ -34,7 +34,10 @@ class TransactionsController extends AppController {
 			));
 			
 			$giftIds = $this->Gift->find('all', array(
-				'conditions' => array('contact_id' => $contactId),
+				'conditions' => array(
+					'contact_id' => $contactId,
+					'archived' => '0'
+				),
 				'fields' => 'id'
 			));
 			$conditions['Transaction.gift_id'] = Set::extract('/Gift/id', $giftIds);
