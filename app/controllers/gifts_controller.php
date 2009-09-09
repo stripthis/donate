@@ -243,8 +243,10 @@ class GiftsController extends AppController {
 			'search_type' => 'all',
 			'my_limit' => 20,
 			'custom_limit' => false,
+			'start_date_day' => false,
 			'start_date_year' => false,
 			'start_date_month' => false,
+			'end_date_day' => false,
 			'end_date_year' => false,
 			'end_date_month' => false
 		);

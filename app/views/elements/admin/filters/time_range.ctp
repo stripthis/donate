@@ -13,14 +13,21 @@
 			'dateFormat' => 'Y',
 			'maxYear' => date('Y'),
 			'empty' => '--'
-			));
+		));
 		echo $form->input('start_date_month', array(
 			'label' => false,
 			'type' => 'date',
 			'value' => $params['start_date_month'],
 			'dateFormat' => 'M',
 			'empty' => '--'
-			));
+		));
+		echo $form->input('start_date_day', array(
+			'label' => false,
+			'type' => 'date',
+			'value' => $params['start_date_day'],
+			'dateFormat' => 'D',
+			'empty' => '--'
+		));
 
 		echo $form->input('end_date_year', array(
 			'label' => __('End Date',true).':',
@@ -29,14 +36,21 @@
 			'dateFormat' => 'Y',
 			'maxYear' => date('Y'),
 			'empty' => '--'
-	      ));
+		));
 		echo $form->input('end_date_month', array(
 			'label' => false,
 			'type' => 'date',
 			'value' => $params['end_date_month'],
 			'dateFormat' => 'M',
 			'empty' => '--'
-	      ));
-	      ?>
-        </div>
-      </fieldset>
+		));
+		echo $form->input('end_date_day', array(
+			'label' => false,
+			'type' => 'date',
+			'value' => $params['end_date_day'],
+			'dateFormat' => 'D',
+			'empty' => '--'
+		));
+		?>
+	</div>
+	</fieldset>
