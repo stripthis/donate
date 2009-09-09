@@ -140,6 +140,8 @@ class User extends AppModel {
 		}
 
 		Assert::true(Common::isUuid($user['User']['id']));
+		//pr($user);
+		$_this->log(Debugger::trace());
 		Configure::write('User', $user);
 		Assert::identical(Configure::read('User'), $user);
 
