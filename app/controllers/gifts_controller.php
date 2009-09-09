@@ -1,6 +1,7 @@
 <?php
 class GiftsController extends AppController {
 	var $helpers = array('Fpdf', 'GiftForm');
+	var $components = array('GridFilter');
 	var $models = array('Gift', 'Contact', 'Address', 'Phone');
 	var $sessAppealKey = 'gift_process_appeal_id';
 	var $sessOfficeKey = 'gift_process_office_id';
@@ -242,8 +243,10 @@ class GiftsController extends AppController {
 			'search_type' => 'all',
 			'my_limit' => 20,
 			'custom_limit' => false,
-			'start_date' => false,
-			'end_date' => false
+			'start_date_year' => false,
+			'start_date_month' => false,
+			'end_date_year' => false,
+			'end_date_month' => false
 		);
 		$params = am($defaults, $this->params['url'], $this->params['named']);
 		unset($params['ext']);
@@ -284,6 +287,7 @@ class GiftsController extends AppController {
 			}
 		}
 
+		$conditions = $this->GridFilter->dateRange($conditions, $params, 'Gift', 'created');
 		$this->Session->write('gifts_filter_conditions', $conditions);
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,
