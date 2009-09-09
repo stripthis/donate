@@ -117,7 +117,7 @@ $(function() {
 		if($(this).attr("checked")!= undefined && $(this).attr("checked")){
 			check = true;
 		}
-		$("input[name=" + $(this).attr('name') + "]").each(function(){
+		$('input[type=checkbox]', $(this).parents('table')).each(function(){
 			this.checked = check;
 		})
 	});
