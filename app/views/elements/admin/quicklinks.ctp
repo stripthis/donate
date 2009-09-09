@@ -5,16 +5,16 @@
                   array("admin"=>true,"controller"=>"help"), array('escape' => false)); ?> 
         </li>
         <li><?php echo $html->link( $html->image("icons/XL/appeals.png", array("alt"=>"appeals"))." Manage appeals", 
-                  array("admin"=>true,"controller"=>"appeals"), array('escape' => false)); ?> 
+                  array("admin"=>true,"controller"=>"appeals", 'all'), array('escape' => false)); ?> 
         </li>
         <li><?php echo $html->link( $html->image("icons/XL/users.png", array("alt"=>"users"))." Manage Supporters", 
-                  array("admin"=>true,"controller"=>"users"), array('escape' => false)); ?> 
+                  array("admin"=>true,"controller"=>"users", 'all'), array('escape' => false)); ?> 
         </li>
         <li><?php echo $html->link( $html->image("icons/XL/kexi.png", array("alt"=>"help"))."Browse Gifts", 
-                  array("admin"=>true,"controller"=>"gifts"), array('escape' => false)); ?> 
+                  array("admin"=>true,"controller"=>"gifts", 'all'), array('escape' => false)); ?> 
         </li>
         <li><?php echo $html->link( $html->image("icons/XL/vcard.png", array("alt"=>"help"))."Browse Transactions", 
-                  array("admin"=>true,"controller"=>"transactions"), array('escape' => false)); ?> 
+                  array("admin"=>true,"controller"=>"transactions", 'all'), array('escape' => false)); ?> 
         </li>
         <div class="clear"></div>
         <li><?php echo $html->link( $html->image("icons/XL/statistics.png", array("alt"=>"help"))."Browse Statistics", 
@@ -24,7 +24,7 @@
                   array("admin"=>true,"controller"=>"bugs", 'action' => 'add', 'plugin' => 'bugs'), array('escape' => false)); ?> 
         </li>
         <li><?php echo $html->link( $html->image("icons/XL/office_config.png", array("alt"=>"office config"))."Office Config", 
-                  array("admin"=>true,"controller"=>"offices"), array('escape' => false)); ?> 
+                  array("admin"=>true,"controller"=>"offices", 'all'), array('escape' => false)); ?> 
         </li>
       </ul>
     </div>

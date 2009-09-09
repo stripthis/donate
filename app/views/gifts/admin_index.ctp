@@ -1,5 +1,4 @@
 <?php
-  //pr($gifts);
   $options = array(
     'doFavorites' => class_exists('Favorite') && Favorite::doForModel('Gift'),
 	  'model' => 'gift'
@@ -16,10 +15,12 @@
 	echo $this->element('nav', array(
 		'type' => 'gift_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
+
+	echo $form->create('Gift', array('url' => '/admin/exports/gifts', 'type' => 'post'));
+
+	echo $this->element('../gifts/elements/actions', array('export' => true));
 	?>
-<?php echo $this->element('../gifts/elements/actions'); ?>
       <div class="index_wrapper">
-<?php //echo $this->element('/admin/css_tests/gift_index'); ?>
         <table>
           <thead>
           <tr>
@@ -46,27 +47,30 @@
           </tr>
           </thead>
           <tbody>
-<?php
-  foreach ($gifts as $gift) {
-    $options['parent_id'] = $gift['Gift']['id'];
-    $options['gift'] = $gift;
-    $options['leaf'] = 0;
-    echo $this->element('tableset/rows/gift',$options);
-    if(isset($gift)) {
-    	$options['leaf'] = 1;
-      echo $this->element('tableset/rows/gift', $options);
-      if(isset($gift['Contact'])) {
-        echo $this->element('tableset/rows/contact',am($options,array('contact'=>$gift))); 
-      }
-      foreach ($gift['Transaction'] as $transaction) {
-        echo $this->element('tableset/rows/transaction', am($options, array('transaction'=>$transaction)));
-      }
-    }
-  }
-?>
+			<?php
+			  foreach ($gifts as $gift) {
+			    $options['parent_id'] = $gift['Gift']['id'];
+			    $options['gift'] = $gift;
+			    $options['leaf'] = 0;
+			    echo $this->element('tableset/rows/gift',$options);
+			    if(isset($gift)) {
+			    	$options['leaf'] = 1;
+			      echo $this->element('tableset/rows/gift', $options);
+			      if(isset($gift['Contact'])) {
+			        echo $this->element('tableset/rows/contact',am($options,array('contact'=>$gift))); 
+			      }
+			      foreach ($gift['Transaction'] as $transaction) {
+			        echo $this->element('tableset/rows/transaction', am($options, array('transaction'=>$transaction)));
+			      }
+			    }
+			  }
+			?>
         </tbody>
       </table>
     </div>
-	  <?php	echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));?>
-    <?php echo $this->element('../gifts/elements/filter', compact('params', 'type')); ?>
+	<?php
+	echo $form->end();
+	echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));
+	echo $this->element('../gifts/elements/filter', compact('params', 'type'));
+	?>
   </div>

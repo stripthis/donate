@@ -84,6 +84,15 @@ class Office extends AppModel {
 			}
 		}
 
+		return true;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function afterSave($created) {
 		if (isset($this->data['Office']['gateways'])) {
 			$this->GatewaysOffice->deleteAll(array('office_id' => $this->id));
 			if (!empty($this->data['Office']['gateways'][0])) {
@@ -97,15 +106,6 @@ class Office extends AppModel {
 			}
 		}
 
-		return true;
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
-	function afterSave($created) {
 		if (isset($this->data['Office']['permissions'])) {
 			$permissions = Configure::read('App.permission_options');
 			foreach ($this->data['Office']['permissions'] as $userId => $perms) {
