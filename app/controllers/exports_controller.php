@@ -1,6 +1,7 @@
 <?php
 class ExportsController extends AppController {
 	var $uses = array();
+	var $components = array('ForceDownload');
 	var $sessKeyModel = 'export_model';
 	var $sessKeyType = 'export_type';
 	var $sessKeySelection = 'export_selection';
@@ -31,7 +32,7 @@ class ExportsController extends AppController {
 			return;
 		}
 		$conditions = $this->Session->read('gifts_filter_conditions');
-
+pr($this->data);
 		$selection = $this->loadSelection();
 		if (!empty($selection)) {
 			$conditions['Gift.id'] = $selection;
@@ -43,7 +44,7 @@ class ExportsController extends AppController {
 			'fields' => $this->data[$model]['fields']
 		));
 
-		if (!in_array('Contact.id', $this->data[$model]['fields'])) {
+		if (!in_array('Contact.id', (array) $this->data[$model]['fields'])) {
 			$items = Common::remove($items, '{n}.Contact.id');
 		}
 

@@ -15,6 +15,14 @@
 		'multiple' => 'checkbox'
 	));
 
+	echo $form->input('softdelete', array(
+		'label' => 'Archive Selected Rows?', 'type' => 'checkbox'
+	));
+
+	echo $form->input('download', array(
+		'label' => 'Download the File?', 'type' => 'checkbox'
+	));
+
 	$formats = array('csv' => 'CSV');
 	echo $form->input('format', array(
 		'label' => 'Format:', 'options' => $formats

@@ -264,7 +264,6 @@ class GiftsController extends AppController {
 			$params['my_limit'] = $params['custom_limit'];
 		}
 
-		// search was submitted
 		if (!empty($params['keyword'])) {
 			$params['keyword'] = trim($params['keyword']);
 			switch ($params['search_type']) {
