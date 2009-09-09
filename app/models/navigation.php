@@ -125,7 +125,7 @@ class Navigation extends AppModel{
 				)
 				, 'Gifts' => array(
 					'/admin/gifts/index/all'
-					, '#/\/admin\/gifts.*/iU'
+					, '#/\/admin(\/gifts|\/exports\/gifts).*/iU'
 				)
 				, 'Transactions' => array(
 					'/admin/transactions/index/all'
