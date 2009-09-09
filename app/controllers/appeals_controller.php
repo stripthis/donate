@@ -8,7 +8,7 @@ class AppealsController extends AppController {
  */
 	function beforeFilter() {
 		parent::beforeFilter();
-		$this->Country = $this->Appeal->Country;
+		$this->Office = $this->Appeal->Office;
 	}
 /**
  * index action
@@ -16,11 +16,14 @@ class AppealsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index() {
+	function admin_index($type = 'all') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
-		$conditions = array(
-			'Appeal.office_id' => $this->Session->read('Office.id')
-		);
+		$conditions = array();
+		switch ($type) {
+			case 'office':
+				$conditions['Appeal.office_id'] = $this->Session->read('Office.id');
+				break;
+		}
 
 		$defaults = array(
 			'keyword' => '',
@@ -29,7 +32,8 @@ class AppealsController extends AppController {
 			'custom_limit' => false
 		);
 		$params = am($defaults, $this->params['url'], $this->params['named']);
-
+		unset($params['ext']);
+		unset($params['url']);
 		if (is_numeric($params['custom_limit'])) {
 			if ($params['custom_limit'] > 75) {
 				$params['custom_limit'] = 75;
@@ -51,9 +55,6 @@ class AppealsController extends AppController {
 				case 'campaign_code':
 					$conditions['Appeal.campaign_code LIKE'] = '%' . $params['keyword'] . '%';
 					break;
-				case 'country':
-					$conditions['Country.name LIKE'] = '%' . $params['keyword'] . '%';
-					break;
 				case 'author_email':
 					$conditions['User.login LIKE'] = '%' . $params['keyword'] . '%';
 					break;
@@ -61,7 +62,6 @@ class AppealsController extends AppController {
 					$conditions['or'] = array(
 						'Appeal.name LIKE' => '%' . $params['keyword'] . '%',
 						'Appeal.campaign_code LIKE' => '%' . $params['keyword'] . '%',
-						'Country.name LIKE' => '%' . $params['keyword'] . '%',
 						'User.login LIKE' => '%' . $params['keyword'] . '%'
 					);
 					break;
@@ -70,7 +70,7 @@ class AppealsController extends AppController {
 
 		$this->paginate['Appeal'] = array(
 			'conditions' => $conditions,
-			'contain' => array('User(id, login)', 'Country(name)'),
+			'contain' => array('User(id, login)'),
 			'order' => array('Appeal.name' => 'asc'),
 			'limit' => $params['my_limit']
 		);
@@ -85,13 +85,12 @@ class AppealsController extends AppController {
  * @access public
  */
 	function admin_view($id = null) {
-		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
-
 		$appeal = $this->Appeal->find('first', array(
 			'conditions' => array('Appeal.id' => $id),
-			'contain' => array('Parent', 'User', 'Country')
+			'contain' => array('Parent', 'User')
 		));
 		Assert::notEmpty($appeal, '404');
+		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
 		$this->set(compact('appeal'));
 	}
 /**
@@ -116,15 +115,16 @@ class AppealsController extends AppController {
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			$appeal = $this->Appeal->find('first', array(
-				'conditions' => array('Appeal.id' => $id)
+				'conditions' => array('Appeal.id' => $id),
+				'contain' => array('AppealStep')
 			));
 			Assert::notEmpty($appeal, '404');
 			Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
 			$action = 'edit';
 		}
 
-		$countryOptions = $this->Country->find('list');
-		$this->set(compact('action', 'countryOptions'));
+		$statusOptions = $this->Appeal->enumOptions('status');
+		$this->set(compact('action', 'statusOptions'));
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
 			return $this->data = $appeal;
@@ -144,10 +144,10 @@ class AppealsController extends AppController {
 
 		$msg = __('Appeal was saved successfully.', true);
 		if ($action == 'add') {
-			$url = array('action' => 'admin_edit', $this->Appeal->id);
+			$url = array('action' => 'edit', $this->Appeal->id);
 			return $this->Message->add($msg, 'ok', true, $url);
 		}
-		$this->Message->add($msg, 'ok', true, array('action' => 'admin_index'));
+		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}
 /**
  * delete action

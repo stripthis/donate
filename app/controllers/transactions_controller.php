@@ -18,7 +18,7 @@ class TransactionsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index($contactId = null) {
+	function admin_index($type = 'all', $contactId = null) {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
 		$conditions = array(
@@ -49,7 +49,8 @@ class TransactionsController extends AppController {
 			'custom_limit' => false
 		);
 		$params = am($defaults, $this->params['url'], $this->params['named']);
-
+		unset($params['ext']);
+		unset($params['url']);
 		if (is_numeric($params['custom_limit'])) {
 			if ($params['custom_limit'] > 75) {
 				$params['custom_limit'] = 75;

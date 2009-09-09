@@ -77,5 +77,16 @@ class CommonHelper extends Apphelper {
 	function getFoldClass($options){
 		return (isset($options['leaf']) && isset($options['parent_id']) && $options['leaf']) ? 'leaf wrapper_toggle_'.$options['parent_id'] : '';
 	}
+/**
+ * Get Months for gift date select options (credit card)
+ * @return key value for month selection
+ */
+	function monthOptions(){
+		$months = range('01', '12');
+		foreach ($months as $key => $month) {
+			$months[$key] = str_pad($month, 2, '0', STR_PAD_LEFT);
+		}
+		return array_combine($months, $months);
+	}
 }
 ?>

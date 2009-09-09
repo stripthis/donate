@@ -3,6 +3,7 @@ if (!defined('FULL_BASE_URL')) {
 	define('FULL_BASE_URL', '');
 }
 $config = array(
+	'App.environment' => 'production',
 	'App.name' => 'Greenpeace White Rabbit',
 	'App.domain' => 'https://donate.greenpeace2.org',
 	'App.stagingDomain' => 'https://donate.greenpeace.org',
@@ -47,11 +48,31 @@ $config = array(
 	'App.spamEmailTimeLimit' => '600', //Time in seconds in which one email can get referral.
 	'App.emailsPerDay' => '5',
 	'App.ssl' => array(
-		'enabled' => false,
+		'enabled' => true,
 		'actions' => array(
 			'/'
 		)
 	),
+	'App.lang_options' => array(
+		'eng' => 'English',
+		'fre' => 'French'
+	),
+	'App.gift_types' => array(
+		'donation' => 'Donation',
+		'inkind' => 'In-kind gift',
+		'legacy' => 'Legacy'
+	),
+	'App.transaction_codes' => array(
+		'P' => 'Processing',
+		'R' => 'Resend',
+		'E' => 'Error',
+		'U' => 'Error',
+		'V' => 'Validate',
+		'F' => 'Finalised',
+		'C' => 'Completed',
+	),
+	'App.frequencies' => array('onetime', 'monthly', 'quarterly', 'biannually', 'annually'),
+	'App.currency_options' => array('USD', 'EUR'),
 	'Stats.startDate' => '-1 year',
 	'App.contact' => array(
 		'salutations' => array(

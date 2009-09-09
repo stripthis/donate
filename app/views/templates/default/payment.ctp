@@ -8,8 +8,6 @@
  * @link        http://www.greenpeace.org/international/supportus
  */
   $cardOptions = Card::getTypes();
-  $monthOptions = Card::getMonthOptions();
-  $yearOptions = Card::getYearOptions();
   $cardSelected = $giftForm->value('Card', 'type', 'visa', $form->data);
 ?>
     <fieldset id="card">
@@ -39,16 +37,13 @@
           <label class="option">Expiration date <?php echo $giftForm->required(); ?></label>
           <div>
             <?php 
-              echo $form->input('Card.expire_month', array(
-                'label' => 'month', 
-                'options' => $monthOptions,
-              ))."\n";
-            ?>
-            <?php 
-              echo $form->input('Card.expire_year', array(
-                'label' => 'year', 
-                'options' => $yearOptions,
-              ))."\n";
+              echo r('>-<', '><', $form->input('Card.expire_date', array(
+                'label' => false,
+				'type' => 'date',
+				'dateFormat' => 'MY',
+                'minYear' => date('Y'),
+				'maxYear' => date('Y') + 10
+              )))."\n";
             ?>
         	</div>
         </div>

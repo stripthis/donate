@@ -400,7 +400,7 @@ class Common extends Object
 		$domain = r('http://', '', Configure::read('App.domain'));
 		$domain = r('staging.', '', $domain);
 		$host = r('www.', '', env('HTTP_HOST'));
-		return strpos($host, $domain) === 0;
+		return strpos($host, $domain) === 0 || Configure::read('App.environment') == 'production';
 	}
 /**
  * undocumented function
@@ -413,7 +413,7 @@ class Common extends Object
 		$domain = r('www.', '', $domain);
 		$domain = r('staging.', '', $domain);
 		$host = r('www.', '', env('HTTP_HOST'));
-		return strpos($host, $domain) !== false;
+		return strpos($host, $domain) !== false || Configure::read('App.environment') == 'staging';
 	}
 /**
  * undocumented function
@@ -428,7 +428,8 @@ class Common extends Object
 		$host = r('www.', '', env('HTTP_HOST'));
 		return !Common::isProduction() && !Common::isStaging()
 				|| strpos($host, 'localwhiterabbit') !== false
-				|| strpos($host, 'dev.' . $domain) !== false;
+				|| strpos($host, 'dev.' . $domain) !== false
+				|| Configure::read('App.environment') == 'development';
 	}
 	
 /**

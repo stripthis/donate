@@ -15,7 +15,7 @@ class SearchController extends AppController {
 		Assert::true(in_array($type, $validTypes), '404');
 
 		$url = array(
-			'controller' => $type, 'action' => 'index',
+			'controller' => $type, 'action' => 'index', 'all',
 			'?' => 'keyword=' . $this->data['Search']['keyword']
 		);
 		$this->redirect($url);

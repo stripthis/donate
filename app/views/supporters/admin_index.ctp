@@ -1,7 +1,13 @@
 <div class="content">
 <h2><?php __('Supporters');?></h2>
+<?php
+echo $this->element('nav', array(
+	'type' => 'supporter_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+));
+?>
+<?php echo $this->element('../supporters/elements/actions'); ?>
 <?php if (empty($gifts)) : ?>
-	<p><?php echo __('Sorry there are no gifts yet.')?></p>
+	<p><?php echo __('Sorry there are no supporters yet.')?></p>
 <?php else : ?>
 	<dl>
 		<?php foreach ($gifts as $gift) : ?>
@@ -25,6 +31,6 @@
 			<hr/>
 		<?php endforeach; ?>
 	</dl>
-	<?php echo $this->element('paging', array('model' => 'Gift'))?>
+	<?php echo $this->element('paging', array('model' => 'Gift', 'url' => $type))?>
 <?php endif;?>
 </div>

@@ -11,6 +11,8 @@ class OfficeFixture extends CakeTestFixture {
 			'city_id' => '4a1161c9-53cc-48c6-8154-80641030b5da',
 			'frequencies' => 'onetime,monthly,annually',
 			'amounts' => '5,10,15',
+			'live' => '1',
+			'external_url' => '',
 			'created' => '2009-07-20 16:29:10',
 			'modified' => '2009-08-18 11:45:48',
 		),		array(
@@ -22,6 +24,8 @@ class OfficeFixture extends CakeTestFixture {
 			'city_id' => '',
 			'frequencies' => 'onetime,monthly,annually',
 			'amounts' => '5,10,15',
+			'live' => '1',
+			'external_url' => '',
 			'created' => '2009-08-18 11:10:09',
 			'modified' => '2009-08-18 11:45:48',
 		),		array(
@@ -33,6 +37,8 @@ class OfficeFixture extends CakeTestFixture {
 			'city_id' => '',
 			'frequencies' => 'onetime,monthly,annually',
 			'amounts' => '5,10,15',
+			'live' => '1',
+			'external_url' => '',
 			'created' => '2009-08-18 11:24:26',
 			'modified' => '2009-08-18 11:45:48',
 		),		array(
@@ -44,6 +50,8 @@ class OfficeFixture extends CakeTestFixture {
 			'city_id' => '',
 			'frequencies' => 'onetime,monthly,annually',
 			'amounts' => '5,10,15',
+			'live' => '1',
+			'external_url' => '',
 			'created' => '2009-08-18 11:37:48',
 			'modified' => '2009-08-18 11:37:48',
 		),		array(
@@ -55,6 +63,8 @@ class OfficeFixture extends CakeTestFixture {
 			'city_id' => '',
 			'frequencies' => 'onetime,monthly,annually',
 			'amounts' => '5,10,15',
+			'live' => '1',
+			'external_url' => '',
 			'created' => '2009-08-18 11:38:55',
 			'modified' => '2009-08-18 11:45:48',
 		),		array(
@@ -66,6 +76,8 @@ class OfficeFixture extends CakeTestFixture {
 			'city_id' => '',
 			'frequencies' => 'onetime,monthly,annually',
 			'amounts' => '5,10,15',
+			'live' => '0',
+			'external_url' => '',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:45:48',
 		),

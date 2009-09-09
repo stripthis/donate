@@ -24,6 +24,7 @@ class PagesController extends AppController {
 
 		if ($page == 'home') {
 			$appeals = $this->Appeal->find('all', array(
+				'conditions' => array('admin' => false),
 				'fields' => array('name', 'id'),
 				'order' => array('name' => 'asc')
 			));
@@ -36,6 +37,7 @@ class PagesController extends AppController {
 			$title = Inflector::humanize($path[$count - 1]);
 		}
 		$this->set(compact('page', 'subpage', 'title'));
+		$this->layout = 'empty';
 		$this->render(join('/', $path));
 	}
 }

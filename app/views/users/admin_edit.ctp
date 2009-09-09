@@ -1,5 +1,6 @@
 <div class="content edit" id="users_edit">
-	<?php echo $form->create('User');?>
+	<h2><?php echo $form->create('User');?><h2>
+	
 	<?php
 	echo $form->input('id');
 	echo $form->input('name');

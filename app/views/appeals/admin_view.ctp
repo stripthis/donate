@@ -34,11 +34,6 @@
       <?php echo $appeal['Appeal']['default']; ?>
       &nbsp;
     </dd>
-    <dt><?php __('Starred'); ?></dt>
-    <dd>
-      <?php echo $appeal['Appeal']['starred']; ?>
-      &nbsp;
-    </dd>
     <dt><?php __('Cost'); ?></dt>
     <dd>
       <?php echo $appeal['Appeal']['cost']; ?>
@@ -52,11 +47,6 @@
     <dt><?php __('Status'); ?></dt>
     <dd>
       <?php echo $appeal['Appeal']['status']; ?>
-      &nbsp;
-    </dd>
-    <dt><?php __('Country'); ?></dt>
-    <dd>
-      <?php echo $html->link($appeal['Country']['name'], array('controller'=> 'countries', 'action'=>'view', $appeal['Country']['id'])); ?>
       &nbsp;
     </dd>
     <dt><?php __('User'); ?></dt>

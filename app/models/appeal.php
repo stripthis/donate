@@ -2,13 +2,20 @@
 class Appeal extends AppModel {
 	var $belongsTo = array(
 		'User',
-		'Country',
 		'Office',
 		'Parent' => array(
 			'className' => 'Appeal',
 			'foreignKey' => 'parent_id'
 		)
 	);
+
+	var $hasMany = array(
+		'AppealStep' => array(
+			'dependent' => true
+		)
+	);
+
+	var $actsAs = array('Containable', 'Lookupabable', 'Enumerable');
 /**
  * Get appeal from id, campaign_code or name
  * @param $appeal
@@ -20,17 +27,25 @@ class Appeal extends AppModel {
 			case 'default':
 				$id = isset($query['id']) ? $query['id'] : false;
 
+				$admin = User::isAdmin() ? '1' : '0';
 				$appeal = false;
+
 				if ($id) {
-					$appeal = $this->find('first', array(
-						'conditions' => array(
-							'OR' => array(
-								'Appeal.id' => $id,
-								'Appeal.campaign_code' => $id,
-								'Appeal.name' => $id, //@todo use proper label instead of name (cf. ' ')
-							),
-							'default' => '0'
+					$conditions = array(
+						'OR' => array(
+							'Appeal.id' => $id,
+							'Appeal.campaign_code' => $id,
+							'Appeal.name' => $id, //@todo use proper label instead of name (cf. ' ')
 						),
+						'default' => '0',
+						'admin' => $admin,
+						'status <>' => 'archived'
+					);
+					if (!User::isAdmin()) {
+						$conditions['status'] = 'published';
+					}
+					$appeal = $this->find('first', array(
+						'conditions' => $conditions,
 						'contain' => array('Office')
 					));
 				}
@@ -38,12 +53,39 @@ class Appeal extends AppModel {
 				if (empty($appeal)) {
 					$appeal = $this->find('first', array(
 						'conditions' => array('Appeal.default' => '1'),
-						'contain' => array('Office')
+						'contain' => array('Office'),
+						'status' => 'published',
+						'admin' => $admin
 					));
 				}
 				return $appeal;
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function afterSave() {
+		if (isset($this->data['Appeal']['steps'])) {
+			$this->AppealStep->deleteAll(array('appeal_id' => $this->id));
+			$i = 0;
+			foreach ($this->data['Appeal']['steps'] as $name) {
+				if (empty($name)) {
+					continue;
+				}
+				$i++;
+				$this->AppealStep->create(array(
+					'appeal_id' => $this->id,
+					'num' => $i,
+					'name' => $name
+				));
+				$this->AppealStep->save();
+			}
+		}
+		return true;
 	}
 /**
  * undocumented function

@@ -291,6 +291,9 @@ class AppController extends Controller {
 	function _setLanguage($lang = false) {
 		$default = 'eng';
 
+		if (!$lang && !User::isGuest()) {
+			$lang = User::get('lang');
+		}
 		if (!$lang && isset($this->params['language'])) {
 			$lang = $this->params['language'];
 		}

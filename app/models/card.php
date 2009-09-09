@@ -51,16 +51,10 @@ class Card extends AppModel {
 				'is_required' => true
 			)
 		),
-		'expire_month' => array(
+		'expire_date' => array(
 			'required' => array(
-				'rule' => 'notEmpty',
-				'is_required' => true,
-				'last' => true
-			)
-		),
-		'expire_year' => array(
-			'required' => array(
-				'rule' => 'notEmpty',
+				'rule' => array('validateExpireDate'),
+				'message' => 'The expiration date must at least be one month in the future!',
 				'is_required' => true,
 				'last' => true
 			)
@@ -81,7 +75,7 @@ class Card extends AppModel {
  * @return bool, true if validation success
  */	
 	function validateCardNumber($check){
-		if(isset($this->data["Card"]["type"])){
+		if (isset($this->data["Card"]["type"])){
 			$type = $this->data["Card"]["type"];
 			$number = $check["number"];
 			switch($type){
@@ -143,29 +137,30 @@ class Card extends AppModel {
 		return Configure::read("App.cards");
 	}
 /**
- * Get Months for gift date select options (credit card)
- * @return key value for month selection
+ * undocumented function
+ *
+ * @return void
+ * @access public
  */
-	static function getMonthOptions(){
-		$months = array(
-			"01" => "01", "02" => "02", "03" => "03",
-			"04" => "04",	"05" => "05",	"06" => "06",
-			"07" => "07",	"08" => "08",	"09" => "09",
-			"10" => "10",	"11" => "11",	"12" => "12",
-		);
-		return $months;
+	function beforeSave() {
+		if (isset($this->data['Card']['expire_date'])) {
+			$this->data['Card']['expire_month'] = $this->data['Card']['expire_date']['month'];
+			$this->data['Card']['expire_year'] = $this->data['Card']['expire_date']['year'];
+			unset($this->data['Card']['expire_date']);
+		}
 	}
 /**
- * Get Years for gift date select options (credit card)
- * @return key value for year selection
+ * undocumented function
+ *
+ * @param string $value 
+ * @return void
+ * @access public
  */
-	static function getYearOptions(){
-		$years = array();
-		$y = (date("Y", strtotime("now")));
-		for ($i=$y;$i<=$y+10;$i++) {
-			$years[$i] = $i;
-		}
-		return $years;
+	function validateExpireDate($val) {
+		$month = $val['expire_date']['month'];
+		$year = $val['expire_date']['year'];
+		$time = strtotime('01-' . $month . '-' . $year);
+		return $time >= time();
 	}
 }
 ?>

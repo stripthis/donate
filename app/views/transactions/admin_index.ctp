@@ -13,21 +13,35 @@ $favConfig = Configure::read('Favorites');
 	echo $headline;
 	?>
 </h2>
-
+<?php
+echo $this->element('nav', array(
+	'type' => 'transaction_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+));
+?>
+<?php echo $this->element('../transactions/elements/actions'); ?>
 <?php if (!empty($transactions)) : ?>
 	<table>
 	<?php
-	$th = array(
-		$paginator->sort('parent_id'),
-		$paginator->sort('gateway_id'),
-		$paginator->sort('external_id'),
-		$paginator->sort('gift_id'),
-		$paginator->sort('status'),
-		$paginator->sort('amount'),
-		'Serial',
-		$paginator->sort('created'),
+	unset($params['sort']);
+	unset($params['direction']);
+	$th = array();
+	$th[] = '<input name="Transaction" class="select_all checkbox" type="checkbox">';
+	if ($doFavorites) {
+		$th[] = $favorites->favall();
+	}
+	$th = am($th,array(
+		$myPaginator->sort(__('Status',true),'Transaction.status', array('url' => $params)),
+		$myPaginator->sort(__('Id',true),'Transaction.serial', array('url' => $params)),
+		$myPaginator->sort(__('External ID',true),'Transaction.external_id', array('url' => $params)),
+		//$myPaginator->sort(__('Parent',true),'Transaction.parent_id', array('url' => $params)),
+		$myPaginator->sort(__('Amount',true),'Transaction.amount', array('url' => $params)),
+		$myPaginator->sort(__('Gateway',true),'Gateway.parent_id', array('url' => $params)),
+		$myPaginator->sort(__('Gift',true),'Transaction.gift_id', array('url' => $params)),
+		$myPaginator->sort(__('Created',true),'Transaction.created', array('url' => $params)),
+		$myPaginator->sort(__('Modified',true),'Transaction.modified', array('url' => $params)),
 		'Actions'
-	);
+	));
+
 	echo $html->tableHeaders($th);
 	foreach ($transactions as $t) {
 		$actions = array(
@@ -37,12 +51,7 @@ $favConfig = Configure::read('Favorites');
 			$html->link(__('Delete', true), array('action' => 'delete', $t['Transaction']['id']),
 				array('class'=>'delete'), __('Are you sure?', true))
 		);
-		if ($doFavorites) {
-			$actions[] = $html->link(__(ucfirst($favConfig['verb']), true), array(
-				'controller' => 'favorites', 'action' => 'add', $t['Transaction']['id'], 'Transaction'
-			));
-		}
-
+		
 		$parent = '';
 		if (!empty($t['ParentTransaction']['id'])) {
 			$parent = $html->link($t['ParentTransaction']['id'], array(
@@ -51,17 +60,23 @@ $favConfig = Configure::read('Favorites');
 		}
 
 		$gift = $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id']));
-		$tr = array(
-			$parent,
-			$t['Gateway']['name'],
-			$t['Transaction']['external_id'],
-			$gift,
+		$tr = array();
+		$tr[] = $form->checkbox($t['Transaction']['id'], array('class'=>'checkbox','name'=> 'Transaction'));
+		if ($doFavorites) {
+			$tr[] = $favorites->link("Transaction", $t['Transaction']['id']);
+		}
+		$tr = am($tr,array(            
 			$t['Transaction']['status'],
-			$t['Transaction']['amount'],
 			$t['Transaction']['serial'],
+			$t['Transaction']['external_id'],
+			//$parent,
+			$t['Transaction']['amount'].' EUR', //@todo currency
+			$t['Gateway']['name'],
+			$gift,
 			$t['Transaction']['created'],
+			$t['Transaction']['modified'],
 			implode(' - ', $actions)
-		);
+		));
 		echo $html->tableCells($tr);
 
 		if (!empty($t['ChildTransaction'])) {
@@ -79,14 +94,14 @@ $favConfig = Configure::read('Favorites');
 					'controller' => 'transactions', 'action' => 'view', $t['Transaction']['id']
 				));
 				$tr = array(
+					$t['Transaction']['status'],
 					$id,
 					$t['Gateway']['name'],
+					$t['Transaction']['amount'],
 					$t['Transaction']['external_id'],
 					$gift,
-					$t['Transaction']['status'],
-					$t['Transaction']['amount'],
-					$t['Transaction']['serial'],
 					$t['Transaction']['created'],
+			    $t['Transaction']['modified'],
 					$actions
 				);
 			}
@@ -96,6 +111,7 @@ $favConfig = Configure::read('Favorites');
 	</table>
 	<?php
 	$urlParams = $params;
+	$urlParams[] = $type;
 	unset($urlParams['ext']);
 	unset($urlParams['page']);
 	$urlParams['merge'] = true;
@@ -104,5 +120,5 @@ $favConfig = Configure::read('Favorites');
 <?php else : ?>
 	<p>Sorry, nothing to show here.</p>
 <?php endif; ?>
-<?php echo $this->element('../transactions/elements/filter', compact('params')); ?>
+<?php echo $this->element('../transactions/elements/filter', compact('params', 'type')); ?>
 </div>

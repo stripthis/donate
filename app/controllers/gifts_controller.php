@@ -11,11 +11,11 @@ class GiftsController extends AppController {
  */
 	function beforeFilter() {
 		parent::beforeFilter();
-
 		$this->Appeal = ClassRegistry::init('Appeal');
 		$this->AuthKey = ClassRegistry::init('AuthKey');
 		$this->AuthKeyType = $this->AuthKey->AuthKeyType;
 		$this->Office = ClassRegistry::init('Office');
+		$this->AppealStep = $this->Appeal->AppealStep;
 		$this->GatewaysOffice = $this->Office->GatewaysOffice;
 		$this->Contact = $this->Gift->Contact;
 		$this->Address = $this->Contact->Address;
@@ -38,6 +38,11 @@ class GiftsController extends AppController {
 
 		$appealId = $this->Session->read($this->sessAppealKey);
 		$currentAppeal = $this->Appeal->find('default', array('id' => $appealId));
+
+		if (!$currentAppeal['Office']['live']) {
+			return $this->redirect($currentAppeal['Office']['external_url']);
+		}
+
 		Assert::notEmpty($currentAppeal, '500');
 		$officeId = $currentAppeal['Appeal']['office_id'];
 		$this->Session->write($this->sessOfficeKey, $officeId);
@@ -47,6 +52,8 @@ class GiftsController extends AppController {
 
 		$countryOptions = $this->Country->find('list', array('order' => array('Country.name' => 'asc')));
 		$this->set(compact('countryOptions', 'currentAppeal'));
+
+		$this->AppealStep->addVisit($appealId, $step);
 
 		// no data was given so we render the selected/default view
 		if ($this->isGet()) {
@@ -76,8 +83,9 @@ class GiftsController extends AppController {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
 		}
 
-		$isLastStep = $step == $currentAppeal['Appeal']['steps'];
+		$isLastStep = $step == $currentAppeal['Appeal']['appeal_step_count'];
 		$validates = AppModel::bulkValidate($this->models, $this->data);
+
 		if (!$isLastStep && !$validates) {
 			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');
@@ -93,7 +101,7 @@ class GiftsController extends AppController {
 		// for the last step, reset is_required to required to prevent hacking attemps
 		$validates = AppModel::bulkValidate($this->models, $this->data, true);
 		if (!$validates) {
-			$msg = 'There are problems with the form. This is a possible hacking attempt.';
+			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
 		}
@@ -108,14 +116,21 @@ class GiftsController extends AppController {
 		// credit card data is given
 		// @todo if appeal or payment gateway use redirect model then redirect
 		// else if the credit data is given, validates
+		$errors = false;
 		if (isset($this->data['Card']) && $currentAppeal['Appeal']['processing'] == 'manual') {
 			$this->Card->set($this->data);
-			if (true || $this->Card->validates()) {
+			if ($this->Card->validates()) {
 				//@todo if application used in manual/direct debit mode, save credit card details
 				//But for now: *WE DON'T SAVE*
 			} else {
 				$errors = true;
 			}
+		}
+
+		if ($errors) {
+			$msg = 'There are problems with the form.';
+			$this->Message->add($msg, 'error');
+			return $this->render('step' . $step);
 		}
 
 		// everything ok prepare / perform the transaction
@@ -183,7 +198,7 @@ class GiftsController extends AppController {
 			'id' => $appealId
 		));
 		Assert::notEmpty($currentAppeal, '500');
-		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['id'];
+		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['campaign_code'] . '_' . $currentAppeal['Appeal']['id'];
 	}
 /**
  * undocumented function
@@ -201,7 +216,7 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index($type = '') {
+	function admin_index($type = 'all') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
 		$conditions = array(
@@ -226,9 +241,13 @@ class GiftsController extends AppController {
 			'keyword' => '',
 			'search_type' => 'all',
 			'my_limit' => 20,
-			'custom_limit' => false
+			'custom_limit' => false,
+			'start_date' => false,
+			'end_date' => false
 		);
 		$params = am($defaults, $this->params['url'], $this->params['named']);
+		unset($params['ext']);
+		unset($params['url']);
 
 		if (is_numeric($params['custom_limit'])) {
 			if ($params['custom_limit'] > 75) {
@@ -267,12 +286,9 @@ class GiftsController extends AppController {
 
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,
+			'recursive' => 3,
 			'contain' => array(
-				'LastTransaction(created)',
-				'Office(id, name)', 'Appeal(id, name)', 
-				'Contact(fname, lname, email,created,modified)',
-				'Contact.Address.Country(id,name)',
-				'Contact.Address.City(id,name)',
+				'Contact(fname, lname, email,created,modified,id)',
 				'Transaction(id,status,gateway_id,created,modified)',
 				'Transaction.Gateway(id,name)'
 			),
@@ -293,7 +309,8 @@ class GiftsController extends AppController {
 		$this->params['named']['appeal_id'] = $this->Appeal->lookup(
 			array(
 				'office_id' => $this->Session->read('Office.id'),
-				'name LIKE' => '%Admin%'
+				'name LIKE' => '%Admin%',
+				'admin' => true
 			), 'id', false
 		);
 		$this->add();
@@ -439,10 +456,11 @@ class GiftsController extends AppController {
 		}
 
 		if (isset($this->params['named']['appeal_id'])) {
-			$existingAppeal = $this->Appeal->lookup(
-				array('id' => $this->params['named']['appeal_id']),
-				'id', false
-			);
+			$conditions = array('id' => $this->params['named']['appeal_id']);
+			if (!User::isAdmin()) {
+				$conditions['admin'] = false;
+			}
+			$existingAppeal = $this->Appeal->lookup($conditions, 'id', false);
 			$sessAppealId = $this->Session->read($this->sessAppealKey);
 			if (!$existingAppeal || $step != 1 && $sessAppealId != $existingAppeal) {
 				return $this->Message->add($msg, 'error', true, '/');

@@ -1,5 +1,6 @@
 <?php
 Configure::load('config');
+Configure::load('environment');
 Configure::load('js_includes');
 Configure::load('css_includes');
 Configure::load('permissions');

@@ -1,17 +1,21 @@
 <div class="content users index">
 	<h2><?php __('Users');?></h2>
-	<div class="actions">
-		<h3><?php echo __('Actions'); ?></h3>
-		<ul>
-			<li><?php echo $html->link(__('New User', true), array('action'=>'add'),array('class'=>'add')); ?></li>
-      </ul>
-	</div>
+	<?php
+	echo $this->element('nav', array(
+		'type' => 'user_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+	));
+	?>
+<?php echo $this->element('../users/elements/actions'); ?>
 	<?php if (!empty($users)) : ?>
+		<?php
+		unset($params['sort']);
+		unset($params['direction']);
+		?>
 		<table cellpadding="0" cellspacing="0">
 			<tr>
-				<th class="text"><?php echo $paginator->sort('login');?></th>
-				<th class="date"><?php echo $paginator->sort('created');?></th>
-			<th class="date"><?php echo $paginator->sort('modified');?></th>
+				<th class="text"><?php echo $paginator->sort(__('Login', true), 'login', array('url' => $params));?></th>
+				<th class="date"><?php echo $paginator->sort(__('Created', true), 'created', array('url' => $params));?></th>
+			  <th class="date"><?php echo $paginator->sort(__('Last Update', true), 'modified', array('url' => $params));?></th>
 				<th class="actions"><?php __('Actions');?></th>
 			</tr>
 			<?php
@@ -35,6 +39,7 @@
 		</table>
 		<?php
 		$urlParams = $params;
+		$urlParams[] = $type;
 		$urlParams['merge'] = true;
 		unset($urlParams['ext']);
 		unset($urlParams['page']);
@@ -43,5 +48,5 @@
 	<?php else : ?>
 		<p>Sorry, nothing to show here.</p>
 	<?php endif; ?>
-	<?php echo $this->element('../users/elements/filter', compact('params')); ?>
+	<?php echo $this->element('../users/elements/filter', compact('params', 'type')); ?>
 </div>

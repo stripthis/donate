@@ -4,7 +4,6 @@ $config = array(
 	'JsIncludes' => array(
 		'jquery.min.js' => '*:*',
 		'common.js' => '*:*',
-		'tooltip.js' => '*:*',
 		'dropdown.js' => '*:admin*',
 		'plugins/jquery.state_dropdown.js' => 'Users:register, Users:edit',
 		'jquery.validate.js' => 'Users:register',

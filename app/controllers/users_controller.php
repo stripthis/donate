@@ -81,12 +81,17 @@ class UsersController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index() {
+	function admin_index($type = 'all') {
 		$conditions = array(
 			'User.login <>' => Configure::read('App.guestAccount'),
 			'User.active' => '1'
 		);
 
+		switch ($type) {
+			case 'colleagues':
+				$conditions['User.office_id'] = $this->Session->read('Office.id');
+				break;
+		}
 		$defaults = array(
 			'keyword' => '',
 			'search_type' => 'all',
@@ -94,7 +99,8 @@ class UsersController extends AppController {
 			'custom_limit' => false
 		);
 		$params = am($defaults, $this->params['url'], $this->params['named']);
-
+		unset($params['ext']);
+		unset($params['url']);
 		if (is_numeric($params['custom_limit'])) {
 			if ($params['custom_limit'] > 75) {
 				$params['custom_limit'] = 75;
@@ -132,7 +138,7 @@ class UsersController extends AppController {
 			'limit' => $params['my_limit']
 		);
 		$users = $this->paginate();
-		$this->set(compact('users', 'params'));
+		$this->set(compact('users', 'params', 'type'));
 	}
 /**
  * undocumented function
@@ -330,6 +336,9 @@ class UsersController extends AppController {
 		if (!$this->User->saveAll($this->data)) {
 			return $this->Message->add(__('Please fill out all fields', true), 'error');
 		}
+
+		$this->_setLanguage(User::get('lang'));
+		User::restore();
 
 		$msg = 'Saved successfully.';
 		$this->Message->add(__($msg, true), 'ok', true, $this->here);

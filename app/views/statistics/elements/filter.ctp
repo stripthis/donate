@@ -16,6 +16,7 @@
         'maxYear' => date('Y')
       ));
       ?>
+    <div class="clear"></div>
     <?php echo $form->end('Filter'); ?>
     </div>
     <div class="clear"></div>

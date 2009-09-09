@@ -5,7 +5,7 @@
 /stats
 /app/config/database.php
 /app/config/core.php
-/app/config/local.php
+/app/config/environment.php
 /app/tmp
 /app/sql_updates.txt
 /app/webroot/js/aggregate

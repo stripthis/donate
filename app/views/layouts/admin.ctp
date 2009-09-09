@@ -25,7 +25,7 @@
 <?php echo $this->element('admin/country_selector'); ?>
 <?php echo $this->element('admin/user_badge'); ?>
 <?php //echo $this->element('admin/search'); ?>
-<?php echo $this->element('admin/menu'); ?>
+<?php echo $this->element('nav', array('type' => 'Admin', 'id' => 'menu_top', 'class' => 'menu')); ?>
   </div>
   <div id="content_wrapper">
 <?php echo $content_for_layout; ?>

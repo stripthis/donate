@@ -281,5 +281,19 @@ class GiftsControllerTest extends MyTestCase {
 		$this->eq($sutData['Address']['line_1'], $gift['Contact']['Address'][0]['line_1']);
 		$this->eq($sutData['Address']['country_id'], $gift['Contact']['Address'][0]['country_id']);
 	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function testAppealOfNotLiveOfficeCausesRedirect() {
+		$this->fakeRequest('get');
+		$appealId = $this->Appeal->lookup(array('name' => 'Not Live Appeal'), 'id', false);
+		$this->Sut->params['named']['appeal_id'] = $appealId;
+		$this->Sut->redirectUrl = '';
+		$this->Sut->add();
+		$this->false(empty($this->Sut->redirectUrl));
+	}
 }
 ?>

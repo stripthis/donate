@@ -60,6 +60,30 @@ class Office extends AppModel {
 			$this->data['Office']['amounts'] = r(' ', '', $this->data['Office']['amounts']);
 		}
 
+		if (isset($this->data['Office']['languages'])) {
+			if (is_array($this->data['Office']['languages'])) {
+				$this->data['Office']['languages'] = implode(',', $this->data['Office']['languages']);
+			} else {
+				$this->data['Office']['languages'] = 'eng';
+			}
+		}
+
+		if (isset($this->data['Office']['gift_types'])) {
+			if (is_array($this->data['Office']['gift_types'])) {
+				$this->data['Office']['gift_types'] = implode(',', $this->data['Office']['gift_types']);
+			} else {
+				$this->data['Office']['gift_types'] = 'donation';
+			}
+		}
+
+		if (isset($this->data['Office']['currencies'])) {
+			if (is_array($this->data['Office']['currencies'])) {
+				$this->data['Office']['currencies'] = implode(',', $this->data['Office']['currencies']);
+			} else {
+				$this->data['Office']['currencies'] = 'EUR';
+			}
+		}
+
 		if (isset($this->data['Office']['gateways'])) {
 			$this->GatewaysOffice->deleteAll(array('office_id' => $this->id));
 			if (!empty($this->data['Office']['gateways'][0])) {
@@ -137,11 +161,16 @@ class Office extends AppModel {
 				'name' => $name,
 				'campaign_code' => $code,
 				'office_id' => $this->id,
-				'steps' => 1,
 				'user_id' => User::get('id')
 			));
 			$this->Appeal->save();
 			$appealId = $this->Appeal->getLastInsertId();
+
+			$this->Appeal->AppealStep->create(array(
+				'appeal_id' => $appealId,
+				'label' => 'Entire Process'
+			));
+			$this->Appeal->AppealStep->save();
 			$create = true;
 		}
 

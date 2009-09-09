@@ -472,6 +472,9 @@ class User extends AppModel {
  * @access public
  */
 	function allowed($controller, $action, $obj = null) {
+		if (User::isRoot()) {
+			return true;
+		}
 		$result = true;
 		if (!empty($obj)) {
 			if (isset($obj['Gift']['office_id'])) {
