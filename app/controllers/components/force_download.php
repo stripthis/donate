@@ -378,6 +378,7 @@ class ForceDownloadComponent extends Object
 	'tsv'	=>	'text/tab-separated-values',
 	'turbot'	=>	'image/florian',
 	'txt'	=>	'text/plain',
+	'csv'	=>	'text/plain',
 	'uil'	=>	'text/x-uil',
 	'uni'	=>	'text/uri-list',
 	'unis'	=>	'text/uri-list',

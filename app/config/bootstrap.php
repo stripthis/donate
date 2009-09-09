@@ -13,7 +13,6 @@ require_once(APP . 'controllers' . DS . 'components' . DS .'assert.php');
 require_once(APP . 'controllers' . DS . 'components' . DS .'common.php');
 require_once(APP . 'controllers' . DS . 'components' . DS .'mailer.php');
 
-define('EXPORTS_PATH', WWW_ROOT . 'files' . DS . 'exports' . DS);
 define("DEFAULT_FORM_ERROR", 'There are problems with the form.');
 define("DEFAULT_FORM_SUCCESS", 'Successfully saved!');
 define("DEFAULT_FORM_DELETE_SUCCESS", 'Successfully deleted!');

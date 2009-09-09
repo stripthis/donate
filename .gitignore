@@ -8,7 +8,6 @@
 /app/config/environment.php
 /app/tmp
 /app/sql_updates.txt
-/app/webroot/files
 /app/webroot/js/aggregate
 /app/webroot/css/aggregate
 /vendors/shells/debuggable_bake.php

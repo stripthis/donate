@@ -26,13 +26,13 @@ class ExportsController extends AppController {
 		Assert::true($this->isPost() || $this->Session->read($this->sessKeyModel) == 'Gift', '404');
 
 		$model = 'Gift';
-		if (!isset($this->data[$model]['process'])) {
+		if (isset($this->data[$model]) && !isset($this->data[$model]['process'])) {
 			$this->saveModel($model);
 			$this->saveSelection($model);
 			return;
 		}
 		$conditions = $this->Session->read('gifts_filter_conditions');
-pr($this->data);
+
 		$selection = $this->loadSelection();
 		if (!empty($selection)) {
 			$conditions['Gift.id'] = $selection;
@@ -48,6 +48,11 @@ pr($this->data);
 			$items = Common::remove($items, '{n}.Contact.id');
 		}
 
+		if (isset($this->data[$model]['download']) && $this->data[$model]['download']) {
+			$name = 'gifts_export_' . date('Y_m_d_H_i');
+			$path = '/admin/exports/gifts.' . $this->data[$model]['format'];
+			$this->ForceDownload->forceDownload($path, $name);
+		}
 		$this->set(compact('items'));
 		$this->RequestHandler->renderAs($this, $this->data[$model]['format']);
 	}
