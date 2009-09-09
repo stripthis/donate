@@ -37,7 +37,12 @@ class PagesController extends AppController {
 			$title = Inflector::humanize($path[$count - 1]);
 		}
 		$this->set(compact('page', 'subpage', 'title'));
+
 		$this->layout = 'empty';
+		if (strpos($page, 'admin_') === 0) {
+			$this->layout = 'admin';
+		}
+
 		$this->render(join('/', $path));
 	}
 }

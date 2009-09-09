@@ -10,4 +10,5 @@ Router::connect('/admin/login', array('controller' => 'auth', 'action'=>'login',
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 Router::connect('/admin', array('controller' => 'pages', 'action' => 'display', 'page'=>'home'));
 Router::connect('/admin/home', array('controller' => 'statistics', 'action' => 'index', 'admin' => true));
+Router::connect('/admin/help', array('controller' => 'pages', 'action' => 'display', 'admin_help'));
 ?>
