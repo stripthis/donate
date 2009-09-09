@@ -5,18 +5,18 @@ if (!defined('FULL_BASE_URL')) {
 $config = array(
 	'App.environment' => 'production',
 	'App.name' => 'Greenpeace White Rabbit',
-	'App.domain' => 'https://donate.greenpeace2.org',
+	'App.domain' => 'https://donate.greenpeace.org',
 	'App.stagingDomain' => 'https://donate.greenpeace.org',
 	'App.mirrorDomain' => 'http://www.greenpeace.org/international',
 	'App.usingMirror' => true,
-	'App.title' => 'Greenpeace (White Rabbit)',
+	'App.title' => 'Donate | Greenpeace',
 	'App.browserTitle' => '',
 	'App.guestAccount' => 'guest@greenpeace.org',
 	'App.supportEmail' => 'supporter-services@greenpeace.org',
 	'App.feedbackEmail' => 'feedback@greenpeace.org',
 	'App.bugEmail' => 'general.support@greenpeace.org',
 	'App.registrationEmail' => 'Greenpeace <no-reply@greenpeace.org>',
-	'App.loginCookieLife' => '+1 year',
+	'App.loginCookieLife' => '+1 month',
 	'App.noReplyEmail' => 'Greenpeace <no-reply@greenpeace.org>',
 	'App.emailDeliveryMethod' => 'mail',
 	/*'App.smtpOptions' => array(
@@ -48,7 +48,7 @@ $config = array(
 	'App.spamEmailTimeLimit' => '600', //Time in seconds in which one email can get referral.
 	'App.emailsPerDay' => '5',
 	'App.ssl' => array(
-		'enabled' => true,
+		'enabled' => false,
 		'actions' => array(
 			'/'
 		)
@@ -71,9 +71,8 @@ $config = array(
 		'F' => 'Finalised',
 		'C' => 'Completed',
 	),
-	'App.frequencies' => array('onetime', 'monthly', 'quarterly', 'biannually', 'annually'),
+	'App.frequencies' => array('onetime', 'monthly', /*'quarterly', 'biannually',*/ 'annually'),
 	'App.currency_options' => array('USD', 'EUR'),
-	'Stats.startDate' => '-1 year',
 	'App.contact' => array(
 		'salutations' => array(
 			'ms' => 'Ms.', 
@@ -98,6 +97,7 @@ $config = array(
 		'jcb' => 'JCB',
 		'discover' => 'Discover'
 	),
+	'Stats.startDate' => '-1 year',
 	'Stats.defaultChartOptions' => array(
 		'type' => 'bar_filled',
 		'color' => '#66CC00',

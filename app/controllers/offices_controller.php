@@ -170,7 +170,7 @@ class OfficesController extends AppController {
  * @param string $id the office id
  * @return void
  * @access public
- */
+ 
 	function admin_delete($id = null, $undelete = false) {
 		$office = $this->Office->find('first', array(
 			'conditions' => compact('id')
@@ -180,7 +180,7 @@ class OfficesController extends AppController {
 		$this->Office->del($id);
 		$this->Message->add(__('The Office has been deleted.', true), 'ok', true);
 		$this->redirect(array('action' => 'index'));
-	}
+	}*/
 /**
  * undocumented function
  *

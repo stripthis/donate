@@ -4,7 +4,6 @@
     <h3><?php echo __('Actions'); ?></h3>
     <ul>
       <li><?php echo $html->link(__('Edit Office', true), array('action'=>'edit', $office['Office']['id']), array('class'=>'edit')); ?> </li>
-      <li><?php echo $html->link(__('Delete Office', true), array('action'=>'delete', $office['Office']['id']),  array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $office['Office']['id'])); ?> </li>
     </ul>
   </div>
 	<dl>
