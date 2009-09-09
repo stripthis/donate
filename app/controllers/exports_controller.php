@@ -31,6 +31,7 @@ class ExportsController extends AppController {
 		}
 
 		$items = $this->$model->find('all', array(
+			'conditions' => array('Gift.id' => $this->loadSelection()),
 			'contain' => array('Contact'),
 			'fields' => $this->data[$model]['fields']
 		));
