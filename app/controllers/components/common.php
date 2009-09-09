@@ -554,5 +554,30 @@ class Common extends Object
 	static function sameMonth($date1, $date2) {
 		return date('Y-m', strtotime($date1)) == date('Y-m', strtotime($date2));
 	}
+/**
+ * Removes an element from a Set or array as defined by $path.
+ *
+ * @param mixed $list From where to remove
+ * @param mixed $path A dot-separated string.
+ * @return array Array with $path removed from its value
+ * @access public
+ * @static
+ */
+	function remove($list, $path = null) {
+		if (empty($path)) {
+			return $list;
+		}
+		if (!is_array($path)) {
+			$path = explode('.', $path);
+		}
+
+		$all = $path[0] == '{n}';
+		foreach ($list as $key => $data) {
+			if ($all || $key == $path[0]) {
+				unset($list[$key][$path[1]][$path[2]]);
+			}
+		}
+		return $list;
+	}
 }
 ?>

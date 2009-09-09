@@ -35,6 +35,10 @@ class ExportsController extends AppController {
 			'contain' => array('Contact'),
 			'fields' => $this->data[$model]['fields']
 		));
+
+		if (!in_array('Contact.id', $this->data[$model]['fields'])) {
+			$items = Common::remove($items, '{n}.Contact.id');
+		}
 		$this->set(compact('items'));
 		$this->RequestHandler->renderAs($this, $this->data[$model]['format']);
 	}
