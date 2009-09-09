@@ -1,5 +1,6 @@
 <?php
 class TransactionsController extends AppController {
+	var $components = array('GridFilter');
 /**
  * undocumented function
  *
@@ -46,8 +47,12 @@ class TransactionsController extends AppController {
 		$defaults = array(
 			'keyword' => '',
 			'search_type' => 'all',
-			'start_date' => false,
-			'end_date' => false,
+			'start_date_day' => '01',
+			'start_date_year' => date('Y'),
+			'start_date_month' => '01',
+			'end_date_day' => '31',
+			'end_date_year' => date('Y'),
+			'end_date_month' => '12',
 			'my_limit' => 20,
 			'custom_limit' => false
 		);
@@ -80,7 +85,7 @@ class TransactionsController extends AppController {
 		if (!empty($params['end_date'])) {
 			$conditions['Transaction.created <='] = $params['end_date'];
 		}
-
+		$conditions = $this->GridFilter->dateRange($conditions, $params, 'Transaction', 'created');
 		$this->paginate['Transaction'] = array(
 			'conditions' => $conditions,
 			'order' => array('Transaction.created' => 'desc'),
