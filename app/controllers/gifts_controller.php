@@ -284,6 +284,7 @@ class GiftsController extends AppController {
 			}
 		}
 
+		$this->Session->write('gifts_filter_conditions', $conditions);
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,
 			'recursive' => 3,
