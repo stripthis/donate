@@ -24,7 +24,8 @@ class TransactionsController extends AppController {
 
 		$conditions = array(
 			'Gift.office_id' => $this->Session->read('Office.id'),
-			'Transaction.parent_id' => ''
+			'Transaction.parent_id' => '',
+			'Transaction.archived' => '0'
 		);
 
 		$contact = false;
@@ -33,7 +34,7 @@ class TransactionsController extends AppController {
 				'conditions' => compact('id'),
 				'fields' => array('salutation', 'fname', 'lname', 'title')
 			));
-			
+
 			$giftIds = $this->Gift->find('all', array(
 				'conditions' => array(
 					'contact_id' => $contactId,
@@ -138,7 +139,11 @@ class TransactionsController extends AppController {
 		Assert::notEmpty($transaction, '404');
 		Assert::true(User::allowed($this->name, $this->action, $transaction), '403');
 
-		$this->Transaction->del($id);
+		$this->Transaction->set(array(
+			'id' => $id,
+			'archived' => '1'
+		));
+		$this->Transaction->save();
 		$msg = __('The Transaction has been deleted.', true);
 		$this->Message->add($msg, 'ok', true, array('action' => 'admin_index'));
 	}

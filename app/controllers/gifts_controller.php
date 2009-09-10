@@ -336,7 +336,11 @@ class GiftsController extends AppController {
 		Assert::notEmpty($gift, '404');
 		Assert::true(User::allowed($this->name, $this->action, $gift), '403');
 
-		$this->Gift->delete($id);
+		$this->Gift->set(array(
+			'id' => $id,
+			'archived' => '1'
+		));
+		$this->Gift->save();
 		$this->Message->add(DEFAULT_FORM_DELETE_SUCCESS, 'ok', true, array('action' => 'index'));
 	}
 /**
