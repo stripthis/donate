@@ -28,6 +28,12 @@ class TransactionsController extends AppController {
 			'Transaction.archived' => '0'
 		);
 
+		switch ($type) {
+			case 'archived':
+				$conditions['Transaction.archived'] = '1';
+				break;
+		}
+	
 		$contact = false;
 		if (!empty($contactId)) {
 			$contact = $this->Contact->find('first', array(

@@ -83,6 +83,10 @@ class Navigation extends AppModel{
 					'/admin/transactions/index/successful'
 					, '#/^\/admin\/gifts\/transactions\/index\/successful.*$/iU'
 				)
+				, 'Archived' => array(
+					'/admin/transactions/index/archived'
+					, '#/^\/admin\/gifts\/transactions\/index\/archived.*$/iU'
+				)
 			)
 			, 'user_sub' => array(
 				'All' => array(

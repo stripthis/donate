@@ -112,6 +112,7 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 	?>
 	</table>
 	<?php
+	echo $form->end();
 	$urlParams = $params;
 	$urlParams[] = $type;
 	unset($urlParams['ext']);
