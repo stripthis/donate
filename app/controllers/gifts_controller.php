@@ -237,6 +237,9 @@ class GiftsController extends AppController {
 			case 'starred':
 				$conditions['Gift.id'] = $this->Session->read('favorites');
 				break;
+			case 'archived':
+				$conditions['Gift.archived'] = '1';
+				break;
 		}
 
 		$defaults = array(

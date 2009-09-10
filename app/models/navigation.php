@@ -53,6 +53,10 @@ class Navigation extends AppModel{
 					'/admin/gifts/index/starred'
 					, '#/^\/admin\/gifts\/starred.*$/iU'
 				)
+				, 'Archived' => array(
+					'/admin/gifts/index/archived'
+					, '#/^\/admin\/gifts\/archived.*$/iU'
+				)
 			)
 			, 'transaction_sub' => array(
 				'All' => array(
