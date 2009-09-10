@@ -4,8 +4,8 @@
     <div class="menu_wrapper">
       <ul class="menu with_tabs">
         <li><?php echo $html->link(__('Signups (partial)',true), array('action'=>'index/gifts','admin'=>true),array('class'=>'selected')); ?></li>
-        <li><?php echo $html->link(__('Gifts (complete)',true), array('action'=>'index/gifts','admin'=>true)); ?></li>
-        <li><?php echo $html->link(__('Amounts',true), array('action'=>'index/gifts','admin'=>true)); ?></li>
+        <!-- <li><?php echo $html->link(__('Gifts (complete)',true), array('action'=>'index/gifts','admin'=>true)); ?></li>
+        <li><?php echo $html->link(__('Amounts',true), array('action'=>'index/gifts','admin'=>true)); ?></li> -->
       </ul>
     </div>
     <?php echo $this->element('../statistics/elements/filter') ?>
