@@ -17,8 +17,10 @@ $favConfig = Configure::read('Favorites');
 echo $this->element('nav', array(
 	'type' => 'transaction_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 ));
+
+echo $form->create('Transaction', array('url' => '/admin/exports/transactions', 'type' => 'post'));
+echo $this->element('../transactions/elements/actions', array('export' => true));
 ?>
-<?php echo $this->element('../transactions/elements/actions'); ?>
 <?php if (!empty($transactions)) : ?>
 	<table>
 	<?php
@@ -61,7 +63,7 @@ echo $this->element('nav', array(
 
 		$gift = $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id']));
 		$tr = array();
-		$tr[] = $form->checkbox($t['Transaction']['id'], array('class'=>'checkbox','name'=> 'Transaction'));
+		$tr[] = $form->checkbox($t['Transaction']['id'], array('class'=>'checkbox'));
 		if ($doFavorites) {
 			$tr[] = $favorites->link("Transaction", $t['Transaction']['id']);
 		}

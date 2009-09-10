@@ -1,13 +1,11 @@
 <?php
-	//pr($transaction);
-	//pr($gift);
-	$options = array(
-		'model'=>'Transaction', 
-		'id'=> $transaction['id'], 
-    'allowEmpty' => (isset($allowEmpty) ? $allowEmpty : true),
-    'leaf' => (isset($leaf) ? $leaf : true),
-  	'parent_id' => (isset($parent_id) ? $parent_id : false)
-	);
+$options = array(
+	'model'=>'Transaction', 
+	'id'=> $transaction['id'], 
+	'allowEmpty' => (isset($allowEmpty) ? $allowEmpty : true),
+	'leaf' => (isset($leaf) ? $leaf : true),
+	'parent_id' => (isset($parent_id) ? $parent_id : false)
+);
 ?>
             <tr class="<?php echo $common->getFoldClass($options); ?>">
 <?php echo $this->element('tableset/collumns/selection', $options); ?>

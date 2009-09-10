@@ -2,6 +2,7 @@
 class ExportsController extends AppController {
 	var $uses = array();
 	var $components = array('ForceDownload');
+	var $helpers = array('Csv');
 	var $sessKeyModel = 'export_model';
 	var $sessKeyType = 'export_type';
 	var $sessKeySelection = 'export_selection';
@@ -15,6 +16,7 @@ class ExportsController extends AppController {
 		parent::beforeFilter();
 
 		$this->Gift = ClassRegistry::init('Gift');
+		$this->Transaction = ClassRegistry::init('Transaction');
 	}
 /**
  * undocumented function
@@ -23,48 +25,68 @@ class ExportsController extends AppController {
  * @access public
  */
 	function admin_gifts() {
+		$this->_process('Gift', array('Contact'));
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function admin_transactions() {
+		$this->_process('Transaction', array('Gift'));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $model 
+ * @param string $contain 
+ * @return void
+ * @access public
+ */
+	function _process($model, $contain = array()) {
 		Assert::true(User::allowed($this->name, $this->action), '403');
-		Assert::true($this->isPost() || $this->Session->read($this->sessKeyModel) == 'Gift', '404');
+		Assert::true($this->isPost() || $this->Session->read($this->sessKeyModel) == $model, '404');
 
-		$model = 'Gift';
 		if (isset($this->data[$model]) && !isset($this->data[$model]['process'])) {
 			$this->saveModel($model);
-			$this->saveSelection($model);
-			return;
+			return $this->saveSelection($model);
 		}
-		$conditions = $this->Session->read('gifts_filter_conditions');
+
+		$plural = low(Inflector::pluralize($model));
+		$conditions = $this->Session->read($plural . '_filter_conditions');
 
 		$selection = $this->loadSelection();
 		if (!empty($selection)) {
-			$conditions['Gift.id'] = $selection;
+			$conditions[$model . '.id'] = $selection;
 		}
 
 		$addedGiftId = false;
-		if (!in_array('Gift.id', (array) $this->data[$model]['fields'])) {
+		if (!in_array($model . '.id', (array) $this->data[$model]['fields'])) {
 			$addedGiftId = true;
-			$this->data[$model]['fields'][] = 'Gift.id';
+			$this->data[$model]['fields'][] = $model . '.id';
 		}
 
 		$items = $this->$model->find('all', array(
 			'conditions' => $conditions,
-			'contain' => array('Contact'),
+			'contain' => $contain,
 			'fields' => $this->data[$model]['fields']
 		));
 
 		if ($addedGiftId) {
-			$key = array_search('Gift.id', $this->data[$model]['fields']);
+			$key = array_search($model . '.id', $this->data[$model]['fields']);
 			unset($this->data[$model]['fields'][$key]);
 		}
 
 		if ($this->data[$model]['softdelete']) {
-			$this->Gift->softdelete($items);
+			$this->$model->softdelete($items);
 		}
 
-		$items = $this->filterFields($model, $items, array('Gift.id', 'Contact.id'));
+		$items = $this->filterFields($model, $items, $contain);
 
 		if (isset($this->data[$model]['download']) && $this->data[$model]['download']) {
-			$name = 'gifts_export_' . date('Y_m_d_H_i');
-			$path = '/admin/exports/gifts.' . $this->data[$model]['format'];
+			$name = $plural . '_export_' . date('Y_m_d_H_i');
+			$path = '/admin/exports/' . $plural . '.' . $this->data[$model]['format'];
 			$this->ForceDownload->forceDownload($path, $name);
 		}
 		$this->set(compact('items'));
@@ -127,7 +149,12 @@ class ExportsController extends AppController {
  * @return void
  * @access public
  */
-	function filterFields($model, $items, $fields) {
+	function filterFields($model, $items, $contain) {
+		$fields = array($model . '.id');
+		foreach ($contain as $contained) {
+			$fields[] = $contained . '.id';
+		}
+
 		foreach ($fields as $field) {
 			if (!in_array($field, (array) $this->data[$model]['fields'])) {
 				$items = Common::remove($items, '{n}.' . $field);

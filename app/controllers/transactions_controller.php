@@ -86,7 +86,9 @@ class TransactionsController extends AppController {
 		if (!empty($params['end_date'])) {
 			$conditions['Transaction.created <='] = $params['end_date'];
 		}
+
 		$conditions = $this->GridFilter->dateRange($conditions, $params, 'Transaction', 'created');
+		$this->Session->write('transactions_filter_conditions', $conditions);
 		$this->paginate['Transaction'] = array(
 			'conditions' => $conditions,
 			'order' => array('Transaction.created' => 'desc'),

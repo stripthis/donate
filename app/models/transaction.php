@@ -38,5 +38,18 @@ class Transaction extends AppModel {
 		}
 		return true;
 	}
+/**
+ * undocumented function
+ *
+ * @param string $gifts 
+ * @return void
+ * @access public
+ */
+	function softdelete($items) {
+		return $this->updateAll(
+			array(__CLASS__ . '.archived' => '"1"'),
+			array(__CLASS__ . '.id' => Set::extract('/' . __CLASS__ . '/id', $items))
+		);
+	}
 }
 ?>
