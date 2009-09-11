@@ -10,8 +10,8 @@ class Comment extends CommentsAppModel {
  */
 	static function isOwn($comment) {
 		$isAuthor = $comment['Comment']['user_id'] == User::get('id');
+		$isOwned = false;
 		if (!$isAuthor) {
-			$isOwned = false;
 			$models = $this->belongsTo;
 			foreach ($models as $model => $data) {
 				$row = $this->{$model}->find('first', array(

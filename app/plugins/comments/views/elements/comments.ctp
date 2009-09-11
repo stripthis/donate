@@ -23,7 +23,7 @@ if (empty($items)) {
 } else {
 	foreach ($items as $comment) {
 		echo $this->element('commentlet', array(
-			'comment' => $comment, 'plugin' => 'Comments',
+			'comment' => $comment, 'plugin' => 'comments',
 			'depth' => 1, 'commentMethod' => $commentMethod,
 			'modelId' => $modelId
 		));
@@ -36,7 +36,7 @@ if (isset($preview)) {
 <div class="comment_login">
 	<?php
 	if ($showForm) {
-		echo $this->element('comment_form', array('id' => $modelId, 'plugin' => 'Comments'));
+		echo $this->element('comment_form', array('id' => $modelId, 'plugin' => 'comments'));
 	}
 	?>
 </div>
