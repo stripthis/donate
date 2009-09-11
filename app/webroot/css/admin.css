@@ -20,7 +20,7 @@
 }
 body {
   background:#66CC00;
-  font-family:verdana, helvetica, arial, sans-serif;
+  font-family:'Helvetica Neue', helvetica, verdana, sans-serif;
   font-size:80%;
   margin:0;
 }
@@ -41,7 +41,6 @@ a img {
 /* titles */
 h1, h2, h3, h4 {
   font-weight:normal;
-  font-family:'Helvetica Neue', helvetica, arial, sans-serif;
 }
 h2{
   font-size:2em;
@@ -172,7 +171,8 @@ label {
 input, textarea {
   clear:both;
   font-size:140%;
-  font-family:"frutiger linotype", "lucida grande", "verdana", sans-serif;
+  font-family:'Helvetica Neue', helvetica, verdana, sans-serif;
+  /*font-family:"frutiger linotype", "lucida grande", "verdana", sans-serif;*/
   padding:2px;
   width:100%;
 }
@@ -695,7 +695,8 @@ ul.selector li ul.subitem li a{
 .filter .full{
 	width:240px;
 }
-
+.filter .input.date{
+}
 /* hubblebubble */
 .bubble{
 	border:1px solid #CCC;
@@ -936,7 +937,6 @@ div.input label.error {
 	color:red; 
 	font-size:9px; 
 	font-weight:normal; 
-	font-family:Arial, Helvetica, Verdana, sans-serif; 
 	text-transform:uppercase;
 }
 p.error {
@@ -990,84 +990,114 @@ ul.messages li.success, ul.messages li.ok{
 	background:#efe url(/img/icons/M/message_info.png) 20px center no-repeat;
 }
 /*  Actions  */
-.actions ul {
-  margin:0;
+.actions {
+  float:left;
+  border:1px solid #EEE;
+  width:99.4%;
+  clear:both;
+  margin:5px 0 10px 0;
+  padding:2px;
+}
+.actions ul{
+  float:left;
   padding:0;
+  margin:0;
+}
+.actions h3{
+  float:left;
+  font-size:1.2em;
+  padding:6px 20px 6px 6px;
+  margin:0 10px 0  0;
+  font-weight:bold;
+  background:#EEE url(../img/layout/bg_arrow.png) right center no-repeat;
+  border:0;
 }
 .actions li {
-  display:inline;
+  float:left;
   list-style-type:none;
-  line-height:2em;
-  margin:0 2px 0 2px;
+	margin:2px 10px 2px 0;
+	padding:0;
   white-space:nowrap;
+  border-right:1px dotted #CCC;
 }
-.actions ul li a {
+.actions ul li .submit{
+  float:left;
+	margin:0;
+	padding:0;
+	width:auto;
+	min-width:0;
+}
+.actions ul li .submit input[type=submit]{
+	background:transparent;
+	font-size:0.8em;
+	margin:0;
+	border:0;
+	min-width:0;
+  padding: 4px 10px 4px 20px;
+	width:auto;
+	font-size:1em;
+	color:#003300;
+  font-weight:bold;
+}
+.actions ul li .submit input[type=submit]:hover{
+	color:#ee6600;
+}
+.actions a {
+  float:left;
   text-decoration:none;
-  padding-right:10px;
-  border-right:1px solid #CCC;
+  padding: 5px 10px;
 }
 .actions ul li a:hover {
 }
-.actions a{
+.actions a,
+.actions .submit{
   padding-left:25px;
   background-repeat:no-repeat;
   font-size:1.1em;
 }
-.actions a.add,
-.actions a.gift_add
-{
-  background:url(../img/icons/S/add.png) 2px 2px no-repeat;
+.actions .add,
+.actions .gift_add {
+  background:url(../img/icons/S/add.png) 2px center no-repeat;
 }
-.actions a.view{
-  background:url(../img/icons/S/view.png) 2px 2px no-repeat;
+.actions .view{
+  background:url(../img/icons/S/view.png) 2px center no-repeat;
 }
-.actions a.edit{
-  background:url(../img/icons/S/edit.png) 2px 2px no-repeat;
+.actions .edit{
+  background:url(../img/icons/S/edit.png) 2px center no-repeat;
 }
-.actions a.delete{
-  background:url(../img/icons/S/delete.png) 2px 2px no-repeat;
+.actions .delete{
+  background:url(../img/icons/S/delete.png) 2px center no-repeat;
 }
-.actions a.index, 
-.actions a.list{
-  background:url(../img/icons/S/index.png) 2px 2px no-repeat;
+.actions .index, 
+.actions .list{
+  background:url(../img/icons/S/index.png) 2px center no-repeat;
 }
-.actions a.undo{
-  background:url(../img/icons/S/undo.png) 2px 2px no-repeat;
+.actions .undo{
+  background:url(../img/icons/S/undo.png) 2px center no-repeat;
 }
-.actions a.export{
-  background:url(../img/icons/S/export.png) 2px 2px no-repeat;
+.actions .export{
+  background:url(../img/icons/S/export.png) 2px center no-repeat;
 }
-.actions a.import{
-  background:url(../img/icons/S/import.png) 2px 2px no-repeat;
+.actions .exportall{
+  background:url(../img/icons/S/export.png) 2px center no-repeat;
 }
-.actions a.merge{
-  background:url(../img/icons/S/merge.png) 2px 2px no-repeat;
+.actions .import{
+  background:url(../img/icons/S/import.png) 2px center no-repeat;
 }
-.actions a.tree{
-  background:url(../img/icons/S/tree.png) 2px 2px no-repeat;
+.actions .merge{
+  background:url(../img/icons/S/merge.png) 2px center no-repeat;
 }
-.actions a.user_add{
-  background:url(../img/icons/S/user_add.png) 2px 2px no-repeat;
+.actions .tree{
+  background:url(../img/icons/S/tree.png) 2px center no-repeat;
 }
-.actions a.user_edit{
-  background:url(../img/icons/S/user_edit.png) 2px 2px no-repeat;
+.actions .user_add{
+  background:url(../img/icons/S/user_add.png) 2px center no-repeat;
 }
-.actions a.user_delete{
-  background:url(../img/icons/S/user_delete.png) 2px 2px no-repeat;
+.actions .user_edit{
+  background:url(../img/icons/S/user_edit.png) 2px center no-repeat;
 }
-.actions ul{
-  border:1px solid #EEE;
-  padding:4px 4px 5px 4px;
-  margin:5px 0px 10px 0px;
-}
-.actions h3{
-  font-size:1.2em;
-  float:left;
-  padding:6px 20px 5px 6px;
-  margin:3px 10px 3px 3px;
-  font-weight:bold;
-  background:#EEE url(../img/layout/bg_arrow.png) right center no-repeat;
-  border:0;
+.actions .user_delete{
+  background:url(../img/icons/S/user_delete.png) 2px center no-repeat;
 }
 
 /* Quicklinks */

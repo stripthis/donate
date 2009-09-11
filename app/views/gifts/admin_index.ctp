@@ -11,15 +11,15 @@
 ?>
     <div class="content" id="gifts_index">
       <h2><?php __('Online Donations');?></h2>
-	<?php
+<?php
 	echo $this->element('nav', array(
 		'type' => 'gift_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
-
+?>
+<?php
 	echo $form->create('Gift', array('url' => '/admin/exports/gifts', 'type' => 'post'));
-
 	echo $this->element('../gifts/elements/actions', array('export' => true));
-	?>
+?>
       <div class="index_wrapper">
         <table>
           <thead>
