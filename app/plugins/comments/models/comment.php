@@ -25,7 +25,7 @@ class Comment extends CommentsAppModel {
 			}
 			Assert::true($isOwned, '403');
 		}
-		return $isOwned;
+		return true;
 	}
 }
 ?>
