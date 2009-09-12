@@ -23,7 +23,7 @@
   <div id="header">
     <h1><?php echo $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")); ?></h1>
 <?php echo $this->element('admin/country_selector'); ?>
-<?php echo $this->element('admin/user_badge'); ?>
+<?php echo $this->element('admin/users/badge'); ?>
 <?php //echo $this->element('admin/search'); ?>
 <?php echo $this->element('nav', array('type' => 'Admin', 'id' => 'menu_top', 'class' => 'menu')); ?>
   </div>
@@ -33,12 +33,7 @@
 <?php echo $this->element("admin/sidebar"); ?>
     </div>
 	</div>
-  <div id="footer">
-  	<p><strong>2009 &copy; Greenpeace International</strong>  &#149; v.0.1 (Esperanza)  &#149;</p>
-  	<a href="http://www.cakephp.org/" target="_blank" class="cakephpower">
- 		  <img src="/img/cake.power.gif" alt="CakePHP(tm) :: Rapid Development Framework">
- 		</a>
- 	</div>
+<?php echo $this->element("admin/footer"); ?>
 </div>
 <?php echo $cakeDebug; ?>
 </body>

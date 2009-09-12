@@ -49,9 +49,9 @@ class Navigation extends AppModel{
 					'/admin/gifts/index/recurring'
 					, '#/^\/admin\/gifts\/recurring.*$/iU'
 				)
-				, 'Starred' => array(
-					'/admin/gifts/index/starred'
-					, '#/^\/admin\/gifts\/starred.*$/iU'
+				, 'Favorites' => array(
+					'/admin/gifts/index/favorites'
+					, '#/^\/admin\/gifts\/favorites.*$/iU'
 				)
 				, 'Archived' => array(
 					'/admin/gifts/index/archived'
@@ -67,13 +67,9 @@ class Navigation extends AppModel{
 					'/admin/transactions/index/pending'
 					, '#/^\/admin\/transactions\/index\/pending.*$/iU'
 				)
-				, 'Hard Errors' => array(
-					'/admin/transactions/index/harderrors'
-					, '#/^\/admin\/gifts\/transactions\/index\/harderrors.*$/iU'
-				)
-				, 'Soft Errors' => array(
-					'/admin/transactions/index/softerrors'
-					, '#/^\/admin\/gifts\/transactions\/index\/softerrors.*$/iU'
+				, 'Errors' => array(
+					'/admin/transactions/index/errors'
+					, '#/^\/admin\/gifts\/transactions\/index\/errors.*$/iU'
 				)
 				, 'Retried' => array(
 					'/admin/transactions/index/retried'
@@ -86,6 +82,10 @@ class Navigation extends AppModel{
 				, 'Archived' => array(
 					'/admin/transactions/index/archived'
 					, '#/^\/admin\/gifts\/transactions\/index\/archived.*$/iU'
+				)
+				, 'Favorites' => array(
+					'/admin/transactions/index/favorites'
+					, '#/^\/admin\/gifts\/transactions\/index\/favorites.*$/iU'
 				)
 			)
 			, 'user_sub' => array(

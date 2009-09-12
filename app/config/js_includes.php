@@ -8,6 +8,7 @@ $config = array(
 		'plugins/jquery.state_dropdown.js' => 'Users:register, Users:edit',
 		'jquery.validate.js' => 'Users:register',
 		// 'jquery.blockUI.js' => '*:*',
+		'text_resize.js' => '*:admin*',
 		'japp.js' => '*:*',
 		'swfobject.js' => 'Statistics:*',
 		'tiny_mce/tiny_mce_gzip.js' => $mceRules,

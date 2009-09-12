@@ -31,7 +31,7 @@ if (!User::allowed('Appeals', 'admin_view')) {
            'label' => '', 'options' => $searchOptions
          ))."\n";
      ?>
-     <?php echo $form->end('Search!')."\n";?>
+     <?php echo $form->end(__('search',true).' &#0187;')."\n";?>
    </div>
   </div>
 </div>

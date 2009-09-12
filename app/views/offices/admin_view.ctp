@@ -28,20 +28,17 @@
       &nbsp;
     </dd>
 	</dl>
-<br /><br />
-<div class="related">
 	<h3><?php __('Supported Gateways');?></h3>
 	<?php if (!empty($office['Gateway'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-    <th><?php __('Id'); ?></th>
     <th><?php __('Name'); ?></th>
     <th><?php __('Uses Price'); ?></th>
     <th><?php __('Uses Rate'); ?></th>
     <th><?php __('Created'); ?></th>
+    <th><?php __('Modified'); ?></th>
   	<?php foreach ($office['Gateway'] as $gateway) : ?>
-	    <tr<?php echo $class;?>>
-	      <td><?php echo $gateway['id'];?></td>
+	    <tr>
 	      <td><?php echo $gateway['name'];?></td>
 	      <td><?php echo $gateway['uses_price'];?></td>
 	      <td><?php echo $gateway['uses_rate'];?></td>

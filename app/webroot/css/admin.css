@@ -265,6 +265,12 @@ input[type=submit] {
 .iconic.gift.cash.big{
   background-image:url(../img/icons/S/money.png);
 }
+.iconic.increaseFont{
+  background-image:url(../img/icons/S/increase_font.png);
+}
+.iconic.decreaseFont{
+  background-image:url(../img/icons/S/decrease_font.png);
+}
 /***********************************************************************************
  * Layout 
  ***********************************************************************************/
@@ -551,45 +557,56 @@ ul.selector li ul.subitem li a{
 .sidebar ul.menu li a:hover{
   background:#F2F2F2;
 }
-/* widget */
-.widget{
+/* widgets */
+.sidebar .widget{
+	margin-top:5px;
 	-moz-border-radius:5px;
 	border:1px double #EEE;
 	padding:2px;
 }
-.widget_header{
+.sidebar .widget:first-child{
+	margin-top:25px;
+}
+.sidebar .widget_header{
 	background:#EEE url(/img/layout/bg_widget.png) 0 0 repeat-x;
 	-moz-border-radius:3px 3px 0 0;
 }
-.widget_content{
+.sidebar .widget_content{
 	background:#FFF;
 	-moz-border-radius:0 0 3px 3px;
 }
 .widget_content .toggle_wrapper{
 	padding:5px;
 }
-
-/* shortcuts */
-.sidebar .shortcuts{
-	margin-top:20px;
-}
-.sidebar .shortcuts h3{
-	background:transparent url(/img/icons/S/keyboard.png) 6px center no-repeat;
-}
-.sidebar .shortcuts ul {
+.sidebar .widget ul {
 	margin:0;
 	padding:4px 0 0 5px;
 	font-size:1.1em;
 }
-.sidebar .shortcuts ul li{
+.sidebar .widget ul li{
 	list-style-type:none;
-	padding:0;
 	margin:0;
+	padding:0;
 }
-.sidebar .shortcuts ul li a{
+.sidebar .widget ul.with_bullets li{
+	list-style-type:none;
+	margin-left:20px;
+	padding-left:5px;
+	list-style-type:circle;
+}
+.sidebar .widget ul.with_bullets li:hover{
+	list-style-type:disc;
+}
+.sidebar .widget ul li a{
 	display:block;
 	padding-top:4px;
 	padding-bottom:4px;
+}
+/* shortcuts */
+.sidebar .shortcuts{
+}
+.sidebar .shortcuts h3{
+	background:transparent url(/img/icons/S/keyboard.png) 6px center no-repeat;
 }
 /* searchbox */
 .sidebar .search form{
@@ -616,7 +633,6 @@ ul.selector li ul.subitem li a{
 }
 /* helpbox */
 .sidebar .help{
-	margin-top:15px;
 }
 .sidebar .help h3{
 	padding:2px;
@@ -627,10 +643,10 @@ ul.selector li ul.subitem li a{
 }
 .sidebar .help ul{
 	font-size:1.1em;
-	padding:0;
 }
-.sidebar .help ul li{
-	padding:5px 5px 5px 0px;
+/* favorites */
+.sidebar .favorites h3{
+  background:transparent url(/img/icons/S/favorites.png) 6px center no-repeat;
 }
 
 /***********************************************************************************
@@ -640,7 +656,16 @@ ul.selector li ul.subitem li a{
 }
 .content div.actions{
 }
-
+.content p.nothing{
+	clear:both;
+	margin:5px 2px 5px 0px;
+	padding:10px;
+	background:#FAFAFA;
+	border:1px solid #EEE;
+	font-size: 1.4em;
+	text-align:center;
+	color:#333;
+}
 /* menu */
 .content .menu{
 	padding:10px 10px 5px 0px;

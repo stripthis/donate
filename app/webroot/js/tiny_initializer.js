@@ -10,7 +10,7 @@ for (var rule in rules) {
 }
 
 tinyMCE_GZ.init({
-	plugins : "safari,advlink,imagemanager,filemanager",
+	plugins : "safari,advlink", /* ,imagemanager,filemanager*/
 	themes : 'advanced',
 	languages : 'en',
 	disk_cache : true,
@@ -19,7 +19,7 @@ tinyMCE_GZ.init({
 tinyMCE.init({
 	mode : 'textareas',
 	theme : 'advanced',
-	plugins : "safari,advlink,imagemanager,filemanager",
+	plugins : "safari,advlink", /* ,imagemanager,filemanager */
 	width: width,
 	height: 200,
     theme_advanced_buttons1 : 'bold,italic,underline,strikethrough,|,link,unlink,|,undo,redo,|,bullist,numlist,|,link,insertimage,insertfile',

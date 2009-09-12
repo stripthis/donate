@@ -20,7 +20,7 @@ class AppController extends Controller {
 	);
 
 	var $helpers = array(
-		'Html','Javascript', 'Time', 'Form', 'Common', 'Text',
+		'Html','Javascript', 'Time', 'Form', 'Common', 'Text', 'Session',
 		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
 		'Favorites'
 	);
