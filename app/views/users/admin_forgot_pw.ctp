@@ -1,13 +1,12 @@
 <?php if (!isset($tabindex)) $tabindex = 1; ?>   
-  <div id="forgot_pw" class="landing_page">
-    <h2>Forgot your Password?</h2>
-    <div class='breadcrumb'>
-      <?php echo __('You are here'); ?>: 
-        <?php echo $html->link(__('Home',true),'/');?> » 
-        <?php echo $html->link(__('Member login',true),'/admin/auth/login');?> » 
-        <?php echo __('Lost Password')."\n"; ?>
-    </div>
- <?php echo $this->element('messages'); ?>
+  <div class="content forgot_pw">
+    <h2>Forgot your Password?</h2>	
+    <?php
+	    echo $this->element('nav', array(
+	    	'type' => 'admin_auth_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+	    ));
+	  ?>
+    <?php echo $this->element('messages'); ?>
     <?php echo $form->create('User', array('action' => 'forgot_pw')); ?>
     <fieldset>
       <legend><?php echo __("Password recovery"); ?></legend>

@@ -1,11 +1,12 @@
 <?php
 	// @todo display number of favorites next the the link, ex: Gifts (0) - session stores only id, not object types
 	$favorites = $session->read('favorites');
+	$open = (!isset($options['open'])) ? 'close' : $options['open']; // widget is closed by default
 ?>
     <div class="favorites widget">
     	<div class="widget_header">
  			  <h3>
- 			    <a href="<?php Router::url(); ?>#" class="toggle open" id="toggle_favorites"><?php echo __('Favorites'); ?>
+ 			    <a href="<?php Router::url(); ?>#" class="toggle <?php echo $open; ?>" id="toggle_favorites"><?php echo __('Favorites'); ?>
  			    <small>(<?php echo count($favorites); ?>)</small></a>
  			  </h3>
       </div>

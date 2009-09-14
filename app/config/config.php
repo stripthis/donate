@@ -97,6 +97,7 @@ $config = array(
 		'jcb' => 'JCB',
 		'discover' => 'Discover'
 	),
+	// Statistics module (flash
 	'Stats.startDate' => '-1 year',
 	'Stats.defaultChartOptions' => array(
 		'type' => 'bar_filled',
@@ -115,6 +116,16 @@ $config = array(
 		'y_axis' => array(
 			'colors' => array('#BED4F4', '#BED4F4')
 		)
-	)
+	),
+	// News & Feeds
+	'App.rss' => array(
+		'news' => array(
+			'title' => 'making waves',
+			'link' => 'http://weblog.greenpeace.org/makingwaves/',
+			'url' => 'http://feeds.feedburner.com/MakingWaves'
+		)
+	),
+	'App.twitterURL' => 'http://www.twitter.com/coolitchallenge',
+	'App.twitterFeed' => 'http://twitter.com/statuses/user_timeline/39753217.rss'	
 );
 ?>

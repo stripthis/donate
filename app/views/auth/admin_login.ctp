@@ -1,10 +1,12 @@
 <?php $this->pageTitle = 'Login'; ?>
 <?php if(!isset($tabindex)) $tabindex = 1; ?>
   	<div id="admin_login" class="content">
-      <h2><?php echo __("Sign in"); ?></h2>
-      <cake:nocache>
-<?php echo $this->element('messages'); ?>
-      </cake:nocache>
+      <h2><?php echo __("Admin Login"); ?></h2>
+      <?php
+	    echo $this->element('nav', array(
+	    	'type' => 'admin_auth_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+	    ));
+	    ?>
       <?php echo $form->create('User', array('url' => '/admin/auth/login', 'id' => 'LoginForm'))."\n";?>
         <fieldset>
           <legend><?php echo __("Please enter your login details"); ?></legend>
@@ -18,5 +20,4 @@
       <?php echo $form->submit(__('Login',true).' »',array("tabindex" => $tabindex++))."\n";?>
       <?php echo $form->end()."\n";?>
       <div class="clear"></div>
-	<p><?php echo $html->link('I forgot my password!', array('controller' => 'users', 'action' => 'forgot_pw'))?></p>
     </div>

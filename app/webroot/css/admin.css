@@ -557,12 +557,12 @@ ul.selector li ul.subitem li a{
 .sidebar ul.menu li a:hover{
   background:#F2F2F2;
 }
-/* widgets */
+/* sidebar widgets */
 .sidebar .widget{
-	margin-top:5px;
 	-moz-border-radius:5px;
 	border:1px double #EEE;
 	padding:2px;
+	margin:0 0 5px 0;
 }
 .sidebar .widget:first-child{
 	margin-top:25px;
@@ -609,8 +609,6 @@ ul.selector li ul.subitem li a{
 	background:transparent url(/img/icons/S/keyboard.png) 6px center no-repeat;
 }
 /* searchbox */
-.sidebar .search form{
-}
 .sidebar .search h3{
   background:transparent url(/img/icons/S/magnifier.png) 6px center no-repeat;
 }
@@ -648,7 +646,10 @@ ul.selector li ul.subitem li a{
 .sidebar .favorites h3{
   background:transparent url(/img/icons/S/favorites.png) 6px center no-repeat;
 }
-
+/* news */
+.sidebar .news h3{
+  background:transparent url(/img/icons/S/newspaper.png) 6px center no-repeat;
+}
 /***********************************************************************************
  * Content
  ***********************************************************************************/

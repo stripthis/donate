@@ -12,6 +12,7 @@ class AuthController extends AppController{
 
 		Assert::true(User::isGuest(), '403');
 		if ($this->isGet()) {
+			return;
 			$msg = "Good to see you again... But how come you are not logged in yet?!"; //@todo l18n use codes
 			return $this->Message->add(__($msg, true), 'error');
 		}

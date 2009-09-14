@@ -177,6 +177,16 @@ class Navigation extends AppModel{
 					, 'role' => 'SuperAdmin'
 				)
 			)
+			, 'admin_auth_sub' => array(
+				'Login' => array(
+					'/admin/auth/login'
+					, '#/^\/admin\/auth\/login.*$/iU'
+				)
+				, 'Lost Password' => array(
+					'/admin/users/forgot_pw'
+					, '#/^\/admin\/users\/forgot_pw.*$/iU'
+				)
+			)
 		);
 
 		if (!empty($navGroup) && isset($navigations[$navGroup])) {

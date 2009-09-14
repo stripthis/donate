@@ -3,7 +3,7 @@
 	$favConfig = Configure::read('Favorites');
 ?>
   <div class="content" id="Supporters_index">
-    <h2><?php __('Supporters', true);	?></h2>
+    <h2><?php echo __('Supporters');	?></h2>
 <?php
 	echo $this->element('nav', array(
 		'type' => 'supporter_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'

@@ -19,16 +19,20 @@
 </head>
 <body>
 <div id="container">
+<?php echo $this->element('messages')?>
   <div id="header">
-    <h1><?php 
-      echo $html->link( $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")) ." | ".__("International",array(false)), 
-              '/admin/home', array('escape' => false)); ?>
-    </h1>
-  </div>
+    <h1><?php echo $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")); ?></h1>
+<?php //echo $this->element('admin/country_selector'); ?>
   </div>
   <div id="content_wrapper">
 <?php echo $content_for_layout; ?>
+    <div class="sidebar_wrapper">
+  	  <div class="sidebar" id="right_sidebar">
+<?php echo $this->element('admin/sidebar/shortcuts',array('options'=>array('open'=>'open'))); ?>
+  	  </div>
+  	</div>
   </div>
+<?php echo $this->element("admin/footer"); ?>
 </div>
 <?php echo $cakeDebug; ?>
 </body>
