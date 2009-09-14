@@ -61,7 +61,6 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 			));
 		}
 
-		$gift = $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id']));
 		$tr = array();
 		$tr[] = $form->checkbox($t['Transaction']['id'], array('class'=>'checkbox'));
 		if ($doFavorites) {
@@ -74,7 +73,7 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 			//$parent,
 			$t['Transaction']['amount'].' EUR', //@todo currency
 			$t['Gateway']['name'],
-			$gift,
+			$html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id'])),
 			$t['Transaction']['created'],
 			$t['Transaction']['modified'],
 			implode(' - ', $actions)
@@ -101,7 +100,7 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 					$t['Gateway']['name'],
 					$t['Transaction']['amount'],
 					$t['Transaction']['external_id'],
-					$gift,
+			    $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id'])),
 					$t['Transaction']['created'],
 			    $t['Transaction']['modified'],
 					$actions

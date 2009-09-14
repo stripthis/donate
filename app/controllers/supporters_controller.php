@@ -113,7 +113,7 @@ class SupportersController extends AppController {
 		$gifts = $this->paginate();
 		$this->set(compact('gifts', 'type', 'params'));
 		
-		///////////////////////////////
+		/*
 		$conditions = array(
 			'Gift.office_id' => $this->Session->read('Office.id')
 		);
@@ -138,6 +138,7 @@ class SupportersController extends AppController {
 		);
 		$gifts = $this->paginate('Gift');
 		$this->set(compact('gifts', 'keyword', 'type'));
+		*/
 	}
 /**
  * undocumented function

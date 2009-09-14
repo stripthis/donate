@@ -63,6 +63,10 @@ class Navigation extends AppModel{
 					'/admin/transactions/index/all'
 					, '#/^\/admin\/transactions\/index\/all.*$/iU'
 				)
+				, 'Favorites' => array(
+					'/admin/transactions/index/favorites'
+					, '#/^\/admin\/gifts\/transactions\/index\/favorites.*$/iU'
+				)/*
 				, 'Pending' => array(
 					'/admin/transactions/index/pending'
 					, '#/^\/admin\/transactions\/index\/pending.*$/iU'
@@ -78,15 +82,12 @@ class Navigation extends AppModel{
 				, 'Successful' => array(
 					'/admin/transactions/index/successful'
 					, '#/^\/admin\/gifts\/transactions\/index\/successful.*$/iU'
-				)
+				)*/
 				, 'Archived' => array(
 					'/admin/transactions/index/archived'
 					, '#/^\/admin\/gifts\/transactions\/index\/archived.*$/iU'
 				)
-				, 'Favorites' => array(
-					'/admin/transactions/index/favorites'
-					, '#/^\/admin\/gifts\/transactions\/index\/favorites.*$/iU'
-				)
+				
 			)
 			, 'user_sub' => array(
 				'All' => array(
@@ -115,6 +116,14 @@ class Navigation extends AppModel{
 					'/admin/supporters/index/major_donors'
 					, '#/^\/admin\/supporters\/index\/major_donors.*$/iU'
 				),*/
+				, 'Favorites' => array(
+					'/admin/supporters/index/favorites'
+					, '#/^\/admin\/supporters\/favorites.*$/iU'
+				)
+				, 'Archived' => array(
+					'/admin/supporters/index/archived'
+					, '#/^\/admin\/supporters\/archived.*$/iU'
+				)
 			)
 			, 'user_preferences' => array(
 				'Preferences' => array(

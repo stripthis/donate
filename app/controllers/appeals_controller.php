@@ -29,7 +29,13 @@ class AppealsController extends AppController {
 			'keyword' => '',
 			'search_type' => 'all',
 			'my_limit' => 20,
-			'custom_limit' => false
+			'custom_limit' => false,
+			'start_date_day' => '01',
+			'start_date_year' => date('Y'),
+			'start_date_month' => '01',
+			'end_date_day' => '31',
+			'end_date_year' => date('Y'),
+			'end_date_month' => '12'
 		);
 		$params = am($defaults, $this->params['url'], $this->params['named']);
 		unset($params['ext']);
