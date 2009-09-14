@@ -103,14 +103,18 @@ class Navigation extends AppModel{
 					'/admin/supporters'
 					, '#/^\/admin\/supporters$/iU'
 				),
-				'Incomplete Gifts' => array(
-					'/admin/supporters/index/incomplete_gifts'
-					, '#/^\/admin\/supporters\/index\/incomplete_gifts.*$/iU'
+				'Signups' => array(
+					'/admin/supporters/index/signups'
+					, '#/^\/admin\/supporters\/index\/signups.*$/iU'
 				),
-				'Complete Gifts' => array(
-					'/admin/supporters/index/complete_gifts'
-					, '#/^\/admin\/supporters\/index\/complete_gifts.*$/iU'
-				),
+				'Donors' => array(
+					'/admin/supporters/index/donors'
+					, '#/^\/admin\/supporters\/index\/donors.*$/iU'
+				)/*,
+				'Major Donors' => array(
+					'/admin/supporters/index/major_donors'
+					, '#/^\/admin\/supporters\/index\/major_donors.*$/iU'
+				),*/
 			)
 			, 'user_preferences' => array(
 				'Preferences' => array(

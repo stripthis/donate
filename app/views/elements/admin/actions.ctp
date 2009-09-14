@@ -1,4 +1,3 @@
-<?php if(isset($links)) :  ?>
 <?php 
   if(!isset($selected)) {
     $selected = false;
@@ -7,6 +6,7 @@
       <div class="actions">
         <h3><?php __('Actions') ?></h3>
         <ul>
+<?php if(isset($links) && !empty($links)) :  ?>
 <?php foreach($links as $link): ?>
           <li>
           <?php
@@ -27,6 +27,10 @@
           ?>
           </li>
 <?php endforeach; ?>
+<?php else: ?>
+          <li class="nothing">
+          	<p><?php echo __('Sorry, but there is nothing to do here for now'); ?></p>
+          </li>
+<?php endif; ?>
          </ul>
       </div>
-<?php endif; ?>

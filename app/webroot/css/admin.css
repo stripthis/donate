@@ -654,8 +654,12 @@ ul.selector li ul.subitem li a{
  ***********************************************************************************/
 .content .view, .content .edit{
 }
-.content div.actions{
+.content .actions li.nothing{
+	border:0;
+	padding-top:5px;
+	font-size:1.1em;
 }
+.content p.empty,
 .content p.nothing{
 	clear:both;
 	margin:5px 2px 5px 0px;
@@ -717,7 +721,7 @@ ul.selector li ul.subitem li a{
 	clear:right;
 	margin-top:20px;
 }
-.filter .full{
+.filter .input .full{
 	width:240px;
 }
 .filter .input.date{
@@ -738,7 +742,7 @@ ul.selector li ul.subitem li a{
 /* Paging */
 .paging {
   background:#fff;
-  margin:5px 0px;
+  margin:0 0 5px 0;
   float:left;
   clear:both;
 	width:100%;
@@ -821,7 +825,7 @@ ul.selector li ul.subitem li a{
 /* index */
 .index_wrapper{
 	padding:0;
-	margin:10px 0 0 2px;
+	margin:10px 0 5px 2px;
 }
 .index_wrapper table{
 	padding:0;
