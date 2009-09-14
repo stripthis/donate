@@ -1129,7 +1129,9 @@ ul.messages li.success, ul.messages li.ok{
 .actions .user_delete{
   background:url(../img/icons/S/user_delete.png) 2px center no-repeat;
 }
-
+.actions .back{
+  background:url(../img/icons/S/arrow_undo.png) 2px center no-repeat;
+}
 /* Quicklinks */
 .quicklinks ul{
   float:left;

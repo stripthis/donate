@@ -88,5 +88,25 @@ class CommonHelper extends Apphelper {
 		}
 		return array_combine($months, $months);
 	}
+/**
+ * Return a tooltip
+ * @param $tip string
+ * @return string html formated tooltip
+ */
+	function tooltip($tip=null,$options=array()){
+		$msg = '';
+		if(!empty($tip)) {
+			$user = User::get('User');
+			if(isset($user['tooltips']) && $user['tooltips']) {
+				if (isset($options['class'])) {
+					$options['class'] .= " tooltip with_img information";
+				} else {
+					$options['class'] =  "tooltip with_img information";
+				}
+			  $msg =  '<span class="'.$options['class'].'" title="'.$tip.'">&nbsp;</span>';
+			}
+		}
+		return $msg;
+	}
 }
 ?>

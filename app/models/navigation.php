@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This Model is responsible for providing the navigation to the site depending on whether the user is logged in or not
  *
@@ -135,6 +134,29 @@ class Navigation extends AppModel{
 					, '#/^\/admin\/users\/edit_password.*$/iU'
 				)
 			)
+			, 'admin_auth_sub' => array(
+				'Login' => array(
+					'/admin/auth/login'
+					, '#/^\/admin\/auth\/login.*$/iU'
+				)
+				, 'Lost Password' => array(
+					'/admin/users/forgot_pw'
+					, '#/^\/admin\/users\/forgot_pw.*$/iU'
+				)
+			)
+			, 'admin_config_sub' => array(
+				'Config' => array(
+					'/admin/offices/view/' . $Session->read('Office.id')
+					, '#/\/admin\/offices(\/edit|\/view)\/' . $Session->read('Office.id') . '.*/iU'
+					, 'role' => 'SuperAdmin'
+				)
+				, 'Users' => array(
+					'/admin/users/index/' . $Session->read('Office.id')
+					, '#/\/admin\/users\/index\/' . $Session->read('Office.id') . '.*/iU'
+					, 'role' => 'SuperAdmin'
+				)
+			)
+			// LEVEL 0 (main tabs)
 			, 'Admin' => array(
 				'Home' => array(
 					'/admin/home'
@@ -155,7 +177,7 @@ class Navigation extends AppModel{
 				, 'Supporters' => array(
 					'/admin/supporters'
 					, '#/\/admin\/supporters.*/iU'
-				)
+				)/*
 				, 'Offices' => array(
 					'/admin/offices'
 					, '#/\/admin\/offices\/(index.*|manage_tree|add)?$/iU'
@@ -163,28 +185,18 @@ class Navigation extends AppModel{
 				)
 				, 'Users' => array(
 					'/admin/users/index/all'
-					, '#/\/admin\/users.*/iU'
+					, '#/\/admin\/users.* /iU' <- added space here * / :)
 					, 'role' => 'Root'
 				)
 				, 'Bugs' => array(
 					'/admin/bugs'
-					, '#/\/admin\/bugs.*/iU'
+					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
 					, 'role' => 'Root'
-				)
-				, 'Office Config' => array(
-					'/admin/offices/edit/' . $Session->read('Office.id')
-					, '#/\/admin\/offices\/edit\/' . $Session->read('Office.id') . '.*/iU'
+				)*/
+				, 'Config' => array(
+					'/admin/offices/view/' . $Session->read('Office.id')
+					, '#/\/admin\/(offices|users).*/iU'
 					, 'role' => 'SuperAdmin'
-				)
-			)
-			, 'admin_auth_sub' => array(
-				'Login' => array(
-					'/admin/auth/login'
-					, '#/^\/admin\/auth\/login.*$/iU'
-				)
-				, 'Lost Password' => array(
-					'/admin/users/forgot_pw'
-					, '#/^\/admin\/users\/forgot_pw.*$/iU'
 				)
 			)
 		);

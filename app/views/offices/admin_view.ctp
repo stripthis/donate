@@ -1,11 +1,11 @@
-<div class="content" id="offices_view">
-<h2><?php  __('Office');?></h2>
-  <div class="actions">
-    <h3><?php echo __('Actions'); ?></h3>
-    <ul>
-      <li><?php echo $html->link(__('Edit Office', true), array('action'=>'edit', $office['Office']['id']), array('class'=>'edit')); ?> </li>
-    </ul>
-  </div>
+<div class="content" id="office_config_view">
+<h2><?php  __('Office Configuration');?></h2>
+  <?php
+    echo $this->element('nav', array(
+		  'type' => 'admin_config_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+	  ));
+	?>
+<?php echo $this->element('../offices/elements/actions'); ?>
 	<dl>
     <dt><?php __('Name'); ?></dt>
     <dd>

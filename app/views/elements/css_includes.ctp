@@ -20,12 +20,12 @@ if (isset($currentAppeal)) {
 		$cssIncludes[] = $currentAppeal['Appeal']['id'] . '.css';
 	}
 }
-
+/*
 $viewFile = CSS . DS . $this->layout . '.css';
 if (file_exists($viewFile)) {
 	$cssIncludes[] = $this->layout . '.css';
 }
-
+*/
 $viewFile = CSS . 'views' . DS . $controller . DS . $action . '.css';
 if (file_exists($viewFile)) {
 	$cssIncludes[] = 'views/' . $controller . '/' . $action . '.css';

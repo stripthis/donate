@@ -2,7 +2,7 @@
 	<h2><?php __('Users');?></h2>
 	<?php
 	echo $this->element('nav', array(
-		'type' => 'user_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+		'type' => 'admin_config_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
 	?>
 <?php echo $this->element('../users/elements/actions'); ?>

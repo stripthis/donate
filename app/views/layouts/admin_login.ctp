@@ -7,8 +7,7 @@
   <link href="/favicon.ico" type="image/x-icon" rel="icon"/>
 	<link href="/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
   <base href="<?php echo r('www.', '', Router::url('/', true)); ?>" rel="<?php echo $this->here ?>" />
-<?php //echo $this->element('css_includes'); ?>
-  <link rel="stylesheet" type="text/css" href="/css/admin.css" />
+<?php echo $this->element('css_includes'); ?>
 <?php
   if (isset($javascript)): 
     echo $this->element('js_includes');
