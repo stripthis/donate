@@ -10,7 +10,11 @@ class AuthController extends AppController{
 	function admin_login() {
 		$this->layout = 'admin_login';
 
-		Assert::true(User::isGuest(), '403');
+		if (!User::isGuest()) {
+			$msg = __('You are logged in already!', true);
+			return $this->Message->add($msg, 'error');
+		}
+
 		if ($this->isGet()) {
 			$msg = "Good to see you again... But how come you are not logged in yet?!"; //@todo l18n use codes
 			return $this->Message->add(__($msg, true), 'error');

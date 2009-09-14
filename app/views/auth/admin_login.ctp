@@ -3,8 +3,9 @@
   	<div id="admin_login" class="content">
       <h2><?php echo __("Sign in"); ?></h2>
       <cake:nocache>
-<?php echo $this->element('messages'); ?>
+		<?php echo $this->element('messages'); ?>
       </cake:nocache>
+	<?php if (User::isGuest()) : ?>
       <?php echo $form->create('User', array('url' => '/admin/auth/login', 'id' => 'LoginForm'))."\n";?>
         <fieldset>
           <legend><?php echo __("Please enter your login details"); ?></legend>
@@ -18,5 +19,11 @@
       <?php echo $form->submit(__('Login',true).' »',array("tabindex" => $tabindex++))."\n";?>
       <?php echo $form->end()."\n";?>
       <div class="clear"></div>
-	<p><?php echo $html->link('I forgot my password!', array('controller' => 'users', 'action' => 'forgot_pw'))?></p>
+		<p><?php echo $html->link('I forgot my password!', array('controller' => 'users', 'action' => 'forgot_pw'))?></p>
+	<?php else : ?>
+		<?php
+		$txt = __('Go to the Admin CP Home', true);
+		echo $html->link($txt . ' &raquo;', '/admin/home', null, false, false);
+		?>
+	<?php endif; ?>
     </div>
