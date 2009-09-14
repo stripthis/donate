@@ -1,10 +1,12 @@
 <?php $this->pageTitle = 'Login'; ?>
 <?php if(!isset($tabindex)) $tabindex = 1; ?>
   	<div id="admin_login" class="content">
-      <h2><?php echo __("Sign in"); ?></h2>
-      <cake:nocache>
-		<?php echo $this->element('messages'); ?>
-      </cake:nocache>
+      <h2><?php echo __("Admin Login"); ?></h2>
+      <?php
+	    echo $this->element('nav', array(
+	    	'type' => 'admin_auth_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+	    ));
+	    ?>
 	<?php if (User::isGuest()) : ?>
       <?php echo $form->create('User', array('url' => '/admin/auth/login', 'id' => 'LoginForm'))."\n";?>
         <fieldset>

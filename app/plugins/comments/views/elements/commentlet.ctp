@@ -36,7 +36,7 @@
 	if (isset($comment['children'])) {
 		foreach ($comment['children'] as $comment) {
 			echo $this->element('commentlet', array(
-				'comment' => $comment, 'plugin' => 'Comments',
+				'comment' => $comment, 'plugin' => 'comments',
 				'depth' => 1, 'commentMethod' => $commentMethod,
 				'modelId' => $modelId
 			));

@@ -1,11 +1,11 @@
-<div class="content" id="offices_view">
-<h2><?php  __('Office');?></h2>
-  <div class="actions">
-    <h3><?php echo __('Actions'); ?></h3>
-    <ul>
-      <li><?php echo $html->link(__('Edit Office', true), array('action'=>'edit', $office['Office']['id']), array('class'=>'edit')); ?> </li>
-    </ul>
-  </div>
+<div class="content" id="office_config_view">
+<h2><?php  __('Office Configuration');?></h2>
+  <?php
+    echo $this->element('nav', array(
+		  'type' => 'admin_config_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+	  ));
+	?>
+<?php echo $this->element('../offices/elements/actions'); ?>
 	<dl>
     <dt><?php __('Name'); ?></dt>
     <dd>
@@ -28,20 +28,17 @@
       &nbsp;
     </dd>
 	</dl>
-<br /><br />
-<div class="related">
 	<h3><?php __('Supported Gateways');?></h3>
 	<?php if (!empty($office['Gateway'])):?>
 	<table cellpadding = "0" cellspacing = "0">
 	<tr>
-    <th><?php __('Id'); ?></th>
     <th><?php __('Name'); ?></th>
     <th><?php __('Uses Price'); ?></th>
     <th><?php __('Uses Rate'); ?></th>
     <th><?php __('Created'); ?></th>
+    <th><?php __('Modified'); ?></th>
   	<?php foreach ($office['Gateway'] as $gateway) : ?>
-	    <tr<?php echo $class;?>>
-	      <td><?php echo $gateway['id'];?></td>
+	    <tr>
 	      <td><?php echo $gateway['name'];?></td>
 	      <td><?php echo $gateway['uses_price'];?></td>
 	      <td><?php echo $gateway['uses_rate'];?></td>

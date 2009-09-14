@@ -2,7 +2,7 @@
 	<h2><?php __('Users');?></h2>
 	<?php
 	echo $this->element('nav', array(
-		'type' => 'user_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+		'type' => 'admin_config_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
 	?>
 <?php echo $this->element('../users/elements/actions'); ?>
@@ -12,11 +12,12 @@
 		unset($params['direction']);
 		?>
 		<table cellpadding="0" cellspacing="0">
+		  <thead>
 			<tr>
 				<th class="text"><?php echo $paginator->sort(__('Login', true), 'login', array('url' => $params));?></th>
 				<th class="date"><?php echo $paginator->sort(__('Created', true), 'created', array('url' => $params));?></th>
 			  <th class="date"><?php echo $paginator->sort(__('Last Update', true), 'modified', array('url' => $params));?></th>
-				<th class="actions"><?php __('Actions');?></th>
+				<th class=""><?php __('Actions');?></th>
 			</tr>
 			<?php
 			$i = 0;
@@ -26,15 +27,18 @@
 					$class = ' class="altrow"';
 				}
 			?>
+			</thead>
+			<tbody>
 			<tr<?php echo $class;?>>
 				<td class="text"><?php echo $user['User']['login']; ?></td>
 				<td class="date"><?php echo $user['User']['created']; ?></td>
 				<td class="date"><?php echo $user['User']['modified']; ?></td>
-				<td class="actions">
+				<td class="">
 					<?php echo $html->link(__('Details', true), array('action'=>'view', $user['User']['id']),array('class'=>'view')); ?>
-					<?php echo $html->link(__('Delete', true), array('action'=>'delete', $user['User']['id']), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['id'])); ?>
+					- <?php echo $html->link(__('Delete', true), array('action'=>'delete', $user['User']['id']), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['id'])); ?>
 				</td>
 			</tr>
+			</tbody>
 			<?php endforeach; ?>
 		</table>
 		<?php

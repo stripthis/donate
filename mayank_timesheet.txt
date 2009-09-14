@@ -1,7 +1,0 @@
-Timesheet :
-
-22/07/09
- - Discussion with Remy on Worldpay (1h)
- - Doubt clarification with Tim & discussion on fpdf (1h)
- - Implementing updated db structure for cap limits (3h)
- - Coding for cap limit for 'to' email (2h)

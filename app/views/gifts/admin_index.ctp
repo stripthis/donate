@@ -11,15 +11,16 @@
 ?>
     <div class="content" id="gifts_index">
       <h2><?php __('Online Donations');?></h2>
-	<?php
+<?php
 	echo $this->element('nav', array(
 		'type' => 'gift_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
-
+?>
+<?php
 	echo $form->create('Gift', array('url' => '/admin/exports/gifts', 'type' => 'post'));
-
 	echo $this->element('../gifts/elements/actions', array('export' => true));
-	?>
+?>
+<?php if (isset($gifts) && !empty($gifts)) : ?>
       <div class="index_wrapper">
         <table>
           <thead>
@@ -67,7 +68,10 @@
 			?>
         </tbody>
       </table>
-    </div>
+	  </div>
+<?php else : ?>
+    <p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
+<?php endif; ?>
 	<?php
 	echo $form->end();
 	echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));

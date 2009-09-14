@@ -4,7 +4,7 @@ if (!isset($paginator->params['paging'])) {
 	return;
 }
 if (!isset($model) || $paginator->params['paging'][$model]['pageCount'] < 2) {
-	return;
+	//return;
 }
 if (!isset($options)) {
 	$options = array();

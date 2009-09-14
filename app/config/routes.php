@@ -9,6 +9,6 @@ Router::connect('/refer/*', array('controller' => 'users', 'action' => 'refer'))
 Router::connect('/admin/login', array('controller' => 'auth', 'action'=>'login', 'admin'=>1));
 Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
 Router::connect('/admin', array('controller' => 'pages', 'action' => 'display', 'page'=>'home'));
-Router::connect('/admin/home', array('controller' => 'statistics', 'action' => 'index', 'admin' => true));
+Router::connect('/admin/home', array('controller' => 'statistics', 'action' => 'index', 'admin' => 1));
 Router::connect('/admin/help', array('controller' => 'pages', 'action' => 'display', 'admin_help'));
 ?>

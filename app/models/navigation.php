@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This Model is responsible for providing the navigation to the site depending on whether the user is logged in or not
  *
@@ -49,9 +48,9 @@ class Navigation extends AppModel{
 					'/admin/gifts/index/recurring'
 					, '#/^\/admin\/gifts\/recurring.*$/iU'
 				)
-				, 'Starred' => array(
-					'/admin/gifts/index/starred'
-					, '#/^\/admin\/gifts\/starred.*$/iU'
+				, 'Favorites' => array(
+					'/admin/gifts/index/favorites'
+					, '#/^\/admin\/gifts\/favorites.*$/iU'
 				)
 				, 'Archived' => array(
 					'/admin/gifts/index/archived'
@@ -63,17 +62,17 @@ class Navigation extends AppModel{
 					'/admin/transactions/index/all'
 					, '#/^\/admin\/transactions\/index\/all.*$/iU'
 				)
+				, 'Favorites' => array(
+					'/admin/transactions/index/favorites'
+					, '#/^\/admin\/gifts\/transactions\/index\/favorites.*$/iU'
+				)/*
 				, 'Pending' => array(
 					'/admin/transactions/index/pending'
 					, '#/^\/admin\/transactions\/index\/pending.*$/iU'
 				)
-				, 'Hard Errors' => array(
-					'/admin/transactions/index/harderrors'
-					, '#/^\/admin\/gifts\/transactions\/index\/harderrors.*$/iU'
-				)
-				, 'Soft Errors' => array(
-					'/admin/transactions/index/softerrors'
-					, '#/^\/admin\/gifts\/transactions\/index\/softerrors.*$/iU'
+				, 'Errors' => array(
+					'/admin/transactions/index/errors'
+					, '#/^\/admin\/gifts\/transactions\/index\/errors.*$/iU'
 				)
 				, 'Retried' => array(
 					'/admin/transactions/index/retried'
@@ -82,11 +81,12 @@ class Navigation extends AppModel{
 				, 'Successful' => array(
 					'/admin/transactions/index/successful'
 					, '#/^\/admin\/gifts\/transactions\/index\/successful.*$/iU'
-				)
+				)*/
 				, 'Archived' => array(
 					'/admin/transactions/index/archived'
 					, '#/^\/admin\/gifts\/transactions\/index\/archived.*$/iU'
 				)
+				
 			)
 			, 'user_sub' => array(
 				'All' => array(
@@ -103,14 +103,26 @@ class Navigation extends AppModel{
 					'/admin/supporters'
 					, '#/^\/admin\/supporters$/iU'
 				),
-				'Incomplete Gifts' => array(
-					'/admin/supporters/index/incomplete_gifts'
-					, '#/^\/admin\/supporters\/index\/incomplete_gifts.*$/iU'
+				'Signups' => array(
+					'/admin/supporters/index/signups'
+					, '#/^\/admin\/supporters\/index\/signups.*$/iU'
 				),
-				'Complete Gifts' => array(
-					'/admin/supporters/index/complete_gifts'
-					, '#/^\/admin\/supporters\/index\/complete_gifts.*$/iU'
-				),
+				'Donors' => array(
+					'/admin/supporters/index/donors'
+					, '#/^\/admin\/supporters\/index\/donors.*$/iU'
+				)/*,
+				'Major Donors' => array(
+					'/admin/supporters/index/major_donors'
+					, '#/^\/admin\/supporters\/index\/major_donors.*$/iU'
+				),*/
+				, 'Favorites' => array(
+					'/admin/supporters/index/favorites'
+					, '#/^\/admin\/supporters\/favorites.*$/iU'
+				)
+				, 'Archived' => array(
+					'/admin/supporters/index/archived'
+					, '#/^\/admin\/supporters\/archived.*$/iU'
+				)
 			)
 			, 'user_preferences' => array(
 				'Preferences' => array(
@@ -122,6 +134,29 @@ class Navigation extends AppModel{
 					, '#/^\/admin\/users\/edit_password.*$/iU'
 				)
 			)
+			, 'admin_auth_sub' => array(
+				'Login' => array(
+					'/admin/auth/login'
+					, '#/^\/admin\/auth\/login.*$/iU'
+				)
+				, 'Lost Password' => array(
+					'/admin/users/forgot_pw'
+					, '#/^\/admin\/users\/forgot_pw.*$/iU'
+				)
+			)
+			, 'admin_config_sub' => array(
+				'Config' => array(
+					'/admin/offices/view/' . $Session->read('Office.id')
+					, '#/\/admin\/offices(\/edit|\/view)\/' . $Session->read('Office.id') . '.*/iU'
+					, 'role' => 'SuperAdmin'
+				)
+				, 'Users' => array(
+					'/admin/users/index/' . $Session->read('Office.id')
+					, '#/\/admin\/users\/index\/' . $Session->read('Office.id') . '.*/iU'
+					, 'role' => 'SuperAdmin'
+				)
+			)
+			// LEVEL 0 (main tabs)
 			, 'Admin' => array(
 				'Home' => array(
 					'/admin/home'
@@ -142,7 +177,7 @@ class Navigation extends AppModel{
 				, 'Supporters' => array(
 					'/admin/supporters'
 					, '#/\/admin\/supporters.*/iU'
-				)
+				)/*
 				, 'Offices' => array(
 					'/admin/offices'
 					, '#/\/admin\/offices\/(index.*|manage_tree|add)?$/iU'
@@ -150,17 +185,17 @@ class Navigation extends AppModel{
 				)
 				, 'Users' => array(
 					'/admin/users/index/all'
-					, '#/\/admin\/users.*/iU'
+					, '#/\/admin\/users.* /iU' <- added space here * / :)
 					, 'role' => 'Root'
 				)
 				, 'Bugs' => array(
 					'/admin/bugs'
-					, '#/\/admin\/bugs.*/iU'
+					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
 					, 'role' => 'Root'
-				)
-				, 'Office Config' => array(
-					'/admin/offices/edit/' . $Session->read('Office.id')
-					, '#/\/admin\/offices\/edit\/' . $Session->read('Office.id') . '.*/iU'
+				)*/
+				, 'Config' => array(
+					'/admin/offices/view/' . $Session->read('Office.id')
+					, '#/\/admin\/(offices|users).*/iU'
 					, 'role' => 'SuperAdmin'
 				)
 			)

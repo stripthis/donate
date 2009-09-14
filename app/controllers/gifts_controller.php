@@ -234,6 +234,7 @@ class GiftsController extends AppController {
 			case 'onetime':
 				$conditions['Gift.frequency'] = 'onetime';
 				break;
+			case 'favorites':
 			case 'starred':
 				$conditions['Gift.id'] = $this->Session->read('favorites');
 				break;

@@ -23,14 +23,14 @@ class PostsController extends AppController {
 			case "twitter":
 				$cacheKey = 'posts_index_'.$cat;
 				$posts = Cache::read($cacheKey);
-
 				if (!$posts) {
 					App::import('Core', 'Xml');
-					$rss = Set::reverse(new XML(Configure::read('App.'.$cat.'Feed')));
-
+					$feed = Configure::read("App.rss.$cat");
+					$rss = Set::reverse(new XML($feed['url']));
 					$posts = array();
 					if (isset($rss["Rss"]["Channel"]["Item"]) && !empty($rss["Rss"]["Channel"]["Item"])) {
 						$posts = $rss["Rss"]["Channel"]["Item"];
+						$posts['feed'] = $feed; 
 						Cache::write($cacheKey, $posts);
 					}
 				}
