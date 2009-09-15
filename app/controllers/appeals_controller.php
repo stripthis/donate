@@ -148,7 +148,7 @@ class AppealsController extends AppController {
 		}
 		Assert::notEmpty($result);
 
-		$msg = __('Appeal was saved successfully.', true);
+		$msg = __('The AAppeal was saved successfully.', true);
 		if ($action == 'add') {
 			$url = array('action' => 'edit', $this->Appeal->id);
 			return $this->Message->add($msg, 'ok', true, $url);

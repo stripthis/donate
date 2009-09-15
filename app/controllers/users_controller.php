@@ -1,4 +1,4 @@
-<?php
+]<?php
 class UsersController extends AppController {
 /**
  * undocumented function
@@ -57,7 +57,7 @@ class UsersController extends AppController {
 			$options = array(
 				'mail' => array(
 					'to' => $this->data['User']['login'],
-					'subject' => 'New Account for Greenpeace White Rabbit'
+					'subject' => __('New Account for Greenpeace White Rabbit', true)
 				),
 				'vars' => array(
 					'url' => Configure::read('App.domain'),
@@ -66,13 +66,12 @@ class UsersController extends AppController {
 			);
 			Mailer::deliver('created_admin', $options);
 
-			$msg = 'The admin account for ' . $this->data['User']['login'] . ' has been created successfully. ';
-			$msg .= 'An email has been sent to the email address.';
+			$msg = __('The admin account for ' . $this->data['User']['login'] . ' has been created successfully. An email has been sent to the email address.', true);
 			$url = array('action' => 'admin_edit', $userId);
 			return $this->Message->add(__($msg, true), 'ok', true, $url);
 		}
 
-		$msg = 'User was saved successfully.';
+		$msg = __('User was saved successfully.', true);
 		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'admin_team'));
 	}
 /**
@@ -190,7 +189,7 @@ class UsersController extends AppController {
 		));
 
 		if (empty($user)) {
-			$msg = 'Sorry, but we have no record of an account for ' . $this->data['User']['login'] . '.';
+			$msg = __('Sorry, but we have no record of an account for ' . $this->data['User']['login'] . '.', true);
 			return $this->Message->add($msg, 'error');
 		}
 
@@ -213,14 +212,15 @@ class UsersController extends AppController {
 			),
 			'mail' => array(
 				'to' => $user['User']['login']
-				, 'subject' => Configure::read('App.name') . ' Password Recovery'
+				, 'subject' => __(Configure::read('App.name') . ' Password Recovery', true)
 				, 'template' => 'forgot_pw'
 				, 'delivery' => 'debug'
 			)
 		);
 		Mailer::deliver('forgot_pw', $emailSettings);
 		Common::debugEmail();
-		$this->Message->add('A message has been sent to ' . $user['User']['login'] . '.', 'ok');
+		$msg = sprintf(__('A message has been sent to %s.', true), $user['User']['login']);
+		$this->Message->add($msg, 'ok');
 	}
 /**
  * undocumented function
@@ -288,7 +288,7 @@ class UsersController extends AppController {
 			$this->User->activationEmail($user['User']['id'], $user);
 		}
 
-		$msg = 'A new activation email was sent to you. Make sure to check your spam/junk folders, too.';
+		$msg = __('A new activation email was sent to you. Make sure to check your spam/junk folders, too.', true);
 		$this->Message->add($msg, 'ok', true, $this->referer());
 	}
 /**
@@ -321,7 +321,8 @@ class UsersController extends AppController {
 			$this->User->save(null, false);
 			User::restore();
 			$this->Session->del('lost_password');
-			return $this->Message->add('Your password has been updated successfully.', 'ok');
+			$msg = __('Your password has been updated successfully.', true);
+			return $this->Message->add($msg, 'ok');
 		}
 		$messages = $this->User->validationErrors;
 		$this->Message->add(join(', ', $messages), 'error');
@@ -346,8 +347,7 @@ class UsersController extends AppController {
 		$this->_setLanguage(User::get('lang'));
 		User::restore();
 
-		$msg = 'Saved successfully.';
-		$this->Message->add(__($msg, true), 'ok', true, $this->here);
+		$this->Message->add(__('Saved successfully.', true), 'ok', true, $this->here);
 	}
 }
 ?>
