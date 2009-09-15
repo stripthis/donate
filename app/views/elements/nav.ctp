@@ -41,7 +41,7 @@ if (!empty($div)) {
 			}
 
 			$idName = low(r(' ', '-', $name));
-			echo '<li id="nav-' . $idName . '">' . $html->link($name, $links[0], $options) . '</li>';
+			echo '<li id="nav-' . $idName . '">' . $html->link($name, $links[0], $options, false, false) . '</li>';
 			if ($usePipe && $i < $total) {
 				echo '|';
 			}

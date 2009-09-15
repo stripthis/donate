@@ -425,6 +425,7 @@ class Dispatcher extends Object {
 		}
 		$controller = false;
 		$ctrlClass = $this->__loadController($params);
+
 		if (!$ctrlClass) {
 			if (!isset($params['plugin'])) {
 				$params = $this->_restructureParams($params);
@@ -442,6 +443,7 @@ class Dispatcher extends Object {
 		} else {
 			$params = $this->params;
 		}
+
 		$name = $ctrlClass;
 		$ctrlClass = $ctrlClass . 'Controller';
 		if (class_exists($ctrlClass)) {

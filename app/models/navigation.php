@@ -66,6 +66,11 @@ class Navigation extends AppModel{
 					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
 					, 'role' => 'root'
 				)*/
+				, __('Roles &amp; Permissions', true) => array(
+					'/admin/roles'
+					, '#/\/admin\/roles.*/iU'
+					, 'role' => 'root'
+				)
 				, 'Config' => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/(offices|users).*/iU'
