@@ -2,6 +2,7 @@
 .DS_Store
 
 # Specific files / paths to ignore
+/docs
 /stats
 /app/config/database.php
 /app/config/core.php

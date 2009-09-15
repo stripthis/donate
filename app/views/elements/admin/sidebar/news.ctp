@@ -1,6 +1,6 @@
 <?php
   if(!isset($posts) || empty($posts)) {
-    $posts = $this->requestAction("/posts/index/news");
+	return;
   }
 	$open = (!isset($options['open'])) ? 'close' : $options['open']; // widget is closed by default
 ?>

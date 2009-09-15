@@ -9,6 +9,7 @@ App::import('Core', 'Controller');
  */
 class AppController extends Controller {
 	var $components = array(
+		// 'DebugKit.Toolbar',
 		'RequestHandler',
 		'Message',
 		'Cookie',
@@ -74,7 +75,10 @@ class AppController extends Controller {
 
 		$this->RequestHandler->setContent('list', 'text/html');
 		if (empty($this->ignoreUserSession)) {
-			$canAccess = User::canAccess($this->name, $this->action);
+			$rules = Configure::read('App.Permissions.' . User::get('Role.name'));
+			Assert::notEmpty($rules, '500');
+			$canAccess = Common::requestAllowed($this->name, $this->action, $rules);
+
 			if (!$canAccess) {
 				Assert::true(User::is('guest'), '403');
 				if ($this->isOkForSessionRedirect()) {
@@ -84,14 +88,13 @@ class AppController extends Controller {
 			}
 
 			if (!User::is('guest') && $this->name == 'auth' && $this->action == 'login') {
-				$url = array('controller' => 'users', 'action' => 'dashboard');
+				$url = '/admin/home';
 				if ($this->Session->check($this->loginRedirectSesskey)) {
 					$url = $this->Session->read($this->loginRedirectSesskey);
 				}
 				$this->redirect($url);
 			}
 		}
-
 		$here = $this->params['url']['url'];
 		if (!empty($here) && $here{0} != '/') {
 			$here = '/' . $here;
@@ -103,6 +106,7 @@ class AppController extends Controller {
 			$this->layout = 'ajax';
 			$ajax = $isAjax = true;
 		}
+
 		$this->set(compact('ajax', 'isAjax', 'here'));
 	}
 /**
@@ -180,6 +184,11 @@ class AppController extends Controller {
 	function beforeRender() {
 		if ($this->isAjax()) {
 			return;
+		}
+
+		if ($this->isAdmin()) {
+			$posts = ClassRegistry::init('Post')->find('twitter');
+			$this->set(compact('posts'));
 		}
 	}
 /**

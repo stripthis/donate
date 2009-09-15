@@ -142,8 +142,6 @@ class User extends AppModel {
 		}
 
 		Assert::true(Common::isUuid($user['User']['id']));
-		//pr($user);
-		$_this->log(Debugger::trace());
 		Configure::write('User', $user);
 		Assert::identical(Configure::read('User'), $user);
 
@@ -324,25 +322,6 @@ class User extends AppModel {
 		return true;
 	}
 /**
- * Generic function that determines if the current User can access the $property of a given $object
- * from a given $type.
- *
- * @param string $type The type of object, currently 'Action' or 'Feature'
- * @param string $object The name of the object to access
- * @param string $property The property to access
- * @return boolean True if the User can access the object, false if he can't
- * @access public
- */
-	function canAccess($object, $property) {
-		if (strpos($object, ':') !== false) {
-			list($object, $property) = explode(':', $object);
-		}
-
-		$rules = Configure::read('App.Permissions.' . User::get('Role.name'));
-		Assert::notEmpty($rules, '500');
-		return Common::requestAllowed($object, $property, $rules, true);
-	}
-/**
  * undocumented function
  *
  * @return void
@@ -453,6 +432,8 @@ class User extends AppModel {
 				$result = $obj['User']['office_id'] == $this->Session->read('Office.id');
 			}
 		}
+
+		$result = $result && Common::requestAllowed($controller, $action, User::get('Role.permissions'), true);
 		return $result && Common::requestAllowed($controller, $action, User::get('permissions'), true);
 	}
 /**

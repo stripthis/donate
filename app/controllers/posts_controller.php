@@ -21,25 +21,8 @@ class PostsController extends AppController {
 		switch ($cat) {
 			case "news":
 			case "twitter":
-				$cacheKey = 'posts_index_'.$cat;
-				$posts = Cache::read($cacheKey);
-				if (!$posts) {
-					App::import('Core', 'Xml');
-					$feed = Configure::read("App.rss.$cat");
-					$rss = Set::reverse(new XML($feed['url']));
-					$posts = array();
-					if (isset($rss["Rss"]["Channel"]["Item"]) && !empty($rss["Rss"]["Channel"]["Item"])) {
-						$posts = $rss["Rss"]["Channel"]["Item"];
-						$posts['feed'] = $feed; 
-						Cache::write($cacheKey, $posts);
-					}
-				}
-
-				if (isset($this->params['requested'])) {
-					return $posts;
-				} else {
-					$this->set(compact('posts'));
-				}
+				$posts = $this->Post->find('twitter');
+				$this->set(compact('posts'));
 				break;
 			default:
 				Assert::notEmpty(null, '404');
