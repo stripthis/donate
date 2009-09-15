@@ -21,8 +21,13 @@ foreach ($permissions as $perm) {
 	$controller = $permData[0];
 	$action = $permData[1];
 
+	$label = $controller . ' ' . Inflector::humanize($action);
 	$checked = Common::requestAllowed($controller, $action, $role['Role']['permissions'], true);
-	echo $form->input('permissions.' . $perm, array('type' => 'checkbox', 'value' => '', 'checked' => $checked ? 'checked' : ''));
+	echo $form->input('permissions.' . $perm, array(
+		'label' => $label,
+		'type' => 'checkbox', 'value' => '',
+		'checked' => $checked ? 'checked' : ''
+	));
 }
 echo $form->end('Save');
 ?>
