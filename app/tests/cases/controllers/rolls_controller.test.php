@@ -32,9 +32,8 @@ class RolesControllerTest extends MyTestCase {
 		$markup = $this->testAction('/admin/auth/login', array('return' => 'contents'));
 		$this->true(preg_match('/Please enter your login details/', $markup));
 
-		$rootId = $this->User->lookup(array('login' => 'root@greenpeace.org'), 'id', false);
-		User::login($rootId, true);
-
+		$id = $this->User->lookup(array('login' => 'root@greenpeace.org'), 'id', false);
+		User::login($id, true);
 		$markup = $this->testAction('/admin/home', array('return' => 'contents'));
 		$this->true(preg_match('/<a href="\/admin\/home" class="selected">Home<\/a>/', $markup));
 		$this->true(preg_match('/<a href="\/admin\/appeals\/index\/all">Appeals<\/a>/', $markup));
@@ -44,6 +43,30 @@ class RolesControllerTest extends MyTestCase {
 		$this->true(preg_match('/<a href="\/admin\/roles">Roles &amp; Permissions<\/a>/', $markup));
 		$this->true(preg_match('/<a href="\/admin\/offices\/view\/4a6458a6-6ea0-4080-ad53-4a89a7f05a6e">Config<\/a>/', $markup));
 		$this->true(preg_match('/<a href="\/admin\/help">Help<\/a>/', $markup));
+		User::logout();
+
+		$id = $this->User->lookup(array('login' => 'admin@greenpeace.org'), 'id', false);
+		User::login($id, true);
+		$markup = $this->testAction('/admin/home', array('return' => 'contents'));
+		$this->true(preg_match('/<a href="\/admin\/home" class="selected">Home<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/appeals\/index\/all">Appeals<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/gifts\/index\/all">Gifts<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/transactions\/index\/all">Transactions<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/supporters">Supporters<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/help">Help<\/a>/', $markup));
+		User::logout();
+
+		$id = $this->User->lookup(array('login' => 'superadmin@greenpeace.org'), 'id', false);
+		User::login($id, true);
+		$markup = $this->testAction('/admin/home', array('return' => 'contents'));
+		$this->true(preg_match('/<a href="\/admin\/home" class="selected">Home<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/appeals\/index\/all">Appeals<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/gifts\/index\/all">Gifts<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/transactions\/index\/all">Transactions<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/supporters">Supporters<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/offices\/view\/4a6458a6-6ea0-4080-ad53-4a89a7f05a6e">Config<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/help">Help<\/a>/', $markup));
+		User::logout();
 	}
 }
 ?>
