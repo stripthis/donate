@@ -178,7 +178,7 @@ class UsersController extends AppController {
  * @access public
  */
 	function admin_forgot_pw() {
-		Assert::true(User::isGuest(), '403');
+		Assert::true(User::is('guest'), '403');
 		$this->layout = 'admin_login';
 		if ($this->isGet()) {
 			return;

@@ -76,14 +76,14 @@ class AppController extends Controller {
 		if (empty($this->ignoreUserSession)) {
 			$canAccess = User::canAccess($this->name, $this->action);
 			if (!$canAccess) {
-				Assert::true(User::isGuest(), '403');
+				Assert::true(User::is('guest'), '403');
 				if ($this->isOkForSessionRedirect()) {
 					$this->Session->write($this->loginRedirectSesskey, $this->here);
 				}
 				return $this->redirect('/admin/auth/login', '403', true);
 			}
 
-			if (!User::isGuest() && $this->name == 'auth' && $this->action == 'login') {
+			if (!User::is('guest') && $this->name == 'auth' && $this->action == 'login') {
 				$url = array('controller' => 'users', 'action' => 'dashboard');
 				if ($this->Session->check($this->loginRedirectSesskey)) {
 					$url = $this->Session->read($this->loginRedirectSesskey);
@@ -306,7 +306,7 @@ class AppController extends Controller {
 	function _setLanguage($lang = false) {
 		$default = 'eng';
 
-		if (!$lang && !User::isGuest()) {
+		if (!$lang && !User::is('guest')) {
 			$lang = User::get('lang');
 		}
 		if (!$lang && isset($this->params['language'])) {

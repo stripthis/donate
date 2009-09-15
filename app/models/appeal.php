@@ -27,7 +27,7 @@ class Appeal extends AppModel {
 			case 'default':
 				$id = isset($query['id']) ? $query['id'] : false;
 
-				$admin = User::isAdmin() ? '1' : '0';
+				$admin = User::is('guest') ? '0' : '1';
 				$appeal = false;
 
 				if ($id) {
@@ -41,7 +41,7 @@ class Appeal extends AppModel {
 						'admin' => $admin,
 						'status <>' => 'archived'
 					);
-					if (!User::isAdmin()) {
+					if (User::is('guest')) {
 						$conditions['status'] = 'published';
 					}
 					$appeal = $this->find('first', array(

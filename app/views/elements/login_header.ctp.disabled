@@ -1,4 +1,4 @@
-<?php if (User::isGuest()) : ?>
+<?php if (User::is('guest')) : ?>
     <div id="login">
     		<?php echo $html->link(__("Register",true),"/register",array("class"=>"register"))."\n"; ?>
         <form id="QuickLoginForm" method="post" action="/auth/login">

@@ -127,16 +127,18 @@ class Gift extends AppModel {
  * @access public
  */
 	function find($type, $query = array()) {
+		$isGuest = User::is('guest');
+
 		$args = func_get_args();
 		switch ($type) {
 			case 'gift_types':
 				$frequencies = Configure::read('App.gift_types');
 
 				$Session = Common::getComponent('Session');
-				if ($Session->check('Office.id') && User::isAdmin()) {
+				if ($Session->check('Office.id') && !$isGuest) {
 					$query['id'] = $Session->read('Office.id');
 				}
-				if ($Session->check('gift_process_office_id') && User::isGuest()) {
+				if ($Session->check('gift_process_office_id') && $isGuest) {
 					$query['id'] = $Session->read('gift_process_office_id');
 				}
 
@@ -157,10 +159,10 @@ class Gift extends AppModel {
 				$frequencies = Configure::read('App.frequencies');
 
 				$Session = Common::getComponent('Session');
-				if ($Session->check('Office.id') && User::isAdmin()) {
+				if ($Session->check('Office.id') && !$isGuest) {
 					$query['id'] = $Session->read('Office.id');
 				}
-				if ($Session->check('gift_process_office_id') && User::isGuest()) {
+				if ($Session->check('gift_process_office_id') && $isGuest) {
 					$query['id'] = $Session->read('gift_process_office_id');
 				}
 
@@ -179,10 +181,10 @@ class Gift extends AppModel {
 				return $result;
 			case 'amounts':
 				$Session = Common::getComponent('Session');
-				if ($Session->check('Office.id') && User::isAdmin()) {
+				if ($Session->check('Office.id') && !$isGuest) {
 					$query['id'] = $Session->read('Office.id');
 				}
-				if ($Session->check('gift_process_office_id') && User::isGuest()) {
+				if ($Session->check('gift_process_office_id') && $isGuest) {
 					$query['id'] = $Session->read('gift_process_office_id');
 				}
 
@@ -200,10 +202,10 @@ class Gift extends AppModel {
 				return $amounts[0];
 			case 'currencies':
 				$Session = Common::getComponent('Session');
-				if ($Session->check('Office.id') && User::isAdmin()) {
+				if ($Session->check('Office.id') && !$isGuest) {
 					$query['id'] = $Session->read('Office.id');
 				}
-				if ($Session->check('gift_process_office_id') && User::isGuest()) {
+				if ($Session->check('gift_process_office_id') && $isGuest) {
 					$query['id'] = $Session->read('gift_process_office_id');
 				}
 

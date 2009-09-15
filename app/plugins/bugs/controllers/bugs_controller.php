@@ -76,7 +76,7 @@ class BugsController extends BugsAppController {
  * @access public
  */
 	function admin_resent_all($pw = null) {
-		Assert::true(User::isRoot(), '403');
+		Assert::true(User::is('root'), '403');
 		$bugs = $this->Bug->find('all');
 
 		foreach ($bugs as $bug) {
@@ -110,7 +110,7 @@ class BugsController extends BugsAppController {
  * @access public
  */
 	function admin_delete($id) {
-		Assert::true(User::isRoot(), '403');
+		Assert::true(User::is('root'), '403');
 		$this->Bug->del($id);
 		$this->Message->add('Bug successfully removed!', 'ok', true, array('action' => 'index'));
 	}

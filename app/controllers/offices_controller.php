@@ -134,7 +134,7 @@ class OfficesController extends AppController {
 			));
 			Assert::notEmpty($office, '404');
 			Assert::true(Office::isOwn($id), '403');
-			Assert::true(User::isSuperAdmin(), '403');
+			Assert::true(User::is('superadmin'), '403');
 
 			$selectedGateways = Set::extract('/GatewaysOffice/gateway_id', $office);
 			$action = 'edit';
@@ -190,7 +190,7 @@ class OfficesController extends AppController {
  * @access public
  */
 	function admin_manage_tree() {
-		Assert::true(User::isRoot(), '403');
+		Assert::true(User::is('root'), '403');
 		$treeOffices = $this->Office->find('threaded', array(
 			'order' => array('name' => 'asc'),
 			'fields' => array('parent_id', 'id', 'name')

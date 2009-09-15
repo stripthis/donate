@@ -54,27 +54,27 @@ class Navigation extends AppModel{
 				, 'Offices' => array(
 					'/admin/offices'
 					, '#/\/admin\/offices\/(index.*|manage_tree|add)?$/iU'
-					, 'role' => 'Root'
+					, 'role' => 'root'
 				)
 				, 'Users' => array(
 					'/admin/users/index/all'
 					, '#/\/admin\/users.* /iU' <- added space here * / :)
-					, 'role' => 'Root'
+					, 'role' => 'root'
 				)
 				, 'Bugs' => array(
 					'/admin/bugs'
 					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
-					, 'role' => 'Root'
+					, 'role' => 'root'
 				)*/
 				, 'Config' => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/(offices|users).*/iU'
-					, 'role' => 'SuperAdmin'
+					, 'role' => 'superadmin'
 				)
 				, 'Help' => array(
 					'/admin/help'
 					, '#/\/admin\/help.*/iU'
-					, 'role' => 'Admin'
+					, 'role' => 'admin'
 				)
 			)
 			// ADMIN MENU LEVEL 1 (sub tabs)
@@ -201,24 +201,24 @@ class Navigation extends AppModel{
 				'Config' => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/offices(\/edit|\/view)\/' . $Session->read('Office.id') . '.*/iU'
-					, 'role' => 'SuperAdmin'
+					, 'role' => 'superadmin'
 				)
 				, 'Users' => array(
 					'/admin/users/index/' . $Session->read('Office.id')
 					, '#/\/admin\/users\/index\/' . $Session->read('Office.id') . '.*/iU'
-					, 'role' => 'SuperAdmin'
+					, 'role' => 'superadmin'
 				)
 			)
 			, 'admin_help_sub' => array(
 				'Getting started' => array(
 					'/admin/help'
 					, '#/\/admin\/help(\/start)/'
-					, 'role' => 'Admin'
+					, 'role' => 'admin'
 				)
 				, 'Faq' => array(
 					'/admin/help/faq'
 					, '#/\/admin\/help\/faq\/.*/iU'
-					, 'role' => 'Admin'
+					, 'role' => 'admin'
 				)
 			)
 		);
@@ -228,7 +228,7 @@ class Navigation extends AppModel{
 		}
 
 		$navigation = $navigations['Guests'];
-		if (class_exists('User') && !User::isGuest()) {
+		if (class_exists('User') && !User::is('guest')) {
 			$navigation = $navigations['Admin'];
 		}
 		return $navigation;

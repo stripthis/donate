@@ -25,8 +25,7 @@ if (!empty($div)) {
 			$links = (array) $links;
 			$options = array();
 			if (isset($links['role'])) {
-				$func = 'is' . $links['role'];
-				if (!User::$func()) {
+				if (!User::is($links['role'])) {
 					continue;
 				}
 			}

@@ -9,7 +9,8 @@ class User extends AppModel {
 
 	var $belongsTo = array(
 		'Contact',
-		'Office'
+		'Office',
+		'Role'
 	);
 
 	var $hasMany = array(
@@ -131,6 +132,7 @@ class User extends AppModel {
 			$user = $_this->find('first', array(
 				'conditions' => array('User.id' => $user),
 				'contain' => array(
+					'Role.name',
 					'Contact.Address.State(id, name)',
 					'Contact.Address.Country(id, name)',
 					'Contact.Address.City(id, name)',
@@ -149,7 +151,7 @@ class User extends AppModel {
 			return true;
 		}
 
-		if (in_array($user['User']['level'], array('admin', 'root')) && isset($user['Office'])) {
+		if (!User::is('guest') && isset($user['Office'])) {
 			$_this->Office->activate($user['Office']);
 		}
 
@@ -322,42 +324,6 @@ class User extends AppModel {
 		return true;
 	}
 /**
- * Returns if the current user is a guest or not
- *
- * @return boolean True if he is a guest, false if he isn't
- * @access public
- */
-	function isGuest() {
-		return User::get('login') == Configure::read('App.guestAccount');
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
-	static function isAdmin() {
-		return User::get('level') == 'admin' || User::isSuperAdmin() || User::isRoot();
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
-	static function isRoot() {
-		return User::get('level') == 'root';
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
-	static function isSuperAdmin() {
-		return User::get('level') == 'superadmin' || User::isRoot();
-	}
-/**
  * Generic function that determines if the current User can access the $property of a given $object
  * from a given $type.
  *
@@ -372,7 +338,7 @@ class User extends AppModel {
 			list($object, $property) = explode(':', $object);
 		}
 
-		$rules = Configure::read('App.Permissions.' . User::get('level'));
+		$rules = Configure::read('App.Permissions.' . User::get('Role.name'));
 		Assert::notEmpty($rules, '500');
 		return Common::requestAllowed($object, $property, $rules, true);
 	}
@@ -432,7 +398,7 @@ class User extends AppModel {
 			return call_user_func(array($options['model'], 'canEdit'), $record, $options);
 		}
 
-		if (User::isGuest()) {
+		if (User::is('guest')) {
 			return false;
 		}
 
@@ -472,7 +438,7 @@ class User extends AppModel {
  * @access public
  */
 	function allowed($controller, $action, $obj = null) {
-		if (User::isRoot()) {
+		if (User::is('root')) {
 			return true;
 		}
 		$result = true;
@@ -488,6 +454,18 @@ class User extends AppModel {
 			}
 		}
 		return $result && Common::requestAllowed($controller, $action, User::get('permissions'), true);
+	}
+/**
+ * Returns if the current user is a guest or not
+ *
+ * @return boolean True if he is a guest, false if he isn't
+ * @access public
+ */
+	function is($role) {
+		if ($role == 'guest') {
+			return User::get('login') == Configure::read('App.guestAccount');
+		}
+		return User::get('Role.name') == $role;
 	}
 }
 ?>

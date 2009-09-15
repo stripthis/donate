@@ -72,7 +72,7 @@ class GiftsController extends AppController {
 				'complete' => 0,
 				'office_id' => $officeId
 			);
-			if (!User::isGuest()) {
+			if (!User::is('guest')) {
 				$data['user_id'] = User::get('id');
 			}
 			$this->Gift->create($data);
@@ -382,7 +382,7 @@ class GiftsController extends AppController {
  */
 	function _addAuthkeyToSession($tId) {
 		App::import('Model', 'TimeZone');
-		$userId = !User::isGuest() ? User::get('id') : $this->data['Contact']['email'];
+		$userId = !User::is('guest') ? User::get('id') : $this->data['Contact']['email'];
 		$authKeyTypeId = $this->AuthKeyType->lookup(array('name' => 'Transaction Receipt'), 'id', false);
 		$authKey = AuthKey::generate(array(
 			'user_id' => $userId
@@ -472,7 +472,7 @@ class GiftsController extends AppController {
 
 		if (isset($this->params['named']['appeal_id'])) {
 			$conditions = array('id' => $this->params['named']['appeal_id']);
-			if (!User::isAdmin()) {
+			if (User::is('guest')) {
 				$conditions['admin'] = false;
 			}
 			$existingAppeal = $this->Appeal->lookup($conditions, 'id', false);

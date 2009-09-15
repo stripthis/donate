@@ -11,7 +11,7 @@ $action = @$this->params['action'];
 
 $camelController = Inflector::camelize($controller);
 
-$isGuest = User::isGuest();
+$isGuest = User::is('guest');
 $noNeedTinyInProfile = $this->name == 'Users' && $this->action == 'person' && $show != 'slideshow' && $show != 'post_view';
 foreach ($inclusionRules as $include => $rules) {
 	if (Common::requestAllowed($camelController, $action, $rules)) {
