@@ -31,23 +31,23 @@ class Navigation extends AppModel{
 			)
 			// ADMIN MENU LEVEL 0 (main tabs)
 			, 'Admin' => array(
-				'Home' => array(
+				__('Home', true) => array(
 					'/admin/home'
 					, '#/^\/admin(\/statistics|\/home).*$/iU'
-				),
-				'Appeals' => array(
+				)
+				, __('Appeals', true) => array(
 					'/admin/appeals/index/all'
 					, '#/^\/admin\/appeals.*$/iU'
 				)
-				, 'Gifts' => array(
+				, __('Gifts', true) => array(
 					'/admin/gifts/index/all'
 					, '#/\/admin(\/gifts|\/exports\/gifts).*/iU'
 				)
-				, 'Transactions' => array(
+				, __('Transactions', true) => array(
 					'/admin/transactions/index/all'
 					, '#/\/admin\/transactions.*/iU'
 				)
-				, 'Supporters' => array(
+				, __('Supporters', true) => array(
 					'/admin/supporters'
 					, '#/\/admin\/supporters.*/iU'
 				)/*
@@ -71,12 +71,12 @@ class Navigation extends AppModel{
 					, '#/\/admin\/roles.*/iU'
 					, 'role' => 'root'
 				)
-				, 'Config' => array(
+				, __('Config', true) => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/(offices|users).*/iU'
 					, 'role' => 'superadmin'
 				)
-				, 'Help' => array(
+				, __('Help', true) => array(
 					'/admin/help'
 					, '#/\/admin\/help.*/iU'
 					, 'role' => 'admin'
@@ -84,43 +84,43 @@ class Navigation extends AppModel{
 			)
 			// ADMIN MENU LEVEL 1 (sub tabs)
 			, 'appeal_sub' => array(
-				'All' => array(
+				__('All', true) => array(
 					'/admin/appeals/index/all'
 					, '#/^\/admin\/appeals\/index\/all.*$/iU'
 				)
-				, 'My Office' => array(
+				, __('My Office', true) => array(
 					'/admin/appeals/index/office'
 					, '#/^\/admin\/appeals\/index\/office.*$/iU'
 				)
 			)
 			, 'gift_sub' => array(
-				'All' => array(
+				__('All', true) => array(
 					'/admin/gifts/index/all'
 					, '#/^\/admin\/gifts\/index\/all.*$/iU'
 				)
-				, 'One Off' => array(
+				, __('One Off', true) => array(
 					'/admin/gifts/index/oneoff'
 					, '#/^\/admin\/gifts\/oneoff.*$/iU'
 				)
-				, 'Recurring' => array(
+				, __('Recurring', true) => array(
 					'/admin/gifts/index/recurring'
 					, '#/^\/admin\/gifts\/recurring.*$/iU'
 				)
-				, 'Favorites' => array(
+				, __('Favorites', true) => array(
 					'/admin/gifts/index/favorites'
 					, '#/^\/admin\/gifts\/favorites.*$/iU'
 				)
-				, 'Archived' => array(
+				, __('Archived', true) => array(
 					'/admin/gifts/index/archived'
 					, '#/^\/admin\/gifts\/archived.*$/iU'
 				)
 			)
 			, 'transaction_sub' => array(
-				'All' => array(
+				__('All', true) => array(
 					'/admin/transactions/index/all'
 					, '#/^\/admin\/transactions\/index\/all.*$/iU'
 				)
-				, 'Favorites' => array(
+				, __('Favorites', true) => array(
 					'/admin/transactions/index/favorites'
 					, '#/^\/admin\/gifts\/transactions\/index\/favorites.*$/iU'
 				)/*
@@ -140,32 +140,32 @@ class Navigation extends AppModel{
 					'/admin/transactions/index/successful'
 					, '#/^\/admin\/gifts\/transactions\/index\/successful.*$/iU'
 				)*/
-				, 'Archived' => array(
+				, __('Archived', true) => array(
 					'/admin/transactions/index/archived'
 					, '#/^\/admin\/gifts\/transactions\/index\/archived.*$/iU'
 				)
 				
 			)
 			, 'user_sub' => array(
-				'All' => array(
+				__('All', true) => array(
 					'/admin/users/index/all'
 					, '#/^\/admin\/users\/index\/all.*$/iU'
 				)
-				, 'My Office Colleagues' => array(
+				, __('My Office Colleagues', true) => array(
 					'/admin/users/index/colleagues'
 					, '#/^\/admin\/users\/index\/colleagues.*$/iU'
 				)
 			)
 			, 'supporter_sub' => array(
-				'All' => array(
+				__('All', true) => array(
 					'/admin/supporters'
 					, '#/^\/admin\/supporters$/iU'
-				),
-				'Signups' => array(
+				)
+				, __('Signups', true) => array(
 					'/admin/supporters/index/signups'
 					, '#/^\/admin\/supporters\/index\/signups.*$/iU'
-				),
-				'Donors' => array(
+				)
+				, __('Donors', true) => array(
 					'/admin/supporters/index/donors'
 					, '#/^\/admin\/supporters\/index\/donors.*$/iU'
 				)/*,
@@ -173,54 +173,54 @@ class Navigation extends AppModel{
 					'/admin/supporters/index/major_donors'
 					, '#/^\/admin\/supporters\/index\/major_donors.*$/iU'
 				),*/
-				, 'Favorites' => array(
+				, __('Favorites', true) => array(
 					'/admin/supporters/index/favorites'
 					, '#/^\/admin\/supporters\/favorites.*$/iU'
 				)
-				, 'Archived' => array(
+				, __('Archived', true) => array(
 					'/admin/supporters/index/archived'
 					, '#/^\/admin\/supporters\/archived.*$/iU'
 				)
 			)
 			, 'user_preferences' => array(
-				'Preferences' => array(
+				__('Preferences', true) => array(
 					'/admin/users/preferences'
 					, '#/^\/admin\/users\/preferences.*$/iU'
-				),
-				'Edit Password' => array(
+				)
+				, __('Edit Password', true) => array(
 					'/admin/users/edit_password'
 					, '#/^\/admin\/users\/edit_password.*$/iU'
 				)
 			)
 			, 'admin_auth_sub' => array(
-				'Login' => array(
+				__('Login', true) => array(
 					'/admin/auth/login'
 					, '#/^\/admin\/(auth\/|)login.*$/iU'
 				)
-				, 'Lost Password' => array(
+				, __('Lost Password', true) => array(
 					'/admin/users/forgot_pw'
 					, '#/^\/admin\/users\/forgot_pw.*$/iU'
 				)
 			)
 			, 'admin_config_sub' => array(
-				'Config' => array(
+				__('Config', true) => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/offices(\/edit|\/view)\/' . $Session->read('Office.id') . '.*/iU'
 					, 'role' => 'superadmin'
 				)
-				, 'Users' => array(
+				, __('Users', true) => array(
 					'/admin/users/index/' . $Session->read('Office.id')
 					, '#/\/admin\/users\/index\/' . $Session->read('Office.id') . '.*/iU'
 					, 'role' => 'superadmin'
 				)
 			)
 			, 'admin_help_sub' => array(
-				'Getting started' => array(
+				__('Getting started', true) => array(
 					'/admin/help'
 					, '#/\/admin\/help(\/start)/'
 					, 'role' => 'admin'
 				)
-				, 'Faq' => array(
+				, __('Faq', true) => array(
 					'/admin/help/faq'
 					, '#/\/admin\/help\/faq\/.*/iU'
 					, 'role' => 'admin'
