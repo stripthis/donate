@@ -26,9 +26,58 @@ class Navigation extends AppModel{
 		$Session = Common::getComponent('Session');
 
 		$navigations = array(
+		  // GUEST - NO MENU YET
 			'Guests' => array(
-
 			)
+			// ADMIN MENU LEVEL 0 (main tabs)
+			, 'Admin' => array(
+				'Home' => array(
+					'/admin/home'
+					, '#/^\/admin(\/statistics|\/home).*$/iU'
+				),
+				'Appeals' => array(
+					'/admin/appeals/index/all'
+					, '#/^\/admin\/appeals.*$/iU'
+				)
+				, 'Gifts' => array(
+					'/admin/gifts/index/all'
+					, '#/\/admin(\/gifts|\/exports\/gifts).*/iU'
+				)
+				, 'Transactions' => array(
+					'/admin/transactions/index/all'
+					, '#/\/admin\/transactions.*/iU'
+				)
+				, 'Supporters' => array(
+					'/admin/supporters'
+					, '#/\/admin\/supporters.*/iU'
+				)/*
+				, 'Offices' => array(
+					'/admin/offices'
+					, '#/\/admin\/offices\/(index.*|manage_tree|add)?$/iU'
+					, 'role' => 'Root'
+				)
+				, 'Users' => array(
+					'/admin/users/index/all'
+					, '#/\/admin\/users.* /iU' <- added space here * / :)
+					, 'role' => 'Root'
+				)
+				, 'Bugs' => array(
+					'/admin/bugs'
+					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
+					, 'role' => 'Root'
+				)*/
+				, 'Config' => array(
+					'/admin/offices/view/' . $Session->read('Office.id')
+					, '#/\/admin\/(offices|users).*/iU'
+					, 'role' => 'SuperAdmin'
+				)
+				, 'Help' => array(
+					'/admin/help'
+					, '#/\/admin\/help.*/iU'
+					, 'role' => 'Admin'
+				)
+			)
+			// ADMIN MENU LEVEL 1 (sub tabs)
 			, 'appeal_sub' => array(
 				'All' => array(
 					'/admin/appeals/index/all'
@@ -43,6 +92,10 @@ class Navigation extends AppModel{
 				'All' => array(
 					'/admin/gifts/index/all'
 					, '#/^\/admin\/gifts\/index\/all.*$/iU'
+				)
+				, 'One Off' => array(
+					'/admin/gifts/index/oneoff'
+					, '#/^\/admin\/gifts\/oneoff.*$/iU'
 				)
 				, 'Recurring' => array(
 					'/admin/gifts/index/recurring'
@@ -137,7 +190,7 @@ class Navigation extends AppModel{
 			, 'admin_auth_sub' => array(
 				'Login' => array(
 					'/admin/auth/login'
-					, '#/^\/admin\/auth\/login.*$/iU'
+					, '#/^\/admin\/(auth\/|)login.*$/iU'
 				)
 				, 'Lost Password' => array(
 					'/admin/users/forgot_pw'
@@ -156,47 +209,16 @@ class Navigation extends AppModel{
 					, 'role' => 'SuperAdmin'
 				)
 			)
-			// LEVEL 0 (main tabs)
-			, 'Admin' => array(
-				'Home' => array(
-					'/admin/home'
-					, '#/^\/admin\/statistics.*$/iU'
-				),
-				'Appeals' => array(
-					'/admin/appeals/index/all'
-					, '#/^\/admin\/appeals.*$/iU'
+			, 'admin_help_sub' => array(
+				'Getting started' => array(
+					'/admin/help'
+					, '#/\/admin\/help(\/start)/'
+					, 'role' => 'Admin'
 				)
-				, 'Gifts' => array(
-					'/admin/gifts/index/all'
-					, '#/\/admin(\/gifts|\/exports\/gifts).*/iU'
-				)
-				, 'Transactions' => array(
-					'/admin/transactions/index/all'
-					, '#/\/admin\/transactions.*/iU'
-				)
-				, 'Supporters' => array(
-					'/admin/supporters'
-					, '#/\/admin\/supporters.*/iU'
-				)/*
-				, 'Offices' => array(
-					'/admin/offices'
-					, '#/\/admin\/offices\/(index.*|manage_tree|add)?$/iU'
-					, 'role' => 'Root'
-				)
-				, 'Users' => array(
-					'/admin/users/index/all'
-					, '#/\/admin\/users.* /iU' <- added space here * / :)
-					, 'role' => 'Root'
-				)
-				, 'Bugs' => array(
-					'/admin/bugs'
-					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
-					, 'role' => 'Root'
-				)*/
-				, 'Config' => array(
-					'/admin/offices/view/' . $Session->read('Office.id')
-					, '#/\/admin\/(offices|users).*/iU'
-					, 'role' => 'SuperAdmin'
+				, 'Faq' => array(
+					'/admin/help/faq'
+					, '#/\/admin\/help\/faq\/.*/iU'
+					, 'role' => 'Admin'
 				)
 			)
 		);

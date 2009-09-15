@@ -103,7 +103,7 @@ class CommonHelper extends Apphelper {
 				} else {
 					$options['class'] =  "tooltip with_img information";
 				}
-			  $msg =  '<span class="'.$options['class'].'" title="'.$tip.'">&nbsp;</span>';
+			  $msg =  '<span class="'.$options['class'].'" title="'.$tip.'">'.$tip.'</span>';
 			}
 		}
 		return $msg;

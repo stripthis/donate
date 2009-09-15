@@ -1,42 +1,51 @@
 <div class="content" id="transactions_view">
 <h2><?php  __('Transaction');?></h2>
-  <div class="actions">
-    <h3><?php echo __('Actions'); ?></h3>
-    <ul>
-      <li><?php echo $html->link(__('Delete Transaction', true), array('action'=>'delete', $transaction['Transaction']['id']),  array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $transaction['Transaction']['id'])); ?> </li>
-    </ul>
-  </div>
+<?php echo $this->element('../transactions/elements/actions'); ?>
+  <fieldset>
 	<dl>
+		<!--
     <dt><?php __('Id'); ?></dt>
     <dd>
       <?php echo $transaction['Transaction']['id']; ?>
       &nbsp;
     </dd>
+    -->
+    <dt><?php __('Friends Id'); ?></dt>
+    <dd>
+      <?php echo $transaction['Transaction']['external_id']; ?>
+      &nbsp;
+    </dd>
+    <dt><?php __('Payment Gateway Id'); ?></dt>
+    <dd>
+      <?php echo $transaction['Transaction']['external_id2']; ?>
+      &nbsp;
+    </dd>
+<?php if (!empty($transaction['ParentTransaction']['id'])) : ?>
     <dt><?php __('Parent Trans.'); ?></dt>
     <dd>
       <?php
-		if (!empty($transaction['ParentTransaction']['id'])) {
 			$url = array(
 				'controller'=> 'transactions', 'action'=>'view',
 				$transaction['ParentTransaction']['id']
 			);
 			echo $html->link($transaction['ParentTransaction']['id'], $url);
-		} else {
-			echo '--';
-		}
-		?>
+			?>
+		</dd>
+<?php endif; ?>
+    <dt><?php __('Status'); ?></dt>
+    <dd>
+      <?php echo $transaction['Transaction']['status']; ?>
       &nbsp;
     </dd>
     <dt><?php __('Gateway'); ?></dt>
     <dd>
-      <?php echo $html->link($transaction['Gateway']['name'], array('controller'=> 'gateways', 'action'=>'view', $transaction['Gateway']['id'])); ?>
+      <?php echo $transaction['Gateway']['name']; ?>
       &nbsp;
     </dd>
-    <dt><?php __('External Id'); ?></dt>
-    <dd>
-      <?php echo $transaction['Transaction']['external_id']; ?>
-      &nbsp;
-    </dd>
+  </dl>
+  </fieldset>
+  <fieldset>
+  <dl>
     <dt><?php __('Gift'); ?></dt>
     <dd>
       <?php
@@ -47,16 +56,15 @@
       ?>
       &nbsp;
     </dd>
-    <dt><?php __('Status'); ?></dt>
-    <dd>
-      <?php echo $transaction['Transaction']['status']; ?>
-      &nbsp;
-    </dd>
     <dt><?php __('Amount'); ?></dt>
     <dd>
       <?php echo $transaction['Transaction']['amount']; ?>
       &nbsp;
     </dd>
+  </dl>
+	</fieldset>
+	<fieldset>
+	<dl>
     <dt><?php __('Created'); ?></dt>
     <dd>
       <?php echo $transaction['Transaction']['created']; ?>
@@ -68,5 +76,6 @@
       &nbsp;
     </dd>
 	</dl>
+	</fieldset>
 </div>
 

@@ -192,7 +192,7 @@ input[type=checkbox] {
   clear:left;
   float:left;
   width:auto;
-  margin:5px 5px 0 2px;
+  margin:0.1em 5px 0 2px;
 }
 label input.checkbox{
   padding:0;
@@ -270,6 +270,10 @@ input[type=submit] {
 }
 .iconic.decreaseFont{
   background-image:url(../img/icons/S/decrease_font.png);
+}
+.iconic.info,
+.iconic.information{
+  background-image:url(../img/icons/S/information.png);
 }
 /***********************************************************************************
  * Layout 
@@ -930,18 +934,21 @@ ul.selector li ul.subitem li a{
 
 /* Scaffold View */
 dl {
+	clear:both;
+	font-size:1.2em;
   width:100%;
-  line-height:2em;
+  line-height:2.2em;
   margin:0em 0em;
+  padding-left:10px;
 }
 dt {
   font-weight:bold;
-  padding-left:4px;
   vertical-align:top;
+  width:20%;
 }
 dd {
-  margin-left:10em;
-  margin-top:-2em;
+  margin-left:20%;
+  margin-top:-2.2em;
   vertical-align:top;
 }
 
