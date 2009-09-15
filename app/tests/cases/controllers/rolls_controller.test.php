@@ -64,7 +64,7 @@ class RolesControllerTest extends MyTestCase {
 		$this->true(preg_match('/<a href="\/admin\/gifts\/index\/all">Gifts<\/a>/', $markup));
 		$this->true(preg_match('/<a href="\/admin\/transactions\/index\/all">Transactions<\/a>/', $markup));
 		$this->true(preg_match('/<a href="\/admin\/supporters">Supporters<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/offices\/view\/4a6458a6-6ea0-4080-ad53-4a89a7f05a6e">Config<\/a>/', $markup));
+		$this->true(preg_match('/<a href="\/admin\/offices\/view\/4a6458a6-6ea0-4080-ad53-4a89a7f05a6e">Office Config<\/a>/', $markup));
 		$this->true(preg_match('/<a href="\/admin\/help">Help<\/a>/', $markup));
 		User::logout();
 	}

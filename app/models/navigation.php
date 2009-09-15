@@ -74,7 +74,12 @@ class Navigation extends AppModel{
 				, __('Config', true) => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/(offices|users).*/iU'
-					, 'role' => array('superadmin', 'root')
+					, 'role' => 'root'
+				)
+				, __('Office Config', true) => array(
+					'/admin/offices/view/' . $Session->read('Office.id')
+					, '#/\/admin\/(offices|users).*/iU'
+					, 'role' => 'superadmin'
 				)
 				, __('Help', true) => array(
 					'/admin/help'

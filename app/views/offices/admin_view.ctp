@@ -12,19 +12,13 @@
       <?php echo $office['Office']['name']; ?>
       &nbsp;
     </dd>
-    <dt><?php __('Parent Office'); ?></dt>
-    <dd>
-      <?php echo !empty($office['ParentOffice']) ? $office['ParentOffice']['name'] : '--'; ?>
-      &nbsp;
-    </dd>
+	<?php if (!empty($office['ParentOffice']['name'])) : ?>
+   		<dt><?php __('Parent Office'); ?></dt>
+   		<dd><?php echo $office['ParentOffice']['name'] ?></dd>
+	<?php endif; ?>
     <dt><?php __('Created'); ?></dt>
     <dd>
-      <?php echo $office['Office']['created']; ?>
-      &nbsp;
-    </dd>
-    <dt><?php __('Modified'); ?></dt>
-    <dd>
-      <?php echo $office['Office']['modified']; ?>
+      <?php echo date('F d Y', strtotime($office['Office']['created'])); ?>
       &nbsp;
     </dd>
 	</dl>
