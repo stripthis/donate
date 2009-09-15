@@ -6,13 +6,44 @@ class RolesController extends AppController {
  * @return void
  * @access public
  */
+	function beforeFilter() {
+		parent::beforeFilter();
+
+		$this->User = $this->Role->User;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	function admin_index() {
+		$uneditableRoles = $this->Role->unEditable;
+		$conditions = Common::multiNegativeCondition('Role.name', $uneditableRoles);
 		$roles = $this->Role->find('all', array(
+			'conditions' => $conditions,
 			'order' => array('Role.name' => 'asc')
 		));
-		$uneditableRoles = $this->Role->unEditable;
 
-		$this->set(compact('roles', 'uneditableRoles'));
+		$users = $this->User->find('all', array(
+			'conditions' => $conditions,
+			'contain' => array('Role(id, name)', 'Office(name)'),
+			'fields' => array('User.id', 'User.name'),
+			'order' => array('User.name' => 'asc')
+		));
+		$this->set(compact('roles', 'uneditableRoles', 'users'));
+
+		if ($this->isGet()) {
+			return;
+		}
+
+		foreach ($this->data['User'] as $id => $roleId) {
+			$this->User->set(array('id' => $id, 'role_id' => $roleId));
+			$this->User->save();
+		}
+
+		$msg = __('Permission saved!', true);
+		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}
 /**
  * undocumented function

@@ -579,5 +579,20 @@ class Common extends Object
 		}
 		return $list;
 	}
+/**
+ * undocumented function
+ *
+ * @param string $field 
+ * @param string $items 
+ * @return void
+ * @access public
+ */
+	function multiNegativeCondition($field, $items) {
+		$items = '(' . implode(',', $items) . ')';
+		$patterns = array('(', ')', ',');
+		$replacements = array('(\'', '\')', '\',\'');
+		$items = r($patterns, $replacements, $items);
+		return $field . ' NOT IN ' . $items;
+	}
 }
 ?>
