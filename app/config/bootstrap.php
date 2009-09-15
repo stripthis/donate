@@ -3,7 +3,6 @@ Configure::load('config');
 Configure::load('environment');
 Configure::load('js_includes');
 Configure::load('css_includes');
-Configure::load('permissions');
 
 if (!class_exists('ShellDispatcher')) {
 	require_once(APP.'error.php');

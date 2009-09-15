@@ -59,6 +59,8 @@ class AppController extends Controller {
 		ClassRegistry::addObject('Component.Session', $this->Session);
 		ClassRegistry::addObject('Component.Cookie', $this->Cookie);
 		ClassRegistry::addObject('Component.Email', $this->Email);
+
+		$this->_loadPermissions();
 		$this->_setLanguage();
 		$this->_loadPluginConfigs();
 
@@ -155,6 +157,19 @@ class AppController extends Controller {
 				$Controller->init();
 			}
 		}
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function _loadPermissions() {
+		$Role = ClassRegistry::init('Role');
+		$permissions = $Role->find('list', array(
+			'fields' => array('name', 'permissions')
+		));
+		Configure::write('App.Permissions', $permissions);
 	}
 /**
  * undocumented function
