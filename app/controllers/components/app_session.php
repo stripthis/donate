@@ -130,6 +130,16 @@ class AppSessionComponent extends SessionComponent {
 		return $this->SessionInstance->save($row);
 	}
 /**
+ * undocumented function
+ *
+ * @param string $userIds 
+ * @return void
+ * @access public
+ */
+	function logout($userIds) {
+		return $this->SessionInstance->deleteAll(array('user_id' => $userIds));
+	}
+/**
  * Method called on the destruction of a database session.
  *
  * @param integer $key Key that uniquely identifies session in database

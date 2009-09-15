@@ -74,12 +74,11 @@ class Navigation extends AppModel{
 				, __('Config', true) => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/(offices|users).*/iU'
-					, 'role' => 'superadmin'
+					, 'role' => array('superadmin', 'root')
 				)
 				, __('Help', true) => array(
 					'/admin/help'
 					, '#/\/admin\/help.*/iU'
-					, 'role' => 'admin'
 				)
 			)
 			// ADMIN MENU LEVEL 1 (sub tabs)
@@ -206,24 +205,22 @@ class Navigation extends AppModel{
 				__('Config', true) => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/offices(\/edit|\/view)\/' . $Session->read('Office.id') . '.*/iU'
-					, 'role' => 'superadmin'
+					, 'role' => array('superadmin', 'root')
 				)
 				, __('Users', true) => array(
 					'/admin/users/index/' . $Session->read('Office.id')
 					, '#/\/admin\/users\/index\/' . $Session->read('Office.id') . '.*/iU'
-					, 'role' => 'superadmin'
+					, 'role' => array('superadmin', 'root')
 				)
 			)
 			, 'admin_help_sub' => array(
 				__('Getting started', true) => array(
 					'/admin/help'
 					, '#/\/admin\/help(\/start)/'
-					, 'role' => 'admin'
 				)
 				, __('Faq', true) => array(
 					'/admin/help/faq'
 					, '#/\/admin\/help\/faq\/.*/iU'
-					, 'role' => 'admin'
 				)
 			)
 		);

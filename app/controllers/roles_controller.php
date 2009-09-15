@@ -37,11 +37,14 @@ class RolesController extends AppController {
 			return;
 		}
 
+		$userIds = array();
 		foreach ($this->data['User'] as $id => $roleId) {
+			$userIds[] = $id;
 			$this->User->set(array('id' => $id, 'role_id' => $roleId));
 			$this->User->save();
 		}
-
+		$this->Session->logout($userIds);
+		
 		$msg = __('Permission saved!', true);
 		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}

@@ -25,12 +25,28 @@ if (!empty($div)) {
 			$links = (array) $links;
 			$options = array();
 			if (isset($links['role'])) {
-				if (!User::is($links['role'])) {
+				if (!is_array($links['role']) && !User::is($links['role'])) {
 					continue;
+				}
+
+				if (is_array($links['role'])) {
+					$return = true;
+					foreach ($links['role'] as $role) {
+						if (User::is($role)) {
+							$return = false;
+							break;
+						}
+					}
+					if ($return) {
+						continue;
+					}
 				}
 			}
 
 			foreach ($links as $link) {
+				if (is_array($link)) {
+					continue;
+				}
 				if (
 					$link == $currentLocation ||
 					strpos($link, '#') === 0 && preg_match(substr($link, 1), $currentLocation)
