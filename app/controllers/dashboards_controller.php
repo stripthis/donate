@@ -1,14 +1,6 @@
 <?php
 class DashboardsController extends AppController {
-/**
- * undocumented variable
- *
- * @var unknown
- * @access public
- */
-	var $uses = array(
-		'User'
-	);
+	var $uses = array('User');
 /**
  * undocumented function
  *

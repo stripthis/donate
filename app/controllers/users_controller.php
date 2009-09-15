@@ -66,7 +66,7 @@ class UsersController extends AppController {
 			);
 			Mailer::deliver('created_admin', $options);
 
-			$msg = __('The admin account for ' . $this->data['User']['login'] . ' has been created successfully. An email has been sent to the email address.', true);
+			$msg = sprintf(__('The admin account for %s has been created successfully. An email has been sent to the email address.', true), $this->data['User']['login']);
 			$url = array('action' => 'admin_edit', $userId);
 			return $this->Message->add(__($msg, true), 'ok', true, $url);
 		}
@@ -156,7 +156,7 @@ class UsersController extends AppController {
 		$user = $this->User->find('first', $id);
 		$this->User->delete($id);
 		$this->Silverpop->UserOptOut($user);
-		$this->Message->add(DEFAULT_FORM_DELETE_SUCCESS, 'ok', true, array('action' => 'index'));
+		$this->Message->add(__('Successfully deleted!', true), 'ok', true, array('action' => 'index'));
 	}
 /**
  * undocumented function

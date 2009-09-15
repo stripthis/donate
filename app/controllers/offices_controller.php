@@ -159,7 +159,7 @@ class OfficesController extends AppController {
 		}
 
 		$officeId = $this->Office->id;
-		$msg = 'Office was saved successfully.';
+		$msg = __('Office was saved successfully.', true);
 		if ($action == 'add') {
 			$url = array('action' => 'admin_edit', $officeId);
 			return $this->Message->add(__($msg, true), 'ok', true, $url);
@@ -211,7 +211,7 @@ class OfficesController extends AppController {
 			));
 			$this->Office->save(null, false);
 		}
-		$msg = 'Tree updated!';
+		$msg = __('Tree updated!', true);
 		$this->Message->add($msg, 'ok', true, $this->here);
 	}
 }

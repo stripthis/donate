@@ -48,11 +48,11 @@ class CommentsController extends CommentsAppController {
 
 		$result = $this->Comment->save();
 		if ($this->Comment->validationErrors) {
-			$this->Message->add(DEFAULT_FORM_ERROR, 'error', true, $referer);
+			$this->Message->add(__('There are problems with the form.', true), 'error', true, $referer);
 		}
 		Assert::notEmpty($result);
 
-		$msg = __(DEFAULT_FORM_SUCCESS, true);
+		$msg = __('Successfully saved!', true);
 		$this->Message->add($msg, 'ok', true, $this->data['Comment']['referer']);
 	}
 /**
@@ -70,14 +70,17 @@ class CommentsController extends CommentsAppController {
 
 		if (!$this->Comment->delete($id)) {
 			if ($this->isAjax()) {
-				return $this->Json->error(DEFAULT_FORM_ERROR, array('profile' => true));
+				return $this->Json->error(__('There are problems with the form.', true), array('profile' => true));
 			}
 			$dispatcher = new Dispatcher();
-			$dispatcher->dispatch($this->referer(), array('formerror' => true, 'formerror-msg' => DEFAULT_FORM_ERROR));
+			$dispatcher->dispatch($this->referer(), array(
+				'formerror' => true,
+				'formerror-msg' => __('There are problems with the form.', true)
+			));
 			exit;
 		}
 
-		$msg = __(DEFAULT_FORM_DELETE_SUCCESS, true);
+		$msg = __('Successfully deleted!', true);
 		$this->Message->add($msg, 'ok', true, $this->referer());
 	}
 }

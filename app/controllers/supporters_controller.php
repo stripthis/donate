@@ -151,7 +151,7 @@ class SupportersController extends AppController {
 		$user = $this->User->find('first', $id);
 		$this->User->delete($id);
 		$this->Silverpop->UserOptOut($user);
-		$this->Message->add(DEFAULT_FORM_DELETE_SUCCESS, 'ok', true, array('action' => 'index'));
+		$this->Message->add(__('Successfully deleted!', true), 'ok', true, array('action' => 'index'));
 	}
 /**
  * undocumented function

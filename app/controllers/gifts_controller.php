@@ -152,7 +152,7 @@ class GiftsController extends AppController {
 
 		$result = $this->Transaction->process($tId);
 		if ($result !== true) {
-			$msg = 'There was a problem processing the transaction: ' . $result;
+			$msg = sprintf(__('There was a problem processing the transaction: %s', true), $result);
 			$this->Message->add(__($msg, true));
 			return $this->render('step' . $step);
 		}
@@ -208,7 +208,7 @@ class GiftsController extends AppController {
  * @access public
  */
 	function admin_thanks() {
-		$msg = 'Donation added!';
+		$msg = __('Donation added!', true);
 		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}
 /**
@@ -345,7 +345,7 @@ class GiftsController extends AppController {
 			'archived' => '1'
 		));
 		$this->Gift->save();
-		$this->Message->add(DEFAULT_FORM_DELETE_SUCCESS, 'ok', true, array('action' => 'index'));
+		$this->Message->add(__('Successfully deleted!', true), 'ok', true, array('action' => 'index'));
 	}
 /**
  * undocumented function
