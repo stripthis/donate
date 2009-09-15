@@ -12,7 +12,7 @@ class AuthController extends AppController{
 
 		if (!User::isGuest()) {
 			$msg = __('You are logged in already!', true);
-			return $this->Message->add($msg, 'error');
+			return $this->Message->add($msg, 'error', true, Router::url('/admin/home'));
 		}
 
 		if ($this->isGet()) {
