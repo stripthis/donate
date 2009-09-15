@@ -106,30 +106,8 @@ class Office extends AppModel {
 			}
 		}
 
-		if (isset($this->data['Office']['permissions'])) {
-			$permissions = Configure::read('App.permission_options');
-			foreach ($this->data['Office']['permissions'] as $userId => $perms) {
-				$diff = array_diff($permissions, $perms);
-				if (empty($diff)) {
-					continue;
-				}
-
-				$s = '';
-				foreach ($diff as $perm) {
-					$s .= '!' . $perm . ',';
-				}
-				$s = substr($s, 0, -1);
-
-				$this->User->set(array(
-					'id' => $userId,
-					'permissions' => $s
-				));
-				$this->User->save();
-			}
-		}
-
 		// create new appeal folder
-		
+
 		// do we have an appeal?
 		$name = $this->data['Office']['name'] . ' Admin Appeal';
 		$code = Inflector::underscore(r(' ', '', $name));

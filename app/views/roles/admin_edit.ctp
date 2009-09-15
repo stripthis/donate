@@ -9,6 +9,20 @@ $title = $action == 'add'
 echo $form->create('Role', array('url' => $this->here));
 echo $form->input('id', array('type' => 'hidden'));
 echo $form->input('name', array('label' => 'Name:'));
-echo $form->input('permissions', array('label' => 'Permissions:'));
+?>
+
+<h3>Permissions</h3>
+<?php
+$permissions = Configure::read('App.permission_options');
+
+foreach ($permissions as $perm) {
+	$perm = trim($perm);
+	$permData = explode(':', $perm);
+	$controller = $permData[0];
+	$action = $permData[1];
+
+	$checked = Common::requestAllowed($controller, $action, $role['Role']['permissions'], true);
+	echo $form->input('permissions.' . $perm, array('type' => 'checkbox', 'value' => '', 'checked' => $checked ? 'checked' : ''));
+}
 echo $form->end('Save');
 ?>

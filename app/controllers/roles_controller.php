@@ -39,6 +39,7 @@ class RolesController extends AppController {
 				'conditions' => array('Role.id' => $id),
 			));
 			Assert::notEmpty($role, '404');
+			Assert::false(in_array($role['Role']['name'], $this->Role->unEditable), '403');
 			$action = 'edit';
 		}
 
