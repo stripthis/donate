@@ -1,7 +1,6 @@
 <?php
 class Role extends AppModel {
-	var $belongsTo = array(
-		'User'
-	);
+	var $hasMany = array('User');
+	var $unEditable = array('guest', 'root');
 }
 ?>
