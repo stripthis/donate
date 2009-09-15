@@ -65,12 +65,12 @@ class AppController extends Controller {
 		$this->_setLanguage();
 		$this->_loadPluginConfigs();
 
-		if (defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
-			return;
-		}
-
 		if ($this->isAdmin()) {
 			$this->layout = 'admin';
+		}
+
+		if (defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
+			return;
 		}
 
 		$this->RequestHandler->setContent('list', 'text/html');

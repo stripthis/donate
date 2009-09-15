@@ -141,7 +141,7 @@ class User extends AppModel {
 			));
 		}
 
-		Assert::true(Common::isUuid($user['User']['id']));
+		Assert::true(Common::isUuid($user['User']['id']), '500');
 		Configure::write('User', $user);
 		Assert::identical(Configure::read('User'), $user);
 

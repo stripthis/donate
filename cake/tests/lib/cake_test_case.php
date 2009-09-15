@@ -641,6 +641,7 @@ class CakeTestCase extends UnitTestCase {
 						$i,
 					);
 				}
+
 				$regex[] = array(
 					sprintf('End %s tag', $tag),
 					'[\s]*\/?[\s]*>[\n\r]*',
