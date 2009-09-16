@@ -8,7 +8,7 @@
 	echo $form->input('name');
 	echo $form->input('login');
 
-	$canEdit = !User::is('office_manager') || $user['Role']['name'] != 'office_manager';
+	$canEdit = $action == 'add' || $user['Role']['name'] != 'office_manager';
 	if ($canEdit) {
 		foreach ($roleOptions as $key => $value) {
 			$roleOptions[$key] = Inflector::humanize($value);
