@@ -159,11 +159,8 @@ class OfficesController extends AppController {
 
 		$officeId = $this->Office->id;
 		$msg = __('Office was saved successfully.', true);
-		if ($action == 'add') {
-			$url = array('action' => 'admin_edit', $officeId);
-			return $this->Message->add(__($msg, true), 'ok', true, $url);
-		}
-		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'admin_index'));
+		$url = User::is('root') ? array('action' => 'index') : $this->referer();
+		$this->Message->add(__($msg, true), 'ok', true, $url);
 	}
 /**
  * delete action
