@@ -51,20 +51,35 @@ class Navigation extends AppModel{
 					'/admin/supporters'
 					, '#/\/admin\/supporters.*/iU'
 				)/*
-				, __('Roles &amp; Permissions', true) => array(
-					'/admin/roles'
-					, '#/\/admin\/roles.* /iU'
-					, 'role' => 'root'
-				)*/
-				, __('Config', true) => array(
-					'/admin/offices/view/' . $Session->read('Office.id')
-					, '#/\/admin\/(offices|users).*/iU'
+				, 'Offices' => array(
+					'/admin/offices'
+					, '#/\/admin\/offices\/(index.*|manage_tree|add)?$/iU'
 					, 'role' => 'root'
 				)
-				, __('Admin', true) => array(
-					'/admin/offices/index/'
-					, '#/\/admin\/(offices|users).* /iU'
+				, 'Users' => array(
+					'/admin/users/index/all'
+					, '#/\/admin\/users.* /iU' <- added space here * / :)
 					, 'role' => 'root'
+				)
+				, 'Bugs' => array(
+					'/admin/bugs'
+					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
+					, 'role' => 'root'
+				)*/
+				, __('Roles & Permissions', true) => array(
+					'/admin/roles'
+					, '#/\/admin\/roles.*/iU'
+					, 'role' => 'root'
+				)
+				, __('Offices', true) => array(
+					'/admin/offices'
+					, '#/\/admin\/offices.*/iU'
+					, 'role' => 'root'
+				)
+				, __('Office Config', true) => array(
+					'/admin/offices/view/' . $Session->read('Office.id')
+					, '#/\/admin\/(offices|users).*/iU'
+					, 'role' => 'office_manager'
 				)
 				, __('Help', true) => array(
 					'/admin/help'
@@ -195,12 +210,12 @@ class Navigation extends AppModel{
 				__('Config', true) => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/offices(\/edit|\/view)\/' . $Session->read('Office.id') . '.*/iU'
-					, 'role' => array('superadmin')
+					, 'role' => array('office_manager')
 				)
-				, __('Team &amp; Permissions', true) => array(
+				, __('Team & Permissions', true) => array(
 					'/admin/users/index/' . $Session->read('Office.id')
 					, '#/\/admin\/users\/(index\/' . $Session->read('Office.id') . '|view).*/iU'
-					, 'role' => array('superadmin')
+					, 'role' => array('office_manager')
 				)
 			)
 			, 'admin_help_sub' => array(

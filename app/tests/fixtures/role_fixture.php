@@ -14,7 +14,7 @@ class RoleFixture extends CakeTestFixture {
 		),
 		array(
 			'id' => '4aaf92da-6dcc-4d71-91be-40a9a7f05a6e',
-			'name' => 'superadmin',
+			'name' => 'office_manager',
 			'permissions' => '*:*, !Offices:admin_add, !Offices:admin_delete, !Bugs:admin_index, !Offices:admin_index, !Roles:*',
 		),
 		array(
