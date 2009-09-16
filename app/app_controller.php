@@ -84,6 +84,8 @@ class AppController extends Controller {
 				if ($this->isOkForSessionRedirect()) {
 					$this->Session->write($this->loginRedirectSesskey, $this->here);
 				}
+
+				$this->Session->write('cant_access', true);
 				return $this->redirect('/admin/auth/login', '403', true);
 			}
 
@@ -186,6 +188,12 @@ class AppController extends Controller {
 			return;
 		}
 
+		if ($this->Session->check('cant_access') && !$this->Session->check('just_logged_out')) {
+			$this->Session->del('cant_access');
+			$this->Session->del('just_logged_out');
+			$msg = __('You need to login to access this page. If you were logged in previously you might have been logged out because somebody changed your permissions.', true);
+			$this->Message->add($msg, 'error');
+		}
 		if ($this->isAdmin()) {
 			$posts = ClassRegistry::init('Post')->find('twitter');
 			$this->set(compact('posts'));

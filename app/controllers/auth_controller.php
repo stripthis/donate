@@ -51,6 +51,8 @@ class AuthController extends AppController{
 							: false;
 
 			User::login($authId, true, $remember);
+			$this->Session->del('cant_access');
+			$this->Session->del('just_logged_out');
 			$this->Session->write('User.justLoggedIn', true);
 		}
 
@@ -88,6 +90,7 @@ class AuthController extends AppController{
 		$name = User::name();
 		User::logout();
 		$this->Cookie->del('User');
+		$this->Session->write('just_logged_out', true);
 		$this->redirect('/');
 	}
 }
