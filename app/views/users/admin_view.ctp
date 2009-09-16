@@ -1,5 +1,8 @@
 <div class="content">
+<?php
+echo $this->element('nav', array(
+	  'type' => 'admin_config_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+  ));
+?>
 <h1><?php echo $this->pageTitle = 'Details for ' . $user['User']['login']; ?></h1>
-
-<?php echo $html->link('&laquo; Back to Users', array('controller' => 'users', 'action' => 'index', 'admin' => 'true'), null, false, false)?>
 </div>

@@ -1,5 +1,5 @@
 <div class="content users index">
-	<h2><?php __('Users');?></h2>
+	<h2><?php __('Team &amp; Permissions');?></h2>
 	<?php
 	echo $this->element('nav', array(
 		'type' => 'admin_config_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
@@ -16,6 +16,7 @@
 			<tr>
 				<th class="text"><?php echo $paginator->sort(__('Login', true), 'login', array('url' => $params));?></th>
 				<th class="date"><?php echo $paginator->sort(__('Created', true), 'created', array('url' => $params));?></th>
+				<th class="text"><?php echo $paginator->sort(__('Level', true), 'Role.name', array('url' => $params));?></th>
 				<th class=""><?php __('Actions');?></th>
 			</tr>
 			<?php
@@ -31,8 +32,9 @@
 			<tr<?php echo $class;?>>
 				<td class="text"><?php echo $user['User']['login']; ?></td>
 				<td class="date"><?php echo date('F d Y', strtotime($user['User']['created'])); ?></td>
+				<td class="text"><?php echo Inflector::humanize($user['Role']['name']); ?></td>
 				<td class="">
-					<?php echo $html->link(__('Details', true), array('action'=>'view', $user['User']['id']),array('class'=>'view')); ?>
+					<?php echo $html->link(__('Details &amp; Permissions', true), array('action'=>'view', $user['User']['id']),array('class'=>'view'), false, false); ?>
 					- <?php echo $html->link(__('Delete', true), array('action'=>'delete', $user['User']['id']), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['id'])); ?>
 				</td>
 			</tr>

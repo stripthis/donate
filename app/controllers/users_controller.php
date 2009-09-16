@@ -138,8 +138,8 @@ class UsersController extends AppController {
 
 		$this->paginate = array(
 			'conditions' => $conditions,
-			'contain' => array('CreatedBy(login)', 'ModifiedBy(login)'),
-			'order' => array('User.login' => 'asc'),
+			'contain' => array('Role(name)', 'CreatedBy(login)', 'ModifiedBy(login)'),
+			'order' => array('Role.name' => 'desc', 'User.login' => 'asc'),
 			'limit' => $params['my_limit']
 		);
 		$users = $this->paginate();

@@ -210,12 +210,12 @@ class Navigation extends AppModel{
 				__('Config', true) => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/offices(\/edit|\/view)\/' . $Session->read('Office.id') . '.*/iU'
-					, 'role' => array('superadmin', 'root')
+					, 'role' => array('superadmin')
 				)
-				, __('Users', true) => array(
+				, __('Team &amp; Permissions', true) => array(
 					'/admin/users/index/' . $Session->read('Office.id')
-					, '#/\/admin\/users\/index\/' . $Session->read('Office.id') . '.*/iU'
-					, 'role' => array('superadmin', 'root')
+					, '#/\/admin\/users\/(index\/' . $Session->read('Office.id') . '|view).*/iU'
+					, 'role' => array('superadmin')
 				)
 			)
 			, 'admin_help_sub' => array(
