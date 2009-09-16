@@ -26,22 +26,24 @@ $favConfig = Configure::read('Favorites');
 		}
 		$th = am($th, array(
 			$paginator->sort('Status', 'status', array('url' => $params)),
-			$paginator->sort('Campaign Code', 'campaign_code', array('url' => $params)),
 			$paginator->sort('Name', 'name', array('url' => $params)),
-			$paginator->sort('Default?', 'default', array('url' => $params)),
-			$paginator->sort('Reviewed?', 'reviewed', array('url' => $params)),
-			$paginator->sort('#Steps', 'steps', array('url' => $params)),
-			$paginator->sort('Created By', 'user_id', array('url' => $params)),
-			$paginator->sort('Created On', 'created', array('url' => $params)),
+			$paginator->sort('Campaign Code', 'campaign_code', array('url' => $params)),
+			'Income',
+			'Signups',
+			//$paginator->sort('Default?', 'default', array('url' => $params)),
+			//$paginator->sort('Reviewed?', 'reviewed', array('url' => $params)),
+			//$paginator->sort('#Steps', 'steps', array('url' => $params)),
+			//$paginator->sort('Created By', 'user_id', array('url' => $params)),
+			//$paginator->sort('Created On', 'created', array('url' => $params)),
 			$paginator->sort('Last Update', 'modified', array('url' => $params)),
 			'Actions'
 		));
 		echo $html->tableHeaders($th);
 		foreach ($appeals as $appeal) {
 			$actions = array(
-				$html->link(__('View', true), array('action'=>'view', $appeal['Appeal']['id']),array('class'=>'view')),
-				$html->link(__('Edit', true), array('action'=>'edit', $appeal['Appeal']['id']),array('class'=>'edit')),
-				$html->link(__('Delete', true), array('action'=>'delete', $appeal['Appeal']['id']), array('class'=>'delete'), sprintf(__('Are you sure?', true), $appeal['Appeal']['id']))
+				$html->link(__('Config', true), array('action'=>'view', $appeal['Appeal']['id']),array('class'=>'view')),
+				//$html->link(__('Edit', true), array('action'=>'edit', $appeal['Appeal']['id']),array('class'=>'edit')),
+				//$html->link(__('Delete', true), array('action'=>'delete', $appeal['Appeal']['id']), array('class'=>'delete'), sprintf(__('Are you sure?', true), $appeal['Appeal']['id']))
 			);
 
 			if ($appeal['Appeal']['status'] != 'published') {
@@ -60,13 +62,15 @@ $favConfig = Configure::read('Favorites');
 			}
 			$tr = am($tr,array(
 				$appeal['Appeal']['status'],
-				$appeal['Appeal']['campaign_code'],
 				$appeal['Appeal']['name'],
-				$appeal['Appeal']['default'],
-				$appeal['Appeal']['reviewed'],
-				$appeal['Appeal']['appeal_step_count'],
-				$user,
-				$appeal['Appeal']['created'],
+				$appeal['Appeal']['campaign_code'],
+				'',
+				'',
+				//$appeal['Appeal']['default'],
+				//$appeal['Appeal']['reviewed'],
+				//$appeal['Appeal']['appeal_step_count'],
+				///$user,
+				//$appeal['Appeal']['created'],
 				$appeal['Appeal']['modified'],
 				implode(' - ', $actions)
 			));

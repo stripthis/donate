@@ -159,8 +159,9 @@ class GiftsController extends AppController {
 
 		$this->dropSessionData();
 		$keyData = $this->_addAuthkeyToSession($tId);
-		$this->Gift->emailReceipt($this->data['Contact']['email'], $keyData);
-
+		if(Configure::read('App.Tax_receipt.enabled')) {
+			$this->Gift->emailReceipt($this->data['Contact']['email'], $keyData);
+		}
 		$this->redirect(array('action' => 'thanks'));
 	}
 /**
