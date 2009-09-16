@@ -51,7 +51,7 @@ class SavedByBehavior extends ModelBehavior {
  * @access public
  */
 	function beforeSave(&$Model, $options = array()) {
-		if (class_exists('ShellDispatcher')) {
+		if (class_exists('ShellDispatcher') || defined('CAKEPHP_UNIT_TEST_EXECUTION')) {
 			return true;
 		}
 		if (!$Model->id) {
