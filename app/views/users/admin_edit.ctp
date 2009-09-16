@@ -8,36 +8,46 @@
 	echo $form->input('name');
 	echo $form->input('login');
 
-	foreach ($roleOptions as $key => $value) {
-		$roleOptions[$key] = Inflector::humanize($value);
-	}
-	echo $form->input('role_id', array('options' => $roleOptions));
-	if (!empty($officeOptions)) {
-		echo $form->input('office_id', array('options' => $officeOptions));
+	$canEdit = !User::is('office_manager') || $user['Role']['name'] != 'office_manager';
+	if ($canEdit) {
+		foreach ($roleOptions as $key => $value) {
+			$roleOptions[$key] = Inflector::humanize($value);
+		}
+		echo $form->input('role_id', array('options' => $roleOptions));
+		if (!empty($officeOptions)) {
+			echo $form->input('office_id', array('options' => $officeOptions));
+		}
+	} else {
+		echo '<p>' . __('You are not allowed to change the role or office of this user, as he is an office manager.', true) . '</p>';
 	}
 	echo $form->input('Contact.salutation', array('options' => Configure::read('App.contact.salutations')));
 	echo $form->input('Contact.fname', array('label' => 'First Name'));
 	echo $form->input('Contact.lname', array('label' => 'Last Name'));
 	echo '<h3>Individual Permissions</h3>';
-	$permissions = Configure::read('App.permission_options');
 
-	foreach ($permissions as $perm) {
-		$perm = trim($perm);
-		$permData = explode(':', $perm);
-		$controller = $permData[0];
-		$kAction = $permData[1];
+	if ($canEdit) {
+		$permissions = Configure::read('App.permission_options');
 
-		$label = $controller . ' ' . Inflector::humanize($kAction);
-		$checked = true;
-		if ($action == 'edit') {
-			$checked = Common::requestAllowed($controller, $kAction, $user['Role']['permissions'], true);
-			$checked = $checked && Common::requestAllowed($controller, $kAction, $user['User']['permissions'], true);
+		foreach ($permissions as $perm) {
+			$perm = trim($perm);
+			$permData = explode(':', $perm);
+			$controller = $permData[0];
+			$kAction = $permData[1];
+
+			$label = $controller . ' ' . Inflector::humanize($kAction);
+			$checked = true;
+			if ($action == 'edit') {
+				$checked = Common::requestAllowed($controller, $kAction, $user['Role']['permissions'], true);
+				$checked = $checked && Common::requestAllowed($controller, $kAction, $user['User']['permissions'], true);
+			}
+			echo $form->input('permissions.' . $perm, array(
+				'label' => $label,
+				'type' => 'checkbox', 'value' => '',
+				'checked' => $checked ? 'checked' : ''
+			));
 		}
-		echo $form->input('permissions.' . $perm, array(
-			'label' => $label,
-			'type' => 'checkbox', 'value' => '',
-			'checked' => $checked ? 'checked' : ''
-		));
+	} else {
+		echo '<p>' . __('You are not allowed to change the permissions of this user, as he is an office manager.', true) . '</p>';
 	}
 	echo $form->end('Save');
 	?>
