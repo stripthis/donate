@@ -266,7 +266,7 @@ class UsersController extends AppController {
  * @return void
  * @access public
  */
-	function activate($id = null) {
+	function admin_activate($id = null) {
 		$authKey = Common::defaultTo($this->params['named']['auth_key'], null);
 		Assert::notEmpty($id, '404');
 		Assert::notEmpty($authKey, '404');
@@ -277,10 +277,10 @@ class UsersController extends AppController {
 		$conditions = array('User.id' => $id);
 		$user = $this->User->find('first', compact('conditions', 'contain'));
 
-		Assert::false(!!$user['User']['activated'], 'user_already_activated');
+		Assert::false(!!$user['User']['active'], 'user_already_activated');
 		Assert::true(AuthKey::verify($authKey, $user['User']['id'], 'Account Activation'), '403');
 
-		$this->User->set(array('id' => $id, 'activated' => 1));
+		$this->User->set(array('id' => $id, 'active' => 1));
 		Assert::notEmpty($this->User->save(null, false), 'save');
 
 		AuthKey::expire($authKey);
@@ -294,22 +294,19 @@ class UsersController extends AppController {
  * @return void
  * @access public
  */
-	function resend_activation_email() {
-		if ($this->isGet()) {
-			return;
-		}
-
+	function admin_resend_activation_email($userId = false) {
 		$user = $this->User->find('first', array(
-			'conditions' => array('User.email' => $this->data['User']['email']),
-			'fields' => array('User.id', 'User.email', 'User.activated')
+			'conditions' => array('User.id' => $userId),
+			'fields' => array('User.id', 'User.login', 'User.active')
 		));
 
+		Assert::equal($user['User']['active'], '0');
 		if (!empty($user) && $user['User']['active'] == '0') {
 			$this->id = $user['User']['id'];
 			$this->User->activationEmail($user['User']['id'], $user);
 		}
 
-		$msg = __('A new activation email was sent to you. Make sure to check your spam/junk folders, too.', true);
+		$msg = __('A new activation email was sent.', true);
 		$this->Message->add($msg, 'ok', true, $this->referer());
 	}
 /**

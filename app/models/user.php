@@ -218,7 +218,10 @@ class User extends AppModel {
  * @access public
  */
 	function activationEmail($id, $data) {
-		$authKey = AuthKey::generate(array('user_id' => $id, 'auth_key_type_id' => 'Account Activation'));
+		$authKey = AuthKey::generate(array(
+			'user_id' => $id,
+			'auth_key_type_id' => 'Account Activation'
+		));
 		$emailSettings = array(
 			'vars' => array(
 				'id' => $id
@@ -226,7 +229,7 @@ class User extends AppModel {
 			),
 			'mail' => array(
 				'to' => $data['User']['login']
-				, 'subject' => 'Welcome to ' . Configure::read('App.name')
+				, 'subject' => sprintf(__('Welcome to %s', true), Configure::read('App.name'))
 			),
 			'store' => false
 		);
