@@ -132,7 +132,7 @@ class User extends AppModel {
 			$user = $_this->find('first', array(
 				'conditions' => array('User.id' => $user),
 				'contain' => array(
-					'Role.name',
+					'Role(permissions, name)',
 					'Contact.Address.State(id, name)',
 					'Contact.Address.Country(id, name)',
 					'Contact.Address.City(id, name)',
@@ -432,7 +432,6 @@ class User extends AppModel {
 				$result = $obj['User']['office_id'] == $this->Session->read('Office.id');
 			}
 		}
-
 		$result = $result && Common::requestAllowed($controller, $action, User::get('Role.permissions'), true);
 		return $result && Common::requestAllowed($controller, $action, User::get('permissions'), true);
 	}

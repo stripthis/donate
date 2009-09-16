@@ -1,5 +1,17 @@
 <?php
 class UsersController extends AppController {
+	var $components = array('GridFilter');
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Office = $this->User->Office;
+		$this->Role = $this->User->Role;
+	}
 /**
  * undocumented function
  *
@@ -27,14 +39,30 @@ class UsersController extends AppController {
 			Assert::true(User::allowed($this->name, $this->action, $user), '403');
 			$action = 'edit';
 		}
-		$this->set(compact('action', 'user'));
+
+		$officeOptions = array();
+		if (User::is('root')) {
+			$officeOptions = $this->Office->find('list', array(
+				'order' => array('name' => 'desc')
+			));
+		}
+
+		$conditions = array('Role.name <>' => 'guest');
+		if (!User::is('root')) {
+			$conditions[] = "Role.name <> 'root'";
+		}
+		$roleOptions = $this->Role->find('list', array(
+			'conditions' => $conditions,
+			'order' => array('name' => 'desc')
+		));
+		$this->set(compact('action', 'user', 'officeOptions', 'roleOptions'));
 
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
 			return $this->data = $user;
 		}
 
-		if ($action == 'add') {
+		if (!isset($this->data['User']['office_id'])) {
 			$this->data['User']['office_id'] = $this->Session->read('Office.id');
 		}
 		$this->data['Contact']['email'] = $this->data['User']['login'];
@@ -80,17 +108,21 @@ class UsersController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index($type = 'all') {
+	function admin_index($type = '') {
 		$conditions = array(
 			'User.login <>' => Configure::read('App.guestAccount'),
 			'User.active' => '1'
 		);
 
-		switch ($type) {
-			case 'colleagues':
-				$conditions['User.office_id'] = $this->Session->read('Office.id');
-				break;
+		if (!User::is('root')) {
+			$conditions['User.office_id'] = $this->Session->read('Office.id');
+			if ($type == 'unactivated') {
+				$conditions['User.active'] = '0';
+			}
+		} elseif (!empty($type)) {
+			$conditions['User.office_id'] = $type;
 		}
+
 		$defaults = array(
 			'keyword' => '',
 			'search_type' => 'all',
@@ -116,6 +148,7 @@ class UsersController extends AppController {
 			$params['my_limit'] = $params['custom_limit'];
 		}
 
+		$conditions = $this->GridFilter->dateRange($conditions, $params, 'User', 'created');
 		// search was submitted
 		if (!empty($params['keyword'])) {
 			$params['keyword'] = trim($params['keyword']);

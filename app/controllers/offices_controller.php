@@ -67,6 +67,9 @@ class OfficesController extends AppController {
  * @access public
  */
 	function admin_view($id = null) {
+		if (!User::is('root')) {
+			$id = $this->Session->read('Office.id');
+		}
 		$office = $this->Office->find('first', array(
 			'conditions' => array('Office.id' => $id),
 			'contain' => array(
@@ -122,6 +125,9 @@ class OfficesController extends AppController {
 
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
+			if (!User::is('root')) {
+				$id = $this->Session->read('Office.id');
+			}
 			$office = $this->Office->find('first', array(
 				'conditions' => array('Office.id' => $id),
 				'contain' => array(
