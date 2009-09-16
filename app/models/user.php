@@ -91,11 +91,12 @@ class User extends AppModel {
  */
 	function findIdByAuth($name, $password) {
 		$name = low($name);
+		$conditions = array(
+			'LOWER(login)' => $name,
+			'password' => User::hashPw($password),
+		);
 		$user = $this->find('first', array(
-			'conditions' => array(
-				'LOWER(' . $this->displayField . ')' => $name,
-				'password' => User::hashPw($password),
-			)
+			'conditions' => $conditions
 		));
 
 		if (!empty($user)) {
