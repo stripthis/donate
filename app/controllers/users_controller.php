@@ -300,7 +300,7 @@ class UsersController extends AppController {
 			'fields' => array('User.id', 'User.login', 'User.active')
 		));
 
-		Assert::equal($user['User']['active'], '0');
+		Assert::equal($user['User']['active'], '0', '404');
 		if (!empty($user) && $user['User']['active'] == '0') {
 			$this->id = $user['User']['id'];
 			$this->User->activationEmail($user['User']['id'], $user);

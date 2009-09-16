@@ -72,8 +72,8 @@ class Navigation extends AppModel{
 					, 'role' => 'root'
 				)
 				, __('Office Config', true) => array(
-					'/admin/offices/edit/' . $Session->read('Office.id')
-					, '#/\/admin\/offices(\/edit|\/view)\/' . $Session->read('Office.id') . '.*/iU'
+					'/admin/offices/edit'
+					, '#/\/admin\/offices(\/edit|\/view).*/iU'
 					, '#/\/admin\/(offices|users).*/iU'
 					, 'role' => 'office_manager'
 				)
