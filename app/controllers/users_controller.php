@@ -167,6 +167,7 @@ class UsersController extends AppController {
  */
 	function admin_view($id = null) {
 		$user = $this->User->find('first', array(
+			'contain' => array('Role'),
 			'conditions' => array('User.id' => $id)
 		));
 		$this->set(compact('user'));

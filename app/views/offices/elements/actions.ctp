@@ -18,16 +18,18 @@ $links = array(
 		'options'=> array('class' =>' import')
 	)*/
 );
-switch($this->action) {
+switch ($this->action) {
 	case "admin_edit":
+		$url = 'view/'.$session->read('Office.id');
+		if (User::is('root')) {
+			$url = 'index';
+		}
 		$links[] = array(
 		  'name'  => __('Cancel', true),
 		  'label' => 'view', 
-		  'uri'   => array(
-		  	'action' => 'view/'.$session->read('Office.id'), 'admin' => true
-		  ),
+		  'uri'   => array('action' => $url, 'admin' => true),
 		  'options'=>array('class' => 'back')
-	  );
+		);
 	break;
 	case "admin_index":
 	break;
