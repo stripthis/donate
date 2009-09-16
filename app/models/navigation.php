@@ -51,35 +51,20 @@ class Navigation extends AppModel{
 					'/admin/supporters'
 					, '#/\/admin\/supporters.*/iU'
 				)/*
-				, 'Offices' => array(
-					'/admin/offices'
-					, '#/\/admin\/offices\/(index.*|manage_tree|add)?$/iU'
-					, 'role' => 'root'
-				)
-				, 'Users' => array(
-					'/admin/users/index/all'
-					, '#/\/admin\/users.* /iU' <- added space here * / :)
-					, 'role' => 'root'
-				)
-				, 'Bugs' => array(
-					'/admin/bugs'
-					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
-					, 'role' => 'root'
-				)*/
 				, __('Roles &amp; Permissions', true) => array(
 					'/admin/roles'
-					, '#/\/admin\/roles.*/iU'
+					, '#/\/admin\/roles.* /iU'
 					, 'role' => 'root'
-				)
+				)*/
 				, __('Config', true) => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/(offices|users).*/iU'
 					, 'role' => 'root'
 				)
-				, __('Office Config', true) => array(
-					'/admin/offices/view/' . $Session->read('Office.id')
-					, '#/\/admin\/(offices|users).*/iU'
-					, 'role' => 'superadmin'
+				, __('Admin', true) => array(
+					'/admin/offices/index/'
+					, '#/\/admin\/(offices|users).* /iU'
+					, 'role' => 'root'
 				)
 				, __('Help', true) => array(
 					'/admin/help'
