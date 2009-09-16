@@ -33,7 +33,8 @@ class UsersController extends AppController {
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			$user = $this->User->find('first', array(
-				'conditions' => array('User.id' => $id)
+				'conditions' => array('User.id' => $id),
+				'contain' => array('Contact', 'Role')
 			));
 			Assert::notEmpty($user, '404');
 			Assert::true(User::allowed($this->name, $this->action, $user), '403');
@@ -95,12 +96,12 @@ class UsersController extends AppController {
 			Mailer::deliver('created_admin', $options);
 
 			$msg = sprintf(__('The admin account for %s has been created successfully. An email has been sent to the email address.', true), $this->data['User']['login']);
-			$url = array('action' => 'admin_edit', $userId);
+			$url = array('action' => 'index');
 			return $this->Message->add(__($msg, true), 'ok', true, $url);
 		}
 
 		$msg = __('User was saved successfully.', true);
-		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'admin_team'));
+		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'index'));
 	}
 /**
  * undocumented function
@@ -190,20 +191,6 @@ class UsersController extends AppController {
 		$this->User->delete($id);
 		$this->Silverpop->UserOptOut($user);
 		$this->Message->add(__('Successfully deleted!', true), 'ok', true, array('action' => 'index'));
-	}
-/**
- * undocumented function
- *
- * @param string $id 
- * @return void
- * @access public
- */
-	function admin_view($id = null) {
-		$user = $this->User->find('first', array(
-			'contain' => array('Role'),
-			'conditions' => array('User.id' => $id)
-		));
-		$this->set(compact('user'));
 	}
 /**
  * undocumented function

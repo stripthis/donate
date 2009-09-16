@@ -40,9 +40,9 @@
 					<?php
 					$actions = array();
 					if ($type != 'unactivated') {
-						$actions[] = $html->link(__('Details &amp; Permissions', true), array(
-							'action' => 'view', $user['User']['id']),
-							array('class'=>'view'), false, false
+						$actions[] = $html->link(__('Edit', true), array(
+							'action' => 'edit', $user['User']['id']),
+							array('class' => 'edit'), false, false
 						);
 					} else {
 						$actions[] = $html->link(__('Resend Activation Email', true), array(

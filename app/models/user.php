@@ -50,7 +50,37 @@ class User extends AppModel {
  * @var unknown
  * @access public
  */
-	var $displayField = 'login';
+	var $displayField = 'name';
+/**
+ * undocumented 
+ *
+ * @access public
+ */
+	function beforeSave() {
+		if (isset($this->data[__CLASS__]['permissions'])) {
+			$permissions = Configure::read('App.permission_options');
+
+			$perms = array();
+			foreach ($this->data[__CLASS__]['permissions'] as $perm => $checked) {
+				if ($checked) {
+					$perms[] = $perm;
+				}
+			}
+
+			$diff = array_diff($permissions, $perms);
+			if (empty($diff)) {
+				$this->data[__CLASS__]['permissions'] = '';
+				return true;
+			}
+
+			$s = '';
+			foreach ($diff as $perm) {
+				$s .= '!' . $perm . ',';
+			}
+			$this->data[__CLASS__]['permissions'] = substr($s, 0, -1);
+		}
+		return true;
+	}
 /**
  * undocumented function
  *

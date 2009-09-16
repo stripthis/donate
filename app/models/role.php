@@ -21,7 +21,8 @@ class Role extends AppModel {
 
 			$diff = array_diff($permissions, $perms);
 			if (empty($diff)) {
-				continue;
+				$this->data[__CLASS__]['permissions'] = '';
+				return true;
 			}
 
 			$s = '';
