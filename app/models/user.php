@@ -67,6 +67,10 @@ class User extends AppModel {
 				}
 			}
 
+			if ($this->data[__CLASS__]['id']) {
+				Common::getComponent('Session')->logout($this->data[__CLASS__]['id']);
+			}
+
 			$diff = array_diff($permissions, $perms);
 			if (empty($diff)) {
 				$this->data[__CLASS__]['permissions'] = '';
@@ -78,10 +82,6 @@ class User extends AppModel {
 				$s .= '!' . $perm . ',';
 			}
 			$this->data[__CLASS__]['permissions'] = substr($s, 0, -1);
-
-			if ($this->data[__CLASS__]['id']) {
-				Common::getComponent('Session')->logout($this->data[__CLASS__]['id']);
-			}
 		}
 		return true;
 	}

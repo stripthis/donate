@@ -1,9 +1,20 @@
+<?php
+$title = User::is('root')
+			? __('User Management', true)
+			: __('Team &amp; Permissions', true);
+?>
 <div class="content users index">
-	<h2><?php __('Team &amp; Permissions');?></h2>
+	<h2><?php echo $title;?></h2>
 	<?php
-	echo $this->element('nav', array(
-		'type' => 'admin_config_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
-	));
+	if (User::is('root')) {
+		echo $this->element('nav', array(
+			'type' => 'admin_root_admin_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+		));
+	} else {
+		echo $this->element('nav', array(
+			'type' => 'admin_config_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+		));
+	}
 
 	if ($type != 'unactivated') {
 		echo $this->element('../users/elements/actions');

@@ -68,7 +68,7 @@ class Navigation extends AppModel{
 				)*/
 				, __('Admin', true) => array(
 					'/admin/dashboards'
-					, '#/\/admin\/dashboards.*/iU'
+					, '#/\/admin\/(users|offices|dashboards|roles).*/iU'
 					, 'role' => 'root'
 				)
 				, __('Office Config', true) => array(
