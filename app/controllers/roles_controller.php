@@ -44,7 +44,7 @@ class RolesController extends AppController {
 			$this->User->save();
 		}
 		$this->Session->logout($userIds);
-		
+
 		$msg = __('Permission saved!', true);
 		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}

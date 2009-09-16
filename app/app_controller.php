@@ -329,20 +329,22 @@ class AppController extends Controller {
 		}
 
 		if (!$lang) {
-			$acceptedLanguages = array(
-				'en-us' => 'eng',
-				'en-gb' => 'eng',
-				'fr' => 'fre'
-			);
+			if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+				$acceptedLanguages = array(
+					'en-us' => 'eng',
+					'en-gb' => 'eng',
+					'fr' => 'fre'
+				);
 
-			$settings = explode(';', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-			$settings = $settings[0];
-			$settings = explode(',', $settings);
-			$settings = $settings[0];
+				$settings = explode(';', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
+				$settings = $settings[0];
+				$settings = explode(',', $settings);
+				$settings = $settings[0];
 
-			$lang = $default;
-			if (array_key_exists($settings, $acceptedLanguages)) {
-				$lang = $acceptedLanguages[$settings];
+				$lang = $default;
+				if (array_key_exists($settings, $acceptedLanguages)) {
+					$lang = $acceptedLanguages[$settings];
+				}
 			}
 		}
 
