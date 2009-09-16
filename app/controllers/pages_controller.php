@@ -24,14 +24,10 @@ class PagesController extends AppController {
 
 		if ($page == 'home') {
 			$appeals = $this->Appeal->find('all', array(
-<<<<<<< HEAD:app/controllers/pages_controller.php
-				'conditions' => array('admin' => false, 'status' => 'published'),
-=======
 				'conditions' => array(
 					'admin' => false,
 					'status' => 'published'
 				),
->>>>>>> af73b9e5fecab318edba3226fc233f0d945ad9b6:app/controllers/pages_controller.php
 				'fields' => array('name', 'id'),
 				'order' => array('name' => 'asc')
 			));
