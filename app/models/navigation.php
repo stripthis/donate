@@ -79,7 +79,7 @@ class Navigation extends AppModel{
 				, __('Office Config', true) => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/(offices|users).*/iU'
-					, 'role' => 'superadmin'
+					, 'role' => 'office_manager'
 				)
 				, __('Help', true) => array(
 					'/admin/help'
@@ -210,12 +210,12 @@ class Navigation extends AppModel{
 				__('Config', true) => array(
 					'/admin/offices/view/' . $Session->read('Office.id')
 					, '#/\/admin\/offices(\/edit|\/view)\/' . $Session->read('Office.id') . '.*/iU'
-					, 'role' => array('superadmin')
+					, 'role' => array('office_manager')
 				)
 				, __('Team &amp; Permissions', true) => array(
 					'/admin/users/index/' . $Session->read('Office.id')
 					, '#/\/admin\/users\/(index\/' . $Session->read('Office.id') . '|view).*/iU'
-					, 'role' => array('superadmin')
+					, 'role' => array('office_manager')
 				)
 			)
 			, 'admin_help_sub' => array(
