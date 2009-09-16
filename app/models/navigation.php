@@ -66,18 +66,14 @@ class Navigation extends AppModel{
 					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
 					, 'role' => 'root'
 				)*/
-				, __('Roles & Permissions', true) => array(
-					'/admin/roles'
-					, '#/\/admin\/roles.*/iU'
-					, 'role' => 'root'
-				)
-				, __('Offices', true) => array(
-					'/admin/offices'
-					, '#/\/admin\/offices.*/iU'
+				, __('Admin', true) => array(
+					'/admin/dashboards'
+					, '#/\/admin\/(users|offices|dashboards|roles).*/iU'
 					, 'role' => 'root'
 				)
 				, __('Office Config', true) => array(
-					'/admin/offices/view/' . $Session->read('Office.id')
+					'/admin/offices/edit'
+					, '#/\/admin\/offices(\/edit|\/view).*/iU'
 					, '#/\/admin\/(offices|users).*/iU'
 					, 'role' => 'office_manager'
 				)
@@ -208,13 +204,18 @@ class Navigation extends AppModel{
 			)
 			, 'admin_config_sub' => array(
 				__('Config', true) => array(
-					'/admin/offices/view/' . $Session->read('Office.id')
-					, '#/\/admin\/offices(\/edit|\/view)\/' . $Session->read('Office.id') . '.*/iU'
+					'/admin/offices/edit/'
+					, '#/\/admin\/offices(\/edit|\/view)\/.*/iU'
 					, 'role' => array('office_manager')
 				)
-				, __('Team & Permissions', true) => array(
-					'/admin/users/index/' . $Session->read('Office.id')
-					, '#/\/admin\/users\/(index\/' . $Session->read('Office.id') . '|view).*/iU'
+				, __('Team &amp; Permissions', true) => array(
+					'/admin/users'
+					, '#/\/admin\/users\/(index\/[^unactivated]|view).*/iU'
+					, 'role' => array('office_manager')
+				)
+				, __('Unactivated Users', true) => array(
+					'/admin/users/index/unactivated'
+					, '#/\/admin\/users\/index\/unactivated.*/iU'
 					, 'role' => array('office_manager')
 				)
 			)
@@ -226,6 +227,23 @@ class Navigation extends AppModel{
 				, __('Faq', true) => array(
 					'/admin/help/faq'
 					, '#/\/admin\/help\/faq\/.*/iU'
+				)
+			)
+			, 'admin_root_admin_sub' => array(
+				__('Offices', true) => array(
+					'/admin/offices'
+					, '#/\/admin\/offices.*/iU'
+					, 'role' => 'root'
+				)
+				, __('Users', true) => array(
+					'/admin/users'
+					, '#/\/admin\/users.*/iU'
+					, 'role' => 'root'
+				)
+				, __('Roles', true) => array(
+					'/admin/roles'
+					, '#/\/admin\/roles.*/iU'
+					, 'role' => 'root'
 				)
 			)
 		);

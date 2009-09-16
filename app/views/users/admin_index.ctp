@@ -1,11 +1,25 @@
+<?php
+$title = User::is('root')
+			? __('User Management', true)
+			: __('Team &amp; Permissions', true);
+?>
 <div class="content users index">
-	<h2><?php __('Team &amp; Permissions');?></h2>
+	<h2><?php echo $title;?></h2>
 	<?php
-	echo $this->element('nav', array(
-		'type' => 'admin_config_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
-	));
+	if (User::is('root')) {
+		echo $this->element('nav', array(
+			'type' => 'admin_root_admin_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+		));
+	} else {
+		echo $this->element('nav', array(
+			'type' => 'admin_config_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+		));
+	}
+
+	if ($type != 'unactivated') {
+		echo $this->element('../users/elements/actions');
+	}
 	?>
-<?php echo $this->element('../users/elements/actions'); ?>
 	<?php if (!empty($users)) : ?>
 		<?php
 		unset($params['sort']);
@@ -34,8 +48,26 @@
 				<td class="date"><?php echo date('F d Y', strtotime($user['User']['created'])); ?></td>
 				<td class="text"><?php echo Inflector::humanize($user['Role']['name']); ?></td>
 				<td class="">
-					<?php echo $html->link(__('Details &amp; Permissions', true), array('action'=>'view', $user['User']['id']),array('class'=>'view'), false, false); ?>
-					- <?php echo $html->link(__('Delete', true), array('action'=>'delete', $user['User']['id']), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $user['User']['id'])); ?>
+					<?php
+					$actions = array();
+					if ($type != 'unactivated') {
+						$actions[] = $html->link(__('Edit', true), array(
+							'action' => 'edit', $user['User']['id']),
+							array('class' => 'edit'), false, false
+						);
+					} else {
+						$actions[] = $html->link(__('Resend Activation Email', true), array(
+							'action' => 'resend_activation_email', $user['User']['id']),
+							array('class'=>'view'), false, false
+						);
+					}
+					$actions[] = $html->link(__('Delete', true), array(
+						'action' => 'delete', $user['User']['id']),
+						array('class'=>'delete'),
+						sprintf(__('Are you sure you want to delete %s?', true), $user['User']['name'])
+					);
+					echo implode(' - ', $actions);
+					?>
 				</td>
 			</tr>
 			</tbody>
@@ -52,5 +84,9 @@
 	<?php else : ?>
 		<p>Sorry, nothing to show here.</p>
 	<?php endif; ?>
-	<?php echo $this->element('../users/elements/filter', compact('params', 'type')); ?>
+	<?php
+	if ($type != 'unactivated') {
+		echo $this->element('../users/elements/filter', compact('params', 'type'));
+	}
+	?>
 </div>

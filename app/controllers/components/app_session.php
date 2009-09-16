@@ -137,6 +137,9 @@ class AppSessionComponent extends SessionComponent {
  * @access public
  */
 	function logout($userIds) {
+		if (empty($userIds)) {
+			return false;
+		}
 		return $this->SessionInstance->deleteAll(array('user_id' => $userIds));
 	}
 /**

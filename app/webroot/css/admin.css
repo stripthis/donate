@@ -675,6 +675,23 @@ ul.selector li ul.subitem li a{
 	text-align:center;
 	color:#333;
 }
+.content p.help{
+	font-size:1.1em;
+	padding-left:5px;
+}
+
+/* forms layout */
+.content .half{
+	float:left;
+	width:45%;
+	min-width:300px;
+	margin:0;
+	clear:none;
+}
+.content .full{
+	width:552px;
+}
+
 /* menu */
 .content .menu{
 	padding:10px 10px 5px 0px;
@@ -708,7 +725,8 @@ ul.selector li ul.subitem li a{
   padding:5px 10px;
 	border-bottom:1px solid #FFF;
 }
-/* filter form */
+
+/* filters */
 .filter{
 	float:left;
 	width:100%;
@@ -731,7 +749,8 @@ ul.selector li ul.subitem li a{
 }
 .filter .input.date{
 }
-/* hubblebubble */
+
+/* hubble bubble */
 .bubble{
 	border:1px solid #CCC;
 	-moz-border-radius:5px;
@@ -793,6 +812,7 @@ ul.selector li ul.subitem li a{
 	padding:4px 8px;
   margin-right:2px;
 }
+
 /* filter */
 .filter {
 	padding:0;
@@ -827,6 +847,7 @@ ul.selector li ul.subitem li a{
 	border:0;
 	margin:0;
 }
+
 /* index */
 .index_wrapper{
 	padding:0;

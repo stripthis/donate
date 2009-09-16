@@ -1,5 +1,10 @@
+<?php
+$title = $action == 'add'
+		? __('New Office', true)
+		: __('Edit Office Configuration', true);
+?>
 <div class="content" id="office_config_view">
-  <h2><?php __('Edit Office Configuration');?></h2>
+  <h2><?php echo $title;?></h2>
   <?php
     echo $this->element('nav', array(
 		  'type' => 'admin_config_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'

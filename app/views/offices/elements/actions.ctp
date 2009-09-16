@@ -20,14 +20,13 @@ $links = array(
 );
 switch ($this->action) {
 	case "admin_edit":
-		$url = 'view/'.$session->read('Office.id');
-		if (User::is('root')) {
-			$url = 'index';
+		if (!User::is('root')) {
+			break;
 		}
 		$links[] = array(
 		  'name'  => __('Cancel', true),
 		  'label' => 'view', 
-		  'uri'   => array('action' => $url, 'admin' => true),
+		  'uri'   => array('action' => 'index', 'admin' => true),
 		  'options'=>array('class' => 'back')
 		);
 	break;

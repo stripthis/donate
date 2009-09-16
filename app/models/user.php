@@ -50,7 +50,41 @@ class User extends AppModel {
  * @var unknown
  * @access public
  */
-	var $displayField = 'login';
+	var $displayField = 'name';
+/**
+ * undocumented 
+ *
+ * @access public
+ */
+	function beforeSave() {
+		if (isset($this->data[__CLASS__]['permissions'])) {
+			$permissions = Configure::read('App.permission_options');
+
+			$perms = array();
+			foreach ($this->data[__CLASS__]['permissions'] as $perm => $checked) {
+				if ($checked) {
+					$perms[] = $perm;
+				}
+			}
+
+			if ($this->data[__CLASS__]['id']) {
+				Common::getComponent('Session')->logout($this->data[__CLASS__]['id']);
+			}
+
+			$diff = array_diff($permissions, $perms);
+			if (empty($diff)) {
+				$this->data[__CLASS__]['permissions'] = '';
+				return true;
+			}
+
+			$s = '';
+			foreach ($diff as $perm) {
+				$s .= '!' . $perm . ',';
+			}
+			$this->data[__CLASS__]['permissions'] = substr($s, 0, -1);
+		}
+		return true;
+	}
 /**
  * undocumented function
  *
@@ -61,11 +95,12 @@ class User extends AppModel {
  */
 	function findIdByAuth($name, $password) {
 		$name = low($name);
+		$conditions = array(
+			'LOWER(login)' => $name,
+			'password' => User::hashPw($password),
+		);
 		$user = $this->find('first', array(
-			'conditions' => array(
-				'LOWER(' . $this->displayField . ')' => $name,
-				'password' => User::hashPw($password),
-			)
+			'conditions' => $conditions
 		));
 
 		if (!empty($user)) {
@@ -132,7 +167,7 @@ class User extends AppModel {
 			$user = $_this->find('first', array(
 				'conditions' => array('User.id' => $user),
 				'contain' => array(
-					'Role.name',
+					'Role(permissions, name)',
 					'Contact.Address.State(id, name)',
 					'Contact.Address.Country(id, name)',
 					'Contact.Address.City(id, name)',
@@ -183,7 +218,10 @@ class User extends AppModel {
  * @access public
  */
 	function activationEmail($id, $data) {
-		$authKey = AuthKey::generate(array('user_id' => $id, 'auth_key_type_id' => 'Account Activation'));
+		$authKey = AuthKey::generate(array(
+			'user_id' => $id,
+			'auth_key_type_id' => 'Account Activation'
+		));
 		$emailSettings = array(
 			'vars' => array(
 				'id' => $id
@@ -191,7 +229,7 @@ class User extends AppModel {
 			),
 			'mail' => array(
 				'to' => $data['User']['login']
-				, 'subject' => 'Welcome to ' . Configure::read('App.name')
+				, 'subject' => sprintf(__('Welcome to %s', true), Configure::read('App.name'))
 			),
 			'store' => false
 		);
@@ -432,7 +470,6 @@ class User extends AppModel {
 				$result = $obj['User']['office_id'] == $this->Session->read('Office.id');
 			}
 		}
-
 		$result = $result && Common::requestAllowed($controller, $action, User::get('Role.permissions'), true);
 		return $result && Common::requestAllowed($controller, $action, User::get('permissions'), true);
 	}

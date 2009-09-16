@@ -32,21 +32,6 @@ class RolesController extends AppController {
 			'order' => array('User.name' => 'asc')
 		));
 		$this->set(compact('roles', 'uneditableRoles', 'users'));
-
-		if ($this->isGet()) {
-			return;
-		}
-
-		$userIds = array();
-		foreach ($this->data['User'] as $id => $roleId) {
-			$userIds[] = $id;
-			$this->User->set(array('id' => $id, 'role_id' => $roleId));
-			$this->User->save();
-		}
-		$this->Session->logout($userIds);
-
-		$msg = __('Permission saved!', true);
-		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}
 /**
  * undocumented function

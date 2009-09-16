@@ -62,14 +62,17 @@ $config = array(
 		'inkind' => 'In-kind gift',
 		'legacy' => 'Legacy'
 	),
-	'App.transaction_codes' => array(
+	'App.tax_receipts' => array(
+		'enabled' => false
+	),
+	'App.transaction_codes' => array(/* THIS IS WRONG
 		'P' => 'Processing',
 		'R' => 'Resend',
 		'E' => 'Error',
 		'U' => 'Error',
 		'V' => 'Validate',
 		'F' => 'Finalised',
-		'C' => 'Completed',
+		'C' => 'Completed',*/
 	),
 	'App.frequencies' => array('onetime', 'monthly', /*'quarterly', 'biannually',*/ 'annually'),
 	'App.currency_options' => array('USD', 'EUR'),
@@ -124,8 +127,6 @@ $config = array(
 			'link' => 'http://weblog.greenpeace.org/makingwaves/',
 			'url' => 'http://feeds.feedburner.com/MakingWaves'
 		)
-	),
-	'App.twitterURL' => 'http://www.twitter.com/coolitchallenge',
-	'App.twitterFeed' => 'http://twitter.com/statuses/user_timeline/39753217.rss'	
+	)
 );
 ?>

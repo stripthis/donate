@@ -1,5 +1,17 @@
 <?php
 class UsersController extends AppController {
+	var $components = array('GridFilter');
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function beforeFilter() {
+		parent::beforeFilter();
+		$this->Office = $this->User->Office;
+		$this->Role = $this->User->Role;
+	}
 /**
  * undocumented function
  *
@@ -21,20 +33,37 @@ class UsersController extends AppController {
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			$user = $this->User->find('first', array(
-				'conditions' => array('User.id' => $id)
+				'conditions' => array('User.id' => $id),
+				'contain' => array('Contact', 'Role')
 			));
 			Assert::notEmpty($user, '404');
 			Assert::true(User::allowed($this->name, $this->action, $user), '403');
 			$action = 'edit';
 		}
-		$this->set(compact('action', 'user'));
+
+		$officeOptions = array();
+		if (User::is('root')) {
+			$officeOptions = $this->Office->find('list', array(
+				'order' => array('name' => 'desc')
+			));
+		}
+
+		$conditions = array('Role.name <>' => 'guest');
+		if (!User::is('root')) {
+			$conditions[] = "Role.name <> 'root'";
+		}
+		$roleOptions = $this->Role->find('list', array(
+			'conditions' => $conditions,
+			'order' => array('name' => 'desc')
+		));
+		$this->set(compact('action', 'user', 'officeOptions', 'roleOptions'));
 
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
 			return $this->data = $user;
 		}
 
-		if ($action == 'add') {
+		if (!isset($this->data['User']['office_id'])) {
 			$this->data['User']['office_id'] = $this->Session->read('Office.id');
 		}
 		$this->data['Contact']['email'] = $this->data['User']['login'];
@@ -67,12 +96,12 @@ class UsersController extends AppController {
 			Mailer::deliver('created_admin', $options);
 
 			$msg = sprintf(__('The admin account for %s has been created successfully. An email has been sent to the email address.', true), $this->data['User']['login']);
-			$url = array('action' => 'admin_edit', $userId);
+			$url = array('action' => 'index');
 			return $this->Message->add(__($msg, true), 'ok', true, $url);
 		}
 
 		$msg = __('User was saved successfully.', true);
-		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'admin_team'));
+		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'index'));
 	}
 /**
  * undocumented function
@@ -80,17 +109,21 @@ class UsersController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index($type = 'all') {
+	function admin_index($type = '') {
 		$conditions = array(
 			'User.login <>' => Configure::read('App.guestAccount'),
 			'User.active' => '1'
 		);
 
-		switch ($type) {
-			case 'colleagues':
-				$conditions['User.office_id'] = $this->Session->read('Office.id');
-				break;
+		if (!User::is('root')) {
+			$conditions['User.office_id'] = $this->Session->read('Office.id');
+			if ($type == 'unactivated') {
+				$conditions['User.active'] = '0';
+			}
+		} elseif (!empty($type)) {
+			$conditions['User.office_id'] = $type;
 		}
+
 		$defaults = array(
 			'keyword' => '',
 			'search_type' => 'all',
@@ -116,6 +149,7 @@ class UsersController extends AppController {
 			$params['my_limit'] = $params['custom_limit'];
 		}
 
+		$conditions = $this->GridFilter->dateRange($conditions, $params, 'User', 'created');
 		// search was submitted
 		if (!empty($params['keyword'])) {
 			$params['keyword'] = trim($params['keyword']);
@@ -157,20 +191,6 @@ class UsersController extends AppController {
 		$this->User->delete($id);
 		$this->Silverpop->UserOptOut($user);
 		$this->Message->add(__('Successfully deleted!', true), 'ok', true, array('action' => 'index'));
-	}
-/**
- * undocumented function
- *
- * @param string $id 
- * @return void
- * @access public
- */
-	function admin_view($id = null) {
-		$user = $this->User->find('first', array(
-			'contain' => array('Role'),
-			'conditions' => array('User.id' => $id)
-		));
-		$this->set(compact('user'));
 	}
 /**
  * undocumented function
@@ -246,7 +266,7 @@ class UsersController extends AppController {
  * @return void
  * @access public
  */
-	function activate($id = null) {
+	function admin_activate($id = null) {
 		$authKey = Common::defaultTo($this->params['named']['auth_key'], null);
 		Assert::notEmpty($id, '404');
 		Assert::notEmpty($authKey, '404');
@@ -257,10 +277,10 @@ class UsersController extends AppController {
 		$conditions = array('User.id' => $id);
 		$user = $this->User->find('first', compact('conditions', 'contain'));
 
-		Assert::false(!!$user['User']['activated'], 'user_already_activated');
+		Assert::false(!!$user['User']['active'], 'user_already_activated');
 		Assert::true(AuthKey::verify($authKey, $user['User']['id'], 'Account Activation'), '403');
 
-		$this->User->set(array('id' => $id, 'activated' => 1));
+		$this->User->set(array('id' => $id, 'active' => 1));
 		Assert::notEmpty($this->User->save(null, false), 'save');
 
 		AuthKey::expire($authKey);
@@ -274,22 +294,19 @@ class UsersController extends AppController {
  * @return void
  * @access public
  */
-	function resend_activation_email() {
-		if ($this->isGet()) {
-			return;
-		}
-
+	function admin_resend_activation_email($userId = false) {
 		$user = $this->User->find('first', array(
-			'conditions' => array('User.email' => $this->data['User']['email']),
-			'fields' => array('User.id', 'User.email', 'User.activated')
+			'conditions' => array('User.id' => $userId),
+			'fields' => array('User.id', 'User.login', 'User.active')
 		));
 
+		Assert::equal($user['User']['active'], '0', '404');
 		if (!empty($user) && $user['User']['active'] == '0') {
 			$this->id = $user['User']['id'];
 			$this->User->activationEmail($user['User']['id'], $user);
 		}
 
-		$msg = __('A new activation email was sent to you. Make sure to check your spam/junk folders, too.', true);
+		$msg = __('A new activation email was sent.', true);
 		$this->Message->add($msg, 'ok', true, $this->referer());
 	}
 /**

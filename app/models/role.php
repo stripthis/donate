@@ -19,9 +19,19 @@ class Role extends AppModel {
 				}
 			}
 
+			if ($this->data[__CLASS__]['id']) {
+				$userIds = $this->User->find('all', array(
+					'conditions' => array('role_id' => $this->data[__CLASS__]['id']),
+					'fields' => array('id')
+				));
+				$userIds = Set::extract('/User/id', $userIds);
+				Common::getComponent('Session')->logout($userIds);
+			}
+
 			$diff = array_diff($permissions, $perms);
 			if (empty($diff)) {
-				continue;
+				$this->data[__CLASS__]['permissions'] = '';
+				return true;
 			}
 
 			$s = '';
