@@ -21,7 +21,12 @@ class Office extends AppModel {
 		'Appeal' => array(
 			'dependent' => true
 		),
-		'User'
+		'User' => array(
+			'dependent' => true
+		),
+		'Gift' => array(
+			'dependent' => true
+		)
 	);
 
 	var $hasAndBelongsToMany = array(

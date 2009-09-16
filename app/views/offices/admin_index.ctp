@@ -19,7 +19,6 @@ $th = array(
 echo $html->tableHeaders($th);
 foreach ($offices as $office) {
 	$actions = array(
-		$html->link(__('View', true), array('action' => 'view', $office['Office']['id']), array('class'=>'view')),
 		$html->link(__('Edit', true), array('action' => 'edit', $office['Office']['id']), array('class'=>'edit')),
 		$html->link(__('Delete', true), array('action' => 'delete', $office['Office']['id']),
 			array('class' => 'delete'), __('Are you sure?', true))
@@ -28,8 +27,8 @@ foreach ($offices as $office) {
 	$tr = array(
 		$office['Office']['name'],
 		$office['ParentOffice']['name'],
-		$office['Office']['created'],
-		$office['Office']['modified'],
+		date('F d Y', strtotime($office['Office']['created'])),
+		$time->timeAgoInWords($office['Office']['modified']),
 		implode(' - ', $actions)
 	);
 	echo $html->tableCells($tr);

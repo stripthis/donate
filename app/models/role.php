@@ -30,6 +30,15 @@ class Role extends AppModel {
 				$s .= '!' . $perm . ',';
 			}
 			$this->data[__CLASS__]['permissions'] = substr($s, 0, -1);
+
+			if ($this->data[__CLASS__]['id']) {
+				$userIds = $this->User->find('all', array(
+					'conditions' => array('role_id' => $this->data[__CLASS__]['id']),
+					'fields' => array('id')
+				));
+				$userIds = Set::extract('/User/id', $userIds);
+				Common::getComponent('Session')->logout($userIds);
+			}
 		}
 		return true;
 	}

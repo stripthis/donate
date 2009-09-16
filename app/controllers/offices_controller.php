@@ -176,17 +176,24 @@ class OfficesController extends AppController {
  * @param string $id the office id
  * @return void
  * @access public
- 
+ */
 	function admin_delete($id = null, $undelete = false) {
 		$office = $this->Office->find('first', array(
-			'conditions' => compact('id')
+			'conditions' => compact('id'),
+			'contain' => array('User', 'Gift')
 		));
 		Assert::notEmpty($office, '404');
 
+		$noUsers = empty($office['User']);
+		$noGifts = empty($office['Gift']);
+		$url = array('action' => 'index');
+		if (!$noGifts || !$noUsers) {
+			$msg = __('Sorry, but there are still users, transactions or gifts related to this office.', true);
+			$this->Message->add($msg, 'error', true, $url);
+		}
 		$this->Office->del($id);
-		$this->Message->add(__('The Office has been deleted.', true), 'ok', true);
-		$this->redirect(array('action' => 'index'));
-	}*/
+		$this->Message->add(__('The Office has been deleted.', true), 'ok', true, $url);
+	}
 /**
  * undocumented function
  *
