@@ -288,6 +288,10 @@ input[type=submit] {
 .iconic.appeal{
   background-image:url(../img/icons/S/edit.png);
 }
+.iconic.user,
+.iconic.users{
+  background-image:url(../img/icons/S/users.png);
+}
 /***********************************************************************************
  * Layout 
  ***********************************************************************************/

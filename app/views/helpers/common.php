@@ -129,9 +129,8 @@ class CommonHelper extends Apphelper {
 			} else {
 				$allowed = Common::requestAllowed($controller, $action, $role['Role']['permissions']);
 			}
-			$items[$controller][$action] = (empty($allowed)) ? '0' : $allowed;
+			$items[$controller][$action] = $allowed;
 		}
-		
 		return $items;
 	}
 }

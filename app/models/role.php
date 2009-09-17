@@ -5,11 +5,11 @@ class Role extends AppModel {
 	
 	var $validate = array(
 		'description' => array(
-			'length' => array(
-					'allowEmpty' => false,
-					'rule' => array('maxLength', '255'),
-					'message' => 'The description length is limited to 256 characters.',
-					'is_required' => true,
+			'maxlength' => array(
+				'allowEmpty' => true,
+				'rule' => array('maxLength', '255'),
+				'message' => 'The description length is limited to 256 characters.',
+				'is_required' => false,
 			)
 		)
 	);
