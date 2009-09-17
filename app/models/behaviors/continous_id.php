@@ -1,6 +1,6 @@
 <?php 
 /**
- * Serialable Behavior Behavior class file.
+ * ContinousId Behavior Behavior class file.
  *
  * @filesource
  * @author Tim Koschuetzki
@@ -9,12 +9,12 @@
  * @subpackage app.models.behaviors
  */
 /**
- * Model behavior to support an uuid-independent unique id (serial) for a model object
+ * Model behavior to support an uuid-independent continous id for a model object
  *
  * @package app
  * @subpackage app.models.behaviors
  */
-class SerialableBehavior extends ModelBehavior {
+class ContinousIdBehavior extends ModelBehavior {
 /**
  * Contain settings indexed by model name.
  *
@@ -31,8 +31,8 @@ class SerialableBehavior extends ModelBehavior {
  */
 	function setup(&$Model, $settings = array()) {
 		$defaults = array(
-			'field' => 'serial',
-			'length' => 5
+			'field' => 'continous_id',
+			'offset' => '100000'
 		);
 		if (!isset($this->__settings[$Model->alias])) {
 			$this->__settings[$Model->alias] = $defaults;
@@ -52,7 +52,7 @@ class SerialableBehavior extends ModelBehavior {
  */
 	function afterSave($Model, $created) {
 		if ($created) {
-			$this->serial($Model, $Model->id, true);
+			$this->id($Model, $Model->id, true);
 		}
 		return true;
 	}
@@ -64,24 +64,34 @@ class SerialableBehavior extends ModelBehavior {
  * @return void
  * @access public
  */
-	function serial($Model, $id, $forceCreate = false) {
+	function id($Model, $id, $forceCreate = false) {
 		$field = $this->__settings[$Model->alias]['field'];
-		$length = $this->__settings[$Model->alias]['length'];
+		$offset = $this->__settings[$Model->alias]['offset'];
 		App::import('Core', 'Security');
-		if (!$forceCreate) {
-			$key = $Model->lookup(compact('id'), $field, false);
-			if (!empty($key)) {
-				return $key;
-			}
+
+		$key = $Model->lookup(compact('id'), $field, false);
+		if (!empty($key)) {
+			return $key;
 		}
 
-		do {
-			$key = Security::generateAuthKey();
-			$key = substr($key, 0, $length);
-		} while (!$Model->isUnique(array($field => $key)));
+		$last = $Model->find('all', array(
+			'order' => array($Model->alias . '.created' => 'desc'),
+			'limit' => 2
+		));
 
+		// take the last but one if possible, cause the last will be the just saved one (with id = $id)
+		if (isset($last[1])) {
+			$last = $last[1];
+		} else {
+			$last = false;
+		}
+
+		$key = $offset;
+		if (!empty($last) && $last[$Model->alias][$field] >= $offset) {
+			$key = $last[$Model->alias][$field] + 1;
+		}
 		$Model->set(array('id' => $id, $field => $key));
-		$Model->save();
+		$Model->save(null, false);
 		return $key;
 	}
 }
