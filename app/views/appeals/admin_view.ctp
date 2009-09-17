@@ -5,7 +5,6 @@
     <ul>
       <li><?php echo $html->link(__('Edit Appeal', true), array('action'=>'edit', $appeal['Appeal']['id']), array('class'=>'edit')); ?> </li>
       <li><?php echo $html->link(__('Delete Appeal', true), array('action'=>'delete', $appeal['Appeal']['id']),  array('class'=>'delete'), sprintf(__('Are you sure?', true), $appeal['Appeal']['id'])); ?> </li>
-      <li><?php echo $html->link(__('Appeal List', true), array('action'=>'index'),array('class'=>'index')); ?> </li>
     </ul>
   </div>
 	<dl>
@@ -16,7 +15,13 @@
     </dd>
     <dt><?php __('Parent'); ?></dt>
     <dd>
-      <?php echo $html->link($appeal['Parent']['name'], array('controller'=> 'appeals', 'action'=>'view', $appeal['Parent']['id'])); ?>
+      <?php
+		echo !empty($appeal['Parent']['name'])
+			? $html->link($appeal['Parent']['name'], array(
+				'controller'=> 'appeals', 'action'=>'view', $appeal['Parent']['id']
+			))
+			: '--';
+	?>
       &nbsp;
     </dd>
     <dt><?php __('Name'); ?></dt>
@@ -29,9 +34,9 @@
       <?php echo $appeal['Appeal']['campaign_code']; ?>
       &nbsp;
     </dd>
-    <dt><?php __('Default'); ?></dt>
+    <dt><?php __('Is Default'); ?></dt>
     <dd>
-      <?php echo $appeal['Appeal']['default']; ?>
+      <?php echo $appeal['Appeal']['default'] ? __('Yes', true) : __('No', true); ?>
       &nbsp;
     </dd>
     <dt><?php __('Cost'); ?></dt>
@@ -49,17 +54,17 @@
       <?php echo $appeal['Appeal']['status']; ?>
       &nbsp;
     </dd>
-    <dt><?php __('User'); ?></dt>
+    <dt><?php __('Created By'); ?></dt>
     <dd>
       <?php echo $html->link($appeal['User']['login'], array('controller'=> 'users', 'action'=>'view', $appeal['User']['id'])); ?>
       &nbsp;
     </dd>
-    <dt><?php __('Created'); ?></dt>
+    <dt><?php __('Created On'); ?></dt>
     <dd>
       <?php echo $appeal['Appeal']['created']; ?>
       &nbsp;
     </dd>
-    <dt><?php __('Modified'); ?></dt>
+    <dt><?php __('Last Modified'); ?></dt>
     <dd>
       <?php echo $appeal['Appeal']['modified']; ?>
       &nbsp;
