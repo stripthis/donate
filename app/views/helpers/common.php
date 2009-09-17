@@ -118,16 +118,17 @@ class CommonHelper extends Apphelper {
 		$controller = '';
 		$action = '';
 		$items = array();
-		
+
 		foreach ($permissions as $perm) {
 			$perm = trim($perm);
 			$permData = explode(':', $perm);
 			$controller = $permData[0];
 			$action = $permData[1];
-			if(!isset($role['Role']['permissions'])) {
+
+			if (!isset($role['Role']['permissions'])) {
 				$allowed = '0';
 			} else {
-				$allowed = Common::requestAllowed($controller, $action, $role['Role']['permissions']);
+				$allowed = Common::requestAllowed($controller, $action, $role['Role']['permissions'], true);
 			}
 			$items[$controller][$action] = $allowed;
 		}
