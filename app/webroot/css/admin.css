@@ -192,7 +192,7 @@ input[type=checkbox] {
   clear:left;
   float:left;
   width:auto;
-  margin:0.1em 5px 0 2px;
+  margin:6px 5px 0 2px;
 }
 label input.checkbox{
   padding:0;
@@ -232,7 +232,8 @@ input[type=submit] {
   padding:5px 5px;
   width:auto;
   vertical-align:bottom;
-  -moz-border-radius:5px;
+  -moz-border-ra
+  dius:5px;
 }
 
 /* iconic polution */
@@ -250,12 +251,16 @@ input[type=submit] {
 .iconic.profile{
   background-image:url(../img/icons/S/profile.png);
 }
+.iconic.transactions{
+  background-image:url(../img/icons/S/arrow_rotate_clockwise.png);
+}
 .iconic.transaction.up{
   background-image:url(../img/icons/S/arrow_right.png);
 }
 .iconic.transaction.down{
   background-image:url(../img/icons/S/arrow_left.png);
 }
+.iconic.gifts,
 .iconic.gift.creditcard{
   background-image:url(../img/icons/S/creditcards.png);
 }
@@ -274,6 +279,14 @@ input[type=submit] {
 .iconic.info,
 .iconic.information{
   background-image:url(../img/icons/S/information.png);
+}
+.iconic.export,
+.iconic.exports{
+  background-image:url(../img/icons/S/export.png);
+}
+.iconic.appeals,
+.iconic.appeal{
+  background-image:url(../img/icons/S/edit.png);
 }
 /***********************************************************************************
  * Layout 
@@ -679,19 +692,31 @@ ul.selector li ul.subitem li a{
 	font-size:1.1em;
 	padding-left:5px;
 }
-
 /* forms layout */
 .content .half{
 	float:left;
-	width:45%;
-	min-width:300px;
+	width:40%;
+	min-width:100px;
 	margin:0;
+	padding:0 5px;
 	clear:none;
+}
+.content .half.left{
+	margin-right:15px;
+	clear:left;
+}
+.content .half.right{
+	clear:right;
 }
 .content .full{
 	width:552px;
+	width:98%;
 }
-
+.content fieldset.half{
+	margin-top:10px;
+}
+.content .half label{
+}
 /* menu */
 .content .menu{
 	padding:10px 10px 5px 0px;

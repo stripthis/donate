@@ -1,33 +1,37 @@
 <?php
-$title = $action == 'add'
-			? __('Add a role', true)
-			: sprintf(__('Manage the role %s', true), $role['Role']['name']);
+  $title = $action == 'add' ? __('Add a role', true) : __('Manage roles', true).': '. $role['Role']['name'];
+  $permissions = $common->getPermissions($role);
+  $i = $j = 0;
 ?>
-<h1><?php echo $this->pageTitle = $title; ?></h1>
-
-<?php
-echo $form->create('Role', array('url' => $this->here));
-echo $form->input('id', array('type' => 'hidden'));
-echo $form->input('name', array('label' => 'Name:'));
-?>
-
-<h3>Permissions</h3>
-<?php
-$permissions = Configure::read('App.permission_options');
-
-foreach ($permissions as $perm) {
-	$perm = trim($perm);
-	$permData = explode(':', $perm);
-	$controller = $permData[0];
-	$action = $permData[1];
-
-	$label = $controller . ' ' . Inflector::humanize($action);
-	$checked = Common::requestAllowed($controller, $action, $role['Role']['permissions'], true);
-	echo $form->input('permissions.' . $perm, array(
-		'label' => $label,
-		'type' => 'checkbox', 'value' => '',
-		'checked' => $checked ? 'checked' : ''
-	));
-}
-echo $form->end('Save');
-?>
+    <div class="content">
+      <h1><?php echo $this->pageTitle = $title; ?></h1>
+      <?php echo $form->create('Role', array('url' => $this->here)); ?>
+      <?php echo $form->input('id', array('type' => 'hidden')); ?>
+      <fieldset>
+        <legend><?php echo __('Role Name',true); ?>: </legend>
+        <?php echo $form->input('name', array('label' => __('Name',true).':')); ?>
+        <?php echo $form->input('description', array('label' => __('Description',true).':')); ?>
+      </fieldset>
+<?php foreach($permissions as $controller => $actions): $j++; $i=0; ?>
+      <fieldset class="half <?php echo ($j%2) ? 'left' : 'right'; ?>" >
+        <legend class="iconic <?php echo low($controller); ?>"><?php echo __(Inflector::humanize($controller),true); //@todo valid i18n? ?></legend>
+        <div class="half">
+<?php foreach($actions as $action => $checked): $i++; ?>
+	<?php if(count($actions) > 1 && $i > count($actions)/2) : $i=0; ?>
+				</div>
+				<div class="half">
+	<?php endif; ?>
+				<?php 
+          echo $form->input('permissions.' . $controller . ':' . $action, array(
+            'label' => str_replace('Admin ','',Inflector::humanize($action)),
+            'type' => 'checkbox', 'value' => '',
+            'checked' => $checked ? 'checked' : ''
+          ));
+        ?>
+<?php endforeach; ?>
+        </div>
+      </fieldset>
+<?php endforeach; ?>
+      <div class="spacer"></div>
+      <?php echo $form->end('Save'); ?>
+    </div>

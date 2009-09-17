@@ -2,6 +2,18 @@
 class Role extends AppModel {
 	var $hasMany = array('User');
 	var $unEditable = array('guest', 'root');
+	
+	var $validate = array(
+		'description' => array(
+			'length' => array(
+					'allowEmpty' => false,
+					'rule' => array('maxLength', '255'),
+					'message' => 'The description length is limited to 256 characters.',
+					'is_required' => true,
+			)
+		)
+	);
+	
 /**
  * undocumented function
  *
