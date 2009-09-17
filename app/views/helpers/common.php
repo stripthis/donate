@@ -108,5 +108,30 @@ class CommonHelper extends Apphelper {
 		}
 		return $msg;
 	}
+/**
+ * Get and group permissions
+ * @param 	$role (optional)
+ * @return  arrray $item[$controller][$action]
+ */
+	static function getPermissions($role=null){
+		$permissions = Configure::read('App.permission_options');
+		$controller = '';
+		$action = '';
+		$items = array();
+		
+		foreach ($permissions as $perm) {
+			$perm = trim($perm);
+			$permData = explode(':', $perm);
+			$controller = $permData[0];
+			$action = $permData[1];
+			if(!isset($role['Role']['permissions'])) {
+				$allowed = '0';
+			} else {
+				$allowed = Common::requestAllowed($controller, $action, $role['Role']['permissions']);
+			}
+			$items[$controller][$action] = $allowed;
+		}
+		return $items;
+	}
 }
 ?>

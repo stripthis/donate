@@ -35,7 +35,12 @@ $config = array(
 		'Gifts:admin_add', 'Gifts:admin_edit', 'Gifts:admin_delete', 'Gifts:admin_view',
 		'Transactions:admin_add', 'Transactions:admin_edit', 'Transactions:admin_delete',
 		'Transactions:admin_view', 'Transactions:admin_export', 'Transactions:admin_import',
-		'Users:admin_add', 'Users:admin_edit', 'Exports:admin_gifts'
+		'Users:admin_add', 'Users:admin_edit', 'Users:admin_view', 'Users:admin_delete',
+		'Roles:admin_view', 'Roles:admin_add', 'Roles:admin_edit', 'Roles:admin_delete',
+		'Exports:admin_gifts',
+		'Offices:admin_view', 'Offices:admin_add', 
+		'Bugs:admin_view', 'Bugs:admin_add'
+		/* @todo roles, bugs */
 	),
 	'App.use_email_activation' => false,
 	'App.lead_dev_email' => 'rbertot@greenpeace.org',
