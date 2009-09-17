@@ -5,7 +5,5 @@
 		'type' => 'admin_help_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
 ?>
-	  <p class="empty">
-	    Comming soon...
-	  </p>
+	  <p class="empty">Coming soon...</p>
 	</div>

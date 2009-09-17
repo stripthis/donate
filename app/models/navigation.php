@@ -100,19 +100,19 @@ class Navigation extends AppModel{
 				)
 				, __('One Off', true) => array(
 					'/admin/gifts/index/oneoff'
-					, '#/^\/admin\/gifts\/oneoff.*$/iU'
+					, '#/^\/admin\/gifts\/index\/oneoff.*$/iU'
 				)
 				, __('Recurring', true) => array(
 					'/admin/gifts/index/recurring'
-					, '#/^\/admin\/gifts\/recurring.*$/iU'
+					, '#/^\/admin\/gifts\/index\/recurring.*$/iU'
 				)
 				, __('Favorites', true) => array(
 					'/admin/gifts/index/favorites'
-					, '#/^\/admin\/gifts\/favorites.*$/iU'
+					, '#/^\/admin\/gifts\/index\/favorites.*$/iU'
 				)
 				, __('Archived', true) => array(
 					'/admin/gifts/index/archived'
-					, '#/^\/admin\/gifts\/archived.*$/iU'
+					, '#/^\/admin\/gifts\/index\/archived.*$/iU'
 				)
 			)
 			, 'transaction_sub' => array(

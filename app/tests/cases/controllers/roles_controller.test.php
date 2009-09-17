@@ -26,46 +26,55 @@ class RolesControllerTest extends MyTestCase {
  * @return void
  * @access public
  */
-	function testProperTabsAreShown() {
+	function testProperTabsAreShownAndSelected() {
 		$this->loadFixtures('User', 'Role', 'Office');
 		User::logout();
 		$markup = $this->testAction('/admin/auth/login', array('return' => 'contents'));
 		$this->true(preg_match('/Please enter your login details/', $markup));
 
-		$id = $this->User->lookup(array('login' => 'root@greenpeace.org'), 'id', false);
-		User::login($id, true);
-		$markup = $this->testAction('/admin/home', array('return' => 'contents'));
-		$this->true(preg_match('/<a href="\/admin\/home" class="selected">Home<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/appeals\/index\/all">Appeals<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/gifts\/index\/all">Gifts<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/transactions\/index\/all">Transactions<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/supporters">Supporters<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/dashboards">Admin<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/help">Help<\/a>/', $markup));
-		User::logout();
+		$tabs = array(
+			'root@greenpeace.org' => array(
+				'/admin/home' => 'Home',
+				'/admin/appeals/index/all' => 'Appeals',
+				'/admin/gifts/index/all' => 'Gifts',
+				'/admin/transactions/index/all' => 'Transactions',
+				'/admin/supporters' => 'Supporters',
+				'/admin/dashboards' => 'Admin',
+				'/admin/help' => 'Help',
+			),
+			'admin@greenpeace.org' => array(
+				'/admin/home' => 'Home',
+				'/admin/appeals/index/all' => 'Appeals',
+				'/admin/gifts/index/all' => 'Gifts',
+				'/admin/transactions/index/all' => 'Transactions',
+				'/admin/supporters' => 'Supporters',
+				'/admin/help' => 'Help',
+			),
+			'superadmin@greenpeace.org' => array(
+				'/admin/home' => 'Home',
+				'/admin/appeals/index/all' => 'Appeals',
+				'/admin/gifts/index/all' => 'Gifts',
+				'/admin/transactions/index/all' => 'Transactions',
+				'/admin/supporters' => 'Supporters',
+				'/admin/offices/edit' => 'Office Config',
+				'/admin/help' => 'Help',
+			)
+		);
+		foreach ($tabs as $login => $myTabs) {
+			$id = $this->User->lookup(array('login' => $login), 'id', false);
+			User::login($id, true);
+			$markup = $this->testAction('/admin/home', array('return' => 'contents'));
 
-		$id = $this->User->lookup(array('login' => 'admin@greenpeace.org'), 'id', false);
-		User::login($id, true);
-		$markup = $this->testAction('/admin/home', array('return' => 'contents'));
-		$this->true(preg_match('/<a href="\/admin\/home" class="selected">Home<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/appeals\/index\/all">Appeals<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/gifts\/index\/all">Gifts<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/transactions\/index\/all">Transactions<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/supporters">Supporters<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/help">Help<\/a>/', $markup));
-		User::logout();
+			foreach ($myTabs as $link => $label) {
+				$pattern = '/<a href="' . r('/', '\\/', $link) . '"[^>]*>' . $label . '<\/a>/';
+				$this->true(preg_match($pattern, $markup));
 
-		$id = $this->User->lookup(array('login' => 'superadmin@greenpeace.org'), 'id', false);
-		User::login($id, true);
-		$markup = $this->testAction('/admin/home', array('return' => 'contents'));
-		$this->true(preg_match('/<a href="\/admin\/home" class="selected">Home<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/appeals\/index\/all">Appeals<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/gifts\/index\/all">Gifts<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/transactions\/index\/all">Transactions<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/supporters">Supporters<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/offices\/edit">Office Config<\/a>/', $markup));
-		$this->true(preg_match('/<a href="\/admin\/help">Help<\/a>/', $markup));
-		User::logout();
+				$markup = $this->testAction($link, array('return' => 'contents'));
+				$pattern = '/<a href="' . r('/', '\\/', $link) . '" class="selected">' . $label . '<\/a>/';
+				$this->true(preg_match($pattern, $markup));
+			}
+			User::logout();
+		}
 	}
 }
 ?>
