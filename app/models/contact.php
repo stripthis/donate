@@ -39,6 +39,12 @@ class Contact extends AppModel {
 				'is_required' => true,
 				'message' => 'Please enter a valid email address.'
 			)
+		),
+		'dob' => array(
+			'valid' => array(
+				'rule' => 'date',
+				'message' => 'Please enter a valid date of birth.'
+			)
 		)
 	);
 /**
