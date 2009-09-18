@@ -108,5 +108,79 @@
 			&nbsp;
 		</dd>
 	</dl>
+	
+	<h2><?php __('Transactions') ?></h2>
+	<?php if (!empty($transactions)) : ?>
+		<table>
+		<?php
+		$th = array(
+			__('Status', true),
+			__('Id', true),
+			__('External ID', true),
+			__('Amount', true),
+			__('Gateway', true),
+			__('Created', true),
+			'Actions'
+		);
+
+		echo $html->tableHeaders($th);
+		foreach ($transactions as $t) {
+			$actions = array(
+				$html->link(__('View', true), array(
+					'action' => 'view', $t['Transaction']['id']),array('class'=>'view'
+				)),
+				$html->link(__('Delete', true), array('action' => 'delete', $t['Transaction']['id']),
+					array('class'=>'delete'), __('Are you sure?', true))
+			);
+
+			$parent = '';
+			if (!empty($t['ParentTransaction']['id'])) {
+				$parent = $html->link($t['ParentTransaction']['id'], array(
+					'controller' => 'transactions', 'action' => 'view', $t['ParentTransaction']['id']
+				));
+			}
+
+			$tr = array(
+				$t['Transaction']['status'],
+				$t['Transaction']['serial'],
+				$t['Transaction']['external_id'],
+				$t['Transaction']['amount'].' EUR', //@todo currency
+				$t['Gateway']['name'],
+				$t['Transaction']['created'],
+				implode(' - ', $actions)
+			);
+			echo $html->tableCells($tr);
+
+			if (!empty($t['ChildTransaction'])) {
+				foreach ($t['ChildTransaction'] as $t) {
+					$actions = array(
+						$html->link(__('View', true), array(
+							'action' => 'view', $t['Transaction']['id']), array('class' => 'view'
+						)),
+						$html->link(__('Delete', true), array(
+							'action' => 'delete', $t['Transaction']['id']), array('class' => 'delete'),
+							__('Are you sure?', true))
+
+					);
+					$id = $html->link($t['Transaction']['id'], array(
+						'controller' => 'transactions', 'action' => 'view', $t['Transaction']['id']
+					));
+					$tr = array(
+						$t['Transaction']['status'],
+						$id,
+						$t['Gateway']['name'],
+						$t['Transaction']['amount'],
+						$t['Transaction']['external_id'],
+						$t['Transaction']['created'],
+						$actions
+					);
+				}
+			}
+		}
+		?>
+		</table>
+	<?php else : ?>
+	    <p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
+	<?php endif; ?>
+	<?php echo $this->element('comments', array('item' => $gift, 'items' => $comments, 'plugin' => 'comments'))?>
 </div>
-<?php echo $this->element('comments', array('item' => $gift, 'items' => $comments, 'plugin' => 'comments'))?>

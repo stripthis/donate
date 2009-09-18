@@ -361,20 +361,27 @@ class GiftsController extends AppController {
 		$gift = $this->Gift->find('first', array(
 			'conditions' => array('Gift.id' => $id),
 			'contain' => array(
-				'Contact.Address.Phone', 'Contact.Address.Country(id, name)',
-				'Contact.Address.State(id, name)', 'Contact.Address.City(id, name)',
+				'Contact.Address.Phone',
+				'Contact.Address.Country(id, name)',
+				'Contact.Address.State(id, name)',
+				'Contact.Address.City(id, name)',
 				'Office(id, name)', 'Appeal'
 			)
 		));
 		Assert::notEmpty($gift, '404');
 		Assert::true(User::allowed($this->name, $this->action, $gift), '403');
 
+		$transactions = $this->Transaction->find('threaded', array(
+			'conditions' => array('Transaction.gift_id' => $id),
+			'contain' => array('Gateway(name)')
+		));
+
 		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
 		$comments = $this->Gift->Comment->find($commentMethod, array(
 			'conditions' => array('Comment.foreign_id' => $id),
 			'contain' => array('User(login, id)')
 		));
-		$this->set(compact('gift', 'comments', 'commentMethod'));
+		$this->set(compact('gift', 'comments', 'commentMethod', 'transactions'));
 	}
 /**
  * undocumented function
