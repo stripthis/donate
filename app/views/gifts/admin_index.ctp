@@ -6,6 +6,7 @@ $options = array(
 $urlParams = $params;
 $urlParams[] = $type;
 $urlParams['merge'] = true;
+
 unset($urlParams['ext']);
 unset($urlParams['page']);
 ?>
