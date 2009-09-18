@@ -81,7 +81,6 @@ $favConfig = Configure::read('Favorites');
 		?>
 		</table>
 		<?php
-		echo $form->end();
 		$urlParams = $params;
 		$urlParams[] = $type;
 		unset($urlParams['ext']);
@@ -92,5 +91,6 @@ $favConfig = Configure::read('Favorites');
 	<?php else : ?>
 		<p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
 	<?php endif; ?>
+	<?php echo $form->end(); ?>
 	<?php echo $this->element('../supporters/elements/filter', compact('params', 'type')); ?>
 </div>

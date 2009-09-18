@@ -72,12 +72,12 @@ unset($urlParams['page']);
 				</tbody>
 			</table>
 		</div>
+		<?php echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams)); ?>
 	<?php else : ?>
 		<p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
 	<?php endif; ?>
 	<?php
 	echo $form->end();
-	echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));
 	echo $this->element('../gifts/elements/filter', compact('params', 'type'));
 	?>
 </div>

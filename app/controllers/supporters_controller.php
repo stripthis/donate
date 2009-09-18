@@ -14,6 +14,9 @@ class SupportersController extends AppController {
 
 		$this->User = ClassRegistry::init('User');
 		$this->Gift = ClassRegistry::init('Gift');
+		$this->Address = ClassRegistry::init('Address');
+		$this->Country = $this->Address->Country;
+		$this->City = $this->Address->City;
 	}
 /**
  * undocumented function
@@ -87,23 +90,31 @@ class SupportersController extends AppController {
 		if (!empty($params['keyword'])) {
 			$params['keyword'] = trim($params['keyword']);
 			switch ($params['search_type']) {
-				case 'gift':
-					$conditions['Gift.serial LIKE'] = '%' . $params['keyword'] . '%';
+				case 'fname':
+					$conditions['Contact.fname LIKE'] = '%' . $params['keyword'] . '%';
 					break;
-				case 'appeal':
-					$conditions['Appeal.name LIKE'] = '%' . $params['keyword'] . '%';
+				case 'country':
+					$countryId = $this->Country->lookup($params['keyword'], 'id', false);
+					$addresses = $this->Address->find('all', array(
+						'conditions' => array('country_id' => $countryId),
+						'fields' => array('contact_id')
+					));
+					$conditions['Contact.id'] = Set::extract('/Address/contact_id', $addresses);
 					break;
-				case 'person':
+				case 'city':
+					$cities = $this->City->find('all', array(
+						'conditions' => array('name' => $params['keyword']),
+						'fields' => array('id')
+					));
+					$addresses = $this->Address->find('all', array(
+						'conditions' => array('city_id' => Set::extract('/City/id', $cities)),
+						'fields' => array('contact_id')
+					));
+					$conditions['Contact.id'] = Set::extract('/Address/contact_id', $addresses);
+					break;
+				case 'name':
 					$key = "CONCAT(Contact.fname,' ',Contact.lname)";
 					$conditions[$key . ' LIKE'] = '%' . $params['keyword'] . '%';
-					break;
-				default:
-					$conditions['or'] = array(
-						'Gift.serial LIKE' => '%' . $params['keyword'] . '%',
-						'Appeal.name LIKE' => '%' . $params['keyword'] . '%',
-						'Office.name LIKE' => '%' . $params['keyword'] . '%',
-						"CONCAT(Contact.fname,' ',Contact.lname) LIKE" => '%' . $params['keyword'] . '%'
-					);
 					break;
 			}
 		}
