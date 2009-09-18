@@ -37,13 +37,13 @@
 <?php endif; ?>
             </th>
             <th class="description">
-              <?php echo $myPaginator->sort(__('firstname',true),'Contact.fname'); ?> 
-              <?php echo $myPaginator->sort(__('last name',true),'Contact.lname'); ?>
-              <?php echo $myPaginator->sort(__('email',true),'Contact.email'); ?>
+              <?php echo $myPaginator->sort(__('First Name',true),'Contact.fname'); ?> 
+              <?php echo $myPaginator->sort(__('Last Name',true),'Contact.lname'); ?>
+              <?php echo $myPaginator->sort(__('Email',true),'Contact.email'); ?>
             </th>
             <th class="attachments">&nbsp;</th>
             <th class="comments">&nbsp;</th>
-            <th class="date"><?php echo $myPaginator->sort(__('date',true),'Gift.modified'); ?></th>
+            <th class="date"><?php echo $myPaginator->sort(__('Date',true),'Gift.modified'); ?></th>
             <th class="grab"></th>
           </tr>
           </thead>

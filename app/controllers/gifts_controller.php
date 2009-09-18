@@ -317,7 +317,7 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_add() {
+	function admin_add($contactId = false) {
 		$this->params['named']['appeal_id'] = $this->Appeal->lookup(
 			array(
 				'office_id' => $this->Session->read('Office.id'),
@@ -325,6 +325,8 @@ class GiftsController extends AppController {
 				'admin' => true
 			), 'id', false
 		);
+		// $this->Session->write('contact_id', $contactId);
+		// $this->set(compact('contactId'));
 		$this->add();
 	}
 /**

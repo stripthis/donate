@@ -1,12 +1,12 @@
 <?php
 $links = array(
-	array(
-		'name' => __('Add Gift', true),
-		'label'=>'add', 'uri' => array(
-			'action' => 'add', 'all', 'admin' => true
-		),
-		'options'=>array('class' => 'gift_add')
-	),
+	// array(
+	// 	'name' => __('Add Gift', true),
+	// 	'label'=>'add', 'uri' => array(
+	// 		'action' => 'add', 'all', 'admin' => true
+	// 	),
+	// 	'options'=>array('class' => 'gift_add')
+	// ),
 	/* @TODO Import
 	array(
 		'name' => __('Import Gifts Data', true),
