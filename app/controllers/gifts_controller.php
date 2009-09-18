@@ -373,7 +373,8 @@ class GiftsController extends AppController {
 
 		$transactions = $this->Transaction->find('threaded', array(
 			'conditions' => array('Transaction.gift_id' => $id),
-			'contain' => array('Gateway(name)')
+			'contain' => array('Gateway(name)'),
+			'order' => array('Transaction.created' => 'asc')
 		));
 
 		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
