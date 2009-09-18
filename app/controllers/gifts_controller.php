@@ -318,16 +318,36 @@ class GiftsController extends AppController {
  * @access public
  */
 	function admin_add($contactId = false) {
-		$this->params['named']['appeal_id'] = $this->Appeal->lookup(
+		$countryOptions = $this->Country->find('list', array(
+			'order' => array('Country.name' => 'asc')
+		));
+		$contact = $this->Contact->find('first', array(
+			'conditions' => array('id' => $contactId),
+		));
+		$this->set(compact('countryOptions', 'contact'));
+		if ($this->isGet()) {
+			return;
+		}
+
+		if (isset($this->data['Gift']['amount_other']) && !empty($this->data['Gift']['amount_other'])) {
+			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
+		}
+ 		$this->data['Gift']['appeal_id'] = $this->Appeal->lookup(
 			array(
 				'office_id' => $this->Session->read('Office.id'),
 				'name LIKE' => '%Admin%',
 				'admin' => true
 			), 'id', false
 		);
-		// $this->Session->write('contact_id', $contactId);
-		// $this->set(compact('contactId'));
-		$this->add();
+		$this->data['Gift']['contact_id'] = $contactId;
+
+		$this->Gift->set($this->data);
+		if (!$this->Gift->save()) {
+			$msg = __('There was a problem saving the gift.', true);
+			return $this->Message->add($msg, 'error');
+		}
+		$msg = __('The gift was successfully added!', true);
+		$this->Message->add($msg, 'ok', true, array('action' => 'add', $contactId));
 	}
 /**
  * undocumented function
