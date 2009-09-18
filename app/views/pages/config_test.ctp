@@ -1,9 +1,8 @@
-
 <h2>Sweet, our App got Baked by CakePHP!</h2>
 <?php
-if(Configure::read() > 0):
+if (Configure::read() > 0) {
 	Debugger::checkSessionKey();
-endif;
+}
 ?>
 <p>
 <?php

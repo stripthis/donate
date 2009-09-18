@@ -12,10 +12,10 @@
 		<p class="help"><?php __('Please provide your current and your new password.'); ?></p>
 		<div class="divider big"></div>
 		<?php if ($session->read('lost_password') == false) : ?>
-			<?php echo $form->input('User.current_password', array('label' => 'Current Password:', 'type' => 'password', 'style' => 'width: 350px;'));?>
+			<?php echo $form->input('User.current_password', array('label' => 'Current Password:', 'type' => 'password'));?>
 		<?php endif; ?>
-		<?php echo $form->input('User.password', array('label' => 'Password:', 'style' => 'width: 350px;')); ?>
-		<?php echo $form->input('User.repeat_password', array('label' => 'Repeat Password:', 'type' => 'password', 'style' => 'width: 350px;')); ?>
+		<?php echo $form->input('User.password', array('label' => 'Password:')); ?>
+		<?php echo $form->input('User.repeat_password', array('label' => 'Repeat Password:', 'type' => 'password')); ?>
 	</fieldset>
 	<div class="clear"></div>
 	<?php echo $form->submit('Save Changes'); ?>

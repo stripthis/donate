@@ -1,16 +1,17 @@
 <?php
-	$doFavorites = class_exists('Favorite') && Favorite::doForModel('supporter');
-	$favConfig = Configure::read('Favorites');
+$doFavorites = class_exists('Favorite') && Favorite::doForModel('supporter');
+$favConfig = Configure::read('Favorites');
 ?>
 <div class="content" id="Supporters_index">
-    <h2><?php echo __('Supporters');	?></h2>
+	<h2><?php echo __('Supporters');	?></h2>
 	<?php
 	echo $this->element('nav', array(
 		'type' => 'supporter_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
+	echo $form->create('supporter', array('url' => '/admin/exports/supporters', 'type' => 'post'));
+	echo $this->element('../supporters/elements/actions', array('export' => true));
 	?>
-		<?php echo $form->create('supporter', array('url' => '/admin/exports/supporters', 'type' => 'post')); ?>
-	<?php echo $this->element('../supporters/elements/actions', array('export' => true)); ?>
+
 	<?php if (!empty($supporters)) : ?>
 		<table>
 		<?php
@@ -25,7 +26,6 @@
 			$myPaginator->sort(__('Status',true),'supporter.status', array('url' => $params)),
 			$myPaginator->sort(__('Id',true),'supporter.serial', array('url' => $params)),
 			$myPaginator->sort(__('External ID',true),'supporter.external_id', array('url' => $params)),
-			//$myPaginator->sort(__('Parent',true),'supporter.parent_id', array('url' => $params)),
 			$myPaginator->sort(__('Amount',true),'supporter.amount', array('url' => $params)),
 			$myPaginator->sort(__('Gateway',true),'Gateway.parent_id', array('url' => $params)),
 			$myPaginator->sort(__('Gift',true),'supporter.gift_id', array('url' => $params)),
@@ -61,7 +61,6 @@
 				$t['supporter']['status'],
 				$t['supporter']['serial'],
 				$t['supporter']['external_id'],
-				//$parent,
 				$t['supporter']['amount'].' EUR', //@todo currency
 				$t['Gateway']['name'],
 				$gift,
