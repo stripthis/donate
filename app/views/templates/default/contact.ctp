@@ -29,6 +29,14 @@
           ?>
         </div>
         <div class="input_wrapper full">
+          <?php
+            echo $form->input('Contact.dob', array(
+              'label' => 'Date of Birth'. ': ' . $giftForm->required(),
+              'value' => $giftForm->value('Contact', 'dob', '', $form->data)
+            ))."\n";
+          ?>
+        </div>
+        <div class="input_wrapper full">
           <?php         
             echo $form->input('Address.line_1', array(
               'label' => 'Address'. ': ' . $giftForm->required(),

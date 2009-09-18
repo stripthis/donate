@@ -3,7 +3,13 @@
 	<div class="actions">
 		<h3>Actions</h3>
 		<ul>
-			<li><?php echo $html->link(__('New Post', true), array('action'=>'add'),array("class"=>"add")); ?></li>
+			<li>
+				<?php
+				echo $html->link(__('New Post', true),
+					array('action' => 'add'), array('class' => 'add')
+				);
+				?>
+			</li>
 		</ul>
 	</div>
 	<table cellpadding="0" cellspacing="0">
@@ -30,9 +36,21 @@
 			<td><?php echo $post['Post']['created']; ?></td>
 			<td><?php echo $post['Post']['modified']; ?></td>
 			<td class="actions">
-				<?php echo $html->link(__('View', true), array('action'=>'view', $post['Post']['id']),array('class'=>'view'))."\n"; ?>
-				<?php echo $html->link(__('Edit', true), array('action'=>'edit', $post['Post']['id']),array('class'=>'edit'))."\n"; ?>
-				<?php echo $html->link(__('Delete', true), array('action'=>'delete', $post['Post']['id']), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $post['Post']['id']))."\n"; ?>
+				<?php
+				echo $html->link(__('View', true),
+					array('action' => 'view', $post['Post']['id']),
+					array('class'=>'view')
+				)."\n";
+				echo $html->link(__('Edit', true),
+					array('action'=>'edit', $post['Post']['id']),
+					array('class'=>'edit')
+				)."\n";
+				echo $html->link(__('Delete', true),
+					array('action' => 'delete', $post['Post']['id']),
+					array('class'=>'delete'),
+					__('Are you sure?', true)
+				)."\n";
+				?>
 			</td>
 		</tr>
 		<?php endforeach; ?>

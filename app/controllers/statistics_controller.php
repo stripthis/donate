@@ -1,10 +1,4 @@
 <?php
-/**
- * undocumented class
- *
- * @package default
- * @access public
- */
 class StatisticsController extends AppController {
 	var $helpers = array('OpenFlashChart');
 	var $uses = array();
@@ -79,6 +73,7 @@ class StatisticsController extends AppController {
  * @access public
  */
 	function _conditions($field = 'created', $model = 'User') {
+		// @todo: measure archived time
 		return array(
 			'office_id' => $this->Session->read('Office.id'),
 			'archived' => '0',

@@ -10,18 +10,17 @@
 <?php echo $this->element('css_includes'); ?>
   <!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="/css/msie.css" /><![endif]-->
 <?php
-  if (isset($javascript)): 
-    echo $this->element('js_includes');
-  endif;
-  echo $scripts_for_layout;
+if (isset($javascript)) {
+	echo $this->element('js_includes');
+}
+echo $scripts_for_layout;
 ?>
 </head>
 <body>
-<?php echo $this->element('admin/debug_header'); ?>
-<div id="container">
-<?php echo $content_for_layout; ?>
-</div>
-<?php //echo $this->element('analytics') ?>
-<?php echo $cakeDebug; ?>
+	<?php echo $this->element('admin/debug_header'); ?>
+	<div id="container">
+		<?php echo $content_for_layout; ?>
+	</div>
+		<?php echo $cakeDebug; ?>
 </body>
 </html>

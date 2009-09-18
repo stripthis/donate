@@ -1,7 +1,7 @@
 <?php
 class Gift extends AppModel {
 	var $actsAs = array(
-		'Containable', 'Lookupable', 'Serialable'
+		'Containable', 'Lookupable', 'Serialable', 'ContinousId'
 	);
 
 	var $belongsTo = array(
@@ -268,7 +268,10 @@ class Gift extends AppModel {
  */
 	function softdelete($gifts) {
 		return $this->updateAll(
-			array('Gift.archived' => '"1"'),
+			array(
+				__CLASS__ . '.archived' => '"1"',
+				__CLASS__ . '.archived_time' => '"' . date('Y-m-d H:i:s') . '"'
+			),
 			array('Gift.id' => Set::extract('/Gift/id', $gifts))
 		);
 	}

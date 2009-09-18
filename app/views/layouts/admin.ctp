@@ -18,21 +18,20 @@
 </head>
 <body>
 <div id="container">
-<?php echo $this->element('messages')?>
-  <div id="header">
-    <h1><?php echo $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")); ?></h1>
-<?php echo $this->element('admin/country_selector'); ?>
-<?php echo $this->element('admin/users/badge'); ?>
-<?php //echo $this->element('admin/search'); ?>
-<?php echo $this->element('nav', array('type' => 'Admin', 'id' => 'menu_top', 'class' => 'menu')); ?>
-  </div>
-  <div id="content_wrapper">
-<?php echo $content_for_layout; ?>
-    <div class="sidebar_wrapper">
-<?php echo $this->element("admin/sidebar"); ?>
-    </div>
+	<?php echo $this->element('messages')?>
+	<div id="header">
+		<h1><?php echo $html->image("layout/logo_admin.jpg", array("alt"=>"greenpeace")); ?></h1>
+		<?php echo $this->element('admin/country_selector'); ?>
+		<?php echo $this->element('admin/users/badge'); ?>
+		<?php echo $this->element('nav', array('type' => 'Admin', 'id' => 'menu_top', 'class' => 'menu')); ?>
 	</div>
-<?php echo $this->element("admin/footer"); ?>
+	<div id="content_wrapper">
+		<?php echo $content_for_layout; ?>
+		<div class="sidebar_wrapper">
+			<?php echo $this->element("admin/sidebar"); ?>
+	    </div>
+	</div>
+	<?php echo $this->element("admin/footer"); ?>
 </div>
 <?php echo $cakeDebug; ?>
 </body>

@@ -144,7 +144,6 @@ class Navigation extends AppModel{
 					'/admin/transactions/index/archived'
 					, '#/^\/admin\/gifts\/transactions\/index\/archived.*$/iU'
 				)
-				
 			)
 			, 'user_sub' => array(
 				__('All', true) => array(
@@ -161,14 +160,19 @@ class Navigation extends AppModel{
 					'/admin/supporters'
 					, '#/^\/admin\/supporters$/iU'
 				)
-				, __('Signups', true) => array(
-					'/admin/supporters/index/signups'
-					, '#/^\/admin\/supporters\/index\/signups.*$/iU'
+				// , __('Signups', true) => array(
+				// 	'/admin/supporters/index/signups'
+				// 	, '#/^\/admin\/supporters\/index\/signups.*$/iU'
+				// )
+				, __('One-off', true) => array(
+					'/admin/supporters/index/oneoff'
+					, '#/^\/admin\/supporters\/index\/oneoff.*$/iU'
 				)
-				, __('Donors', true) => array(
-					'/admin/supporters/index/donors'
-					, '#/^\/admin\/supporters\/index\/donors.*$/iU'
-				)/*,
+				, __('Recurring', true) => array(
+					'/admin/supporters/index/recurring'
+					, '#/^\/admin\/supporters\/index\/recurring.*$/iU'
+				)
+				/*,
 				'Major Donors' => array(
 					'/admin/supporters/index/major_donors'
 					, '#/^\/admin\/supporters\/index\/major_donors.*$/iU'
@@ -176,10 +180,6 @@ class Navigation extends AppModel{
 				, __('Favorites', true) => array(
 					'/admin/supporters/index/favorites'
 					, '#/^\/admin\/supporters\/favorites.*$/iU'
-				)
-				, __('Archived', true) => array(
-					'/admin/supporters/index/archived'
-					, '#/^\/admin\/supporters\/archived.*$/iU'
 				)
 			)
 			, 'user_preferences' => array(

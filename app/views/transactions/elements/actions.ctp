@@ -1,9 +1,9 @@
 <?php
-if(!isset($links)){
+if (!isset($links)){
 	$links = array();
 }
-switch($this->action){
-	case "admin_index":
+switch ($this->action){
+	case 'admin_index':
 		/*
 		$links[] =	array(
 			'name' => __('Import Transactions Results', true),

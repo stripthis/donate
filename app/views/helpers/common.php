@@ -23,7 +23,7 @@ class CommonHelper extends Apphelper {
 		if (strlen($name) > $maxNameLength) {
 	 		$name = explode(' ',$name);
 			$length = count($name);
-	 		for ($i = 0; $i< $length - 1; $i++) {
+	 		for ($i = 0; $i < $length - 1; $i++) {
 	 			$name[0] = $name[0][0].'.';
 	 		}
 	 		$name = implode(' ',$name);
@@ -37,7 +37,10 @@ class CommonHelper extends Apphelper {
  */
 	function giftTextAmount(){
 		if (isset($this->Form->params['data']['Gift'])) {
-			if(isset($this->Form->params['data']['Gift']['amount']) && $this->Form->params['data']['Gift']['amount'] == $this->Form->params['data']['Gift']['amount_other']) {
+			if (
+				isset($this->Form->params['data']['Gift']['amount']) &&
+				$this->Form->params['data']['Gift']['amount'] == $this->Form->params['data']['Gift']['amount_other']
+			) {
 				return $this->Form->params['data']['Gift']['amount_other'];
 			}
 		}
@@ -75,7 +78,10 @@ class CommonHelper extends Apphelper {
  * undocumented function
  */
 	function getFoldClass($options){
-		return (isset($options['leaf']) && isset($options['parent_id']) && $options['leaf']) ? 'leaf wrapper_toggle_'.$options['parent_id'] : '';
+		return (
+			isset($options['leaf']) && isset($options['parent_id']) &&
+			$options['leaf'])
+			? 'leaf wrapper_toggle_' . $options['parent_id'] : '';
 	}
 /**
  * Get Months for gift date select options (credit card)
@@ -95,15 +101,15 @@ class CommonHelper extends Apphelper {
  */
 	function tooltip($tip=null,$options=array()){
 		$msg = '';
-		if(!empty($tip)) {
+		if (!empty($tip)) {
 			$user = User::get('User');
-			if(isset($user['tooltips']) && $user['tooltips']) {
+			if (isset($user['tooltips']) && $user['tooltips']) {
 				if (isset($options['class'])) {
 					$options['class'] .= " tooltip with_img information";
 				} else {
 					$options['class'] =  "tooltip with_img information";
 				}
-			  $msg =  '<span class="'.$options['class'].'" title="'.$tip.'">'.$tip.'</span>';
+				$msg =  '<span class="'.$options['class'].'" title="'.$tip.'">'.$tip.'</span>';
 			}
 		}
 		return $msg;
@@ -118,16 +124,17 @@ class CommonHelper extends Apphelper {
 		$controller = '';
 		$action = '';
 		$items = array();
-		
+
 		foreach ($permissions as $perm) {
 			$perm = trim($perm);
 			$permData = explode(':', $perm);
 			$controller = $permData[0];
 			$action = $permData[1];
-			if(!isset($role['Role']['permissions'])) {
+
+			if (!isset($role['Role']['permissions'])) {
 				$allowed = '0';
 			} else {
-				$allowed = Common::requestAllowed($controller, $action, $role['Role']['permissions']);
+				$allowed = Common::requestAllowed($controller, $action, $role['Role']['permissions'], true);
 			}
 			$items[$controller][$action] = $allowed;
 		}

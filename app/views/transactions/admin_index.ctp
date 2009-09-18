@@ -35,7 +35,6 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 		$myPaginator->sort(__('Status',true),'Transaction.status', array('url' => $params)),
 		$myPaginator->sort(__('Id',true),'Transaction.serial', array('url' => $params)),
 		$myPaginator->sort(__('External ID',true),'Transaction.external_id', array('url' => $params)),
-		//$myPaginator->sort(__('Parent',true),'Transaction.parent_id', array('url' => $params)),
 		$myPaginator->sort(__('Amount',true),'Transaction.amount', array('url' => $params)),
 		$myPaginator->sort(__('Gateway',true),'Gateway.parent_id', array('url' => $params)),
 		$myPaginator->sort(__('Gift',true),'Transaction.gift_id', array('url' => $params)),
@@ -70,7 +69,6 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 			$t['Transaction']['status'],
 			$t['Transaction']['serial'],
 			$t['Transaction']['external_id'],
-			//$parent,
 			$t['Transaction']['amount'].' EUR', //@todo currency
 			$t['Gateway']['name'],
 			$html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id'])),

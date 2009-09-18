@@ -12,12 +12,17 @@
 class FavoritesHelper extends Apphelper {
 	var $helpers = array('Html');
 	var $config; 
-	
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	function beforeRender() {
-	  $this->config = Configure::read('Favorites');
+		$this->config = Configure::read('Favorites');
 		$this->config['icons'] = array(
-	  	'fav' => '/img/icons/S/rate.png',
-	  	'unfav' => '/img/icons/S/unrate.png'
+			'fav' => '/img/icons/S/rate.png',
+			'unfav' => '/img/icons/S/unrate.png'
 		);
 	}
 /**

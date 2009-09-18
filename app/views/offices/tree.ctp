@@ -6,9 +6,7 @@ if (empty($offices)) {
 $depth = isset($depth) ? $depth : 1;
 echo '<ul>';
 foreach ($offices as $office) {
-	echo '<li>';
-	echo $office['Office']['name'];
-	echo '</li>';
+	echo '<li>' . $office['Office']['name'] . '</li>';
 	echo $this->element('../offices/tree', array('offices' => $office['children'], 'depth' => $depth + 1));
 }
 echo '</ul>';

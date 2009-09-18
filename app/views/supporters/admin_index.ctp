@@ -1,16 +1,17 @@
 <?php
-	$doFavorites = class_exists('Favorite') && Favorite::doForModel('supporter');
-	$favConfig = Configure::read('Favorites');
+$doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
+$favConfig = Configure::read('Favorites');
 ?>
 <div class="content" id="Supporters_index">
-    <h2><?php echo __('Supporters');	?></h2>
+	<h2><?php echo __('Supporters');	?></h2>
 	<?php
 	echo $this->element('nav', array(
 		'type' => 'supporter_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
+	echo $form->create('Gift', array('url' => '/admin/exports/supporters', 'type' => 'post'));
+	echo $this->element('../supporters/elements/actions', array('export' => true));
 	?>
-		<?php echo $form->create('supporter', array('url' => '/admin/exports/supporters', 'type' => 'post')); ?>
-	<?php echo $this->element('../supporters/elements/actions', array('export' => true)); ?>
+
 	<?php if (!empty($supporters)) : ?>
 		<table>
 		<?php
@@ -22,96 +23,74 @@
 			$th[] = $favorites->favall();
 		}
 		$th = am($th,array(
-			$myPaginator->sort(__('Status',true),'supporter.status', array('url' => $params)),
-			$myPaginator->sort(__('Id',true),'supporter.serial', array('url' => $params)),
-			$myPaginator->sort(__('External ID',true),'supporter.external_id', array('url' => $params)),
-			//$myPaginator->sort(__('Parent',true),'supporter.parent_id', array('url' => $params)),
-			$myPaginator->sort(__('Amount',true),'supporter.amount', array('url' => $params)),
-			$myPaginator->sort(__('Gateway',true),'Gateway.parent_id', array('url' => $params)),
-			$myPaginator->sort(__('Gift',true),'supporter.gift_id', array('url' => $params)),
-			$myPaginator->sort(__('Created',true),'supporter.created', array('url' => $params)),
-			$myPaginator->sort(__('Modified',true),'supporter.modified', array('url' => $params)),
+			$myPaginator->sort(__('Name',true), 'Contact.lname', array('url' => $params)),
+			$myPaginator->sort(__('Email',true), 'Contact.email', array('url' => $params)),
+			__('Phone', true),
+			__('Zip Code',true),
+			__('City',true),
+			__('Country',true),
+			$myPaginator->sort(__('Created',true), 'Contact.created', array('url' => $params)),
+			$myPaginator->sort(__('Modified',true), 'Contact.modified', array('url' => $params)),
 			'Actions'
 		));
 
 		echo $html->tableHeaders($th);
-		foreach ($Supporters as $t) {
+		foreach ($supporters as $t) {
 			$actions = array(
 				$html->link(__('View', true), array(
-					'action' => 'view', $t['supporter']['id']),array('class'=>'view'
+					'action' => 'view', $t['Gift']['id']),array('class'=>'view'
 				)),
-				$html->link(__('Delete', true), array('action' => 'delete', $t['supporter']['id']),
+				$html->link(__('Edit', true), array(
+					'action' => 'edit', $t['Contact']['id']), array('class'=>'edit'
+				)),
+				$html->link(__('Add Gift', true), array(
+					'controller' => 'gifts', 'action' => 'add', $t['Contact']['id']),
+					array('class'=>'add')
+				),
+				$html->link(__('Delete', true), array('action' => 'delete', $t['Gift']['id']),
 					array('class'=>'delete'), __('Are you sure?', true))
 			);
-		
-			$parent = '';
-			if (!empty($t['Parentsupporter']['id'])) {
-				$parent = $html->link($t['Parentsupporter']['id'], array(
-					'controller' => 'Supporters', 'action' => 'view', $t['Parentsupporter']['id']
-				));
-			}
 
 			$gift = $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id']));
 			$tr = array();
-			$tr[] = $form->checkbox($t['supporter']['id'], array('class'=>'checkbox'));
+			$tr[] = $form->checkbox($t['Gift']['id'], array('class'=>'checkbox'));
 			if ($doFavorites) {
-				$tr[] = $favorites->link("supporter", $t['supporter']['id']);
+				$tr[] = $favorites->link('Gift', $t['Gift']['id']);
 			}
 			$tr = am($tr,array(            
-				$t['supporter']['status'],
-				$t['supporter']['serial'],
-				$t['supporter']['external_id'],
-				//$parent,
-				$t['supporter']['amount'].' EUR', //@todo currency
-				$t['Gateway']['name'],
-				$gift,
-				$t['supporter']['created'],
-				$t['supporter']['modified'],
+				$t['Contact']['fname'] . ' ' . $t['Contact']['lname'],
+				$t['Contact']['email'],
+				isset($t['Contact']['Address'][0]['Phone'][0]['phone'])
+					? $t['Contact']['Address'][0]['Phone'][0]['phone']
+					: '--',
+				isset($t['Contact']['Address'][0]['zip'])
+					? $t['Contact']['Address'][0]['zip']
+					: '--',
+				isset($t['Contact']['Address'][0]['City']['name'])
+					? $t['Contact']['Address'][0]['City']['name']
+					: '--',
+				isset($t['Contact']['Address'][0]['Country']['name'])
+					? $t['Contact']['Address'][0]['Country']['name']
+					: '--',
+				date('Y-m-d H:i', strtotime($t['Contact']['created'])),
+				date('Y-m-d H:i', strtotime($t['Contact']['modified'])),
 				implode(' - ', $actions)
 			));
 			echo $html->tableCells($tr);
-
-			if (!empty($t['Childsupporter'])) {
-				foreach ($t['Childsupporter'] as $t) {
-					$actions = array(
-						$html->link(__('View', true), array(
-							'action' => 'view', $t['supporter']['id']), array('class' => 'view'
-						)),
-						$html->link(__('Delete', true), array(
-							'action' => 'delete', $t['supporter']['id']), array('class' => 'delete'),
-							__('Are you sure?', true))
-
-					);
-					$id = $html->link($t['supporter']['id'], array(
-						'controller' => 'Supporters', 'action' => 'view', $t['supporter']['id']
-					));
-					$tr = array(
-						$t['supporter']['status'],
-						$id,
-						$t['Gateway']['name'],
-						$t['supporter']['amount'],
-						$t['supporter']['external_id'],
-						$gift,
-						$t['supporter']['created'],
-				    $t['supporter']['modified'],
-						$actions
-					);
-				}
-			}
 		}
 		?>
 		</table>
 		<?php
-		echo $form->end();
 		$urlParams = $params;
 		$urlParams[] = $type;
 		unset($urlParams['ext']);
 		unset($urlParams['page']);
 		$urlParams['merge'] = true;
-		echo $this->element('paging', array('model' => 'supporter', 'url' => $urlParams));
+		echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));
 		?>
 	<?php else : ?>
 		<p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
 	<?php endif; ?>
+	<?php echo $form->end(); ?>
 	<?php echo $this->element('../supporters/elements/filter', compact('params', 'type')); ?>
 </div>

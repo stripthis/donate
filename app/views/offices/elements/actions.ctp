@@ -1,23 +1,5 @@
 <?php
-$links = array(
-	/*
-	array(
-		'name' => __('Add office', true),
-		'label'=>'add', 'uri' => array(
-			'action' => 'add', 'all', 'admin' => true
-		),
-		'options'=>array('class' => 'office_add')
-	),*/
-	/* @TODO Import
-	array(
-		'name' => __('Import Gifts Data', true),
-		'label'=>'add',
-		'uri' => array(
-			'action' => 'import', 'all', 'admin' => true
-		),
-		'options'=> array('class' =>' import')
-	)*/
-);
+$links = array();
 switch ($this->action) {
 	case "admin_edit":
 		if (!User::is('root')) {

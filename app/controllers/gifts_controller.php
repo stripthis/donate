@@ -317,15 +317,37 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_add() {
-		$this->params['named']['appeal_id'] = $this->Appeal->lookup(
+	function admin_add($contactId = false) {
+		$countryOptions = $this->Country->find('list', array(
+			'order' => array('Country.name' => 'asc')
+		));
+		$contact = $this->Contact->find('first', array(
+			'conditions' => array('id' => $contactId),
+		));
+		$this->set(compact('countryOptions', 'contact'));
+		if ($this->isGet()) {
+			return;
+		}
+
+		if (isset($this->data['Gift']['amount_other']) && !empty($this->data['Gift']['amount_other'])) {
+			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
+		}
+ 		$this->data['Gift']['appeal_id'] = $this->Appeal->lookup(
 			array(
 				'office_id' => $this->Session->read('Office.id'),
 				'name LIKE' => '%Admin%',
 				'admin' => true
 			), 'id', false
 		);
-		$this->add();
+		$this->data['Gift']['contact_id'] = $contactId;
+
+		$this->Gift->set($this->data);
+		if (!$this->Gift->save()) {
+			$msg = __('There was a problem saving the gift.', true);
+			return $this->Message->add($msg, 'error');
+		}
+		$msg = __('The gift was successfully added!', true);
+		$this->Message->add($msg, 'ok', true, array('action' => 'add', $contactId));
 	}
 /**
  * undocumented function
@@ -359,20 +381,28 @@ class GiftsController extends AppController {
 		$gift = $this->Gift->find('first', array(
 			'conditions' => array('Gift.id' => $id),
 			'contain' => array(
-				'Contact.Address.Phone', 'Contact.Address.Country(id, name)',
-				'Contact.Address.State(id, name)', 'Contact.Address.City(id, name)',
+				'Contact.Address.Phone',
+				'Contact.Address.Country(id, name)',
+				'Contact.Address.State(id, name)',
+				'Contact.Address.City(id, name)',
 				'Office(id, name)', 'Appeal'
 			)
 		));
 		Assert::notEmpty($gift, '404');
 		Assert::true(User::allowed($this->name, $this->action, $gift), '403');
 
+		$transactions = $this->Transaction->find('threaded', array(
+			'conditions' => array('Transaction.gift_id' => $id),
+			'contain' => array('Gateway(name)'),
+			'order' => array('Transaction.created' => 'asc')
+		));
+
 		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
 		$comments = $this->Gift->Comment->find($commentMethod, array(
 			'conditions' => array('Comment.foreign_id' => $id),
 			'contain' => array('User(login, id)')
 		));
-		$this->set(compact('gift', 'comments', 'commentMethod'));
+		$this->set(compact('gift', 'comments', 'commentMethod', 'transactions'));
 	}
 /**
  * undocumented function
