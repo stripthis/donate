@@ -288,9 +288,23 @@ input[type=submit] {
 .iconic.appeal{
   background-image:url(../img/icons/S/edit.png);
 }
-.iconic.user,
+.iconic.user{
+  background-image:url(../img/icons/S/user.png);
+}
 .iconic.users{
-  background-image:url(../img/icons/S/users.png);
+  background-image:url(../img/icons/S/group.png);
+}
+.iconic.role,
+.iconic.roles{
+  background-image:url(../img/icons/S/shield.png);
+}
+.iconic.office,
+.iconic.offices{
+  background-image:url(../img/icons/S/house.png);
+}
+.iconic.bug,
+.iconic.bugs{
+  background-image:url(../img/icons/S/bug.png);
 }
 /***********************************************************************************
  * Layout 
@@ -699,7 +713,7 @@ ul.selector li ul.subitem li a{
 /* forms layout */
 .content .half{
 	float:left;
-	width:40%;
+	width:46%;
 	min-width:100px;
 	margin:0;
 	padding:0 5px;
