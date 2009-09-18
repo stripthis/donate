@@ -30,11 +30,6 @@ $favConfig = Configure::read('Favorites');
 			$paginator->sort('Campaign Code', 'campaign_code', array('url' => $params)),
 			'Income',
 			'Signups',
-			//$paginator->sort('Default?', 'default', array('url' => $params)),
-			//$paginator->sort('Reviewed?', 'reviewed', array('url' => $params)),
-			//$paginator->sort('#Steps', 'steps', array('url' => $params)),
-			//$paginator->sort('Created By', 'user_id', array('url' => $params)),
-			//$paginator->sort('Created On', 'created', array('url' => $params)),
 			$paginator->sort('Last Update', 'modified', array('url' => $params)),
 			'Actions'
 		));
@@ -42,8 +37,6 @@ $favConfig = Configure::read('Favorites');
 		foreach ($appeals as $appeal) {
 			$actions = array(
 				$html->link(__('Config', true), array('action'=>'view', $appeal['Appeal']['id']),array('class'=>'view')),
-				//$html->link(__('Edit', true), array('action'=>'edit', $appeal['Appeal']['id']),array('class'=>'edit')),
-				//$html->link(__('Delete', true), array('action'=>'delete', $appeal['Appeal']['id']), array('class'=>'delete'), sprintf(__('Are you sure?', true), $appeal['Appeal']['id']))
 			);
 
 			if ($appeal['Appeal']['status'] != 'published') {
@@ -66,11 +59,6 @@ $favConfig = Configure::read('Favorites');
 				$appeal['Appeal']['campaign_code'],
 				'',
 				'',
-				//$appeal['Appeal']['default'],
-				//$appeal['Appeal']['reviewed'],
-				//$appeal['Appeal']['appeal_step_count'],
-				///$user,
-				//$appeal['Appeal']['created'],
 				$appeal['Appeal']['modified'],
 				implode(' - ', $actions)
 			));
