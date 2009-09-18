@@ -47,7 +47,10 @@ class Transaction extends AppModel {
  */
 	function softdelete($items) {
 		return $this->updateAll(
-			array(__CLASS__ . '.archived' => '"1"'),
+			array(
+				__CLASS__ . '.archived' => '"1"',
+				__CLASS__ . '.archived_time' => '"' . date('Y-m-d H:i:s') . '"'
+			),
 			array(__CLASS__ . '.id' => Set::extract('/' . __CLASS__ . '/id', $items))
 		);
 	}
