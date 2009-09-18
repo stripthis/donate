@@ -15,7 +15,6 @@ $i = $j = 0;
 		<?php echo $form->input('description', array('label' => __('Description',true).':')); ?>
 	</fieldset>
 	<?php foreach ($permissions as $controller => $actions) : $j++; $i = 0; ?>
-		<fieldset class="half <?php echo ($j%2) ? 'left' : 'right'; ?>" >
 		<fieldset class="half <?php echo ($j % 2) ? 'left' : 'right'; ?>" >
 			<legend class="iconic <?php echo low($controller); ?>">
 				<?php echo __(Inflector::humanize($controller),true); //@todo valid i18n? ?>
