@@ -1,3 +1,1 @@
-<?php
-echo $csv->build($items);
-?>
+<?php echo $csv->build($items); ?>

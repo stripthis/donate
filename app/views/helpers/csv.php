@@ -32,6 +32,5 @@ class CsvHelper extends Apphelper {
 		}
 		return implode("\n", $result);
 	}
-
 }
 ?>

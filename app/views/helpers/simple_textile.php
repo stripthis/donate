@@ -1,10 +1,4 @@
 <?php
-/**
- * undocumented class
- *
- * @package default
- * @access public
- */
 class SimpleTextileHelper extends Helper {
 /**
  * undocumented variable
