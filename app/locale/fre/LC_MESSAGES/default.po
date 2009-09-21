@@ -1,897 +1,1147 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: 2009-09-02 13:27+0200\n"
+"Project-Id-Version: Donate\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-21 11:14+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: Tim <tkoschuetzki@aol.com>\n"
+"Last-Translator: remy <remy.bertot@greenpeace.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: French\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: /home/remy/Work/www/donate/app/\n"
+"X-Poedit-SearchPath-0: ./controllers\n"
+"X-Poedit-SearchPath-1: ./models\n"
+"X-Poedit-SearchPath-2: ./views\n"
+"X-Poedit-SearchPath-3: ./webroot\n"
 
-#: /controllers/appeals_controller.php:136
-#: /controllers/offices_controller.php:156
-#: /controllers/users_controller.php:43;331
-msgid "Please fill out all fields"
-msgstr ""
-
-#: /controllers/appeals_controller.php:140
-msgid "Appeal was saved successfully."
-msgstr ""
-
-#: /controllers/appeals_controller.php:162
-msgid "The Appeal has been deleted."
-msgstr ""
-
-#: /controllers/auth_keys_controller.php:22
+#: controllers/auth_keys_controller.php:22
 msgid "Please go ahead and change your password now."
 msgstr ""
 
-#: /controllers/dashboards_controller.php:40
-msgid "The cache has been cleared."
+#: controllers/statistics_controller.php:122
+msgid "Sorry, the beginning date must be before the end date."
 msgstr ""
 
-#: /controllers/dashboards_controller.php:47
-msgid "The counter caches have been rebuilt."
-msgstr ""
-
-#: /controllers/gifts_controller.php:435
-msgid "Please choose a country first!"
-msgstr ""
-
-#: /controllers/offices_controller.php:24
+#: controllers/offices_controller.php:24
 msgid "This office is already active."
 msgstr ""
 
-#: /controllers/offices_controller.php:40
+#: controllers/offices_controller.php:41
 msgid "The office was successfully activated!"
 msgstr ""
 
-#: /controllers/offices_controller.php:181
-msgid "The Office has been deleted."
+#: controllers/offices_controller.php:163
+#: controllers/appeals_controller.php:147
+#: controllers/users_controller.php:72
+#: controllers/users_controller.php:362
+#: controllers/roles_controller.php:74
+msgid "Please fill out all fields"
+msgstr "Merci de remplie tout les champs"
+
+#: controllers/offices_controller.php:167
+#, fuzzy
+msgid "Office was saved successfully."
+msgstr "L'appel a été sauvergardé avec succes"
+
+#: controllers/offices_controller.php:191
+msgid "Sorry, but there are still users, transactions or gifts related to this office."
 msgstr ""
 
-#: /controllers/settings_controller.php:29
+#: controllers/offices_controller.php:195
+#, fuzzy
+msgid "The Office has been deleted."
+msgstr "L'appel a été supprimé"
+
+#: controllers/offices_controller.php:225
+msgid "Tree updated!"
+msgstr ""
+
+#: controllers/settings_controller.php:29
 msgid "The settings could not be updated."
 msgstr ""
 
-#: /controllers/settings_controller.php:31
+#: controllers/settings_controller.php:31
+#, fuzzy
 msgid "The settings were saved"
+msgstr "L'appel a été supprimé"
+
+#: controllers/dashboards_controller.php:32
+#, fuzzy
+msgid "The cache has been cleared."
+msgstr "L'appel a été supprimé"
+
+#: controllers/dashboards_controller.php:39
+msgid "The counter caches have been rebuilt."
 msgstr ""
 
-#: /controllers/transactions_controller.php:133
+#: controllers/transactions_controller.php:148
+#, fuzzy
 msgid "The Transaction has been deleted."
+msgstr "L'appel a été supprimé"
+
+#: controllers/gifts_controller.php:155
+#, php-format
+msgid "There was a problem processing the transaction: %s"
 msgstr ""
 
-#: /controllers/components/app_session.php:16
+#: controllers/gifts_controller.php:212
+msgid "Donation added!"
+msgstr ""
+
+#: controllers/gifts_controller.php:346
+msgid "There was a problem saving the gift."
+msgstr ""
+
+#: controllers/gifts_controller.php:349
+msgid "The gift was successfully added!"
+msgstr ""
+
+#: controllers/gifts_controller.php:371
+#: controllers/users_controller.php:193
+#: controllers/supporters_controller.php:151
+msgid "Successfully deleted!"
+msgstr ""
+
+#: controllers/gifts_controller.php:498
+msgid "Please choose a country first!"
+msgstr ""
+
+#: controllers/appeals_controller.php:151
+#, fuzzy
+msgid "The AAppeal was saved successfully."
+msgstr "L'appel a été sauvergardé avec succes"
+
+#: controllers/appeals_controller.php:173
+#, fuzzy
+msgid "The Appeal has been deleted."
+msgstr "L'appel a été supprimé"
+
+#: controllers/users_controller.php:89
+msgid "New Account for Greenpeace White Rabbit"
+msgstr ""
+
+#: controllers/users_controller.php:98
+#, php-format
+msgid "The admin account for %s has been created successfully. An email has been sent to the email address."
+msgstr ""
+
+#: controllers/users_controller.php:103
+#, fuzzy
+msgid "User was saved successfully."
+msgstr "L'appel a été sauvergardé avec succes"
+
+#: controllers/users_controller.php:213
+msgid "Sorry, but we have no record of an account for "
+msgstr ""
+
+#: controllers/users_controller.php:236
+msgid " Password Recovery"
+msgstr ""
+
+#: controllers/users_controller.php:243
+#, php-format
+msgid "A message has been sent to %s."
+msgstr ""
+
+#: controllers/users_controller.php:309
+msgid "A new activation email was sent."
+msgstr ""
+
+#: controllers/users_controller.php:342
+#, fuzzy
+msgid "Your password has been updated successfully."
+msgstr "L'appel a été supprimé"
+
+#: controllers/users_controller.php:368
+#, fuzzy
+msgid "Saved successfully."
+msgstr "L'appel a été sauvergardé avec succes"
+
+#: controllers/auth_controller.php:14
+msgid "You are logged in already!"
+msgstr ""
+
+#: controllers/auth_controller.php:20
+msgid "Good to see you again... But how come you are not logged in yet?!"
+msgstr ""
+
+#: controllers/auth_controller.php:67
+msgid "Sorry, but there is no activated user with these login credentials."
+msgstr ""
+
+#: controllers/roles_controller.php:77
+#, fuzzy
+msgid "Role was saved successfully."
+msgstr "L'appel a été sauvergardé avec succes"
+
+#: controllers/roles_controller.php:94
+#, fuzzy
+msgid "Role was successfully removed."
+msgstr "L'appel a été sauvergardé avec succes"
+
+#: controllers/components/app_session.php:16
 msgid "You must set the Configure::write('Session.model') in core.php to use model storage"
 msgstr ""
 
-#: /views/appeals/admin_add.ctp:2;17
-msgid "Add Appeal"
-msgstr ""
-
-#: /views/appeals/admin_add.ctp:4
-#: /views/appeals/admin_index.ctp:4
-#: /views/appeals/admin_view.ctp:4
-#: /views/gifts/admin_add.ctp:4
-#: /views/gifts/admin_edit.ctp:4
-#: /views/gifts/admin_view.ctp:4
-#: /views/offices/admin_add.ctp:4
-#: /views/offices/admin_edit.ctp:4
-#: /views/offices/admin_index.ctp:4
-#: /views/offices/admin_view.ctp:4
-#: /views/posts/admin_add.ctp:4
-#: /views/posts/admin_edit.ctp:4
-#: /views/posts/admin_index.ctp:16
-#: /views/posts/admin_view.ctp:4
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:4;130
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:4;130
-#: /views/transactions/admin_view.ctp:4
-#: /views/users/admin_index.ctp:4;15
-msgid "Actions"
-msgstr ""
-
-#: /views/appeals/admin_add.ctp:6;7
-#: /views/gifts/admin_add.ctp:9
-#: /views/gifts/admin_edit.ctp:10
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:12
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:12
-msgid "List Appeals"
-msgstr ""
-
-#: /views/appeals/admin_add.ctp:8
-msgid "New Parent"
-msgstr ""
-
-#: /views/appeals/admin_add.ctp:9
-#: /views/gifts/admin_add.ctp:7
-#: /views/gifts/admin_edit.ctp:8
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:10
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:10
-msgid "List Users"
-msgstr ""
-
-#: /views/appeals/admin_add.ctp:10
-#: /views/gifts/admin_add.ctp:8
-#: /views/gifts/admin_edit.ctp:9
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:11
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:11
-#: /views/users/admin_index.ctp:6
-msgid "New User"
-msgstr ""
-
-#: /views/appeals/admin_add.ctp:11
-#: /views/gifts/admin_add.ctp:11
-#: /views/gifts/admin_edit.ctp:12
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:14
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:14
-msgid "List Countries"
-msgstr ""
-
-#: /views/appeals/admin_add.ctp:12
-#: /views/gifts/admin_add.ctp:12
-#: /views/gifts/admin_edit.ctp:13
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:15
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:15
-msgid "New Country"
-msgstr ""
-
-#: /views/appeals/admin_index.ctp:2
-#: /views/elements/admin/menu.ctp:7
-#: /views/elements/admin/search.ctp:6
-msgid "Appeals"
-msgstr "Appels"
-
-#: /views/appeals/admin_index.ctp:6
-#: /views/gifts/admin_add.ctp:10
-#: /views/gifts/admin_edit.ctp:11
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:13
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:13
-msgid "New Appeal"
-msgstr ""
-
-#: /views/appeals/admin_index.ctp:28
-#: /views/offices/admin_index.ctp:24
-#: /views/posts/admin_index.ctp:33
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:151
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:151
-#: /views/transactions/admin_index.ctp:33;69
-msgid "View"
-msgstr ""
-
-#: /views/appeals/admin_index.ctp:29
-#: /views/offices/admin_index.ctp:25
-#: /views/posts/admin_index.ctp:34
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:152
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:152
-msgid "Edit"
-msgstr ""
-
-#: /views/appeals/admin_index.ctp:30
-#: /views/gifts/admin_edit.ctp:6
-#: /views/offices/admin_edit.ctp:6
-#: /views/offices/admin_index.ctp:26
-#: /views/posts/admin_edit.ctp:6
-#: /views/posts/admin_index.ctp:35
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:153
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:153
-#: /views/transactions/admin_index.ctp:36;72
-#: /views/users/admin_index.ctp:31
-msgid "Delete"
-msgstr ""
-
-#: /views/appeals/admin_index.ctp:30
-#: /views/appeals/admin_view.ctp:7
-#: /views/offices/admin_edit.ctp:6
-#: /views/offices/admin_index.ctp:27
-#: /views/transactions/admin_index.ctp:37;74
-msgid "Are you sure?"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:2
-#: /views/gifts/admin_view.ctp:40
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:53
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:53
-msgid "Appeal"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:6
-msgid "Edit Appeal"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:7
-msgid "Delete Appeal"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:8
-msgid "Appeal List"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:12
-#: /views/gifts/admin_view.ctp:10
-#: /views/offices/admin_view.ctp:38
-#: /views/posts/admin_view.ctp:13
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:23;121
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:23;121
-#: /views/transactions/admin_view.ctp:10
-msgid "Id"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:17
-#: /views/transactions/admin_index.ctp:20
-msgid "Parent"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:22
-#: /views/offices/admin_view.ctp:11;39
-#: /views/users/elements/filter.ctp:3
-msgid "Name"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:27
-msgid "Campaign Code"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:32
-msgid "Default"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:37
-#: /views/gifts/elements/menu.ctp:26
-msgid "Starred"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:42
-msgid "Cost"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:47
-msgid "Reviewed"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:52
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:126
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:126
-#: /views/transactions/admin_index.ctp:24
-#: /views/transactions/admin_view.ctp:50
-msgid "Status"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:57
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:58
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:58
-msgid "User"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:62
-#: /views/gifts/admin_view.ctp:86
-#: /views/offices/admin_view.ctp:21;42
-#: /views/posts/admin_view.ctp:28
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:103;128
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:103;128
-#: /views/transactions/admin_index.ctp:27
-#: /views/transactions/admin_view.ctp:60
-msgid "Created"
-msgstr ""
-
-#: /views/appeals/admin_view.ctp:67
-#: /views/gifts/admin_view.ctp:91
-#: /views/offices/admin_view.ctp:26
-#: /views/posts/admin_view.ctp:33
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:108;129
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:108;129
-#: /views/transactions/admin_view.ctp:65
-msgid "Modified"
-msgstr ""
-
-#: /views/auth/admin_login.ctp:4
-msgid "Sign in"
-msgstr ""
-
-#: /views/auth/admin_login.ctp:10
-msgid "Please enter your login details"
-msgstr ""
-
-#: /views/auth/admin_login.ctp:11
-#: /views/gifts/admin_view.ctp:81
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:98
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:98
-#: /views/users/elements/filter.ctp:4
-msgid "Email"
-msgstr ""
-
-#: /views/auth/admin_login.ctp:12
-msgid "Password"
-msgstr ""
-
-#: /views/auth/admin_login.ctp:18
-msgid "Login"
-msgstr ""
-
-#: /views/elements/admin_rightcol.ctp:21
-msgid "The office has no suboffices."
-msgstr ""
-
-#: /views/elements/login_header.ctp:3
-msgid "Register"
-msgstr ""
-
-#: /views/elements/login_header.ctp:5
-msgid "coming back?"
-msgstr ""
-
-#: /views/elements/login_header.ctp:8
-msgid "login"
-msgstr ""
-
-#: /views/elements/login_header.ctp:10
-msgid "tell me more"
-msgstr ""
-
-#: /views/elements/login_header.ctp:13
-msgid "Hi"
-msgstr ""
-
-#: /views/elements/login_header.ctp:14
-msgid "dashboard"
-msgstr ""
-
-#: /views/elements/login_header.ctp:15
-#: /views/elements/admin/user_badge.ctp:4
-msgid "logout"
-msgstr ""
-
-#: /views/elements/warning.ctp:2
-msgid "Sorry, nothing to list."
-msgstr ""
-
-#: /views/elements/admin/help.ctp:2
-msgid "Need some help?"
-msgstr ""
-
-#: /views/elements/admin/menu.ctp:6
-#: /views/users/admin_forgot_pw.ctp:6
+#: models/navigation.php:34
 msgid "Home"
 msgstr ""
 
-#: /views/elements/admin/menu.ctp:8
-#: /views/elements/admin/search.ctp:3
+#: models/navigation.php:38
+msgid "Appeals"
+msgstr "Appels"
+
+#: models/navigation.php:42
 msgid "Gifts"
 msgstr "Cadeaux"
 
-#: /views/elements/admin/menu.ctp:9
-#: /views/elements/admin/search.ctp:4
-#: /views/transactions/admin_index.ctp:8
+#: models/navigation.php:46
 msgid "Transactions"
 msgstr "Transactions"
 
-#: /views/elements/admin/menu.ctp:10
-#: /views/supporters/admin_index.ctp:2
+#: models/navigation.php:50
 msgid "Supporters"
 msgstr "Soutiens"
 
-#: /views/elements/admin/menu.ctp:12
-#: /views/offices/admin_index.ctp:2
-msgid "Offices"
+#: models/navigation.php:69
+msgid "Admin"
+msgstr ""
+
+#: models/navigation.php:74
+#, fuzzy
+msgid "Office Config"
 msgstr "Bureaux"
 
-#: /views/elements/admin/menu.ctp:13
-#: /views/elements/admin/search.ctp:5
-#: /views/users/admin_index.ctp:2
-msgid "Users"
-msgstr "Usagers"
-
-#: /views/elements/admin/menu.ctp:14
-msgid "Bugs"
-msgstr "Bugs"
-
-#: /views/elements/admin/menu.ctp:16
-msgid "Office Config"
+#: models/navigation.php:80
+msgid "Help"
 msgstr ""
 
-#: /views/elements/admin/search.ctp:23
-msgid "Search"
-msgstr "Recherche"
-
-#: /views/elements/admin/search.ctp:28
-msgid "Enter an id or a keyword"
-msgstr ""
-
-#: /views/elements/admin/shortcuts.ctp:3
-msgid "Shortcuts"
-msgstr ""
-
-#: /views/elements/admin/shortcuts.ctp:7
-msgid "Bookmark this page"
-msgstr ""
-
-#: /views/elements/admin/shortcuts.ctp:8
-msgid "Print this page"
-msgstr ""
-
-#: /views/elements/admin/user_badge.ctp:2
-msgid "Welcome back"
-msgstr ""
-
-#: /views/elements/admin/user_badge.ctp:3
-msgid "preferences"
-msgstr ""
-
-#: /views/elements/tableset/rows/gift.ctp:48
-msgid "due"
-msgstr ""
-
-#: /views/elements/tableset/rows/gift.ctp:48
-msgid "yes"
-msgstr ""
-
-#: /views/elements/tableset/rows/gift.ctp:48
-msgid "no"
-msgstr ""
-
-#: /views/gifts/admin_add.ctp:2;21
-msgid "Add Gift"
-msgstr ""
-
-#: /views/gifts/admin_add.ctp:6
-#: /views/gifts/admin_edit.ctp:7
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:8
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:8
-msgid "List Gifts"
-msgstr ""
-
-#: /views/gifts/admin_add.ctp:13
-#: /views/gifts/admin_edit.ctp:14
-#: /views/offices/admin_add.ctp:6
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:16
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:16
-msgid "List Offices"
-msgstr ""
-
-#: /views/gifts/admin_add.ctp:14
-#: /views/gifts/admin_edit.ctp:15
-#: /views/offices/admin_edit.ctp:7
-#: /views/offices/admin_index.ctp:6
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:17
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:17
-msgid "New Office"
-msgstr ""
-
-#: /views/gifts/admin_add.ctp:15
-#: /views/gifts/admin_edit.ctp:16
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:18
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:18
-msgid "List Transactions"
-msgstr ""
-
-#: /views/gifts/admin_add.ctp:16
-#: /views/gifts/admin_edit.ctp:17
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:19;162
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:19;162
-msgid "New Transaction"
-msgstr ""
-
-#: /views/gifts/admin_edit.ctp:2;22
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:6
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:6
-msgid "Edit Gift"
-msgstr ""
-
-#: /views/gifts/admin_edit.ctp:6
-#: /views/gifts/admin_view.ctp:6
-#: /views/offices/admin_view.ctp:7
-#: /views/posts/admin_edit.ctp:6
-#: /views/posts/admin_index.ctp:35
-#: /views/posts/admin_view.ctp:7
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:7;153
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:7;153
-#: /views/transactions/admin_view.ctp:6
-#: /views/users/admin_index.ctp:31
-msgid "Are you sure you want to delete # %s?"
-msgstr ""
-
-#: /views/gifts/admin_index.ctp:13
-msgid "Online Donations"
-msgstr ""
-
-#: /views/gifts/admin_index.ctp:26
-#: /views/gifts/admin_view.ctp:25
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:38;127
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:38;127
-#: /views/transactions/admin_index.ctp:25
-#: /views/transactions/admin_view.ctp:55
-msgid "Amount"
-msgstr ""
-
-#: /views/gifts/admin_index.ctp:32
-msgid "firstname"
-msgstr ""
-
-#: /views/gifts/admin_index.ctp:33
-msgid "last name"
-msgstr ""
-
-#: /views/gifts/admin_index.ctp:34
-msgid "email"
-msgstr ""
-
-#: /views/gifts/admin_index.ctp:38
-msgid "date"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:2
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:2
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:2
-#: /views/transactions/admin_index.ctp:23
-#: /views/transactions/admin_view.ctp:40
-msgid "Gift"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:6
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:7
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:7
-msgid "Delete Gift"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:15
-#: /views/offices/admin_view.ctp:2
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:28
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:28
-msgid "Office"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:20
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:33
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:33
-msgid "Type"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:30
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:43
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:43
-msgid "Description"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:35
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:48
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:48
-msgid "Frequency"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:45
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:63
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:63
-msgid "Fname"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:50
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:68
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:68
-msgid "Lname"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:55
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:73
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:73
-msgid "Salutation"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:60
-#: /views/posts/admin_view.ctp:18
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:78
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:78
-msgid "Title"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:65
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:83
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:83
-msgid "Address"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:71
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:88
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:88
-msgid "Zip"
-msgstr ""
-
-#: /views/gifts/admin_view.ctp:76
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:93
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:93
-msgid "Country"
-msgstr ""
-
-#: /views/gifts/elements/menu.ctp:7
+#: models/navigation.php:87
+#: models/navigation.php:97
+#: models/navigation.php:119
+#: models/navigation.php:149
+#: models/navigation.php:159
 msgid "All"
 msgstr ""
 
-#: /views/gifts/elements/menu.ctp:14
+#: models/navigation.php:91
+#, fuzzy
+msgid "My Office"
+msgstr "Bureaux"
+
+#: models/navigation.php:101
+msgid "One Off"
+msgstr ""
+
+#: models/navigation.php:105
+#: models/navigation.php:171
 msgid "Recurring"
 msgstr ""
 
-#: /views/gifts/elements/menu.ctp:20
-msgid "One Time"
+#: models/navigation.php:109
+#: models/navigation.php:123
+#: models/navigation.php:180
+msgid "Favorites"
 msgstr ""
 
-#: /views/layouts/admin_login.ctp:24
-msgid "International"
+#: models/navigation.php:113
+#: models/navigation.php:143
+msgid "Archived"
 msgstr ""
 
-#: /views/offices/admin_add.ctp:2;13
-msgid "Add Office"
+#: models/navigation.php:153
+msgid "My Office Colleagues"
 msgstr ""
 
-#: /views/offices/admin_add.ctp:7
-msgid "List Gateways"
+#: models/navigation.php:167
+msgid "One-off"
 msgstr ""
 
-#: /views/offices/admin_add.ctp:8
-msgid "New Gateway"
+#: models/navigation.php:186
+msgid "Preferences"
 msgstr ""
 
-#: /views/offices/admin_edit.ctp:2
-#: /views/offices/admin_view.ctp:6
-msgid "Edit Office"
+#: models/navigation.php:190
+msgid "Edit Password"
 msgstr ""
 
-#: /views/offices/admin_edit.ctp:9
-#: /views/offices/admin_index.ctp:8
-msgid "Manage Tree"
+#: models/navigation.php:196
+msgid "Login"
 msgstr ""
 
-#: /views/offices/admin_manage_tree.ctp:2
-msgid "Office Tree Management"
+#: models/navigation.php:200
+msgid "Lost Password"
 msgstr ""
 
-#: /views/offices/admin_team.ctp:2
-msgid "People Working in this Office"
+#: models/navigation.php:206
+msgid "Config"
 msgstr ""
 
-#: /views/offices/admin_view.ctp:7
-msgid "Delete Office"
+#: models/navigation.php:211
+msgid "Team &amp; Permissions"
 msgstr ""
 
-#: /views/offices/admin_view.ctp:16
-msgid "Parent Office"
+#: models/navigation.php:216
+msgid "Unactivated Users"
 msgstr ""
 
-#: /views/offices/admin_view.ctp:34
-msgid "Supported Gateways"
+#: models/navigation.php:223
+msgid "Getting started"
 msgstr ""
 
-#: /views/offices/admin_view.ctp:40
-msgid "Uses Price"
+#: models/navigation.php:227
+msgid "Faq"
 msgstr ""
 
-#: /views/offices/admin_view.ctp:41
-msgid "Uses Rate"
+#: models/navigation.php:233
+msgid "Offices"
+msgstr "Bureaux"
+
+#: models/navigation.php:238
+msgid "Users"
+msgstr "Usagers"
+
+#: models/navigation.php:243
+msgid "Roles"
 msgstr ""
 
-#: /views/pages/config_test.ctp:12
+#: models/user.php:232
+#, php-format
+msgid "Welcome to %s"
+msgstr ""
+
+#: webroot/test.php:99
+msgid "Debug setting does not allow access to this url."
+msgstr ""
+
+#: views/roles/admin_index.ctp:2
+msgid "Roles & Permissions"
+msgstr ""
+
+#: views/roles/admin_index.ctp:16
+msgid "(Uneditable)"
+msgstr ""
+
+#: views/roles/admin_index.ctp:20
+msgid "Delete Role"
+msgstr ""
+
+#: views/roles/admin_index.ctp:22
+#: views/posts/admin_index.ctp:51
+#: views/posts/admin_edit.ctp:11
+msgid "Are you sure?"
+msgstr ""
+
+#: views/roles/admin_edit.ctp:3
+msgid "Add a role"
+msgstr ""
+
+#: views/roles/admin_edit.ctp:4
+msgid "Manage roles"
+msgstr ""
+
+#: views/roles/admin_edit.ctp:13
+msgid "Role Name"
+msgstr ""
+
+#: views/roles/admin_edit.ctp:14
+msgid "Name"
+msgstr ""
+
+#: views/roles/admin_edit.ctp:15
+msgid "Description"
+msgstr ""
+
+#: views/posts/admin_view.ctp:2
+msgid "Post"
+msgstr ""
+
+#: views/posts/admin_view.ctp:4
+#: views/posts/admin_add.ctp:4
+#: views/posts/admin_index.ctp:22
+#: views/posts/admin_edit.ctp:4
+msgid "Actions"
+msgstr ""
+
+#: views/posts/admin_view.ctp:6
+#: views/posts/admin_edit.ctp:2
+#: views/posts/admin_edit.ctp:27
+msgid "Edit Post"
+msgstr ""
+
+#: views/posts/admin_view.ctp:7
+msgid "Delete Post"
+msgstr ""
+
+#: views/posts/admin_view.ctp:7
+#, php-format
+msgid "Are you sure you want to delete # %s?"
+msgstr ""
+
+#: views/posts/admin_view.ctp:8
+#: views/posts/admin_add.ctp:6
+#: views/posts/admin_edit.ctp:17
+msgid "List Posts"
+msgstr ""
+
+#: views/posts/admin_view.ctp:9
+#: views/posts/admin_index.ctp:8
+msgid "New Post"
+msgstr ""
+
+#: views/posts/admin_view.ctp:13
+msgid "Id"
+msgstr ""
+
+#: views/posts/admin_view.ctp:18
+msgid "Title"
+msgstr ""
+
+#: views/posts/admin_view.ctp:23
+msgid "Body"
+msgstr ""
+
+#: views/posts/admin_view.ctp:28
+msgid "Created"
+msgstr ""
+
+#: views/posts/admin_view.ctp:33
+msgid "Modified"
+msgstr ""
+
+#: views/posts/admin_add.ctp:2
+msgid "Add a new post"
+msgstr ""
+
+#: views/posts/admin_add.ctp:11
+msgid "Add Post"
+msgstr ""
+
+#: views/posts/admin_index.ctp:2
+msgid "Posts Index"
+msgstr ""
+
+#: views/posts/admin_index.ctp:40
+msgid "View"
+msgstr ""
+
+#: views/posts/admin_index.ctp:44
+msgid "Edit"
+msgstr ""
+
+#: views/posts/admin_index.ctp:48
+#: views/posts/admin_edit.ctp:8
+msgid "Delete"
+msgstr ""
+
+#: views/pages/config_test.ctp:11
 msgid "Your tmp directory is writable."
 msgstr ""
 
-#: /views/pages/config_test.ctp:16
+#: views/pages/config_test.ctp:15
 msgid "Your tmp directory is NOT writable."
 msgstr ""
 
-#: /views/pages/config_test.ctp:26
+#: views/pages/config_test.ctp:25
+#, php-format
 msgid "The %s is being used for caching. To change the config edit APP/config/core.php "
 msgstr ""
 
-#: /views/pages/config_test.ctp:30
+#: views/pages/config_test.ctp:29
 msgid "Your cache is NOT working. Please check the settings in APP/config/core.php"
 msgstr ""
 
-#: /views/pages/config_test.ctp:40
+#: views/pages/config_test.ctp:39
 msgid "Your database configuration file is present."
 msgstr ""
 
-#: /views/pages/config_test.ctp:45
+#: views/pages/config_test.ctp:44
 msgid "Your database configuration file is NOT present."
 msgstr ""
 
-#: /views/pages/config_test.ctp:47
+#: views/pages/config_test.ctp:46
 msgid "Rename config/database.php.default to config/database.php"
 msgstr ""
 
-#: /views/pages/config_test.ctp:62
+#: views/pages/config_test.ctp:61
 msgid "Cake is able to connect to the database."
 msgstr ""
 
-#: /views/pages/config_test.ctp:66
+#: views/pages/config_test.ctp:65
 msgid "Cake is NOT able to connect to the database."
 msgstr ""
 
-#: /views/pages/config_test.ctp:72
+#: views/pages/config_test.ctp:71
 msgid "Editing this Page"
 msgstr ""
 
-#: /views/pages/config_test.ctp:75
+#: views/pages/config_test.ctp:74
+#, php-format
 msgid ""
 "To change the content of this page, edit: %s\n"
 "\t\tTo change its layout, edit: %s\n"
 "\t\tYou can also add some CSS styles for your pages at: %s"
 msgstr ""
 
-#: /views/pages/home.ctp:3
-msgid "White Rabbit - Easy Donating to Greenpeace"
+#: views/pages/home.ctp:2
+msgid "Donate"
 msgstr ""
 
-#: /views/pages/home.ctp:4
-msgid "Give us some money and we will make the world a better place!"
+#: views/pages/home.ctp:3
+msgid "Join Greenpeace today and add your voice to the movement that's committed to defending our planet. Our vision of a better future is only as strong as the people who support us. Your support will make all the difference.!"
 msgstr ""
 
-#: /views/pages/tos.ctp:1
+#: views/pages/tos.ctp:1
 msgid "Terms of Service"
 msgstr ""
 
-#: /views/posts/admin_add.ctp:2
-msgid "Add a new post"
+#: views/auth/admin_login.ctp:4
+msgid "Admin Login"
 msgstr ""
 
-#: /views/posts/admin_add.ctp:6
-#: /views/posts/admin_edit.ctp:7
-#: /views/posts/admin_view.ctp:8
-msgid "List Posts"
+#: views/auth/admin_login.ctp:12
+msgid "Please enter your login details"
 msgstr ""
 
-#: /views/posts/admin_add.ctp:11
-msgid "Add Post"
+#: views/auth/admin_login.ctp:13
+msgid "Email"
 msgstr ""
 
-#: /views/posts/admin_edit.ctp:2;12
-#: /views/posts/admin_view.ctp:6
-msgid "Edit Post"
+#: views/auth/admin_login.ctp:14
+msgid "Password"
 msgstr ""
 
-#: /views/posts/admin_index.ctp:2
-msgid "Posts Index"
+#: views/auth/admin_login.ctp:16
+msgid "Global Password (GL3)"
 msgstr ""
 
-#: /views/posts/admin_index.ctp:6
-#: /views/posts/admin_view.ctp:9
-msgid "New Post"
+#: views/offices/admin_view.ctp:2
+msgid "Office Configuration"
 msgstr ""
 
-#: /views/posts/admin_view.ctp:2
-msgid "Post"
+#: views/offices/admin_view.ctp:16
+#, fuzzy
+msgid "Parent Office"
+msgstr "Bureaux"
+
+#: views/offices/admin_view.ctp:25
+#, fuzzy
+msgid "Supported Gateways"
+msgstr "Soutiens"
+
+#: views/offices/admin_view.ctp:30
+msgid "Uses Price"
 msgstr ""
 
-#: /views/posts/admin_view.ctp:7
-msgid "Delete Post"
+#: views/offices/admin_view.ctp:31
+msgid "Uses Rate"
 msgstr ""
 
-#: /views/posts/admin_view.ctp:23
-msgid "Body"
+#: views/offices/admin_add.ctp:2
+#: views/offices/admin_add.ctp:13
+#, fuzzy
+msgid "Add Office"
+msgstr "Bureaux"
+
+#: views/offices/admin_add.ctp:6
+#, fuzzy
+msgid "List Offices"
+msgstr "Bureaux"
+
+#: views/offices/admin_add.ctp:7
+msgid "List Gateways"
 msgstr ""
 
-#: /views/settings/admin_edit.ctp:2
-msgid "Settings"
+#: views/offices/admin_add.ctp:8
+msgid "New Gateway"
 msgstr ""
 
-#: /views/statistics/admin_index.ctp:3
-msgid "Statistics"
+#: views/offices/admin_team.ctp:2
+msgid "People Working in this Office"
 msgstr ""
 
-#: /views/statistics/admin_index.ctp:6
-msgid "Signups (partial)"
+#: views/offices/admin_manage_tree.ctp:2
+msgid "Office Tree Management"
 msgstr ""
 
-#: /views/statistics/admin_index.ctp:7
-msgid "Gifts (complete)"
+#: views/offices/admin_index.ctp:12
+#: views/offices/admin_edit.ctp:3
+#, fuzzy
+msgid "New Office"
+msgstr "Bureaux"
+
+#: views/offices/admin_index.ctp:16
+msgid "Manage Tree"
 msgstr ""
 
-#: /views/statistics/admin_index.ctp:8
-msgid "Amounts"
+#: views/offices/admin_index.ctp:28
+msgid "Parent"
 msgstr ""
 
-#: /views/supporters/admin_index.ctp:4
-msgid "Sorry there are no gifts yet."
+#: views/offices/admin_edit.ctp:4
+msgid "Edit Office Configuration"
 msgstr ""
 
-#: /views/tellfriends/refer.ctp:7
-msgid "Friends' Email (comma separated emails)"
+#: views/offices/admin_edit.ctp:16
+msgid "Main Preferences"
 msgstr ""
 
-#: /views/tellfriends/refer.ctp:11
-msgid "Your Message"
+#: views/offices/admin_edit.ctp:31
+msgid "Default Gift"
 msgstr ""
 
-#: /views/tellfriends/refer.ctp:11
-msgid "Hi, Your friend wants you to check out this website: www.greenpeace.org "
+#: views/offices/admin_edit.ctp:46
+msgid "Gateways & Currencies"
 msgstr ""
 
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:9
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:9
-msgid "New Gift"
+#: views/offices/elements/actions.ctp:9
+msgid "Cancel"
 msgstr ""
 
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:117
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:117
-msgid "Related Transactions"
+#: views/users/admin_activate.ctp:7
+#, php-format
+msgid "Hello <em>%s</em>, your account was <strong>successfully activated</strong>! You are <strong>logged in now</strong>! Please go ahead and change your password now."
 msgstr ""
 
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:122
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:122
-msgid "Parent Id"
+#: views/users/admin_preferences.ctp:2
+#: views/users/admin_edit_password.ctp:2
+msgid "My Account"
 msgstr ""
 
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:123
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:123
-msgid "Gateway Id"
+#: views/users/admin_preferences.ctp:10
+msgid "Help & Language"
 msgstr ""
 
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:124
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:124
-#: /views/transactions/admin_view.ctp:35
-msgid "External Id"
+#: views/users/admin_preferences.ctp:18
+msgid "Contact Details"
 msgstr ""
 
-#: /views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:125
-#: /views/templates/code_4a686dd2-8c64-45a0-99ee-4507a7f05a6e/view.ctp:125
-msgid "Gift Id"
+#: views/users/admin_edit_password.ctp:12
+msgid "Please provide your current and your new password."
 msgstr ""
 
-#: /views/templates/default/contact.ctp:5
-msgid "Contact Information"
-msgstr ""
-
-#: /views/templates/default/gift.ctp:17
-msgid "Gift Information"
-msgstr ""
-
-#: /views/transactions/admin_index.ctp:11
-msgid "%s's Transactions"
-msgstr ""
-
-#: /views/transactions/admin_index.ctp:21
-#: /views/transactions/admin_view.ctp:30
-msgid "Gateway"
-msgstr ""
-
-#: /views/transactions/admin_index.ctp:22
-msgid "External ID"
-msgstr ""
-
-#: /views/transactions/admin_view.ctp:2
-msgid "Transaction"
-msgstr ""
-
-#: /views/transactions/admin_view.ctp:6
-msgid "Delete Transaction"
-msgstr ""
-
-#: /views/transactions/admin_view.ctp:15
-msgid "Parent Trans."
-msgstr ""
-
-#: /views/users/admin_forgot_pw.ctp:5
-msgid "You are here"
-msgstr ""
-
-#: /views/users/admin_forgot_pw.ctp:7
-msgid "Member login"
-msgstr ""
-
-#: /views/users/admin_forgot_pw.ctp:8
-msgid "Lost Password"
-msgstr ""
-
-#: /views/users/admin_forgot_pw.ctp:13
+#: views/users/admin_forgot_pw.ctp:12
 msgid "Password recovery"
 msgstr ""
 
-#: /views/users/admin_forgot_pw.ctp:16
+#: views/users/admin_forgot_pw.ctp:15
 msgid "Recover Password"
 msgstr ""
 
-#: /views/users/admin_index.ctp:30
-msgid "Details"
+#: views/users/admin_index.ctp:3
+msgid "User Management"
 msgstr ""
 
-#: /webroot/test.php:99
-msgid "Debug setting does not allow access to this url."
+#: views/users/admin_index.ctp:33
+msgid "Level"
 msgstr ""
+
+#: views/users/admin_index.ctp:59
+msgid "Resend Activation Email"
+msgstr ""
+
+#: views/users/admin_index.ctp:67
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr ""
+
+#: views/users/admin_edit.ctp:15
+msgid "A password will be autogenerated for this user and she will get an email with her login credentials."
+msgstr ""
+
+#: views/users/admin_edit.ctp:32
+msgid "You are not allowed to change the role or office of this user, as he is an office manager."
+msgstr ""
+
+#: views/users/admin_edit.ctp:61
+msgid "You are not allowed to change the permissions of this user, as he is an office manager."
+msgstr ""
+
+#: views/users/elements/actions.ctp:3
+#, fuzzy
+msgid "Add User"
+msgstr "Usagers"
+
+#: views/tellfriends/refer.ctp:7
+msgid "Friends' Email (comma separated emails)"
+msgstr ""
+
+#: views/tellfriends/refer.ctp:11
+msgid "Your Message"
+msgstr ""
+
+#: views/tellfriends/refer.ctp:11
+msgid "Hi, Your friend wants you to check out this website: www.greenpeace.org "
+msgstr ""
+
+#: views/appeals/admin_view.ctp:2
+#, fuzzy
+msgid "Appeal"
+msgstr "Appels"
+
+#: views/appeals/admin_view.ctp:8
+#, fuzzy
+msgid "Edit Appeal"
+msgstr "Appels"
+
+#: views/appeals/admin_view.ctp:16
+#, fuzzy
+msgid "Delete Appeal"
+msgstr "Appels"
+
+#: views/appeals/admin_view.ctp:49
+msgid "Campaign Code"
+msgstr ""
+
+#: views/appeals/admin_view.ctp:54
+msgid "Is Default"
+msgstr ""
+
+#: views/appeals/admin_view.ctp:56
+msgid "Yes"
+msgstr ""
+
+#: views/appeals/admin_view.ctp:56
+msgid "No"
+msgstr ""
+
+#: views/appeals/admin_view.ctp:59
+msgid "Cost"
+msgstr ""
+
+#: views/appeals/admin_view.ctp:64
+msgid "Reviewed"
+msgstr ""
+
+#: views/appeals/admin_view.ctp:69
+#: views/transactions/admin_view.ctp:28
+#: views/transactions/admin_index.ctp:35
+msgid "Status"
+msgstr ""
+
+#: views/appeals/admin_view.ctp:74
+msgid "Created By"
+msgstr ""
+
+#: views/appeals/admin_view.ctp:83
+msgid "Created On"
+msgstr ""
+
+#: views/appeals/admin_view.ctp:88
+msgid "Last Modified"
+msgstr ""
+
+#: views/appeals/admin_add.ctp:2
+#: views/appeals/admin_add.ctp:17
+#, fuzzy
+msgid "Add Appeal"
+msgstr "Appels"
+
+#: views/appeals/admin_add.ctp:6
+#: views/appeals/admin_add.ctp:7
+#, fuzzy
+msgid "List Appeals"
+msgstr "Appels"
+
+#: views/appeals/admin_add.ctp:8
+msgid "New Parent"
+msgstr ""
+
+#: views/appeals/admin_add.ctp:9
+#, fuzzy
+msgid "List Users"
+msgstr "Usagers"
+
+#: views/appeals/admin_add.ctp:10
+msgid "New User"
+msgstr ""
+
+#: views/appeals/admin_add.ctp:11
+msgid "List Countries"
+msgstr ""
+
+#: views/appeals/admin_add.ctp:12
+msgid "New Country"
+msgstr ""
+
+#: views/appeals/admin_index.ctp:15
+#, fuzzy
+msgid "New Appeal"
+msgstr "Appels"
+
+#: views/appeals/admin_index.ctp:43
+msgid "Preview"
+msgstr ""
+
+#: views/appeals/admin_edit.ctp:2
+#, fuzzy
+msgid " Appeal"
+msgstr "Appels"
+
+#: views/transactions/admin_view.ctp:2
+#, fuzzy
+msgid "Transaction"
+msgstr "Transactions"
+
+#: views/transactions/admin_view.ctp:6
+msgid "Friends Id"
+msgstr ""
+
+#: views/transactions/admin_view.ctp:11
+msgid "Payment Gateway Id"
+msgstr ""
+
+#: views/transactions/admin_view.ctp:17
+msgid "Parent Trans."
+msgstr ""
+
+#: views/transactions/admin_view.ctp:33
+#: views/transactions/admin_index.ctp:39
+msgid "Gateway"
+msgstr ""
+
+#: views/transactions/admin_view.ctp:42
+#: views/transactions/admin_index.ctp:40
+#, fuzzy
+msgid "Gift"
+msgstr "Cadeaux"
+
+#: views/transactions/admin_view.ctp:52
+#: views/transactions/admin_index.ctp:38
+msgid "Amount"
+msgstr ""
+
+#: views/transactions/admin_index.ctp:11
+#, fuzzy, php-format
+msgid "%s's Transactions"
+msgstr "Transactions"
+
+#: views/transactions/admin_index.ctp:37
+msgid "External ID"
+msgstr ""
+
+#: views/transactions/admin_index.ctp:121
+msgid "Sorry but there is nothing to display here..."
+msgstr ""
+
+#: views/transactions/elements/actions.ctp:14
+msgid "Export Selection"
+msgstr ""
+
+#: views/transactions/elements/actions.ctp:21
+msgid "Export All"
+msgstr ""
+
+#: views/transactions/elements/actions.ctp:30
+msgid "back to index"
+msgstr ""
+
+#: views/elements/warning.ctp:2
+msgid "Sorry, nothing to list."
+msgstr ""
+
+#: views/elements/admin/quicklinks.ctp:1
+msgid "What do you feel like doing?"
+msgstr ""
+
+#: views/elements/admin/actions.ctp:32
+msgid "Sorry, but there is nothing to do here for now"
+msgstr ""
+
+#: views/elements/admin/sidebar/shortcuts.ctp:6
+msgid "Shortcuts"
+msgstr ""
+
+#: views/elements/admin/sidebar/shortcuts.ctp:10
+msgid "Bookmark this page"
+msgstr ""
+
+#: views/elements/admin/sidebar/shortcuts.ctp:11
+msgid "Print this page"
+msgstr ""
+
+#: views/elements/admin/sidebar/shortcuts.ctp:12
+msgid "Increase font size"
+msgstr ""
+
+#: views/elements/admin/sidebar/shortcuts.ctp:13
+msgid "Decrease font size"
+msgstr ""
+
+#: views/elements/admin/sidebar/twitter_feed.ctp:7
+msgid "Latest Tweets"
+msgstr ""
+
+#: views/elements/admin/sidebar/twitter_feed.ctp:20
+msgid "follow us on twitter"
+msgstr ""
+
+#: views/elements/admin/sidebar/help.ctp:2
+msgid "Need some help?"
+msgstr ""
+
+#: views/elements/admin/sidebar/search.ctp:23
+msgid "Search"
+msgstr "Recherche"
+
+#: views/elements/admin/sidebar/search.ctp:28
+msgid "Enter an id or a keyword"
+msgstr ""
+
+#: views/elements/admin/sidebar/search.ctp:34
+#, fuzzy
+msgid "search"
+msgstr "Recherche"
+
+#: views/elements/admin/sidebar/news.ctp:9
+msgid "News"
+msgstr ""
+
+#: views/elements/admin/sidebar/news.ctp:18
+msgid "more"
+msgstr ""
+
+#: views/elements/admin/sidebar/news.ctp:22
+msgid "follow us on Making Waves"
+msgstr ""
+
+#: views/elements/admin/sidebar/news.ctp:33
+msgid "Latest blog entry"
+msgstr ""
+
+#: views/elements/admin/users/badge.ctp:2
+msgid "Welcome back"
+msgstr ""
+
+#: views/elements/admin/users/badge.ctp:3
+msgid "preferences"
+msgstr ""
+
+#: views/elements/admin/users/badge.ctp:4
+msgid "logout"
+msgstr ""
+
+#: views/elements/admin/filters/paging_limit.ctp:12
+msgid "How many results per page?"
+msgstr ""
+
+#: views/elements/admin/filters/paging_limit.ctp:19
+msgid "Prefer typing the number?"
+msgstr ""
+
+#: views/elements/admin/filters/time_range.ctp:7
+msgid "Filter by date"
+msgstr ""
+
+#: views/elements/admin/filters/time_range.ctp:12
+msgid "Start Date"
+msgstr ""
+
+#: views/elements/admin/filters/time_range.ctp:42
+msgid "End Date"
+msgstr ""
+
+#: views/elements/admin/filters/keyword.ctp:2
+msgid "Filter by keyword"
+msgstr ""
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "due"
+msgstr ""
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "yes"
+msgstr ""
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "no"
+msgstr ""
+
+#: views/elements/tableset/rows/transaction.ctp:24
+msgid "The payment gateway is missing"
+msgstr ""
+
+#: views/dashboards/admin_index.ctp:2
+msgid "Root Configuration"
+msgstr ""
+
+#: views/exports/admin_transactions.ctp:2
+#, fuzzy
+msgid "Transaction Export"
+msgstr "Transactions"
+
+#: views/exports/admin_gifts.ctp:2
+msgid "Gift Export"
+msgstr ""
+
+#: views/gifts/admin_view.ctp:8
+msgid "Delete Gift"
+msgstr ""
+
+#: views/gifts/admin_view.ctp:22
+#, fuzzy
+msgid "Office"
+msgstr "Bureaux"
+
+#: views/gifts/admin_view.ctp:31
+msgid "Type"
+msgstr ""
+
+#: views/gifts/admin_view.ctp:46
+#: views/gifts/admin_index.ctp:35
+msgid "Frequency"
+msgstr ""
+
+#: views/gifts/admin_view.ctp:59
+msgid "Fname"
+msgstr ""
+
+#: views/gifts/admin_view.ctp:64
+msgid "Lname"
+msgstr ""
+
+#: views/gifts/admin_view.ctp:69
+msgid "Salutation"
+msgstr ""
+
+#: views/gifts/admin_view.ctp:79
+msgid "Address"
+msgstr ""
+
+#: views/gifts/admin_view.ctp:85
+msgid "Zip"
+msgstr ""
+
+#: views/gifts/admin_view.ctp:90
+msgid "Country"
+msgstr ""
+
+#: views/gifts/admin_add.ctp:2
+#, fuzzy
+msgid "New Gift"
+msgstr "Cadeaux"
+
+#: views/gifts/admin_add.ctp:9
+#, php-format
+msgid "Back to %s"
+msgstr ""
+
+#: views/gifts/admin_index.ctp:14
+msgid "Online Donations"
+msgstr ""
+
+#: views/gifts/admin_index.ctp:37
+msgid "Due"
+msgstr ""
+
+#: views/gifts/admin_index.ctp:41
+msgid "First Name"
+msgstr ""
+
+#: views/gifts/admin_index.ctp:42
+msgid "Last Name"
+msgstr ""
+
+#: views/gifts/admin_index.ctp:47
+msgid "Date"
+msgstr ""
+
+#: views/settings/admin_edit.ctp:2
+msgid "Settings"
+msgstr ""
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:6
+msgid "Edit Gift"
+msgstr ""
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:8
+#, fuzzy
+msgid "List Gifts"
+msgstr "Cadeaux"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:18
+#, fuzzy
+msgid "List Transactions"
+msgstr "Transactions"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:19
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:162
+#, fuzzy
+msgid "New Transaction"
+msgstr "Transactions"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:58
+#, fuzzy
+msgid "User"
+msgstr "Usagers"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:117
+#, fuzzy
+msgid "Related Transactions"
+msgstr "Transactions"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:122
+msgid "Parent Id"
+msgstr ""
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:123
+msgid "Gateway Id"
+msgstr ""
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:124
+msgid "External Id"
+msgstr ""
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:125
+#, fuzzy
+msgid "Gift Id"
+msgstr "Cadeaux"
+
+#: views/templates/default/contact.ctp:5
+msgid "Contact Information"
+msgstr ""
+
+#: views/templates/default/gift.ctp:18
+msgid "Gift Information"
+msgstr ""
+
+#: views/supporters/admin_index.ctp:28
+msgid "Phone"
+msgstr ""
+
+#: views/supporters/admin_index.ctp:29
+msgid "Zip Code"
+msgstr ""
+
+#: views/supporters/admin_index.ctp:30
+msgid "City"
+msgstr ""
+
+#: views/supporters/admin_index.ctp:46
+#, fuzzy
+msgid "Add Gift"
+msgstr "Cadeaux"
+
+#: views/statistics/admin_index.ctp:3
+msgid "Statistics"
+msgstr ""
+
+#: views/statistics/admin_index.ctp:6
+msgid "Signups (partial)"
+msgstr ""
+
+#: views/statistics/admin_index.ctp:7
+msgid "Gifts (complete)"
+msgstr ""
+
+#: views/statistics/admin_index.ctp:8
+msgid "Amounts"
+msgstr ""
+
+#~ msgid "Bugs"
+#~ msgstr "Bugs"
 
