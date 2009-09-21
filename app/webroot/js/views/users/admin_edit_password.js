@@ -1,3 +1,3 @@
 $(function() {
-	$('#UserAddForm input[@type!=submit]').attr('value', '');
+	$('#UserAddForm input[type!=submit]').attr('value', '');
 });
