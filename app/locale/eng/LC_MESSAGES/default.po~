@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Cool IT Challenge\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-05-25 11:11+0100\n"
-"PO-Revision-Date: 2009-05-25 11:11+0100\n"
+"POT-Creation-Date: 2009-09-21 11:08+0100\n"
+"PO-Revision-Date: 2009-09-21 11:09+0100\n"
 "Last-Translator: remy <remy.bertot@greenpeace.org>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -42,6 +42,14 @@ msgstr ""
 
 #: controllers/challenges_controller.php:87
 msgid "Challenge deleted"
+msgstr ""
+
+#: controllers/users_controller.php:160
+msgid "Your profile has been updated."
+msgstr ""
+
+#: controllers/users_controller.php:163
+msgid "There was an error updating your profile."
 msgstr ""
 
 #: controllers/auth_controller.php:13
@@ -90,117 +98,56 @@ msgstr ""
 msgid "You must set the Configure::write('Session.model') in core.php to use model storage"
 msgstr ""
 
+#: webroot/test.php:99
+msgid "Debug setting does not allow access to this url."
+msgstr ""
+
 #: views/posts/admin_view.ctp:2
-#: views/posts/view.ctp:2
 msgid "Post"
 msgstr ""
 
 #: views/posts/admin_view.ctp:4
-#: views/posts/add.ctp:4
-#: views/posts/view.ctp:4
-#: views/posts/admin_add.ctp:4
-#: views/posts/edit.ctp:4
-#: views/posts/admin_index.ctp:17
-#: views/posts/admin_edit.ctp:4
-#: views/users/admin_index.ctp:5
-#: views/users/admin_index.ctp:16
-#: views/challenges/admin_view.ctp:4
-#: views/challenges/admin_add.ctp:4
-#: views/challenges/admin_index.ctp:4
-#: views/challenges/admin_index.ctp:15
-#: views/challenges/admin_edit.ctp:4
-#: views/criteria/admin_view.ctp:4
-#: views/criteria/admin_add.ctp:4
-#: views/criteria/admin_index.ctp:5
-#: views/criteria/admin_index.ctp:18
-#: views/criteria/admin_edit.ctp:4
-#: views/leaders/admin_view.ctp:5
-#: views/leaders/admin_add.ctp:4
-#: views/leaders/admin_index.ctp:5
-#: views/leaders/admin_index.ctp:14
-#: views/leaders/admin_edit.ctp:4
 msgid "Actions"
 msgstr ""
 
 #: views/posts/admin_view.ctp:6
-#: views/posts/view.ctp:6
-#: views/posts/edit.ctp:2
-#: views/posts/edit.ctp:12
-#: views/posts/admin_edit.ctp:2
-#: views/posts/admin_edit.ctp:12
 msgid "Edit Post"
 msgstr ""
 
 #: views/posts/admin_view.ctp:7
-#: views/posts/view.ctp:7
 msgid "Delete Post"
 msgstr ""
 
 #: views/posts/admin_view.ctp:7
-#: views/posts/view.ctp:7
-#: views/posts/edit.ctp:6
-#: views/posts/admin_index.ctp:36
-#: views/posts/admin_edit.ctp:6
-#: views/users/admin_index.ctp:34
-#: views/challenges/admin_view.ctp:8
-#: views/challenges/admin_index.ctp:36
-#: views/challenges/admin_edit.ctp:7
-#: views/criteria/admin_view.ctp:7
-#: views/criteria/admin_index.ctp:38
-#: views/criteria/admin_edit.ctp:6
-#: views/leaders/admin_view.ctp:9
-#: views/leaders/admin_index.ctp:31
-#: views/leaders/admin_edit.ctp:8
 #, php-format
 msgid "Are you sure you want to delete # %s?"
 msgstr ""
 
 #: views/posts/admin_view.ctp:8
-#: views/posts/add.ctp:6
-#: views/posts/view.ctp:8
-#: views/posts/admin_add.ctp:6
-#: views/posts/edit.ctp:7
-#: views/posts/admin_edit.ctp:7
 msgid "List Posts"
 msgstr ""
 
 #: views/posts/admin_view.ctp:9
-#: views/posts/view.ctp:9
-#: views/posts/admin_index.ctp:7
 msgid "New Post"
 msgstr ""
 
 #: views/posts/admin_view.ctp:13
-#: views/posts/view.ctp:13
-#: views/challenges/admin_view.ctp:13
-#: views/criteria/admin_view.ctp:13
-#: views/leaders/admin_view.ctp:15
 msgid "Id"
 msgstr ""
 
 #: views/posts/admin_view.ctp:18
-#: views/posts/view.ctp:18
 msgid "Title"
 msgstr ""
 
 #: views/posts/admin_view.ctp:23
-#: views/posts/view.ctp:23
 msgid "Body"
 msgstr ""
 
 #: views/posts/admin_view.ctp:28
-#: views/posts/view.ctp:28
-#: views/challenges/admin_view.ctp:25
-#: views/criteria/admin_view.ctp:38
-#: views/leaders/admin_view.ctp:21
 msgid "Created"
 msgstr ""
 
 #: views/posts/admin_view.ctp:33
-#: views/posts/view.ctp:33
-#: views/challenges/admin_view.ctp:29
-#: views/criteria/admin_view.ctp:43
-#: views/leaders/admin_view.ctp:23
 msgid "Modified"
 msgstr ""
 
@@ -217,13 +164,6 @@ msgstr ""
 #: views/posts/edit.ctp:6
 #: views/posts/admin_index.ctp:36
 #: views/posts/admin_edit.ctp:6
-#: views/users/admin_index.ctp:34
-#: views/challenges/admin_index.ctp:36
-#: views/challenges/admin_edit.ctp:7
-#: views/criteria/admin_index.ctp:38
-#: views/criteria/admin_edit.ctp:6
-#: views/leaders/admin_index.ctp:31
-#: views/leaders/admin_edit.ctp:8
 msgid "Delete"
 msgstr ""
 
@@ -240,16 +180,10 @@ msgid "Posts Index"
 msgstr ""
 
 #: views/posts/admin_index.ctp:34
-#: views/challenges/admin_index.ctp:34
-#: views/criteria/admin_index.ctp:36
-#: views/leaders/admin_index.ctp:29
 msgid "View"
 msgstr ""
 
 #: views/posts/admin_index.ctp:35
-#: views/challenges/admin_index.ctp:35
-#: views/criteria/admin_index.ctp:37
-#: views/leaders/admin_index.ctp:30
 msgid "Edit"
 msgstr ""
 
@@ -269,8 +203,6 @@ msgstr ""
 
 #: views/pages/home.ctp:18
 #: views/auth/login.ctp:13
-#: views/users/register.ctp:15
-#: views/users/resend_activation_email.ctp:14
 msgid "Email"
 msgstr ""
 
@@ -278,8 +210,11 @@ msgstr ""
 msgid "your email"
 msgstr ""
 
+#: views/pages/home.ctp:21
+msgid "register"
+msgstr ""
+
 #: views/pages/admin_home.ctp:1
-#: views/elements/widgets/actions.ctp:19
 msgid "What do you feel like doing?"
 msgstr ""
 
@@ -333,23 +268,15 @@ msgid ""
 msgstr ""
 
 #: views/auth/login.ctp:5
-#: views/users/dashboard.ctp:4
-#: views/users/forgot_pw.ctp:5
-#: views/users/resend_activation_email.ctp:5
 msgid "You are here"
 msgstr ""
 
 #: views/auth/login.ctp:5
 #: views/layouts/admin.ctp:20
-#: views/users/dashboard.ctp:4
-#: views/users/forgot_pw.ctp:6
-#: views/users/resend_activation_email.ctp:6
-#: views/elements/menu.ctp:3
 msgid "Home"
 msgstr ""
 
 #: views/auth/login.ctp:5
-#: views/users/resend_activation_email.ctp:7
 msgid "member login"
 msgstr ""
 
@@ -358,7 +285,6 @@ msgid "Please enter your login details"
 msgstr ""
 
 #: views/auth/login.ctp:14
-#: views/users/register.ctp:16
 msgid "Password"
 msgstr ""
 
@@ -370,11 +296,11 @@ msgstr ""
 msgid "Need some help?"
 msgstr ""
 
-#: views/layouts/default.ctp:23
+#: views/layouts/default.ctp:22
 msgid "Warning"
 msgstr ""
 
-#: views/layouts/default.ctp:24
+#: views/layouts/default.ctp:23
 msgid "It seems that you have Javascript disabled. While we are doing our best to avoid it, some features may although be broken..."
 msgstr ""
 
@@ -388,7 +314,6 @@ msgid "International"
 msgstr ""
 
 #: views/layouts/admin.ctp:21
-#: views/challenges/admin_index.ctp:2
 msgid "Challenges"
 msgstr ""
 
@@ -397,7 +322,6 @@ msgid "Rules"
 msgstr ""
 
 #: views/layouts/admin.ctp:23
-#: views/leaders/admin_index.ctp:3
 msgid "Leaders"
 msgstr ""
 
@@ -406,7 +330,6 @@ msgid "Posts"
 msgstr ""
 
 #: views/layouts/admin.ctp:25
-#: views/users/admin_index.ctp:3
 msgid "Users"
 msgstr ""
 
@@ -418,80 +341,85 @@ msgstr ""
 msgid "Greenpeace"
 msgstr ""
 
-#: views/users/register.ctp:3
+#: views/users/register.ctp:10
 msgid "New Registration"
 msgstr ""
 
-#: views/users/register.ctp:6
+#: views/users/register.ctp:13
 msgid "Enter details"
 msgstr ""
 
-#: views/users/register.ctp:7
+#: views/users/register.ctp:14
 msgid "Select CEOs"
 msgstr ""
 
-#: views/users/register.ctp:8
+#: views/users/register.ctp:15
 msgid "Profit!"
 msgstr ""
 
-#: views/users/register.ctp:14
+#: views/users/register.ctp:22
 msgid "Your login"
 msgstr ""
 
-#: views/users/register.ctp:17
+#: views/users/register.ctp:25
 msgid "Confirm password"
 msgstr ""
 
-#: views/users/register.ctp:21
-#: views/elements/widgets/profile.ctp:2
+#: views/users/register.ctp:29
+#: views/users/edit.ctp:5
 msgid "Your profile"
 msgstr ""
 
-#: views/users/register.ctp:22
+#: views/users/register.ctp:30
+#: views/users/edit.ctp:6
 msgid "Your Name (or nickname)"
 msgstr ""
 
-#: views/users/register.ctp:23
+#: views/users/register.ctp:31
+#: views/users/edit.ctp:7
 msgid "Country"
 msgstr ""
 
-#: views/users/register.ctp:24
+#: views/users/register.ctp:32
+#: views/users/edit.ctp:9
 msgid "State"
 msgstr ""
 
-#: views/users/register.ctp:25
+#: views/users/register.ctp:33
+#: views/users/edit.ctp:10
 msgid "City"
 msgstr ""
 
-#: views/users/register.ctp:28
-msgid "Legal stuffs"
+#: views/users/register.ctp:36
+msgid "Small print"
 msgstr ""
 
-#: views/users/register.ctp:32
+#: views/users/register.ctp:40
 msgid "I've read and accept the fascinating"
 msgstr ""
 
-#: views/users/register.ctp:32
+#: views/users/register.ctp:40
 msgid "Community Guidelines"
 msgstr ""
 
-#: views/users/register.ctp:35
-msgid "Note: Greenpeace won't be selling or giving your information away. We only collect what is needed to contact you. See, we are not that evil."
+#: views/users/register.ctp:43
+msgid "Note: Greenpeace won't be selling or giving your information away. We only collect what is needed to contact you."
 msgstr ""
 
-#: views/users/register.ctp:49
-#: views/elements/header.ctp:6
+#: views/users/register.ctp:57
 msgid "Register"
 msgstr ""
 
 #: views/users/dashboard.ctp:2
-#: views/elements/menu.ctp:10
 msgid "Dashboard"
 msgstr ""
 
 #: views/users/dashboard.ctp:4
-#: views/elements/header.ctp:17
 msgid "dashboard"
+msgstr ""
+
+#: views/users/edit.ctp:12
+msgid "Save"
 msgstr ""
 
 #: views/users/forgot_pw.ctp:7
@@ -558,7 +486,6 @@ msgstr ""
 
 #: views/challenges/admin_view.ctp:17
 #: views/criteria/admin_view.ctp:23
-#: views/leaders/admin_view.ctp:17
 msgid "Name"
 msgstr ""
 
@@ -573,22 +500,18 @@ msgid "Add Challenge"
 msgstr ""
 
 #: views/challenges/admin_index.ctp:43
-#: views/leaders/admin_index.ctp:38
 msgid "previous"
 msgstr ""
 
 #: views/challenges/admin_index.ctp:45
-#: views/leaders/admin_index.ctp:40
 msgid "next"
 msgstr ""
 
 #: views/challenges/admin_index.ctp:50
-#: views/leaders/admin_index.ctp:45
 msgid "Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%"
 msgstr ""
 
 #: views/challenges/admin_edit.ctp:19
-#: views/leaders/admin_edit.ctp:23
 msgid "Cancel"
 msgstr ""
 
@@ -622,7 +545,6 @@ msgid "Type"
 msgstr ""
 
 #: views/criteria/admin_view.ctp:33
-#: views/elements/widgets/score_details.ctp:8
 msgid "Points"
 msgstr ""
 
@@ -639,31 +561,27 @@ msgstr ""
 msgid "Sorry, nothing to list."
 msgstr ""
 
-#: views/elements/menu.ctp:12
+#: views/elements/menu.ctp:10
 msgid "About"
 msgstr ""
 
-#: views/elements/header.ctp:2
-msgid "Back to main website"
-msgstr ""
-
-#: views/elements/header.ctp:8
+#: views/elements/header.ctp:5
 msgid "coming back?"
 msgstr ""
 
-#: views/elements/header.ctp:11
+#: views/elements/header.ctp:8
 msgid "login"
 msgstr ""
 
-#: views/elements/header.ctp:13
+#: views/elements/header.ctp:10
 msgid "tell me more"
 msgstr ""
 
-#: views/elements/header.ctp:16
-msgid "You are logged in as"
+#: views/elements/header.ctp:13
+msgid "Hi"
 msgstr ""
 
-#: views/elements/header.ctp:18
+#: views/elements/header.ctp:15
 msgid "logout"
 msgstr ""
 
@@ -691,7 +609,7 @@ msgid "this is how the story begin »"
 msgstr ""
 
 #: views/elements/widgets/twitter_feed.ctp:7
-msgid "Last Tweets"
+msgid "Latest Tweets"
 msgstr ""
 
 #: views/elements/widgets/twitter_feed.ctp:20
@@ -749,7 +667,7 @@ msgid "Select your favorite CEOs"
 msgstr ""
 
 #: views/elements/widgets/vote.ctp:11
-msgid "Every two months we will evaluate these CEOs and get back to you!"
+msgid "Every few months we will evaluate these CEOs and get back to you!"
 msgstr ""
 
 #: views/elements/widgets/vote.ctp:13
@@ -787,7 +705,7 @@ msgid "You have referred: <strong>%s friends</strong>."
 msgstr ""
 
 #: views/elements/widgets/score_taf.ctp:17
-msgid "Hu ho, it looks like you don't have many friends, do you?"
+msgid "Uh oh, it looks like you don't have many friends, do you?"
 msgstr ""
 
 #: views/elements/widgets/score_taf.ctp:19
@@ -807,7 +725,11 @@ msgid "My referral url"
 msgstr ""
 
 #: views/elements/widgets/actions.ctp:2
-msgid "Here is a hint"
+msgid "You can win points by picking a winning IT leader*, and by recruiting friends to join."
+msgstr ""
+
+#: views/elements/widgets/actions.ctp:16
+msgid "What's next:"
 msgstr ""
 
 #: views/elements/widgets/score_details.ctp:2
@@ -827,7 +749,7 @@ msgid "Sorry, there is nothing to show here at the moment."
 msgstr ""
 
 #: views/elements/widgets/news_feed.ctp:8
-msgid "Last blog entry"
+msgid "Latest blog entry"
 msgstr ""
 
 #: views/elements/widgets/news_feed.ctp:17
@@ -840,7 +762,6 @@ msgstr ""
 
 #: views/leaders/admin_view.ctp:7
 #: views/leaders/admin_add.ctp:6
-#: views/leaders/admin_edit.ctp:6
 msgid "List Leaders"
 msgstr ""
 
@@ -853,13 +774,11 @@ msgid "Delete Leader"
 msgstr ""
 
 #: views/leaders/admin_view.ctp:10
-#: views/leaders/admin_index.ctp:7
 msgid "New Leader"
 msgstr ""
 
 #: views/leaders/admin_view.ctp:13
 #: views/leaders/admin_add.ctp:11
-#: views/leaders/admin_edit.ctp:13
 msgid "General Data"
 msgstr ""
 
@@ -880,7 +799,6 @@ msgid "Add a new leader"
 msgstr ""
 
 #: views/leaders/admin_add.ctp:16
-#: views/leaders/admin_edit.ctp:19
 msgid "Completed Challenges"
 msgstr ""
 
@@ -899,4 +817,7 @@ msgstr ""
 #: views/settings/admin_edit.ctp:2
 msgid "Settings"
 msgstr ""
+
+#~ msgid "tellafriend"
+#~ msgstr "Hello, Your friend wants you to visit www.greenpeace.org"
 
