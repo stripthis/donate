@@ -8,7 +8,9 @@ class ReportFixture extends CakeTestFixture {
 			'filename' => 'pending_daily_YYYY_MM_DD',
 			'query' => 'SELECT Transaction.*, Gift.* 
 				FROM transactions Transaction 
-				LEFT JOIN gifts Gift ON (Gift.id = Transaction.gift_id);',
+				LEFT JOIN gifts Gift ON (Gift.id = Transaction.gift_id) 
+				WHERE 1=1 %condition ORDER BY Transaction.created DESC
+				;',
 			'view' => 'transactions_default'
 		)
 	);

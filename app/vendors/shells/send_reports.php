@@ -34,11 +34,15 @@ class SendReportsShell extends Shell {
 				continue;
 			}
 
-			$results = $this->Transaction->query($report['Report']['query']);
-			$content = $this->parseTemplate($report['Report']['view'], $results);
-
 			$name = ucfirst($report['Report']['frequency']) . ' Report "' . $report['Report']['title'] . '"';
 			foreach ($users as $user) {
+				$officeId = $user['User']['office_id'];
+				$query = $report['Report']['query'];
+				$query = r('%condition', 'AND Gift.office_id = "' . $officeId . '"', $query);
+				$results = $this->Transaction->query($query);
+
+				$content = $this->parseTemplate($report['Report']['view'], $results);
+
 				$options = array(
 					'mail' => array(
 						'to' => $user['User']['login'],
