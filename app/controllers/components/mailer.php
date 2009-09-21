@@ -38,7 +38,7 @@ class Mailer{
 		if (Common::isDevelopment()) {
 			$options['mail']['delivery'] = 'debug';
 		}
-		
+
 		App::import('Core', 'Controller');
 		$Email = Common::getComponent('Email');
 		Common::setProperties($Email, $options['mail']);
