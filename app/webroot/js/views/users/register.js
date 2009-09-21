@@ -20,7 +20,7 @@ $(function() {
 		]
 	}
 
-	var $eulabox = $('form input[@type=checkbox].required');
+	var $eulabox = $('form input[type=checkbox].required');
 	observerEulaBox($eulabox, true);
 	$eulabox.click(function(e) {
 		observerEulaBox($(this));

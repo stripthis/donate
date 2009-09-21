@@ -206,7 +206,7 @@
 				if (!t.visible)
 					return false;
 
-				$('a[@rel=' + t.id + ']').parent().removeClass('active');
+				$('a[rel=' + t.id + ']').parent().removeClass('active');
 				$().unbind('mouseup', hideHandler);
 				$('#' + t.id).unbind('mouseover', mouseOverHandler).hide();
 				$('#' + t.id).unbind('click', clickHandler);

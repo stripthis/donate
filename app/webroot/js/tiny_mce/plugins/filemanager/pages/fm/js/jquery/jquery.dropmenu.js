@@ -2,7 +2,7 @@
  * $Id: jquery.dropmenu.js 466 2008-10-15 14:54:52Z spocke $
  *
  * @author Moxiecode
- * @copyright Copyright © 2004-2008, Moxiecode Systems AB, All rights reserved.
+ * @copyright Copyright Â© 2004-2008, Moxiecode Systems AB, All rights reserved.
  */
 
 (function($) {
@@ -206,7 +206,7 @@
 				if (!t.visible)
 					return false;
 
-				$('a[@rel=' + t.id + ']').parent().removeClass('active');
+				$('a[rel=' + t.id + ']').parent().removeClass('active');
 				$().unbind('mouseup', hideHandler);
 				$('#' + t.id).unbind('mouseover', mouseOverHandler).hide();
 				$('#' + t.id).unbind('click', clickHandler);

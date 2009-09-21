@@ -19,6 +19,6 @@ function checkSelectedCountry() {
 				.text(state.State.name)
 				.appendTo($state);
 		});
-		$('option[@value='+ currentState +']', $state).attr('selected', 'selected');
+		$('option[value='+ currentState +']', $state).attr('selected', 'selected');
 	});
 }

@@ -146,7 +146,7 @@
 				t.imageSelection.proportional = f.resize_prop.checked;
 			});
 
-			$('#resize_tools input[@type=text]').change(function(e) {
+			$('#resize_tools input[type=text]').change(function(e) {
 				if (f.resize_prop.checked) {
 					if (e.target.id == "resize_w")
 						f.resize_h.value = Math.round(t.imageSelection.h * (parseInt(f.resize_w.value) / t.imageSelection.w));
@@ -174,7 +174,7 @@
 				t.imageSelection.proportional = f.crop_prop.checked;
 			});
 
-			$('#crop_tools input[@type=text]').change(function(e) {
+			$('#crop_tools input[type=text]').change(function(e) {
 				if (f.crop_prop.checked) {
 					if (e.target.id == "crop_w")
 						f.crop_h.value = Math.round(t.imageSelection.h * (parseInt(f.crop_w.value) / t.imageSelection.w));
