@@ -29,7 +29,7 @@ class SendReportsShell extends Shell {
 				'order' => array('ReportsUser.created' => 'asc')
 			));
 
-			$this->out('Found ' . count($users) . ' user that need a report');
+			$this->out('Found ' . count($users) . ' user(s) that need a report');
 			if (empty($users)) {
 				continue;
 			}
