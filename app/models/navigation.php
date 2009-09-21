@@ -191,6 +191,10 @@ class Navigation extends AppModel{
 					'/admin/users/edit_password'
 					, '#/^\/admin\/users\/edit_password.*$/iU'
 				)
+				, __('Public Key', true) => array(
+					'/admin/users/public_key'
+					, '#/^\/admin\/users\/public_key.*$/iU'
+				)
 			)
 			, 'admin_auth_sub' => array(
 				__('Login', true) => array(

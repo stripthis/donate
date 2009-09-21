@@ -367,5 +367,25 @@ class UsersController extends AppController {
 
 		$this->Message->add(__('Saved successfully.', true), 'ok', true, $this->here);
 	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	function admin_public_key($id = null) {
+		if ($this->isGet()) {
+			return $this->data = User::get();
+		}
+
+		$this->data['User']['id'] = User::get('id');
+		if (!$this->User->save($this->data)) {
+			return $this->Message->add(__('There was a problem with the form.', true), 'error');
+		}
+		User::restore();
+
+		$this->Message->add(__('Saved successfully.', true), 'ok', true, $this->here);
+	}
 }
 ?>
