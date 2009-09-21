@@ -195,6 +195,10 @@ class Navigation extends AppModel{
 					'/admin/users/public_key'
 					, '#/^\/admin\/users\/public_key.*$/iU'
 				)
+				, __('Email Reports', true) => array(
+					'/admin/users/email_reports'
+					, '#/^\/admin\/users\/email_reports.*$/iU'
+				)
 			)
 			, 'admin_auth_sub' => array(
 				__('Login', true) => array(

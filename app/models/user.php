@@ -14,7 +14,8 @@ class User extends AppModel {
 	);
 
 	var $hasMany = array(
-		'AuthKey' => array('dependent' => true)
+		'AuthKey' => array('dependent' => true),
+		'ReportsUser' => array('dependent' => true)
 	);
 
 	var $validate = array(
@@ -83,6 +84,21 @@ class User extends AppModel {
 			}
 			$this->data[__CLASS__]['permissions'] = substr($s, 0, -1);
 		}
+
+		if (isset($this->data[__CLASS__]['reports'])) {
+			$this->ReportsUser->deleteAll(array('user_id' => $this->id));
+			foreach ($this->data[__CLASS__]['reports'] as $reportId => $checked) {
+				if (!$checked) {
+					continue;
+				}
+				$this->ReportsUser->create(array(
+					'user_id' => $this->id,
+					'report_id' => $reportId
+				));
+				$this->ReportsUser->save();
+			}
+		}
+
 		return true;
 	}
 /**

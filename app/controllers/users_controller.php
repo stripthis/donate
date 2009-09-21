@@ -11,6 +11,8 @@ class UsersController extends AppController {
 		parent::beforeFilter();
 		$this->Office = $this->User->Office;
 		$this->Role = $this->User->Role;
+		$this->ReportsUser = $this->User->ReportsUser;
+		$this->Report = $this->ReportsUser->Report;
 	}
 /**
  * undocumented function
@@ -385,6 +387,38 @@ class UsersController extends AppController {
 		}
 		User::restore();
 
+		$this->Message->add(__('Saved successfully.', true), 'ok', true, $this->here);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	function admin_email_reports($id = null) {
+		$this->paginate['Report'] = array(
+			'contain' => false,
+			'order' => array('frequency' => 'asc', 'title' => 'asc')
+		);
+		$reports = $this->paginate('Report');
+
+		$myReports = $this->ReportsUser->find('all', array(
+			'conditions' => array('ReportsUser.user_id' => User::get('id')),
+			'contain' => false,
+			'fields' => array('report_id')
+		));
+		$myReports = Set::extract('/ReportsUser/report_id', $myReports);
+		$this->set(compact('reports', 'myReports'));
+
+		if ($this->isGet()) {
+			return;
+		}
+
+		$this->data['User']['id'] = User::get('id');
+		if (!$this->User->save($this->data, false)) {
+			return $this->Message->add(__('There was a problem with the form.', true), 'error');
+		}
 		$this->Message->add(__('Saved successfully.', true), 'ok', true, $this->here);
 	}
 }
