@@ -5,6 +5,8 @@ class SendReportsShell extends Shell {
 /**
  * undocumented function
  *
+ * todo: encryption, reports.users.last_sent population, frequency support
+ *
  * @return void
  * @access public
  */
