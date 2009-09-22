@@ -8,6 +8,7 @@
 /app/config/core.php
 /app/config/environment.php
 /app/tmp
+/app/webroot/files
 /app/sql_updates.txt
 /app/webroot/js/aggregate
 /app/webroot/css/aggregate

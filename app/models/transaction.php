@@ -6,6 +6,7 @@ class Transaction extends AppModel {
 
 	var $belongsTo = array(
 		'Gateway',
+		'Import',
 		'Gift',
 		'ParentTransaction' => array(
 			'className' => 'Transaction',

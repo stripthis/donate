@@ -3,6 +3,7 @@ if (!isset($links)){
 	$links = array();
 }
 switch ($this->action){
+	case 'admin_import':
 	case 'admin_index':
 		/*
 		$links[] =	array(
@@ -23,6 +24,12 @@ switch ($this->action){
 			'uri' => array(), 
 			'submit' => true,
 			'options'=> array('class' =>'exportall', 'name' => 'Transaction', 'div'=> array('class'=>'submit exportall'))
+		);
+		$links[] = array(
+			'name' => __('Import', true),
+			'label'=>'import',
+			'uri' => array('action' => 'import'),
+			'options'=> array('class' =>'import')
 		);
 	break;
 	case "admin_view":

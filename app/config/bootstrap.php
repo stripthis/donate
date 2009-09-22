@@ -11,6 +11,7 @@ if (!class_exists('ShellDispatcher')) {
 require_once(APP . 'controllers' . DS . 'components' . DS .'assert.php');
 require_once(APP . 'controllers' . DS . 'components' . DS .'common.php');
 require_once(APP . 'controllers' . DS . 'components' . DS .'mailer.php');
+define('IMPORTS_PATH', WWW_ROOT . 'files' . DS . 'imports' . DS);
 
 function prd($var) {
 	pr($var);

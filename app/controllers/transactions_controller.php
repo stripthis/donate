@@ -1,5 +1,6 @@
 <?php
 class TransactionsController extends AppController {
+	var $components = array('Uploader');
 /**
  * undocumented function
  *
@@ -10,6 +11,7 @@ class TransactionsController extends AppController {
 		parent::beforeFilter();
 
 		$this->Gift = $this->Transaction->Gift;
+		$this->Import = $this->Transaction->Import;
 		$this->Contact = $this->Gift->Contact;
 	}
 /**
@@ -146,6 +148,39 @@ class TransactionsController extends AppController {
 		$this->Transaction->save();
 		$msg = __('The Transaction has been deleted.', true);
 		$this->Message->add($msg, 'ok', true, array('action' => 'admin_index'));
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function admin_import() {
+		if ($this->isGet()) {
+			return;
+		}
+
+		$file = $this->data['Import']['file'];
+		unset($this->data['Import']['file']);
+
+		$fileRules = array('text/plain');
+		if (!in_array($file['type'], $fileRules)) {
+			$msg = __('Sorry, your resume must be a text file.', true);
+			return $this->Message->add($msg, 'error');
+		}
+
+		$this->data['Import']['user_id'] = User::get('id');
+		$this->Import->create($this->data);
+		if (!$this->Import->save()) {
+			$msg = __('There was a problem with the form!', true);
+			return $this->Message->add($msg, 'error');
+		}
+
+		$myFile = $this->Uploader->upload($file, IMPORTS_PATH, $fileRules);
+		$contents = file_get_contents($myFile);
+		pr($contents);
+		die;
+		$officeId = $this->Session->read('Office.id');
 	}
 }
 ?>
