@@ -1,6 +1,5 @@
 <?php
 class UsersController extends AppController {
-	var $components = array('GridFilter');
 /**
  * undocumented function
  *
@@ -151,7 +150,7 @@ class UsersController extends AppController {
 			$params['my_limit'] = $params['custom_limit'];
 		}
 
-		$conditions = $this->GridFilter->dateRange($conditions, $params, 'User', 'created');
+		$conditions = $this->User->dateRange($conditions, $params, 'created');
 		// search was submitted
 		if (!empty($params['keyword'])) {
 			$params['keyword'] = trim($params['keyword']);

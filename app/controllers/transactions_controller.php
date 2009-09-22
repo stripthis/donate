@@ -1,6 +1,5 @@
 <?php
 class TransactionsController extends AppController {
-	var $components = array('GridFilter');
 /**
  * undocumented function
  *
@@ -86,7 +85,7 @@ class TransactionsController extends AppController {
 			}
 		}
 
-		$conditions = $this->GridFilter->dateRange($conditions, $params, 'Transaction', 'created');
+		$conditions = $this->Transaction->dateRange($conditions, $params, 'created');
 		$this->Session->write('transactions_filter_conditions', $conditions);
 		$this->paginate['Transaction'] = array(
 			'conditions' => $conditions,

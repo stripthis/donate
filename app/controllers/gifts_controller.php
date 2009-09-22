@@ -1,7 +1,6 @@
 <?php
 class GiftsController extends AppController {
 	var $helpers = array('Fpdf', 'GiftForm');
-	var $components = array('GridFilter');
 	var $models = array('Gift', 'Contact', 'Address', 'Phone');
 	var $sessAppealKey = 'gift_process_appeal_id';
 	var $sessOfficeKey = 'gift_process_office_id';
@@ -294,7 +293,7 @@ class GiftsController extends AppController {
 			}
 		}
 
-		$conditions = $this->GridFilter->dateRange($conditions, $params, 'Gift', 'created');
+		$conditions = $this->Gift->dateRange($conditions, $params, 'created');
 		$this->Session->write('gifts_filter_conditions', $conditions);
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,

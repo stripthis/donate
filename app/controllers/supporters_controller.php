@@ -1,7 +1,6 @@
 <?php
 class SupportersController extends AppController {
 	var $helpers = array('Fpdf', 'GiftForm');
-	var $components = array('GridFilter');
 	var $models = array('Gift', 'Contact', 'Address', 'Phone');
 /**
  * undocumented function
@@ -50,7 +49,7 @@ class SupportersController extends AppController {
 					'end_date_month' => date('m'),
 					'end_date_year' => date('Y'),
 				);
-				$conditions = $this->GridFilter->dateRange($conditions, $myParams, 'Gift', 'created');
+				$conditions = $this->Gift->dateRange($conditions, $myParams, 'created');
 				break;
 			case 'favorites':
 			case 'starred':
@@ -119,7 +118,7 @@ class SupportersController extends AppController {
 			}
 		}
 
-		$conditions = $this->GridFilter->dateRange($conditions, $params, 'Gift', 'created');
+		$conditions = $this->Gift->dateRange($conditions, $params, 'created');
 		$this->Session->write('gifts_filter_conditions', $conditions);
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,
