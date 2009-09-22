@@ -5,7 +5,7 @@ class SendReportsShell extends Shell {
 /**
  * undocumented function
  *
- * todo: encryption, reports.users.last_sent population, frequency support
+ * todo: encryption
  *
  * @return void
  * @access public
@@ -13,7 +13,6 @@ class SendReportsShell extends Shell {
 	function main() {
 		$this->out('Calculating reports ..');
 
-		// @todo: add frequency support
 		$reports = $this->Report->find('all');
 		if (empty($reports)) {
 			$this->out('Found 0 reports. Exiting.');
@@ -23,10 +22,26 @@ class SendReportsShell extends Shell {
 		foreach ($reports as $report) {
 			$this->out('Processing report "' . $report['Report']['title'] . '" ..');
 
+			$conditions = array(
+				'ReportsUser.report_id' => $report['Report']['id']
+			);
+
+			$frequency = $report['Report']['frequency'];
+			switch ($frequency) {
+				case 'daily':
+					$date = date('Y-m-d H:i', strtotime('-1 day'));
+					break;
+				case 'weekly':
+					$date = date('Y-m-d H:i', strtotime('-1 week'));
+					break;
+				case 'yearly':
+					$date = date('Y-m-d H:i', strtotime('-1 year'));
+					break;
+			}
+			$conditions[] = "DATE_FORMAT(ReportsUser.last_sent, '%Y-%m-%d %H:%i') = '" . $date . "'";
+
 			$users = $this->ReportsUser->find('all', array(
-				'conditions' => array(
-					'ReportsUser.report_id' => $report['Report']['id']
-				),
+				'conditions' => $conditions,
 				'contain' => array('User'),
 				'order' => array('ReportsUser.created' => 'asc')
 			));
@@ -45,15 +60,20 @@ class SendReportsShell extends Shell {
 
 				$content = $this->parseTemplate($report['Report']['view'], $results);
 
-				$options = array(
-					'mail' => array(
-						'to' => $user['User']['login'],
-						'subject' => $name
-					),
-					'vars' => compact('content')
-				);
+				$this->ReportsUser->set(array(
+					'id' => $user['ReportsUser']['id'],
+					'last_sent' => date('Y-m-d H:i:s')
+				));
+				$this->ReportsUser->save();
 
 				if (!Common::isDevelopment()) {
+					$options = array(
+						'mail' => array(
+							'to' => $user['User']['login'],
+							'subject' => $name
+						),
+						'vars' => compact('content')
+					);
 					Mailer::deliver('report', $options);
 					$this->out('Sent ' . $name . ' to ' . $user['User']['login']);
 				}

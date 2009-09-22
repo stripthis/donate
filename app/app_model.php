@@ -317,7 +317,7 @@ class AppModel extends Model {
  * @return void
  * @access public
  */
-	function dateRange($condtitions, &$params, $field) {
+	function dateRange($conditions, &$params, $field) {
 		if (!empty($params['start_date_year'])) {
 			if (empty($params['start_date_month'])) {
 				$params['start_date_month'] = '01';
@@ -326,7 +326,7 @@ class AppModel extends Model {
 				$params['start_date_day'] = '01';
 			}
 			$startDate = $params['start_date_year'] . '-' . $params['start_date_month'] . '-' . $params['start_date_day'];
-			$condtitions[] = "DATE_FORMAT(" . $this->alias . "." . $field. ", '%Y-%m-%d') >= '" . $startDate . "'";
+			$conditions[] = "DATE_FORMAT(" . $this->alias . "." . $field. ", '%Y-%m-%d') >= '" . $startDate . "'";
 		}
 
 		if (!empty($params['end_date_year'])) {
@@ -337,10 +337,10 @@ class AppModel extends Model {
 				$params['end_date_day'] = '01';
 			}
 			$endDate = $params['end_date_year'] . '-' . $params['end_date_month'] . '-' . $params['end_date_day'];
-			$condtitions[] = "DATE_FORMAT(" . $this->alias . "." . $field. ", '%Y-%m-%d') <= '" . $endDate . "'";
+			$conditions[] = "DATE_FORMAT(" . $this->alias . "." . $field. ", '%Y-%m-%d') <= '" . $endDate . "'";
 		}
 
-		return $condtitions;
+		return $conditions;
 	}
 }
 ?>
