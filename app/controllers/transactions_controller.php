@@ -177,10 +177,7 @@ class TransactionsController extends AppController {
 		}
 
 		$myFile = $this->Uploader->upload($file, IMPORTS_PATH, $fileRules);
-		$contents = file_get_contents($myFile);
-		pr($contents);
-		die;
-		$officeId = $this->Session->read('Office.id');
+		$this->Import->parseFile($myFile, $this->data['Import']['template']);
 	}
 }
 ?>
