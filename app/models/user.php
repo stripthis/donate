@@ -68,7 +68,7 @@ class User extends AppModel {
 				}
 			}
 
-			if ($this->data[__CLASS__]['id']) {
+			if ($this->data[__CLASS__]['id'] && !class_exists('ShellDispatcher')) {
 				Common::getComponent('Session')->logout($this->data[__CLASS__]['id']);
 			}
 
