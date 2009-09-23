@@ -58,7 +58,7 @@ class User extends AppModel {
  * @access public
  */
 	function beforeSave() {
-		if (isset($this->data[__CLASS__]['permissions'])) {
+		if (isset($this->data[__CLASS__]['permissions']) && is_array($this->data[__CLASS__]['permissions'])) {
 			$permissions = Configure::read('App.permission_options');
 
 			$perms = array();
