@@ -177,6 +177,7 @@ class TransactionsController extends AppController {
 			}
 		}
 
+		$importId = false;
 		if ($process) {
 			$this->data = $this->Session->read('import_data');
 
@@ -186,6 +187,7 @@ class TransactionsController extends AppController {
 
 			$this->Import->create($this->data);
 			$this->Import->save();
+			$importId = $this->Import->getLastInsertId();
 
 			$myFile = $this->Session->read('import_file');
 		} else {
@@ -195,7 +197,7 @@ class TransactionsController extends AppController {
 		}
 
 		$result = $this->Import->parseFile(
-			$myFile, $this->data['Import']['template'], $process
+			$myFile, $this->data['Import']['template'], $process, $importId
 		);
 		$this->Session->write('import_result', $result);
 

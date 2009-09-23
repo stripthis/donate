@@ -34,7 +34,7 @@ class Import extends AppModel {
  * @return void
  * @access public
  */
-	function parseFile($file, $template, $save = false) {
+	function parseFile($file, $template, $save = false, $importId = false) {
 		$Session = Common::getComponent('Session');
 		$Transaction = ClassRegistry::init('Transaction');
 		$officeId = $Session->read('Office.id');
@@ -89,6 +89,7 @@ class Import extends AppModel {
 			}
 
 			if ($save) {
+				$data['import_id'] = $importId;
 				$this->Transaction->create($data);
 				$this->Transaction->save();
 			}
