@@ -1,7 +1,7 @@
 <?php $this->pageTitle = 'Login'; ?>
 <?php if (!isset($tabindex)) $tabindex = 1; ?>
 <div id="admin_login" class="content">
-	<h2><?php echo __("Admin Login"); ?></h2>
+	<h2><?php sprintf(__('Admin Login', true)); ?></h2>
 	<?php
 	echo $this->element('nav', array(
 		'type' => 'admin_auth_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
@@ -9,7 +9,7 @@
 	?>
 	<?php echo $form->create('User', array('url' => '/admin/auth/login', 'id' => 'LoginForm'))."\n";?>
 	<fieldset>
-		<legend><?php echo __("Please enter your login details"); ?></legend>
+		<legend><?php sprintf(__('Please enter your login details', true)); ?></legend>
 		<?php echo $form->input('login', array('label' => __('Email',true).':',"tabindex" => $tabindex++))."\n";?>
 		<?php echo $form->input('password', array('label' => __('Password',true).':',"tabindex" => $tabindex++))."\n";?>
 		<!-- @TODO

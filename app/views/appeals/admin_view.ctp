@@ -1,7 +1,7 @@
 <div class="content" id="appeals view">
-	<h2><?php  __('Appeal');?></h2>
+	<h2><?php  sprintf(__('Appeal', true));?></h2>
 	<div class="actions">
-		<h3><?php echo __('Actions'); ?></h3>
+		<h3><?php sprintf(__('Actions', true)); ?></h3>
 		<ul>
 			<li>
 				<?php
@@ -23,12 +23,12 @@
 		</ul>
 	</div>
 	<dl>
-		<dt><?php __('Id'); ?></dt>
+		<dt><?php sprintf(__('Id', true)); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Parent'); ?></dt>
+		<dt><?php sprintf(__('Parent', true)); ?></dt>
 		<dd>
 			<?php
 			if (!empty($appeal['Parent']['name'])) {
@@ -41,37 +41,37 @@
 			?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Name'); ?></dt>
+		<dt><?php sprintf(__('Name', true)); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['name']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Campaign Code'); ?></dt>
+		<dt><?php sprintf(__('Campaign Code', true)); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['campaign_code']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Is Default'); ?></dt>
+		<dt><?php sprintf(__('Is Default', true)); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['default'] ? __('Yes', true) : __('No', true); ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Cost'); ?></dt>
+		<dt><?php sprintf(__('Cost', true)); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['cost']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Reviewed'); ?></dt>
+		<dt><?php sprintf(__('Reviewed', true)); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['reviewed']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Status'); ?></dt>
+		<dt><?php sprintf(__('Status', true)); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['status']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Created By'); ?></dt>
+		<dt><?php sprintf(__('Created By', true)); ?></dt>
 		<dd>
 			<?php
 			echo $html->link($appeal['User']['login'], array(
@@ -80,12 +80,12 @@
 			?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Created On'); ?></dt>
+		<dt><?php sprintf(__('Created On', true)); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['created']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Last Modified'); ?></dt>
+		<dt><?php sprintf(__('Last Modified', true)); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['modified']; ?>
 			&nbsp;

@@ -1,7 +1,7 @@
 <div id="referDiv">
 <?php echo $form->create('tellafriend', array('url' =>array('controller'=>'tellfriends', 'action'=>'refer')   )); ?>
 <fieldset>
-  <legend>Tell A Friend</legend>
+  <legend><?php sprintf(__('Tell A Friend', true)); ?></legend>
   <ul>
     <li>
       <?php echo $form->input('Tellfriend.receiver', array('type' => 'text','label' => __('Friends\' Email (comma separated emails)',true).' *','class'=>'input text required','div'=>false))?>
