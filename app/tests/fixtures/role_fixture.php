@@ -10,7 +10,7 @@ class RoleFixture extends CakeTestFixture {
 		array(
 			'id' => '4aaf92da-5554-49c3-9306-4ad4a7f05a6e',
 			'name' => 'guest',
-			'permissions' => '!*:admin_*, Auth:admin_login, !Users:delete, !Users:dashboard, !Users:edit, Users:admin_forgot_pw, Users:admin_activate, Pages:display, Gifts:add',
+			'permissions' => '!*:admin_*, Auth:admin_login, !Users:delete, !Users:edit, Users:admin_forgot_pw, Users:admin_activate, Pages:display, Gifts:add',
 		),
 		array(
 			'id' => '4aaf92da-6dcc-4d71-91be-40a9a7f05a6e',

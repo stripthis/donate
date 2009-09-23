@@ -198,6 +198,7 @@ class Navigation extends AppModel{
 				, __('Email Reports', true) => array(
 					'/admin/users/email_reports'
 					, '#/^\/admin\/users\/email_reports.*$/iU'
+					, 'condition' => User::allowed('Users', 'admin_email_reports')
 				)
 			)
 			, 'admin_auth_sub' => array(
