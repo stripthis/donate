@@ -1,4 +1,4 @@
-<h2>Users Statistics</h2>
+<h2><?php sprintf(__('Users Statistics', true)); ?></h2>
 <?php echo $this->element('../statistics/sidebar') ?>
 
 <?php
@@ -15,14 +15,14 @@ swfobject.embedSWF(
 <div class="divider"></div>
 
 <dl class="stats">
-	<dt>Number of signups in the timeperiod</dt>
+	<dt><?php sprintf(__('Number of signups in the timeperiod', true)); ?></dt>
 	<dd><?php echo count($users) ?></dd>
-	<dt>Average number of signups per month (<?php echo count($months) ?> month(s) in the timeperiod)</dt>
+	<dt><?php sprintf(__('Average number of signups per month (%s month(s) in the timeperiod)', true), count($months)); ?></dt>
 	<dd><?php echo count($months) != 0 ? round(count($users) / count($months), 2) : 0?></dd>
 </dl>
 <table>
 	<thead>
-		<th>Monat</th><th>Number of signups</th>
+		<th><?php sprintf(__('Monat', true)); ?></th><th><?php sprintf(__('Number of signups', true)); ?></th>
 	</thead>
 	<tbody>
 		<?php foreach ($result as $month => $users) : ?>

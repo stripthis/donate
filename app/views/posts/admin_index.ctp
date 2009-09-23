@@ -1,7 +1,7 @@
 <div class="posts index">
-	<h2><?php __('Posts Index');?></h2>
+	<h2><?php sprintf(__('Posts Index', true);?></h2>
 	<div class="actions">
-		<h3>Actions</h3>
+		<h3><?php sprintf(__('Actions', true)); ?></h3>
 		<ul>
 			<li>
 				<?php

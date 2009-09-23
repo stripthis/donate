@@ -13,7 +13,7 @@ $title = $action == 'add'
 	<?php echo $this->element('../offices/elements/actions'); ?>
 	<?php echo $form->create('Office');?>
 	<fieldset>
-		<legend><?php __('Main Preferences'); ?></legend>
+		<legend><?php sprintf(__('Main Preferences', true)); ?></legend>
 		<?php
 		echo $form->input('id');
 		echo $form->input('name');

@@ -1,5 +1,5 @@
 <div class="content" id="offices_index">
-	<h2><?php __('People Working in this Office');?></h2>
+	<h2><?php sprintf(__('People Working in this Office', true));?></h2>
 	<table>
 	<?php
 	$th = array(
