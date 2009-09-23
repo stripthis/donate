@@ -1,4 +1,4 @@
-<h2><?php echo __('Sweet, our App got Baked by CakePHP!"); ?></h2>
+<h2><?php echo __('Sweet, our App got Baked by CakePHP!'); ?></h2>
 <?php
 if (Configure::read() > 0) {
 	Debugger::checkSessionKey();
