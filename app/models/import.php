@@ -1,5 +1,13 @@
 <?php
 class Import extends AppModel {
+	var $actsAs = array(
+		'Containable', 'Lookupable',
+		'ContinousId' => array(
+			'field' => 'serial',
+			'offset' => '100000'
+		)
+	);
+
 	var $belongsTo = array('User');
 	var $hasMany = array(
 		'Transaction'
