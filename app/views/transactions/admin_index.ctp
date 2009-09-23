@@ -34,7 +34,7 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 	$th = am($th,array(
 		$myPaginator->sort(__('Status',true),'Transaction.status', array('url' => $params)),
 		$myPaginator->sort(__('Id',true),'Transaction.serial', array('url' => $params)),
-		$myPaginator->sort(__('External ID',true),'Transaction.external_id', array('url' => $params)),
+		$myPaginator->sort(__('Import Id',true),'Import.serial', array('url' => $params)),
 		$myPaginator->sort(__('Amount',true),'Transaction.amount', array('url' => $params)),
 		$myPaginator->sort(__('Gateway',true),'Gateway.parent_id', array('url' => $params)),
 		$myPaginator->sort(__('Gift',true),'Transaction.gift_id', array('url' => $params)),
@@ -65,10 +65,11 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 		if ($doFavorites) {
 			$tr[] = $favorites->link("Transaction", $t['Transaction']['id']);
 		}
+
 		$tr = am($tr,array(            
 			$t['Transaction']['status'],
 			$t['Transaction']['serial'],
-			$t['Transaction']['external_id'],
+			!empty($t['Import']['serial']) ? $t['Import']['serial'] : '--',
 			$t['Transaction']['amount'].' EUR', //@todo currency
 			$t['Gateway']['name'],
 			$html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id'])),
@@ -109,7 +110,6 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 	?>
 	</table>
 	<?php
-	echo $form->end();
 	$urlParams = $params;
 	$urlParams[] = $type;
 	unset($urlParams['ext']);
@@ -120,5 +120,6 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 <?php else : ?>
     <p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
 <?php endif; ?>
+<?php echo $form->end(); ?>
 <?php echo $this->element('../transactions/elements/filter', compact('params', 'type')); ?>
 </div>

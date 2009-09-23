@@ -1,6 +1,7 @@
 <?php
 $typeOptions = array(
-	'transaction' => 'Transaction Id'
+	'transaction' => 'Transaction Id',
+	'import_id' => 'Import Id'
 );
 ?>
 <div class="filter">

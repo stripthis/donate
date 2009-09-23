@@ -78,13 +78,15 @@ class Import extends AppModel {
 				if ($field == 'parent_order_id') {
 					$parent = $this->Transaction->find('first', array(
 						'conditions' => array('order_id' => $values[$i]),
-						'fields' => array('id')
+						'fields' => array('id', 'gift_id', 'gateway_id')
 					));
 					if (empty($parent)) {
 						$result['invalid_missing_parent']++;
 						continue 2;
 					}
-					$data['parent_id'] = $parent[__CLASS__]['id'];
+					$data['parent_id'] = $parent['Transaction']['id'];
+					$data['gift_id'] = $parent['Transaction']['gift_id'];
+					$data['gateway_id'] = $parent['Transaction']['gateway_id'];
 				}
 			}
 

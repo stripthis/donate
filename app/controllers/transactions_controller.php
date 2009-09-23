@@ -77,10 +77,12 @@ class TransactionsController extends AppController {
 			$params['my_limit'] = $params['custom_limit'];
 		}
 
-		// search was submitted
 		if (!empty($params['keyword'])) {
 			$params['keyword'] = trim($params['keyword']);
 			switch ($params['search_type']) {
+				case 'import_id':
+					$conditions['Import.serial'] = $params['keyword'];
+					break;
 				default:
 					$conditions['Transaction.serial LIKE'] = '%' . $params['keyword'] . '%';
 					break;
@@ -96,6 +98,7 @@ class TransactionsController extends AppController {
 			'contain' => array(
 				'Gift',
 				'Gateway',
+				'Import',
 				'ChildTransaction.Gateway',
 				'ChildTransaction.Gift',
 				'ParentTransaction'
@@ -177,7 +180,7 @@ class TransactionsController extends AppController {
 			}
 		}
 
-		$importId = false;
+		$importId = $import = false;
 		if ($process) {
 			$this->data = $this->Session->read('import_data');
 
@@ -188,6 +191,9 @@ class TransactionsController extends AppController {
 			$this->Import->create($this->data);
 			$this->Import->save();
 			$importId = $this->Import->getLastInsertId();
+			$import = $this->Import->find('first', array(
+				'conditions' => array('id' => $importId)
+			));
 
 			$myFile = $this->Session->read('import_file');
 		} else {
@@ -200,8 +206,7 @@ class TransactionsController extends AppController {
 			$myFile, $this->data['Import']['template'], $process, $importId
 		);
 		$this->Session->write('import_result', $result);
-
-		$this->set(compact('result', 'process'));
+		$this->set(compact('result', 'process', 'import'));
 	}
 }
 ?>
