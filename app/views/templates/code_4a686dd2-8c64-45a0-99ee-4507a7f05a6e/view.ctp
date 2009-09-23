@@ -121,7 +121,7 @@
     <th><?php __('Id'); ?></th>
     <th><?php __('Parent Id'); ?></th>
     <th><?php __('Gateway Id'); ?></th>
-    <th><?php __('External Id'); ?></th>
+    <th><?php __('Order Id'); ?></th>
     <th><?php __('Gift Id'); ?></th>
     <th><?php __('Status'); ?></th>
     <th><?php __('Amount'); ?></th>
@@ -141,7 +141,7 @@
       <td><?php echo $transaction['id'];?></td>
       <td><?php echo $transaction['parent_id'];?></td>
       <td><?php echo $transaction['gateway_id'];?></td>
-      <td><?php echo $transaction['external_id'];?></td>
+      <td><?php echo $transaction['order_id'];?></td>
       <td><?php echo $transaction['gift_id'];?></td>
       <td><?php echo $transaction['status'];?></td>
       <td><?php echo $transaction['amount'];?></td>

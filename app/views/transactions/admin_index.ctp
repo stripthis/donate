@@ -37,7 +37,6 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 		$myPaginator->sort(__('Import Id',true),'Import.serial', array('url' => $params)),
 		$myPaginator->sort(__('Amount',true),'Transaction.amount', array('url' => $params)),
 		$myPaginator->sort(__('Gateway',true),'Gateway.parent_id', array('url' => $params)),
-		$myPaginator->sort(__('Gift',true),'Transaction.gift_id', array('url' => $params)),
 		$myPaginator->sort(__('Created',true),'Transaction.created', array('url' => $params)),
 		$myPaginator->sort(__('Modified',true),'Transaction.modified', array('url' => $params)),
 		'Actions'
@@ -46,19 +45,12 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 	echo $html->tableHeaders($th);
 	foreach ($transactions as $t) {
 		$actions = array(
-			$html->link(__('View', true), array(
-				'action' => 'view', $t['Transaction']['id']),array('class'=>'view'
-			)),
+			$html->link(__('View', true), array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id']),
+				array('class'=>'view')
+			),
 			$html->link(__('Delete', true), array('action' => 'delete', $t['Transaction']['id']),
 				array('class'=>'delete'), __('Are you sure?', true))
 		);
-		
-		$parent = '';
-		if (!empty($t['ParentTransaction']['id'])) {
-			$parent = $html->link($t['ParentTransaction']['id'], array(
-				'controller' => 'transactions', 'action' => 'view', $t['ParentTransaction']['id']
-			));
-		}
 
 		$tr = array();
 		$tr[] = $form->checkbox($t['Transaction']['id'], array('class'=>'checkbox'));
@@ -72,7 +64,6 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 			!empty($t['Import']['serial']) ? $t['Import']['serial'] : '--',
 			$t['Transaction']['amount'].' EUR', //@todo currency
 			$t['Gateway']['name'],
-			$html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id'])),
 			$t['Transaction']['created'],
 			$t['Transaction']['modified'],
 			implode(' - ', $actions)
@@ -98,7 +89,7 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 					$id,
 					$t['Gateway']['name'],
 					$t['Transaction']['amount'],
-					$t['Transaction']['external_id'],
+					$t['Transaction']['order_id'],
 			    $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id'])),
 					$t['Transaction']['created'],
 			    $t['Transaction']['modified'],
