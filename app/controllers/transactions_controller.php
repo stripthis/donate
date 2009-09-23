@@ -155,29 +155,45 @@ class TransactionsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_import() {
-		if ($this->isGet()) {
+	function admin_import($process = false) {
+		if ($this->isGet() && !$process) {
 			return;
 		}
 
-		$file = $this->data['Import']['file'];
-		unset($this->data['Import']['file']);
+		if ($this->isPost()) {
+			$file = $this->data['Import']['file'];
+			unset($this->data['Import']['file']);
 
-		$fileRules = array('text/plain');
-		if (!in_array($file['type'], $fileRules)) {
-			$msg = __('Sorry, your resume must be a text file.', true);
-			return $this->Message->add($msg, 'error');
+			$fileRules = array('text/plain');
+			if (!in_array($file['type'], $fileRules)) {
+				$msg = __('Sorry, your resume must be a text file.', true);
+				return $this->Message->add($msg, 'error');
+			}
+
+			$this->Import->create($this->data);
+			if (!$this->Import->validates()) {
+				$msg = __('There was a problem with the form!', true);
+				return $this->Message->add($msg, 'error');
+			}
 		}
 
-		$this->data['Import']['user_id'] = User::get('id');
-		$this->Import->create($this->data);
-		if (!$this->Import->save()) {
-			$msg = __('There was a problem with the form!', true);
-			return $this->Message->add($msg, 'error');
+		if ($process) {
+			$this->data = $this->Session->read('import_data');
+			$this->data['Import']['user_id'] = User::get('id');
+			$this->Import->create($this->data);
+			$this->Import->save();
+			$myFile = $this->Session->read('import_file');
+		} else {
+			$myFile = $this->Uploader->upload($file, IMPORTS_PATH, $fileRules);
+			$this->Session->write('import_file', $myFile);
+			$this->Session->write('import_data', $this->data);
 		}
 
-		$myFile = $this->Uploader->upload($file, IMPORTS_PATH, $fileRules);
-		$this->Import->parseFile($myFile, $this->data['Import']['template']);
+		$result = $this->Import->parseFile(
+			$myFile, $this->data['Import']['template'], $process
+		);
+
+		$this->set(compact('result', 'process'));
 	}
 }
 ?>

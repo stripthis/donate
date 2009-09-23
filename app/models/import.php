@@ -1,6 +1,9 @@
 <?php
 class Import extends AppModel {
 	var $belongsTo = array('User');
+	var $hasMany = array(
+		'Transaction'
+	);
 
 	var $validate = array(
 		'serial' => array(
@@ -18,7 +21,7 @@ class Import extends AppModel {
  * @return void
  * @access public
  */
-	function parseFile($file, $template) {
+	function parseFile($file, $template, $save = false) {
 		$Session = Common::getComponent('Session');
 		$Transaction = ClassRegistry::init('Transaction');
 		$officeId = $Session->read('Office.id');
@@ -46,15 +49,40 @@ class Import extends AppModel {
 		$csv->SkipEmptyRows(false);
 		$csv->TrimFields(TRUE);
 		$num = 0;
+
+		$result = array(
+			'valid' => 0,
+			'invalid_missing_parent' => 0
+		);
 		while ($row = $csv->NextLine()){
 			$num++;
 
-			$data = explode($format['delim'], $row[0]);
-
+			$values = explode($format['delim'], $row[0]);
+			$data = array();
 			foreach ($format['fields'] as $i => $field) {
-				$$field = $data[$i];
+				$data[$field] = $values[$i];
+
+				if ($field == 'parent_order_id') {
+					$parent = $this->Transaction->find('first', array(
+						'conditions' => array('order_id' => $values[$i]),
+						'fields' => array('id')
+					));
+					if (empty($parent)) {
+						$result['invalid_missing_parent']++;
+						continue 2;
+					}
+					$data['parent_id'] = $parent[__CLASS__]['id'];
+				}
 			}
+
+			if ($save) {
+				$this->Transaction->create($data);
+				$this->Transaction->save();
+			}
+			$result['valid']++;
 		}
+
+		return $result;
 	}
 }
 ?>
