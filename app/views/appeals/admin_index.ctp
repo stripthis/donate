@@ -67,6 +67,7 @@ $favConfig = Configure::read('Favorites');
 		?>
 		</table>
 		<?php
+		echo $form->end();
 		$urlParams = $params;
 		$urlParams[] = $type;
 		$urlParams['merge'] = true;
@@ -74,8 +75,8 @@ $favConfig = Configure::read('Favorites');
 		unset($urlParams['page']);
 		echo $this->element('paging', array('model' => 'Appeal', 'url' => $urlParams));
 		?>
-	<?php else : ?>
+<?php else : ?>
 		<p>Sorry, nothing to show here.</p>
-	<?php endif; ?>
-	<?php echo $this->element('../appeals/elements/filter', compact('params', 'type')); ?>
+<?php endif; ?>
+<?php echo $this->element('../appeals/elements/filter', compact('params', 'type')); ?>
 </div>

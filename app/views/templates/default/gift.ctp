@@ -18,7 +18,8 @@
         <legend><?php echo __("Gift Information"); ?></legend>
         <?php echo $form->input('Gift.id', array('type' => 'hidden'))."\n"; ?>
         <?php echo $form->input('Gift.appeal_id', array('type' => 'hidden'))."\n"; ?>
-        <?php echo $form->input('Gift.type', array('options' => $typeOptions))."\n"; ?>
+        <?php //echo $form->input('Gift.type', array('options' => $typeOptions))."\n"; ?>
+        <input name="data[Gift][type]" value="donation" id="GiftType" type="hidden">
         <div class="input_wrapper radio">
           <label for="amount" class="option_title">Amount: <strong class="required">*</strong></label>
 		<?php foreach ($amountOptions as $amountOption): ?>

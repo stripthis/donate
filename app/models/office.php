@@ -230,6 +230,7 @@ class Office extends AppModel {
  * @access public
  */
 	function activate($id) {
+		
 		if (is_array($id)) {
 			$office = $id;
 		} else {

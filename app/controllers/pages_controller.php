@@ -11,7 +11,7 @@ class PagesController extends AppController {
  */
 	function display() {
 		$path = func_get_args();
-		
+				
 		$count = count($path);
 		if (!$count) {
 			$this->redirect('/');
@@ -22,18 +22,26 @@ class PagesController extends AppController {
 			$page = $path[0];
 		}
 
-		if ($page == 'home') {
-			$appeals = $this->Appeal->find('all', array(
-				'conditions' => array(
-					'Appeal.admin' => false,
-					'Appeal.status' => 'published',
-					'Office.live' => true
-				),
-				'contain' => array('Office'),
-				'fields' => array('name', 'id'),
-				'order' => array('name' => 'asc')
-			));
-			$this->set(compact('appeals'));
+		switch($page){
+			case 'home':
+				$path[0] = $page = 'country_selector';
+			case 'country_selector':
+				$appeals = $this->Appeal->find('all', array(
+					'conditions' => array(
+						'Appeal.admin' => false,
+						'Appeal.status' => 'published',
+						'Office.live' => true
+					),
+					'contain' => array('Office'),
+					'fields' => array('name', 'id'),
+					'order' => array('name' => 'asc')
+				));
+				$this->set(compact('appeals'));
+				//@todo cf. pages:!admin_* rules
+				$css = Configure::read('CssIncludes');
+				$css['generic.css'] = '*:*'; 
+				Configure::write('CssIncludes',$css);
+			break;
 		}
 		if (!empty($path[1])) {
 			$subpage = $path[1];
@@ -43,7 +51,7 @@ class PagesController extends AppController {
 		}
 		
 		$this->set(compact('page', 'subpage', 'title'));
-		$this->layout = 'empty';
+		$this->layout = 'default';
 		$this->render(join('/', $path));
 	}
 /**

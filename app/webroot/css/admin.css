@@ -232,8 +232,7 @@ input[type=submit] {
   padding:5px 5px;
   width:auto;
   vertical-align:bottom;
-  -moz-border-ra
-  dius:5px;
+  -moz-border-radius:5px;
 }
 
 /* iconic polution */

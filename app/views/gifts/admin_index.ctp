@@ -21,7 +21,7 @@ unset($urlParams['page']);
 	echo $form->create('Gift', array('url' => '/admin/exports/gifts', 'type' => 'post'));
 	echo $this->element('../gifts/elements/actions', array('export' => true));
 	?>
-	<?php if (isset($gifts) && !empty($gifts)) : ?>
+<?php if (isset($gifts) && !empty($gifts)) : ?>
 		<div class="index_wrapper">
 			<table>
 				<thead>
@@ -72,12 +72,10 @@ unset($urlParams['page']);
 				</tbody>
 			</table>
 		</div>
-		<?php echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams)); ?>
-	<?php else : ?>
+	<?php	echo $form->end(); ?>
+<?php echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams)); ?>
+<?php else : ?>
 		<p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
-	<?php endif; ?>
-	<?php
-	echo $form->end();
-	echo $this->element('../gifts/elements/filter', compact('params', 'type'));
-	?>
+<?php endif; ?>
+<?php echo $this->element('../gifts/elements/filter', compact('params', 'type'));?>
 </div>

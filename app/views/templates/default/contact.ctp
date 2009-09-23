@@ -1,4 +1,11 @@
 <?php
+/**
+ * Donation form default contact step 
+ * 
+ * @author      white rabbit team rocket!
+ * @copyright   GREENPEACE INTERNATIONAL (c) 2009
+ * @link        http://www.greenpeace.org/international/supportus
+ */
   $saluteOptions = Contact::getSalutations();
 ?>
 			<fieldset id="contact">
@@ -30,10 +37,19 @@
         </div>
         <div class="input_wrapper full">
           <?php
+          	/*
             echo $form->input('Contact.dob', array(
               'label' => 'Date of Birth'. ': ' . $giftForm->required(),
               'value' => $giftForm->value('Contact', 'dob', '', $form->data)
-            ))."\n";
+            ))."\n";*/
+            echo $form->input('start_date_day', array(
+							'label' => __('Date of Birth', true) . ':',
+							'type' => 'date',
+							'value' => $giftForm->value('Contact', 'dob', '', $form->data),
+							'dateFormat' => 'DMY',
+							'empty' => '--',
+							'div' => false
+						))."\n";;
           ?>
         </div>
         <div class="input_wrapper full">

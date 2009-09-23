@@ -4,14 +4,13 @@ $favConfig = Configure::read('Favorites');
 ?>
 <div class="content" id="Supporters_index">
 	<h2><?php echo __('Supporters');	?></h2>
-	<?php
+<?php
 	echo $this->element('nav', array(
 		'type' => 'supporter_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
-	echo $form->create('Gift', array('url' => '/admin/exports/supporters', 'type' => 'post'));
-	echo $this->element('../supporters/elements/actions', array('export' => true));
-	?>
-
+?>
+<?php	echo $form->create('Gift', array('url' => '/admin/exports/supporters', 'type' => 'post')); ?>
+<?php echo $this->element('../supporters/elements/actions', array('export' => true)); ?>
 	<?php if (!empty($supporters)) : ?>
 		<table>
 		<?php
@@ -80,6 +79,7 @@ $favConfig = Configure::read('Favorites');
 		}
 		?>
 		</table>
+	<?php echo $form->end(); ?>
 		<?php
 		$urlParams = $params;
 		$urlParams[] = $type;
@@ -91,6 +91,5 @@ $favConfig = Configure::read('Favorites');
 	<?php else : ?>
 		<p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
 	<?php endif; ?>
-	<?php echo $form->end(); ?>
 	<?php echo $this->element('../supporters/elements/filter', compact('params', 'type')); ?>
 </div>
