@@ -56,10 +56,14 @@ class SavedByBehavior extends ModelBehavior {
 		}
 		if (!$Model->id) {
 			$createdField = $this->__settings[$Model->alias]['createdField'];
-			$Model->data[$Model->alias][$createdField] = User::get('id');
+			if ($createdField) {
+				$Model->data[$Model->alias][$createdField] = User::get('id');
+			}
 		}
 		$modifiedField = $this->__settings[$Model->alias]['modifiedField'];
-		$Model->data[$Model->alias][$modifiedField] = User::get('id');
+		if ($modifiedField) {
+			$Model->data[$Model->alias][$modifiedField] = User::get('id');
+		}
 		return true;
 	}
 /**
@@ -73,16 +77,23 @@ class SavedByBehavior extends ModelBehavior {
 		$modifiedField = $this->__settings[$Model->alias]['modifiedField'];
 		$model = $this->__settings[$Model->alias]['model'];
 
-		$Model->bindModel(array('belongsTo' => array(
-			'CreatedBy' => array(
-				'className' => $model,
-				'foreignKey' => $createdField
-			),
-			'ModifiedBy' => array(
-				'className' => $model,
-				'foreignKey' => $modifiedField
-			),
-		)));
+		if ($createdField) {
+			$Model->bindModel(array('belongsTo' => array(
+				'CreatedBy' => array(
+					'className' => $model,
+					'foreignKey' => $createdField
+				),
+			)));
+		}
+
+		if ($createdField) {
+			$Model->bindModel(array('belongsTo' => array(
+				'ModifiedBy' => array(
+					'className' => $model,
+					'foreignKey' => $modifiedField
+				),
+			)));
+		}
 	}
 }
 ?>

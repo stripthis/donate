@@ -179,9 +179,14 @@ class TransactionsController extends AppController {
 
 		if ($process) {
 			$this->data = $this->Session->read('import_data');
-			$this->data['Import']['user_id'] = User::get('id');
+
+			$result = $this->Session->read('import_result');
+			$this->data['Import']['nb_requested'] = $result['valid'] + $result['invalid_missing_parent'];
+			$this->data['Import']['nb_imported'] = $result['valid'];
+
 			$this->Import->create($this->data);
 			$this->Import->save();
+
 			$myFile = $this->Session->read('import_file');
 		} else {
 			$myFile = $this->Uploader->upload($file, IMPORTS_PATH, $fileRules);
@@ -192,6 +197,7 @@ class TransactionsController extends AppController {
 		$result = $this->Import->parseFile(
 			$myFile, $this->data['Import']['template'], $process
 		);
+		$this->Session->write('import_result', $result);
 
 		$this->set(compact('result', 'process'));
 	}

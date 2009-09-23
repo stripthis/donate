@@ -11,7 +11,7 @@
 
 			echo $html->link('Cancel', array('action' => 'index'));
 
-			if ($result['valid'] > 0) {
+			if (true || $result['valid'] > 0) {
 				echo $html->link('Process ..', array('action' => 'import', 1));
 			}
 		} else {

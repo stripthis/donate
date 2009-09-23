@@ -5,6 +5,11 @@ class Import extends AppModel {
 		'ContinousId' => array(
 			'field' => 'serial',
 			'offset' => '100000'
+		),
+		'SavedBy' => array(
+			'createdField' => 'created_by',
+			'modifiedField' => false,
+			'model' => 'User'
 		)
 	);
 
