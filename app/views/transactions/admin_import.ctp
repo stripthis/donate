@@ -11,7 +11,7 @@
 
 			echo $html->link('Cancel', array('action' => 'index'));
 
-			if (true || $result['valid'] > 0) {
+			if ($result['valid'] > 0) {
 				echo $html->link('Process ..', array('action' => 'import', 1));
 			}
 		} else {
@@ -20,7 +20,12 @@
 			);
 			echo '<p>' . $msg . '</p>';
 
-			echo $html->link('Do another import', array('action' => 'import'));
+			echo $html->link(__('Do another import', true), array('action' => 'import'));
+
+			if ($result['valid'] > 0) {
+				$url = '/admin/transactions/index/all?search_type=import_id&keyword=' . $import['Import']['serial'];
+				echo $html->link(__('See your Imported Transactions', true), $url);
+			}
 		}
 
 	}

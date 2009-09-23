@@ -77,8 +77,8 @@ class AppController extends Controller {
 		if (empty($this->ignoreUserSession)) {
 			$rules = Configure::read('App.Permissions.' . User::get('Role.name'));
 			Assert::notEmpty($rules, '500');
-			$canAccess = Common::requestAllowed($this->name, $this->action, $rules);
-		
+			$canAccess = Common::requestAllowed($this->name, $this->action, $rules, true);
+
 			if (!$canAccess) {
 				Assert::true(User::is('guest'), '403');
 				if ($this->isOkForSessionRedirect()) {

@@ -5,25 +5,20 @@
 		<dl>
 			<dt><?php __('Friends Id'); ?></dt>
 			<dd>
-				<?php echo $transaction['Transaction']['external_id']; ?>
+				<?php echo $transaction['Transaction']['order_id']; ?>
 				&nbsp;
 			</dd>
-			<dt><?php __('Payment Gateway Id'); ?></dt>
-			<dd>
-				<?php echo $transaction['Transaction']['external_id2']; ?>
-				&nbsp;
+			<?php if (!empty($transaction['ParentTransaction']['id'])) : ?>
+				<dt><?php __('Parent Trans.'); ?></dt>
+				<dd>
+					<?php
+				$url = array(
+					'controller'=> 'transactions', 'action'=>'view',
+					$transaction['ParentTransaction']['id']
+					);
+				echo $html->link($transaction['ParentTransaction']['id'], $url);
+				?>
 			</dd>
-				<?php if (!empty($transaction['ParentTransaction']['id'])) : ?>
-					<dt><?php __('Parent Trans.'); ?></dt>
-					<dd>
-						<?php
-					$url = array(
-						'controller'=> 'transactions', 'action'=>'view',
-						$transaction['ParentTransaction']['id']
-						);
-					echo $html->link($transaction['ParentTransaction']['id'], $url);
-					?>
-				</dd>
 			<?php endif; ?>
 			<dt><?php __('Status'); ?></dt>
 			<dd>
