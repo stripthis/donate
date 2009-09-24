@@ -10,13 +10,6 @@ class Tellfriend extends TellfriendsAppModel {
 		),
 	);
 
-	var $actsAs = array('Akismet' => array(
-		'content' => 'content',
-		'type' => false,
-		'owner' => 'receiver',
-		'is_spam' => 'spam'
-	));
-
 	var $hasMany = array('InvitedFriend');
 
 	var $cacheQueries = false;
@@ -76,10 +69,9 @@ class Tellfriend extends TellfriendsAppModel {
 			$invitedFriendsEmails = array(
 				'email' => $val,
 				'tellfriend_id' => $this->id,
-				'time_sent' => date('Y-m-d H:i:s')
-			);
-			$inviteFriend->create($invitedFriendsEmails);
-			if (!$inviteFriend->save()) {
+		);
+			$inviteFriend->create(false);
+			if (!$inviteFriend->save($invitedFriendsEmails)) {
 				return false;
 			}
 		}
