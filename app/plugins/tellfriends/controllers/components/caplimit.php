@@ -33,7 +33,7 @@ class CaplimitComponent extends Object {
  * @return void
  * @access public
  */
-	function checkCaps($emails) {
+	function checkCaps($emails, $fromEmail) {
 		if ($this->checkForIpSpam() == false) {
 			$msg = 'Sorry. You have been banned from sending more emails.';
 			$msg .= ' Please try after sometime.';
@@ -45,6 +45,12 @@ class CaplimitComponent extends Object {
 			$faultyEmail = $this->checkForSpamEmail($emails);
 			$msg = 'Sorry. The email ' . $faultyEmail . ' has already been used many times.';
 			$msg .= ' Please send again to another email.';
+			Configure::write('App.tellafriendError', $msg);
+			return false;
+		}
+		if ($this->checkForSpamer($fromEmail) ==  true) {
+			$msg = 'Sorry.  You have been banned from sending more email.';
+			$msg .= 'Please try after sometime.';
 			Configure::write('App.tellafriendError', $msg);
 			return false;
 		}
@@ -80,6 +86,16 @@ class CaplimitComponent extends Object {
 	function checkForIpSpam() {
 		$ip = RequestHandlerComponent::getClientIP();
 		return $this->Tellfriend->isIpSpamming($ip) == 0;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function checkForSpamer($email) {
+		return $this->Tellfriend->getEmailsSentFromInTime($email);
+		 
 	}
 /**
  * undocumented function

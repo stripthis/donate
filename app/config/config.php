@@ -48,6 +48,7 @@ $config = array(
 	'App.avatarSize' => '52', //Avatar stuffs
 	'App.avatarDefault' => '/img/layout/defaultAvatar.png',
 	'App.ipBanTime' => '600',
+	'App.maxEmailsSentFromEmail' => '50',
 	'App.maxEmailsSentFromIp' => '50',
 	'App.spamEmailTimeLimit' => '600', //Time in seconds in which one email can get referral.
 	'App.emailsPerDay' => '5',
