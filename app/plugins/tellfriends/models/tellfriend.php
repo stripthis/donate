@@ -69,10 +69,9 @@ class Tellfriend extends TellfriendsAppModel {
 			$invitedFriendsEmails = array(
 				'email' => $val,
 				'tellfriend_id' => $this->id,
-				'time_sent' => date('Y-m-d H:i:s')
-			);
-			$inviteFriend->create($invitedFriendsEmails);
-			if (!$inviteFriend->save()) {
+		);
+			$inviteFriend->create(false);
+			if (!$inviteFriend->save($invitedFriendsEmails)) {
 				return false;
 			}
 		}
