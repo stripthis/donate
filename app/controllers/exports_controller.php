@@ -61,6 +61,7 @@ class ExportsController extends AppController {
 			$conditions[$model . '.id'] = $selection;
 		}
 
+		// remove gift id from csv fields, although cake fetched it to do joins
 		$addedGiftId = false;
 		if (!in_array($model . '.id', (array) $this->data[$model]['fields'])) {
 			$addedGiftId = true;
@@ -73,6 +74,7 @@ class ExportsController extends AppController {
 			'fields' => $this->data[$model]['fields']
 		));
 
+		// remove the gift id from fields list now if needed
 		if ($addedGiftId) {
 			$key = array_search($model . '.id', $this->data[$model]['fields']);
 			unset($this->data[$model]['fields'][$key]);
