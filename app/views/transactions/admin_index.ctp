@@ -68,7 +68,7 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 			$t['Transaction']['modified'],
 			implode(' - ', $actions)
 		));
-		echo $html->tableCells($tr);
+		echo $html->tableCells($tr)."\n";
 
 		if (!empty($t['ChildTransaction'])) {
 			foreach ($t['ChildTransaction'] as $t) {

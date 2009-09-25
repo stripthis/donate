@@ -4,7 +4,6 @@
  * 
  * @package 	tellafriend
  * @author 		Mayank Bhramar <mayank.bhramar@enova-tech.net>, Refactorings by Tim Koschuetzki (tim@debuggable.com)
- * @copyright 	Enova
  */
 class TellfriendsController extends TellfriendsAppController {
 	var $components = array('Caplimit', 'Recaptcha');

@@ -28,7 +28,6 @@ class PagesController extends AppController {
 			case 'country_selector':
 				$appeals = $this->Appeal->find('all', array(
 					'conditions' => array(
-						'Appeal.admin' => false,
 						'Appeal.status' => 'published',
 						'Office.live' => true
 					),
