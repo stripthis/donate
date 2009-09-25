@@ -1,7 +1,7 @@
 <div class="content view" id="gifts_view">
-	<h2><?php  __('Gift');?></h2>
+	<h2><?php echo  __('Gift', true);?></h2>
 	<div class="actions">
-		<h3><?php echo __('Actions'); ?></h3>
+		<h3><?php echo __('Actions', true); ?></h3>
 		<ul>
 			<li>
 			<?php
@@ -14,12 +14,12 @@
 		</ul>
 	</div>
 	<dl>
-		<dt><?php __('Id'); ?></dt>
+		<dt><?php echo __('Id', true); ?></dt>
 		<dd>
 			<?php echo $gift['Gift']['id']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Office'); ?></dt>
+		<dt><?php echo __('Office', true); ?></dt>
 		<dd>
 			<?php
 			echo $html->link($gift['Office']['name'], array(
@@ -28,27 +28,27 @@
 			?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Type'); ?></dt>
+		<dt><?php echo __('Type', true); ?></dt>
 		<dd>
 			<?php echo $gift['Gift']['type']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Amount'); ?></dt>
+		<dt><?php echo __('Amount', true); ?></dt>
 		<dd>
 			<?php echo $gift['Gift']['amount']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Description'); ?></dt>
+		<dt><?php echo __('Description', true); ?></dt>
 		<dd>
 			<?php echo $gift['Gift']['description']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Frequency'); ?></dt>
+		<dt><?php echo __('Frequency', true); ?></dt>
 		<dd>
 			<?php echo $gift['Gift']['frequency']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Appeal'); ?></dt>
+		<dt><?php echo __('Appeal', true); ?></dt>
 		<dd>
 			<?php
 			echo $html->link($gift['Appeal']['name'], array(
@@ -56,60 +56,60 @@
 			)); ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Fname'); ?></dt>
+		<dt><?php echo __('Fname', true); ?></dt>
 		<dd>
 			<?php echo $gift['Contact']['fname']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Lname'); ?></dt>
+		<dt><?php echo __('Lname', true); ?></dt>
 		<dd>
 			<?php echo $gift['Contact']['lname']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Salutation'); ?></dt>
+		<dt><?php echo __('Salutation', true); ?></dt>
 		<dd>
 			<?php echo $gift['Contact']['salutation']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Title'); ?></dt>
+		<dt><?php echo __('Title', true); ?></dt>
 		<dd>
 			<?php echo $gift['Contact']['title']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Address'); ?></dt>
+		<dt><?php echo __('Address', true); ?></dt>
 		<dd>
 			<?php echo $gift['Contact']['Address'][0]['line_1']; ?><br />
 			<?php echo $gift['Contact']['Address'][0]['line_2']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Zip'); ?></dt>
+		<dt><?php echo __('Zip', true); ?></dt>
 		<dd>
 			<?php echo $gift['Contact']['Address'][0]['zip']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Country'); ?></dt>
+		<dt><?php echo __('Country', true); ?></dt>
 		<dd>
 			<?php echo $gift['Contact']['Address'][0]['Country']['name']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Email'); ?></dt>
+		<dt><?php echo __('Email', true); ?></dt>
 		<dd>
 			<?php echo $gift['Contact']['email']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Created'); ?></dt>
+		<dt><?php echo __('Created', true); ?></dt>
 		<dd>
 			<?php echo $gift['Gift']['created']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php __('Modified'); ?></dt>
+		<dt><?php echo __('Modified', true); ?></dt>
 		<dd>
 			<?php echo $gift['Gift']['modified']; ?>
 			&nbsp;
 		</dd>
 	</dl>
 	
-	<h2><?php __('Transactions') ?></h2>
+	<h2><?php echo __('Transactions', true) ?></h2>
 	<?php if (!empty($transactions)) : ?>
 		<table>
 		<?php
@@ -180,7 +180,7 @@
 		?>
 		</table>
 	<?php else : ?>
-	    <p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
+	    <p class="nothing"><?php echo __('Sorry but there is nothing to display here...', true); ?></p>
 	<?php endif; ?>
 	<?php echo $this->element('comments', array('item' => $gift, 'items' => $comments, 'plugin' => 'comments'))?>
 </div>

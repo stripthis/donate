@@ -10,7 +10,7 @@ $favConfig = Configure::read('Favorites');
 	));
 	?>
 <?php echo $this->element('../appeals/elements/actions'); ?>
-	<?php if (!empty($appeals)) : ?>
+<?php if (!empty($appeals)) : ?>
 		<table>
 		<?php
 		unset($params['sort']);
@@ -72,7 +72,7 @@ $favConfig = Configure::read('Favorites');
 		echo $this->element('paging', array('model' => 'Appeal', 'url' => $urlParams));
 		?>
 <?php else : ?>
-		<p><?php echo __('Sorry, nothing to show here', true);?></p>
-<?php endif; ?>
-<?php echo $this->element('../appeals/elements/filter', compact('params', 'type')); ?>
+		<p><?php echo __('Sorry, nothing to show here.', true); ?></p>
+	<?php endif; ?>
+	<?php echo $this->element('../appeals/elements/filter', compact('params', 'type')); ?>
 </div>
