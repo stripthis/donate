@@ -5,5 +5,5 @@
 		'type' => 'admin_help_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
 	?>
-	<p class="empty"><?php sprintf(__('Coming soon...', true)); ?></p>
+	<p class="empty"><?php echo __('Coming soon...', true); ?></p>
 </div>

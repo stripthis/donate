@@ -1,6 +1,12 @@
 <?php
 if (isset($jsonVars)):
-	echo $javascript->codeBlock('window.jsonVars = '.$javascript->object($jsonVars).';')."\n";
+?>
+	<script type="text/javascript">
+	//<![CDATA[
+		window.jsonVars = {<?php echo $javascript->object($jsonVars); ?>};
+	//]]>
+	</script>
+<?php
 endif;
 
 $inclusionRules = Configure::read('JsIncludes');
@@ -35,7 +41,7 @@ if (file_exists($viewFile)) {
 
 if (Common::isDevelopment()) {
 	foreach ($jsIncludes as $include) {
-		echo "  ".$javascript->link($include)."\n";
+		echo "	".$javascript->link($include)."\n";
 	}
 	return;
 }
@@ -64,14 +70,14 @@ if (!file_exists(JS . $fileName)) {
 	$buffer = '';
 	foreach ($jsIncludes as $include) {
 		if (strpos($include, 'tiny_mce') !== false) {
-			echo "  ".$javascript->link($include)."\n";
+			echo "	".$javascript->link($include)."\n";
 		} else {
 			$buffer .= file_get_contents(JS.$include) .";\n\n";
 		}
 	}
 	file_put_contents(JS . $fileName, $buffer);
 } elseif ($includesTinyMce) {
-	echo "  ".$javascript->link($includesTinyMce)."\n";
+	echo "	".$javascript->link($includesTinyMce)."\n";
 }
-echo "  ".$javascript->link($fileName)."\n";
+echo "	".$javascript->link($fileName)."\n";
 ?>
