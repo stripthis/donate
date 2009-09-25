@@ -50,15 +50,16 @@ class TellfriendsController extends TellfriendsAppController {
 	
 			$toEmail = explode(',', $this->data['Tellfriend']['receiver']);
 			array_walk($toEmail, 'trim');
-	
+			
+			$fromEmail = $this->data['Tellfriend']['sender'];
+				
 			$saveData = $this->data;
 			$saveData['Tellfriend']['ip'] = $this->RequestHandler->getClientIP();
 	
-			if ($this->Caplimit->checkCaps($toEmail) == false)  {
+			if ($this->Caplimit->checkCaps($toEmail, $fromEmail) == false)  {
 				return $this->render('refer_not_allowed');
 			}
-	//print_r($saveData);
-	//exit;
+
 			if ($this->Tellfriend->saveReference($saveData, $toEmail)) {
 				$appName = Configure::read('App.name');
 				foreach ($toEmail as $email) {

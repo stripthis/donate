@@ -53,6 +53,25 @@ class Tellfriend extends TellfriendsAppModel {
 		return array_count_values($emails);
 	}
 /**
+ * Get No of email sent from any email in a day
+ *
+ * @return boolean true or false
+ * @access public
+ */
+	function getEmailsSentFromInTime($email) {
+	
+	$timeBefore = date('Y-m-d H:i:s', (time() - Configure::read('App.ipBanTime')));
+		$currentTime = date('Y-m-d H:i:s');
+		$noOfSentEmails= $this->InvitedFriend->find('count', array(
+			'conditions' => array(
+				'InvitedFriend.sender_email' => $email,
+				'InvitedFriend.time_sent BETWEEN ? AND ?' => array($timeBefore, $currentTime)
+			)
+		));
+
+		return $noOfSentEmails > Configure::read('App.maxEmailsSentFromEmail');
+	}
+/**
  * undocumented function
  *
  * @param string $data 
@@ -69,10 +88,11 @@ class Tellfriend extends TellfriendsAppModel {
 			$invitedFriendsEmails = array(
 				'email' => $val,
 				'tellfriend_id' => $this->id,
-				'time_sent' => date('Y-m-d H:i:s')
-			);
-			$inviteFriend->create($invitedFriendsEmails);
-			if (!$inviteFriend->save()) {
+				'sender_email' => $data['Tellfriend']['sender']
+
+		);
+			$inviteFriend->create(false);
+			if (!$inviteFriend->save($invitedFriendsEmails)) {
 				return false;
 			}
 		}
