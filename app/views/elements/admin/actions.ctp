@@ -4,7 +4,7 @@
   }
 ?>
       <div class="actions">
-        <h3><?php __('Actions') ?></h3>
+        <h3><?php echo __('Actions', true); ?></h3>
         <ul>
 <?php if(isset($links) && !empty($links)) :  ?>
 <?php foreach($links as $link): ?>
@@ -29,7 +29,7 @@
 <?php endforeach; ?>
 <?php else: ?>
           <li class="nothing">
-          	<p><?php echo __('Sorry, but there is nothing to do here for now'); ?></p>
+          	<p><?php echo __('Sorry, but there is nothing to do here for now', true); ?></p>
           </li>
 <?php endif; ?>
          </ul>

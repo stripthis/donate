@@ -1,15 +1,15 @@
 <div class="content" id="transactions_view">
-	<h2><?php  sprintf(__('Transaction', true));?></h2>
+	<h2><?php  echo __('Transaction', true);?></h2>
 	<?php echo $this->element('../transactions/elements/actions'); ?>
 	<fieldset>
 		<dl>
-			<dt><?php sprintf(__('Friends Id', true)); ?></dt>
+			<dt><?php echo __('Friends Id', true); ?></dt>
 			<dd>
 				<?php echo $transaction['Transaction']['order_id']; ?>
 				&nbsp;
 			</dd>
 			<?php if (!empty($transaction['ParentTransaction']['id'])) : ?>
-				<dt><?php sprintf(__('Parent Trans.', true)); ?></dt>
+				<dt><?php echo __('Parent Trans.', true); ?></dt>
 				<dd>
 					<?php
 				$url = array(
@@ -20,12 +20,12 @@
 				?>
 			</dd>
 			<?php endif; ?>
-			<dt><?php sprintf(__('Status', true)); ?></dt>
+			<dt><?php echo __('Status', true); ?></dt>
 			<dd>
 				<?php echo $transaction['Transaction']['status']; ?>
 				&nbsp;
 			</dd>
-			<dt><?php sprintf(__('Gateway', true)); ?></dt>
+			<dt><?php echo __('Gateway', true); ?></dt>
 			<dd>
 				<?php echo $transaction['Gateway']['name']; ?>
 				&nbsp;
@@ -34,7 +34,7 @@
 	</fieldset>
 	<fieldset>
 		<dl>
-			<dt><?php sprintf(__('Gift', true)); ?></dt>
+			<dt><?php echo __('Gift', true); ?></dt>
 			<dd>
 				<?php
 			$amount = $transaction['Gift']['amount'];
@@ -44,7 +44,7 @@
 			?>
 			&nbsp;
 		</dd>
-		<dt><?php sprintf(__('Amount', true)); ?></dt>
+		<dt><?php echo __('Amount', true); ?></dt>
 		<dd>
 			<?php echo $transaction['Transaction']['amount']; ?>
 			&nbsp;
@@ -53,12 +53,12 @@
 	</fieldset>
 	<fieldset>
 		<dl>
-			<dt><?php sprintf(__('Created', true)); ?></dt>
+			<dt><?php echo __('Created', true); ?></dt>
 			<dd>
 				<?php echo $transaction['Transaction']['created']; ?>
 				&nbsp;
 			</dd>
-			<dt><?php sprintf(__('Modified', true)); ?></dt>
+			<dt><?php echo __('Modified', true); ?></dt>
 			<dd>
 				<?php echo $transaction['Transaction']['modified']; ?>
 				&nbsp;

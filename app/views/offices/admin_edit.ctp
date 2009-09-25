@@ -13,7 +13,7 @@ $title = $action == 'add'
 	<?php echo $this->element('../offices/elements/actions'); ?>
 	<?php echo $form->create('Office');?>
 	<fieldset>
-		<legend><?php sprintf(__('Main Preferences', true)); ?></legend>
+		<legend><?php echo __('Main Preferences', true); ?></legend>
 		<?php
 		echo $form->input('id');
 		echo $form->input('name');
@@ -28,7 +28,7 @@ $title = $action == 'add'
 		?>
 	</fieldset>
 	<fieldset>
-		<legend><?php echo __('Default Gift'); ?></legend>
+		<legend><?php echo __('Default Gift', true); ?></legend>
 		<?php
 		echo $form->input('frequencies', array(
 			'label' => '', 
@@ -43,7 +43,7 @@ $title = $action == 'add'
 		?>
 	</fieldset>
 	<fieldset>
-		<legend><?php echo __('Gateways & Currencies'); ?></legend>
+		<legend><?php echo __('Gateways & Currencies', true); ?></legend>
 		<?php
 		echo $form->input('gateways', array(
 			'options' => $gatewayOptions,

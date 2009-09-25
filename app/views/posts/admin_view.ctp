@@ -1,7 +1,7 @@
 <div class="posts view">
-<h2><?php  sprintf(__('Post', true));?></h2>
+<h2><?php  echo __('Post', true);?></h2>
   <div class="actions">
-    <h3><?php sprintf(__('Actions', true));?></h3>
+    <h3><?php echo __('Actions', true);?></h3>
     <ul>
       <li><?php echo $html->link(__('Edit Post', true), array('action'=>'edit', $post['Post']['id']), array('class'=>'edit')); ?> </li>
     <li><?php echo $html->link(__('Delete Post', true), array('action'=>'delete', $post['Post']['id']), array('class'=>'delete'), sprintf(__('Are you sure you want to delete # %s?', true), $post['Post']['id'])); ?> </li>

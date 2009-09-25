@@ -1,7 +1,7 @@
 <div class="posts index">
-	<h2><?php sprintf(__('Posts Index', true);?></h2>
+	<h2><?php echo __('Posts Index', true);?></h2>
 	<div class="actions">
-		<h3><?php sprintf(__('Actions', true)); ?></h3>
+		<h3><?php echo __('Actions', true); ?></h3>
 		<ul>
 			<li>
 				<?php
@@ -19,7 +19,7 @@
 			<th><?php echo $paginator->sort('body');?></th>
 			<th class="date created"><?php echo $paginator->sort('created');?></th>
 			<th class="date modified"><?php echo $paginator->sort('modified');?></th>
-			<th class="actions"><?php __('Actions');?></th>
+			<th class="actions"><?php echo __('Actions', true);?></th>
 		</tr>
 		<?php
 		$i = 0;

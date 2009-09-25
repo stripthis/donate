@@ -3,7 +3,7 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Gift');
 $favConfig = Configure::read('Favorites');
 ?>
 <div class="content" id="Supporters_index">
-	<h2><?php echo __('Supporters');	?></h2>
+	<h2><?php echo __('Supporters', true);	?></h2>
 	<?php
 	echo $this->element('nav', array(
 		'type' => 'supporter_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
@@ -89,7 +89,7 @@ $favConfig = Configure::read('Favorites');
 		echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));
 		?>
 	<?php else : ?>
-		<p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
+		<p class="nothing"><?php echo __('Sorry but there is nothing to display here...', true); ?></p>
 	<?php endif; ?>
 	<?php echo $form->end(); ?>
 	<?php echo $this->element('../supporters/elements/filter', compact('params', 'type')); ?>

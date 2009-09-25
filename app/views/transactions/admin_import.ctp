@@ -1,5 +1,5 @@
 <div class="content" id="transactions_index">
-	<h2><?php sprintf(__('Import Transactions', true)); ?></h2>
+	<h2><?php echo __('Import Transactions', true); ?></h2>
 	<?php
 	if (isset($result)) {
 		if (!$process) {

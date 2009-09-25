@@ -1,7 +1,7 @@
 <div class="posts form">
-	<h2><?php sprintf(__('Edit Post', true));?></h2>
+	<h2><?php echo __('Edit Post', true);?></h2>
 	<div class="actions">
-		<h3><?php sprintf(__('Actions', true));?></h3>
+		<h3><?php echo __('Actions', true);?></h3>
 		<ul>
 			<li>
 				<?php
@@ -24,7 +24,7 @@
 	</div>
 	<?php echo $form->create('Post');?>
 	<fieldset>
-		<legend><?php sprintf(__('Edit Post', true));?></legend>
+		<legend><?php echo __('Edit Post', true);?></legend>
 		<?php
 		echo $form->input('id');
 		echo $form->input('title');

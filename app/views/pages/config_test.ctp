@@ -1,4 +1,4 @@
-<h2><?php echo __('Sweet, our App got Baked by CakePHP!'); ?></h2>
+<h2><?php echo __('Sweet, our App got Baked by CakePHP!', true); ?></h2>
 <?php
 if (Configure::read() > 0) {
 	Debugger::checkSessionKey();
@@ -68,7 +68,7 @@ if (!empty($filePresent)):
 ?>
 </p>
 <?php endif;?>
-<h3><?php __('Editing this Page') ?></h3>
+<h3><?php echo __('Editing this Page', true) ?></h3>
 <p>
 <?php
 	echo sprintf(__('To change the content of this page, edit: %s

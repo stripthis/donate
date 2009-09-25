@@ -13,7 +13,7 @@
 				<?php
 				if (in_array($role['Role']['name'], $uneditableRoles)) {
 					echo Inflector::humanize($role['Role']['name']) . ' ';
-					echo __('(Uneditable)');
+					echo __('(Uneditable)', true);
 				} else {
 					echo $html->link(Inflector::humanize($role['Role']['name']), array('action' => 'edit', $role['Role']['id']));
 					echo ' ';
