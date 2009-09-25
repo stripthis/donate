@@ -1,1 +1,1 @@
-<h1>Office Activation</h1>
+<h1><?php sprintf(__('Office Activation', true)); ?></h1>

@@ -116,7 +116,7 @@
 		$th = array(
 			__('Status', true),
 			__('Id', true),
-			__('External ID', true),
+			__('Order ID', true),
 			__('Amount', true),
 			__('Gateway', true),
 			__('Created', true),
@@ -143,7 +143,7 @@
 			$tr = array(
 				$t['Transaction']['status'],
 				$t['Transaction']['serial'],
-				$t['Transaction']['external_id'],
+				$t['Transaction']['order_id'],
 				$t['Transaction']['amount'].' EUR', //@todo currency
 				$t['Gateway']['name'],
 				$t['Transaction']['created'],

@@ -396,6 +396,8 @@ class UsersController extends AppController {
  * @access public
  */
 	function admin_email_reports($id = null) {
+		Assert::true(User::allowed($this->name, $this->action), '403');
+
 		$this->paginate['Report'] = array(
 			'contain' => false,
 			'order' => array('frequency' => 'asc', 'title' => 'asc')

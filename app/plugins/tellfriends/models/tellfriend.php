@@ -10,13 +10,6 @@ class Tellfriend extends TellfriendsAppModel {
 		),
 	);
 
-	var $actsAs = array('Akismet' => array(
-		'content' => 'content',
-		'type' => false,
-		'owner' => 'receiver',
-		'is_spam' => 'spam'
-	));
-
 	var $hasMany = array('InvitedFriend');
 
 	var $cacheQueries = false;

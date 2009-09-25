@@ -43,6 +43,22 @@ if (!empty($div)) {
 				}
 			}
 
+			if (isset($links['condition'])) {
+				if (!is_array($links['condition'])) {
+					$links['condition'] = array($links['condition']);
+				}
+				$pass = true;
+				foreach ($links['condition'] as $condition) {
+					if (!$condition) {
+						$pass = false;
+						break;
+					}
+				}
+				if (!$pass) {
+					continue;
+				}
+			}
+
 			foreach ($links as $link) {
 				if (is_array($link)) {
 					continue;

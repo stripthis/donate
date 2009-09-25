@@ -3,14 +3,14 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Appeal');
 $favConfig = Configure::read('Favorites');
 ?>
 <div class="content" id="appeals_index">
-	<h2><?php __('Appeals');?></h2>
+	<h2><?php sprintf(__('Appeals', true));?></h2>
 	<?php
 	echo $this->element('nav', array(
 		'type' => 'appeal_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
 	?>
 	<div class="actions">
-		<h3><?php echo __('Actions'); ?></h3>
+		<h3><?php sprintf(__('Actions', true)); ?></h3>
 		<ul>
 			<li><?php echo $html->link(__('New Appeal', true), array('action'=>'add'),array('class'=>'add')); ?></li>
 		</ul>
@@ -75,8 +75,15 @@ $favConfig = Configure::read('Favorites');
 		unset($urlParams['page']);
 		echo $this->element('paging', array('model' => 'Appeal', 'url' => $urlParams));
 		?>
+<<<<<<< HEAD:app/views/appeals/admin_index.ctp
 <?php else : ?>
 		<p>Sorry, nothing to show here.</p>
 <?php endif; ?>
 <?php echo $this->element('../appeals/elements/filter', compact('params', 'type')); ?>
+=======
+	<?php else : ?>
+		<p><?php sprintf(__('Sorry, nothing to show here.', true)); ?></p>
+	<?php endif; ?>
+	<?php echo $this->element('../appeals/elements/filter', compact('params', 'type')); ?>
+>>>>>>> 3ac8d930a25bcead9a11d9d2e13d5803773c2c63:app/views/appeals/admin_index.ctp
 </div>

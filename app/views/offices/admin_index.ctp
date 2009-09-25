@@ -1,12 +1,12 @@
 <div class="content" id="offices_index">
-	<h2><?php __('Offices');?></h2>
+	<h2><?php sprintf(__('Offices', true));?></h2>
 	<?php
 	echo $this->element('nav', array(
 		'type' => 'admin_root_admin_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
 	?>
 	<div class="actions">
-		<h3><?php echo __('Actions'); ?></h3>
+		<h3><?php sprintf(__('Actions', true)); ?></h3>
 		<ul>
 			<li>
 				<?php echo $html->link(__('New Office', true), array('action' => 'add'), array('class' => 'add')); ?>
