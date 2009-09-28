@@ -19,9 +19,9 @@
 	<!-- CONTENT -->
 	<div id="content_wrapper">
 <?php echo $content_for_layout."\n"; ?>
-<?php echo $this->element("admin/sidebar"); ?>
+<?php echo $this->element('admin/sidebar'); ?>
 	</div>
-<?php echo $this->element("admin/footer"); ?>
+<?php echo $this->element('admin/footer'); ?>
 </div>
 <?php echo $cakeDebug; ?>
 </body>

@@ -4,7 +4,7 @@
 //@todo optional "with hours & min" selection
 ?>
 			<fieldset>
-        <legend><a href="<?php echo Router::url();?>#" class="toggle open" id="filter_time_range"><?php __('Filter by date'); ?></a></legend>
+        <legend><a href="<?php echo Router::url();?>#" class="toggle open" id="filter_time_range"><?php echo __('Filter by date', true); ?></a></legend>
         <div class="wrapper_filter_time_range">
         <div class="input date">
 	      <?php

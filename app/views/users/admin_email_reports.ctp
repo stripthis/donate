@@ -5,7 +5,7 @@
 		'type' => 'user_preferences', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
 	?>
-	<h2><?php sprintf(__('Available Reports', true)); ?></h2>
+	<h2><?php echo __('Available Reports', true); ?></h2>
 	<?php
 	echo $form->create('User', array('url' => $this->here));
 	?>

@@ -109,7 +109,7 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 	echo $this->element('paging', array('model' => 'Transaction', 'url' => $urlParams));
 	?>
 <?php else : ?>
-    <p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
+    <p class="nothing"><?php echo __('Sorry but there is nothing to display here...', true); ?></p>
 <?php endif; ?>
 <?php echo $form->end(); ?>
 <?php echo $this->element('../transactions/elements/filter', compact('params', 'type')); ?>

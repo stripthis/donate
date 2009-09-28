@@ -4,7 +4,7 @@
 	}
 ?>
     <div id="twitter_feed" class="widget">
-    	<h3><a href="<?php echo Router::Url(null,true); ?>" class="toggle open" id="toggle_twitter_feed"><?php echo __("Latest Tweets"); ?></a></h3>
+    	<h3><a href="<?php echo Router::Url(null,true); ?>" class="toggle open" id="toggle_twitter_feed"><?php echo __('Latest Tweets', true); ?></a></h3>
     	<a href="<?php echo Configure::read("App.twitterFeed"); ?>" target="_blank" class="rss"><span class="hidden">rss</span></a>
     	<div class="widget_content toggle_wrapper" id="wrapper_toggle_twitter_feed">
         <ul class="posts">
@@ -17,7 +17,7 @@
           </li>
 <?php endfor; ?>
 					<li class="last">
-						<a href="<?php echo Configure::read("App.twitterURL"); ?>" rel="nofollow" target="_blank"><?php echo __("follow us on twitter"); ?> »</a>
+						<a href="<?php echo Configure::read("App.twitterURL"); ?>" rel="nofollow" target="_blank"><?php echo __('follow us on twitter', true); ?> »</a>
 					</li>
         </ul>
       </div>

@@ -1,7 +1,7 @@
-<h2><?php sprintf(__('Users &amp; Permissions', true)); ?></h2>
+<h2><?php echo __('Users &amp; Permissions', true); ?></h2>
 
 <?php if (empty($office['User'])) : ?>
-	<p><?php sprintf(__('Sorry, no users set up yet for this office. Please consult a root admin to add a new user to your office.', true)); </p>
+	<p><?php echo __('Sorry, no users set up yet for this office. Please consult a root admin to add a new user to your office.', true); ?></p>
 <?php else : ?>
 	<?php
 	$permissions = Configure::read('App.permission_options');
