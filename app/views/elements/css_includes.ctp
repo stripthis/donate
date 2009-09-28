@@ -33,7 +33,7 @@ if (file_exists($viewFile)) {
 
 if (Common::isDevelopment()) {
 	foreach ($cssIncludes as $include) {
-		echo "  " . $html->css($include) . "\n";
+		echo "	" . $html->css($include) . "\n";
 	}
 	return;
 }
@@ -62,5 +62,5 @@ if (!file_exists(CSS . $fileName)) {
 	}
 	file_put_contents(CSS . $fileName, $buffer);
 }
-echo "  ".$html->css(r('.css', '', $fileName)) . "\n";
+echo "	".$html->css(r('.css', '', $fileName)) . "\n";
 ?>

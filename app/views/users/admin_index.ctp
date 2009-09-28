@@ -82,7 +82,7 @@ $title = User::is('root')
 		echo $this->element('paging', array('model' => 'User', 'url' => $urlParams));
 		?>
 	<?php else : ?>
-		<p>Sorry, nothing to show here.</p>
+		<p><?php echo __('Sorry, nothing to show here.', true); ?></p>
 	<?php endif; ?>
 	<?php
 	if ($type != 'unactivated') {

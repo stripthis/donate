@@ -8,14 +8,13 @@ $id = isset($id) ? 'id="' . $id . '"' : '';
 $class = isset($class) ? 'class="' . $class . '"' : '';
 $usePipe = isset($usePipe) ? $usePipe : false;
 ?>
-
 <?php
 if (!empty($div)) {
 	echo $div;
 }
 ?>
-	<ul <?php echo $class ?> <?php echo $id ?>>
-		<?php
+		<ul <?php echo $class ?> <?php echo $id ?>>
+<?php
 		$currentLocation = substr($this->here, strlen($this->base));
 		$total = count($navigation);
 		$i = 0;
@@ -73,12 +72,12 @@ if (!empty($div)) {
 			}
 
 			$idName = low(r(' ', '-', $name));
-			echo '<li id="nav-' . $idName . '">' . $html->link($name, $links[0], $options, false, false) . '</li>';
+			echo '			<li id="nav-' . $idName . '">' . $html->link($name, $links[0], $options, false, false) . '</li>'."\n";
 			if ($usePipe && $i < $total) {
 				echo '|';
 			}
 		}
-		?>
+?>
 		</ul>
 <?php
 if (!empty($div)) {

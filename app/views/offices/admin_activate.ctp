@@ -1,1 +1,1 @@
-<h1><?php sprintf(__('Office Activation', true)); ?></h1>
+<h1><?php echo __('Office Activation', true); ?></h1>

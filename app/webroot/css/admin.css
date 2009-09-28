@@ -101,15 +101,15 @@ table tr th a{
 }
 table tr th a.sortable{
 	padding-right:20px;
-	background:transparent url(../img/layout/tablesort.gif) right center no-repeat;
+	background:transparent url(../img/admin/layout/tablesort.gif) right center no-repeat;
 }
 table tr th a.asc{
 	padding-right:20px;
-	background:transparent url(../img/layout/tablesort_asc.gif) right center no-repeat;
+	background:transparent url(../img/admin/layout/tablesort_asc.gif) right center no-repeat;
 }
 table tr th a.desc{
 	padding-right:20px;
-	background:transparent url(../img/layout/tablesort_desc.gif) right center no-repeat;
+	background:transparent url(../img/admin/layout/tablesort_desc.gif) right center no-repeat;
 }
 table tr th input[type=checkbox]{
 	margin:2px 0 0 6px;
@@ -143,12 +143,6 @@ fieldset fieldset legend {
 fieldset fieldset div {
   clear:left;
   margin:0 10px;
-}
-form div {
-  clear:both;
-  margin:0;
-  padding:5px;
-  vertical-align:text-top;
 }
 form div.input {
   color:#444;
@@ -232,8 +226,7 @@ input[type=submit] {
   padding:5px 5px;
   width:auto;
   vertical-align:bottom;
-  -moz-border-ra
-  dius:5px;
+  -moz-border-radius:5px;
 }
 
 /* iconic polution */
@@ -555,11 +548,11 @@ ul.selector li ul.subitem li a{
 	-moz-border-radius:5px;
 }
 .sidebar h3 a.toggle.open{
-	background:transparent url(/img/layout/widget_open.png) right center no-repeat;
+	background:transparent url(/img/admin/layout/widget_open.png) right center no-repeat;
 	margin-right:10px;
 }
 .sidebar h3 a.toggle.close{
-	background:transparent url(/img/layout/widget_close.png) right center no-repeat;
+	background:transparent url(/img/admin/layout/widget_close.png) right center no-repeat;
 	margin-right:10px;
 }
 .sidebar .toggle_wrapper{
@@ -603,7 +596,7 @@ ul.selector li ul.subitem li a{
 	margin-top:25px;
 }
 .sidebar .widget_header{
-	background:#EEE url(/img/layout/bg_widget.png) 0 0 repeat-x;
+	background:#EEE url(/img/admin/layout/bg_widget.png) 0 0 repeat-x;
 	-moz-border-radius:3px 3px 0 0;
 }
 .sidebar .widget_content{
@@ -663,6 +656,12 @@ ul.selector li ul.subitem li a{
 	margin:0;
 	font-size:1.3em;
 	width:100%;
+}
+.sidebar form div {
+  clear:both;
+  margin:0;
+  padding:5px;
+  vertical-align:text-top;
 }
 /* helpbox */
 .sidebar .help{
@@ -804,7 +803,7 @@ ul.selector li ul.subitem li a{
 	position:absolute;
 	width:40px;
 	height:30px;
-	background:transparent url(/img/layout/bg_tooltip_bottom_grey.png) left bottom no-repeat;
+	background:transparent url(/img/admin/layout/bg_tooltip_bottom_grey.png) left bottom no-repeat;
 }
 /* Paging */
 .paging {
@@ -873,10 +872,10 @@ ul.selector li ul.subitem li a{
 }
 .filter fieldset a.toggle{
 	padding-left:20px;	
-	background:transparent url(/img/layout/widget_open.png) left center no-repeat;
+	background:transparent url(/img/admin/layout/widget_open.png) left center no-repeat;
 }
 .filter fieldset a.toggle.close{
-	background:transparent url(/img/layout/widget_close.png) left center no-repeat;
+	background:transparent url(/img/admin/layout/widget_close.png) left center no-repeat;
 }
 .filter fieldset div{
 	background:#FAFAFA;
@@ -920,17 +919,17 @@ ul.selector li ul.subitem li a{
 	width:5px;
 }
 .index_wrapper .leaf .fold{
-		background:transparent url(../img/layout/folded.png) 5px 2px no-repeat;
+		background:transparent url(../img/admin/layout/folded.png) 5px 2px no-repeat;
 }
 .index_wrapper table a.toggle{
 	width:16px;
 	height:16px;
 	display:block;
-	background:transparent url(../img/layout/plus.png) 0 0 no-repeat;
+	background:transparent url(../img/admin/layout/plus.png) 0 0 no-repeat;
 	/*background:transparent url(../img/icons/S/text_indent_remove.png) 0 0 no-repeat;*/
 }
 .index_wrapper table a.toggle.open{
-	background:transparent url(../img/layout/minus.png) 0 0 no-repeat;
+	background:transparent url(../img/admin/layout/minus.png) 0 0 no-repeat;
 	/*background:transparent url(../img/icons/S/text_indent.png) 0 0 no-repeat;*/
 }
 .index_wrapper th{
@@ -983,7 +982,7 @@ ul.selector li ul.subitem li a{
 	width:6px;
 	height:16px;
 	display:block;
-	background:transparent url(../img/layout/grab.png) 0 2px no-repeat;
+	background:transparent url(../img/admin/layout/grab.png) 0 2px no-repeat;
 }
 .index_wrapper .selection{
 	margin:0;
@@ -1110,7 +1109,7 @@ ul.messages li.success, ul.messages li.ok{
   padding:6px 20px 6px 6px;
   margin:0 10px 0  0;
   font-weight:bold;
-  background:#EEE url(../img/layout/bg_arrow.png) right center no-repeat;
+  background:#EEE url(../img/admin/layout/bg_arrow.png) right center no-repeat;
   border:0;
 }
 .actions li {

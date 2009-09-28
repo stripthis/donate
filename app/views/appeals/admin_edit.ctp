@@ -1,5 +1,5 @@
 <div class="content" id="appeal_form">
-	<h1><?php sprintf(__('% Appeal', true), ucfirst($action)); ?></h1>
+	<h1><?php echo sprintf(__('% Appeal', true), ucfirst($action)); ?></h1>
 	<?php echo $form->create('Appeal');?>
 	<fieldset>
 		<?php

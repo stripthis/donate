@@ -4,6 +4,6 @@
 		<div class="landing_page">
 			<h1><?php echo $this->pageTitle = '404 - Page not found'; ?></h1>
 		</div>
-		<p>We are sorry, but we could not locate the page you requested on the server.</p>
+		<p><?php echo __('We are sorry, but we could not locate the page you requested on the server.', true); ?></p>
 	</div>
 </div>

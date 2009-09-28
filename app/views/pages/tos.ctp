@@ -1,1 +1,1 @@
-<h2><?php sprintf(__('Terms of Service', true)); ?></h2>
+<h2><?php echo __('Terms of Service', true); ?></h2>

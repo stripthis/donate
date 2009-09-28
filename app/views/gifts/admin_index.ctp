@@ -11,7 +11,7 @@ unset($urlParams['ext']);
 unset($urlParams['page']);
 ?>
 <div class="content" id="gifts_index">
-	<h2><?php __('Online Donations');?></h2>
+	<h2><?php echo __('Online Donations', true);?></h2>
 	<?php
 	echo $this->element('nav', array(
 		'type' => 'gift_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
@@ -21,7 +21,7 @@ unset($urlParams['page']);
 	echo $form->create('Gift', array('url' => '/admin/exports/gifts', 'type' => 'post'));
 	echo $this->element('../gifts/elements/actions', array('export' => true));
 	?>
-	<?php if (isset($gifts) && !empty($gifts)) : ?>
+<?php if (isset($gifts) && !empty($gifts)) : ?>
 		<div class="index_wrapper">
 			<table>
 				<thead>
@@ -74,7 +74,7 @@ unset($urlParams['page']);
 		</div>
 		<?php echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams)); ?>
 	<?php else : ?>
-		<p class="nothing"><?php echo __('Sorry but there is nothing to display here...'); ?></p>
+		<p class="nothing"><?php echo __('Sorry but there is nothing to display here...', true); ?></p>
 	<?php endif; ?>
 	<?php
 	echo $form->end();

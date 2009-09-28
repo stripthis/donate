@@ -1,5 +1,5 @@
 <div class="content" id="offices_index">
-	<h2><?php sprintf(__('Office Tree Management', true));?></h2>
+	<h2><?php echo __('Office Tree Management', true);?></h2>
 	<?php
 	echo $this->element('../offices/tree', array('offices' => $treeOffices));
 	echo $form->create('Office', array('url' => $this->here));

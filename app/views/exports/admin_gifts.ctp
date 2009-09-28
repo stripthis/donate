@@ -1,5 +1,5 @@
 <div class="content" id="gifts_index">
-  <h2><?php __('Gift Export');?></h2>
+  <h2><?php echo __('Gift Export', true);?></h2>
 
 	<?php
 	echo $form->create('Gift', array('url' => $this->here));

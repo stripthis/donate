@@ -3,19 +3,14 @@ $doFavorites = class_exists('Favorite') && Favorite::doForModel('Appeal');
 $favConfig = Configure::read('Favorites');
 ?>
 <div class="content" id="appeals_index">
-	<h2><?php sprintf(__('Appeals', true));?></h2>
+	<h2><?php echo __('Appeals', true);?></h2>
 	<?php
 	echo $this->element('nav', array(
 		'type' => 'appeal_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
 	?>
-	<div class="actions">
-		<h3><?php sprintf(__('Actions', true)); ?></h3>
-		<ul>
-			<li><?php echo $html->link(__('New Appeal', true), array('action'=>'add'),array('class'=>'add')); ?></li>
-		</ul>
-	</div>
-	<?php if (!empty($appeals)) : ?>
+<?php echo $this->element('../appeals/elements/actions'); ?>
+<?php if (!empty($appeals)) : ?>
 		<table>
 		<?php
 		unset($params['sort']);
@@ -39,13 +34,14 @@ $favConfig = Configure::read('Favorites');
 				$html->link(__('Config', true), array('action'=>'view', $appeal['Appeal']['id']),array('class'=>'view')),
 			);
 
-			if ($appeal['Appeal']['status'] != 'published') {
-				$actions[] = $html->link(__('Preview', true), array(
+			$actions[] = $html->link(
+				($appeal['Appeal']['status'] != 'published') ? __('Preview',true) : __('View',true), 
+				array(
 					'controller' => 'gifts', 'action' => 'add',
-					'appeal_id' => $appeal['Appeal']['id'], 'admin' => '0'),
-					array('class'=>'view'
-				));
-			}
+					'appeal_id' => $appeal['Appeal']['id'], 'admin' => '0'
+				),
+				array('class'=>'view')
+			);
 			$user = $html->link($appeal['User']['login'], array(
 				'controller' => 'users', 'action'=>'view', $appeal['User']['id']
 			));
@@ -67,6 +63,7 @@ $favConfig = Configure::read('Favorites');
 		?>
 		</table>
 		<?php
+		echo $form->end();
 		$urlParams = $params;
 		$urlParams[] = $type;
 		$urlParams['merge'] = true;
@@ -74,8 +71,8 @@ $favConfig = Configure::read('Favorites');
 		unset($urlParams['page']);
 		echo $this->element('paging', array('model' => 'Appeal', 'url' => $urlParams));
 		?>
-	<?php else : ?>
-		<p><?php sprintf(__('Sorry, nothing to show here.', true)); ?></p>
+<?php else : ?>
+		<p><?php echo __('Sorry, nothing to show here.', true); ?></p>
 	<?php endif; ?>
 	<?php echo $this->element('../appeals/elements/filter', compact('params', 'type')); ?>
 </div>

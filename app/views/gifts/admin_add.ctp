@@ -1,7 +1,7 @@
 <div class="content view" id="gifts_view">
-	<h2><?php __('New Gift');?></h2>
+	<h2><?php echo __('New Gift', true);?></h2>
 	<div class="actions">
-		<h3><?php echo __('Actions'); ?></h3>
+		<h3><?php echo __('Actions', true); ?></h3>
 		<ul>
 			<li>
 			<?php

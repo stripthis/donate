@@ -1,7 +1,7 @@
      <div class="help bubble">
-       <h3><?php echo __("Need some help?"); ?></h3>
+       <h3><?php echo __('Need some help?', true); ?></h3>
        <ul>
-         <li> Do you need some more <a href="http://www.youtube.com/watch?v=NfqL7bwx9fs" target="_blank" rel="nofollow">power?</a></li>
+         <li> <?php echo __('Do you need some more ', true); ?><a href="http://www.youtube.com/watch?v=NfqL7bwx9fs" target="_blank" rel="nofollow"><?php echo __('power?', true); ?></a></li>
        </ul>
        <div class="bubble_spacer">&nbsp;</div>
      </div>

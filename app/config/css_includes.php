@@ -1,11 +1,10 @@
 <?php
 $config = array(
 	'CssIncludes' => array(
-		//'generic.css' => '*:*',
+    //'default.css' => 'pages:!admin_*',
     'admin.css' => "*:admin_*",
     'tooltip.css' => "*:*",
     //'jquery.checkbox.css' => "*:admin_*",
-    //'home.css' => '*:!admin_*',
     //'ceo.css' => '*:*',
     //'leaders.css' => '*:*',
     //'login.css' => 'auth:login',
