@@ -37,7 +37,7 @@ $favConfig = Configure::read('Favorites');
 		foreach ($supporters as $t) {
 			$actions = array(
 				$html->link(__('View', true), array(
-					'action' => 'view', $t['Gift']['id']),array('class'=>'view'
+					'action' => 'view', $t['Contact']['id']),array('class'=>'view'
 				)),
 				$html->link(__('Edit', true), array(
 					'action' => 'edit', $t['Contact']['id']), array('class'=>'edit'

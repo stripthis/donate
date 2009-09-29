@@ -12,6 +12,7 @@ class SupportersController extends AppController {
 		parent::beforeFilter();
 
 		$this->User = ClassRegistry::init('User');
+		$this->Contact = ClassRegistry::init('Contact');
 		$this->Gift = ClassRegistry::init('Gift');
 		$this->Address = ClassRegistry::init('Address');
 		$this->Country = $this->Address->Country;
@@ -158,10 +159,18 @@ class SupportersController extends AppController {
  * @access public
  */
 	function admin_view($id = null) {
-		$user = $this->User->find('first', array(
-			'conditions' => array('User.id' => $id)
+		$contact = $this->Contact->find('first', array(
+			'conditions' => array('Contact.id' => $id),
+			'contain' => array(
+				'Gift',
+				'Address.Phone',
+				'Address.Country(id, name)',
+				'Address.State(id, name)',
+				'Address.City(id, name)',
+			)
 		));
-		$this->set(compact('user'));
+
+		$this->set(compact('contact'));
 	}
 }
 ?>
