@@ -85,7 +85,7 @@
 						<?php
 						$gift = array('Gift' => $gift);
 						$class = 'gift';
-						$gift['Gift']['status'] = 'tick';
+						$gift['Gift']['status'] = $common->giftStatus($gift);
 
 						// recurring options for collumns elements
 						$options = array(
@@ -108,9 +108,9 @@
 								(<?php echo __('due',true) ?>: <?php echo $gift['Gift']['due'] ? __('yes',true) : __('no',true)?>)
 							</td>
 
-							<?php echo $this->element('tableset/collumns/attachments',$options); ?>
-							<?php echo $this->element('tableset/collumns/comments',$options); ?>
-							<?php echo $this->element('tableset/collumns/date', array('date'=>$gift['Gift']['modified'])); ?>
+							<?php echo $this->element('tableset/collumns/attachments', $options); ?>
+							<?php echo $this->element('tableset/collumns/comments', $options); ?>
+							<?php echo $this->element('tableset/collumns/date', array('date' => $gift['Gift']['modified'])); ?>
 							<?php echo $this->element('tableset/collumns/grab'); ?>
 						</tr>
 					<?php endforeach; ?>

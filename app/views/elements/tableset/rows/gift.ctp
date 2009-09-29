@@ -5,24 +5,7 @@ if (!isset($leaf)) {
 	$leaf = false;
 }
 
-//@todo somewhere else?
-//determine overall gift status based on sub objects
-
-$gift['Gift']['status'] = 'tick';
-if (!isset($gift['Contact']) && !isset($gift['Transaction'])) {
-	$gift['Gift']['status'] = 'error';
-} else {
-	foreach ($gift['Transaction'] as $transaction) {
-		if ($transaction['status'] == 'new' && !$leaf && $gift['Gift']['status']!='warning') {
-			$gift['Gift']['status'] = 'new';
-		} elseif($transaction['status'] == 'warning') {
-			$gift['Gift']['status'] = 'warning';
-		} elseif($transaction['status'] == 'error') {
-			$gift['Gift']['status'] = 'error';
-			break;
-		}
-	}
-}
+$gift['Gift']['status'] = $common->giftStatus($gift);
 
 // recurring options for collumns elements
 $options = array(

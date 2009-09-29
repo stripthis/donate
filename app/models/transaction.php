@@ -37,6 +37,8 @@ class Transaction extends AppModel {
 		if (empty($transaction)) {
 			return 'invalid';
 		}
+		
+		// update gift status as transaction status changes via Gift::updateStatus
 		return true;
 	}
 /**

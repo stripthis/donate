@@ -275,5 +275,17 @@ class Gift extends AppModel {
 			array('Gift.id' => Set::extract('/Gift/id', $gifts))
 		);
 	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @param string $status 
+ * @return void
+ * @access public
+ */
+	function updateStatus($id, $status) {
+		$this->set(compact('id', 'status'));
+		return $this->save(null, false);
+	}
 }
 ?>

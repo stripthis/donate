@@ -140,5 +140,25 @@ class CommonHelper extends Apphelper {
 		}
 		return $items;
 	}
+/**
+ * undocumented function
+ *
+ * @param string $gift 
+ * @return void
+ * @access public
+ */
+	function giftStatus($gift) {
+		if (!isset($gift['Gift'])) {
+			$gift = array('Gift' => $gift);
+		}
+
+		$status = 'tick';
+		if (!$gift['Gift']['complete']) {
+			$status = 'error';
+		} elseif (isset($gift['Gift']['status']) && !empty($gift['Gift']['status'])) {
+			$status = $gift['Gift']['status'];
+		}
+		return $status;
+	}
 }
 ?>
