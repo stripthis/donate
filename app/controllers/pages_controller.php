@@ -11,7 +11,7 @@ class PagesController extends AppController {
  */
 	function display() {
 		$path = func_get_args();
-				
+
 		$count = count($path);
 		if (!$count) {
 			$this->redirect('/');
@@ -22,7 +22,7 @@ class PagesController extends AppController {
 			$page = $path[0];
 		}
 
-		switch($page){
+		switch ($page) {
 			case 'home':
 				$path[0] = $page = 'country_selector';
 			case 'country_selector':
@@ -35,8 +35,10 @@ class PagesController extends AppController {
 					'fields' => array('name', 'id'),
 					'order' => array('name' => 'asc')
 				));
+
 				$this->set(compact('appeals'));
 				//@todo cf. pages:!admin_* rules
+
 				$css = Configure::read('CssIncludes');
 				$css['generic.css'] = '*:*'; 
 				Configure::write('CssIncludes',$css);

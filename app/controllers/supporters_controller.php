@@ -144,6 +144,7 @@ class SupportersController extends AppController {
  * @access public
  */
 	function admin_delete($id = null) {
+		Assert::true(false, '404');
 		$user = $this->User->find('first', $id);
 		$this->User->delete($id);
 		$this->Silverpop->UserOptOut($user);

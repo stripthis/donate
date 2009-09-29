@@ -45,9 +45,7 @@ $favConfig = Configure::read('Favorites');
 				$html->link(__('Add Gift', true), array(
 					'controller' => 'gifts', 'action' => 'add', $t['Contact']['id']),
 					array('class'=>'add')
-				),
-				$html->link(__('Delete', true), array('action' => 'delete', $t['Gift']['id']),
-					array('class'=>'delete'), __('Are you sure?', true))
+				)
 			);
 
 			$gift = $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id']));
