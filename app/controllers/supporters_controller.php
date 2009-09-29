@@ -27,21 +27,19 @@ class SupportersController extends AppController {
 	function admin_index($type = 'all') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
-		$conditions = array(
+		$giftConditions = array(
 			'Gift.office_id' => $this->Session->read('Office.id'),
-			'Gift.archived' => '0'
 		);
 
-		$order = array('Gift.created' => 'desc');
 		switch ($type) {
 			case 'signups':
 				// doesn't have gift
 				break;
 			case 'oneoff':
-				$conditions['Gift.frequency'] = 'onetime';
+				$giftConditions['Gift.frequency'] = 'onetime';
 				break;
 			case 'recurring':
-				$conditions['Gift.frequency <>'] = 'onetime';
+				$giftConditions['Gift.frequency <>'] = 'onetime';
 				$myParams = array(
 					'start_date_day' => '01',
 					'start_date_month' => date('m', strtotime('-1 month')),
@@ -50,15 +48,26 @@ class SupportersController extends AppController {
 					'end_date_month' => date('m'),
 					'end_date_year' => date('Y'),
 				);
-				$conditions = $this->Gift->dateRange($conditions, $myParams, 'created');
+				$giftConditions = $this->Gift->dateRange($giftConditions, $myParams, 'created');
 				break;
 			case 'favorites':
 			case 'starred':
-				$conditions['Gift.id'] = $this->Session->read('favorites');
+				$conditions['Contact.id'] = $this->Session->read('favorites');
 				break;
-			case 'archived':
-				$conditions['Gift.archived'] = '1';
-				break;
+		}
+
+		if (!empty($giftConditions)) {
+			$gifts = $this->Gift->find('all', array(
+				'conditions' => $giftConditions,
+				'contain' => false,
+				'fields' => array('contact_id')
+			));
+			$ids = Set::extract('/Gift/contact_id', $gifts);
+			if (isset($conditions['Contact.id'])) {
+				$conditions['Contact.id'] = array_intersect($conditions['Contact.id'], $ids);
+			} else {
+				$conditions['Contact.id'] = $ids;
+			}
 		}
 
 		$defaults = array(
@@ -119,22 +128,22 @@ class SupportersController extends AppController {
 			}
 		}
 
-		$conditions = $this->Gift->dateRange($conditions, $params, 'created');
+		$conditions = $this->Contact->dateRange($conditions, $params, 'created');
 		$this->Session->write('gifts_filter_conditions', $conditions);
-		$this->paginate['Gift'] = array(
+		$this->paginate['Contact'] = array(
 			'conditions' => $conditions,
 			'recursive' => 4,
 			'contain' => array(
-				'Contact.Address.City',
-				'Contact.Address.Country',
-				'Contact.Address.Phone',
+				'Address.City',
+				'Address.Country',
+				'Address.Phone',
 			),
 			// @todo fetch number of successfull transaction (!) amounts (!) once transactions are implemented
 			// @todo fetch number of successfull transactions once transactions are implemented
 			'limit' => $params['my_limit'],
-			'order' => $order
+			'order' => array("CONCAT(Contact.fname,' ',Contact.lname)" => 'asc')
 		);
-		$supporters = $this->paginate('Gift');
+		$supporters = $this->paginate('Contact');
 		$this->set(compact('supporters', 'type', 'params'));
 	}
 /**

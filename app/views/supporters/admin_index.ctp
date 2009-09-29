@@ -52,7 +52,7 @@ $favConfig = Configure::read('Favorites');
 			$tr = array();
 			$tr[] = $form->checkbox($t['Gift']['id'], array('class'=>'checkbox'));
 			if ($doFavorites) {
-				$tr[] = $favorites->link('Gift', $t['Gift']['id']);
+				$tr[] = $favorites->link('Contact', $t['Contact']['id']);
 			}
 			$tr = am($tr,array(            
 				$t['Contact']['fname'] . ' ' . $t['Contact']['lname'],
@@ -84,7 +84,7 @@ $favConfig = Configure::read('Favorites');
 		unset($urlParams['ext']);
 		unset($urlParams['page']);
 		$urlParams['merge'] = true;
-		echo $this->element('paging', array('model' => 'Gift', 'url' => $urlParams));
+		echo $this->element('paging', array('model' => 'Contact', 'url' => $urlParams));
 		?>
 	<?php else : ?>
 		<p class="nothing"><?php echo __('Sorry but there is nothing to display here...', true); ?></p>
