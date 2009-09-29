@@ -181,6 +181,10 @@ class Navigation extends AppModel{
 					'/admin/supporters/index/favorites'
 					, '#/^\/admin\/supporters\/favorites.*$/iU'
 				)
+				, __('Signups', true) => array(
+					'/admin/supporters/index/signups'
+					, '#/^\/admin\/supporters\/signups.*$/iU'
+				)
 			)
 			, 'user_preferences' => array(
 				__('Preferences', true) => array(
