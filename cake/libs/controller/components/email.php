@@ -778,8 +778,8 @@ class EmailComponent extends Object{
 		$fm .= sprintf('%s%3$s%3$s%s', 'Parameters:', $this->additionalParams, $nl);
 		$fm .= sprintf('%s%3$s%3$s%s', 'Message:', $message, $nl);
 		$fm .= '</pre>';
-
-		$this->Controller->Session->setFlash($fm, 'default', null, 'email');
+pr($fm);
+		// $this->Controller->Session->setFlash($fm, 'default', null, 'email');
 		return true;
 	}
 

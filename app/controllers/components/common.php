@@ -44,8 +44,12 @@ class Common extends Object
 			$class = $component . 'Component';
 			$Component = new $class;
 			$Controller = new Controller();
-			$Component->initialize($Controller, array());
-			$Component->startup($Controller);
+			if (method_exists($Component, 'initialize')) {
+				$Component->initialize($Controller, array());
+			}
+			if (method_exists($Component, 'startup')) {
+				$Component->startup($Controller);
+			}
 		}
 		Assert::isObject($Component);
 		return $Component;
