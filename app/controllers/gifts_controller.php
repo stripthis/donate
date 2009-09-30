@@ -390,11 +390,12 @@ class GiftsController extends AppController {
 		Assert::notEmpty($gift, '404');
 		Assert::true(User::allowed($this->name, $this->action, $gift), '403');
 
-		$transactions = $this->Transaction->find('threaded', array(
+		$this->paginate['Transaction'] = array(
 			'conditions' => array('Transaction.gift_id' => $id),
 			'contain' => array('Gateway(name)'),
 			'order' => array('Transaction.created' => 'asc')
-		));
+		);
+		$transactions = $this->paginate('Transaction');
 
 		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
 		$comments = $this->Gift->Comment->find($commentMethod, array(
