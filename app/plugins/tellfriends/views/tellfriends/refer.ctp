@@ -14,13 +14,6 @@ else if (window.ActiveXObject)
   }
   return xmlhttp;
 }
-function tes111t()
-{
-
-alert(document.getElementById("openinviterEmailBox").value);
-alert(document.getElementById("openinviterPasswordBox").value);
-
-}
 
 function getContactList()
 {
@@ -47,14 +40,12 @@ function tellFriends(chckbox)
 {
 
 	if(chckbox.checked == true){
-		alert(document.getElementById("TellfriendReceiver").value);
 		if(document.getElementById("TellfriendReceiver").value == ''){
 			document.getElementById("TellfriendReceiver").value = chckbox.value;
 		} else {
 		document.getElementById("TellfriendReceiver").value = document.getElementById("TellfriendReceiver").value + "," +chckbox.value;
 		}
 	} else if(chckbox.checked == false) {
-		alert(document.getElementById("TellfriendReceiver").value);
 		var str = document.getElementById("TellfriendReceiver").value;
 		var result = "";
 		if(str.indexOf(chckbox.value) == 0){
