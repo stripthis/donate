@@ -1,0 +1,1544 @@
+[2009-09-29 07:22:28] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=9k05cid5c3d9d
+			.v=0
+			.challenge=H_jhj4aIKUIHa_HE6LwZhCG9iIwp
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 07:22:28] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=9k05cid5c3d9d
+			.v=0
+			.challenge=H_jhj4aIKUIHa_HE6LwZhCG9iIwp
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 07:23:05] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: 
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@yahoo.co.in
+			Passwd=
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 07:23:05] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: 
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@yahoo.co.in
+			Passwd=
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 07:24:16] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: 
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=72b3lf95c3dcp
+			.v=0
+			.challenge=8JRuXqE8KUKnHtFAw6fHhq8cPJwK
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 07:24:16] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: 
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=72b3lf95c3dcp
+			.v=0
+			.challenge=8JRuXqE8KUKnHtFAw6fHhq8cPJwK
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 07:51:55] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramual13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=8jkujs55c3f0k
+			.v=0
+			.challenge=QsTJj5OxIELWMuhwun2EUO2wpPwX
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramual13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 07:51:55] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramual13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=8jkujs55c3f0k
+			.v=0
+			.challenge=QsTJj5OxIELWMuhwun2EUO2wpPwX
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramual13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 10:45:22] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 10:45:22] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 10:48:25] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 10:48:25] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 11:14:37] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 11:14:37] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 11:57:00] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 11:57:00] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 11:58:55] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@yahoo.co.in
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 11:58:55] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@yahoo.co.in
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 12:00:24] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@yahoo.co.in
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 12:00:24] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@yahoo.co.in
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 12:43:26] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: adfa
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=7ogdq8d5c4038
+			.v=0
+			.challenge=MsY3Gf7NnEFMk11bW2sTapJgKzaZ
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=adfa
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-29 12:43:26] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: adfa
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=7ogdq8d5c4038
+			.v=0
+			.challenge=MsY3Gf7NnEFMk11bW2sTapJgKzaZ
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=adfa
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 05:49:55] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramual13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=fgjfg795c5s85
+			.v=0
+			.challenge=vsAHxeCgbUHxJMKCudR83gXPFqKF
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramual13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 05:49:55] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramual13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=fgjfg795c5s85
+			.v=0
+			.challenge=vsAHxeCgbUHxJMKCudR83gXPFqKF
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramual13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 05:50:17] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramual13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=3qe3f8h5c5s8q
+			.v=0
+			.challenge=0arjQ0S_bUF_DG3EC5vnMhPij8oF
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramual13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 05:50:17] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramual13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=3qe3f8h5c5s8q
+			.v=0
+			.challenge=0arjQ0S_bUF_DG3EC5vnMhPij8oF
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramual13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 07:38:45] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=0ag28v55c62k6
+			.v=0
+			.challenge=MLD0ej0jlkD5pQpdawU_B2T76d8H
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 07:38:45] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=0ag28v55c62k6
+			.v=0
+			.challenge=MLD0ej0jlkD5pQpdawU_B2T76d8H
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 07:39:17] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=b69k3gd5c62l6
+			.v=0
+			.challenge=e3s_bXMDlkCJqDTimU.vp9mM6VD9
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 07:39:17] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=b69k3gd5c62l6
+			.v=0
+			.challenge=e3s_bXMDlkCJqDTimU.vp9mM6VD9
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:27:54] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=94svhq55c65ga
+			.v=0
+			.challenge=9jgbIDivikD20ogpDWLAVv1dc7BD
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:27:54] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=94svhq55c65ga
+			.v=0
+			.challenge=9jgbIDivikD20ogpDWLAVv1dc7BD
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:28:04] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=8leiis95c65gl
+			.v=0
+			.challenge=nL7Z92ewikBatSvNxIb1X.oP_d7b
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:28:04] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=8leiis95c65gl
+			.v=0
+			.challenge=nL7Z92ewikBatSvNxIb1X.oP_d7b
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:28:05] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=27q49u95c65gm
+			.v=0
+			.challenge=X5mRvTCzikCJXCOX8uEOZzoNaJPR
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:28:05] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=27q49u95c65gm
+			.v=0
+			.challenge=X5mRvTCzikCJXCOX8uEOZzoNaJPR
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:28:30] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=0fo1nol5c65hf
+			.v=0
+			.challenge=UPcLeNGKikAUWtTOfi9s9SAMzuXR
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:28:30] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=0fo1nol5c65hf
+			.v=0
+			.challenge=UPcLeNGKikAUWtTOfi9s9SAMzuXR
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:43:07] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=8979hql5c66cs
+			.v=0
+			.challenge=q4ASrQM5hUBwOp1fiQAM_9kRPqn8
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:43:07] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: yahoo
+USER: s.dhapola85@yahoo.co.in
+PASSWORD: ramaul13
+STEPS: 
+	initial_get :
+		URL: https://login.yahoo.com/config/mail?.intl=us&rl=1
+		METHOD: GET
+		RESPONSE: OK
+	login_post :
+		URL: https://login.yahoo.com/config/login?
+		METHOD: POST
+		ELEMENTS: 
+			.tries=1
+			.src=ym
+			.md5=
+			.hash=
+			.js=
+			.last=
+			promo=
+			.intl=us
+			.bypass=
+			.partner=
+			.u=8979hql5c66cs
+			.v=0
+			.challenge=q4ASrQM5hUBwOp1fiQAM_9kRPqn8
+			.yplus=
+			.emailCode=
+			pkg=
+			stepid=
+			.ev=
+			hasMsgr=0
+			.chkP=Y
+			.done=http://mail.yahoo.com
+			.pd=ym_ver=0&c=&ivt=&sg=
+			save=Sign+In
+			login=s.dhapola85@yahoo.co.in
+			passwd=ramaul13
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:48:06] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:48:06] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:48:07] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:48:07] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:48:14] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-09-30 08:48:14] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
