@@ -3,7 +3,7 @@ if (isset($jsonVars)):
 ?>
 	<script type="text/javascript">
 	//<![CDATA[
-		window.jsonVars = {<?php echo $javascript->object($jsonVars); ?>};
+		window.jsonVars = <?php echo $javascript->object($jsonVars); ?>;
 	//]]>
 	</script>
 <?php

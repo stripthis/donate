@@ -37,7 +37,6 @@ class PagesController extends AppController {
 				));
 
 				$this->set(compact('appeals'));
-				//@todo cf. pages:!admin_* rules
 
 				$css = Configure::read('CssIncludes');
 				$css['generic.css'] = '*:*'; 

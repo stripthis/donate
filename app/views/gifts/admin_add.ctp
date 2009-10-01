@@ -16,7 +16,7 @@
 	</div>
 
 	<?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
-	<?php echo $this->element('../templates/default/gift'); ?>
+	<?php echo $this->element('../templates/default/gift', compact('appealOptions')); ?>
 	<div class="form_decoration half left" id="activist"></div>
 	<div class="spacer"></div>
 	<?php echo $this->element('../templates/default/payment'); ?>

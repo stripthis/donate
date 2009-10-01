@@ -23,7 +23,6 @@ class SslComponent extends Object {
 			$params = isset($Controller->params['url']) ? $Controller->params['url'] : array();
 			$params = array_diff_key($params, array('url' => true, 'ext' => true));
 			if (!empty($params)) {
-			pr($params);
 				$params = http_build_query($params);
 			}
 

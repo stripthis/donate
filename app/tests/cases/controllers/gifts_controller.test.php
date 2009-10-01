@@ -247,9 +247,8 @@ class GiftsControllerTest extends MyTestCase {
 		$this->Sut->add();
 		$this->Sut->dropSessionData();
 
-		$count = $this->Gift->find('count');
 		$this->fakeRequest('post');
-		$this->Sut->data = array(
+		$sutData = array(
 			'Gift' => array(
 				'type' => 'donation',
 				'amount' => 23,
@@ -265,11 +264,12 @@ class GiftsControllerTest extends MyTestCase {
 				'country_id' => $this->Country->lookup('Germany'),
 			)
 		);
-		$sutData = $this->Sut->data;
+		$this->Sut->data = $sutData;
 		$this->Sut->add();
-
+		$id = $this->Gift->getLastInsertId();
+		$this->assertFalse(empty($id));
 		$gift = $this->Gift->find('first', array(
-			'conditions' => array('Gift.id' => $this->Gift->getLastInsertId()),
+			'conditions' => array('Gift.id' => $id),
 			'contain' => array('Contact.Address.Phone')
 		));
 

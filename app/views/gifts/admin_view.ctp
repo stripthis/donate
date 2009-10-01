@@ -113,13 +113,14 @@
 	<?php if (!empty($transactions)) : ?>
 		<table>
 		<?php
+		$options = array('url' => array($gift['Gift']['id']));
 		$th = array(
-			__('Status', true),
-			__('Id', true),
-			__('Order ID', true),
-			__('Amount', true),
+			$myPaginator->sort(__('Status',true), 'status', $options),
+			$myPaginator->sort(__('Id',true), 'serial', $options),
+			$myPaginator->sort(__('Order Id',true), 'order_id', $options),
+			$myPaginator->sort(__('Amount',true), 'amount', $options),
 			__('Gateway', true),
-			__('Created', true),
+			$myPaginator->sort(__('Created',true), 'created', $options),
 			'Actions'
 		);
 
@@ -150,35 +151,10 @@
 				implode(' - ', $actions)
 			);
 			echo $html->tableCells($tr);
-
-			if (!empty($t['ChildTransaction'])) {
-				foreach ($t['ChildTransaction'] as $t) {
-					$actions = array(
-						$html->link(__('View', true), array(
-							'action' => 'view', $t['Transaction']['id']), array('class' => 'view'
-						)),
-						$html->link(__('Delete', true), array(
-							'action' => 'delete', $t['Transaction']['id']), array('class' => 'delete'),
-							__('Are you sure?', true))
-
-					);
-					$id = $html->link($t['Transaction']['id'], array(
-						'controller' => 'transactions', 'action' => 'view', $t['Transaction']['id']
-					));
-					$tr = array(
-						$t['Transaction']['status'],
-						$id,
-						$t['Gateway']['name'],
-						$t['Transaction']['amount'],
-						$t['Transaction']['external_id'],
-						$t['Transaction']['created'],
-						$actions
-					);
-				}
-			}
 		}
 		?>
 		</table>
+		<?php echo $this->element('paging', array('model' => 'Transaction', 'url' => $gift['Gift']['id'])) ?>
 	<?php else : ?>
 	    <p class="nothing"><?php echo __('Sorry but there is nothing to display here...', true); ?></p>
 	<?php endif; ?>

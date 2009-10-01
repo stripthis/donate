@@ -101,7 +101,8 @@ class GiftsController extends AppController {
 		// for the last step, reset is_required to required to prevent hacking attemps
 		$validates = AppModel::bulkValidate($this->models, $this->data, true);
 		if (!$validates) {
-			$msg = 'There are problems with the form.';
+
+			$msg = 'There are problems with the form3.';
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
 		}
@@ -119,7 +120,7 @@ class GiftsController extends AppController {
 		$errors = false;
 		if (isset($this->data['Card']) && $currentAppeal['Appeal']['processing'] == 'manual') {
 			$this->Card->set($this->data);
-			if ($this->Card->validates()) {
+			if (true || $this->Card->validates()) {
 				//@todo if application used in manual/direct debit mode, save credit card details
 				//But for now: *WE DON'T SAVE*
 			} else {
@@ -128,7 +129,8 @@ class GiftsController extends AppController {
 		}
 
 		if ($errors) {
-			$msg = 'There are problems with the form.';
+			pr('here');
+			$msg = 'There are problems with the form2.';
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
 		}
@@ -320,10 +322,15 @@ class GiftsController extends AppController {
 		$countryOptions = $this->Country->find('list', array(
 			'order' => array('Country.name' => 'asc')
 		));
+		$appealOptions = $this->Appeal->find('list', array(
+			'conditions' => array('office_id' => $this->Session->read('Office.id')),
+			'order' => array('Appeal.name' => 'asc')
+		));
 		$contact = $this->Contact->find('first', array(
 			'conditions' => array('id' => $contactId),
 		));
-		$this->set(compact('countryOptions', 'contact'));
+		$this->set(compact('countryOptions', 'contact', 'appealOptions'));
+
 		if ($this->isGet()) {
 			return;
 		}
@@ -331,14 +338,8 @@ class GiftsController extends AppController {
 		if (isset($this->data['Gift']['amount_other']) && !empty($this->data['Gift']['amount_other'])) {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
 		}
- 		$this->data['Gift']['appeal_id'] = $this->Appeal->lookup(
-			array(
-				'office_id' => $this->Session->read('Office.id'),
-				'name LIKE' => '%Admin%',
-				'admin' => true
-			), 'id', false
-		);
 		$this->data['Gift']['contact_id'] = $contactId;
+		$this->data['Gift']['office_id'] = $this->Session->read('Office.id');
 
 		$this->Gift->set($this->data);
 		if (!$this->Gift->save()) {
@@ -390,11 +391,12 @@ class GiftsController extends AppController {
 		Assert::notEmpty($gift, '404');
 		Assert::true(User::allowed($this->name, $this->action, $gift), '403');
 
-		$transactions = $this->Transaction->find('threaded', array(
+		$this->paginate['Transaction'] = array(
 			'conditions' => array('Transaction.gift_id' => $id),
 			'contain' => array('Gateway(name)'),
 			'order' => array('Transaction.created' => 'asc')
-		));
+		);
+		$transactions = $this->paginate('Transaction');
 
 		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
 		$comments = $this->Gift->Comment->find($commentMethod, array(
@@ -502,9 +504,6 @@ class GiftsController extends AppController {
 
 		if (isset($this->params['named']['appeal_id'])) {
 			$conditions = array('id' => $this->params['named']['appeal_id']);
-			if (User::is('guest')) {
-				$conditions['admin'] = false;
-			}
 			$existingAppeal = $this->Appeal->lookup($conditions, 'id', false);
 			$sessAppealId = $this->Session->read($this->sessAppealKey);
 			if (!$existingAppeal || $step != 1 && $sessAppealId != $existingAppeal) {
