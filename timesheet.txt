@@ -1,57 +1,75 @@
-Wed 9/16/2009 6:50 PM
+Wed 9/16/2009  Total Time : 8 hours
 
-1.	Set up application.
-2.	Communication.
-3.	Working on ticket #90.
-4.	R&D on git and using git commands.
-
-Thu 9/17/2009 5:57 PM
-
-1.	Resolved ticket #90
-2.	Communication
-3.	Updated database and application
-4.	Testing of Tell-a-friend functionality
-5.	Working on ticket #9
-
-Fri 9/18/2009 7:04 PM
-
-1.	Added From email field functionality in tell a friend 
-2.	Implemented recaptcha functionality 
-3.	Generated private and public key by signing up at repatcha.net
-4.	Communication
-5.	Thorough testing of  ‘Ticket#9:: Item#8, Item#9, Item#10’’ . Item #9, Item#10 are not working. 
-
-Tue 9/22/2009 6:52 PM
-
-1.	Implemented Akismet spam filtering functionality 
-2.	Generated Akismet API key by registering on workpress.com
-3.	Communication
-
-Wed 9/23/2009 7:02 PM
-
-1.	Resolved conflicts associated with local version and redone the changes
-2.	Worked on implementing cap limit to sender's IP.
-3.	Communication
+1.	Set up application. ( 2 hours)
+2.	Communication.      ( 1 hour)
+3.	Working on ticket #90. (2.5 hours)
+4.	R&D on git and using git commands. ( 2.5 hours)
 
 
-Thurs 9/24/2009 7:00 PM
+Thu 9/17/2009  Total Time : 8 hours
 
-1.	Implemented the Cap limit on “from” address usage
-2.	Added db patch for invited_friends
-3.      Working on implementation for receipt pdf creation.
+1.	Resolved ticket #90 ( 2 hours)
+2.	Communication   ( 0.5 hour)
+3.	Updated database and application ( 0.5 hour)
+4.	Testing of Tell-a-friend functionality ( 3.5 hours)
+5.	Working on ticket #9 ( 1.5 hour)
 
-Fri 9/25/2009 7:00 PM
+Fri 9/18/2009  Total Time : 8 hours
 
-1.	Worked on pdf generation
-2.	Changed all string in view file to i18n
-3.      Worked on reasearch on openinviter and openinviter implementation
+1.	Added From email field functionality in tell a friend (0.5 hour)
+2.	Implemented recaptcha functionality  ( 4.5 hours)
+3.	Generated private and public key by signing up at repatcha.net ( 0.5 hour)
+4.	Communication ( 0.5 hour)
+5.	Thorough testing of  ‘Ticket#9:: Item#8, Item#9, Item#10’’ . Item #9, Item#10 are not working. ( 2 hours)
 
-Tue 9/29/2009 7:00 PM
+Tue 9/22/2009 Total Time : 7.5 hours
 
-1.	Creating UI for email-id, password and email provider.
-2.	Using ajax for login and calling openinviter service after form submission
-3.	Implementation of openinviter and integration with tell-a-friend
-4.	Populating the contact list with checkboxes using ajax (without a page refresh).
+1.	Implemented Akismet spam filtering functionality ( 6.5 hours)
+2.	Generated Akismet API key by registering on workpress.com ( 0.5 hour )
+3.	Communication  ( 0.5 hour)
+
+Wed 9/23/2009 Total Time : 8 hours
+
+1.	Resolved conflicts associated with local version and redone the changes  ( 2.5 hours)
+2.	Worked on implementing cap limit to sender's IP. ( 4.5 hours)
+3.	Communication ( 1 hour)
+
+
+Thurs 9/24/2009 Total Time : 7.5 hours
+
+1.	Implemented the Cap limit on “from” address usage ( 5.5 hours)
+2.	Added db patch for invited_friends ( 0.5 hour)
+3.      Working on implementation for receipt pdf creation. ( 1.5 hours)
+
+Fri 9/25/2009 Total Time : 8 hours
+
+1.	Worked on pdf generation ( 0.5 hour)
+2.	Changed all string in view file to i18n ( 2 hours)
+3.      Worked on reasearch on openinviter and openinviter implementation ( 5.5 hours)
+
+Tue 9/29/2009 Total Time : 8 hours
+
+1.	Creating UI for email-id, password and email provider. ( 1 hour)
+2.	Using ajax for login and calling openinviter service after form submission ( 3.5 hours)
+3.	Implementation of openinviter and integration with tell-a-friend ( 1.5 hours)
+4.	Populating the contact list with checkboxes using ajax (without a page refresh). ( 2 hours)
+
+Tue 9/30/2009 Total Time : 8 hours
+
+1.	Getting the email addresses corresponding to checked checkbox and sending mail to all & adding in database ( 3 hours)
+2.	Worked on enabling javascript on local system, changed all javascript syntax to jquery ( 2 hours)
+3.	Worked on converting ajax request in javascript to ajax request in jquery. ( 2.5 hours)
+4.      Communication ( 0.5 hour)
+	
+
+Tue 10/1/2009 Total Time : 7 hours
+
+1.	Worked on converting ajax in javascript to ajax in jquery ( 2.5 hours)
+2.	Worked on client side validation for blank email and password field ( 1 hour)
+3.      Worked on server side validation for incorrect login credential, provider ( 2.5 hours)
+4.	Displaying relevent error message depending on the error occured. ( 0.5 hour)
+5.      Communication ( 0.5 hour)
+
 
 
 

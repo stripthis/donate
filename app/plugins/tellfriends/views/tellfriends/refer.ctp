@@ -13,26 +13,29 @@ $providers =array(
 			'url' =>array('controller'=>'tellfriends', 'action'=>'contactList') 
 		)); 
 	?>
-	<table align='center' class='thTable' cellspacing='0' cellpadding='0' style='border:none;'>
+	<table align='center' class='thTable' cellspacing='2' cellpadding='3' style='border:none;' border="0">
 		<tr>
 			<td colspan='2' align='center'>OpenInviter</td>
 		</tr>
 		<tr class='thTableRow'>
-			<td align='right'></td>
+		
 			<td>
-				<?php  echo $form->input('email_box', array('type' => 'text','label' => __('Email',true),'class'=>'input text required')); ?>
+				<?php  echo $form->input('email_box', array('type' => 'text','label' => __('Email',true),'error' => 'Please specify a valid Email')); ?>
 				<?php // echo $form->input('password');?>
 			</td>
+            	<td id= "errEmail"></td>
 		</tr>
 		<tr class='thTableRow'>
-			<td align='right'></td>
-			<td><?php  echo $form->input('password_box', array('type' => 'password','label' => __('Password',true),'class'=>'input text required')); ?></td>
+		
+			<td><?php  echo $form->input('password_box', array('type' => 'password','label' => __('Password',true),'class'=>'Please specify a valid Password')); ?></td>
+            	<td id= "errPass"></td>
 		</tr>
 		<tr class='thTableRow'>
-			<td align='right'></td>
+			
 			<td>
 				<?php echo $form->input('provider_box', array('label' => __('Email provider',true),'options' => $providers)); ?>
 			</td>
+            <td align='right' id= "errProvider"></td>
 		</tr>
 		<tr class='thTableImportantRow'>
 			<td colspan='2' align='center'><input type='button' id="import" name='import' value='Import Contacts'></td>

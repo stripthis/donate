@@ -1,23 +1,35 @@
 $(document).ready(function() {
    $("input#import").click(function() {
-			var xmlhttp = GetXmlHttpObject();
-			if(xmlhttp){
-				var email =$("#openinviterEmailBox").val();
-				var pass = $("#openinviterPasswordBox").val();
-				var provider =$("#openinviterProviderBox").val();
-			 
-				var url="tellfriends/tellfriends/contactList/"+email+"/"+pass+"/"+provider;
-				xmlhttp.open("POST",url,true);
-				xmlhttp.onreadystatechange=function()
-				{
-					if (xmlhttp.readyState==4)
-					 {
-						 var res = xmlhttp.responseText;
-						 $("#contactList").empty();
-						 $("#contactList").append(res);
-					 }
+			var email =$("#openinviterEmailBox").val();
+			var pass = $("#openinviterPasswordBox").val();
+			var provider =$("#openinviterProviderBox").val();
+			$("#errEmail").empty();
+			$("#errPass").empty();
+			var errors =0;
+			if(email == ''){
+			 	$("#errEmail").append("Please specify your Email.");
+				errors++;
+			}
+			if(pass == ''){
+			 	$("#errPass").append("Please specify your Password.");	
+				errors++;
+			}
+			if(errors == 0){
+				var xmlhttp = GetXmlHttpObject();
+				if(xmlhttp){
+					var url="tellfriends/tellfriends/contactList/"+email+"/"+pass+"/"+provider;
+					xmlhttp.open("POST",url,true);
+					xmlhttp.onreadystatechange=function()
+					{
+						if (xmlhttp.readyState==4)
+						 {
+							 var res = xmlhttp.responseText;
+							 $("#contactList").empty();
+							 $("#contactList").append(res);
+						 }
+					}
+					xmlhttp.send(null);
 				}
-				xmlhttp.send(null);
 			}
    
  });

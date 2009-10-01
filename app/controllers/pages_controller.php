@@ -37,10 +37,6 @@ class PagesController extends AppController {
 				));
 
 				$this->set(compact('appeals'));
-
-				$css = Configure::read('CssIncludes');
-				$css['generic.css'] = '*:*'; 
-				Configure::write('CssIncludes',$css);
 			break;
 		}
 		if (!empty($path[1])) {

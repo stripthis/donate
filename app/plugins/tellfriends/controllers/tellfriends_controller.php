@@ -30,26 +30,28 @@ class TellfriendsController extends TellfriendsAppController {
  * @access public
  */
 	function contactList($email = null, $password = null, $provider = null){
-		if($email == "" || $password == "" || $provider == ""){
-				echo "Email or password is blank";
-				exit;
-		} else {
-				App::import('Vendor', 'OpenInviter', array('file' => 'openinviter.php'));
+			$errors=array();
+
+			App::import('Vendor', 'OpenInviter', array('file' => 'openinviter.php'));
+			
+			$inviter = new OpenInviter();
+			$oi_services=$inviter->getPlugins();
 				
-				$inviter = new OpenInviter();
-				$oi_services=$inviter->getPlugins();
-					
-				$inviter->startPlugin($provider);
-				
+			$inviter->startPlugin($provider);
+			
+			$internal=$inviter->getInternalError();
+			if ($internal){
+				$errors['inviter']=$internal;
+			} elseif(!$inviter->login($email,$password)){
 				$internal=$inviter->getInternalError();
-				
-				$inviter->login($email,$password);
-				
-				$contacts = $inviter->getMyContacts(); 	//Get list of Contacts
-				
+				$errors['login']=($internal?$internal:"Login failed. Please check the email and password you have provided and try again later");
+			} elseif (false===$contacts=$inviter->getMyContacts()){
+				$errors['contacts']="Unable to get contacts."; 
+			} else{
+			
 				$this->render = false;
 				$element = "";
-				if(count($contacts) >1){
+				if(count($contacts) >0){
 					foreach ($contacts as $key=>$val) {
 						$element .= '<input type="checkbox" name="Tellfriend.option[]" value="'.$key.'" onchange="tellFriends(this);">'.$key.'<br>';
 					}
@@ -57,6 +59,15 @@ class TellfriendsController extends TellfriendsAppController {
 				echo $element;
 				exit;
 			}
+			if(count($errors)>0){
+				$errMessages = "";
+				foreach ($errors as $key=>$val) {
+							$errMessages .= $val;
+						}
+				echo $errMessages;
+				exit;
+			}
+
 			
 	
 	}
