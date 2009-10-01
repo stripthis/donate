@@ -7,7 +7,6 @@
  * @link				http://www.greenpeace.org/international/supportus
  */
 	$saluteOptions = Contact::getSalutations();
-	pr($this);
 ?>
 			<fieldset id="contact">
 				<legend><?php echo __("Contact Information"); ?></legend>
