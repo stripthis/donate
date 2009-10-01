@@ -18,11 +18,7 @@
   }
 ?>
   <div id="content_wrapper">
-    <div id="banner">
-      <h1><?php echo $this->pageTitle; ?></h1>
-      <a href="http://www.greenpeace.org" alt="Greenpeace" class="greenpeace"><span>Greenpeace</span></a>
-      <a href="http://localdonate.com" alt="Greenpeace" class="donate"><span>Support Us</span></a>
-    </div>
+<?php echo $this->element('../templates/default/elements/banner'); ?>
     <div id="content">
       <h1>Support Greenpeace International</h1>
       <p class="mission">
