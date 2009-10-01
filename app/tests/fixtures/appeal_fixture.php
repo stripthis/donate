@@ -8,7 +8,7 @@ class AppealFixture extends CakeTestFixture {
 			'appeal_step_count' => '1',
 			'name' => 'default GPI appeal',
 			'label' => 'support_us',
-			'campaign_code' => '6',
+			'campaign_code' => 'code',
 			'default' => '1',
 			'cost' => '200',
 			'reviewed' => '1',

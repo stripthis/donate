@@ -1,6 +1,3 @@
-<?php 
-	pr($roles);
-?>
 <div class="content users index">
 	<h2><?php echo $this->pageTitle = __('Roles & Permissions', true); ?></h2>
 	<?php
