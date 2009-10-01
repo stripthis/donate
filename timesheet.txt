@@ -40,6 +40,20 @@ Thurs 9/24/2009 7:00 PM
 2.	Added db patch for invited_friends
 3.      Working on implementation for receipt pdf creation.
 
+Fri 9/25/2009 7:00 PM
+
+1.	Worked on pdf generation
+2.	Changed all string in view file to i18n
+3.      Worked on reasearch on openinviter and openinviter implementation
+
+Tue 9/29/2009 7:00 PM
+
+1.	Creating UI for email-id, password and email provider.
+2.	Using ajax for login and calling openinviter service after form submission
+3.	Implementation of openinviter and integration with tell-a-friend
+4.	Populating the contact list with checkboxes using ajax (without a page refresh).
+
+
 
 
 

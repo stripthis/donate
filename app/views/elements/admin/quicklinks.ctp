@@ -1,4 +1,4 @@
-    <h2><?= __("What do you feel like doing?"); ?></h2>
+<h2><?= __("What do you feel like doing?"); ?></h2>
     <div class="quicklinks">
       <ul>
         <li><?php echo $html->link( $html->image("icons/XL/help.png", array("alt"=>"help"))."Help me get started...", 

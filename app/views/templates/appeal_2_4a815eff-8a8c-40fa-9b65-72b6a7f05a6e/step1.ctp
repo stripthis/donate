@@ -14,13 +14,10 @@
 	if (!empty($cData)) {
 	  $cData = $cData['Gift'];
 	}
+	exit;
 ?>
   <div id="content_wrapper">
-    <div id="banner">
-      <h1><?php echo $this->pageTitle; ?></h1>
-      <a href="http://www.greenpeace.org" alt="Greenpeace" class="greenpeace"><span><?php __('Greenpeace',true); ?></span></a>
-      <a href="http://localdonate.com" alt="Greenpeace" class="donate"><span><?php __('Support Us',true); ?></span></a>
-    </div>
+<?php echo $this->element('../templates/default/elements/banner'); ?>
      <div id="content">
 <?php echo $this->element('../templates/default/elements/title'); ?>
 <?php echo $this->element('../templates/default/elements/mission'); ?>

@@ -8,13 +8,54 @@
 class TellfriendsController extends TellfriendsAppController {
 	var $components = array('Caplimit', 'Recaptcha');
 	var $uses = array('Akismet', 'Tellfriends.Tellfriend');
+
 	
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	function beforeFilter(){
+	    if(isset($this->js)) $this->set("js",$this->js);
 	   $this->Akismet->apiKey = '9ae3443b5369';
 	   $this->Recaptcha->publickey = "6LcYYwgAAAAAAFY60zscq0Oc6Zb1SxxawK6dOip7";
 	   $this->Recaptcha->privatekey = "6LcYYwgAAAAAAGmtiUbf_Eis_w8HYICZs21eHKCC ";
 	}
+	
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function contactList($email,$password,$provider){
 
+		App::import('Vendor', 'OpenInviter', array('file' => 'openinviter.php'));
+		
+		$inviter = new OpenInviter();
+		$oi_services=$inviter->getPlugins();
+			
+		$inviter->startPlugin($provider);
+		
+		$internal=$inviter->getInternalError();
+		
+		$inviter->login($email,$password);
+		
+		$contacts = $inviter->getMyContacts(); 	//Get list of Contacts
+		
+		$this->render = false;
+		$element = "";
+		
+		if(count($contacts) >0){
+			foreach ($contacts as $key=>$val) {
+				$element .= '<input type="checkbox" name="Tellfriend.option[]" value="'.$key.'" onchange="tellFriends(this);">'.$key.'<br>';
+			}
+		 }
+		 echo $element;
+		exit;
+
+	}
 /**
  * undocumented function
  *
@@ -22,10 +63,10 @@ class TellfriendsController extends TellfriendsAppController {
  * @access public
  */
 	function refer() {
-		if ($this->isGet()) {
+			if ($this->isGet()) {
 			return;
 		}
-		
+
 		$comment = array('comment_author' => '',
 
                          'comment_author_email' => $this->data['Tellfriend']['sender'],

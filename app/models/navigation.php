@@ -243,7 +243,11 @@ class Navigation extends AppModel{
 				)
 			)
 			, 'admin_root_admin_sub' => array(
-				__('Offices', true) => array(
+				__('Dashboard', true) => array(
+					'/admin/dashboards'
+					, '#/\/admin\/dashboards.*/iU'
+				)
+				, __('Offices', true) => array(
 					'/admin/offices'
 					, '#/\/admin\/offices.*/iU'
 					, 'role' => 'root'

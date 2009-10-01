@@ -1016,9 +1016,8 @@ dd {
 }
 
 /* Notices and Errors */
-div.message {
+.message {
   clear:both;
-  color:#900;
   font-size:140%;
   font-weight:bold;
   margin:0 0 5px 0;
@@ -1071,7 +1070,8 @@ ul.messages{
 	margin:0;
 	padding:0;
 }
-ul.messages li.error{
+ul.messages li.error,
+.message.error{
 	list-style-type:none;
 	border:1px solid red;
 	border-left:0;
@@ -1081,13 +1081,17 @@ ul.messages li.error{
 	font-size:1.3em;
 	background:#FEE url(/img/icons/M/message_error.png) 10px center no-repeat;
 }
-ul.messages li.success, ul.messages li.ok{
+ul.messages li.success, ul.messages li.ok,
+.message.information{
 	list-style-type:none;
 	border-bottom:1px solid #003300;
 	padding:15px 5px 15px 70px;
 	margin:0;
 	font-size:1.3em;
 	background:#efe url(/img/icons/M/message_info.png) 20px center no-repeat;
+}
+.content .message{
+	border:0;
 }
 /*  Actions  */
 .actions {
@@ -1175,6 +1179,9 @@ ul.messages li.success, ul.messages li.ok{
 .actions .undo{
   background:url(../img/icons/S/undo.png) 2px center no-repeat;
 }
+.actions .back{
+  background:url(../img/icons/S/arrow_undo.png) 2px center no-repeat;
+}
 .actions .export{
   background:url(../img/icons/S/export.png) 2px center no-repeat;
 }
@@ -1199,9 +1206,7 @@ ul.messages li.success, ul.messages li.ok{
 .actions .user_delete{
   background:url(../img/icons/S/user_delete.png) 2px center no-repeat;
 }
-.actions .back{
-  background:url(../img/icons/S/arrow_undo.png) 2px center no-repeat;
-}
+
 /* Quicklinks */
 .quicklinks ul{
   float:left;
