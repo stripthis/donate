@@ -15,7 +15,10 @@ class Appeal extends AppModel {
 		)
 	);
 
-	var $actsAs = array('Containable', 'Lookupabable', 'Enumerable');
+	var $actsAs = array(
+		'Containable', 'Lookupabable', 'Enumerable',
+		'Sluggable' => array('label' => 'name')
+	);
 /**
  * Get appeal from id, campaign_code or name
  * @param $appeal
@@ -33,8 +36,8 @@ class Appeal extends AppModel {
 					$conditions = array(
 						'OR' => array(
 							'Appeal.id' => $id,
-							'Appeal.campaign_code' => $id,
-							'Appeal.name' => $id, //@todo use proper label instead of name (cf. ' ')
+							'Appeal.name' => $id,
+							'Appeal.slug' => $id,
 						),
 						'default' => '0',
 						'status <>' => 'archived'
@@ -65,7 +68,7 @@ class Appeal extends AppModel {
  * @return void
  * @access public
  */
-	function afterSave() {
+	function afterSave($created) {
 		if (isset($this->data['Appeal']['steps'])) {
 			$this->AppealStep->deleteAll(array('appeal_id' => $this->id));
 			$i = 0;
@@ -82,6 +85,43 @@ class Appeal extends AppModel {
 				$this->AppealStep->save();
 			}
 		}
+
+		$id = $this->id;
+		$appeal = $this->find('first', array(
+			'conditions' => compact('id'),
+		));
+		$code = Inflector::underscore($appeal[__CLASS__]['campaign_code']);
+
+		App::import('Core', 'Folder');
+		$folder = new Folder(VIEWS . 'templates');
+		$contents = $folder->read();
+
+		$move = false;
+		foreach ($contents[0] as $dir) {
+			if (strpos($dir, $id) !== false) {
+				$move = $dir;
+				break;
+			}
+		}
+
+		if ($created) {
+			$path = VIEWS . 'templates' . DS . $code . '_' . $id;
+			mkdir($path, 0755);
+
+			$src = VIEWS . 'templates' . DS . 'default' . DS . 'step1.ctp';
+			$dest = $path . DS . 'step1.ctp';
+			copy($src, $dest);
+			$src = VIEWS . 'templates' . DS . 'default' . DS . 'step2.ctp';
+			$dest = $path . DS . 'step2.ctp';
+			copy($src, $dest);
+		} else {
+			$oldPath = VIEWS . 'templates' . DS . $move;
+			$folder = new Folder($oldPath);
+			$folder->move(array(
+				'to' => VIEWS . 'templates' . DS . $code . '_' . $id
+			));
+		}
+
 		return true;
 	}
 /**
@@ -89,7 +129,7 @@ class Appeal extends AppModel {
  *
  * @return void
  * @access public
- */		
+ */
 	function afterDelete() {
 		App::import('Core', 'Folder');
 		$folder = new Folder(VIEWS . 'templates');
