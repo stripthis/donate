@@ -53,20 +53,22 @@ class FavoritesController extends FavoritesAppController {
 		));
 
 		$adj = Configure::read('Favorites.adjective');
-		$model = empty($model) ? 'object' : low($model);
+		$model = empty($model) ? 'object' : $model;
+		$humanizedModel = Inflector::humanize($model);
 		if (empty($favorite)) {
 			$this->Favorite->create(array(
 				'user_id' => $userId,
-				'foreign_id' => $id
+				'foreign_id' => $id,
+				'model' => $model
 			));
 			$this->Favorite->save();
 			$this->Favorite->load(User::get('id'));
 
-			$msg = __('This ' . $model . ' was successfully ' . $adj . '!', true);
+			$msg = __('This ' . $humanizedModel . ' was successfully ' . $adj . '!', true);
 			return $this->Message->add($msg, 'ok', true, $this->referer());
 		}
 
-		$msg = __('This ' . $model . ' is already ' . $adj . '!', true);
+		$msg = __('This ' . $humanizedModel . ' is already ' . $adj . '!', true);
 		$this->Message->add($msg, 'error', true, $this->referer());
 	}
 /**

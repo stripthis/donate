@@ -86,6 +86,7 @@ class Appeal extends AppModel {
 			}
 		}
 
+		// @todo: template management
 		$id = $this->id;
 		$appeal = $this->find('first', array(
 			'conditions' => compact('id'),

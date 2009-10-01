@@ -129,7 +129,6 @@ class GiftsController extends AppController {
 		}
 
 		if ($errors) {
-			pr('here');
 			$msg = 'There are problems with the form2.';
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
@@ -145,6 +144,7 @@ class GiftsController extends AppController {
 		//@todo save payment data here?
 		$this->Transaction->create(array(
 			'gift_id' => $this->data['Gift']['id'],
+			'office_id' => $officeId,
 			'amount' => $this->data['Gift']['amount'],
 			'gateway_id' => $gateway['GatewaysOffice']['gateway_id']
 		));

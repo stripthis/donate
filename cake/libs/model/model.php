@@ -2013,6 +2013,7 @@ class Model extends Overloadable {
 	function _findCount($state, $query, $results = array()) {
 		if ($state == 'before') {
 			$db =& ConnectionManager::getDataSource($this->useDbConfig);
+
 			if (empty($query['fields'])) {
 				$query['fields'] = $db->calculate($this, 'count');
 			} elseif (is_string($query['fields'])  && !preg_match('/count/i', $query['fields'])) {
