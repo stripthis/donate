@@ -17,6 +17,7 @@ class Mailer{
 				'subject' => '',
 				'template' => $template,
 				'layout' => 'email',
+				'attachments' => array()
 			),
 			'store' => false
 		), $options);
@@ -42,6 +43,7 @@ class Mailer{
 		App::import('Core', 'Controller');
 		$Email = Common::getComponent('Email');
 		Common::setProperties($Email, $options['mail']);
+
 		if (!isset($Email->Controller)) {
 			App::import('Core', 'Router');
 			$Email->Controller = new AppController();

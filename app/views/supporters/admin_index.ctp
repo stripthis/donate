@@ -57,17 +57,17 @@ $favConfig = Configure::read('Favorites');
 			$tr = am($tr,array(            
 				$t['Contact']['fname'] . ' ' . $t['Contact']['lname'],
 				$t['Contact']['email'],
-				isset($t['Contact']['Address'][0]['Phone'][0]['phone'])
-					? $t['Contact']['Address'][0]['Phone'][0]['phone']
+				isset($t['Address'][0]['Phone'][0]['phone'])
+					? $t['Address'][0]['Phone'][0]['phone']
 					: '--',
-				isset($t['Contact']['Address'][0]['zip'])
-					? $t['Contact']['Address'][0]['zip']
+				isset($t['Address'][0]['zip'])
+					? $t['Address'][0]['zip']
 					: '--',
-				isset($t['Contact']['Address'][0]['City']['name'])
-					? $t['Contact']['Address'][0]['City']['name']
+				isset($t['Address'][0]['City']['name'])
+					? $t['Address'][0]['City']['name']
 					: '--',
-				isset($t['Contact']['Address'][0]['Country']['name'])
-					? $t['Contact']['Address'][0]['Country']['name']
+				isset($t['Address'][0]['Country']['name'])
+					? $t['Address'][0]['Country']['name']
 					: '--',
 				date('Y-m-d H:i', strtotime($t['Contact']['created'])),
 				date('Y-m-d H:i', strtotime($t['Contact']['modified'])),

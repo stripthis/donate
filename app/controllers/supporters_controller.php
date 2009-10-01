@@ -96,6 +96,7 @@ class SupportersController extends AppController {
 			$params['my_limit'] = $params['custom_limit'];
 		}
 
+
 		if (!empty($params['keyword'])) {
 			$params['keyword'] = trim($params['keyword']);
 			switch ($params['search_type']) {
@@ -108,7 +109,12 @@ class SupportersController extends AppController {
 						'conditions' => array('country_id' => $countryId),
 						'fields' => array('contact_id')
 					));
-					$conditions['Contact.id'] = Set::extract('/Address/contact_id', $addresses);
+					$ids = Set::extract('/Address/contact_id', $addresses);
+					if (isset($conditions['Contact.id'])) {
+						$conditions['Contact.id'] = array_intersect($conditions['Contact.id'], $ids);
+					} else {
+						$conditions['Contact.id'] = $ids;
+					}
 					break;
 				case 'city':
 					$cities = $this->City->find('all', array(
@@ -119,7 +125,13 @@ class SupportersController extends AppController {
 						'conditions' => array('city_id' => Set::extract('/City/id', $cities)),
 						'fields' => array('contact_id')
 					));
-					$conditions['Contact.id'] = Set::extract('/Address/contact_id', $addresses);
+
+					$ids = Set::extract('/Address/contact_id', $addresses);
+					if (isset($conditions['Contact.id'])) {
+						$conditions['Contact.id'] = array_intersect($conditions['Contact.id'], $ids);
+					} else {
+						$conditions['Contact.id'] = $ids;
+					}
 					break;
 				case 'name':
 					$key = "CONCAT(Contact.fname,' ',Contact.lname)";
@@ -144,6 +156,7 @@ class SupportersController extends AppController {
 			'order' => array("CONCAT(Contact.fname,' ',Contact.lname)" => 'asc')
 		);
 		$supporters = $this->paginate('Contact');
+
 		$this->set(compact('supporters', 'type', 'params'));
 	}
 /**

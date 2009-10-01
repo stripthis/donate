@@ -104,6 +104,19 @@ class User extends AppModel {
 /**
  * undocumented function
  *
+ * @return void
+ * @access public
+ */
+	function afterSave() {
+		if (isset($this->data[__CLASS__]['public_key'])) {
+			$Pgp = Common::getComponent('Pgp');
+			$Pgp->import($this->data[__CLASS__]['public_key']);
+		}
+		return true;
+	}
+/**
+ * undocumented function
+ *
  * @param unknown $user
  * @param unknown $password
  * @return void

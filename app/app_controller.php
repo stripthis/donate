@@ -18,6 +18,7 @@ class AppController extends Controller {
 		'Json',
 		'Email',
 		'Silverpop',
+		'Pgp'
 	);
 
 	var $helpers = array(
@@ -60,6 +61,7 @@ class AppController extends Controller {
 		ClassRegistry::addObject('Component.Session', $this->Session);
 		ClassRegistry::addObject('Component.Cookie', $this->Cookie);
 		ClassRegistry::addObject('Component.Email', $this->Email);
+		ClassRegistry::addObject('Component.Pgp', $this->Pgp);
 
 		$this->_loadPermissions();
 		$this->_setLanguage();

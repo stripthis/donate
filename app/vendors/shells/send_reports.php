@@ -19,6 +19,7 @@ class SendReportsShell extends Shell {
 			exit(1);
 		}
 
+		$Pgp = Common::getComponent('Pgp');
 		foreach ($reports as $report) {
 			$this->out('Processing report "' . $report['Report']['title'] . '" ..');
 
@@ -38,7 +39,7 @@ class SendReportsShell extends Shell {
 					$date = date('Y-m-d H:i', strtotime('-1 year'));
 					break;
 			}
-			$conditions[] = "DATE_FORMAT(ReportsUser.last_sent, '%Y-%m-%d %H:%i') = '" . $date . "'";
+			// $conditions[] = "DATE_FORMAT(ReportsUser.last_sent, '%Y-%m-%d %H:%i') = '" . $date . "'";
 
 			$users = $this->ReportsUser->find('all', array(
 				'conditions' => $conditions,
@@ -52,6 +53,7 @@ class SendReportsShell extends Shell {
 			}
 
 			$name = ucfirst($report['Report']['frequency']) . ' Report "' . $report['Report']['title'] . '"';
+
 			foreach ($users as $user) {
 				$officeId = $user['User']['office_id'];
 				$query = $report['Report']['query'];
@@ -59,24 +61,31 @@ class SendReportsShell extends Shell {
 				$results = $this->Transaction->query($query);
 
 				$content = $this->parseTemplate($report['Report']['view'], $results);
-
+				$attachment = $Pgp->encrypt(array(
+					'msg' => $content,
+					'recipient' => $user['User']['login']
+				));
+				if (!$attachment) {
+					$this->out('There was a problem encrypting the report for ' . $user['User']['login']);
+				}
 				$this->ReportsUser->set(array(
 					'id' => $user['ReportsUser']['id'],
 					'last_sent' => date('Y-m-d H:i:s')
 				));
 				$this->ReportsUser->save();
-
 				if (!Common::isDevelopment()) {
 					$options = array(
 						'mail' => array(
 							'to' => $user['User']['login'],
-							'subject' => $name
+							'subject' => $name,
+							'attachments' => array($attachment),
 						),
 						'vars' => compact('content')
 					);
 					Mailer::deliver('report', $options);
 					$this->out('Sent ' . $name . ' to ' . $user['User']['login']);
 				}
+				$Pgp->flush();
 			}
 		}
 	}
