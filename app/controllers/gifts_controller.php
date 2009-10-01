@@ -101,7 +101,8 @@ class GiftsController extends AppController {
 		// for the last step, reset is_required to required to prevent hacking attemps
 		$validates = AppModel::bulkValidate($this->models, $this->data, true);
 		if (!$validates) {
-			$msg = 'There are problems with the form.';
+
+			$msg = 'There are problems with the form3.';
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
 		}
@@ -119,7 +120,7 @@ class GiftsController extends AppController {
 		$errors = false;
 		if (isset($this->data['Card']) && $currentAppeal['Appeal']['processing'] == 'manual') {
 			$this->Card->set($this->data);
-			if ($this->Card->validates()) {
+			if (true || $this->Card->validates()) {
 				//@todo if application used in manual/direct debit mode, save credit card details
 				//But for now: *WE DON'T SAVE*
 			} else {
@@ -128,7 +129,8 @@ class GiftsController extends AppController {
 		}
 
 		if ($errors) {
-			$msg = 'There are problems with the form.';
+			pr('here');
+			$msg = 'There are problems with the form2.';
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
 		}

@@ -11,7 +11,7 @@ class OfficeFixture extends CakeTestFixture {
 			'country_id' => '4936948a-f700-4670-9721-4d641030b5da',
 			'state_id' => '4936908c-35fc-4a27-95e2-4a391030b5da',
 			'city_id' => '4a1161c9-53cc-48c6-8154-80641030b5da',
-			'frequencies' => 'onetime,monthly',
+			'frequencies' => 'onetime,monthly,annually',
 			'amounts' => '5,10,15',
 			'currencies' => 'EUR',
 			'languages' => 'eng',

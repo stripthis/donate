@@ -14,7 +14,6 @@
 	if (!empty($cData)) {
 	  $cData = $cData['Gift'];
 	}
-	exit;
 ?>
   <div id="content_wrapper">
 <?php echo $this->element('../templates/default/elements/banner'); ?>

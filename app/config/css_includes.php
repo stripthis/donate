@@ -1,7 +1,7 @@
 <?php
 $config = array(
 	'CssIncludes' => array(
-    //'default.css' => 'pages:!admin_*',
+    'default.css' => '*:*,!pages:admin_*',
     'admin.css' => "*:admin_*",
     'tooltip.css' => "*:*",
     //'jquery.checkbox.css' => "*:admin_*",
