@@ -1,67 +1,4 @@
-<script type="text/javascript">
-function GetXmlHttpObject()
-{
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {
-  // code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else if (window.ActiveXObject)
-  {
-  // code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  return xmlhttp;
-}
-
-function getContactList()
-{
-var xmlhttp = GetXmlHttpObject();
-if(xmlhttp){
- var email =document.getElementById("openinviterEmailBox").value;
- var pass = document.getElementById("openinviterPasswordBox").value;
- var provider =document.getElementById("openinviterProviderBox").value;
- 
-var url="tellfriends/tellfriends/contactList/"+email+"/"+pass+"/"+provider;
-xmlhttp.open("POST",url,true);
-xmlhttp.onreadystatechange=function()
-{
-if (xmlhttp.readyState==4)
-  {
-
-  document.getElementById("contactList").innerHTML=xmlhttp.responseText;
-  }
-}
-xmlhttp.send(null);
-}
-}
-function tellFriends(chckbox)
-{
-
-	if(chckbox.checked == true){
-		if(document.getElementById("TellfriendReceiver").value == ''){
-			document.getElementById("TellfriendReceiver").value = chckbox.value;
-		} else {
-		document.getElementById("TellfriendReceiver").value = document.getElementById("TellfriendReceiver").value + "," +chckbox.value;
-		}
-	} else if(chckbox.checked == false) {
-		var str = document.getElementById("TellfriendReceiver").value;
-		var result = "";
-		if(str.indexOf(chckbox.value) == 0){
-			result = str.replace(chckbox.value, "");
-		}else{
-		     var replaceWith = ","+chckbox.value;
-			result = str.replace(replaceWith, "");
-		}
-		if(result.charAt(0) == ","){
-			result = result.replace(",", "");
-		}
-		document.getElementById("TellfriendReceiver").value = result;
-	}
-
-}
-</script>
+<?php echo $javascript->link('/tellfriends/js/ajaxRefer.js'); ?>
 <div id="referDiv">
 
 <?php
@@ -83,7 +20,7 @@ $providers =array(
 
 </td></tr>
                                                         
-                                                        <tr class='thTableImportantRow'><td colspan='2' align='center'><input type='button' name='import' value='Import Contacts' onclick="getContactList();"></td></tr>
+                                                        <tr class='thTableImportantRow'><td colspan='2' align='center'><input type='button' id="import" name='import' value='Import Contacts' ></td></tr>
                                                     </table> 
  <?php echo $form->end(); ?>
  
