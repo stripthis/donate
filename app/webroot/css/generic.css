@@ -453,3 +453,4 @@ form .error .error-message{
 	display:inline;
 	padding:0 7px;
 }
+.error-message {color:#c00!important;}
