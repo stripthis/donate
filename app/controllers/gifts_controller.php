@@ -320,10 +320,15 @@ class GiftsController extends AppController {
 		$countryOptions = $this->Country->find('list', array(
 			'order' => array('Country.name' => 'asc')
 		));
+		$appealOptions = $this->Appeal->find('list', array(
+			'conditions' => array('office_id' => $this->Session->read('Office.id')),
+			'order' => array('Appeal.name' => 'asc')
+		));
 		$contact = $this->Contact->find('first', array(
 			'conditions' => array('id' => $contactId),
 		));
-		$this->set(compact('countryOptions', 'contact'));
+		$this->set(compact('countryOptions', 'contact', 'appealOptions'));
+
 		if ($this->isGet()) {
 			return;
 		}
@@ -331,14 +336,8 @@ class GiftsController extends AppController {
 		if (isset($this->data['Gift']['amount_other']) && !empty($this->data['Gift']['amount_other'])) {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
 		}
- 		$this->data['Gift']['appeal_id'] = $this->Appeal->lookup(
-			array(
-				'office_id' => $this->Session->read('Office.id'),
-				'name LIKE' => '%Admin%',
-				'admin' => true
-			), 'id', false
-		);
 		$this->data['Gift']['contact_id'] = $contactId;
+		$this->data['Gift']['office_id'] = $this->Session->read('Office.id');
 
 		$this->Gift->set($this->data);
 		if (!$this->Gift->save()) {
@@ -503,9 +502,6 @@ class GiftsController extends AppController {
 
 		if (isset($this->params['named']['appeal_id'])) {
 			$conditions = array('id' => $this->params['named']['appeal_id']);
-			if (User::is('guest')) {
-				$conditions['admin'] = false;
-			}
 			$existingAppeal = $this->Appeal->lookup($conditions, 'id', false);
 			$sessAppealId = $this->Session->read($this->sessAppealKey);
 			if (!$existingAppeal || $step != 1 && $sessAppealId != $existingAppeal) {

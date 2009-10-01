@@ -27,7 +27,6 @@ class Appeal extends AppModel {
 			case 'default':
 				$id = isset($query['id']) ? $query['id'] : false;
 
-				$admin = User::is('guest') ? '0' : '1';
 				$appeal = false;
 
 				if ($id) {
@@ -38,7 +37,6 @@ class Appeal extends AppModel {
 							'Appeal.name' => $id, //@todo use proper label instead of name (cf. ' ')
 						),
 						'default' => '0',
-						'admin' => $admin,
 						'status <>' => 'archived'
 					);
 					if (User::is('guest')) {
@@ -54,8 +52,7 @@ class Appeal extends AppModel {
 					$appeal = $this->find('first', array(
 						'conditions' => array('Appeal.default' => '1'),
 						'contain' => array('Office'),
-						'status' => 'published',
-						'admin' => $admin
+						'status' => 'published'
 					));
 				}
 				return $appeal;
@@ -92,7 +89,7 @@ class Appeal extends AppModel {
  *
  * @return void
  * @access public
- */
+ */		
 	function afterDelete() {
 		App::import('Core', 'Folder');
 		$folder = new Folder(VIEWS . 'templates');
