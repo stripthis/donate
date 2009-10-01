@@ -29,32 +29,36 @@ class TellfriendsController extends TellfriendsAppController {
  * @return void
  * @access public
  */
-	function contactList($email,$password,$provider){
-
-		App::import('Vendor', 'OpenInviter', array('file' => 'openinviter.php'));
-		
-		$inviter = new OpenInviter();
-		$oi_services=$inviter->getPlugins();
-			
-		$inviter->startPlugin($provider);
-		
-		$internal=$inviter->getInternalError();
-		
-		$inviter->login($email,$password);
-		
-		$contacts = $inviter->getMyContacts(); 	//Get list of Contacts
-		
-		$this->render = false;
-		$element = "";
-		
-		if(count($contacts) >0){
-			foreach ($contacts as $key=>$val) {
-				$element .= '<input type="checkbox" name="Tellfriend.option[]" value="'.$key.'" onchange="tellFriends(this);">'.$key.'<br>';
+	function contactList($email = null, $password = null, $provider = null){
+		if($email == "" || $password == "" || $provider == ""){
+				echo "Email or password is blank";
+				exit;
+		} else {
+				App::import('Vendor', 'OpenInviter', array('file' => 'openinviter.php'));
+				
+				$inviter = new OpenInviter();
+				$oi_services=$inviter->getPlugins();
+					
+				$inviter->startPlugin($provider);
+				
+				$internal=$inviter->getInternalError();
+				
+				$inviter->login($email,$password);
+				
+				$contacts = $inviter->getMyContacts(); 	//Get list of Contacts
+				
+				$this->render = false;
+				$element = "";
+				if(count($contacts) >1){
+					foreach ($contacts as $key=>$val) {
+						$element .= '<input type="checkbox" name="Tellfriend.option[]" value="'.$key.'" onchange="tellFriends(this);">'.$key.'<br>';
+					}
+				 }
+				echo $element;
+				exit;
 			}
-		 }
-		 echo $element;
-		exit;
-
+			
+	
 	}
 /**
  * undocumented function

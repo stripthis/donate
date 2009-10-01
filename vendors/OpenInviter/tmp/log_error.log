@@ -1,0 +1,880 @@
+[2009-10-01 09:45:19] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 09:45:19] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 09:50:46] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmail.com
+PASSWORD: ramaul131
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmail.com
+			Passwd=ramaul131
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 09:50:46] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmail.com
+PASSWORD: ramaul131
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmail.com
+			Passwd=ramaul131
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 09:50:54] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmail.com
+PASSWORD: ramaul131
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmail.com
+			Passwd=ramaul131
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 09:50:54] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmail.com
+PASSWORD: ramaul131
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmail.com
+			Passwd=ramaul131
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 09:58:51] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: vkholia791
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=vkholia791
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 09:58:51] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmail.com
+PASSWORD: vkholia791
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmail.com
+			Passwd=vkholia791
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:05:13] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:05:13] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:06:21] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:06:21] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:06:58] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmaill.com
+PASSWORD: vkholia791
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmaill.com
+			Passwd=vkholia791
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:06:58] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmaill.com
+PASSWORD: vkholia791
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmaill.com
+			Passwd=vkholia791
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:07:39] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmaill.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmaill.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:07:39] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmaill.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmaill.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:07:51] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa111@gmaill.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa111@gmaill.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:07:51] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa111@gmaill.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa111@gmaill.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:08:18] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa11111@gmaill.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa11111@gmaill.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:08:18] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa11111@gmaill.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa11111@gmaill.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:08:52] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmaill.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmaill.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:08:52] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmaill.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmaill.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:09:10] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:09:10] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:09:23] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:09:23] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:09:24] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:09:24] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:09:38] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:09:38] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: s.dhapola85@gmaill.com
+PASSWORD: vkholia79
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=s.dhapola85@gmaill.com
+			Passwd=vkholia79
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:22:06] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa1111@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa1111@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:22:06] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa1111@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa1111@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:22:46] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa1111@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa1111@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:22:46] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa1111@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa1111@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:23:29] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa1111@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa1111@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:23:29] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa1111@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa1111@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:23:44] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa1111@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa1111@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:23:44] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa1111@gmail.com
+PASSWORD: ramaul13
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa1111@gmail.com
+			Passwd=ramaul13
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:31:23] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmail.com
+PASSWORD: ramaul131
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmail.com
+			Passwd=ramaul131
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:31:23] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa@gmail.com
+PASSWORD: ramaul131
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa@gmail.com
+			Passwd=ramaul131
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:31:33] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa11@gmail.com
+PASSWORD: ramaul131
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa11@gmail.com
+			Passwd=ramaul131
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:31:33] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa11@gmail.com
+PASSWORD: ramaul131
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa11@gmail.com
+			Passwd=ramaul131
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:31:37] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa11@gmail.com
+PASSWORD: ramaul131
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa11@gmail.com
+			Passwd=ramaul131
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
+[2009-10-01 10:31:37] Local Debugger
+----------DETAILS START----------
+TRANSPORT: curl
+SERVICE: gmail
+USER: dhapola.shilpa11@gmail.com
+PASSWORD: ramaul131
+STEPS: 
+	login_post :
+		URL: https://www.google.com/accounts/ClientLogin
+		METHOD: POST
+		ELEMENTS: 
+			accountType=HOSTED_OR_GOOGLE
+			Email=dhapola.shilpa11@gmail.com
+			Passwd=ramaul131
+			service=cp
+			source=OpenInviter-OpenInviter-1.8.1
+		RESPONSE: FAILED
+
+----------DETAILS END----------
+
