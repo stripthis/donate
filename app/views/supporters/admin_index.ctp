@@ -34,6 +34,8 @@ $favConfig = Configure::read('Favorites');
 		));
 
 		echo $html->tableHeaders($th);
+		$canAddGifts = User::allowed('Gifts', 'admin_add');
+
 		foreach ($supporters as $t) {
 			$actions = array(
 				$html->link(__('View', true), array(
@@ -41,12 +43,15 @@ $favConfig = Configure::read('Favorites');
 				)),
 				$html->link(__('Edit', true), array(
 					'action' => 'edit', $t['Contact']['id']), array('class'=>'edit'
-				)),
-				$html->link(__('Add Gift', true), array(
+				))
+			);
+
+			if ($canAddGifts) {
+				$actions[] = $html->link(__('Add Gift', true), array(
 					'controller' => 'gifts', 'action' => 'add', $t['Contact']['id']),
 					array('class'=>'add')
-				)
-			);
+				);
+			}
 
 			$gift = $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id']));
 			$tr = array();
