@@ -13,6 +13,7 @@ $(document).ready(function() {
 					if (xmlhttp.readyState==4)
 					 {
 						 var res = xmlhttp.responseText;
+						 $("#contactList").empty();
 						 $("#contactList").append(res);
 					 }
 				}

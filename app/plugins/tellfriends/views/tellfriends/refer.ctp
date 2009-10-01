@@ -41,7 +41,7 @@ $providers =array(
 	<?php echo $form->end(); ?>
 	<?php echo $form->create('tellafriend', array('url' =>array('controller'=>'tellfriends', 'action'=>'refer')   )); ?>
 	<fieldset>
-	  <legend><?php sprintf(__('Tell A Friend', true)); ?></legend>
+	  <legend><?php echo __('Tell A Friend', true); ?></legend>
 	  <div id = "contactList">
 	 </div>
 	  <ul>
