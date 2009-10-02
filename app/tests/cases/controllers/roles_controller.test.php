@@ -27,6 +27,7 @@ class RolesControllerTest extends MyTestCase {
  * @access public
  */
 	function testProperTabsAreShownAndSelected() {
+		$this->skipIf(class_exists('ShellDispatcher'), 'Skipping tabs test because this is the cli!');
 		$this->loadFixtures('User', 'Role', 'Office');
 		User::logout();
 		$markup = $this->testAction('/admin/auth/login', array('return' => 'contents'));
