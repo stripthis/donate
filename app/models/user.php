@@ -199,8 +199,7 @@ class User extends AppModel {
 					'Role(permissions, name)',
 					'Contact.Address.State(id, name)',
 					'Contact.Address.Country(id, name)',
-					'Contact.Address.City(id, name)',
-					'Office.SubOffice', 'Office.ParentOffice'
+					'Contact.Address.City(id, name)'
 				)
 			));
 		}
@@ -213,8 +212,8 @@ class User extends AppModel {
 			return true;
 		}
 
-		if (!User::is('guest') && isset($user['Office'])) {
-			$_this->Office->activate($user['Office']);
+		if (!User::is('guest') && isset($user['User']['office_id'])) {
+			$_this->Office->activate($user['User']['office_id']);
 		}
 
 		$Session = Common::getComponent('Session');

@@ -129,6 +129,19 @@ class AppealsController extends AppController {
 			$action = 'edit';
 		}
 
+		if ($action == 'add') {
+			Assert::true(User::allowed($this->name, $this->action), '403');
+
+			if (isset($this->params['named']['clone_id'])) {
+				$appeal = $this->Appeal->find('first', array(
+					'conditions' => array('Appeal.id' => $this->params['named']['clone_id']),
+					'contain' => array('AppealStep')
+				));
+				Assert::notEmpty($appeal, '404');
+				unset($appeal['Appeal']['id']);
+			}
+		}
+
 		$statusOptions = $this->Appeal->enumOptions('status');
 		$this->set(compact('action', 'statusOptions'));
 		$this->action = 'admin_edit';

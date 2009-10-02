@@ -167,16 +167,13 @@ class Office extends AppModel {
  * @access public
  */
 	function activate($id) {
-		if (is_array($id)) {
-			$office = $id;
-		} else {
-			$office = $this->find('first', array(
-				'conditions' => array('Office.id' => $id),
-				'contain' => array(
-					'SubOffice', 'ParentOffice'
-				)
-			));
-		}
+		$office = $this->find('first', array(
+			'conditions' => array('Office.id' => $id),
+			'contain' => array(
+				'SubOffice(id, name, parent_id)', 'ParentOffice(id, name, parent_id)'
+			),
+			'fields' => array('Office.id', 'Office.name', 'Office.parent_id')
+		));
 
 		if (isset($office['Office'])) {
 			$newOffice = $office['Office'];

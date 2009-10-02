@@ -38,7 +38,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'http://www.greenpeace.org/africa/donate?referrer=indexgpi',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),/*
+		),
 		array(
 			'id' => '4ab76beb-bb80-49e9-a7db-180b7f000102',
 			'name' => 'Argentina',
@@ -166,7 +166,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'https://www.greenpeace.com/chile/contrib.html',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),*/
+		),
 		array(
 			'id' => '4ab76beb-fb2c-4003-9670-180b7f000102',
 			'name' => 'China',
@@ -184,7 +184,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'http://www.greenpeace.org/china/en/SupportUs',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),/*
+		),
 		array(
 			'id' => '4ab76beb-05b8-47d5-ab26-180b7f000102',
 			'name' => 'Czech Republic',
@@ -275,7 +275,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'https://service.greenpeace.de/ueber_uns/spenden/spenden_sie_online/?bannerid=140500000404000',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),*/
+		),
 		array(
 			'id' => '4ab76beb-2ebc-4763-8782-180b7f000102',
 			'name' => 'Greece',
@@ -293,7 +293,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'http://www.greenpeace.org/greece/support-us',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),/*
+		),
 		array(
 			'id' => '4ab76beb-38e4-429e-89dc-180b7f000102',
 			'name' => 'Hungary',
@@ -311,7 +311,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'http://www.greenpeace.hu/index.php?m=tamogat&alm=5&PHPSESSID=ee0ac074aed5ada3d80476953c0823ba',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),*/
+		),
 		array(
 			'id' => '4a8a76be-27b8-4da6-b22d-2da4a7f05a6e',
 			'name' => 'India',
@@ -347,7 +347,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'http://www.donategreenpeace.org/',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),/*
+		),
 		array(
 			'id' => '4ab76beb-4d98-490a-ab59-180b7f000102',
 			'name' => 'Ireland',
@@ -365,7 +365,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'http://archive.greenpeace.org/forms/gpidebit.htm',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),*/
+		),
 		array(
 			'id' => '4ab76beb-57c0-4e80-a21d-180b7f000102',
 			'name' => 'Israel',
@@ -383,7 +383,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'https://www.greenpeace.com/donation/donate.php?installation_id=israel',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),/*
+		),
 		array(
 			'id' => '4ab76beb-61e8-447e-b8bf-180b7f000102',
 			'name' => 'Italy',
@@ -419,7 +419,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'https://www.greenpeace.or.jp/credit-en.html',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),*/
+		),
 		array(
 			'id' => '4a8a766c-9588-44b0-b952-3714a7f05a6e',
 			'name' => 'Lebanon',
@@ -437,7 +437,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'http://www.greenpeace.org/lebanon/ar/supportus/donate',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),/*
+		),
 		array(
 			'id' => '4ab76beb-7e08-4551-923a-180b7f000102',
 			'name' => 'Luxembourg',
@@ -527,7 +527,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'http://www.greenpeace.org/norway/supportus/stott-oss-online',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),*/
+		),
 		array(
 			'id' => '4ab76beb-b198-41f5-af83-180b7f000102',
 			'name' => 'Philippines',
@@ -545,7 +545,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'http://www.donategreenpeace.org/',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),/*
+		),
 		array(
 			'id' => '4ab76beb-bc24-47ba-97e0-180b7f000102',
 			'name' => 'Poland',
@@ -655,7 +655,7 @@ class OfficeFixture extends CakeTestFixture {
 			//@todo fre http://www.greenpeace.ch/fr/dons/dons-adhesion/
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),*/
+		),
 		array(
 			'id' => '4ab76beb-f9dc-4852-846f-180b7f000102',
 			'name' => 'Thailand',
@@ -691,7 +691,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'http://www.greenpeace.org/turkey/kat-l-n',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		),/*
+		),
 		array(
 			'id' => '4ab76beb-0404-4af0-a9c9-180b7f000102',
 			'name' => 'United Kingdom',
@@ -727,7 +727,7 @@ class OfficeFixture extends CakeTestFixture {
 			'external_url' => 'https://secureusa.greenpeace.org/securedonate/index.php?from=gpi',
 			'created' => '2009-08-18 11:39:10',
 			'modified' => '2009-08-18 11:39:10',
-		)*/
+		)
 	);
 }
 ?>

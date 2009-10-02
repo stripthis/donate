@@ -37,7 +37,7 @@ class OfficesController extends AppController {
 		$lang = strpos($office['Office']['name'], 'France') !== false ? 'fre' : 'eng';
 		$this->_setlanguage($lang);
 
-		$this->Office->activate($office);
+		$this->Office->activate($office['Office']['id']);
 		$msg = __('The office was successfully activated!', true);
 		$url = Controller::referer();
 		return $this->Message->add(__($msg, true), 'ok', true, $url);

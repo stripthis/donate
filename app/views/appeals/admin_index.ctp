@@ -32,6 +32,10 @@ $favConfig = Configure::read('Favorites');
 		foreach ($appeals as $appeal) {
 			$actions = array(
 				$html->link(__('Config', true), array('action'=>'view', $appeal['Appeal']['id']),array('class'=>'view')),
+				$html->link(__('Clone', true), 
+					array('action' => 'add', 'clone_id' => $appeal['Appeal']['id']),
+					array('class' => 'view')
+				),
 			);
 
 			$actions[] = $html->link(

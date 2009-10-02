@@ -13,6 +13,14 @@
 			</li>
 			<li>
 				<?php
+				echo $html->link(__('Clone Appeal', true),
+					array('action'=>'add', 'clone_id' => $appeal['Appeal']['id']),
+					array('class'=>'add')
+				);
+				?>
+			</li>
+			<li>
+				<?php
 				echo $html->link(__('Delete Appeal', true),
 					array('action'=>'delete', $appeal['Appeal']['id']),
 					array('class'=>'delete'),
