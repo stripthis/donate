@@ -96,7 +96,7 @@ class Tellfriend extends TellfriendsAppModel {
 				return false;
 			}
 		}
-		return true;	 
+		return true;
 	}
 }
 ?>

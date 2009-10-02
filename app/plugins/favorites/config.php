@@ -1,5 +1,7 @@
 <?php
 App::import('Model', 'Favorites.Favorite');
+$Session = Common::getComponent('Session');
+$officeId = $Session->read('Office.id');
 $config = array(
 	'Favorites' => array(
 		'subject' => 'starred item',
@@ -10,6 +12,9 @@ $config = array(
 			'Transaction' => 'serial',
 			'User' => 'login',
 			'Comment' => 'increment'
+		),
+		'loadConditions' => array(
+			'Gift.office_id' => $officeId
 		)
 	)
 );

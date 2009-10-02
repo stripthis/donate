@@ -24,7 +24,7 @@ class TransactionsController extends AppController {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
 		$conditions = array(
-			'Gift.office_id' => $this->Session->read('Office.id'),
+			'Transaction.office_id' => $this->Session->read('Office.id'),
 			'Transaction.parent_id' => '',
 			'Transaction.archived' => '0'
 		);
@@ -91,10 +91,11 @@ class TransactionsController extends AppController {
 
 		$conditions = $this->Transaction->dateRange($conditions, $params, 'created');
 		$this->Session->write('transactions_filter_conditions', $conditions);
+		$this->Transaction->recursive = 1;
 		$this->paginate['Transaction'] = array(
 			'conditions' => $conditions,
 			'order' => array('Transaction.created' => 'desc'),
-			'recursive' => 1,
+			'recursive' => 2,
 			'contain' => array(
 				'Gift',
 				'Gateway',

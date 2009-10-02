@@ -110,69 +110,6 @@ class Office extends AppModel {
 				}
 			}
 		}
-
-		// create new appeal folder
-
-		// do we have an appeal?
-		if (isset($this->data['Office']['name'])) {
-			$name = $this->data['Office']['name'] . ' Admin Appeal';
-			$code = Inflector::underscore(r(' ', '', $name));
-
-			$create = false;
-			$move = false;
-
-			$appeal = $this->Appeal->find('first', array(
-				'conditions' => array(
-					'office_id' => $this->id,
-					'name LIKE' => '%Admin%'
-				)
-			));
-			if (!empty($appeal)) {
-				$appealId = $appeal['Appeal']['id'];
-				App::import('Core', 'Folder');
-				$folder = new Folder(VIEWS . 'templates');
-				$contents = $folder->read();
-
-				foreach ($contents[0] as $dir) {
-					if (strpos($dir, $appealId) !== false) {
-						$move = $dir;
-						break;
-					}
-				}
-				$create = !$move;
-			} else {
-				$this->Appeal->create(array(
-					'name' => $name,
-					'campaign_code' => $code,
-					'office_id' => $this->id,
-					'user_id' => User::get('id')
-				));
-				$this->Appeal->save();
-				$appealId = $this->Appeal->getLastInsertId();
-
-				$this->Appeal->AppealStep->create(array(
-					'appeal_id' => $appealId,
-					'label' => 'Entire Process'
-				));
-				$this->Appeal->AppealStep->save();
-				$create = true;
-			}
-
-			if ($create) {
-				$path = VIEWS . 'templates' . DS . $code . '_' . $appealId;
-				mkdir($path, 0755);
-				$src = VIEWS . 'templates' . DS . 'admin_default' . DS . 'step1.ctp';
-				$dest = $path . DS . 'step1.ctp';
-				copy($src, $dest);
-			}
-			if ($move) {
-				$oldPath = VIEWS . 'templates' . DS . $move;
-				$folder = new Folder($oldPath);
-				$folder->move(array(
-					'to' => VIEWS . 'templates' . DS . $code . '_' . $appealId
-				));
-			}
-		}
 		return true;
 	}
 /**
