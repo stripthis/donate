@@ -11,6 +11,7 @@
 		<tr>
 			<th><?php __('Name'); ?></th>
 			<th><?php __('Description'); ?></th>
+			<th><?php __('Scope'); ?></th>
 			<th><?php __('Last Modification'); ?></th>
 			<th><?php __('Actions'); ?></th>
 		</tr>
@@ -20,6 +21,13 @@
 			<tr>
 				<td><?php echo Inflector::humanize($role['Role']['name']); ?></td>
 				<td><?php echo $role['Role']['description']; ?></td>
+				<td>
+<?php if(isset($role['Country']) && !empty($role['Country']['Name'])): ?>
+					<?php echo $role['Country']['Name']; ?>
+<?php else: ?>
+					<?php echo __('global'); ?>
+<?php endif; ?>
+				</td>
 				<td><?php echo $role['Role']['modified']; ?></td>
 				<td>
 				<?php

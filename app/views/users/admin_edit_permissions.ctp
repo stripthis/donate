@@ -1,11 +1,9 @@
+<div class="content edit" id="users_edit_permissions"> 
 <h2><?php echo __('Users &amp; Permissions', true); ?></h2>
-
 <?php if (empty($office['User'])) : ?>
 	<p><?php echo __('Sorry, no users set up yet for this office. Please consult a root admin to add a new user to your office.', true); ?></p>
 <?php else : ?>
-	<?php
-	$permissions = Configure::read('App.permission_options');
-	?>
+<?php $permissions = Configure::read('App.permission_options'); ?>
 	<ul>
 	<?php foreach ($office['User'] as $user) : ?>
 		<?php
@@ -33,3 +31,4 @@
 	<?php endforeach; ?>
 	</ul>
 <?php endif; ?>
+</div>

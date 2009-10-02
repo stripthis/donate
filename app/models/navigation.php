@@ -76,7 +76,11 @@ class Navigation extends AppModel{
 					, '#/\/admin\/offices(\/edit|\/view).*/iU'
 					, '#/\/admin\/(offices|users).*/iU'
 					, 'role' => 'office_manager'
-				)
+				)/*
+				, __('My settings', true) => array(
+					'/admin/users/preferences'
+					, '#/\/admin\/(users).* /iU'
+				)*/
 				, __('Help', true) => array(
 					'/admin/help'
 					, '#/\/admin\/help.*/iU'

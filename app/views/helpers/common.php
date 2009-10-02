@@ -160,5 +160,18 @@ class CommonHelper extends Apphelper {
 		}
 		return $status;
 	}
+/** 
+ * Format a help message
+ * @param $help array{content, type, class}
+ * @return string
+ * @todo hide + never show again (textbox)
+ */
+	function help($msg, $options=null){
+		$default_options = array('class'=>'message information');
+		$options = am($default_options,$options);
+		if (isset($msg)) {
+			return '<div class="'.$options['class'].'"></div>';
+		}
+	}	
 }
 ?>

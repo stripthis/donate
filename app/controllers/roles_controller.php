@@ -22,6 +22,7 @@ class RolesController extends AppController {
 		$conditions = Common::multiNegativeCondition('Role.name', $uneditableRoles);
 		$roles = $this->Role->find('all', array(
 			'conditions' => $conditions,
+			'contain' => array('Office(id, name)'),
 			'order' => array('Role.name' => 'asc')
 		));
 

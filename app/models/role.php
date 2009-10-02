@@ -1,6 +1,7 @@
 <?php
 class Role extends AppModel {
 	var $hasMany = array('User');
+	var $belongsTo = array('Office'); // optional, can also be a global role
 	var $unEditable = array('guest', 'root');
 	
 	var $validate = array(

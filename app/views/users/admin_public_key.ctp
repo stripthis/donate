@@ -5,9 +5,9 @@
 		'type' => 'user_preferences', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
 	?>
-	<p><?php echo __('The public key is used to generate the encryption for your report emails.', true); ?></p>
+	<p class="message information"><?php echo __('The public key is used to generate the encryption for your report emails.', true); ?></p>
 	<?php echo $form->create('User', array('url' => $this->here)); ?>
-	<fieldset class="half">
+	<fieldset>
 		<legend><?php echo __('Your Public Key',true); ?></legend>
 		<?php echo $form->input('User.public_key', array('label' => __('Please paste your public key',true).':')); ?>
 	</fieldset>

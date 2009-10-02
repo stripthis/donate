@@ -21,3 +21,4 @@
 /vendors/shells/tasks/debuggable_test.php
 /vendors/shells/tasks/debuggable_view.php
 sql_updates.txt
+/app/views/pages/uuid.ctp

@@ -731,9 +731,12 @@ ul.selector li ul.subitem li a{
 }
 .content fieldset.half{
 	margin-top:10px;
+	padding:10px 15px;
 }
-.content .half label{
+.content .half .input{
+	width:98%;
 }
+
 /* menu */
 .content .menu{
 	padding:10px 10px 5px 0px;
