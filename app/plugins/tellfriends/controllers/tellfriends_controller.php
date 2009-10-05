@@ -30,8 +30,10 @@ class TellfriendsController extends TellfriendsAppController {
  * @return void
  * @access public
  */
-	function contactList($email = null, $password = null, $provider = null){
+	function contactList($email = null, $encodedPass = null, $provider = null){
+	
 			$errors=array();
+			$password = base64_decode($encodedPass);
 
 			App::import('Vendor', 'OpenInviter', array('file' => 'openinviter.php'));
 			
@@ -53,9 +55,11 @@ class TellfriendsController extends TellfriendsAppController {
 				$this->render = false;
 				$element = "";
 				if(count($contacts) >0){
+				$element .= "<table>";
 					foreach ($contacts as $key=>$val) {
-						$element .= '<input type="checkbox" name="Tellfriend.option[]" value="'.$key.'" onchange="tellFriends(this);">'.$key.'<br>';
+						$element .= '<tr><td  valign="top"><input type="checkbox" name="Tellfriend.option[]" value="'.$key.'" onchange="tellFriends(this);"></td><td valgin="bottom">'.$key.'</td></tr>';
 					}
+				$element .= "</table>";
 				 }
 				echo $element;
 				exit;

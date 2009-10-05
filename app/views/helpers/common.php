@@ -170,7 +170,7 @@ class CommonHelper extends Apphelper {
 		$default_options = array('class'=>'message information');
 		$options = am($default_options,$options);
 		if (isset($msg)) {
-			return '<div class="'.$options['class'].'"></div>';
+			return '<div class="'.$options['class'].'">'.$msg.'</div>';
 		}
 	}
 }

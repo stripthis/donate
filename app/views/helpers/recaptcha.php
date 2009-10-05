@@ -4,18 +4,20 @@ class RecaptchaHelper extends AppHelper {
 	
 	function display_form($output_method = 'return', $error = null, $use_ssl = false){
 		$data = $this->__form(Configure::read("Recaptcha.pubKey"),$error,$use_ssl);
-		if($output_method == "echo")
+		if ($output_method == "echo") {
 			echo $data;
-		else
+		} else {
 			return $data;
+		}
 	}
 	
 	function hide_mail($email = '',$output_method = 'return'){
 		$data = $this->recaptcha_mailhide_html(Configure::read('Recaptcha.pubKey'), Configure::read('Recaptcha.privateKey'), $email);
-		if($output_method == "echo")
+		if ($output_method == "echo") {
 			echo $data;
-		else
+		} else {
 			return $data;
+		}
 	}
 	
 	/**
@@ -34,23 +36,29 @@ class RecaptchaHelper extends AppHelper {
 		}
 		
 		if ($use_ssl) {
-	                $server = Configure::read('Recaptcha.apiSecureServer');
-	        } else {
-	                $server = Configure::read('Recaptcha.apiServer');
-	        }
+			$server = Configure::read('Recaptcha.apiSecureServer');
+		} else {
+			$server = Configure::read('Recaptcha.apiServer');
+		}
 	
-	        $errorpart = "";
-	        if ($error) {
-	           $errorpart = "&amp;error=" . $error;
-	        }
-	        return '<script type="text/javascript" src="'. $server . '/challenge?k=' . $pubkey . $errorpart . '"></script>
-	
-		<noscript>
-	  		<iframe src="'. $server . '/noscript?k=' . $pubkey . $errorpart . '" height="300" width="500" frameborder="0"></iframe><br/>
-	  			<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
-				<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
-	  		<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
-		</noscript>';
+		$errorpart = "";
+		if ($error) {
+			$errorpart = "&amp;error=" . $error;
+		}
+		$html = '
+					<script>
+            var RecaptchaOptions = {
+              theme : "clean"
+            };
+          </script>
+					<script type="text/javascript" src="'. $server . '/challenge?k=' . $pubkey . $errorpart . '"></script>
+					<noscript>
+							<iframe src="'. $server . '/noscript?k=' . $pubkey . $errorpart . '" height="300" width="500" frameborder="0"></iframe><br/>
+								<textarea name="recaptcha_challenge_field" rows="3" cols="40"></textarea>
+							<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+							<input type="hidden" name="recaptcha_response_field" value="manual_challenge"/>
+					</noscript>';
+		return $html;
 	}
 
 	/* Mailhide related code */
@@ -58,7 +66,7 @@ class RecaptchaHelper extends AppHelper {
 		if (! function_exists ("mcrypt_encrypt")) {
 			die ("To use reCAPTCHA Mailhide, you need to have the mcrypt php module installed.");
 		}
-		$mode=MCRYPT_MODE_CBC;   
+		$mode=MCRYPT_MODE_CBC;	 
 		$enc=MCRYPT_RIJNDAEL_128;
 		$val=$this->_recaptcha_aes_pad($val);
 		return mcrypt_encrypt($enc, $ky, $val, $mode, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0");
@@ -72,7 +80,7 @@ class RecaptchaHelper extends AppHelper {
 	function recaptcha_mailhide_url($pubkey, $privkey, $email) {
 		if ($pubkey == '' || $pubkey == null || $privkey == "" || $privkey == null) {
 			die ("To use reCAPTCHA Mailhide, you have to sign up for a public and private key, " .
-			     "you can do so at <a href='http://mailhide.recaptcha.net/apikey'>http://mailhide.recaptcha.net/apikey</a>");
+					 "you can do so at <a href='http://mailhide.recaptcha.net/apikey'>http://mailhide.recaptcha.net/apikey</a>");
 		}
 		
 	
@@ -114,7 +122,5 @@ class RecaptchaHelper extends AppHelper {
 			"' onclick=\"window.open('" . htmlentities ($url) . "', '', 'toolbar=0,scrollbars=0,location=0,statusbar=0,menubar=0,resizable=0,width=500,height=300'); return false;\" title=\"Reveal this e-mail address\">...</a>@" . htmlentities ($emailparts [1]);
 	
 	}
-		
-
 }
 ?>

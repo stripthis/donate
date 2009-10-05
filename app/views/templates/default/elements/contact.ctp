@@ -48,7 +48,8 @@
 							'value' => $giftForm->value('Contact', 'dob', '', $form->data),
 							'dateFormat' => 'DMY',
 							'empty' => '--',
-							'div' => false
+							'div' => false,
+							'separator' => '&nbsp;'
 						))."\n";
 					?>
 				</div>
