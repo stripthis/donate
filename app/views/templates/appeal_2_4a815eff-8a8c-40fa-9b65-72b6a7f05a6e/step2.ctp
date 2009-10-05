@@ -39,10 +39,9 @@ if (!empty($cData)) {
 		<?php echo $form->input( 'Gift.id', array('type' => 'hidden'))."\n"; ?>
 		<?php echo $form->input( 'Gift.type', array('type' => 'hidden', "value" => "donation"))."\n"; ?>
 		<?php echo $form->input( 'Gift.appeal_id', array('type' => 'hidden'))."\n"; ?>
-
 		<?php echo $this->element('../templates/default/contact'); ?>
      	<?php echo $form->submit('Donate', array('class' => 'donate-submit')); ?>
 		<?php echo $form->end()?>
 	</div>
 </div>
-	<?php echo $this->element('footer')?>
+	<?php echo $this->element('../templates/default/elements/footer')?>

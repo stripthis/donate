@@ -168,10 +168,10 @@ input[type=radio] {
   width:auto;
   margin: 2px 7px 0 0;
 }
-form input[type=text], form textarea{
+form input[type=text], form input[type=password], form textarea{
 	border:2px solid #CCC;
 }
-form input[type=text]:focus, form textarea:focus{
+form input[type=text]:focus, form input[type=password]:focus, form textarea:focus{
 	border:2px solid #AAA;
 }
 form .error input{
@@ -270,6 +270,15 @@ form .error .error-message{
 	font-size:0.8em;
 	margin:0;
 }
+/* icons */
+.iconic {
+	padding-left:30px;
+	background-position:5px center;
+	background-repeat:no-repeat;
+}
+.iconic.address_book{
+  background-image:url(../img/icons/S/book_addresses.png);
+}
 
 /* decoration / content */
 .message{
@@ -293,6 +302,9 @@ form .error .error-message{
 	border:1px solid #FF6600;
 	border-right:0;
 	border-left:0;
+}
+.terms{
+	font-decoration:italic;
 }
 /* text decoration */
 #content #activist{
@@ -345,6 +357,24 @@ form .error .error-message{
 	margin-left:150px;
 	float:left;
 	padding-top:15px;
+}
+
+/* recaptcha */
+#recaptcha_table {
+	border-color: #FFF !important; 
+}
+#recaptcha_response_field {
+}
+.recaptchatable .recaptcha_image_cell, #recaptcha_table {
+	background-color:transparent !important;
+}
+#recaptcha_table {
+	border-color: transparent !important;
+}
+#recaptcha_response_field {
+	border:2px solid #DDD !important;
+	background-color: transparent !important;
+	font-size:1.5em !important;
 }
 
 /* credit card selector */
