@@ -12,10 +12,11 @@ class Appeal extends AppModel {
 	var $hasMany = array(
 		'AppealStep' => array(
 			'dependent' => true
-		),
-		'Themes' => array(
-			'dependent' => false
 		)
+	);
+
+	var $hasAndBelongsToMany = array(
+		'Theme'
 	);
 
 	var $actsAs = array(

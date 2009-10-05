@@ -21,6 +21,9 @@ class LoggingAppController extends AppController {
 				$Model->Behaviors->detach($behavior);
 			}
 			$Model->Behaviors->attach('Logging.Logable');
+			foreach ($attached as $behavior) {
+				$Model->Behaviors->attach($behavior);
+			}
 
 			$Model->setUserData($userData);
 			$Model->setUserIp($ip);
