@@ -32,8 +32,9 @@ class ContinousIdBehavior extends ModelBehavior {
 	function setup(&$Model, $settings = array()) {
 		$defaults = array(
 			'field' => 'continous_id',
-			'offset' => '100000'
+			'offset' => '1'
 		);
+
 		if (!isset($this->__settings[$Model->alias])) {
 			$this->__settings[$Model->alias] = $defaults;
 		}

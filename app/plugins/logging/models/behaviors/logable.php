@@ -79,6 +79,7 @@ class LogableBehavior extends ModelBehavior {
 		$this->settings[$Model->alias] = array_merge($this->defaults, $config);
 		$this->settings[$Model->alias]['ignore'][] = $Model->primaryKey; 
 
+		$this->Log = ClassRegistry::init('Logging.Log');
 		$this->UserModel = $this->settings[$Model->alias]['userModel'] != $Model->alias
 							? ClassRegistry::init($this->settings[$Model->alias]['userModel'])
 							: $Model;
@@ -219,30 +220,26 @@ class LogableBehavior extends ModelBehavior {
 		$displayField = $Model->displayField;
 		$primaryKey = $Model->primaryKey;
 
-		if (isset($this->settings[$alias]['skip']['add']) && $this->settings[$alias]['skip']['add'] && $created) {
+		if (isset($this->settings[$alias]['skip']['add']) &&
+			$this->settings[$alias]['skip']['add'] && $created) {
 			return true;
 		}
 		if (isset($this->settings[$alias]['skip']['edit']) &&
-			$this->settings[$alias]['skip']['edit'] &&
-			!$created
-		) {
+			$this->settings[$alias]['skip']['edit'] && !$created) {
 			return true;
 		}
-
 		if (!isset($Model->data[$alias])) {
 			return true;
 		}
+
 		$keys = array_keys($Model->data[$alias]);
 		$diff = array_diff($keys, $this->settings[$alias]['ignore']);
 		if (count($diff) == 0 && empty($Model->logableAction)) {
 			return false;
 		}
-		if ($Model->id) {
-			$id = $Model->id;
-		} elseif ($Model->insertId) {
-			$id = $Model->insertId;
-		}
 
+		$id = $Model->id;
+		$logData = array();
 		if (isset($this->Log->_schema['model_id'])) {
 			$logData['Log']['model_id'] = $id;
 		}
@@ -317,6 +314,9 @@ class LogableBehavior extends ModelBehavior {
  * @param array $logData
  */
 	function _saveLog(&$Model, $logData, $title = null) {
+		if (empty($logData)) {
+			return false;
+		}
 		$alias = $Model->alias;
 		$displayField = $Model->displayField;
 		$primaryKey = $Model->primaryKey;
@@ -382,7 +382,7 @@ class LogableBehavior extends ModelBehavior {
 			$logData['Log']['description'] .= '.';
 		}
 		$this->Log->create($logData);
-		$this->Log->save(null,false);
+		$this->Log->save();
 	}
 }
 ?>
