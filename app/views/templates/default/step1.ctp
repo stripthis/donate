@@ -20,15 +20,15 @@
      <div id="content">
 <?php echo $this->element('../templates/default/elements/title'); ?>
 <?php echo $this->element('../templates/default/elements/mission'); ?>
-<?php echo $this->element('../templates/default/elements/decoration1'); ?>
-      <p class="message information"><?php __('Hint: <strong class="required">*</strong> indicates a required field',true);?></p>
-<?php foreach ($flashMessages as $message): ?>
-      <p class="message <?php echo $message['type']; ?>"><?php echo $simpleTextile->toHtml($message['text']); ?></p>
-<?php endforeach; ?>
+<?php echo $this->element('../templates/default/elements/feedback'); ?>
       <?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
 <?php	echo $this->element('../templates/default/elements/gift'); ?>
 <?php echo $this->element('../templates/default/elements/decoration1'); ?>
-      <?php echo $form->end(__('Proceed to Step 2',true)); ?>
+<?php	echo $this->element('../templates/default/elements/contact'); ?>
+<?php	echo $this->element('../templates/default/elements/payment'); ?>
+<?php	echo $this->element('../templates/default/elements/smallprints'); ?>
+<?php	echo $this->element('../templates/default/elements/security_notice'); ?>
+      <?php echo $form->end(__('Donate',true)); ?>
     </div>
   </div>
-<?php echo $this->element('../templates/default/elements/footer') ?>
+<?php echo $this->element('../templates/default/elements/footer'); ?>
