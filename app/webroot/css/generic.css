@@ -158,7 +158,7 @@ option {
 input.checkbox, input[type=checkbox]  {
   font-size:1.3em;
   padding:0 10px;
-  margin:5px 5px 0px 5px;
+  margin:3px 5px 0px 0px;
   clear: left;
   float: left;
   width: auto;
