@@ -5,7 +5,7 @@ class RoleFixture extends CakeTestFixture {
 		array(
 			'id' => '4aaf92da-2268-4cf3-ae3d-461aa7f05a6e',
 			'name' => 'admin',
-			'permissions' => '*:*, !Offices:admin_index, !Offices:admin_add, !Offices:admin_delete, !Users:admin_index, !Bugs:admin_index, !Offices:admin_index, !Roles:*',
+			'permissions' => '*:*, !Offices:admin_index, !Offices:admin_add, !Offices:admin_delete, !Users:admin_index, !Bugs:admin_index, !Offices:admin_index, !Roles:*, !Logs:',
 			'office_id' => '',
 			'created' => '2009-09-28 11:45:00',
 			'created_by' => '4aa65fb5-ec64-48ca-a68e-444fa7f05a6e',
@@ -25,7 +25,7 @@ class RoleFixture extends CakeTestFixture {
 		array(
 			'id' => '4aaf92da-6dcc-4d71-91be-40a9a7f05a6e',
 			'name' => 'office_manager',
-			'permissions' => '*:*, !Offices:admin_index, !Offices:admin_add, !Offices:admin_delete, !Bugs:admin_index, !Offices:admin_index, !Roles:*',
+			'permissions' => '*:*, !Offices:admin_index, !Offices:admin_add, !Offices:admin_delete, !Bugs:admin_index, !Offices:admin_index, !Roles:*, !Logs:',
 			'office_id' => '',
 			'created' => '2009-09-28 11:45:00',
 			'created_by' => '4aa65fb5-ec64-48ca-a68e-444fa7f05a6e',

@@ -18,12 +18,14 @@ $logs = $myLog->events($logs, $options);
 
 <table>
 	<tr>
+		<th><?php echo $paginator->sort('#', 'continous_id')?></th>
 		<th>Event</th>
 		<th>Changed Data</th>
 		<th>Date</th>
 	</tr>
 	<?php foreach ($logs as $log) : ?>
 		<tr>
+			<td><?php echo $log['Log']['continous_id']?></td>
 			<td><?php echo $log['Log']['event']?></td>
 			<td>
 				<ul>
@@ -36,3 +38,4 @@ $logs = $myLog->events($logs, $options);
 		</tr>
 	<?php endforeach; ?>
 </table>
+<?php echo $this->element('paging', array('model' => 'Log'))?>

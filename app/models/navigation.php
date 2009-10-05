@@ -71,6 +71,11 @@ class Navigation extends AppModel{
 					, '#/\/admin\/(users|offices|dashboards|roles).*/iU'
 					, 'role' => 'root'
 				)
+				, __('Activity Log', true) => array(
+					'/admin/logs'
+					, '#/\/admin\/logs.*/iU'
+					, 'role' => 'root'
+				)
 				, __('Office Config', true) => array(
 					'/admin/offices/edit'
 					, '#/\/admin\/offices(\/edit|\/view).*/iU'

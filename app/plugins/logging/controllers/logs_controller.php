@@ -8,6 +8,8 @@ class LogsController extends LoggingAppController {
  * @access public
  */
 	function admin_index() {
+		Assert::true(User::allowed($this->name, $this->action), '403');
+
 		$this->paginate['Log'] = array(
 			'contain' => array('User', 'Gift'),
 			'limit' => 10,
