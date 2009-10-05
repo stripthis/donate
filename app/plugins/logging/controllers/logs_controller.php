@@ -1,6 +1,6 @@
 <?php
 class LogsController extends LoggingAppController {
-	var $helpers = array('Log');
+	var $helpers = array('MyLog');
 /**
  * undocumented function
  *
@@ -9,7 +9,7 @@ class LogsController extends LoggingAppController {
  */
 	function admin_index() {
 		$this->paginate['Log'] = array(
-			'contain' => array('User'),
+			'contain' => array('User', 'Gift'),
 			'limit' => 10,
 			'order' => array('Log.created' => 'desc'),
 		);

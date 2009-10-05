@@ -172,6 +172,6 @@ class CommonHelper extends Apphelper {
 		if (isset($msg)) {
 			return '<div class="'.$options['class'].'"></div>';
 		}
-	}	
+	}
 }
 ?>
