@@ -12,14 +12,15 @@ class Appeal extends AppModel {
 	var $hasMany = array(
 		'AppealStep' => array(
 			'dependent' => true
-		),
-		'Themes' => array(
-			'dependent' => false
 		)
 	);
 
+	var $hasAndBelongsToMany = array(
+		'Theme'
+	);
+
 	var $actsAs = array(
-		'Containable', 'Lookupabable', 'Enumerable',
+		'Containable', 'Lookupable', 'Enumerable',
 		'Sluggable' => array('label' => 'name')
 	);
 /**
@@ -31,10 +32,9 @@ class Appeal extends AppModel {
 		$args = func_get_args();
 		switch ($type) {
 			case 'default':
-				$id = isset($query['id']) ? $query['id'] : false;
-
 				$appeal = false;
 
+				$id = isset($query['id']) ? $query['id'] : false;
 				if ($id) {
 					$conditions = array(
 						'OR' => array(

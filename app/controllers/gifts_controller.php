@@ -297,18 +297,17 @@ class GiftsController extends AppController {
 
 		$conditions = $this->Gift->dateRange($conditions, $params, 'created');
 		$this->Session->write('gifts_filter_conditions', $conditions);
+
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,
-			'recursive' => 3,
+			'recursive' => 2,
 			'contain' => array(
 				'Contact(fname, lname, email,created,modified,id)',
-				'Transaction(id,status,gateway_id,created,modified)',
-				'Transaction.Gateway(id,name)'
+				'Transaction(id,status,gateway_id,created,modified)' => 'Gateway(id,name)',
 			),
 			'limit' => $params['my_limit'],
 			'order' => $order
 		);
-
 		$gifts = $this->paginate();
 		$this->set(compact('gifts', 'type', 'params'));
 	}
@@ -341,7 +340,8 @@ class GiftsController extends AppController {
 		$this->data['Gift']['contact_id'] = $contactId;
 		$this->data['Gift']['office_id'] = $this->Session->read('Office.id');
 
-		$this->Gift->set($this->data);
+		$this->Gift->create($this->data);
+
 		if (!$this->Gift->save()) {
 			$msg = __('There was a problem saving the gift.', true);
 			return $this->Message->add($msg, 'error');

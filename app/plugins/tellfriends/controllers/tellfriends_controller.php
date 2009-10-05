@@ -30,8 +30,10 @@ class TellfriendsController extends TellfriendsAppController {
  * @return void
  * @access public
  */
-	function contactList($email = null, $password = null, $provider = null){
+	function contactList($email = null, $encodedPass = null, $provider = null){
+	
 			$errors=array();
+			$password = base64_decode($encodedPass);
 
 			App::import('Vendor', 'OpenInviter', array('file' => 'openinviter.php'));
 			

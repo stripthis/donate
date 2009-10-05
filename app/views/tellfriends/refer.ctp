@@ -1,3 +1,7 @@
+<?php 
+echo $javascript->link('/tellfriends/js/jquery.base64.js');
+echo $javascript->link('/tellfriends/js/ajaxRefer.js');
+?>
 <?php
 $providers =array(
 	'gmail'=>'GMail',
@@ -17,7 +21,6 @@ $providers =array(
 );
 $use_recaptcha = true; // @todo depend on context; ex: not after donation
 ?>
-<?php echo $javascript->link('/tellfriends/js/ajaxRefer.js'); ?>
 	<div id="content_wrapper">
 <?php echo $this->element('../templates/default/elements/banner'); ?>
 		<div id="content">

@@ -21,8 +21,7 @@ class AppController extends Controller {
 		'Pgp'
 	);
 
-	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends');
-	
+	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends', 'Logging');
 	var $helpers = array(
 		'Html','Javascript', 'Time', 'Form', 'Common', 'Text', 'Session',
 		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
@@ -59,6 +58,7 @@ class AppController extends Controller {
 
 		$this->Session = $this->AppSession;
 		ClassRegistry::addObject('Component.Session', $this->Session);
+		ClassRegistry::addObject('Component.RequestHandler', $this->RequestHandler);
 		ClassRegistry::addObject('Component.Cookie', $this->Cookie);
 		ClassRegistry::addObject('Component.Email', $this->Email);
 		ClassRegistry::addObject('Component.Pgp', $this->Pgp);

@@ -37,7 +37,7 @@ $config = array(
 		'Transactions:admin_view', 'Transactions:admin_export', 'Transactions:admin_import',
 		'Users:admin_add', 'Users:admin_edit', 'Users:admin_view', 'Users:admin_delete', 
 		'Users:admin_email_reports', 'Roles:admin_view', 'Roles:admin_add', 'Roles:admin_edit', 'Roles:admin_delete',
-		'Exports:admin_gifts',
+		'Exports:admin_gifts', 'Logs:admin_index',
 		'Offices:admin_view', 'Offices:admin_add', 
 		'Bugs:admin_view', 'Bugs:admin_add'
 	),
