@@ -245,10 +245,17 @@ form .error .error-message{
 #content ul.half,
 #content div.half{
 	float:left;
-	width:46%;
+	width:45%;
 	margin-left:3%;
 }
-
+#content div.half.left{
+	float:left;
+	width:45%;
+}
+#content div.half.right{
+	float:right;
+	width:45%;
+}
 /* main content (form) */
 #content form .input_wrapper{
 	float:left;
@@ -321,8 +328,9 @@ form .error .error-message{
 .iconic.address_book{
   background-image:url(../img/icons/S/book_addresses.png);
 }
-.iconic.classic{
-  background-image:url(../img/icons/S/bullet_orange.png);
+.iconic.act{
+	padding-left:20px;
+  background-image:url(http://www.greenpeace.org/resources/gcms/assets/graphics/act-arrow.png);
 }
 /* decoration / content */
 .message{

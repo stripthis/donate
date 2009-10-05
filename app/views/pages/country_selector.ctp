@@ -3,9 +3,9 @@
      <div id="content">
 <?php echo $this->element('../templates/default/elements/title'); ?>
 <?php echo $this->element('../templates/default/elements/teasers/mission'); ?>
-<?php echo $this->element('admin/debug/appeals_list', array('appeals'=> $appeals)); ?>
 <?php echo $this->element('../templates/default/elements/countries'); ?>
 <?php echo $this->element('../templates/default/elements/teasers/legacy'); ?>
+<?php echo $this->element('admin/debug/appeals_list', array('appeals'=> $appeals)); ?>
 		</div>
 	</div>
 <?php echo $this->element('../templates/default/elements/footer'); ?>
