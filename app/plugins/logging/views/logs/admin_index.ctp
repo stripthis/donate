@@ -46,5 +46,5 @@
 		</table>
 		<?php echo $this->element('paging', array('model' => 'Log', 'url' => $urlParams)); ?>
 	<?php endif; ?>
-	<?php echo $this->element('filter', array('params' => $params, 'plugin' => 'Logging')); ?>
+	<?php echo $this->element('filter', array('params' => $params, 'plugin' => 'logging')); ?>
 </div>
