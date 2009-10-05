@@ -18,7 +18,8 @@ $open = (!isset($options['open'])) ? 'close' : $options['open']; // widget is cl
 				<?php
 				$label = sprintf(__('Gifts', true) . ' (%s)', $favorites['Gift']);
 				echo $html->link($label, array(
-					'controller' => 'gifts', 'action' => 'index', 'favorites'
+					'controller' => 'gifts', 'action' => 'index', 'favorites',
+					'plugin' => ''
 				));
 				?>
 			</li>
@@ -26,7 +27,8 @@ $open = (!isset($options['open'])) ? 'close' : $options['open']; // widget is cl
 				<?php
 				$label = sprintf(__('Supporters', true) . ' (%s)', $favorites['User']);
 				echo $html->link($label, array(
-					'controller' => 'supporters', 'action' => 'index', 'favorites'
+					'controller' => 'supporters', 'action' => 'index', 'favorites',
+					'plugin' => ''
 				));
 				?>
 			</li>
@@ -34,7 +36,8 @@ $open = (!isset($options['open'])) ? 'close' : $options['open']; // widget is cl
 				<?php
 				$label = sprintf(__('Transactions', true) . ' (%s)', $favorites['Transaction']);
 				echo $html->link($label, array(
-					'controller' => 'transactions', 'action' => 'index', 'favorites'
+					'controller' => 'transactions', 'action' => 'index', 'favorites',
+					'plugin' => ''
 				));
 				?>
 			</li>
