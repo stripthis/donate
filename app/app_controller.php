@@ -21,19 +21,19 @@ class AppController extends Controller {
 		'Pgp'
 	);
 
+	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends');
+	
 	var $helpers = array(
 		'Html','Javascript', 'Time', 'Form', 'Common', 'Text', 'Session',
 		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
 		'Favorites'
 	);
 
-	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends');
-
 	var $ignoreUserSession = false;
 	var $loginRedirectSesskey = 'login_redirect';
 /**
- * undocumented function
- *
+ * App controller
+ * Initialize session
  * @return void
  * @access public
  */

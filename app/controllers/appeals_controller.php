@@ -11,20 +11,22 @@ class AppealsController extends AppController {
 		$this->Office = $this->Appeal->Office;
 	}
 /**
- * index action
- *
+ * Admin Index
+ * An admin manipulate an index of appeals: search, sort, paginate
+ * @param $type string or array of options
  * @return void
  * @access public
  */
 	function admin_index($type = 'all') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
+		// data set is for the current country
 		$conditions = array();
 		switch ($type) {
 			case 'office':
 				$conditions['Appeal.office_id'] = $this->Session->read('Office.id');
 				break;
 		}
-
+		// default search parameters
 		$defaults = array(
 			'keyword' => '',
 			'search_type' => 'all',
@@ -84,7 +86,8 @@ class AppealsController extends AppController {
 		$this->set(compact('appeals', 'type', 'params'));
 	}
 /**
- * view action
+ * Admin View
+ * Admin view an appeal 
  *
  * @param string $id the appeal id
  * @return void
@@ -100,8 +103,8 @@ class AppealsController extends AppController {
 		$this->set(compact('appeal'));
 	}
 /**
- * undocumented function
- *
+ * Admin add an appeal action - Redirect to admin edit
+ * 
  * @return void
  * @access public
  */
@@ -110,7 +113,7 @@ class AppealsController extends AppController {
 		$this->admin_edit();
 	}
 /**
- * undocumented function
+ * Admin edit an appeal action
  *
  * @param string $id 
  * @return void
@@ -170,7 +173,7 @@ class AppealsController extends AppController {
 		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}
 /**
- * delete action
+ * Admin delete an appeal action
  *
  * @param string $id the appeal id
  * @return void
