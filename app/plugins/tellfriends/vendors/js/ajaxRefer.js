@@ -15,6 +15,8 @@ $(document).ready(function() {
 				errors++;
 			}
 			if(errors == 0){
+				$("#contactList").empty();
+				$("#contactList").append("<img src='img/loading.gif' height ='350px' width ='600px'/>");
 				var xmlhttp = GetXmlHttpObject();
 				if(xmlhttp){
 					var url="tellfriends/tellfriends/contactList/"+email+"/"+pass+"/"+provider;
