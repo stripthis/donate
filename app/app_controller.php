@@ -27,7 +27,7 @@ class AppController extends Controller {
 		'Favorites'
 	);
 
-	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends');
+	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends', 'Logging');
 
 	var $ignoreUserSession = false;
 	var $loginRedirectSesskey = 'login_redirect';
@@ -59,6 +59,7 @@ class AppController extends Controller {
 
 		$this->Session = $this->AppSession;
 		ClassRegistry::addObject('Component.Session', $this->Session);
+		ClassRegistry::addObject('Component.RequestHandler', $this->RequestHandler);
 		ClassRegistry::addObject('Component.Cookie', $this->Cookie);
 		ClassRegistry::addObject('Component.Email', $this->Email);
 		ClassRegistry::addObject('Component.Pgp', $this->Pgp);

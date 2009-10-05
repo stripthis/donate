@@ -200,6 +200,11 @@ class User extends AppModel {
 					'Contact.Address.State(id, name)',
 					'Contact.Address.Country(id, name)',
 					'Contact.Address.City(id, name)'
+				),
+				'fields' => array(
+					'User.id', 'User.name', 'User.login', 'User.password',
+					'User.active', 'User.tooltips', 'User.role_id', 'User.office_id',
+					'User.contact_id'
 				)
 			));
 		}

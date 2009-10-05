@@ -341,7 +341,8 @@ class GiftsController extends AppController {
 		$this->data['Gift']['contact_id'] = $contactId;
 		$this->data['Gift']['office_id'] = $this->Session->read('Office.id');
 
-		$this->Gift->set($this->data);
+		$this->Gift->create($this->data);
+
 		if (!$this->Gift->save()) {
 			$msg = __('There was a problem saving the gift.', true);
 			return $this->Message->add($msg, 'error');
