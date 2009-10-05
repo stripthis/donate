@@ -162,7 +162,7 @@ input.checkbox, input[type=checkbox]  {
   clear: left;
   float: left;
   width: auto;
-}goog
+}
 input[type=radio] {
   float:left;
   width:auto;
@@ -184,18 +184,48 @@ form .error .error-message{
 	margin-bottom:0;
 	margin-top:2px;
 }
+.error-message {
+	color:#FF6600;
+}
 
 /***********************************************************************************
- * Layout 
+ * Main content commons
  ***********************************************************************************/
 #container{
   width:749px;
   margin:auto;
   background:#FFF;
   margin-bottom:10px;
+  margin-top:10px;
 }
 
-/* main content (form++) */
+/* banner */
+#banner{
+	float:left;
+	padding:5px;
+	padding-bottom:0;
+}
+#banner a{
+	float:left;
+	height:80px;
+	margin: 0px;
+}
+#banner a.greenpeace{
+	width:151px;
+	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/banner.png) 0 0 no-repeat;
+}
+#banner a.donate{
+	width:588px;
+	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/banner.png) -152px 0 no-repeat;
+}
+#banner a span{
+	visibility:hidden;
+}
+#banner h1{
+	display:none;
+}
+
+/* main content */
 #content_wrapper{
 }
 #content{
@@ -212,6 +242,14 @@ form .error .error-message{
 #content .left{
 	float:left;
 }
+#content ul.half,
+#content div.half{
+	float:left;
+	width:46%;
+	margin-left:3%;
+}
+
+/* main content (form) */
 #content form .input_wrapper{
 	float:left;
 	margin:0;
@@ -270,6 +308,10 @@ form .error .error-message{
 	font-size:0.8em;
 	margin:0;
 }
+#content .input_wrapper input[type=checkbox]{
+  margin-top:10px;
+}
+
 /* icons */
 .iconic {
 	padding-left:30px;
@@ -279,7 +321,9 @@ form .error .error-message{
 .iconic.address_book{
   background-image:url(../img/icons/S/book_addresses.png);
 }
-
+.iconic.classic{
+  background-image:url(../img/icons/S/bullet_orange.png);
+}
 /* decoration / content */
 .message{
 	margin:7px 5px 0px 8px;
@@ -303,9 +347,7 @@ form .error .error-message{
 	border-right:0;
 	border-left:0;
 }
-.terms{
-	font-decoration:italic;
-}
+
 /* text decoration */
 #content #activist{
 	float:left;
@@ -357,6 +399,9 @@ form .error .error-message{
 	margin-left:150px;
 	float:left;
 	padding-top:15px;
+}
+.terms{
+	font-decoration:italic;
 }
 
 /* recaptcha */
@@ -437,30 +482,30 @@ form .error .error-message{
 	width:50px;
 }
 
-/* banner */
-#banner{
+/* Classic green box selector */
+.classic_box{
+	background:#e2ebd8;
+	padding:10px;
 	float:left;
+}
+#content .classic_box.half{
+	margin:10px;
+}
+.classic_box h3{
+	background:#FF6600;
+	color:#FFF;
+	padding:10px;
+	margin:0;
+	font-size:1.4em;
+}
+.classic_box ul {
+	margin-top:10px
+}
+.classic_box ul li{
+	list-style-type:none;
+}
+.classic_box p{
 	padding:5px;
-	padding-bottom:0;
-}
-#banner a{
-	float:left;
-	height:80px;
-	margin: 0px;
-}
-#banner a.greenpeace{
-	width:151px;
-	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/banner.png) 0 0 no-repeat;
-}
-#banner a.donate{
-	width:588px;
-	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/banner.png) -152px 0 no-repeat;
-}
-#banner a span{
-	visibility:hidden;
-}
-#banner h1{
-	display:none;
 }
 
 /* footer */
@@ -483,4 +528,3 @@ form .error .error-message{
 	display:inline;
 	padding:0 7px;
 }
-.error-message {color:#c00!important;}

@@ -2,7 +2,31 @@
 
 class AppealFixture extends CakeTestFixture {
 	var $name = 'Appeal';
-	var $records = array(		array(
+	var $records = array(
+	/*		
+		array(
+			'' => '',
+			'id' => '',
+			'parent_id' => '',	
+			'lang' => '',
+			'appeal_step_count' => '', 
+			'name' => '',
+			'slug' => '',
+			'campaign_code' => '',
+			'default' => '',
+			'cost' => '',
+			'targeted_income' => '',
+			'targeted_signups' => '',
+			'reviewed' => '',
+			'status' => '',
+			'processing' => '',
+			'office_id' => '',
+			'user_id' => '',
+			'created' => '',
+			'modified' => ''
+		),
+		*/
+		array(
 			'id' => '4a686dd2-8c64-45a0-99ee-4507a7f05a6e',
 			'parent_id' => '',
 			'appeal_step_count' => '1',
@@ -44,7 +68,7 @@ class AppealFixture extends CakeTestFixture {
 			'default' => '0',
 			'cost' => '200',
 			'reviewed' => '1',
-			'status' => 'published',
+			'status' => 'd',
 			'office_id' => '4a8a76be-27b8-4da6-b22d-2da4a7f05a6e',
 			'user_id' => '4a65cf8b-bfc8-4c87-b27d-4d1fa7f05a6e',
 			'created' => '2009-08-11 14:07:27',
