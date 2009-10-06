@@ -59,7 +59,7 @@ class FavoritesHelper extends Apphelper {
  * @return string link
  */
 	function favall($model=null){
-		return $this->Html->image('icons/S/rate.png');
+		return $this->Html->image($this->config['icons']['fav']);
 	}
 }
 ?>

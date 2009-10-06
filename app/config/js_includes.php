@@ -7,12 +7,12 @@ $config = array(
 		'font_resize.js' => '*:admin*',
 		'tooltip.js' =>  '*:*',
 		'plugins/jquery.state_dropdown.js' => 'Users:register, Users:edit',
+		'plugins/jquery.chat.js' => '*:admin*',
 		'jquery.validate.js' => 'Users:register',
-		// 'jquery.blockUI.js' => '*:*',
 		'swfobject.js' => 'Statistics:*',
 		'tiny_mce/tiny_mce_gzip.js' => $mceRules,
 		'tiny_initializer.js' => $mceRules,
-		// main
+
 		'admin_common.js' => '*:admin*',
 		'common.js' => '*:!admin*',
 		'japp.js' => '*:!admin*',

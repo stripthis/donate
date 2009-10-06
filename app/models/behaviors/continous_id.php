@@ -61,7 +61,7 @@ class ContinousIdBehavior extends ModelBehavior {
  * undocumented function
  *
  * @param string $id 
- * @param string $forceCreate 
+ * @param string $forceCreate
  * @return void
  * @access public
  */

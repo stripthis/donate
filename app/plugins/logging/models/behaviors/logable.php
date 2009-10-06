@@ -179,10 +179,10 @@ class LogableBehavior extends ModelBehavior {
 		if (isset($this->Log->_schema['description'])) {
 			$logData['Log']['description'] = $alias;
 			if (isset($Model->data[$alias][$displayField]) && $displayField != $primaryKey) {
-				$logData['Log']['description'] .= ' "'.$Model->data[$alias][$displayField].'"';
+				$logData['Log']['description'] .= ' "' . $Model->data[$alias][$displayField] . '"';
 			}
 			if ($this->settings[$alias]['description_ids']) {
-				$logData['Log']['description'] .= ' ('.$Model->id.') ';
+				$logData['Log']['description'] .= ' (' . $Model->id . ') ';
 			}
 			$logData['Log']['description'] .= __('deleted', true);
 		}
@@ -327,7 +327,7 @@ class LogableBehavior extends ModelBehavior {
 		if ($title !== null) {
 			$logData['Log']['title'] = $title;
 		} elseif ($displayField == $primaryKey) {
-			$logData['Log']['title'] = $alias . ' ('. $Model->id.')';
+			$logData['Log']['title'] = $alias . ' (' . $Model->id . ')';
 		} elseif (isset($Model->data[$alias][$displayField])) {
 			$logData['Log']['title'] = $Model->data[$alias][$displayField];
 		} else {
@@ -371,7 +371,7 @@ class LogableBehavior extends ModelBehavior {
 		if (isset($this->Log->_schema['description'])) {
 			if ($this->user && $this->UserModel) {
 				$logData['Log']['description'] .= ' by ' . $this->settings[$alias]['userModel'] . ' "' .
-					$this->user[$this->UserModel->alias][$this->UserModel->displayField].'"';
+					$this->user[$this->UserModel->alias][$this->UserModel->displayField] . '"';
 				if ($this->settings[$alias]['description_ids']) {
 					$logData['Log']['description'] .= ' (' . $this->user[$userAlias][$userPrimaryKey] . ')';
 				}

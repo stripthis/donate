@@ -21,11 +21,11 @@ class AppController extends Controller {
 		'Pgp'
 	);
 
-	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends', 'Logging');
+	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends', 'Logging', 'Chat');
 	var $helpers = array(
 		'Html','Javascript', 'Time', 'Form', 'Common', 'Text', 'Session',
 		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
-		'Favorites'
+		'Favorites', 'Chat.AjaxChat'
 	);
 
 	var $ignoreUserSession = false;
