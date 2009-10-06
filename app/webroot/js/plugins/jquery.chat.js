@@ -36,7 +36,7 @@
 				if (clearTextbox) {
 					$obj.find("textarea[name='data[Chat][message]']").val('');
 					clearTextbox = false;
-					$('.chat_window', $obj.parents()).scrollTo(150, 800);
+					$('.chat_window', $obj.parents()).scrollTo(250, 800);
 				};
 			}
 		});
