@@ -20,7 +20,7 @@ $title = $action == 'add'
 		echo $form->input('live');
 		echo $form->input('external_url', array('label' => 'If not live, url to redirect to'));
 		echo $form->input('languages', array(
-			'options' => Configure::read('App.lang_options'),
+			'options' => Configure::read('App.languages'),
 			'selected' => explode(',', $form->data['Office']['languages']),
 			'multiple' => 'checkbox',
 			'label' => 'Languages:'
@@ -51,7 +51,7 @@ $title = $action == 'add'
 			'multiple' => 'checkbox'
 		));
 
-		$options = Configure::read('App.currency_options');
+		$options = Configure::read('App.gift.currencies');
 		$options = array_combine($options, $options);
 		echo $form->input('currencies', array(
 			'options' => $options,

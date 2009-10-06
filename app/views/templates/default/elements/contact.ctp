@@ -3,7 +3,7 @@
  * Donation form default contact fieldset 
  * 
  * @author			white rabbit team rocket!
- * @copyright	 GREENPEACE INTERNATIONAL (c) 2009
+ * @copyright		GREENPEACE INTERNATIONAL (c) 2009
  * @link				http://www.greenpeace.org/international/supportus
  */
 	$saluteOptions = Contact::getSalutations();
@@ -49,7 +49,9 @@
 							'dateFormat' => 'DMY',
 							'empty' => '--',
 							'div' => false,
-							'separator' => '&nbsp;'
+							'separator' => '&nbsp;',
+							'minYear' => '1900',
+							'maxYear' => date('Y') - Configure::read('legal.ageMini')
 						))."\n";
 					?>
 				</div>

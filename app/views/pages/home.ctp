@@ -1,4 +1,4 @@
-  <div id="home" class="landing_page">
+  <div class="landing_page">
     <h2><?php echo __('Donate', true)."\n"; ?></h2>
 <p class="decoration"><?php echo __('Join Greenpeace today and add your voice to the movement that\'s committed to defending our planet. Our vision of a better future is only as strong as the people who support us. Your support will make all the difference.!', true); ?></p>
 <h3><?php echo __('Choose An Appeal!', true); ?></h3>

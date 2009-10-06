@@ -135,7 +135,7 @@ class Gift extends AppModel {
 		$args = func_get_args();
 		switch ($type) {
 			case 'gift_types':
-				$frequencies = Configure::read('App.gift_types');
+				$frequencies = Configure::read('App.gift.types');
 
 				$Session = Common::getComponent('Session');
 				if ($Session->check('Office.id') && !$isGuest) {
@@ -159,7 +159,7 @@ class Gift extends AppModel {
 				}
 				return $result;
 			case 'frequencies':
-				$frequencies = Configure::read('App.frequencies');
+				$frequencies = Configure::read('App.gift.frequencies');
 
 				$Session = Common::getComponent('Session');
 				if ($Session->check('Office.id') && !$isGuest) {
@@ -212,7 +212,7 @@ class Gift extends AppModel {
 					$query['id'] = $Session->read('gift_process_office_id');
 				}
 
-				$currencies = Configure::read('App.currency_options');
+				$currencies = Configure::read('App.gift.currencies');
 				if (isset($query['id'])) {
 					$currencies = ClassRegistry::init('Office')->find('first', array(
 						'conditions' => array('id' => $query['id']),
@@ -289,6 +289,18 @@ class Gift extends AppModel {
 	function updateStatus($id, $status) {
 		$this->set(compact('id', 'status'));
 		return $this->save(null, false);
+	}
+/**
+ * undocumented function
+ */
+	static function getFrequencies(){
+		return Configure::read('App.gift.frequencies'); 
+	}
+/**
+ * undocumented function
+ */
+	static function getCurrencies(){
+		return Configure::read('App.gift.currencies'); 
 	}
 }
 ?>

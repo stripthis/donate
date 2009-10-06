@@ -18,24 +18,6 @@
               <a href="<?php echo $posts[0]["link"]; ?>" target="_blank"><?php echo __('more', true)." »"; ?></a>
             </p>
           </li>
-          <li class="last">
-            <a href="<?php echo $posts['feed']['link']; ?>" rel="nofollow" target="_blank"><?php echo __("follow us on Making Waves", true); ?> »</a>
-          </li>
         </ul>
       </div>
     </div>
-
-<?php
-
-?>
-<?php if(isset($posts_news[0]) && !empty($posts_news[0])): ?>
-    <div id="news_feed" class="widget">
-      <h3><a href="<?php echo Router::Url(null,true); ?>" class="toggle open" id="toggle_news_feed"><?php echo __("Latest blog entry", true); ?></a></h3>
-      <a href="<?php echo Configure::read("App.newsFeed"); ?>" target="_blank" class="rss"><span class="hidden">rss</span></a>
-      <div class="widget_content toggle_wrapper" id="wrapper_toggle_news_feed">
-        <ul class="posts">
-
-        </ul>
-      </div>
-    </div>
-<?php endif; ?>

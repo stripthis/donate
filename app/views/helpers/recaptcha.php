@@ -3,7 +3,7 @@ class RecaptchaHelper extends AppHelper {
 	var $helpers = array('form'); 
 	
 	function display_form($output_method = 'return', $error = null, $use_ssl = false){
-		$data = $this->__form(Configure::read("Recaptcha.pubKey"),$error,$use_ssl);
+		$data = $this->__form(Configure::read("App.recaptcha.publicKey"),$error,$use_ssl);
 		if ($output_method == "echo") {
 			echo $data;
 		} else {
@@ -12,7 +12,7 @@ class RecaptchaHelper extends AppHelper {
 	}
 	
 	function hide_mail($email = '',$output_method = 'return'){
-		$data = $this->recaptcha_mailhide_html(Configure::read('Recaptcha.pubKey'), Configure::read('Recaptcha.privateKey'), $email);
+		$data = $this->recaptcha_mailhide_html(Configure::read('App.recaptcha.publicKey'), Configure::read('App.recaptcha.privateKey'), $email);
 		if ($output_method == "echo") {
 			echo $data;
 		} else {
@@ -36,9 +36,9 @@ class RecaptchaHelper extends AppHelper {
 		}
 		
 		if ($use_ssl) {
-			$server = Configure::read('Recaptcha.apiSecureServer');
+			$server = Configure::read('App.recaptcha.apiSecureServer');
 		} else {
-			$server = Configure::read('Recaptcha.apiServer');
+			$server = Configure::read('App.recaptcha.apiServer');
 		}
 	
 		$errorpart = "";

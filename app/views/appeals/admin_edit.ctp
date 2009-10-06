@@ -45,7 +45,7 @@
 		//@todo TO BE MOVED TO APPEALS TEMPLATES VIEW
 		/*
 		echo $form->input('lang', array(
-			'options' => Configure::read('App.lang_options'), 'label' => 'Supported Language'
+			'options' => Configure::read('App.languages'), 'label' => 'Supported Language'
 		));
 
 		$infStatusOptions = array_map('ucfirst', $statusOptions);

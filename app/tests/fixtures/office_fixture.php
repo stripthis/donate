@@ -1,5 +1,4 @@
 <?php
-
 class OfficeFixture extends CakeTestFixture {
 	var $name = 'Office';
 	var $records = array(

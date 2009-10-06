@@ -14,12 +14,11 @@
 			</li>
 		</ul>
 	</div>
-
 	<?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
-	<?php echo $this->element('../templates/default/gift', compact('appealOptions')); ?>
-	<div class="form_decoration half left" id="activist"></div>
-	<div class="spacer"></div>
-	<?php echo $this->element('../templates/default/payment'); ?>
+	<?php echo $this->element('../templates/default/elements/gift', compact('appealOptions')); ?>
+	<div class="clear"></div>
+	<?php echo $this->element('../templates/default/elements/payment'); ?>
+	<div class="clear"></div>
 	<?php echo $form->submit('Save', array('class' => 'donate-submit')); ?>
 	<?php echo $form->end(); ?>
 </div>

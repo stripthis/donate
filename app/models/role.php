@@ -23,7 +23,7 @@ class Role extends AppModel {
  */
 	function beforeSave() {
 		if (isset($this->data['Role']['permissions'])) {
-			$permissions = Configure::read('App.permission_options');
+			$permissions = Configure::read('App.permission.options');
 
 			$perms = array();
 			foreach ($this->data['Role']['permissions'] as $perm => $checked) {

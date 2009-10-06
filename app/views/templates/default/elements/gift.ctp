@@ -17,27 +17,20 @@
 			<fieldset class="left" id="gift_type">
 				<legend><?php echo __("Gift Information"); ?></legend>
 				<?php echo $form->input('Gift.id', array('type' => 'hidden'))."\n"; ?>
-				<?php
-				if (!isset($appealOptions)) {
-					echo $form->input('Gift.appeal_id', array('type' => 'hidden'))."\n";
-				} else {
-					echo $form->input('Gift.appeal_id', array('options' => $appealOptions))."\n";
-				}
-				?>
 				<?php //echo $form->input('Gift.type', array('options' => $typeOptions))."\n"; ?>
 				<input name="data[Gift][type]" value="donation" id="GiftType" type="hidden">
 				<div class="input_wrapper radio">
-					<label for="amount" class="option_title">Amount: <strong class="required">*</strong></label>
-		<?php foreach ($amountOptions as $amountOption): ?>
+					<label for="amount" class="option_title"><?php __('Amount'); ?>: <strong class="required">*</strong></label>
+<?php foreach ($amountOptions as $amountOption): ?>
 					<label class="option">
 						<input name="data[Gift][amount]" value="<?php echo $amountOption; ?>" class="radio amount" type="radio" 
 							<?php echo $amountSelected == $amountOption ? $giftForm->checked() : ''?>> <?php echo $amountOption; ?>€
 					</label>
-		<?php endforeach; ?>
+<?php endforeach; ?>
 				</div>
 				<div class="input_wrapper radio" id="other_amount">
 					<label class="option">
-						<input name="data[Gift][amount]" value="other" class="form-radio otheramount" type="radio"> Other
+						<input name="data[Gift][amount]" value="other" class="form-radio otheramount" type="radio"> <?php __('Other'); ?>
 					</label>
 					<input name="data[Gift][amount_other]" type="text" class="text" id="txtOtherAmount" 
 						value="<?php echo !in_array($amountSelected, $amountOptions) ? $amountSelected : ''?>"

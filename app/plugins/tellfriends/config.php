@@ -1,16 +1,6 @@
 <?php
-App::import('Model', 'Favorites.Favorite');
+App::import('Model');
+$Session = Common::getComponent('Session');
 $config = array(
-	'Favorites' => array(
-		'subject' => 'starred item',
-		'verb' => 'star',
-		'adjective' => 'starred',
-		'models' => array(
-			'Gift' => 'name',
-			'Transaction' => 'serial',
-			'User' => 'login',
-			'Comment' => 'increment'
-		)
-	)
 );
 ?>

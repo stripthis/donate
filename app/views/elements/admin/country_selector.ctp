@@ -1,4 +1,4 @@
-	<?php $Session = Common::getComponent('Session'); ?>
+<?php $Session = Common::getComponent('Session'); ?>
 	<div id="country_selector">
 			<ul class="selector">
 				<li>
@@ -26,7 +26,7 @@
 							)) . '</li>'."\n";
 						}
 					}
-	?>
+?>
 				</ul>
 				</li>
 			</ul>

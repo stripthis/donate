@@ -69,7 +69,7 @@ class CaplimitComponent extends Object {
 		foreach ($emails as $email) {
 			foreach ($toCheck as $emailToCheck => $counts) {
 				if ($email == $emailToCheck) {
-					if ($counts > Configure::read('App.emailsPerDay') ) {
+					if ($counts > Configure::read('App.tellafriend.emailsPerDay') ) {
 						return $emailToCheck;
 					}
 				}

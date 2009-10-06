@@ -112,7 +112,7 @@ class UsersController extends AppController {
  */
 	function admin_index($type = '') {
 		$conditions = array(
-			'User.login <>' => Configure::read('App.guestAccount'),
+			'User.login <>' => Configure::read('App.emails.guestAccount'),
 			'User.active' => '1'
 		);
 

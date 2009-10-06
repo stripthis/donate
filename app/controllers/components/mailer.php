@@ -11,7 +11,7 @@ class Mailer{
 			'vars' => array(),
 			'mail' => array(
 				'to' => array(),
-				'from' => Configure::read('App.noReplyEmail'),
+				'from' => Configure::read('App.emails.noReply'),
 				'charset' => 'utf8',
 				'sendAs' => 'text',
 				'subject' => '',
