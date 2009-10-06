@@ -16,6 +16,7 @@ $config = array(
 		'admin_common.js' => '*:admin*',
 		'common.js' => '*:!admin*',
 		'japp.js' => '*:!admin*',
+		'datepicker/jquery.datepick.js' => '*:*',
 	)
 );
 ?>

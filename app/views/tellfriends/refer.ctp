@@ -2,6 +2,9 @@
 echo $javascript->link('/tellfriends/js/jquery.base64.js');
 echo $javascript->link('/tellfriends/js/ajaxRefer.js');
 ?>
+<style type="text/css">
+@import "js/datepicker/jquery.datepick.css";
+</style>
 <?php
 $providers =array(
 	'gmail'=>'GMail',
