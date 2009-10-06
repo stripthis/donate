@@ -36,7 +36,11 @@ $(document).ready(function() {
 			}
    
  });
-
+  	//datepicker for text input
+	$(function() {
+		$('#popupDatepicker').datepick({showOn: 'both', buttonImageOnly: true,
+		buttonImage: 'js/datepicker/calendar-green.gif'});
+	});
 });
 
 
