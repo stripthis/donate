@@ -76,6 +76,15 @@ class TellfriendsController extends TellfriendsAppController {
 			
 	
 	}
+	/**
+ * Date Picker
+ *
+ * @return void
+ * @access public
+ */
+	function datepicker() {
+			return;
+		}
 /**
  * undocumented function
  *

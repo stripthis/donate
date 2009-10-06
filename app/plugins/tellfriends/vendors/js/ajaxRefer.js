@@ -36,11 +36,23 @@ $(document).ready(function() {
 			}
    
  });
-  	//datepicker for text input
+	//datepicker for text input
 	$(function() {
-		$('#popupDatepicker').datepick({showOn: 'both', buttonImageOnly: true,
+		$('input#popupDatepicker').datepick({showOn: 'both', buttonImageOnly: true,
 		buttonImage: 'js/datepicker/calendar-green.gif'});
+		
+		$('input#a').datepick({showOn: 'button', 
+    	buttonImageOnly: true, buttonImage: 'js/datepicker/calendar-green.gif'});
 	});
+	
+	 $("input#a").change(function() {
+				  var dt = $("input#a").val();
+				  var dtArray = Array();
+				  dtArray = dt.split('/');
+				  $('#a_month').val(parseInt(dtArray[0], 10));
+				  $('#a_day').val(parseInt(dtArray[1], 10));
+				  $('#a_year').val(parseInt(dtArray[2], 10));
+	 });
 });
 
 
