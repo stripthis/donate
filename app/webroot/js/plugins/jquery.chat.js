@@ -7,6 +7,7 @@
 
 		return this.each(function() {
 			var $this = $(this);
+			init($this);
 			update($this);
 			setInterval(function() {
 				update($this);
@@ -19,6 +20,14 @@
 		});
 	};
 
+	function init($obj) {
+		$message = $obj.find("textarea[name='data[Chat][message]']");
+		$message	
+			.bind('keydown', 'return', function() {
+				post($obj.find('form'));
+			});
+	}
+
 	function update($obj) {
 		$.ajax({
 			url: opts.update + '/' + $obj.attr('name'),
@@ -27,6 +36,7 @@
 				if (clearTextbox) {
 					$obj.find("textarea[name='data[Chat][message]']").val('');
 					clearTextbox = false;
+					$('.chat_window', $obj.parents()).scrollTo(150, 800);
 				};
 			}
 		});

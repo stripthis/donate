@@ -19,8 +19,7 @@ class ChatController extends ChatAppController {
  */
 	function admin_post() {
 		App::import('Sanitize');
-		$this->data = Sanitize::clean($this->data);
-		$this->data['Chat']['ip_address'] = $_SERVER['REMOTE_ADDR'];
+		$this->data['Chat']['ip_address'] = $this->RequestHandler->getClientIP();
 		$this->data['Chat']['user_id'] = User::get('id');
 		$this->Chat->create($this->data);
 		$this->Chat->save(null, false);

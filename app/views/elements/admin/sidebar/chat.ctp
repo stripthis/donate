@@ -10,6 +10,8 @@ $open = (!isset($options['open'])) ? 'close' : $options['open'];
 		</h3>
 	</div>
 	<div class="widget_content">
-		<?php echo $ajaxChat->generate(1)?>
+		<div class="wrapper_toggle_chat">
+			<?php echo $ajaxChat->generate(1)?>
+		</div>
 	</div>
 </div>
