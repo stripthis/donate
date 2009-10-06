@@ -21,7 +21,7 @@ class Tellfriend extends TellfriendsAppModel {
  * @access public
  */
 	function isIpSpamming($currentIP) {
-		$timeBefore = date('Y-m-d H:i:s', (time() - Configure::read('App.ipBanTime')));
+		$timeBefore = date('Y-m-d H:i:s', (time() - Configure::read('App.tellafriend.ipBanTime')));
 		$currentTime = date('Y-m-d H:i:s');
 		$noOfEmails = $this->find('count', array(
 			'conditions' => array(
@@ -30,7 +30,7 @@ class Tellfriend extends TellfriendsAppModel {
 			)
 		));
 
-		return $noOfEmails > Configure::read('App.maxEmailsSentFromIp');
+		return $noOfEmails > Configure::read('App.tellafriend.maxEmailsSentFromIp');
 	}
 /**
  * undocumented function
@@ -40,7 +40,7 @@ class Tellfriend extends TellfriendsAppModel {
  */
 	function getEmailsSentInTime() {
 		$emailArray = array();
-		$timeBefore = date('Y-m-d H:i:s', (time() - Configure::read('App.spamEmailTimeLimit')));
+		$timeBefore = date('Y-m-d H:i:s', (time() - Configure::read('App.tellafriend.spamEmailTimeLimit')));
 		$currentTime = date('Y-m-d H:i:s');
 		$emails = $this->InvitedFriend->find('all', array(
 			'conditions' => array(
@@ -60,7 +60,7 @@ class Tellfriend extends TellfriendsAppModel {
  */
 	function getEmailsSentFromInTime($email) {
 	
-	$timeBefore = date('Y-m-d H:i:s', (time() - Configure::read('App.ipBanTime')));
+	$timeBefore = date('Y-m-d H:i:s', (time() - Configure::read('App.tellafriend.ipBanTime')));
 		$currentTime = date('Y-m-d H:i:s');
 		$noOfSentEmails= $this->InvitedFriend->find('count', array(
 			'conditions' => array(
@@ -69,7 +69,7 @@ class Tellfriend extends TellfriendsAppModel {
 			)
 		));
 
-		return $noOfSentEmails > Configure::read('App.maxEmailsSentFromEmail');
+		return $noOfSentEmails > Configure::read('App.tellafriend.maxEmailsSentFromEmail');
 	}
 /**
  * undocumented function

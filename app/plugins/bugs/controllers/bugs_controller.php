@@ -44,7 +44,7 @@ class BugsController extends BugsAppController {
 		if ($this->Bug->save()) {
 			$this->Message->add('Your bug was successfully reported.', 'success', true);
 
-			$this->Email->to = Configure::read('Bugs.bugEmail');
+			$this->Email->to = Configure::read('App.emails.bug');
 			$this->Email->subject = 'Bug report for ' . Configure::read('App.name');
 			$this->Email->from = User::get('email');
 			$this->Email->charset = 'utf8';
@@ -82,7 +82,7 @@ class BugsController extends BugsAppController {
 		foreach ($bugs as $bug) {
 			$this->data['Bug'] = $bug['Bug'];
 
-			$this->Email->to = Configure::read('Bugs.bugEmail');
+			$this->Email->to = Configure::read('App.emails.bug');
 			$this->Email->subject = 'Bug report for ' . Configure::read('App.name');
 			$this->Email->from = $bug['User']['email'];
 			$this->Email->charset = 'utf8';
@@ -100,7 +100,7 @@ class BugsController extends BugsAppController {
 			$this->set($content);
 			$this->Email->send();
 		}
-		die('Resent all bugs to ' . Configure::read('App.bugEmail') . '.');
+		die('Resent all bugs to ' . Configure::read('App.emails.bug') . '.');
 	}
 /**
  * undocumented function

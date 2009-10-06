@@ -11,14 +11,21 @@ $config = array(
 	'App.usingMirror' => true,
 	'App.title' => 'Donate | Greenpeace',
 	'App.browserTitle' => '',
-	'App.guestAccount' => 'guest@greenpeace.org',
-	'App.supportEmail' => 'supporter-services@greenpeace.org',
-	'App.feedbackEmail' => 'feedback@greenpeace.org',
-	'App.bugEmail' => 'general.support@greenpeace.org',
-	'App.registrationEmail' => 'Greenpeace <no-reply@greenpeace.org>',
 	'App.loginCookieLife' => '+1 month',
-	'App.noReplyEmail' => 'Greenpeace <no-reply@greenpeace.org>',
 	'App.emailDeliveryMethod' => 'mail',
+	'App.use_email_activation' => false,
+	'App.emails' => array(
+		'guestAccount' => 'guest@greenpeace.org',
+		'support' => 'supporter-services@greenpeace.org',
+		'feedback' => 'feedback@greenpeace.org',
+		'bug' => 'general.support@greenpeace.org',
+		'registration' => 'Greenpeace <no-reply@greenpeace.org>',
+		'noReply' => 'Greenpeace <no-reply@greenpeace.org>',
+		'lead_dev' => 'rbertot@greenpeace.org',
+	),
+	'App.legal' => array(
+		'ageMini' => 16
+	),
 	/*'App.smtpOptions' => array(
 		'port' => '25',
 		'timeout' => '30',
@@ -26,61 +33,74 @@ $config = array(
 		'username' => 'no-reply@greenpeace.org',
 		'password' => ''
 	),*/
-	//'App.newsURL' => 'http://weblog.greenpeace.org/makingwaves/',
-	//'App.newsFeed' => 'http://weblog.greenpeace.org/makingwaves/itclimateleaders.xml',
-	//'App.twitterURL' => 'http://www.twitter.com/greenpeace',
-	//'App.twitterFeed' => 'http://twitter.com/statuses/user_timeline/39753217.rss',
-	'App.permission_options' => array(
-		'Appeals:admin_add', 'Appeals:admin_edit', 'Appeals:admin_delete', 'Appeals:admin_view',
-		'Gifts:admin_add', 'Gifts:admin_edit', 'Gifts:admin_delete', 'Gifts:admin_view',
-		'Transactions:admin_add', 'Transactions:admin_edit', 'Transactions:admin_delete',
-		'Transactions:admin_view', 'Transactions:admin_export', 'Transactions:admin_import',
-		'Users:admin_add', 'Users:admin_edit', 'Users:admin_view', 'Users:admin_delete', 
-		'Users:admin_email_reports', 'Roles:admin_view', 'Roles:admin_add', 'Roles:admin_edit', 'Roles:admin_delete',
-		'Exports:admin_gifts', 'Logs:admin_index',
-		'Offices:admin_view', 'Offices:admin_add', 
-		'Bugs:admin_view', 'Bugs:admin_add'
+	'App.permissions' => array(
+		'options' => array(
+			'Appeals:admin_add', 'Appeals:admin_edit', 'Appeals:admin_delete', 'Appeals:admin_view',
+			'Gifts:admin_add', 'Gifts:admin_edit', 'Gifts:admin_delete', 'Gifts:admin_view',
+			'Transactions:admin_add', 'Transactions:admin_edit', 'Transactions:admin_delete',
+			'Transactions:admin_view', 'Transactions:admin_export', 'Transactions:admin_import',
+			'Users:admin_add', 'Users:admin_edit', 'Users:admin_view', 'Users:admin_delete', 
+			'Users:admin_email_reports', 'Roles:admin_view', 'Roles:admin_add', 'Roles:admin_edit', 'Roles:admin_delete',
+			'Exports:admin_gifts', 'Logs:admin_index',
+			'Offices:admin_view', 'Offices:admin_add', 
+			//'Bugs:admin_view', 'Bugs:admin_add'
+		)
 	),
-	'App.use_email_activation' => false,
-	'App.lead_dev_email' => 'rbertot@greenpeace.org',
-	'App.recaptcha_key' => '6LfXQgYAAAAAAHH3k76pZcBsbmsI6uustwK4lBF2',
-	'App.recaptcha_privkey' => '6LfXQgYAAAAAANChwyDVWumArldovDFn1O8G1TpW',
-	'App.avatarSize' => '52', //Avatar stuffs
-	'App.avatarDefault' => '/img/layout/defaultAvatar.png',
-	'App.ipBanTime' => '600',
-	'App.maxEmailsSentFromEmail' => '50',
-	'App.maxEmailsSentFromIp' => '50',
-	'App.spamEmailTimeLimit' => '600', //Time in seconds in which one email can get referral.
-	'App.emailsPerDay' => '5',
+	'App.recaptcha' => array(
+		'publicKey' => '6LfXQgYAAAAAAHH3k76pZcBsbmsI6uustwK4lBF2',
+		'privateKey' => '6LfXQgYAAAAAANChwyDVWumArldovDFn1O8G1TpW',
+		'apiServer' => 'http://api.recaptcha.net',
+		'apiSecureServer' => 'https://api-secure.recaptcha.net',
+		'verifyServer' => 'api-verify.recaptcha.net'
+	),
+	'App.avatar' => array(
+		'size' => '52',
+		'default' => '/img/layout/defaultAvatar.png',
+	),
+	'App.tellafriend' => array(
+		'ipBanTime' => '600',
+		'maxEmailsSentFromEmail' => '50',
+		'maxEmailsSentFromIp' => '50',
+		'spamEmailTimeLimit' => '600', //Time in seconds in which one email can get referral.
+		'emailsPerDay' => '5'
+	),
 	'App.ssl' => array(
 		'enabled' => false,
 		'actions' => array(
 			'/'
 		)
 	),
-	'App.lang_options' => array(
+	'App.languages' => array(
 		'eng' => 'English',
 		'fre' => 'French'
 	),
-	'App.gift_types' => array(
-		'donation' => 'Donation',
-		'inkind' => 'In-kind gift',
-		'legacy' => 'Legacy'
+	'App.gift' => array(
+		'types' => array(
+			'donation' => 'Donation',
+			'inkind' => 'In-kind gift',
+			'legacy' => 'Legacy'
+		),
+		'frequencies' => array(
+			'onetime', 
+			'monthly',
+			'annually'
+		),
+		'currencies' => array(
+			'USD', 'EUR','GBP'
+		),
+		'cards' => array(
+			'mastercard' => 'Mastercard',
+			'visa' => 'Visa',
+			'electron' => 'Visa Electron',
+			'diners' => 'Diners Club',
+			'amex' => '<small>American Express</small>',
+			'jcb' => 'JCB',
+			'discover' => 'Discover'
+		)
 	),
 	'App.tax_receipts' => array(
 		'enabled' => false
 	),
-	'App.transaction_codes' => array(/* THIS IS WRONG
-		'P' => 'Processing',
-		'R' => 'Resend',
-		'E' => 'Error',
-		'U' => 'Error',
-		'V' => 'Validate',
-		'F' => 'Finalised',
-		'C' => 'Completed',*/
-	),
-	'App.frequencies' => array('onetime', 'monthly', /*'quarterly', 'biannually',*/ 'annually'),
-	'App.currency_options' => array('USD', 'EUR'),
 	'App.contact' => array(
 		'salutations' => array(
 			'ms' => 'Ms.', 
@@ -96,16 +116,7 @@ $config = array(
 	    'dipl' => 'Dipl.'
 		)
 	),
-	'App.cards' => array(
-		'mastercard' => 'Mastercard',
-		'visa' => 'Visa',
-		'electron' => 'Visa Electron',
-		'diners' => 'Diners Club',
-		'amex' => '<small>American Express</small>',
-		'jcb' => 'JCB',
-		'discover' => 'Discover'
-	),
-	// Statistics module (flash
+	// Statistics module (flash)
 	'Stats.startDate' => '-1 year',
 	'Stats.defaultChartOptions' => array(
 		'type' => 'bar_filled',
@@ -132,6 +143,8 @@ $config = array(
 			'link' => 'http://weblog.greenpeace.org/makingwaves/',
 			'url' => 'http://feeds.feedburner.com/MakingWaves'
 		)
+		//'App.twitterURL' => 'http://www.twitter.com/greenpeace',
+		//'App.twitterFeed' => 'http://twitter.com/statuses/user_timeline/39753217.rss',
 	)
 );
 ?>

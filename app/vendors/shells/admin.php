@@ -18,7 +18,7 @@ class AdminShell extends Shell {
 	function main() {
 		$login = isset($this->args[0]) ? $this->args[0] : false;
 
-		if (empty($login) || $login == Configure::read('App.guestAccount')) {
+		if (empty($login) || $login == Configure::read('App.emails.guestAccount')) {
 			$this->out('Funny man ..');
 			exit(1);
 		}

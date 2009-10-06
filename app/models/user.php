@@ -59,7 +59,7 @@ class User extends AppModel {
  */
 	function beforeSave() {
 		if (isset($this->data[__CLASS__]['permissions']) && is_array($this->data[__CLASS__]['permissions'])) {
-			$permissions = Configure::read('App.permission_options');
+			$permissions = Configure::read('App.permissions.options');
 
 			$perms = array();
 			foreach ($this->data[__CLASS__]['permissions'] as $perm => $checked) {
@@ -327,13 +327,13 @@ class User extends AppModel {
 		$_this = ClassRegistry::init(__CLASS__);
 		$backup = $_this->data;
 		$_this->id = $_this->lookup(
-			array('login' => Configure::read('App.guestAccount')),
+			array('login' => Configure::read('App.emails.guestAccount')),
 			'id', false
 		);
 
 		if (empty($_this->id)) {
 			$_this->create(array(
-				'login' => Configure::read('App.guestAccount'),
+				'login' => Configure::read('App.emails.guestAccount'),
 				'level' => 'guest'
 			));
 			Assert::notEmpty($_this->save(), 'no_guest_account');
@@ -514,7 +514,7 @@ class User extends AppModel {
  */
 	function is($role) {
 		if ($role == 'guest') {
-			return User::get('login') == Configure::read('App.guestAccount');
+			return User::get('login') == Configure::read('App.emails.guestAccount');
 		}
 		return User::get('Role.name') == $role;
 	}

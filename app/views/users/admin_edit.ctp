@@ -37,7 +37,7 @@
 	echo '<h3>Individual Permissions</h3>';
 
 	if ($canEdit) {
-		$permissions = Configure::read('App.permission_options');
+		$permissions = Configure::read('App.permission.options');
 
 		foreach ($permissions as $perm) {
 			$perm = trim($perm);

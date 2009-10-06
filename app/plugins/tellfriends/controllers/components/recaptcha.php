@@ -7,12 +7,6 @@
 	var $error = "";
 	
 	function startup(&$controller){
-		Configure::write("Recaptcha.apiServer","http://api.recaptcha.net");
-		Configure::write("Recaptcha.apiSecureServer","https://api-secure.recaptcha.net");
-		Configure::write("Recaptcha.verifyServer","api-verify.recaptcha.net");
-		Configure::write("Recaptcha.pubKey", $this->publickey);
-		Configure::write("Recaptcha.privateKey", $this->privatekey);
-		
 		$this->controller =& $controller;
 		$this->controller->helpers[] = "Recaptcha";
 	}
@@ -58,7 +52,7 @@
 	                return 0;
 	        }
 
-	        $response = $this->_recaptcha_http_post(Configure::read('Recaptcha.verifyServer'), "/verify",
+	        $response = $this->_recaptcha_http_post(Configure::read('App.recaptcha.verifyServer'), "/verify",
 	                                          array (
 	                                                 'privatekey' => $privkey,
 	                                                 'remoteip' => $remoteip,

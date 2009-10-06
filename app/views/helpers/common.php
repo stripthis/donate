@@ -120,7 +120,7 @@ class CommonHelper extends Apphelper {
  * @return  arrray $item[$controller][$action]
  */
 	static function getPermissions($role=null){
-		$permissions = Configure::read('App.permission_options');
+		$permissions = Configure::read('App.permissions.options');
 		$controller = '';
 		$action = '';
 		$items = array();

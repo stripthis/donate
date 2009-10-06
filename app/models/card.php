@@ -67,7 +67,7 @@ class Card extends AppModel {
  * @access public
  */
 	function validateType($check) {
-		return array_key_exists($check['type'], Configure::read('App.cards'));
+		return array_key_exists($check['type'], Configure::read('App.gift.cards'));
 	}
 /**
  * Validate card number based on the type (ex: visa)
@@ -134,7 +134,7 @@ class Card extends AppModel {
  * Return the default card
  */
 	static function getTypes(){
-		return Configure::read("App.cards");
+		return Configure::read("App.gift.cards");
 	}
 /**
  * undocumented function

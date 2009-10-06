@@ -3,7 +3,7 @@
 <?php if (empty($office['User'])) : ?>
 	<p><?php echo __('Sorry, no users set up yet for this office. Please consult a root admin to add a new user to your office.', true); ?></p>
 <?php else : ?>
-<?php $permissions = Configure::read('App.permission_options'); ?>
+<?php $permissions = Configure::read('App.permissions.options'); ?>
 	<ul>
 	<?php foreach ($office['User'] as $user) : ?>
 		<?php
