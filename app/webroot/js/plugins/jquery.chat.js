@@ -24,7 +24,7 @@
 
 	function init($obj) {
 		$message = $obj.find("textarea[name='data[Chat][message]']");
-		$message	
+		$message
 			.bind('keydown', 'return', function() {
 				post($obj.find('form'));
 			});
