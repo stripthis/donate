@@ -11,7 +11,7 @@ class TellfriendsController extends TellfriendsAppController {
 
 	
 /**
- * undocumented function
+ * Setting security components e.g. akismet apikey
  *
  * @return void
  * @access public
@@ -25,9 +25,9 @@ class TellfriendsController extends TellfriendsAppController {
 		$this->Recaptcha->privatekey = "6LcYYwgAAAAAAGmtiUbf_Eis_w8HYICZs21eHKCC ";
 	}
 /**
- * undocumented function
+ * Getting list of e-mail addresses from email providers using openinviter
  *
- * @return void
+ * @return  list of e-mail addresses with checkbox as string
  * @access public
  */
 	function contactList($email = null, $encodedPass = null, $provider = null){
@@ -76,8 +76,8 @@ class TellfriendsController extends TellfriendsAppController {
 			
 	
 	}
-	/**
- * Date Picker
+/**
+ * controller action for datepicker view
  *
  * @return void
  * @access public
@@ -86,7 +86,7 @@ class TellfriendsController extends TellfriendsAppController {
 			return;
 		}
 /**
- * undocumented function
+ * controller action for tellafriend feature
  *
  * @return void
  * @access public
