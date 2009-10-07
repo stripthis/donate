@@ -54,7 +54,7 @@ Tue 9/29/2009 Total Time : 8 hours
 3.	Implementation of openinviter and integration with tell-a-friend ( 1.5 hours)
 4.	Populating the contact list with checkboxes using ajax (without a page refresh). ( 2 hours)
 
-Tue 9/30/2009 Total Time : 8 hours
+Wed 9/30/2009 Total Time : 8 hours
 
 1.	Getting the email addresses corresponding to checked checkbox and sending mail to all & adding in database ( 3 hours)
 2.	Worked on enabling javascript on local system, changed all javascript syntax to jquery ( 2 hours)
@@ -62,13 +62,31 @@ Tue 9/30/2009 Total Time : 8 hours
 4.      Communication ( 0.5 hour)
 	
 
-Tue 10/1/2009 Total Time : 7 hours
+Thur 10/1/2009 Total Time : 7 hours
 
 1.	Worked on converting ajax in javascript to ajax in jquery ( 2.5 hours)
 2.	Worked on client side validation for blank email and password field ( 1 hour)
 3.      Worked on server side validation for incorrect login credential, provider ( 2.5 hours)
 4.	Displaying relevent error message depending on the error occured. ( 0.5 hour)
 5.      Communication ( 0.5 hour)
+
+Mon 10/5/2009 Total Time : 8 hours
+
+1.	Db update and ticket management ( 1 hour)
+2.	Fixed UI issues related to openinviter ( 1 hour)
+3.      Using loading image while ajax loading content( 2.5 hours)
+4.	Encoding for login password ( 1.5 hour)
+5.	Gone throught cakepHP coding standards( 0.5 hour)
+6.      Communication ( 0.5 hour)
+7.      Worked on jquery datepicker( 1 hour)
+
+Tue 10/6/2009 Total Time : 7.5 hours
+
+1.	Added jquery plugin datepicker ( 1 hour)
+2.	Implemented  date picker for textfield( 2 hours)
+3.      Implemented  date picker for select dropdown( 3 hours)
+4.	Create new view for demo of datepicker functionality ( 1 hour)
+5.      Communication & Mailing ( 0.5 hour)
 
 
 

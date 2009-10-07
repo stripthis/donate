@@ -3,6 +3,7 @@ $(document).ready(function() {
 			var email =$("#openinviterEmailBox").val();
 			var pass = $("#openinviterPasswordBox").val();
 			var provider =$("#openinviterProviderBox").val();
+			//validating for blank input
 			$("#errEmail").empty();
 			$("#errPass").empty();
 			var errors =0;
@@ -14,6 +15,7 @@ $(document).ready(function() {
 			 	$("#errPass").append("Please specify your Password.");	
 				errors++;
 			}
+			//ajax for getting contact list
 			if(errors == 0){
 				$("#contactList").empty();
 				$("#contactList").append("<img src='img/loading.gif' height ='350px' width ='600px'/>");
@@ -22,10 +24,8 @@ $(document).ready(function() {
 					var encodedPass = $.base64Encode(pass);
 					var url="tellfriends/tellfriends/contactList/"+email+"/"+encodedPass+"/"+provider;
 					xmlhttp.open("POST",url,true);
-					xmlhttp.onreadystatechange=function()
-					{
-						if (xmlhttp.readyState==4)
-						 {
+					xmlhttp.onreadystatechange=function() {
+						if (xmlhttp.readyState==4) {
 							 var res = xmlhttp.responseText;
 							 $("#contactList").empty();
 							 $("#contactList").append(res);
@@ -36,44 +36,53 @@ $(document).ready(function() {
 			}
    
  });
-  	//datepicker for text input
+	//datepicker for text input
 	$(function() {
-		$('#popupDatepicker').datepick({showOn: 'both', buttonImageOnly: true,
+		$('input#popupDatepicker').datepick({showOn: 'both', buttonImageOnly: true,
 		buttonImage: 'js/datepicker/calendar-green.gif'});
+		//datepicker for select input
+		$('input#a').datepick({showOn: 'button', 
+    	buttonImageOnly: true, buttonImage: 'js/datepicker/calendar-green.gif'});
 	});
+	//populating the series of select input from text input
+	 $("input#a").change(function() {
+				  var dt = $("input#a").val();
+				  var dtArray = Array();
+				  dtArray = dt.split('/');
+				  $('#a_month').val(parseInt(dtArray[0], 10));
+				  $('#a_day').val(parseInt(dtArray[1], 10));
+				  $('#a_year').val(parseInt(dtArray[2], 10));
+	 });
 });
 
 
 
 function GetXmlHttpObject()
 {
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {
-  xmlhttp=new XMLHttpRequest();
-  }
-else if (window.ActiveXObject)
-  {
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-  return xmlhttp;
+	var xmlhttp;
+	if (window.XMLHttpRequest) {
+		xmlhttp=new XMLHttpRequest();
+	  }
+	else if (window.ActiveXObject) {
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	return xmlhttp;
 }
 
 
 
 function tellFriends(chckbox)
 {
-var chckVal = chckbox.value;
-var emailList = $("#TellfriendReceiver").val();
-
+	var chckVal = chckbox.value;
+	var emailList = $("#TellfriendReceiver").val();
+	//appending email address of checked checkbox
 	if(chckbox.checked == true){
 		if(emailList == ''){
 			$("#TellfriendReceiver").val(chckVal);
 		} else {
 			$("#TellfriendReceiver").val(emailList + "," +chckVal);
 		}
-	} else if(chckbox.checked == false) {
-
+	} else if(chckbox.checked == false) { //removing email address of unchecked checkbox
 		var result = "";
 		if(emailList.indexOf(chckVal) == 0){
 			result = emailList.replace(chckVal, "");
@@ -81,6 +90,7 @@ var emailList = $("#TellfriendReceiver").val();
 		     var replaceWith = ","+chckVal;
 			 result = emailList.replace(replaceWith, "");
 		}
+		
 		if(result.charAt(0) == ","){
 			result = result.replace(",", "");
 		}

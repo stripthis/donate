@@ -1,7 +1,6 @@
 			<fieldset>
 				<legend><?php echo __('Tell A Friend', true); ?></legend>
 				<div id= "contactList"></div>
-                Date Picker Demo<input type="text" id="popupDatepicker" >
 				<div class="input_wrapper half">
 					<?php 
 					echo $form->input('Tellfriend.receiver', array('type' => 'text',
