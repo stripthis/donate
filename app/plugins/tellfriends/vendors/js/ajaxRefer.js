@@ -1,5 +1,5 @@
 $(document).ready(function() {
-   $("input#import").click(function() {
+   $("input#import").click(function() { 
 			var email =$("#openinviterEmailBox").val();
 			var pass = $("#openinviterPasswordBox").val();
 			var provider =$("#openinviterProviderBox").val();
@@ -17,8 +17,8 @@ $(document).ready(function() {
 			}
 			//ajax for getting contact list
 			if(errors == 0){
-				$("#contactList").empty();
-				$("#contactList").append("<img src='img/loading.gif' height ='350px' width ='600px'/>");
+				//$("#TB_window").parent().$("#contactList").empty();
+				//$("#TB_window").parent().$("#contactList").append("<img src='img/loading.gif' height ='350px' width ='600px'/>");
 				var xmlhttp = GetXmlHttpObject();
 				if(xmlhttp){
 					var encodedPass = $.base64Encode(pass);
@@ -27,8 +27,9 @@ $(document).ready(function() {
 					xmlhttp.onreadystatechange=function() {
 						if (xmlhttp.readyState==4) {
 							 var res = xmlhttp.responseText;
-							 $("#contactList").empty();
-							 $("#contactList").append(res);
+							 parent.tb_remove();  //closing thickbox
+							 parent.$("#contactList").empty();
+							 parent.$("#contactList").append(res);
 						 }
 					}
 					xmlhttp.send(null);
