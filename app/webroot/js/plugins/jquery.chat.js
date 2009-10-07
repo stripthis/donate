@@ -10,7 +10,9 @@
 			init($this);
 			update($this);
 			setInterval(function() {
-				update($this);
+				if ($('.chat_window', $this).is(':visible')) {
+					update($this);
+				}
 			}, opts.interval);
 
 			$(this).find('form').submit(function() {
