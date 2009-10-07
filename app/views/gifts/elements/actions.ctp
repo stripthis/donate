@@ -10,5 +10,16 @@ if ($export) {
 		'options'=> array('div'=> array('class'=>'submit export'))
 	);
 }
-echo $this->element('admin/actions',array('links'=>$links, 'selected'=>false));
+
+if (pluginLoaded('Segments')) {
+	$links[] = array(
+		'name' => __('Save as Segment', true),
+		'label' => 'export',
+		'uri' => array(), 
+		'submit' => true,
+		'options'=> array('div' => array('class' => 'submit export segments'))
+	);
+}
+
+echo $this->element('admin/actions', array('links' => $links, 'selected' => false));
 ?>

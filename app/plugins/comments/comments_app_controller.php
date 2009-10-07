@@ -19,11 +19,11 @@ class CommentsAppController extends AppController {
 					'foreignKey' => 'foreign_id',
 					'threaded' => $threaded
 				)
-			)));
-
+			)), false);
+			
 			$this->Comment->bindModel(array('belongsTo' => array(
 				$model => array('foreignKey' => 'foreign_id')
-			)));
+			)), false);
 		}
 	}
 }

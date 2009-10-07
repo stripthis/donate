@@ -6,8 +6,8 @@
       <div class="actions">
         <h3><?php echo __('Actions', true); ?></h3>
         <ul>
-<?php if(isset($links) && !empty($links)) :  ?>
-<?php foreach($links as $link): ?>
+<?php if (isset($links) && !empty($links)) :  ?>
+	<?php foreach($links as $link): ?>
           <li>
           <?php
           if(!isset($link['submit'])) {

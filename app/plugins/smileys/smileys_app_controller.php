@@ -9,7 +9,7 @@ class SmileysAppController extends AppController {
 	function init() {
 		$cacheKey = 'smileys';
 		$smileys = Cache::read($cacheKey);
-		if (true || !$smileys) {
+		if (!$smileys) {
 			$Smiley = ClassRegistry::init('Smiley');
 			$smileys = $Smiley->find('all', array(
 				'order' => array('Smiley.code' => 'asc'),

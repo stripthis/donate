@@ -61,10 +61,12 @@ unset($urlParams['page']);
 							if(isset($gift['Contact'])) {
 								echo $this->element('tableset/rows/contact',am($options,array('contact'=>$gift))); 
 							}
-							foreach ($gift['Transaction'] as $transaction) {
-								echo $this->element('tableset/rows/transaction', am(
-									$options, compact('transaction')
-								));
+							if (isset($gift['Transaction'])) {
+								foreach ($gift['Transaction'] as $transaction) {
+									echo $this->element('tableset/rows/transaction', am(
+										$options, compact('transaction')
+									));
+								}
 							}
 						}
 					}

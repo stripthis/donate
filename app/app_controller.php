@@ -23,7 +23,7 @@ class AppController extends Controller {
 
 	var $plugins = array(
 		'Bugs', 'Favorites', 'Comments', 'Tellfriends', 'Logging', 'Chat',
-		'Smileys'
+		'Smileys', 'Segments'
 	);
 
 	var $helpers = array(

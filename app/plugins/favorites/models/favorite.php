@@ -31,7 +31,7 @@ class Favorite extends FavoritesAppModel{
 		foreach ($models as $model) {
 			$options[$model] = array('foreignKey' => 'foreign_id');
 		}
-		$this->bindModel(array('belongsTo' => $options));
+		$this->bindModel(array('belongsTo' => $options), false);
 
 		$favorites = $this->find('all', array(
 			'conditions' => $conditions,

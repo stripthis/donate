@@ -12,7 +12,7 @@ class Log extends LoggingAppModel {
 		foreach ($config['models'] as $model) {
 			$this->bindModel(array('belongsTo' => array(
 				$model => array('foreignKey' => 'model_id')
-			)));
+			)), false);
 		}
 	}
 }

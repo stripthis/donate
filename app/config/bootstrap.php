@@ -47,4 +47,9 @@ function myClearCache($pattern) {
 		}
 	}
 }
+
+function pluginLoaded($plugin) {
+	$App = App::getInstance();
+	return isset($App->__map['Plugin'][$plugin]);
+}
 ?>

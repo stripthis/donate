@@ -10,6 +10,7 @@ $config = array(
 		'plugins/jquery.hotkeys.min' => '*:admin*',
 		'plugins/jquery.scrollTo-min' => '*:admin*',
 		'plugins/jquery.chat.js' => '*:admin*',
+		'plugins/jquery.segments.js' => '*:admin*',
 		'jquery.validate.js' => 'Users:register',
 		'swfobject.js' => 'Statistics:*',
 		'tiny_mce/tiny_mce_gzip.js' => $mceRules,
