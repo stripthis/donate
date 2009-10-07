@@ -2,6 +2,7 @@
 	<table>
 		<thead>
 			<tr>
+				<th class="fold">&nbsp;</th>
 				<th class="favorites">&nbsp;</th>
 				<th class="status">&nbsp;</th>
 				<th class="title">
@@ -14,6 +15,8 @@
 					<?php echo __('Last Name', true); ?>
 					<?php echo __('Email', true); ?>
 				</th>
+				<th></th>
+				<th></th>
 				<th class="date"><?php echo __('Date', true); ?></th>
 				<th class="grab"></th>
 			</tr>
