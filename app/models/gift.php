@@ -12,7 +12,7 @@ class Gift extends AppModel {
 	);
 
 	var $hasMany = array(
-		'Transaction' => array('dependent' => true),
+		'Transaction' => array('dependent' => true)
 	);
 
 	var $hasOne = array(

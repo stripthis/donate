@@ -1,5 +1,6 @@
 # Files to globally generally ignore
 .DS_Store
+Thumbs.db
 
 # Specific files / paths to ignore
 /docs
@@ -23,3 +24,4 @@
 sql_updates.txt
 /app/views/pages/uuid.ctp
 vendors/OpenInviter/openinviter_stats.sqlite
+vendors/OpenInviter/tmp/

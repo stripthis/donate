@@ -4,7 +4,7 @@
 	  <legend><?php echo __('Tell A Friend'); ?></legend>
 	  <br />
 	  <ul>
-		<li><?php echo Configure::read('App.tellafriendError'); //@todo this is ugly?></li>
+		<li><?php echo Configure::read('App.tellafriendError'); //@todo this is ugly ?></li>
 	  </ul>
 	</fieldset>
 </div>
