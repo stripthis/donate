@@ -1,0 +1,1907 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<emoticonexport exported="1234710030" name="default">
+	<emogroup>
+		<emoticon>
+			<typed>:mellow:</typed>
+			<image>mellow.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:huh:</typed>
+			<image>huh.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:happy:</typed>
+			<image>happy.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:o</typed>
+			<image>ohmy.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>;)</typed>
+			<image>wink.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:P</typed>
+			<image>tongue.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:victory:</typed>
+			<image>victory.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>B)</typed>
+			<image>cool.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:rolleyes:</typed>
+			<image>rolleyes.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:sleep:</typed>
+			<image>sleep.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:dry:</typed>
+			<image>dry.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:)</typed>
+			<image>smile.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:wub:</typed>
+			<image>wub.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:mad:</typed>
+			<image>mad.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:(</typed>
+			<image>sad.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:unsure:</typed>
+			<image>unsure.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:wacko:</typed>
+			<image>wacko.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:blink:</typed>
+			<image>blink.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:blush:</typed>
+			<image>blush.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:angel:</typed>
+			<image>angel.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:excl:</typed>
+			<image>excl.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:glare:</typed>
+			<image>glare.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:ninja:</typed>
+			<image>ninja.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:alien:</typed>
+			<image>alien.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:angel1:</typed>
+			<image>angel1.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:arabia:</typed>
+			<image>arabia.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:balrog:</typed>
+			<image>balrog.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:banana:</typed>
+			<image>banana.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:band:</typed>
+			<image>band.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:banger:</typed>
+			<image>banger.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:banned:</typed>
+			<image>banned.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:bawling:</typed>
+			<image>bawling.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:beer:</typed>
+			<image>beer.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:beta:</typed>
+			<image>beta.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed><![CDATA[=]]]></typed>
+			<image>black_teeth.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:bouncing:</typed>
+			<image>bouncing.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:brickwall:</typed>
+			<image>brickwall.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:brow:</typed>
+			<image>brow.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:celt:</typed>
+			<image>celt.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:closed:</typed>
+			<image>closed.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:closed2:</typed>
+			<image>closed2.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:confused:</typed>
+			<image>confused.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:crash:</typed>
+			<image>crash.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:crazy:</typed>
+			<image>crazy.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:cry:</typed>
+			<image>cry.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:cheers:</typed>
+			<image>cheers.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:drink:</typed>
+			<image>drink.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:drool:</typed>
+			<image>drool.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:drukqs:</typed>
+			<image>drukqs.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:drunk:</typed>
+			<image>drunk.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:eek:</typed>
+			<image>eek.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:woot:</typed>
+			<image>emot-woot.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:gandalf_w:</typed>
+			<image>gandalf_w.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:gollum:</typed>
+			<image>gollum.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:grin:</typed>
+			<image>grin.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:hug:</typed>
+			<image>hug.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:idea:</typed>
+			<image>idea.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:indifferent:</typed>
+			<image>indifferent.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:jester:</typed>
+			<image>jester.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:joytears:</typed>
+			<image>joytears.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:karate:</typed>
+			<image>karate.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:king:</typed>
+			<image>king.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:ladysman:</typed>
+			<image>ladysman.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:lmao:</typed>
+			<image>lmao.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:LOL:</typed>
+			<image>LOL.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:loool:</typed>
+			<image>loool.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:mail:</typed>
+			<image>mail.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:muaha:</typed>
+			<image>muaha.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:nod:</typed>
+			<image>nod.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:offtopic:</typed>
+			<image>offtopic.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:ogre:</typed>
+			<image>ogre.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:oh:</typed>
+			<image>oh.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:omg:</typed>
+			<image>omg.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:one_samuria:</typed>
+			<image>one_samuria.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:oops:</typed>
+			<image>oops.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:orthanc:</typed>
+			<image>orthanc.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:pirate:</typed>
+			<image>pirate.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:pizza:</typed>
+			<image>pizza.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:punk:</typed>
+			<image>punk.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:ring:</typed>
+			<image>ring.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:roman:</typed>
+			<image>roman.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:sabba:</typed>
+			<image>sabba.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:sam:</typed>
+			<image>sam.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:saruman:</typed>
+			<image>saruman.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:self_hammer:</typed>
+			<image>self_hammer.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:shrug:</typed>
+			<image>shrug.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:slaver:</typed>
+			<image>slaver.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:smash:</typed>
+			<image>smash.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:smokin:</typed>
+			<image>smokin.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:spam:</typed>
+			<image>spam.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:throw-up:</typed>
+			<image>throw-up.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>(n)</typed>
+			<image>thumbdown.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:tired:</typed>
+			<image>tired.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:trout:</typed>
+			<image>trout.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:troutslap:</typed>
+			<image>troutslap.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:S</typed>
+			<image>umm.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:unhappy:</typed>
+			<image>unhappy.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:uruk-hai:</typed>
+			<image>uruk-hai.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:very-sad:</typed>
+			<image>very-sad.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:wavey:</typed>
+			<image>wavey.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:welcome:</typed>
+			<image>welcome.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:wine:</typed>
+			<image>wine.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:worship:</typed>
+			<image>worship2.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:yiepie:</typed>
+			<image>yiepie.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:znaika:</typed>
+			<image>znaika.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:bash:</typed>
+			<image>bash.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:google:</typed>
+			<image>google.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:lol:</typed>
+			<image>texto.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:1eye:</typed>
+			<image>1eye.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:D</typed>
+			<image>biggrin.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>(y)</typed>
+			<image>good.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:freak:</typed>
+			<image>freak.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:birthday:</typed>
+			<image>birthday.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:dance:</typed>
+			<image>dance.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:laugh:</typed>
+			<image>laugh.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:weee:</typed>
+			<image>weee.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:disagree:</typed>
+			<image>disagree.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:goofy:</typed>
+			<image>goofy.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:shifty:</typed>
+			<image>shifty.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:ok:</typed>
+			<image>ok.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:cool:</typed>
+			<image>cool2.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:cowboy:</typed>
+			<image>cowboy.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:dontgetit:</typed>
+			<image>dontgetit.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:flex:</typed>
+			<image>flex.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:gunsmilie:</typed>
+			<image>gunsmilie.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:holiday:</typed>
+			<image>holiday.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:mad1:</typed>
+			<image>mad1.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:nerd:</typed>
+			<image>nerd.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:pimp:</typed>
+			<image>pimp.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:scared:</typed>
+			<image>scared.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:sly:</typed>
+			<image>sly.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:smilie_osx:</typed>
+			<image>smilie_osx.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:smilie_tux:</typed>
+			<image>smilie_tux.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:smilie_xp:</typed>
+			<image>smilie_xp.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:thumbup:</typed>
+			<image>thumbup.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:xmas:</typed>
+			<image>xmas.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:spiteful:</typed>
+			<image>spiteful.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:blum:</typed>
+			<image>blum.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:rofl:</typed>
+			<image>rofl.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:pardon:</typed>
+			<image>pardon.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:drinks:</typed>
+			<image>drinks.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:sorry:</typed>
+			<image>sorry.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:kiss2:</typed>
+			<image>kiss2.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:help:</typed>
+			<image>help.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:man_in_love:</typed>
+			<image>man_in_love.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:bomb:</typed>
+			<image>bomb.gif</image>
+			<clickable>1</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:suicide2:</typed>
+			<image>suicide2.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:buba:</typed>
+			<image>buba.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:dance2:</typed>
+			<image>dance2.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:whistle3:</typed>
+			<image>whistle3.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:umnik2:</typed>
+			<image>umnik2.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:big_boss:</typed>
+			<image>big_boss.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:yahoo:</typed>
+			<image>yahoo.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:shok:</typed>
+			<image>shok.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:carthaginian:</typed>
+			<image>carthaginian.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:greek:</typed>
+			<image>greek.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:iberian:</typed>
+			<image>iberian.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:persian:</typed>
+			<image>persian.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:thank_you2:</typed>
+			<image>thank_you2.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:moil:</typed>
+			<image>moil.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:secret:</typed>
+			<image>secret.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:vampire:</typed>
+			<image>vampire.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:bag:</typed>
+			<image>bag.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:sleep1:</typed>
+			<image>sleep1.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:wallbash:</typed>
+			<image>wallbash.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:wink2:</typed>
+			<image>wink2.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:dead:</typed>
+			<image>dead.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:scratch_one-s_head:</typed>
+			<image>scratch_one-s_head.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:photo:</typed>
+			<image>photo.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:evil:</typed>
+			<image>evil.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:swoon:</typed>
+			<image>swoon.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:fish:</typed>
+			<image>fish.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:doctor:</typed>
+			<image>doctor.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:torch:</typed>
+			<image>torch.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:bad:</typed>
+			<image>bad.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:mamba:</typed>
+			<image>mamba.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:kid:</typed>
+			<image>kid.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:kwasny:</typed>
+			<image>kwasny.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:happybday:</typed>
+			<image>happybday.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:afro:</typed>
+			<image>afro.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:yucky:</typed>
+			<image>yucky.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:bomb_phone:</typed>
+			<image>bomb_phone.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:kiss3:</typed>
+			<image>kiss3.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:lookaround:</typed>
+			<image>lookaround.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:down:</typed>
+			<image>down.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:inlove:</typed>
+			<image>inlove.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:fyou:</typed>
+			<image>fyou.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:fear:</typed>
+			<image>fear.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:whistling:</typed>
+			<image>whistling.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:tease:</typed>
+			<image>tease.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:music:</typed>
+			<image>music.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:nea:</typed>
+			<image>nea.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:superstition:</typed>
+			<image>superstition.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:axeman:</typed>
+			<image>axeman.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:batman:</typed>
+			<image>batman.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:first_move:</typed>
+			<image>first_move.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:heat:</typed>
+			<image>heat.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:hypocrite:</typed>
+			<image>hypocrite.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:closedeyes:</typed>
+			<image>closedeyes.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:friends:</typed>
+			<image>friends.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:ph34r:</typed>
+			<image>ph34r.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:artist:</typed>
+			<image>artist.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:rockon:</typed>
+			<image>rockon.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:boredom:</typed>
+			<image>boredom.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:declare:</typed>
+			<image>declare.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:bye:</typed>
+			<image>bye.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:search:</typed>
+			<image>search.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:rtfm:</typed>
+			<image>rtfm.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:lol2:</typed>
+			<image>lol2.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:kiss:</typed>
+			<image>kiss.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:pilot:</typed>
+			<image>pilot.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:sword_rune:</typed>
+			<image>sword_rune.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:yes3:</typed>
+			<image>yes3.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:acute:</typed>
+			<image>acute.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:fool:</typed>
+			<image>fool.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:unknw:</typed>
+			<image>unknw.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:smoke:</typed>
+			<image>smoke.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:mummy:</typed>
+			<image>mummy.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:notworthy:</typed>
+			<image>notworthy.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:i-m_so_happy:</typed>
+			<image>i-m_so_happy.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:sweatdrop:</typed>
+			<image>sweatdrop.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:dirol:</typed>
+			<image>dirol.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:gossip:</typed>
+			<image>gossip.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:pleasantry:</typed>
+			<image>pleasantry.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:bangin:</typed>
+			<image>bangin.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:taz:</typed>
+			<image>taz.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:heart:</typed>
+			<image>heart.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:furious:</typed>
+			<image>furious.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:flirt:</typed>
+			<image>flirt.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:tongue_ss:</typed>
+			<image>tongue_ss.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:hi:</typed>
+			<image>hi.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:girl_devil:</typed>
+			<image>girl_devil.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:viking_face:</typed>
+			<image>viking_face.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:spruce_up:</typed>
+			<image>spruce_up.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:yinyang:</typed>
+			<image>yinyang.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:partytime:</typed>
+			<image>partytime.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:stinker:</typed>
+			<image>stinker.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:lamo:</typed>
+			<image>lamo.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:book:</typed>
+			<image>book.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:censored:</typed>
+			<image>censored.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:cray:</typed>
+			<image>cray.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:scare:</typed>
+			<image>scare.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:slow:</typed>
+			<image>slow.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:kiss1:</typed>
+			<image>kiss1.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:jawdrop:</typed>
+			<image>jawdrop.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:newyear:</typed>
+			<image>newyear.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:diablo:</typed>
+			<image>diablo.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:rock:</typed>
+			<image>rock.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:clap:</typed>
+			<image>clap.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:new_russian:</typed>
+			<image>new_russian.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:aggressive:</typed>
+			<image>aggressive.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:vava:</typed>
+			<image>vava.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:treaten:</typed>
+			<image>treaten.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:frusty:</typed>
+			<image>frusty.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:kewlpics:</typed>
+			<image>kewlpics.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:punish:</typed>
+			<image>punish.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:boxing:</typed>
+			<image>boxing.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:this:</typed>
+			<image>this.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:mda:</typed>
+			<image>mda.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:beach:</typed>
+			<image>beach.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:disgust:</typed>
+			<image>disgust.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:sport:</typed>
+			<image>sport.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:lazy:</typed>
+			<image>lazy.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:smilie_palm:</typed>
+			<image>smilie_palm.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:wink1:</typed>
+			<image>wink1.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:lol2:</typed>
+			<image>lol.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:naughty:</typed>
+			<image>naughty.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:shutup:</typed>
+			<image>shutup.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:shocking:</typed>
+			<image>shocking.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:argue:</typed>
+			<image>argue.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:tank:</typed>
+			<image>tank.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:nono:</typed>
+			<image>nono.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:blow:</typed>
+			<image>blow.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:goof:</typed>
+			<image>goof.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:shout:</typed>
+			<image>shout.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:sleepy:</typed>
+			<image>sleepy.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:crybaby:</typed>
+			<image>crybaby.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:air_kiss:</typed>
+			<image>air_kiss.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:schmoll:</typed>
+			<image>schmoll.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:focus:</typed>
+			<image>focus.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:wink_kiss:</typed>
+			<image>wink_kiss.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:beee:</typed>
+			<image>beee.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:clown:</typed>
+			<image>clown.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:nuke:</typed>
+			<image>nuke.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:phone1:</typed>
+			<image>phone1.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:bored:</typed>
+			<image>bored.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:thumbsup:</typed>
+			<image>thumbsup.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:fireman2:</typed>
+			<image>fireman2.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:kisss:</typed>
+			<image>kisss.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:yawn:</typed>
+			<image>yawn.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:clapping:</typed>
+			<image>clapping.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:wheelchair:</typed>
+			<image>wheelchair.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:no:</typed>
+			<image>no.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:smartass:</typed>
+			<image>smartass.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:yu:</typed>
+			<image>yu.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:give_rose:</typed>
+			<image>give_rose.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:angry:</typed>
+			<image>angry.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:twisted:</typed>
+			<image>twisted.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:velho:</typed>
+			<image>velho.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:mega_shok:</typed>
+			<image>mega_shok.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:yess:</typed>
+			<image>yess.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:dance3:</typed>
+			<image>dance3.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:viking:</typed>
+			<image>viking.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:schnauz:</typed>
+			<image>schnauz.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:dj:</typed>
+			<image>dj.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:walkman:</typed>
+			<image>walkman.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:chef:</typed>
+			<image>chef.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:yes:</typed>
+			<image>yes.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:hammer:</typed>
+			<image>hammer.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:dots:</typed>
+			<image>dots.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:tooth:</typed>
+			<image>tooth.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:medieval:</typed>
+			<image>medieval.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:give_heart2:</typed>
+			<image>give_heart2.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:angel_not:</typed>
+			<image>angel_not.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:eat:</typed>
+			<image>eat.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:sadwalk:</typed>
+			<image>sadwalk.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+
+		<emoticon>
+			<typed>:give_heart:</typed>
+			<image>give_heart.gif</image>
+			<clickable>0</clickable>
+		</emoticon>
+	</emogroup>
+
+</emoticonexport>
