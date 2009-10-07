@@ -36,7 +36,7 @@
 				if (clearTextbox) {
 					$obj.find("textarea[name='data[Chat][message]']").val('');
 					clearTextbox = false;
-					$('.chat_window', $obj.parents()).scrollTo(250, 800);
+					$('.chat_window', $obj.parents()).scrollTo(500, 800);
 				};
 			}
 		});
@@ -70,6 +70,6 @@
 
 	$.fn.chat.defaults = {
 		update: '/chat/update',
-		interval: 5000
+		interval: 3000
 	};
 })(jQuery);

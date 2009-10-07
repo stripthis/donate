@@ -21,11 +21,15 @@ class AppController extends Controller {
 		'Pgp'
 	);
 
-	var $plugins = array('Bugs', 'Favorites', 'Comments', 'Tellfriends', 'Logging', 'Chat');
+	var $plugins = array(
+		'Bugs', 'Favorites', 'Comments', 'Tellfriends', 'Logging', 'Chat',
+		'Smileys'
+	);
+
 	var $helpers = array(
 		'Html','Javascript', 'Time', 'Form', 'Common', 'Text', 'Session',
 		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
-		'Favorites', 'Chat.AjaxChat'
+		'Favorites', 'Chat.AjaxChat', 'Smileys.Smiley'
 	);
 
 	var $ignoreUserSession = false;
@@ -162,7 +166,10 @@ class AppController extends Controller {
 
 			$Controller = new $controller();
 			if (method_exists($Controller, 'init')) {
-				$Controller->init();
+				$toSet = $Controller->init();
+				if (is_array($toSet)) {
+					$this->set($toSet);
+				}
 			}
 		}
 	}

@@ -19,7 +19,7 @@ class AjaxChatHelper extends Helper {
 		echo '<div id="' . $id. '" class="chat" name="' . $key . '">';
 		echo '<div class="chat_window"><p>Loading...</p></div>';
 		echo $this->Form->create('Chat', array(
-			'id' => $key . 'ChatForm', 'url' => array('controller' => 'chat', 'action' => 'post')
+			'id' => $key . 'ChatForm', 'url' => array('controller' => 'chat', 'action' => 'post', 'plugin' => '')
 		));
 		echo $this->Form->input('key', array('type' => 'hidden', 'value' => $key));
  		echo $this->Form->input('message', array('id' => $key . 'ChatMessage', 'type' => 'textarea'));

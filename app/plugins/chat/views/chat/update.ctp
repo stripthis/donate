@@ -9,7 +9,7 @@ foreach ($messages as $i => $message) {
 	echo sprintf('<p class="%s"><strong>%s (%s):</strong> %s</p>',
 		$class, $message['User']['name'],
 		$time->timeAgoInWords($message['Chat']['created']),
-		nl2br($message['Chat']['message'])
+		$smiley->parse(nl2br($message['Chat']['message']), $smileys)
 	);
 }
 ?>

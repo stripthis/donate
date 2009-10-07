@@ -76,6 +76,11 @@ class Navigation extends AppModel{
 					, '#/\/admin\/logs.*/iU'
 					, 'role' => 'root'
 				)
+				, __('Smileys', true) => array(
+					'/admin/smileys'
+					, '#/\/admin\/smileys.*/iU'
+					, 'role' => 'root'
+				)
 				, __('Office Config', true) => array(
 					'/admin/offices/edit'
 					, '#/\/admin\/offices(\/edit|\/view).*/iU'
