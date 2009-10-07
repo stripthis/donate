@@ -7,7 +7,7 @@
 						'label' => __('Friends\' Email (comma separated emails)',true).' *','class'=>'input text required','div'=>false)
 					);
 					?>
-					<a href="tellfriends/tellfriends/openinviter?keepThis=true&TB_iframe=true&height=350&width=350" class="thickbox iconic address_book"  id="onpeniviterLink"><?php __('Import contacts from web...'); ?></a>
+					<a href="tellfriends/tellfriends/openinviter?keepThis=true&TB_iframe=true&height=330&width= 430" class="thickbox iconic address_book"  id="onpeniviterLink"><?php __('Import contacts from web...'); ?></a>
 				</div>
 				<div class="spacer"></div>
 				<div class="input_wrapper half">
