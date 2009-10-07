@@ -86,6 +86,15 @@ class TellfriendsController extends TellfriendsAppController {
 			return;
 		}
 /**
+ * controller action for openinviter thickbox pop up
+ *
+ * @return void
+ * @access public
+ */
+	function openinviter() {
+			return;
+		}
+/**
  * controller action for tellafriend feature
  *
  * @return void

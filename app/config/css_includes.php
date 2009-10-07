@@ -5,7 +5,8 @@ $config = array(
 		'generic.css' => '*:*,!*:admin_*',
 		'chat.css' => '*:admin_*',
 		'plugins/segments.css' => '*:admin_*',
-		'tooltip.css' => '*:*'
+		'tooltip.css' => '*:*',
+		'thickbox.css' => 'Tellfriends:refer, Tellfriends:openinviter'
 	)
 );
 ?>
