@@ -2,7 +2,7 @@
  * Default GPI Donation page CSS
  * appeal.author: white rabbit team rocket!
  * appeal.name: default
- * appeal.id: 4a686dd2-8c64-45a0-99ee-4507a7f05a6e
+ * appeal.id: templates/default
 /***********************************************************************************
  * Website Commons
  ***********************************************************************************/
@@ -212,11 +212,11 @@ form .error .error-message{
 }
 #banner a.greenpeace{
 	width:151px;
-	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/banner.png) 0 0 no-repeat;
+	background: url(/img/templates/default/banner.png) 0 0 no-repeat;
 }
 #banner a.donate{
 	width:588px;
-	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/banner.png) -152px 0 no-repeat;
+	background: url(/img/templates/default/banner.png) -152px 0 no-repeat;
 }
 #banner a span{
 	visibility:hidden;
@@ -245,8 +245,9 @@ form .error .error-message{
 #content ul.half,
 #content div.half{
 	float:left;
-	width:45%;
-	margin-left:3%;
+	width:44.5%;
+	margin-left:5%;
+	clear:none;
 }
 #content div.half.left{
 	float:left;
@@ -255,6 +256,11 @@ form .error .error-message{
 #content div.half.right{
 	float:right;
 	width:45%;
+}
+#content div.half.with_img{
+	float:left;
+	width:auto;
+	margin:1.6%;
 }
 /* main content (form) */
 #content form .input_wrapper{
@@ -332,6 +338,12 @@ form .error .error-message{
 	padding-left:20px;
   background-image:url(http://www.greenpeace.org/resources/gcms/assets/graphics/act-arrow.png);
 }
+.input + .iconic{
+	float:left;
+	margin-top:5px;
+	clear:left;
+}
+
 /* decoration / content */
 .message{
 	margin:7px 5px 0px 8px;
@@ -357,30 +369,32 @@ form .error .error-message{
 }
 
 /* text decoration */
+#content .decorator.half{
+	float:left;
+	width:44%;
+	clear:none;
+	margin:1.5%;
+	padding:10px;
+}
+#content .decorator#activist{
+	height:200px;
+	background:#FFF url(/img/templates/default/activist.jpeg) center center no-repeat;
+}
+#content .decorator#earth{
+	height:200px;
+	background:#FFF url(/img/templates/default/earth.jpg) -130px -35px no-repeat;
+}
+/*
 #content #activist{
 	float:left;
-	clear:none;
 	width:338px;
-	background:#FFF url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/activist.jpeg) center center no-repeat;
+	clear:none;
+	background:#FFF url(/img/templates/default/activist.jpeg) center center no-repeat;
 	margin:22px 5px 0 15px; 
 	padding:0;
-}
+}*/
 #content #activist p{
 	margin:122px 0 0 0;
-	background-color:#ff6600;
-	color:#FFF;
-	font-size:1.1em;
-	padding:7px;
-	font-weight:bold;
-}
-#content #earth{
-	width:370px;
-	background:#FFF url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/earth.jpg) -130px -35px no-repeat;
-	margin: 20px 5px 0 15px; 
-	padding:0;
-}
-#content #earth p{
-	margin:150px 0 0 0;
 	background-color:#ff6600;
 	color:#FFF;
 	font-size:1.1em;
@@ -397,7 +411,7 @@ form .error .error-message{
 	color:#FF6600;
 }
 #content .verisign{
-	background:#FFF url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/verisign.gif) -10px center no-repeat;
+	background:#FFF url(/img/templates/default/verisign.gif) -10px center no-repeat;
 	width:400px;
 	height:55px;
 	padding:5px 0px;
@@ -439,25 +453,25 @@ form .error .error-message{
 	border:1px solid #FFF;
 }
 #content #card .input_wrapper.radio label.option#mastercard{
-	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/mastercard.png) center 7px no-repeat;
+	background: url(/img/templates/default/mastercard.png) center 7px no-repeat;
 }
 #content #card .input_wrapper.radio label.option#visa{
-	background: url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/visa.png) center 7px no-repeat;
+	background: url(/img/templates/default/visa.png) center 7px no-repeat;
 }
 #content #card .input_wrapper.radio label.option#electron{
-	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/visa_electron.png) center 7px no-repeat;
+	background:url(/img/templates/default/visa_electron.png) center 7px no-repeat;
 }
 #content #card .input_wrapper.radio label.option#diners{
-	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/diners.png) center 7px no-repeat;
+	background:url(/img/templates/default/diners.png) center 7px no-repeat;
 }
 #content #card .input_wrapper.radio label.option#discover{
-	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/discover.png) center 7px no-repeat;
+	background:url(/img/templates/default/discover.png) center 7px no-repeat;
 }
 #content #card .input_wrapper.radio label.option#amex{
-	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/amex.png) center 7px no-repeat;
+	background:url(/img/templates/default/amex.png) center 7px no-repeat;
 }
 #content #card .input_wrapper.radio label.option#jcb{
-	background:url(/img/4a686dd2-8c64-45a0-99ee-4507a7f05a6e/jcb.png) center 7px no-repeat;
+	background:url(/img/templates/default/jcb.png) center 7px no-repeat;
 }
 #content #card .input_wrapper.radio label.option:hover{
 	border:1px solid #DDD;

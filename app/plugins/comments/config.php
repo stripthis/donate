@@ -3,7 +3,9 @@ $config = array(
 	'Comments' => array(
 		'models' => array(
 			// threaded?
-			'Gift' => true
+			'Gift' => true,
+			'User' => true,
+			'Contact' => true
 		)
 	)
 );
