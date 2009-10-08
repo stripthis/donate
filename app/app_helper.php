@@ -8,62 +8,12 @@ class AppHelper extends Helper {
  * @return void
  * @access public
  */
-	// function url($url = null, $full = false) {
-	// 	$Router =& Router::getInstance();
-	// 	if (!empty($Router->__params)) {
-	// 		if (isset($Router) && !isset($Router->params['requested'])) {
-	// 			$params = $Router->__params[0];
-	// 		} else {
-	// 			$params = end($Router->__params);
-	// 		}
-	// 	}
-	// 
-	// 	App::import('Helper', 'Session');
-	// 	$SessionHelper = new SessionHelper();
-	// 	$lang = $SessionHelper->read('Config.language') . '/';
-	// 
-	// 	if (isset($params['admin']) && $params['admin'] && !isset($url['admin'])) {
-	// 		$url['admin'] = $params['admin'];
-	// 	}
-	// 
-	// 	if (is_array($url) && isset($url['controller']) && !isset($url['page'])) {
-	// 		if (!isset($url['action'])) {
-	// 			$url['action'] = 'index';
-	// 		}
-	// 
-	// 		$admin = '';
-	// 		if (isset($url['admin']) && $url['admin']) {
-	// 			$admin = Configure::read('Routing.admin') . '/';
-	// 			if (strpos($url['action'], $admin . '_') === 0) {
-	// 				$url['action'] = substr($url['action'], strlen($admin));
-	// 			}
-	// 		}
-	// 		unset($url['admin']);
-	// 		unset($url['plugin']);
-	// 
-	// 		$count = count($url);
-	// 		if (4 == $count) {
-	// 			return '/' . $lang . $admin . $url['controller'] . '/' . $url['action'] . '/' . $url[0] . '/' . $url[1];
-	// 		}
-	// 
-	// 		if (3 == $count) {
-	// 			if (isset($url['id'])) {
-	// 				$url[0] = $url['id'];
-	// 			}
-	// 			return '/' . $lang. $admin . $url['controller'] . '/' . $url['action'] . '/' . $url[0];
-	// 		}
-	// 
-	// 		if (2 == $count) {
-	// 			return '/' . $lang . $admin . $url['controller'] . '/' . $url['action'];
-	// 		}
-	// 
-	// 		if (1 == $count) {
-	// 			return '/' . $lang . $admin . $url['controller'] . '/index';
-	// 		}
-	// 	}
-	// 
-	// 	return parent::url($url, $full);
-	// }
+	function url($url = null, $full = false) {
+		if (!isset($url['plugin'])) {
+			$url['plugin'] = '';
+		}
+		return parent::url($url, $full);
+	}
 /**
  * undocumented function
  *

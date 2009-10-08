@@ -6,7 +6,8 @@ $config = array(
 			'Transaction'
 		),
 		'contain' => array(
-			'Gift.Contact'
+			'Gift.Contact',
+			'Transaction.Gateway'
 		)
 	)
 );

@@ -31,7 +31,7 @@ class FavoritesHelper extends Apphelper {
  * @param $uuid
  * @return string link
  */	
-	function link($model, $uuid){
+	function link($model, $uuid) {
 		$isFavorited = ClassRegistry::init('Favorite')->isFavorited($uuid);
 		if (!$isFavorited) {
 			$img = $this->Html->image(

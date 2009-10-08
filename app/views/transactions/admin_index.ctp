@@ -32,13 +32,13 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 		$th[] = $favorites->favall();
 	}
 	$th = am($th,array(
-		$myPaginator->sort(__('Status',true),'Transaction.status', array('url' => $params)),
-		$myPaginator->sort(__('Id',true),'Transaction.serial', array('url' => $params)),
-		$myPaginator->sort(__('Import Id',true),'Import.serial', array('url' => $params)),
-		$myPaginator->sort(__('Amount',true),'Transaction.amount', array('url' => $params)),
-		$myPaginator->sort(__('Gateway',true),'Gateway.parent_id', array('url' => $params)),
-		$myPaginator->sort(__('Created',true),'Transaction.created', array('url' => $params)),
-		$myPaginator->sort(__('Modified',true),'Transaction.modified', array('url' => $params)),
+		$myPaginator->sort(__('Status',true), 'Transaction.status', array('url' => $params)),
+		$myPaginator->sort(__('Id',true), 'Transaction.serial', array('url' => $params)),
+		$myPaginator->sort(__('Import Id',true), 'Import.serial', array('url' => $params)),
+		$myPaginator->sort(__('Amount',true), 'Transaction.amount', array('url' => $params)),
+		$myPaginator->sort(__('Gateway',true), 'Gateway.parent_id', array('url' => $params)),
+		$myPaginator->sort(__('Created',true), 'Transaction.created', array('url' => $params)),
+		$myPaginator->sort(__('Modified',true), 'Transaction.modified', array('url' => $params)),
 		'Actions'
 	));
 

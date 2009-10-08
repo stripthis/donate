@@ -1,4 +1,4 @@
-(function($) {
+(function ($) {
 	var opts = {};
 	var clearTextbox = false;
 
@@ -17,7 +17,7 @@
 
 			$(this).find('form').submit(function() {
 				post($(this));
-				return false
+				return false;
 			});
 		});
 	};
@@ -39,10 +39,10 @@
 					$obj.find("textarea[name='data[Chat][message]']").val('');
 					clearTextbox = false;
 					$('.chat_window', $obj.parents()).scrollTo(500, 800);
-				};
+				}
 			}
 		});
-	};
+	}
 
 	function post($obj) {
 		var $message = $obj.find("textarea[name='data[Chat][message]']");
@@ -68,7 +68,7 @@
 				$submit.attr('disabled', false);
 			}
 		});
-	};
+	}
 
 	$.fn.chat.defaults = {
 		update: '/chat/update',

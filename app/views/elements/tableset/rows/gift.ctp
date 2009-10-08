@@ -14,7 +14,8 @@ $options = array(
 	'do_selection' => isset($do_selection) ? $do_selection : 1,
 	'do_fold' => isset($fold) ? $do_fold : 1,
 	'do_favorites' => isset($do_favorites) ? $do_favorites : 1,
-	'do_status' => isset($do_status) ? $do_status : 1
+	'do_status' => isset($do_status) ? $do_status : 1,
+	'colsToAppend' => isset($colsToAppend) ? $colsToAppend : false
 );
 ?>
 
@@ -67,8 +68,14 @@ $options = array(
 	<?php else : ?>
 		<td class="description">Some more information</td>
 	<?php endif; ?>
-	<?php echo $this->element('tableset/collumns/attachments', $options); ?>
-	<?php echo $this->element('tableset/collumns/comments',$options); ?>
-	<?php echo $this->element('tableset/collumns/date', array('date'=>$gift['Gift']['modified'])); ?>
-	<?php echo $this->element('tableset/collumns/grab'); ?>
+
+	<?php
+	echo $this->element('tableset/collumns/attachments', $options);
+	echo $this->element('tableset/collumns/comments',$options);
+	echo $this->element('tableset/collumns/date', array('date'=>$gift['Gift']['modified']));
+	echo $this->element('tableset/collumns/grab');
+	if (!empty($options['colsToAppend'])) {
+		echo $options['colsToAppend'];
+	}
+	?>
 </tr>

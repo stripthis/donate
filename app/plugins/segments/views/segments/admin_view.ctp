@@ -15,7 +15,9 @@
 			<h2><?php echo Inflector::pluralize($model)?></h2>
 			<?php
 			$plural = low(Inflector::tableize($model));
-			echo $this->element('../' . $plural . '/from_element', array($plural => $rows));
+			echo $this->element('../segments/' . $plural, array(
+				$plural => $rows, 'plugin' => 'segments', 'segment' => $segment
+			));
 			?>
 		<?php endforeach; ?>
 	<?php endif; ?>
