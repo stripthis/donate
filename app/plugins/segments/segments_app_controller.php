@@ -30,8 +30,8 @@ class SegmentsAppController extends AppController {
 	function init() {
 		$Segment = ClassRegistry::init('Segment');
 		$segments = $Segment->find('all', array(
-			'order' => array('Segment.name' => 'asc'),
-			'contain' => false
+			'conditions' => array('user_id' => User::get('id')),
+			'order' => array('Segment.name' => 'asc')
 		));
 		return compact('segments');
 	}

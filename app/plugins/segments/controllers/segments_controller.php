@@ -2,7 +2,12 @@
 class SegmentsController extends SegmentsAppController {
 	var $sessKeyModel = 'segment_model';
 	var $sessKeySelection = 'segment_selection';
-
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	function beforeFilter() {
 		parent::beforeFilter();
 

@@ -4,6 +4,9 @@ if (!isset($widgets)) {
 	if (pluginLoaded('Segments')) {
 		$widgets[] = 'Segments.segments_widget';
 	}
+	if (pluginLoaded('Filters')) {
+		$widgets[] = 'Filters.filters_widget';
+	}
 }
 if (!isset($widgets_options)) {
 	$widgets_options = array(

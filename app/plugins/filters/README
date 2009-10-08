@@ -1,0 +1,9 @@
+Installation:
+
+1. Execute the sql file.
+
+2. Put the js file into /webroot/js/plugins/jquery.segments.js and load it with JsIncludes.
+
+2. Put the js file into /webroot/css/plugins/segments.css and load it with CssIncludes.
+
+4. Config the models in config.php of the plugin.
