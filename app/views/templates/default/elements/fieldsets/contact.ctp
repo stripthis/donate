@@ -37,11 +37,6 @@
 				</div>
 				<div class="input_wrapper full">
 					<?php
-						/*
-						echo $form->input('Contact.dob', array(
-							'label' => 'Date of Birth'. ': ' . $giftForm->required(),
-							'value' => $giftForm->value('Contact', 'dob', '', $form->data)
-						))."\n";*/
 						echo $form->input('Contact.dob', array(
 							'label' => __('Date of Birth', true) . ':',
 							'type' => 'date',
@@ -53,12 +48,12 @@
 							'minYear' => '1900',
 							'maxYear' => date('Y') - Configure::read('App.legal.ageMini'),
 							'id' => 'popupDatepicker'
-						))."\n";
+						))."&nbsp;";
+						echo ' '. $common->datepicker('select')."\n";
 					?>
-					<?php echo $common->datepicker('select'); ?>
 				</div>
 				<div class="input_wrapper full">
-					<?php				 
+					<?php
 						echo $form->input('Address.line_1', array(
 							'label' => 'Address'. ': ' . $giftForm->required(),
 							'value' => $giftForm->value('Address', 'line_1', '', $form->data)
