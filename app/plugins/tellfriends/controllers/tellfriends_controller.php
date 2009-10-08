@@ -53,19 +53,19 @@ class TellfriendsController extends TellfriendsAppController {
 			} else{
 			
 				$this->render = false;
-				$element = "";
+				$element = '';
 				if(count($contacts) >0){
 				$element .= "<table>";
 					foreach ($contacts as $key=>$val) {
 						$element .= '<tr><td  valign="top"><input type="checkbox" name="Tellfriend.option[]" value="'.$key.'" onchange="tellFriends(this);"></td><td valgin="bottom">'.$key.'</td></tr>';
 					}
-				$element .= "</table>";
+				$element .= '</table><input type="button" id="confirm" value="Confirm" onclick="validate();">';
 				 }
 				echo $element;
 				exit;
 			}
 			if(count($errors)>0){
-				$errMessages = "";
+				$errMessages = '';
 				foreach ($errors as $key=>$val) {
 							$errMessages .= $val;
 						}

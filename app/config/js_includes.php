@@ -20,7 +20,8 @@ $config = array(
 		'common.js' => '*:!admin*',
 		'japp.js' => '*:!admin*',
 		'datepicker/jquery.datepick.js' => '*:*',
-		'thickbox.js' => 'Tellfriends:refer, Tellfriends:openinviter'
+		'thickbox.js' => 'Tellfriends:refer, Tellfriends:openinviter',
+		'datepick.js' => '*:*'
 	)
 );
 ?>

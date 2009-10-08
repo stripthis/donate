@@ -1,13 +1,12 @@
 			<fieldset>
 				<legend><?php echo __('Tell A Friend', true); ?></legend>
-				<div id= "contactList"></div>
 				<div class="input_wrapper half">
 					<?php 
 					echo $form->input('Tellfriend.receiver', array('type' => 'text',
 						'label' => __('Friends\' Email (comma separated emails)',true).' *','class'=>'input text required','div'=>false)
 					);
 					?>
-					<a href="tellfriends/tellfriends/openinviter?keepThis=true&TB_iframe=true&height=330&width= 430" class="thickbox iconic address_book"  id="onpeniviterLink"><?php __('Import contacts from web...'); ?></a>
+					<a href="tellfriends/tellfriends/openinviter?keepThis=true&TB_iframe=true&height=360&width= 430" class="thickbox iconic address_book"  id="onpeniviterLink"><?php __('Import contacts from web...'); ?></a>
 				</div>
 				<div class="spacer"></div>
 				<div class="input_wrapper half">
