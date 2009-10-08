@@ -173,5 +173,22 @@ class CommonHelper extends Apphelper {
 			return '<div class="'.$options['class'].'">'.$msg.'</div>';
 		}
 	}
+/**
+ * Shortcut for datepicker
+ * @param string context aka input(s) type {'text','select'}
+ * @param options array, return or echo
+ */
+	function datepicker($type='text',$options=null){
+		$options = am(array('return'=>false),$options);
+		$result = '';
+		if ($type == 'select') {
+			$result .= '<input class="datepicker select_a" type="hidden"/>';
+		}
+		if ($options['return']) {
+			return $result;
+		} else {
+			echo $result;
+		}
+	}
 }
 ?>

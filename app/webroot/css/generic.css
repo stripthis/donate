@@ -525,6 +525,15 @@ form .error .error-message{
 	padding:5px;
 }
 
+/* country selector */
+#content .half.classic_box.country_selector p{
+	float:left;
+	margin-top:10px;
+	padding-top:10px;
+	border-top:2px dotted #FFF;
+	text-align:center;
+}
+
 /* footer */
 #footer {
   color:#FFF;

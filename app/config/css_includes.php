@@ -6,6 +6,7 @@ $config = array(
 		'chat.css' => '*:admin_*',
 		'plugins/segments.css' => '*:admin_*',
 		'tooltip.css' => '*:*',
+		'datepicker.css' => '*:*',
 		'thickbox.css' => 'Tellfriends:refer, Tellfriends:openinviter'
 	)
 );

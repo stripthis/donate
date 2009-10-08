@@ -1,5 +1,5 @@
 			<div class="country_selector half classic_box">
-				<h3><?php echo __('Donate to greenpeace in your country*',true); ?></h3>
+				<h3><?php echo __('Please select your country',true); ?></h3>
 				<ul class="half">
 					<li><a href="http://www.greenpeace.org/africa/donate?referrer=indexgpi" onclick="javascript: pageTracker._trackPageview('/outbound/main/donate/'+this.text);">Africa</a></li>
 					<li><a href="https://unite.greenpeace.org.ar/?referrer=gpi_splash_web" onclick="javascript: pageTracker._trackPageview('/outbound/main/donate/'+this.text);">Argentina</a></font></li>
@@ -48,4 +48,8 @@
 					<li><a href="http://www.greenpeace.org.uk/donate" onclick="javascript: pageTracker._trackPageview('/outbound/main/donate/'+this.text);">United Kingdom</a></li>
 					<li><a href="https://secureusa.greenpeace.org/securedonate/index.php?from=gpi" onclick="javascript: pageTracker._trackPageview('/outbound/main/donate/'+this.text);">United States</a></li>
 				</ul>
+				<p class="select_international">
+					<strong class="required">*</strong>
+					<?php echo sprintf(__('If your country is not listed, please donate to %s',true),'<a href="http://www.greenpeace.org/international/getinvolved/donate">Greenpeace International</a>.'); ?>
+				</p>
 			</div>
