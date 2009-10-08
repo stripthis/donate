@@ -1,6 +1,6 @@
-<div id="content_wrapper">
+<div class="content_wrapper">
 <?php echo $this->element('../templates/default/elements/banner'); ?>
-	<div id="content">
+	<div id="content" id="thankyou">
 <?php echo $this->element('../templates/default/elements/title'); ?>
 	<ul>
 		<li>

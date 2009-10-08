@@ -1,6 +1,7 @@
 <?php 
 echo $javascript->link('/tellfriends/js/jquery.base64.js');
 echo $javascript->link('/tellfriends/js/ajaxRefer.js');
+echo $javascript->link('/tellfriends/js/datepicker.js');
 ?>
 <style type="text/css">
 @import "js/datepicker/jquery.datepick.css";
@@ -40,12 +41,6 @@ echo $javascript->link('/tellfriends/js/ajaxRefer.js');
 <option value="2009">2009</option>
 <option value="2010">2010</option>
 </select><input id="a"  type="text" style="position: absolute; z-index: -1;" />
-
-
                 <input type="text" id="popupDatepicker" >
   
-
-
-
-			
 			</fieldset>

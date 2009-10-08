@@ -51,9 +51,15 @@
 							'div' => false,
 							'separator' => '&nbsp;',
 							'minYear' => '1900',
-							'maxYear' => date('Y') - Configure::read('legal.ageMini')
+							'maxYear' => date('Y') - Configure::read('legal.ageMini'),
+							'id' => 'popupDatepicker'
 						))."\n";
 					?>
+<style type="text/css">
+@import "js/datepicker/jquery.datepick.css";
+</style>
+<input class="datepicker select_a" type="text" style="position: absolute; z-index: -1;" />
+
 				</div>
 				<div class="input_wrapper full">
 					<?php				 

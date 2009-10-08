@@ -12,11 +12,8 @@ if (!empty($cData)) {
 <?php echo $this->element('../templates/default/elements/teasers/mission'); ?>
 <?php echo $this->element('../templates/default/elements/feedback'); ?>
 		<?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
-		<?php //echo $form->create('Gift', array('url' => $this->here . '/2'))."\n"; ?>
-		<?php echo $form->input( 'Gift.id', array('type' => 'hidden'))."\n"; ?>
-		<?php echo $form->input( 'Gift.type', array('type' => 'hidden', "value" => "donation"))."\n"; ?>
-		<?php echo $form->input( 'Gift.appeal_id', array('type' => 'hidden'))."\n"; ?>
-		<?php echo $this->element('../templates/default/contact'); ?>
+<?php echo $this->element('../templates/default/elements/fielsets/hidden'); ?>
+<?php echo $this->element('../templates/default/elements/fieldset/contact'); ?>
 		<?php echo $form->submit('Donate', array('class' => 'donate-submit')); ?>
 		<?php echo $form->end()?>
 		</div>

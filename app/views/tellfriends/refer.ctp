@@ -2,7 +2,7 @@
 echo $javascript->link('/tellfriends/js/jquery.base64.js');
 echo $javascript->link('/tellfriends/js/ajaxRefer.js');
 
-$use_recaptcha = true; // @todo depend on context; ex: not after donation
+$uses_recaptcha = true; // @todo depend on context; ex: not after donation
 ?>
 	<div id="content_wrapper">
 <?php echo $this->element('../templates/default/elements/banner'); ?>
@@ -10,8 +10,8 @@ $use_recaptcha = true; // @todo depend on context; ex: not after donation
 <?php //echo $this->element('../templates/default/elements/openinviter', array('options' => array('providers'=>$providers)));?>
 			<?php echo $form->create('tellafriend', array('url' => array('controller'=>'tellfriends', 'action'=>'refer'))); ?>
 <?php echo $this->element('message'); ?>
-<?php if($use_recaptcha): ?>
-<?php 	echo $this->element('../templates/default/elements/recaptcha'); ?>
+<?php if($uses_recaptcha): ?>
+<?php 	echo $this->element('../templates/default/elements/fieldsets/recaptcha'); ?>
 <?php endif; ?>
 			<?php echo $form->end('Send Email'); ?>
 		</div>

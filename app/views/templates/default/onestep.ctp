@@ -11,15 +11,15 @@
 	<div id="content_wrapper">
 <?php echo $this->element('../templates/default/elements/banner'); ?>
 		<div id="content">
-<?php echo $this->element('../templates/default/elements/title'); ?>
-<?php echo $this->element('../templates/default/elements/teasers/mission'); ?>
+<?php echo $this->element('../templates/default/elements/teasers/title1'); ?>
+<?php echo $this->element('../templates/default/elements/teasers/mission1'); ?>
 <?php echo $this->element('../templates/default/elements/feedback'); ?>
       <?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
-<?php	echo $this->element('../templates/default/elements/gift'); ?>
-<?php echo $this->element('../templates/default/elements/teasers/decoration1'); ?>
-<?php	echo $this->element('../templates/default/elements/contact'); ?>
-<?php	echo $this->element('../templates/default/elements/payment'); ?>
-<?php	echo $this->element('../templates/default/elements/smallprints'); ?>
+<?php	echo $this->element('../templates/default/elements/fieldsets/gift'); ?>
+<?php echo $this->element('../templates/default/elements/decorators/activist'); ?>
+<?php	echo $this->element('../templates/default/elements/fieldsets/contact'); ?>
+<?php	echo $this->element('../templates/default/elements/fieldsets/payment'); ?>
+<?php	echo $this->element('../templates/default/elements/fieldsets/smallprints'); ?>
 <?php	echo $this->element('../templates/default/elements/security_notice'); ?>
       <?php echo $form->end(__('Donate',true)); ?>
 		</div>

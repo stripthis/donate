@@ -376,23 +376,18 @@ form .error .error-message{
 	margin:1.5%;
 	padding:10px;
 }
-#content .decorator#activist{
-	height:200px;
-	background:#FFF url(/img/templates/default/activist.jpeg) center center no-repeat;
-}
 #content .decorator#earth{
 	height:200px;
 	background:#FFF url(/img/templates/default/earth.jpg) -130px -35px no-repeat;
 }
-/*
-#content #activist{
+#content .decorator#activist{
 	float:left;
 	width:338px;
 	clear:none;
 	background:#FFF url(/img/templates/default/activist.jpeg) center center no-repeat;
 	margin:22px 5px 0 15px; 
 	padding:0;
-}*/
+}
 #content #activist p{
 	margin:122px 0 0 0;
 	background-color:#ff6600;
