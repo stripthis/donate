@@ -88,7 +88,11 @@ class SegmentsController extends SegmentsAppController {
 		Assert::true(AppModel::isOwn($segment, 'Segment'), '403');
 
 		$this->Segment->del($id);
-		$this->Message->add('Segment deleted.', 'ok', true, $this->referer());
+		$url = $this->referer();
+		if (preg_match('/' . $id . '/', $url)) {
+			$url = '/admin/home';
+		}
+		$this->Message->add('Segment deleted.', 'ok', true, $url);
 	}
 /**
  * undocumented function

@@ -20,6 +20,13 @@ $open = (!isset($options['open'])) ? 'close' : $options['open'];
 						'plugin' => 'segments'
 					));
 					?>
+					-
+					<?php
+					echo $html->link(__('Delete', true), array(
+						'controller' => 'segments', 'action' => 'delete', $segment['Segment']['id'],
+						'plugin' => 'segments'
+					), null, __('Are you sure? There is no going back ..', true));
+					?>
 				</li>
 			<?php endforeach; ?>
 		</ul>
