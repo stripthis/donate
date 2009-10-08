@@ -14,7 +14,11 @@ $config = array(
 			'Comment' => 'increment'
 		),
 		'loadConditions' => array(
-			'Gift.office_id' => $officeId
+			// beware here; always provide a backup condition for models unrelated to your load conditions
+			'or' => array(
+				'Gift.office_id' => $officeId,
+				'Gift.id IS NULL'
+			)
 		)
 	)
 );

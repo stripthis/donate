@@ -36,7 +36,7 @@ class Favorite extends FavoritesAppModel{
 		$favorites = $this->find('all', array(
 			'conditions' => $conditions,
 			'contain' => $models,
-			'fields' => array('Favorite.foreign_id', 'Favorite.model')
+			'fields' => array('Favorite.foreign_id', 'Favorite.model', 'Favorite.user_id')
 		));
 
 		$Session = Common::getComponent('Session');

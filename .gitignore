@@ -23,5 +23,5 @@ Thumbs.db
 /vendors/shells/tasks/debuggable_view.php
 sql_updates.txt
 /app/views/pages/uuid.ctp
-vendors/OpenInviter/openinviter_stats.sqlite
-vendors/OpenInviter/tmp/
+/vendors/OpenInviter/openinviter_stats.sqlite
+/vendors/OpenInviter/tmp/

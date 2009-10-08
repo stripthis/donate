@@ -1,6 +1,6 @@
 <?php
 $config = array(
-	'Segments' => array(
+	'Filters' => array(
 		'models' => array(
 			'Gift',
 			'Transaction'

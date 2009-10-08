@@ -2,7 +2,12 @@
 class SegmentsController extends SegmentsAppController {
 	var $sessKeyModel = 'segment_model';
 	var $sessKeySelection = 'segment_selection';
-
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	function beforeFilter() {
 		parent::beforeFilter();
 
@@ -24,11 +29,21 @@ class SegmentsController extends SegmentsAppController {
 		if (!$process) {
 			$model = key($this->data);
 			$this->data['Segment']['model'] = $model;
+			$this->data['Segment']['segments'] = $this->Segment->find('list', array(
+				'conditions' => array('user_id' => User::get('id')),
+				'order' => array('name' => 'asc')
+			));
 			return $this->data['Segment']['items'] = implode(',', $this->selection($model));
 		}
 
 		$this->data['Segment']['user_id'] = User::get('id');
-		$this->Segment->create($this->data);
+
+		if (!empty($this->data['Segment']['name'])) {
+			$this->Segment->create($this->data);
+		} else {
+			unset($this->data['Segment']['name']);
+			$this->Segment->set($this->data);
+		}
 		$this->Segment->save();
 
 		$msg = __('Segment successfully saved!', true);
@@ -78,7 +93,35 @@ class SegmentsController extends SegmentsAppController {
 		Assert::true(AppModel::isOwn($segment, 'Segment'), '403');
 
 		$this->Segment->del($id);
-		$this->Message->add('Segment deleted.', 'ok', true, $this->referer());
+		$url = $this->referer();
+		if (preg_match('/' . $id . '/', $url)) {
+			$url = '/admin/home';
+		}
+		$this->Message->add('Segment deleted.', 'ok', true, $url);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $segmentId 
+ * @param string $foreignId 
+ * @return void
+ * @access public
+ */
+	function admin_delete_item($segmentId, $foreignId) {
+		$segment = $this->Segment->find('first', array(
+			'conditions' => array('id' => $segmentId),
+			'fields' => array('user_id')
+		));
+		Assert::notEmpty($segment);
+		Assert::true(AppModel::isOwn($segment, 'Segment'), '403');
+
+		$this->SegmentItem->deleteAll(array(
+			'segment_id' => $segmentId,
+			'foreign_id' => $foreignId
+		));
+
+		$msg = 'The item was successfully removed from segment.';
+		$this->Message->add($msg, 'ok', true, $this->referer());
 	}
 /**
  * undocumented function

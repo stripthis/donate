@@ -36,7 +36,16 @@ class Segment extends SegmentsAppModel {
 			return true;
 		}
 
+		$currentItems = $this->SegmentItem->find('all', array(
+			'conditions' => array('segment_id' => $this->id),
+			'fields' => array('foreign_id')
+		));
+		$currentItems = Set::extract('/SegmentItem/foreign_id', $currentItems);
+
 		foreach ($this->items as $itemId) {
+			if (in_array($itemId, $currentItems)) {
+				continue;
+			}
 			$this->SegmentItem->create(array(
 				'segment_id' => $this->id,
 				'foreign_id' => $itemId,

@@ -22,7 +22,8 @@ $providers =array(
 					'url' =>array('controller'=>'tellfriends', 'action'=>'contactList') 
 				));
 			?>
-			<fieldset>
+            <div id= "openinviter_login">
+			<fieldset id= "openinviter_login1">
 			<legend><?php __('Open Inviter'); ?></legend>
 			<table align='center' class='thTable' cellspacing='6' cellpadding='3' style='border:none;' border="0">
 				<tr class='thTableRow'>
@@ -48,3 +49,6 @@ $providers =array(
 			</table> 
 			<?php echo $form->end(); ?>
 			</fieldset>
+            
+            </div><input type='hidden' id="openinviter_contact_list">
+            <div id= "contactList"></div>

@@ -17,8 +17,9 @@ $(document).ready(function() {
 			}
 			//ajax for getting contact list
 			if(errors == 0){
-				//$("#TB_window").parent().$("#contactList").empty();
-				//$("#TB_window").parent().$("#contactList").append("<img src='img/loading.gif' height ='350px' width ='600px'/>");
+				$("#openinviter_login").hide();
+				$("#contactList").empty();
+				$("#contactList").append("<img src='img/loading.gif' height ='350px' width ='600px'/>");
 				var xmlhttp = GetXmlHttpObject();
 				if(xmlhttp){
 					var encodedPass = $.base64Encode(pass);
@@ -27,16 +28,15 @@ $(document).ready(function() {
 					xmlhttp.onreadystatechange=function() {
 						if (xmlhttp.readyState==4) {
 							 var res = xmlhttp.responseText;
-							 parent.tb_remove();  //closing thickbox
-							 parent.$("#contactList").empty();
-							 parent.$("#contactList").append(res);
+							// parent.tb_remove();  //closing thickbox
+							$("#contactList").empty();
+							$("#contactList").append(res);
 						 }
 					}
 					xmlhttp.send(null);
 				}
 			}
-   
- });
+});
 
 function GetXmlHttpObject()
 {
@@ -55,13 +55,13 @@ function GetXmlHttpObject()
 function tellFriends(chckbox)
 {
 	var chckVal = chckbox.value;
-	var emailList = $("#TellfriendReceiver").val();
+	var emailList = $("#openinviter_contact_list").val();
 	//appending email address of checked checkbox
 	if(chckbox.checked == true){
 		if(emailList == ''){
-			$("#TellfriendReceiver").val(chckVal);
+			$("#openinviter_contact_list").val(chckVal);
 		} else {
-			$("#TellfriendReceiver").val(emailList + "," +chckVal);
+			$("#openinviter_contact_list").val(emailList + "," +chckVal);
 		}
 	} else if(chckbox.checked == false) { //removing email address of unchecked checkbox
 		var result = "";
@@ -75,7 +75,13 @@ function tellFriends(chckbox)
 		if(result.charAt(0) == ","){
 			result = result.replace(",", "");
 		}
-		$("#TellfriendReceiver").val(result);
+		$("#openinviter_contact_list").val(result);
 	}
 
+}
+
+function validate(){
+	var emailList = $("#openinviter_contact_list").val();
+	parent.tb_remove();
+	parent.$("#TellfriendReceiver").val(emailList);
 }
