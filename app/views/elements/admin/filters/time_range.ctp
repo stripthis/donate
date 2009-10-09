@@ -29,7 +29,7 @@
 						'value' => $params['start_date_year'],
 						'dateFormat' => 'Y',
 						'maxYear' => date('Y'),
-						'minYear' => 2009,
+						'minYear' => date('Y'),
 						'empty' => '--',
 						'label' => false,
 						'div' => false
@@ -62,8 +62,8 @@
 							'type' => 'date',
 							'value' => $params['end_date_year'],
 							'dateFormat' => 'Y',
-							'maxYear' => date('Y'),
-							'minYear' => 2009,
+							'maxYear' => date('Y') + 1,
+							'minYear' => date('Y'),
 							'empty' => '--',
 							'label' => false,
 							'div' => false

@@ -39,6 +39,7 @@ class PagesController extends AppController {
 				$this->set(compact('appeals'));
 			break;
 		}
+
 		if (!empty($path[1])) {
 			$subpage = $path[1];
 		}
