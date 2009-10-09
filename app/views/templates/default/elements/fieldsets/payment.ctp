@@ -45,6 +45,10 @@
 								'maxYear' => date('Y') + 10,
 								'separator' => '&nbsp;'
 							)))."\n";
+						echo $form->input('expire_date_hidden', array(
+						'type' => 'hidden',
+						'div' => false
+					));
 						?>
 					</div>
 				</div>
