@@ -53,7 +53,7 @@ class GiftsController extends AppController {
 		$countryOptions = $this->Country->find('list', array('order' => array('Country.name' => 'asc')));
 		$this->set(compact('countryOptions', 'currentAppeal'));
 
-		$this->AppealStep->addVisit($appealId, $step);
+		//$this->AppealStep->addVisit($appealId, $step);
 
 		// no data was given so we render the selected/default view
 		if ($this->isGet()) {

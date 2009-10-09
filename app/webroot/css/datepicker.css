@@ -40,8 +40,10 @@ button.datepick-trigger {
 	padding: 0px;
 }
 img.datepick-trigger {
-	margin: 8px 2px 0 2px;
-	vertical-align: top;
+	margin: 0px 2px 0 2px;
+	padding-top: 5px;
+	vertical-align: middle;
+	position:absolute;
 }
 .datepick-prompt {
 	float: left;
