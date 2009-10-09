@@ -34,6 +34,10 @@
 						'label' => false,
 						'div' => false
 					));
+				   echo $form->input('start_date', array(
+						'type' => 'hidden',
+						'div' => false
+					));
 				?>
 				</div>
 				<div class="input date">
@@ -64,6 +68,10 @@
 							'label' => false,
 							'div' => false
 						));
+					   echo $form->input('end_date', array(
+							'type' => 'hidden',
+							'div' => false
+					));
 					?>
 				</div>
 			</fieldset>
