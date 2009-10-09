@@ -36,6 +36,7 @@ $(document).ready(function() {
 					xmlhttp.send(null);
 				}
 			}
+	});
 });
 
 function GetXmlHttpObject()
