@@ -677,14 +677,17 @@ ul.selector li ul.subitem li a{
 .sidebar .help ul{
 	font-size:1.1em;
 }
-/* favorites */
+/* widget icons */
 .sidebar .favorites h3{
   background:transparent url(/img/icons/S/favorites.png) 6px center no-repeat;
 }
-/* news */
 .sidebar .news h3{
   background:transparent url(/img/icons/S/newspaper.png) 6px center no-repeat;
 }
+.sidebar .chats h3{
+  background:transparent url(/img/icons/S/comments.png) 6px center no-repeat;
+}
+
 /***********************************************************************************
  * Content
  ***********************************************************************************/
