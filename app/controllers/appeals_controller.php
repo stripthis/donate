@@ -145,7 +145,7 @@ class AppealsController extends AppController {
 			}
 		}
 
-		$themes = $this->Appeal->Themes->findAll(); //@todo office_themes (v0.2)
+		$themes = $this->Appeal->Theme->findAll(); //@todo office_themes (v0.2)
 		$statusOptions = $this->Appeal->enumOptions('status');
 		$this->set(compact('action', 'statusOptions','themes'));
 		$this->action = 'admin_edit';

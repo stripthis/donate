@@ -15,7 +15,7 @@ class GiftsController extends AppController {
 		$this->AuthKey = ClassRegistry::init('AuthKey');
 		$this->AuthKeyType = $this->AuthKey->AuthKeyType;
 		$this->Office = ClassRegistry::init('Office');
-		$this->AppealStep = $this->Appeal->AppealStep;
+		//$this->AppealStep = $this->Appeal->AppealStep; //@todo moved to templates
 		$this->GatewaysOffice = $this->Office->GatewaysOffice;
 		$this->Contact = $this->Gift->Contact;
 		$this->Address = $this->Contact->Address;

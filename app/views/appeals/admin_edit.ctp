@@ -23,6 +23,15 @@
 		<?php echo $form->input('targeted_income');?>
 		<?php echo $form->input('targeted_signups');?>
 	</fieldset>
+	<fieldset>
+		<legend><?php __('Template'); ?></legend>
+		<?php echo $form->input('template', array('type'=>'select')); ?>
+	</fieldset>
+		<fieldset>
+		<legend><?php __('Processing'); ?></legend>
+		<?php echo $form->input('processing', array('type'=>'select')); ?>
+		<?php echo $form->input('payment_gateway', array('type'=>'select'));?>
+	</fieldset>
 		<fieldset>
 		<legend><?php __('Themes'); ?></legend>
 		<div class='half'>
@@ -32,8 +41,8 @@
 				<div class="half">
 <?php 	endif; ?>
 					<?php 
-					echo $form->input('themes.' . $theme['Themes']['id'], array(
-						'label' => ucfirst($theme['Themes']['name']),
+					echo $form->input('themes.' . $theme['Theme']['id'], array(
+						'label' => ucfirst($theme['Theme']['name']),
 						'type' => 'checkbox', 'value' => '',
 						'checked' => false ? 'checked' : ''
 					))."\n";

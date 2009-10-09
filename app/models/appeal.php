@@ -8,15 +8,16 @@ class Appeal extends AppModel {
 			'foreignKey' => 'parent_id'
 		)
 	);
-
+	
+	/* @todo moved to template
 	var $hasMany = array(
 		'AppealStep' => array(
 			'dependent' => true
 		)
-	);
+	);*/
 
 	var $hasAndBelongsToMany = array(
-		'Theme'
+		'Theme','Template'
 	);
 
 	var $actsAs = array(
