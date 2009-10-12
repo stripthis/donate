@@ -9,7 +9,7 @@
 		<legend><?php __('Idenfiers'); ?></legend>
 		<?php echo $form->input('id'); ?>
 		<?php echo $form->input('name'); ?>
-		<?php echo $form->input('slug'); ?>
+		<?php echo $form->input('slug', array('label' => __('Slug (Generated if left empty)', true))); ?>
 	</fieldset>	
 	<fieldset>
 		<legend><?php __('Status'); ?></legend>
@@ -29,26 +29,29 @@
 	</fieldset>
 		<fieldset>
 		<legend><?php __('Processing'); ?></legend>
-		<?php echo $form->input('processing', array('type'=>'select')); ?>
-		<?php echo $form->input('payment_gateway', array('type'=>'select'));?>
+		<?php echo $form->input('processing', array('type' => 'select', 'options' => $processingOptions)); ?>
+		<?php echo $form->input('gateway_id', array('type' => 'select', 'options' => $gatewayOptions));?>
 	</fieldset>
 		<fieldset>
 		<legend><?php __('Themes'); ?></legend>
 		<div class='half'>
-<?php	foreach ($themes as $theme): $i++; ?>
-<?php 	if ($numThemes > 1 && $i <= $numThemes / 2) : $i = 0; ?>
-				</div>
-				<div class="half">
-<?php 	endif; ?>
-					<?php 
-					echo $form->input('themes.' . $theme['Theme']['id'], array(
-						'label' => ucfirst($theme['Theme']['name']),
-						'type' => 'checkbox', 'value' => '',
-						'checked' => false ? 'checked' : ''
-					))."\n";
-					?>
-<?php endforeach; ?>
-	</div>
+			<?php
+			foreach ($themes as $theme) {
+				$i++;
+				if ($numThemes > 1 && $i <= $numThemes / 2) {
+					$i = 0;
+					echo '</div><div class="half">';
+				}
+			
+				echo $form->input('Appeal.themes.' . $theme['Theme']['id'], array(
+					'label' => ucfirst($theme['Theme']['name']),
+					'type' => 'checkbox', 'value' => '',
+					'checked' => false ? 'checked' : '',
+					'options' => false
+				));
+			}
+			?>
+		</div>
 	</fieldset>
 	<?php
 		//@todo TO BE MOVED TO APPEALS TEMPLATES VIEW

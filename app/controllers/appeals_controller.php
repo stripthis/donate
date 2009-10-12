@@ -9,6 +9,8 @@ class AppealsController extends AppController {
 	function beforeFilter() {
 		parent::beforeFilter();
 		$this->Office = $this->Appeal->Office;
+		$this->Theme = $this->Appeal->Theme;
+		$this->Gateway = ClassRegistry::init('Gateway');
 	}
 /**
  * Admin Index
@@ -124,8 +126,7 @@ class AppealsController extends AppController {
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			$appeal = $this->Appeal->find('first', array(
-				'conditions' => array('Appeal.id' => $id),
-				'contain' => array('AppealStep')
+				'conditions' => array('Appeal.id' => $id)
 			));
 			Assert::notEmpty($appeal, '404');
 			Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
@@ -138,16 +139,24 @@ class AppealsController extends AppController {
 			if (isset($this->params['named']['clone_id'])) {
 				$appeal = $this->Appeal->find('first', array(
 					'conditions' => array('Appeal.id' => $this->params['named']['clone_id']),
-					'contain' => array('AppealStep')
 				));
 				Assert::notEmpty($appeal, '404');
 				unset($appeal['Appeal']['id']);
 			}
 		}
 
-		$themes = $this->Appeal->Theme->findAll(); //@todo office_themes (v0.2)
+		$gatewayOptions = $this->Gateway->find('list_for_office', array(
+			'order' => array('name' => 'asc')
+		));
+		$processingOptions = $this->Gateway->find('processing_options');
+		$themes = $this->Theme->find('all'); //@todo office_themes (v0.2)
 		$statusOptions = $this->Appeal->enumOptions('status');
-		$this->set(compact('action', 'statusOptions','themes'));
+
+		$this->set(compact(
+			'action', 'statusOptions', 'themes', 'gatewayOptions',
+			'processingOptions'
+		));
+
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
 			return $this->data = $appeal;
@@ -159,11 +168,9 @@ class AppealsController extends AppController {
 
 		$this->data['Appeal']['office_id'] = $this->Session->read('Office.id');
 		$this->Appeal->set($this->data['Appeal']);
-		$result = $this->Appeal->save();
-		if ($this->Appeal->validationErrors) {
+		if (!$this->Appeal->save()) {
 			return $this->Message->add(__('Please fill out all fields', true), 'error');
 		}
-		Assert::notEmpty($result);
 
 		$msg = __('The Appeal was saved successfully.', true);
 		if ($action == 'add') {

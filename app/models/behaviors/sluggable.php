@@ -99,8 +99,9 @@ class SluggableBehavior extends ModelBehavior
 			}
 		}
 
+		$field = $this->__settings[$Model->alias]['slug'];
 		// See if we should be generating a slug
-		if ($Model->hasField($this->__settings[$Model->alias]['slug']) && ($this->__settings[$Model->alias]['overwrite'] || empty($Model->id)))
+		if ($Model->hasField($this->__settings[$Model->alias]['slug']) && ($this->__settings[$Model->alias]['overwrite'] || empty($Model->id)) && (!isset($Model->data[$Model->alias][$field]) || empty($Model->data[$Model->alias][$field])))
 		{
 			// Build label out of data in label fields, if available, or using a default slug otherwise
 

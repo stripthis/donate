@@ -16,13 +16,61 @@ class Appeal extends AppModel {
 		)
 	);*/
 
+	var $hasMany = array(
+		'AppealsTemplate' => array(
+			'dependent' => true
+		),
+		'AppealsTheme' => array(
+			'dependent' => true
+		),
+	);
+
 	var $hasAndBelongsToMany = array(
-		'Theme','Template'
+		'Theme', 'Template'
 	);
 
 	var $actsAs = array(
 		'Containable', 'Lookupable', 'Enumerable',
 		'Sluggable' => array('label' => 'name')
+	);
+
+	var $validate = array(
+		'name' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'Please specify a name!',
+				'last' => true
+			)
+		),
+		'cost' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'Please specify a cost!',
+				'last' => true
+			),
+		),
+		'campaign_code' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'Please specify a campaign code!',
+				'last' => true
+			),
+		),
+		'targeted_income' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'Please specify the targeted income!',
+				'last' => true
+			),
+		),
+		'targeted_signups' => array(
+			'required' => array(
+				'rule' => 'notEmpty',
+				'message' => 'Please specify the number of targeted signups!',
+				'last' => true
+			),
+		),
+
 	);
 /**
  * Get appeal from id, campaign_code or name
@@ -72,23 +120,50 @@ class Appeal extends AppModel {
  * @return void
  * @access public
  */
+	function beforeSave() {
+		$this->themes = isset($this->data[__CLASS__]['themes'])
+						? $this->data[__CLASS__]['themes']
+						: false;
+		return true;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	function afterSave($created) {
-		if (isset($this->data['Appeal']['steps'])) {
-			$this->AppealStep->deleteAll(array('appeal_id' => $this->id));
-			$i = 0;
-			foreach ($this->data['Appeal']['steps'] as $name) {
-				if (empty($name)) {
+		// if (isset($this->data['Appeal']['steps'])) {
+		// 	$this->AppealStep->deleteAll(array('appeal_id' => $this->id));
+		// 	$i = 0;
+		// 	foreach ($this->data['Appeal']['steps'] as $name) {
+		// 		if (empty($name)) {
+		// 			continue;
+		// 		}
+		// 		$i++;
+		// 		$this->AppealStep->create(array(
+		// 			'appeal_id' => $this->id,
+		// 			'num' => $i,
+		// 			'name' => $name
+		// 		));
+		// 		$this->AppealStep->save();
+		// 	}
+		// }
+
+		if ($this->themes !== false) {
+			$this->AppealsTheme->deleteAll(array('appeal_id' => $this->id));
+			foreach ($this->themes as $id => $val) {
+				if (!$val) {
 					continue;
 				}
-				$i++;
-				$this->AppealStep->create(array(
+				$this->AppealsTheme->create(array(
 					'appeal_id' => $this->id,
-					'num' => $i,
-					'name' => $name
+					'theme_id' => $id
 				));
-				$this->AppealStep->save();
+				$this->AppealsTheme->save();
 			}
 		}
+		return true;
 
 		// @todo: template management
 		$id = $this->id;

@@ -1,5 +1,4 @@
 <?php
-
 class GatewayFixture extends CakeTestFixture {
 	var $name = 'Gateway';
 	var $records = array(
@@ -13,5 +12,4 @@ class GatewayFixture extends CakeTestFixture {
 		)
 	);
 }
-
 ?>
