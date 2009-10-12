@@ -88,6 +88,40 @@ Tue 10/6/2009 Total Time : 7.5 hours
 4.	Create new view for demo of datepicker functionality ( 1 hour)
 5.      Communication & Mailing ( 0.5 hour)
 
+Wed 10/7/2009 Total Time : 7.5 hours
+
+1.	R&D on opening openinviter in pop up window.( 2 hours)
+2.	Added thickbox plugin for pop ups( 1 hour)
+3.	Create new view for onpeninviter pop up ( 1 hour)
+4.	Implemented openinviter pop up & displaying login form on pop and on submit closing pop up and displaying list on parent page.( 2.5 hours)
+5.      Fixed UI relate issues(0.5 hours)
+6.      Communication ( 0.5 hour)
+
+Thu 10/8/2009 Total Time : 7 hours
+
+1.	Populating contact list on pop up & error messsages and closing login page( 3 hours)
+2.	On clicking confirmation button populating all checked email addresses to friend's email field (1.5 hour)
+3.	Worked on implementing datepicker (2 hours)
+4.      Communication ( 0.5 hour)
+
+
+Fri 10/9/2009 Total Time : 7 hours
+
+1.	Added datepicker for add gift and search filter(1.5 hours)
+2.	R&D on finding month selector (2 hours)
+3.	Creatd new account on git hub & changed the key local GIT bash (3 hours)
+4.      Communication ( 0.5 hour)
+
+Mon 10/12/2009 Total Time : 7.5 hours
+
+1.	R&D on finding month selector  ( 0.5 hour)
+2.	Displaying the contact list in three colums. (2 hour)
+3.	Populating your email optional field with login email.  (2 hours)
+4.      Added go back to login page option if any error occurs in pop up (1 hour)
+5.      UI fixes for openinviter pop up (0.5)
+6.	Appending contact list to previously existing list in friend's email field.(1 hour)
+7.	Communication & Mailing ( 0.5 hour)
+
 
 
 
