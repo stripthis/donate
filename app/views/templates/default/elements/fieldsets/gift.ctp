@@ -14,49 +14,49 @@
 	$amountOptions = explode(',', Gift::find('amounts'));
 	$amountSelected = $giftForm->value('Gift', 'amount', '10', $form->data);
 ?>
-			<fieldset class="left" id="gift_type">
-				<legend><?php echo __("Gift Information"); ?></legend>
-				<?php echo $form->input('Gift.id', array('type' => 'hidden'))."\n"; ?>
-				<?php //echo $form->input('Gift.type', array('options' => $typeOptions))."\n"; ?>
-				<input name="data[Gift][type]" value="donation" id="GiftType" type="hidden">
-				<div class="input_wrapper radio">
-					<label for="amount" class="option_title"><?php __('Amount'); ?>: <strong class="required">*</strong></label>
-<?php foreach ($amountOptions as $amountOption): ?>
-					<label class="option">
-						<input name="data[Gift][amount]" value="<?php echo $amountOption; ?>" class="radio amount" type="radio" 
-							<?php echo $amountSelected == $amountOption ? $giftForm->checked() : ''?>> <?php echo $amountOption; ?>€
-					</label>
-<?php endforeach; ?>
-				</div>
-				<div class="input_wrapper radio" id="other_amount">
-					<label class="option">
-						<input name="data[Gift][amount]" value="other" class="form-radio otheramount" type="radio"> <?php __('Other'); ?>
-					</label>
-					<input name="data[Gift][amount_other]" type="text" class="text" id="txtOtherAmount" 
-						value="<?php echo !in_array($amountSelected, $amountOptions) ? $amountSelected : ''?>"
-						<?php echo !in_array($amountSelected, $amountOptions) ? $giftForm->checked() : ''?> 
-					/> 
-					<?php
-						echo $form->input('currency', array(
-							'label' => '', 'options' => $currencyOptions,
-							'selected' => $giftForm->value('Gift', 'currency', 'EUR', $form->data)
-						))."\n";
-					?>
-					<?php 
-						if ($form->isFieldError('amount')) {
-							echo '<div class="error">' . $form->error("Gift.amount") . '</div>';
-						}
-						if ($form->isFieldError('currency')) {
-							echo '<div class="error">' . $form->error("Gift.currency"). '</div>';
-						}
-					?>
-				</div>
-				<?php
-					$options = array(
-						'label' => 'Frequency' . ': ' . $giftForm->required(),
-						'options' => $frequencyOptions,
-						'selected' => $giftForm->value('Gift', 'frequency', 'monthly', $form->data)
-						);
-					echo $form->input('frequency', $options);
-				?>
-			</fieldset>
+<fieldset class="left" id="gift_type">
+	<legend><?php echo __("Gift Information"); ?></legend>
+	<?php echo $form->input('Gift.id', array('type' => 'hidden'))."\n"; ?>
+	<?php //echo $form->input('Gift.type', array('options' => $typeOptions))."\n"; ?>
+	<input name="data[Gift][type]" value="donation" id="GiftType" type="hidden">
+	<div class="input_wrapper radio">
+		<label for="amount" class="option_title"><?php __('Amount'); ?>: <strong class="required">*</strong></label>
+		<?php foreach ($amountOptions as $amountOption): ?>
+			<label class="option">
+				<input name="data[Gift][amount]" value="<?php echo $amountOption; ?>" class="radio amount" type="radio" 
+					<?php echo $amountSelected == $amountOption ? $giftForm->checked() : ''?>> <?php echo $amountOption; ?>€
+			</label>
+		<?php endforeach; ?>
+	</div>
+	<div class="input_wrapper radio" id="other_amount">
+		<label class="option">
+			<input name="data[Gift][amount]" value="other" class="form-radio otheramount" type="radio"> <?php __('Other'); ?>
+		</label>
+		<input name="data[Gift][amount_other]" type="text" class="text" id="txtOtherAmount" 
+			value="<?php echo !in_array($amountSelected, $amountOptions) ? $amountSelected : ''?>"
+			<?php echo !in_array($amountSelected, $amountOptions) ? $giftForm->checked() : ''?> 
+		/> 
+		<?php
+			echo $form->input('currency', array(
+				'label' => '', 'options' => $currencyOptions,
+				'selected' => $giftForm->value('Gift', 'currency', 'EUR', $form->data)
+			))."\n";
+		?>
+		<?php 
+			if ($form->isFieldError('amount')) {
+				echo '<div class="error">' . $form->error("Gift.amount") . '</div>';
+			}
+			if ($form->isFieldError('currency')) {
+				echo '<div class="error">' . $form->error("Gift.currency"). '</div>';
+			}
+		?>
+	</div>
+	<?php
+		$options = array(
+			'label' => 'Frequency' . ': ' . $giftForm->required(),
+			'options' => $frequencyOptions,
+			'selected' => $giftForm->value('Gift', 'frequency', 'monthly', $form->data)
+			);
+		echo $form->input('frequency', $options);
+	?>
+</fieldset>

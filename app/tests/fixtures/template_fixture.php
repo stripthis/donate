@@ -1,5 +1,4 @@
 <?php
-
 class TemplateFixture extends CakeTestFixture {
 	var $name = 'Template';
 	var $records = array(
