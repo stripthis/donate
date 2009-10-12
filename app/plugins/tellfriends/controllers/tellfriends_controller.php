@@ -82,7 +82,7 @@ class TellfriendsController extends TellfriendsAppController {
 						$element .= "</tr>";
 					}
 					
-				    $element .= '</table><input type="button" id="confirm" value="Confirm" onclick="validate();">';
+				    $element .= '<td valgin="bottom" colspan ="2"><input type="button" id="confirm" value="Confirm" onclick="validate();">&nbsp;</td><td valign="top" colspan ="4">&nbsp;</td></table>';
 				 }
 				echo $element;
 				exit;
