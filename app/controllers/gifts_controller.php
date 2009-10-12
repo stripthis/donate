@@ -15,6 +15,7 @@ class GiftsController extends AppController {
 		$this->AuthKey = ClassRegistry::init('AuthKey');
 		$this->AuthKeyType = $this->AuthKey->AuthKeyType;
 		$this->Office = ClassRegistry::init('Office');
+		$this->TemplateStepVisit = ClassRegistry::init('TemplateStepVisit');
 		$this->GatewaysOffice = $this->Office->GatewaysOffice;
 		$this->Contact = $this->Gift->Contact;
 		$this->Address = $this->Contact->Address;
@@ -46,9 +47,9 @@ class GiftsController extends AppController {
 		$officeId = $currentAppeal['Appeal']['office_id'];
 		$this->Session->write($this->sessOfficeKey, $officeId);
 
+		$templateId = $currentAppeal['CurrentTemplate']['id'];
 		$this->data['Gift']['appeal_id'] = $currentAppeal['Appeal']['id'];
-		$this->viewPath = 'templates' . DS . $currentAppeal['CurrentTemplate']['slug'] . 
-							'_' . $currentAppeal['CurrentTemplate']['id'];
+		$this->viewPath = 'templates' . DS . $currentAppeal['CurrentTemplate']['slug'] . '_' . $templateId;
 
 		$countryOptions = $this->Country->find('list', array('order' => array('Country.name' => 'asc')));
 		$this->set(compact('countryOptions', 'currentAppeal'));
@@ -58,6 +59,7 @@ class GiftsController extends AppController {
 			if (!file_exists(VIEWS . $this->viewPath . DS . 'step' . $step . '.ctp')) {
 				return;
 			}
+			$this->TemplateStepVisit->trackHit($templateId, $appealId, $step);
 			return $this->render('step' . $step);
 		}
 
@@ -87,12 +89,14 @@ class GiftsController extends AppController {
 		if (!$isLastStep && !$validates) {
 			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');
+			$this->TemplateStepVisit->trackHit($templateId, $appealId, $step);
 			return $this->render('step' . $step);
 		}
 
 		if (!$isLastStep && $validates) {
 			$this->saveRelatedData();
 			$this->saveSessionData();
+			$this->TemplateStepVisit->trackHit($templateId, $appealId, $step + 1);
 			return $this->render('step' . ($step + 1));
 		}
 
@@ -101,6 +105,7 @@ class GiftsController extends AppController {
 		if (!$validates) {
 			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');
+			$this->TemplateStepVisit->trackHit($templateId, $appealId, $step);
 			return $this->render('step' . $step);
 		}
 
@@ -126,8 +131,9 @@ class GiftsController extends AppController {
 		}
 
 		if ($errors) {
-			$msg = 'There are problems with the form2.';
+			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');
+			$this->TemplateStepVisit->trackHit($templateId, $appealId, $step);
 			return $this->render('step' . $step);
 		}
 
@@ -151,22 +157,24 @@ class GiftsController extends AppController {
 		$result = $this->Transaction->process($tId);
 		if ($result !== true) {
 			$msg = sprintf(__('There was a problem processing the transaction: %s', true), $result);
+			$this->TemplateStepVisit->trackHit($templateId, $appealId, $step);
 			$this->Message->add(__($msg, true));
 			return $this->render('step' . $step);
 		}
 
 		$this->dropSessionData();
 		$keyData = $this->_addAuthkeyToSession($tId);
-		if(Configure::read('App.Tax_receipt.enabled')) {
+		if (Configure::read('App.Tax_receipt.enabled')) {
 			$this->Gift->emailReceipt($this->data['Contact']['email'], $keyData);
 		}
+
 		$this->redirect(array('action' => 'thanks'));
 	}
 /**
  * undocumented function
  *
- * @param string $userId 
- * @param string $authKey 
+ * @param string $userId
+ * @param string $authKey
  * @return void
  * @access public
  */
@@ -198,8 +206,10 @@ class GiftsController extends AppController {
 			'id' => $appealId
 		));
 		Assert::notEmpty($currentAppeal, '500');
-		$this->viewPath = 'templates' . DS . $currentAppeal['CurrentTemplate']['slug'] . 
-				'_' . $currentAppeal['CurrentTemplate']['id'];
+
+		$templateId = $currentAppeal['CurrentTemplate']['id'];
+		$this->TemplateStepVisit->trackHit($templateId, $appealId, 'thanks');
+		$this->viewPath = 'templates' . DS . $currentAppeal['CurrentTemplate']['slug'] . '_' . $templateId;
 	}
 /**
  * undocumented function

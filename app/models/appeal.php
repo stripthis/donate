@@ -20,7 +20,7 @@ class Appeal extends AppModel {
 	);
 
 	var $hasAndBelongsToMany = array(
-		'Theme', 'Template'
+		'Theme'
 	);
 
 	var $actsAs = array(

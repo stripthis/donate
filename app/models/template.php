@@ -10,10 +10,6 @@ class Template extends AppModel {
 			'dependent' => true
 		),
 	);
-
-	var $hasAndBelongsToMany = array(
-		'Appeals'
-	);
 /**
  * undocumented function
  *
