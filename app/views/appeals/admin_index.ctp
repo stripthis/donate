@@ -20,13 +20,14 @@ $favConfig = Configure::read('Favorites');
 			$th[] = $favorites->favall('Appeal');
 		}
 		$th = am($th, array(
-			$paginator->sort('Status', 'status', array('url' => $params)),
-			$paginator->sort('Is Default?', 'default', array('url' => $params)),
-			$paginator->sort('Name', 'name', array('url' => $params)),
-			$paginator->sort('Campaign Code', 'campaign_code', array('url' => $params)),
-			$paginator->sort('Targeted Income', 'targeted_income', array('url' => $params)),
-			$paginator->sort('Targeted Signups', 'targeted_signups', array('url' => $params)),
-			$paginator->sort('Last Update', 'modified', array('url' => $params)),
+			$paginator->sort(__('Status', true), 'status', array('url' => $params)),
+			$paginator->sort(__('Is Default?', true), 'default', array('url' => $params)),
+			$paginator->sort(__('Name', true), 'name', array('url' => $params)),
+			$paginator->sort(__('Campaign Code', true), 'campaign_code', array('url' => $params)),
+			$paginator->sort(__('Targeted Income', true), 'targeted_income', array('url' => $params)),
+			$paginator->sort(__('Targeted Signups', true), 'targeted_signups', array('url' => $params)),
+			$paginator->sort(__('Created', true), 'created', array('url' => $params)),
+			$paginator->sort(__('Last Update', true), 'modified', array('url' => $params)),
 			'Actions'
 		));
 		echo $html->tableHeaders($th);
@@ -61,6 +62,7 @@ $favConfig = Configure::read('Favorites');
 				$appeal['Appeal']['campaign_code'],
 				$appeal['Appeal']['targeted_income'],
 				$appeal['Appeal']['targeted_signups'],
+				$common->date($appeal['Appeal']['created']),
 				$common->date($appeal['Appeal']['modified']),
 				implode(' - ', $actions)
 			));
