@@ -1,1 +1,1 @@
-empty step
+<?php echo $this->element('../templates/default/step2'); ?>

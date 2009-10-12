@@ -18,8 +18,8 @@
   <div id="content_wrapper">
 <?php echo $this->element('../templates/default/elements/banner'); ?>
      <div id="content">
-<?php echo $this->element('../templates/default/elements/title'); ?>
-<?php echo $this->element('../templates/default/elements/mission'); ?>
+<?php echo $this->element('../templates/default/elements/title1'); ?>
+<?php echo $this->element('../templates/default/elements/mission1'); ?>
 <?php echo $this->element('../templates/default/elements/decoration1'); ?>
       <p class="message information"><?php __('Hint: <strong class="required">*</strong> indicates a required field',true);?></p>
 <?php foreach ($flashMessages as $message): ?>

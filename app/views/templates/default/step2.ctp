@@ -8,12 +8,12 @@ if (!empty($cData)) {
 	<div id="content_wrapper">
 <?php echo $this->element('../templates/default/elements/banner'); ?>
 		<div id="content">
-<?php echo $this->element('../templates/default/elements/title'); ?>
-<?php echo $this->element('../templates/default/elements/teasers/mission'); ?>
+<?php echo $this->element('../templates/default/elements/teasers/title1'); ?>
+<?php echo $this->element('../templates/default/elements/teasers/mission1'); ?>
 <?php echo $this->element('../templates/default/elements/feedback'); ?>
-		<?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
-<?php echo $this->element('../templates/default/elements/fielsets/hidden'); ?>
-<?php echo $this->element('../templates/default/elements/fieldset/contact'); ?>
+		<?php echo $form->create('Gift', array('url' => $this->here . '/2'))."\n"; ?>
+<?php echo $this->element('../templates/default/elements/fieldsets/hidden'); ?>
+<?php echo $this->element('../templates/default/elements/fieldsets/contact'); ?>
 		<?php echo $form->submit('Donate', array('class' => 'donate-submit')); ?>
 		<?php echo $form->end()?>
 		</div>

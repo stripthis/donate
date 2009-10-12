@@ -47,7 +47,8 @@ class GiftsController extends AppController {
 		$this->Session->write($this->sessOfficeKey, $officeId);
 
 		$this->data['Gift']['appeal_id'] = $currentAppeal['Appeal']['id'];
-		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['campaign_code'] . '_' . $currentAppeal['Appeal']['id'];
+		$this->viewPath = 'templates' . DS . $currentAppeal['CurrentTemplate']['slug'] . 
+							'_' . $currentAppeal['CurrentTemplate']['id'];
 
 		$countryOptions = $this->Country->find('list', array('order' => array('Country.name' => 'asc')));
 		$this->set(compact('countryOptions', 'currentAppeal'));
@@ -80,7 +81,7 @@ class GiftsController extends AppController {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
 		}
 
-		$isLastStep = $step == $currentAppeal['Appeal']['appeal_step_count'];
+		$isLastStep = $step == $currentAppeal['CurrentTemplate']['template_step_count'];
 		$validates = AppModel::bulkValidate($this->models, $this->data);
 
 		if (!$isLastStep && !$validates) {
@@ -98,8 +99,7 @@ class GiftsController extends AppController {
 		// for the last step, reset is_required to required to prevent hacking attemps
 		$validates = AppModel::bulkValidate($this->models, $this->data, true);
 		if (!$validates) {
-
-			$msg = 'There are problems with the form3.';
+			$msg = 'There are problems with the form.';
 			$this->Message->add($msg, 'error');
 			return $this->render('step' . $step);
 		}
@@ -198,7 +198,8 @@ class GiftsController extends AppController {
 			'id' => $appealId
 		));
 		Assert::notEmpty($currentAppeal, '500');
-		$this->viewPath = 'templates' . DS . $currentAppeal['Appeal']['campaign_code'] . '_' . $currentAppeal['Appeal']['id'];
+		$this->viewPath = 'templates' . DS . $currentAppeal['CurrentTemplate']['slug'] . 
+				'_' . $currentAppeal['CurrentTemplate']['id'];
 	}
 /**
  * undocumented function

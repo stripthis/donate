@@ -24,8 +24,10 @@ class PagesController extends AppController {
 
 		switch ($page) {
 			case 'home':
-				$path[0] = $page = 'country_selector';
 			case 'country_selector':
+				if ($page == 'home') {
+					$path[0] = $page = 'country_selector';
+				}
 				$appeals = $this->Appeal->find('all', array(
 					'conditions' => array(
 						'Appeal.status' => 'published',
