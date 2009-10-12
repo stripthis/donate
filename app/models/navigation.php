@@ -39,6 +39,10 @@ class Navigation extends AppModel{
 					'/admin/appeals/index/all'
 					, '#/^\/admin\/appeals.*$/iU'
 				)
+				, __('Templates', true) => array(
+					'/admin/templates'
+					, '#/^\/admin\/templates.*$/iU'
+				)
 				, __('Gifts', true) => array(
 					'/admin/gifts/index/all'
 					, '#/\/admin(\/gifts|\/exports\/gifts).*/iU'
@@ -105,6 +109,16 @@ class Navigation extends AppModel{
 				, __('My Office', true) => array(
 					'/admin/appeals/index/office'
 					, '#/^\/admin\/appeals\/index\/office.*$/iU'
+				)
+			)
+			, 'template_sub' => array(
+				__('All', true) => array(
+					'/admin/appeals/index'
+					, '#/^\/admin\/templates.*$/iU'
+				)
+				, __('Create Template', true) => array(
+					'/admin/templates/add'
+					, '#/^\/admin\/templates\/add.*$/iU'
 				)
 			)
 			, 'gift_sub' => array(

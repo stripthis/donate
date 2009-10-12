@@ -2,7 +2,7 @@
 	<h1><?php echo sprintf(__('%s Appeal', true), ucfirst($action)); ?></h1>
 	<?php echo $form->create('Appeal');?>
 	<fieldset>
-		<legend><?php __('Idenfiers'); ?></legend>
+		<legend><?php __('Identifiers'); ?></legend>
 		<?php echo $form->input('id'); ?>
 		<?php echo $form->input('name'); ?>
 		<?php echo $form->input('slug', array('label' => __('Slug (Generated based on name if left empty)', true))); ?>
@@ -21,12 +21,12 @@
 	</fieldset>
 	<fieldset>
 		<legend><?php __('Template'); ?></legend>
-		<?php echo $form->input('template', array('type'=>'select')); ?>
+		<?php echo $form->input('template_id', array('options' => $templateOptions)); ?>
 	</fieldset>
 		<fieldset>
 		<legend><?php __('Processing'); ?></legend>
-		<?php echo $form->input('processing', array('type' => 'select', 'options' => $processingOptions)); ?>
-		<?php echo $form->input('gateway_id', array('type' => 'select', 'options' => $gatewayOptions));?>
+		<?php echo $form->input('processing', array('options' => $processingOptions)); ?>
+		<?php echo $form->input('gateway_id', array('options' => $gatewayOptions));?>
 	</fieldset>
 		<fieldset>
 		<legend><?php __('Themes'); ?></legend>

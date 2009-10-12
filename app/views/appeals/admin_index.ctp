@@ -26,6 +26,7 @@ $favConfig = Configure::read('Favorites');
 			$paginator->sort(__('Campaign Code', true), 'campaign_code', array('url' => $params)),
 			$paginator->sort(__('Targeted Income', true), 'targeted_income', array('url' => $params)),
 			$paginator->sort(__('Targeted Signups', true), 'targeted_signups', array('url' => $params)),
+			$paginator->sort(__('Current Template', true), 'Template.name', array('url' => $params)),
 			$paginator->sort(__('Created', true), 'created', array('url' => $params)),
 			$paginator->sort(__('Last Update', true), 'modified', array('url' => $params)),
 			'Actions'
@@ -34,7 +35,7 @@ $favConfig = Configure::read('Favorites');
 		foreach ($appeals as $appeal) {
 			$actions = array(
 				$html->link(__('Config', true), array('action'=>'view', $appeal['Appeal']['id']),array('class'=>'view')),
-				$html->link(__('Clone', true), 
+				$html->link(__('Clone', true),
 					array('action' => 'add', 'clone_id' => $appeal['Appeal']['id']),
 					array('class' => 'view')
 				),
@@ -62,6 +63,9 @@ $favConfig = Configure::read('Favorites');
 				$appeal['Appeal']['campaign_code'],
 				$appeal['Appeal']['targeted_income'],
 				$appeal['Appeal']['targeted_signups'],
+				!empty($appeal['CurrentTemplate'])
+					? $appeal['CurrentTemplate']['name']
+					: '--',
 				$common->date($appeal['Appeal']['created']),
 				$common->date($appeal['Appeal']['modified']),
 				implode(' - ', $actions)

@@ -1366,6 +1366,7 @@ class Model extends Overloadable {
 				if ($assoc['counterCache'] === true) {
 					$assoc['counterCache'] = Inflector::underscore($this->alias) . '_count';
 				}
+
 				if (!$this->{$parent}->hasField($assoc['counterCache'])) {
 					continue;
 				}

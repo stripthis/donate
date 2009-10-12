@@ -10,6 +10,7 @@ class AppealsController extends AppController {
 		parent::beforeFilter();
 		$this->Office = $this->Appeal->Office;
 		$this->Theme = $this->Appeal->Theme;
+		$this->Template = $this->Appeal->Template;
 		$this->Gateway = ClassRegistry::init('Gateway');
 	}
 /**
@@ -80,7 +81,7 @@ class AppealsController extends AppController {
 
 		$this->paginate['Appeal'] = array(
 			'conditions' => $conditions,
-			'contain' => array('User(id, login)'),
+			'contain' => array('User(id, login)', 'CurrentTemplate(name)'),
 			'order' => array('Appeal.name' => 'asc'),
 			'limit' => $params['my_limit']
 		);
@@ -148,13 +149,14 @@ class AppealsController extends AppController {
 		$gatewayOptions = $this->Gateway->find('list_for_office', array(
 			'order' => array('name' => 'asc')
 		));
+		$templateOptions = $this->Template->find('published_list');
 		$processingOptions = $this->Gateway->find('processing_options');
 		$themes = $this->Theme->find('all'); //@todo office_themes (v0.2)
 		$statusOptions = $this->Appeal->enumOptions('status');
 
 		$this->set(compact(
 			'action', 'statusOptions', 'themes', 'gatewayOptions',
-			'processingOptions'
+			'processingOptions', 'templateOptions'
 		));
 
 		$this->action = 'admin_edit';

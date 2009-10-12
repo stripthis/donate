@@ -6,15 +6,12 @@ class Appeal extends AppModel {
 		'Parent' => array(
 			'className' => 'Appeal',
 			'foreignKey' => 'parent_id'
+		),
+		'CurrentTemplate' => array(
+			'className' => 'Template',
+			'foreignKey' => 'template_id'
 		)
 	);
-	
-	/* @todo moved to template
-	var $hasMany = array(
-		'AppealStep' => array(
-			'dependent' => true
-		)
-	);*/
 
 	var $hasMany = array(
 		'AppealsTemplate' => array(
@@ -180,23 +177,6 @@ class Appeal extends AppModel {
  * @access public
  */
 	function afterSave($created) {
-		// if (isset($this->data['Appeal']['steps'])) {
-		// 	$this->AppealStep->deleteAll(array('appeal_id' => $this->id));
-		// 	$i = 0;
-		// 	foreach ($this->data['Appeal']['steps'] as $name) {
-		// 		if (empty($name)) {
-		// 			continue;
-		// 		}
-		// 		$i++;
-		// 		$this->AppealStep->create(array(
-		// 			'appeal_id' => $this->id,
-		// 			'num' => $i,
-		// 			'name' => $name
-		// 		));
-		// 		$this->AppealStep->save();
-		// 	}
-		// }
-
 		if ($this->themes !== false) {
 			$this->AppealsTheme->deleteAll(array('appeal_id' => $this->id));
 			foreach ($this->themes as $id => $val) {
@@ -209,70 +189,6 @@ class Appeal extends AppModel {
 				));
 				$this->AppealsTheme->save();
 			}
-		}
-		return true;
-
-		// @todo: template management
-		$id = $this->id;
-		$appeal = $this->find('first', array(
-			'conditions' => compact('id'),
-		));
-		$code = Inflector::underscore($appeal[__CLASS__]['campaign_code']);
-
-		App::import('Core', 'Folder');
-		$folder = new Folder(VIEWS . 'templates');
-		$contents = $folder->read();
-
-		$move = false;
-		foreach ($contents[0] as $dir) {
-			if (strpos($dir, $id) !== false) {
-				$move = $dir;
-				break;
-			}
-		}
-
-		if ($created) {
-			$path = VIEWS . 'templates' . DS . $code . '_' . $id;
-			mkdir($path, 0755);
-
-			$src = VIEWS . 'templates' . DS . 'default' . DS . 'step1.ctp';
-			$dest = $path . DS . 'step1.ctp';
-			copy($src, $dest);
-			$src = VIEWS . 'templates' . DS . 'default' . DS . 'step2.ctp';
-			$dest = $path . DS . 'step2.ctp';
-			copy($src, $dest);
-		} else {
-			$oldPath = VIEWS . 'templates' . DS . $move;
-			$folder = new Folder($oldPath);
-			$folder->move(array(
-				'to' => VIEWS . 'templates' . DS . $code . '_' . $id
-			));
-		}
-
-		return true;
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
-	function afterDelete() {
-		App::import('Core', 'Folder');
-		$folder = new Folder(VIEWS . 'templates');
-		$contents = $folder->read();
-		$toDelete = false;
-		foreach ($contents[0] as $dir) {
-			if (strpos($dir, $this->id) !== false) {
-				$toDelete = $dir;
-				break;
-			}
-		}
-
-		if ($toDelete) {
-			$oldPath = VIEWS . 'templates' . DS . $toDelete;
-			$folder = new Folder($oldPath);
-			$folder->delete();
 		}
 		return true;
 	}
