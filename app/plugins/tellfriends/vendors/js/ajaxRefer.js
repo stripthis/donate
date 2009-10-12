@@ -19,6 +19,7 @@ $(document).ready(function() {
 			if(errors == 0){
 				$("#openinviter_login").hide();
 				$("#contactList").empty();
+				$("#contactList").show();
 				$("#contactList").append("<img src='img/loading.gif' height ='350px' width ='600px'/>");
 				var xmlhttp = GetXmlHttpObject();
 				if(xmlhttp){
@@ -83,6 +84,7 @@ function tellFriends(chckbox)
 
 function validate(){
 	var emailList = $("#openinviter_contact_list").val();
+	var yourEmail = $("#openinviterEmailBox").val();
 	parent.tb_remove();
 	var prevEmailList = parent.$("#TellfriendReceiver").val();
 	if(prevEmailList == ''){
@@ -91,4 +93,10 @@ function validate(){
 		var newEmailList  = prevEmailList + "," + emailList;
 	}
 	parent.$("#TellfriendReceiver").val(newEmailList);
+	parent.$("#TellfriendSender").val(yourEmail);
+	
+}
+function backto(){
+	$("#openinviter_login").show();
+	$("#contactList").hide();
 }

@@ -92,6 +92,7 @@ class TellfriendsController extends TellfriendsAppController {
 				foreach ($errors as $key=>$val) {
 							$errMessages .= $val;
 						}
+				$errMessages .='<br /><input type="button" id="back_to_login" value="Back" onclick="backto();">';
 				echo $errMessages;
 				exit;
 			}
