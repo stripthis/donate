@@ -149,6 +149,19 @@ class Appeal extends AppModel {
 				return false;
 			}
 		}
+
+		$published = isset($this->data[__CLASS__]['status']) && $this->data[__CLASS__]['status'];
+		$templateId = false;
+		if (isset($this->data[__CLASS__]['template_id'])) {
+			$templateId = $this->data[__CLASS__]['template_id'];
+		} elseif (isset($this->data[__CLASS__]['id'])) {
+			$templateId = $this->lookup(array('id' => $this->data[__CLASS__]['id']), 'template_id', false);
+		}
+		$publishedTemplate = $this->Template->lookup(array('id' => $templateId), 'published', false);
+
+		if (!$publishedTemplate) {
+			$this->invalidate('status', __('You cannot set the status to "published" if there is no published template assigned.', true));
+		}
 	}
 /**
  * undocumented function
