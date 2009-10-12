@@ -87,6 +87,19 @@ class Template extends AppModel {
 			$imgPath = WWW_ROOT . 'img' . DS . 'templates' . DS . $slug . '_' . $id;
 			mkdir($imgPath, 0755);
 
+			// add thanks page automatically
+			$filePath = $this->path . DS . 'thanks.ctp';
+			$content = "<?php echo \$this->element('../templates/default/thanks'); ?>";
+			file_put_contents($filePath, $content);
+
+			$this->TemplateStep->create(array(
+				'template_id' => $id,
+				'is_thanks' => '1',
+				'slug' => 'thanks',
+				'num' => '0'
+			));
+			$this->TemplateStep->save();
+
 			if (!empty($templateToCopy)) {
 				$toCopyPath = VIEWS . 'templates' . DS . 
 								$templateToCopy[__CLASS__]['slug'] . '_' . $templateToCopy[__CLASS__]['id'];
@@ -118,30 +131,39 @@ class Template extends AppModel {
 
 		if (isset($this->steps)) {
 			foreach ($this->steps as $num => $content) {
-				$filePath = $this->path . DS . 'step' . $num . '.ctp';
-				$stepRow = $this->TemplateStep->find('first', array(
-					'conditions' => array(
-						'template_id' => $id,
-						'num' => $num
-					)
-				));
+				if ($num != 'thanks') {
+					$filePath = $this->path . DS . 'step' . $num . '.ctp';
+					$stepRow = $this->TemplateStep->find('first', array(
+						'conditions' => array(
+							'template_id' => $id,
+							'num' => $num
+						)
+					));
 
-				if (empty($content)) {
-					@unlink($filePath);
-					if (!empty($stepRow)) {
-						$this->TemplateStep->del($stepRow['TemplateStep']['id']);
+					if (empty($content)) {
+						@unlink($filePath);
+						if (!empty($stepRow)) {
+							$this->TemplateStep->del($stepRow['TemplateStep']['id']);
+						}
+						continue;
+					}
+
+					// todo: support for thanks page
+					file_put_contents($filePath, $content);
+					if (empty($stepRow)) {
+						$this->TemplateStep->create(array(
+							'template_id' => $id,
+							'slug' => 'step-' . $num,
+							'num' => $num
+						));
+						$this->TemplateStep->save();
 					}
 					continue;
 				}
-		
-				file_put_contents($filePath, $content);
-				if (empty($stepRow)) {
-					$this->TemplateStep->create(array(
-						'template_id' => $id,
-						'slug' => 'step-' . $num,
-						'num' => $num
-					));
-					$this->TemplateStep->save();
+
+				$filePath = $this->path . DS . 'thanks.ctp';
+				if (!empty($content)) {
+					file_put_contents($filePath, $content);
 				}
 			}
 		}

@@ -14,24 +14,21 @@ class TemplateStepVisit extends AppModel {
  * @access public
  */
 	function trackHit($templateId, $appealId, $step) {
-		$stepId = false;
-		if ($step == 'thanks') {
-			$lastStep = $this->TemplateStep->find('first', array(
-				'conditions' => array('template_id' => $templateId),
-				'order' => array('num' => 'desc'),
-				'fields' => array('id')
-			));
-			$stepId = $lastStep['TemplateStep']['id'];
-		} else {
-			$step = $this->TemplateStep->find('first', array(
-				'conditions' => array(
-					'template_id' => $templateId,
-					'num' => $step
-				),
-				'fields' => array('id')
-			));
-			$stepId = $step['TemplateStep']['id'];
+		$conditions = array(
+			'template_id' => $templateId,
+			'is_thanks' => '1'
+		);
+		if ($step != 'thanks') {
+			unset($conditions['is_thanks']);
+			$conditions['num'] = $step;
 		}
+
+		$step = $this->TemplateStep->find('first', array(
+			'conditions' => $conditions,
+			'fields' => array('id')
+		));
+		$stepId = $step['TemplateStep']['id'];
+
 
 		$isPageview = false;
 

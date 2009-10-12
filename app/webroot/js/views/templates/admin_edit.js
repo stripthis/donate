@@ -2,9 +2,9 @@ $(function() {
 	resizing();
 
 	$('a.add-step').click(function() {
-		var newId = parseInt(
-			$('#template_form textarea:last').attr('rel')
-		) + 1;
+		var newId = $('fieldset.steps textarea').length > 0
+					? parseInt($('fieldset.steps textarea:last').attr('rel')) + 1
+					: 1;
 
 		var $textarea = $(
 			'<div class="input textbox">' +
@@ -13,7 +13,7 @@ $(function() {
 			'</div>'
 		);
 
-		$textarea.appendTo($('fieldset.steps'));
+		$textarea.insertBefore($(this));
 		resizing();
 
 		return false;
