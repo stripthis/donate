@@ -14,9 +14,6 @@ class Appeal extends AppModel {
 	);
 
 	var $hasMany = array(
-		'AppealsTemplate' => array(
-			'dependent' => true
-		),
 		'AppealsTheme' => array(
 			'dependent' => true
 		),

@@ -9,9 +9,6 @@ class Template extends AppModel {
 		'TemplateStep' => array(
 			'dependent' => true
 		),
-		'AppealsTemplate' => array(
-			'dependent' => true
-		),
 	);
 
 	var $hasAndBelongsToMany = array(
