@@ -48,6 +48,11 @@ class Appeal extends AppModel {
 				'message' => 'Please specify a cost!',
 				'last' => true
 			),
+			'valid' => array(
+				'rule' => 'money',
+				'message' => 'This is not a monetary amount',
+				'last' => true
+			),
 		),
 		'campaign_code' => array(
 			'required' => array(
@@ -60,6 +65,11 @@ class Appeal extends AppModel {
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'Please specify the targeted income!',
+				'last' => true
+			),
+			'valid' => array(
+				'rule' => 'money',
+				'message' => 'This is not a monetary amount',
 				'last' => true
 			),
 		),
@@ -120,10 +130,47 @@ class Appeal extends AppModel {
  * @return void
  * @access public
  */
+	function beforeValidate() {
+		if (isset($this->data[__CLASS__]['default']) && $this->data[__CLASS__]['default']) {
+			$Session = Common::getComponent('Session');
+			$conditions = array(
+				'default' => '1',
+				'office_id' => $Session->read('Office.id')
+			);
+			if (!empty($this->data[__CLASS__]['id'])) {
+				$conditions['id <>'] = $this->data[__CLASS__]['id'];
+			}
+
+			$defaultAppeal = $this->find('first', array(
+				'conditions' => $conditions,
+				'fields' => array('id', 'name')
+			));
+			if (!empty($defaultAppeal)) {
+				$msg = 'Sorry, there can only be one default appeal at the same time.';
+				$msg .= ' The current default appeal is: "' . $defaultAppeal[__CLASS__]['name'] . '".';
+				$this->invalidate('default', __($msg, true));
+				return false;
+			}
+		}
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
 	function beforeSave() {
 		$this->themes = isset($this->data[__CLASS__]['themes'])
 						? $this->data[__CLASS__]['themes']
 						: false;
+
+		$monetaryFields = array('cost', 'targeted_income');
+		foreach ($monetaryFields as $field) {
+			if (isset($this->data[__CLASS__][$field])) {
+				$this->data[__CLASS__][$field] = (float) r(',', '.', $this->data[__CLASS__][$field]);
+			}
+		}
+
 		return true;
 	}
 /**

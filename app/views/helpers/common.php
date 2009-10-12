@@ -190,5 +190,22 @@ class CommonHelper extends Apphelper {
 			echo $result;
 		}
 	}
+/**
+ * undocumented function
+ *
+ * @param string $date 
+ * @return void
+ * @access public
+ */
+	function date($date) {
+		if (!is_int($date)) {
+			$date = strtotime($date);
+		}
+		$format = 'd. M y @ H:i';
+		if (date('Y', $date) == date('Y')) {
+			$format = 'd. M @ H:i';
+		}
+		return date($format, $date);
+	}
 }
 ?>

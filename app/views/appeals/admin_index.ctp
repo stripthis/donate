@@ -21,10 +21,11 @@ $favConfig = Configure::read('Favorites');
 		}
 		$th = am($th, array(
 			$paginator->sort('Status', 'status', array('url' => $params)),
+			$paginator->sort('Is Default?', 'default', array('url' => $params)),
 			$paginator->sort('Name', 'name', array('url' => $params)),
 			$paginator->sort('Campaign Code', 'campaign_code', array('url' => $params)),
-			'Income',
-			'Signups',
+			$paginator->sort('Targeted Income', 'targeted_income', array('url' => $params)),
+			$paginator->sort('Targeted Signups', 'targeted_signups', array('url' => $params)),
 			$paginator->sort('Last Update', 'modified', array('url' => $params)),
 			'Actions'
 		));
@@ -55,11 +56,12 @@ $favConfig = Configure::read('Favorites');
 			}
 			$tr = am($tr,array(
 				$appeal['Appeal']['status'],
+				$appeal['Appeal']['default'] ? __('Yes', true) : __('No', true),
 				$appeal['Appeal']['name'],
 				$appeal['Appeal']['campaign_code'],
-				'',
-				'',
-				$appeal['Appeal']['modified'],
+				$appeal['Appeal']['targeted_income'],
+				$appeal['Appeal']['targeted_signups'],
+				$common->date($appeal['Appeal']['modified']),
 				implode(' - ', $actions)
 			));
 			echo $html->tableCells($tr);

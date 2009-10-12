@@ -1,7 +1,3 @@
-<?php
-	$numThemes = count($themes);
-	$i = 0;
-?>
 <div class="content edit" id="appeal_form">
 	<h1><?php echo sprintf(__('%s Appeal', true), ucfirst($action)); ?></h1>
 	<?php echo $form->create('Appeal');?>
@@ -9,7 +5,7 @@
 		<legend><?php __('Idenfiers'); ?></legend>
 		<?php echo $form->input('id'); ?>
 		<?php echo $form->input('name'); ?>
-		<?php echo $form->input('slug', array('label' => __('Slug (Generated if left empty)', true))); ?>
+		<?php echo $form->input('slug', array('label' => __('Slug (Generated based on name if left empty)', true))); ?>
 	</fieldset>	
 	<fieldset>
 		<legend><?php __('Status'); ?></legend>
@@ -36,6 +32,8 @@
 		<legend><?php __('Themes'); ?></legend>
 		<div class='half'>
 			<?php
+			$numThemes = count($themes);
+			$i = 0;
 			foreach ($themes as $theme) {
 				$i++;
 				if ($numThemes > 1 && $i <= $numThemes / 2) {
