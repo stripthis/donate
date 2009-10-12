@@ -4,7 +4,7 @@ class Gift extends AppModel {
 		'Containable',
 		'Lookupable',
 		'Serialable',
-		'ContinousId' => array('offset' => '100000')
+		'ContinuousId' => array('offset' => '100000')
 	);
 
 	var $belongsTo = array(

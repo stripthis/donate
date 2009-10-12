@@ -1,6 +1,6 @@
 <?php 
 /**
- * ContinousId Behavior Behavior class file.
+ * ContinuousId Behavior Behavior class file.
  *
  * @filesource
  * @author Tim Koschuetzki
@@ -25,7 +25,7 @@ class ContinuousIdBehavior extends ModelBehavior {
 /**
  * Initiate behavior for the model using settings.
  *
- * @param object $Model Model using the behaviour
+ * @param object $Model Model using the behavior
  * @param array $settings Settings to override for model.
  * @access public
  */

@@ -24,14 +24,14 @@
 
 		<table>
 			<tr>
-				<th><?php echo $paginator->sort('#', 'continous_id')?></th>
+				<th><?php echo $paginator->sort('#', 'continuous_id')?></th>
 				<th>Event</th>
 				<th>Changed Data</th>
 				<th>Date</th>
 			</tr>
 			<?php foreach ($logs as $log) : ?>
 				<tr>
-					<td><?php echo $log['Log']['continous_id']?></td>
+					<td><?php echo $log['Log']['continuous_id']?></td>
 					<td><?php echo $log['Log']['event']?></td>
 					<td>
 						<ul>

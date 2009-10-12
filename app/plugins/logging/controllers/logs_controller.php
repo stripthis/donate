@@ -54,7 +54,7 @@ class LogsController extends LoggingAppController {
 			'conditions' => $conditions,
 			'contain' => array('User', 'Gift', 'Transaction'),
 			'limit' => $params['my_limit'],
-			'order' => array('Log.continous_id' => 'desc')
+			'order' => array('Log.continuous_id' => 'desc')
 		);
 		$logs = $this->paginate($this->Log);
 		$this->set(compact('logs', 'params', 'userOptions'));

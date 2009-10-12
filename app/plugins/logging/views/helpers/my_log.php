@@ -18,7 +18,7 @@ class MyLogHelper extends AppHelper {
 		foreach ($data as $key => $row) {
 			$one = $row['Log'];
 			$result[$key]['Log']['id'] = $one['id'];
-			$result[$key]['Log']['continous_id'] = $one['continous_id'];
+			$result[$key]['Log']['continuous_id'] = $one['continuous_id'];
 			$event = $row['User']['name'];
 			$model = low($one['model']);
 			
