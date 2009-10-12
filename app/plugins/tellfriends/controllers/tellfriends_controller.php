@@ -52,14 +52,37 @@ class TellfriendsController extends TellfriendsAppController {
 				$errors['contacts']="Unable to get contacts."; 
 			} else{
 			
-				$this->render = false;
-				$element = '';
-				if(count($contacts) >0){
-				$element .= "<table>";
+				$this->render  = false;
+				$element       = '';
+				$totalContacts = count($contacts);
+				//Displying contacts in three columns
+				if($totalContacts >0){
+					$element .= "<table>";
+					$tempKey = 0;
+					$newContacts = array();
 					foreach ($contacts as $key=>$val) {
-						$element .= '<tr><td  valign="top"><input type="checkbox" name="Tellfriend.option[]" value="'.$key.'" onchange="tellFriends(this);"></td><td valgin="bottom">'.$key.'</td></tr>';
+						$val = $key;
+						$key = $tempKey;
+						$newContacts[$key] = $val;
+						$tempKey++;
 					}
-				$element .= '</table><input type="button" id="confirm" value="Confirm" onclick="validate();">';
+					$tableColumns = 3;
+					$tableRows    = $totalContacts/3;
+					$newKey       = 0;
+					for($r = 0; $r < $tableRows; $r++) {
+						$element .= "<tr>";
+						for($c = 0; $c < $tableColumns; $c++) {
+							if($newKey<$totalContacts) {
+									$element .= '<td  valign="top"><input type="checkbox" name="Tellfriend.option[]" value="'.$newContacts[$newKey].'" onchange="tellFriends(this);"></td><td valgin="bottom">'.$newContacts[$newKey].'</td>';
+									$newKey++;
+							} else {
+									$element .= '<td  valign="top">&nbsp;</td><td valgin="bottom">&nbsp;</td>';
+							}
+						}
+						$element .= "</tr>";
+					}
+					
+				    $element .= '<td valgin="bottom" colspan ="2"><input type="button" id="confirm" value="Confirm" onclick="validate();">&nbsp;</td><td valign="top" colspan ="4">&nbsp;</td></table>';
 				 }
 				echo $element;
 				exit;

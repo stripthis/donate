@@ -84,5 +84,11 @@ function tellFriends(chckbox)
 function validate(){
 	var emailList = $("#openinviter_contact_list").val();
 	parent.tb_remove();
-	parent.$("#TellfriendReceiver").val(emailList);
+	var prevEmailList = parent.$("#TellfriendReceiver").val();
+	if(prevEmailList == ''){
+		var newEmailList  = emailList;
+	} else {
+		var newEmailList  = prevEmailList + "," + emailList;
+	}
+	parent.$("#TellfriendReceiver").val(newEmailList);
 }
