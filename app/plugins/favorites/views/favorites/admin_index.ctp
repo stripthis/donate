@@ -38,7 +38,9 @@ if ($isSingle) {
 			'action' => 'view', $favorite[$m]['id']
 		));
 		$tr = array(
-			$favorite['Favorite']['created'],
+			method_exists($common, 'date') 
+				? $common->date($favorite['Favorite']['created'])
+				: $favorite['Favorite']['created'],
 			$item,
 			implode(' - ', $actions)
 		);

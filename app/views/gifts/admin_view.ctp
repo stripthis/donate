@@ -99,12 +99,12 @@
 		</dd>
 		<dt><?php echo __('Created', true); ?></dt>
 		<dd>
-			<?php echo $gift['Gift']['created']; ?>
+			<?php echo $common->date($gift['Gift']['created']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Modified', true); ?></dt>
 		<dd>
-			<?php echo $gift['Gift']['modified']; ?>
+			<?php echo $common->date($gift['Gift']['modified']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -115,12 +115,12 @@
 		<?php
 		$options = array('url' => array($gift['Gift']['id']));
 		$th = array(
-			$myPaginator->sort(__('Status',true), 'status', $options),
-			$myPaginator->sort(__('Id',true), 'serial', $options),
-			$myPaginator->sort(__('Order Id',true), 'order_id', $options),
-			$myPaginator->sort(__('Amount',true), 'amount', $options),
+			$myPaginator->sort(__('Status', true), 'status', $options),
+			$myPaginator->sort(__('Id', true), 'serial', $options),
+			$myPaginator->sort(__('Order Id', true), 'order_id', $options),
+			$myPaginator->sort(__('Amount', true), 'amount', $options),
 			__('Gateway', true),
-			$myPaginator->sort(__('Created',true), 'created', $options),
+			$myPaginator->sort(__('Created', true), 'created', $options),
 			'Actions'
 		);
 
@@ -147,7 +147,7 @@
 				$t['Transaction']['order_id'],
 				$t['Transaction']['amount'].' EUR', //@todo currency
 				$t['Gateway']['name'],
-				$t['Transaction']['created'],
+				$common->date($t['Transaction']['created']),
 				implode(' - ', $actions)
 			);
 			echo $html->tableCells($tr);

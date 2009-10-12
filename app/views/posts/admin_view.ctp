@@ -27,12 +27,12 @@
     </dd>
     <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Created'); ?></dt>
     <dd<?php if ($i++ % 2 == 0) echo $class;?>>
-      <?php echo $post['Post']['created']; ?>
+      <?php echo $common->date($post['Post']['created']); ?>
       &nbsp;
     </dd>
     <dt<?php if ($i % 2 == 0) echo $class;?>><?php __('Modified'); ?></dt>
     <dd<?php if ($i++ % 2 == 0) echo $class;?>>
-      <?php echo $post['Post']['modified']; ?>
+      <?php echo $common->date($post['Post']['modified']); ?>
       &nbsp;
     </dd>
 	</dl>

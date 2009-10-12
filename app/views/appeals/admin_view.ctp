@@ -31,72 +31,49 @@
 		</ul>
 	</div>
 	<dl>
-		<dt><?php echo __('Id', true); ?></dt>
-		<dd>
-			<?php echo $appeal['Appeal']['id']; ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Parent', true); ?></dt>
-		<dd>
-			<?php
-			if (!empty($appeal['Parent']['name'])) {
-				echo $html->link($appeal['Parent']['name'], array(
-					'controller'=> 'appeals', 'action'=>'view', $appeal['Parent']['id']
-				));
-			} else {
-				echo '--';
-			}
-			?>
-			&nbsp;
-		</dd>
 		<dt><?php echo __('Name', true); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['name']; ?>
-			&nbsp;
+		</dd>
+		<dt><?php echo __('Status', true); ?></dt>
+		<dd>
+			<?php echo ucfirst($appeal['Appeal']['status']); ?>
 		</dd>
 		<dt><?php echo __('Campaign Code', true); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['campaign_code']; ?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Is Default', true); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['default'] ? __('Yes', true) : __('No', true); ?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Cost', true); ?></dt>
 		<dd>
 			<?php echo $appeal['Appeal']['cost']; ?>
-			&nbsp;
 		</dd>
-		<dt><?php echo __('Reviewed', true); ?></dt>
+		<dt><?php echo __('Targeted Income', true); ?></dt>
 		<dd>
-			<?php echo $appeal['Appeal']['reviewed']; ?>
-			&nbsp;
+			<?php echo $appeal['Appeal']['targeted_income']; ?>
 		</dd>
-		<dt><?php echo __('Status', true); ?></dt>
+		<dt><?php echo __('Targeted Signups', true); ?></dt>
 		<dd>
-			<?php echo $appeal['Appeal']['status']; ?>
-			&nbsp;
+			<?php echo $appeal['Appeal']['targeted_signups']; ?>
 		</dd>
 		<dt><?php echo __('Created By', true); ?></dt>
 		<dd>
 			<?php
 			echo $html->link($appeal['User']['login'], array(
-				'controller'=> 'users', 'action'=>'view', $appeal['User']['id']
+				'controller' => 'users', 'action' => 'view', $appeal['User']['id']
 			));
 			?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Created On', true); ?></dt>
 		<dd>
-			<?php echo $appeal['Appeal']['created']; ?>
-			&nbsp;
+			<?php echo $common->date($appeal['Appeal']['created']); ?>
 		</dd>
 		<dt><?php echo __('Last Modified', true); ?></dt>
 		<dd>
-			<?php echo $appeal['Appeal']['modified']; ?>
-			&nbsp;
+			<?php echo $common->date($appeal['Appeal']['modified']); ?>
 		</dd>
 	</dl>
 </div>

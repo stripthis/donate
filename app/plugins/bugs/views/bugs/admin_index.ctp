@@ -11,7 +11,9 @@ foreach ($bugs as $bug) {
 	);
 	$tr = array(
 		'#' . $bug['Bug']['increment'],
-		$bug['Bug']['created'],
+		method_exists($common, 'date') 
+			? $common->date($bug['Bug']['created'])
+			: $bug['Bug']['created'],
 		$bug['User']['login'],
 		$bug['Bug']['last_thing'],
 		$bug['Bug']['bug_descr'],

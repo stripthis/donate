@@ -43,8 +43,12 @@ if (!empty($transactions)) {
 			!empty($t['Import']['serial']) ? $t['Import']['serial'] : '--',
 			$t['Transaction']['amount'] . ' EUR', //@todo currency
 			$t['Transaction']['Gateway']['name'],
-			$t['Transaction']['created'],
-			$t['Transaction']['modified'],
+			method_exists($common, 'date') 
+				? $common->date($t['Transaction']['created'])
+				: $t['Transaction']['created'],
+			method_exists($common, 'date') 
+				? $common->date($t['Transaction']['modified'])
+				: $t['Transaction']['modified'],
 			implode(' - ', $actions)
 		));
 		$content .= $html->tableCells($tr)."\n";

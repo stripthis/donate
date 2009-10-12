@@ -74,8 +74,8 @@ $favConfig = Configure::read('Favorites');
 				isset($t['Address'][0]['Country']['name'])
 					? $t['Address'][0]['Country']['name']
 					: '--',
-				date('Y-m-d H:i', strtotime($t['Contact']['created'])),
-				date('Y-m-d H:i', strtotime($t['Contact']['modified'])),
+				$common->date($t['Contact']['created']),
+				$common->date($t['Contact']['modified']),
 				implode(' - ', $actions)
 			));
 			echo $html->tableCells($tr);

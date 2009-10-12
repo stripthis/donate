@@ -18,7 +18,7 @@
 		<?php endif; ?>
 		<dt><?php echo __('Created', true); ?></dt>
 		<dd>
-			<?php echo date('F d Y', strtotime($office['Office']['created'])); ?>
+			<?php echo $common->date($office['Office']['created']); ?>
 			&nbsp;
 		</dd>
 	</dl>
@@ -37,8 +37,8 @@
 					<td><?php echo $gateway['name'];?></td>
 					<td><?php echo $gateway['uses_price'];?></td>
 					<td><?php echo $gateway['uses_rate'];?></td>
-					<td><?php echo $gateway['created'];?></td>
-					<td><?php echo $gateway['modified'];?></td>
+					<td><?php echo $common->date($gateway['created']);?></td>
+					<td><?php echo $common->date($gateway['modified']);?></td>
 				</tr>
 			<?php endforeach; ?>
 		</table>

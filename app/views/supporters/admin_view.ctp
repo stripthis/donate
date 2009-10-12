@@ -4,58 +4,47 @@
 		<dt><?php echo __('Id', true); ?></dt>
 		<dd>
 			<?php echo $contact['Contact']['id']; ?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Fname', true); ?></dt>
 		<dd>
 			<?php echo $contact['Contact']['fname']; ?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Lname', true); ?></dt>
 		<dd>
 			<?php echo $contact['Contact']['lname']; ?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Salutation', true); ?></dt>
 		<dd>
 			<?php echo $contact['Contact']['salutation']; ?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Title', true); ?></dt>
 		<dd>
 			<?php echo $contact['Contact']['title']; ?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Address', true); ?></dt>
 		<dd>
 			<?php echo $contact['Address'][0]['line_1']; ?><br />
 			<?php echo $contact['Address'][0]['line_2']; ?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Zip', true); ?></dt>
 		<dd>
 			<?php echo $contact['Address'][0]['zip']; ?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Country', true); ?></dt>
 		<dd>
 			<?php echo $contact['Address'][0]['Country']['name']; ?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Email', true); ?></dt>
 		<dd>
 			<?php echo $contact['Contact']['email']; ?>
-			&nbsp;
 		</dd>
 		<dt><?php echo __('Created', true); ?></dt>
 		<dd>
-			<?php echo $contact['Contact']['created']; ?>
-			&nbsp;
+			<?php echo $common->date($contact['Contact']['created']); ?>
 		</dd>
 		<dt><?php echo __('Last Update', true); ?></dt>
 		<dd>
 			<?php echo $contact['Contact']['modified']; ?>
-			&nbsp;
 		</dd>
 	</dl>
 

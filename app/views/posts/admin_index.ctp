@@ -33,8 +33,8 @@
 			<td><?php echo $post['Post']['id']; ?></td>
 			<td><?php echo $post['Post']['title']; ?></td>
 			<td><?php echo $post['Post']['body']; ?></td>
-			<td><?php echo $post['Post']['created']; ?></td>
-			<td><?php echo $post['Post']['modified']; ?></td>
+			<td><?php echo $common->date($post['Post']['created']); ?></td>
+			<td><?php echo $common->date($post['Post']['modified']); ?></td>
 			<td class="actions">
 				<?php
 				echo $html->link(__('View', true),

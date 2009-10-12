@@ -9,7 +9,7 @@
 	);
 	echo $html->tableHeaders($th);
 	foreach ($users as $user) {
-		$date = date('Y-m-d', strtotime($user['User']['created']));
+		$date = $common->date($user['User']['created']);
 		$creator = $user['CreatedBy']['login'];
 		$created = sprintf('%s by %s', $date, $creator);
 		$tr = array(

@@ -41,7 +41,7 @@
 		$tr = array(
 			$office['Office']['name'],
 			$office['ParentOffice']['name'],
-			date('F d Y', strtotime($office['Office']['created'])),
+			$common->date($office['Office']['created']),
 			$time->timeAgoInWords($office['Office']['modified']),
 			implode(' - ', $actions)
 		);

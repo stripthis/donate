@@ -45,7 +45,7 @@ $title = User::is('root')
 			<tbody>
 			<tr<?php echo $class;?>>
 				<td class="text"><?php echo $user['User']['login']; ?></td>
-				<td class="date"><?php echo date('F d Y', strtotime($user['User']['created'])); ?></td>
+				<td class="date"><?php echo $common->date($user['User']['created']); ?></td>
 				<td class="text"><?php echo Inflector::humanize($user['Role']['name']); ?></td>
 				<td class="">
 					<?php

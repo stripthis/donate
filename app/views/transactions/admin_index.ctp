@@ -64,8 +64,8 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 			!empty($t['Import']['serial']) ? $t['Import']['serial'] : '--',
 			$t['Transaction']['amount'].' EUR', //@todo currency
 			$t['Gateway']['name'],
-			$t['Transaction']['created'],
-			$t['Transaction']['modified'],
+			$common->date($t['Transaction']['created']),
+			$common->date($t['Transaction']['modified']),
 			implode(' - ', $actions)
 		));
 		echo $html->tableCells($tr)."\n";
@@ -90,9 +90,11 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 					$t['Gateway']['name'],
 					$t['Transaction']['amount'],
 					$t['Transaction']['order_id'],
-			    $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id'])),
-					$t['Transaction']['created'],
-			    $t['Transaction']['modified'],
+			    	$html->link(__('Check', true), array(
+						'controller'=> 'gifts', 'action'=>'view', $t['Gift']['id']
+					)),
+					$common->date($t['Transaction']['created']),
+					$common->date($t['Transaction']['modified']),
 					$actions
 				);
 			}

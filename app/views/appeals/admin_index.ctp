@@ -55,7 +55,7 @@ $favConfig = Configure::read('Favorites');
 				$tr[] = $favorites->link("Appeal", $t['Appeal']['id']);
 			}
 			$tr = am($tr,array(
-				$appeal['Appeal']['status'],
+				ucfirst($appeal['Appeal']['status']),
 				$appeal['Appeal']['default'] ? __('Yes', true) : __('No', true),
 				$appeal['Appeal']['name'],
 				$appeal['Appeal']['campaign_code'],

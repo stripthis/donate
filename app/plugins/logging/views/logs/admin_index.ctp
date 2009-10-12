@@ -40,7 +40,13 @@
 							<?php endforeach; ?>
 						</ul>
 					</td>
-					<td><?php echo $log['Log']['created']?>
+					<td>
+					<?php
+					echo method_exists($common, 'date') 
+						? $common->date($log['Log']['created'])
+						: $log['Log']['created'];
+					?>
+					</td>
 				</tr>
 			<?php endforeach; ?>
 		</table>

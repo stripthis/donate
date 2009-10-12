@@ -4,32 +4,23 @@
 	<fieldset>
 		<dl>
 			<dt><?php echo __('Friends Id', true); ?></dt>
-			<dd>
-				<?php echo $transaction['Transaction']['order_id']; ?>
-				&nbsp;
-			</dd>
+			<dd><?php echo $transaction['Transaction']['order_id']; ?></dd>
 			<?php if (!empty($transaction['ParentTransaction']['id'])) : ?>
 				<dt><?php echo __('Parent Trans.', true); ?></dt>
 				<dd>
 					<?php
-				$url = array(
-					'controller'=> 'transactions', 'action'=>'view',
-					$transaction['ParentTransaction']['id']
+					$url = array(
+						'controller'=> 'transactions', 'action'=>'view',
+						$transaction['ParentTransaction']['id']
 					);
-				echo $html->link($transaction['ParentTransaction']['id'], $url);
+					echo $html->link($transaction['ParentTransaction']['id'], $url);
 				?>
-			</dd>
+				</dd>
 			<?php endif; ?>
 			<dt><?php echo __('Status', true); ?></dt>
-			<dd>
-				<?php echo $transaction['Transaction']['status']; ?>
-				&nbsp;
-			</dd>
+			<dd><?php echo $transaction['Transaction']['status']; ?></dd>
 			<dt><?php echo __('Gateway', true); ?></dt>
-			<dd>
-				<?php echo $transaction['Gateway']['name']; ?>
-				&nbsp;
-			</dd>
+			<dd><?php echo $transaction['Gateway']['name']; ?></dd>
 		</dl>
 	</fieldset>
 	<fieldset>
@@ -37,17 +28,15 @@
 			<dt><?php echo __('Gift', true); ?></dt>
 			<dd>
 				<?php
-			$amount = $transaction['Gift']['amount'];
-			$frequency = $transaction['Gift']['frequency'];
-			$type = $transaction['Gift']['type'];
-			echo sprintf('%s %s, %s EUR', ucfirst($frequency), ucfirst($type), $amount);
-			?>
-			&nbsp;
+				$amount = $transaction['Gift']['amount'];
+				$frequency = $transaction['Gift']['frequency'];
+				$type = $transaction['Gift']['type'];
+				echo sprintf('%s %s, %s EUR', ucfirst($frequency), ucfirst($type), $amount);
+				?>
 		</dd>
 		<dt><?php echo __('Amount', true); ?></dt>
 		<dd>
 			<?php echo $transaction['Transaction']['amount']; ?>
-			&nbsp;
 		</dd>
 	</dl>
 	</fieldset>
@@ -55,13 +44,11 @@
 		<dl>
 			<dt><?php echo __('Created', true); ?></dt>
 			<dd>
-				<?php echo $transaction['Transaction']['created']; ?>
-				&nbsp;
+				<?php echo $common->date($transaction['Transaction']['created']); ?>
 			</dd>
 			<dt><?php echo __('Modified', true); ?></dt>
 			<dd>
-				<?php echo $transaction['Transaction']['modified']; ?>
-				&nbsp;
+				<?php echo $common->date($transaction['Transaction']['modified']); ?>
 			</dd>
 		</dl>
 	</fieldset>
