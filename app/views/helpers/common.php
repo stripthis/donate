@@ -207,5 +207,18 @@ class CommonHelper extends Apphelper {
 		}
 		return date($format, $date);
 	}
+/**
+ * undocumented function
+ *
+ * @param string $email 
+ * @return void
+ * @access public
+ */
+	function gravatar($email, $size = '50') {
+		$imgUrl = 'http://www.gravatar.com/avatar.php?gravatar_id=';
+		$imgUrl .= md5(low($email)) . '&size=' . $size . '&rating=R&d=identicon';
+		$img = $this->Html->image($imgUrl, compact('width', 'height'));
+		return $this->Html->link($img, 'http://en.gravatar.com/site/signup', array('class' => 'gravatar'), false, false);
+	}
 }
 ?>
