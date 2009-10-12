@@ -34,12 +34,6 @@ class Address extends AppModel {
 			'notEmpty' => array(
 				'rule' => 'notEmpty',
 				'message' => 'Please provide a zip code.',
-			),
-			'valid' => array(
-				'rule' => array('validateZip'),
-				'message' => 'Please provide a valid zip code.',
-				'required' => false,
-				'allowEmpty' => true,
 			)
 		),
 		'country_id' => array(
@@ -59,18 +53,5 @@ class Address extends AppModel {
 			)
 		)
 	);
-/**
- * undocumented function
- *
- * @param string $check 
- * @return void
- * @access public
- */
-	function validateZip($check) {
-		//echo "validate zip";
-		//pr($this->data['City']);
-		//exit;
-		return true;
-	}
 }
 ?>
