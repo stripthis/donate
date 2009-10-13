@@ -10,7 +10,7 @@ class AppealsController extends AppController {
 		parent::beforeFilter();
 		$this->Office = $this->Appeal->Office;
 		$this->Theme = $this->Appeal->Theme;
-		$this->Template = $this->Appeal->Template;
+		$this->Template = ClassRegistry::init('Template');
 		$this->Gateway = ClassRegistry::init('Gateway');
 	}
 /**

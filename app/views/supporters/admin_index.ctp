@@ -53,9 +53,8 @@ $favConfig = Configure::read('Favorites');
 				);
 			}
 
-			$gift = $html->link('Check', array('controller'=> 'gifts', 'action'=>'view', $t['Gift']['id']));
 			$tr = array();
-			$tr[] = $form->checkbox($t['Gift']['id'], array('class'=>'checkbox'));
+			$tr[] = $form->checkbox($t['Contact']['id'], array('class'=>'checkbox'));
 			if ($doFavorites) {
 				$tr[] = $favorites->link('Contact', $t['Contact']['id']);
 			}
