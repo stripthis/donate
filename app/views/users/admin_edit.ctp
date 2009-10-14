@@ -36,8 +36,9 @@
 	echo $form->input('Contact.lname', array('label' => 'Last Name'));
 	echo '<h3>Individual Permissions</h3>';
 
-	if ($canEdit) {
-		$permissions = Configure::read('App.permission.options');
+	$isRoot = isset($user) && $user['Role']['name'] == 'root';
+	if ($canEdit && !$isRoot) {
+		$permissions = Configure::read('App.permissions.options');
 
 		foreach ($permissions as $perm) {
 			$perm = trim($perm);
@@ -57,8 +58,14 @@
 				'checked' => $checked ? 'checked' : ''
 			));
 		}
-	} else {
+	}
+	
+	if (!$canEdit) {
 		echo '<p>' . __('You are not allowed to change the permissions of this user, as he is an office manager.', true) . '</p>';
+	}
+
+	if ($isRoot) {
+		echo '<p>' . __('You are not allowed to change the permissions of this user, as he is a root user.', true) . '</p>';
 	}
 	echo $form->end('Save');
 	?>

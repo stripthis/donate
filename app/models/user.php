@@ -202,7 +202,7 @@ class User extends AppModel {
 					'Contact.Address.City(id, name)'
 				),
 				'fields' => array(
-					'User.id', 'User.name', 'User.login', 'User.password',
+					'User.id', 'User.name', 'User.login', 'User.password', 'User.permissions',
 					'User.active', 'User.tooltips', 'User.role_id', 'User.office_id',
 					'User.contact_id'
 				)
@@ -491,6 +491,7 @@ class User extends AppModel {
 		if (User::is('root')) {
 			return true;
 		}
+
 		$result = true;
 		if (!empty($obj)) {
 			if (isset($obj['Gift']['office_id'])) {
@@ -503,6 +504,7 @@ class User extends AppModel {
 				$result = $obj['User']['office_id'] == $this->Session->read('Office.id');
 			}
 		}
+
 		$result = $result && Common::requestAllowed($controller, $action, User::get('Role.permissions'), true);
 		return $result && Common::requestAllowed($controller, $action, User::get('permissions'), true);
 	}

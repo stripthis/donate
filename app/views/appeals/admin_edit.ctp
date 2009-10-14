@@ -56,9 +56,13 @@
 		// 	'options' => Configure::read('App.languages'), 'label' => 'Supported Language'
 		// ));
 
-		$infStatusOptions = array_map('ucfirst', $statusOptions);
-		$statusOptions = array_combine($statusOptions, $infStatusOptions);
-		echo $form->input('status', array('options' => $statusOptions));
+		if (User::allowed('Appeals', 'publish')) {
+			$infStatusOptions = array_map('ucfirst', $statusOptions);
+			$statusOptions = array_combine($statusOptions, $infStatusOptions);
+			echo $form->input('status', array('options' => $statusOptions));
+		} else {
+			echo '<p>This Appeal is ' . $form->data['Appeal']['status'] . '. You do not have permission to change the status.</p>';
+		}
 		?>
 	</fieldset>
 	<?php echo $form->end('Submit');?>
