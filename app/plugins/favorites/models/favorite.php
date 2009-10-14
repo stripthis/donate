@@ -1,6 +1,7 @@
 <?php
 class Favorite extends FavoritesAppModel{
 	var $belongsTo = array('User');
+	var $deleteFields = array('deleted', 'archived', 'softdeleted');
 /**
  * undocumented function
  *
@@ -38,9 +39,16 @@ class Favorite extends FavoritesAppModel{
 					'foreignKey' => 'foreign_id'
 				)
 			)), false);
+
+			foreach ($this->deleteFields as $field) {
+				if (array_key_exists($field, $Model->_schema)) {
+					$alias = $Model->alias;
+					$conditions[] = '(' . $alias . '.' . $field . '= "0" || ' . $alias . '.id IS NULL)';
+				}
+			}
 		}
 		$this->bindModel(array('belongsTo' => $options), false);
-
+		
 		$favorites = $this->find('all', array(
 			'conditions' => $conditions,
 			'contain' => $models,
