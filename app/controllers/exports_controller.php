@@ -1,6 +1,5 @@
 <?php
 class ExportsController extends AppController {
-	var $uses = array();
 	var $components = array('ForceDownload');
 	var $helpers = array('Csv');
 	var $sessKeyModel = 'export_model';
@@ -91,6 +90,15 @@ class ExportsController extends AppController {
 			$path = '/admin/exports/' . $plural . '.' . $this->data[$model]['format'];
 			$this->ForceDownload->forceDownload($path, $name);
 		}
+
+		$Export = ClassRegistry::init('Export');
+		$Export->create(array(
+			'created_by' => User::get('id'),
+			'nb_exported' => count($items),
+			'model' => $model
+		));
+		$Export->save();
+
 		$this->set(compact('items'));
 		$this->RequestHandler->renderAs($this, $this->data[$model]['format']);
 	}

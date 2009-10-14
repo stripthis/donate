@@ -13,7 +13,12 @@ class Import extends AppModel {
 		)
 	);
 
-	var $belongsTo = array('User');
+	var $belongsTo = array(
+		'User' => array(
+			'foreignKey' => 'created_by'
+		)
+	);
+
 	var $hasMany = array(
 		'Transaction'
 	);
