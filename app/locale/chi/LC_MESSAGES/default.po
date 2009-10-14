@@ -1,0 +1,1110 @@
+#total number of words to be translated in v1 (23-09-09) : 862
+msgid ""
+msgstr ""
+"Project-Id-Version: Cool IT Challenge\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-21 11:14+0100\n"
+"PO-Revision-Date: 2009-10-14 09:14+0800\n"
+"Last-Translator: Leehui <zq1008@126.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: /home/remy/Work/www/donate/app/\n"
+"X-Poedit-SearchPath-0: ./controllers\n"
+"X-Poedit-SearchPath-1: ./views\n"
+"X-Poedit-SearchPath-2: ./models\n"
+"X-Poedit-SearchPath-3: ./webroot\n"
+
+#: controllers/auth_keys_controller.php:22
+msgid "Please go ahead and change your password now."
+msgstr "请继续修改密码"
+
+#: controllers/statistics_controller.php:122
+msgid "Sorry, the beginning date must be before the end date."
+msgstr "对不起，开始日期必须先于截至日期"
+
+#: controllers/offices_controller.php:24
+msgid "This office is already active."
+msgstr "工作室已激活"
+
+#: controllers/offices_controller.php:41
+msgid "The office was successfully activated!"
+msgstr "工作室已成功激活！"
+
+#: controllers/offices_controller.php:163
+#: controllers/appeals_controller.php:147
+#: controllers/users_controller.php:72
+#: controllers/users_controller.php:362
+#: controllers/roles_controller.php:74
+msgid "Please fill out all fields"
+msgstr "请填写所有空格"
+
+#: controllers/offices_controller.php:167
+msgid "Office was saved successfully."
+msgstr "工作室保存成功！"
+
+#: controllers/offices_controller.php:191
+msgid "Sorry, but there are still users, transactions or gifts related to this office."
+msgstr "对不起，本工作室正在被用户使用或正在进行交易或礼物。"
+
+#: controllers/offices_controller.php:195
+msgid "The Office has been deleted."
+msgstr "工作室已被删除"
+
+#: controllers/offices_controller.php:225
+msgid "Tree updated!"
+msgstr "树状系统已更新！"
+
+#: controllers/settings_controller.php:29
+msgid "The settings could not be updated."
+msgstr "不能更新本设置"
+
+#: controllers/settings_controller.php:31
+msgid "The settings were saved"
+msgstr "设置已保存"
+
+#: controllers/dashboards_controller.php:32
+msgid "The cache has been cleared."
+msgstr "缓存区已清空"
+
+#: controllers/dashboards_controller.php:39
+msgid "The counter caches have been rebuilt."
+msgstr "重置缓存"
+
+#: controllers/transactions_controller.php:148
+msgid "The Transaction has been deleted."
+msgstr "交易删除"
+
+#: controllers/gifts_controller.php:155
+#, php-format
+msgid "There was a problem processing the transaction: %s"
+msgstr "交易过程出现问题： %s"
+
+#: controllers/gifts_controller.php:212
+msgid "Donation added!"
+msgstr "添加捐助"
+
+#: controllers/gifts_controller.php:346
+msgid "There was a problem saving the gift."
+msgstr "礼物保存出现问题"
+
+#: controllers/gifts_controller.php:349
+msgid "The gift was successfully added!"
+msgstr "礼物添加成功！"
+
+#: controllers/gifts_controller.php:371
+#: controllers/users_controller.php:193
+#: controllers/supporters_controller.php:151
+msgid "Successfully deleted!"
+msgstr "删除成功！"
+
+#: controllers/gifts_controller.php:498
+msgid "Please choose a country first!"
+msgstr "请首先选择国家！"
+
+#: controllers/appeals_controller.php:151
+msgid "The AAppeal was saved successfully."
+msgstr "呼吁保存成功。"
+
+#: controllers/appeals_controller.php:173
+msgid "The Appeal has been deleted."
+msgstr "呼吁被删除"
+
+#: controllers/users_controller.php:89
+msgid "New Account for Greenpeace White Rabbit"
+msgstr "绿色和平白兔的新帐户"
+
+#: controllers/users_controller.php:98
+#, php-format
+msgid "The admin account for %s has been created successfully. An email has been sent to the email address."
+msgstr "帐户为%s的管理员已创建成功。一封邮件已发送到邮箱中。"
+
+#: controllers/users_controller.php:103
+msgid "User was saved successfully."
+msgstr "用户保存成功！"
+
+#: controllers/users_controller.php:213
+msgid "Sorry, but we have no record of an account for "
+msgstr "对不起，我们没有帐户的记录"
+
+#: controllers/users_controller.php:236
+msgid " Password Recovery"
+msgstr "重新获得密码"
+
+#: controllers/users_controller.php:243
+#, php-format
+msgid "A message has been sent to %s."
+msgstr "一条信息已发送至%s"
+
+#: controllers/users_controller.php:309
+msgid "A new activation email was sent."
+msgstr "一个新的激活邮件已发送。"
+
+#: controllers/users_controller.php:342
+msgid "Your password has been updated successfully."
+msgstr "您的密码已更新成功。"
+
+#: controllers/users_controller.php:368
+msgid "Saved successfully."
+msgstr "保存成功。"
+
+#: controllers/auth_controller.php:14
+msgid "You are logged in already!"
+msgstr "登录成功！"
+
+#: controllers/auth_controller.php:20
+msgid "Good to see you again... But how come you are not logged in yet?!"
+msgstr "很高兴再次见到您... 为什么您还未注册呢？"
+
+#: controllers/auth_controller.php:67
+msgid "Sorry, but there is no activated user with these login credentials."
+msgstr "对不起，没有已激活的用户使用本登录信息。"
+
+#: controllers/roles_controller.php:77
+msgid "Role was saved successfully."
+msgstr "角色已保存成功。"
+
+#: controllers/roles_controller.php:94
+msgid "Role was successfully removed."
+msgstr "角色已成功移除"
+
+#: controllers/components/app_session.php:16
+msgid "You must set the Configure::write('Session.model') in core.php to use model storage"
+msgstr "您必须设置配置：在core.php中写入('Session.model')来使用模型存储"
+
+#: models/navigation.php:34
+msgid "Home"
+msgstr "主页"
+
+#: models/navigation.php:38
+msgid "Appeals"
+msgstr "呼吁"
+
+#: models/navigation.php:42
+msgid "Gifts"
+msgstr "礼物"
+
+#: models/navigation.php:46
+msgid "Transactions"
+msgstr "交易"
+
+#: models/navigation.php:50
+msgid "Supporters"
+msgstr "支持者"
+
+#: models/navigation.php:69
+msgid "Admin"
+msgstr "管理员"
+
+#: models/navigation.php:74
+msgid "Office Config"
+msgstr "工作室配置"
+
+#: models/navigation.php:80
+msgid "Help"
+msgstr "帮助"
+
+#: models/navigation.php:87
+#: models/navigation.php:97
+#: models/navigation.php:119
+#: models/navigation.php:149
+#: models/navigation.php:159
+msgid "All"
+msgstr "全部"
+
+#: models/navigation.php:91
+msgid "My Office"
+msgstr "我的工作室"
+
+#: models/navigation.php:101
+msgid "One Off"
+msgstr "其中之一"
+
+#: models/navigation.php:105
+#: models/navigation.php:171
+msgid "Recurring"
+msgstr "重覆"
+
+#: models/navigation.php:109
+#: models/navigation.php:123
+#: models/navigation.php:180
+msgid "Favorites"
+msgstr "收藏夹"
+
+#: models/navigation.php:113
+#: models/navigation.php:143
+msgid "Archived"
+msgstr "已归档"
+
+#: models/navigation.php:153
+msgid "My Office Colleagues"
+msgstr "我的同事"
+
+#: models/navigation.php:167
+msgid "One-off"
+msgstr "其中之一"
+
+#: models/navigation.php:186
+msgid "Preferences"
+msgstr "参数"
+
+#: models/navigation.php:190
+msgid "Edit Password"
+msgstr "编辑密码"
+
+#: models/navigation.php:196
+msgid "Login"
+msgstr "登录"
+
+#: models/navigation.php:200
+msgid "Lost Password"
+msgstr "密码丢失"
+
+#: models/navigation.php:206
+msgid "Config"
+msgstr "配置"
+
+#: models/navigation.php:211
+msgid "Team &amp; Permissions"
+msgstr "Team &amp；许可"
+
+#: models/navigation.php:216
+msgid "Unactivated Users"
+msgstr "未激活的用户"
+
+#: models/navigation.php:223
+msgid "Getting started"
+msgstr "开始"
+
+#: models/navigation.php:227
+msgid "Faq"
+msgstr "常见问题解答"
+
+#: models/navigation.php:233
+msgid "Offices"
+msgstr "工作室"
+
+#: models/navigation.php:238
+msgid "Users"
+msgstr "用户"
+
+#: models/navigation.php:243
+msgid "Roles"
+msgstr "角色"
+
+#: models/user.php:232
+#, php-format
+msgid "Welcome to %s"
+msgstr "欢迎光临%s"
+
+#: webroot/test.php:99
+msgid "Debug setting does not allow access to this url."
+msgstr "调试设置不允许使用本URL。"
+
+#: views/roles/admin_index.ctp:2
+msgid "Roles & Permissions"
+msgstr "角色及许可"
+
+#: views/roles/admin_index.ctp:16
+msgid "(Uneditable)"
+msgstr "（不可编辑）"
+
+#: views/roles/admin_index.ctp:20
+msgid "Delete Role"
+msgstr "删除角色"
+
+#: views/roles/admin_index.ctp:22
+#: views/posts/admin_index.ctp:51
+#: views/posts/admin_edit.ctp:11
+msgid "Are you sure?"
+msgstr "您确定要删除角色吗？"
+
+#: views/roles/admin_edit.ctp:3
+msgid "Add a role"
+msgstr "添加角色"
+
+#: views/roles/admin_edit.ctp:4
+msgid "Manage roles"
+msgstr "管理角色"
+
+#: views/roles/admin_edit.ctp:13
+msgid "Role Name"
+msgstr "角色名称"
+
+#: views/roles/admin_edit.ctp:14
+msgid "Name"
+msgstr "姓名"
+
+#: views/roles/admin_edit.ctp:15
+msgid "Description"
+msgstr "描述"
+
+#: views/posts/admin_view.ctp:2
+msgid "Post"
+msgstr "岗位"
+
+#: views/posts/admin_view.ctp:4
+#: views/posts/admin_add.ctp:4
+#: views/posts/admin_index.ctp:22
+#: views/posts/admin_edit.ctp:4
+msgid "Actions"
+msgstr "活动"
+
+#: views/posts/admin_view.ctp:6
+#: views/posts/admin_edit.ctp:2
+#: views/posts/admin_edit.ctp:27
+msgid "Edit Post"
+msgstr "编辑岗位"
+
+#: views/posts/admin_view.ctp:7
+msgid "Delete Post"
+msgstr "删除岗位"
+
+#: views/posts/admin_view.ctp:7
+#, php-format
+msgid "Are you sure you want to delete # %s?"
+msgstr "您确定要删除# %s吗？"
+
+#: views/posts/admin_view.ctp:8
+#: views/posts/admin_add.ctp:6
+#: views/posts/admin_edit.ctp:17
+msgid "List Posts"
+msgstr "岗位列表"
+
+#: views/posts/admin_view.ctp:9
+#: views/posts/admin_index.ctp:8
+msgid "New Post"
+msgstr "新岗位"
+
+#: views/posts/admin_view.ctp:13
+msgid "Id"
+msgstr "ID"
+
+#: views/posts/admin_view.ctp:18
+msgid "Title"
+msgstr "题目"
+
+#: views/posts/admin_view.ctp:23
+msgid "Body"
+msgstr "主体"
+
+#: views/posts/admin_view.ctp:28
+msgid "Created"
+msgstr "创建"
+
+#: views/posts/admin_view.ctp:33
+msgid "Modified"
+msgstr "修改"
+
+#: views/posts/admin_add.ctp:2
+msgid "Add a new post"
+msgstr "添加新岗位"
+
+#: views/posts/admin_add.ctp:11
+msgid "Add Post"
+msgstr "添加岗位"
+
+#: views/posts/admin_index.ctp:2
+msgid "Posts Index"
+msgstr "岗位索引"
+
+#: views/posts/admin_index.ctp:40
+msgid "View"
+msgstr "查看"
+
+#: views/posts/admin_index.ctp:44
+msgid "Edit"
+msgstr "编辑"
+
+#: views/posts/admin_index.ctp:48
+#: views/posts/admin_edit.ctp:8
+msgid "Delete"
+msgstr "删除"
+
+#: views/pages/config_test.ctp:11
+msgid "Your tmp directory is writable."
+msgstr "您的临时地址簿为可写状态。"
+
+#: views/pages/config_test.ctp:15
+msgid "Your tmp directory is NOT writable."
+msgstr "您的临时地址簿不可写"
+
+#: views/pages/config_test.ctp:25
+#, php-format
+msgid "The %s is being used for caching. To change the config edit APP/config/core.php "
+msgstr "%s 被用作缓存。修改配置编辑 APP/config/core.php "
+
+#: views/pages/config_test.ctp:29
+msgid "Your cache is NOT working. Please check the settings in APP/config/core.php"
+msgstr "您的缓存已停止工作。请 APP/config/core.php设置"
+
+#: views/pages/config_test.ctp:39
+msgid "Your database configuration file is present."
+msgstr "您的数据库配置文件已存在。"
+
+#: views/pages/config_test.ctp:44
+msgid "Your database configuration file is NOT present."
+msgstr "您的数据库配置文件未存在。"
+
+#: views/pages/config_test.ctp:46
+msgid "Rename config/database.php.default to config/database.php"
+msgstr "重命名config/database.php。 config/database.php恢复默认值"
+
+#: views/pages/config_test.ctp:61
+msgid "Cake is able to connect to the database."
+msgstr "Cake可以与数据库联接。"
+
+#: views/pages/config_test.ctp:65
+msgid "Cake is NOT able to connect to the database."
+msgstr "Cake不能与数据库联接。"
+
+#: views/pages/config_test.ctp:71
+msgid "Editing this Page"
+msgstr "编辑此页"
+
+#: views/pages/config_test.ctp:74
+#, php-format
+msgid ""
+"To change the content of this page, edit: %s\n"
+"\t\tTo change its layout, edit: %s\n"
+"\t\tYou can also add some CSS styles for your pages at: %s"
+msgstr ""
+"修改本页面内容请编辑： %s\n"
+"\t\t修改页面布局请编辑： %s\n"
+"\t\t您可以为您的页面添加CSS格式： %s"
+
+#: views/pages/home.ctp:2
+msgid "Donate"
+msgstr "捐助"
+
+#: views/pages/home.ctp:3
+msgid "Join Greenpeace today and add your voice to the movement that's committed to defending our planet. Our vision of a better future is only as strong as the people who support us. Your support will make all the difference.!"
+msgstr "现在加入绿色和平，让我们一起来保护我们的星球。支持我们的群众越强大我们的对未来的憧憬也将越美好。您的支持将给我们带来莫大的帮助！"
+
+#: views/pages/tos.ctp:1
+msgid "Terms of Service"
+msgstr "服务条款"
+
+#: views/auth/admin_login.ctp:4
+msgid "Admin Login"
+msgstr "管理员登录"
+
+#: views/auth/admin_login.ctp:12
+msgid "Please enter your login details"
+msgstr "请输入您的登陆详细信息"
+
+#: views/auth/admin_login.ctp:13
+msgid "Email"
+msgstr "邮箱"
+
+#: views/auth/admin_login.ctp:14
+msgid "Password"
+msgstr "密码"
+
+#: views/auth/admin_login.ctp:16
+msgid "Global Password (GL3)"
+msgstr "全球密码（GL3）"
+
+#: views/offices/admin_view.ctp:2
+msgid "Office Configuration"
+msgstr "工作室配置"
+
+#: views/offices/admin_view.ctp:16
+msgid "Parent Office"
+msgstr "父级工作室"
+
+#: views/offices/admin_view.ctp:25
+msgid "Supported Gateways"
+msgstr "支持途径"
+
+#: views/offices/admin_view.ctp:30
+msgid "Uses Price"
+msgstr "使用费"
+
+#: views/offices/admin_view.ctp:31
+msgid "Uses Rate"
+msgstr "使用价格"
+
+#: views/offices/admin_add.ctp:2
+#: views/offices/admin_add.ctp:13
+msgid "Add Office"
+msgstr "添加工作室"
+
+#: views/offices/admin_add.ctp:6
+msgid "List Offices"
+msgstr "工作室列表"
+
+#: views/offices/admin_add.ctp:7
+msgid "List Gateways"
+msgstr "途径列表"
+
+#: views/offices/admin_add.ctp:8
+msgid "New Gateway"
+msgstr "新途径"
+
+#: views/offices/admin_team.ctp:2
+msgid "People Working in this Office"
+msgstr "本工作室的成员"
+
+#: views/offices/admin_manage_tree.ctp:2
+msgid "Office Tree Management"
+msgstr "工作室数状系统管理"
+
+#: views/offices/admin_index.ctp:12
+#: views/offices/admin_edit.ctp:3
+msgid "New Office"
+msgstr "新工作室"
+
+#: views/offices/admin_index.ctp:16
+msgid "Manage Tree"
+msgstr "管理树状图"
+
+#: views/offices/admin_index.ctp:28
+msgid "Parent"
+msgstr "父级"
+
+#: views/offices/admin_edit.ctp:4
+msgid "Edit Office Configuration"
+msgstr "编辑工作室配置"
+
+#: views/offices/admin_edit.ctp:16
+msgid "Main Preferences"
+msgstr "主要参数"
+
+#: views/offices/admin_edit.ctp:31
+msgid "Default Gift"
+msgstr "默认礼物"
+
+#: views/offices/admin_edit.ctp:46
+msgid "Gateways & Currencies"
+msgstr "途径及货币"
+
+#: views/offices/elements/actions.ctp:9
+msgid "Cancel"
+msgstr "取消"
+
+#: views/users/admin_activate.ctp:7
+#, php-format
+msgid "Hello <em>%s</em>, your account was <strong>successfully activated</strong>! You are <strong>logged in now</strong>! Please go ahead and change your password now."
+msgstr "您好 <em>%s</em>，您的帐户已<strong>成功激活</strong>！您现在可以<strong>登录您的帐户</strong>！请继续并修改您的密码。"
+
+#: views/users/admin_preferences.ctp:2
+#: views/users/admin_edit_password.ctp:2
+msgid "My Account"
+msgstr "我的帐户"
+
+#: views/users/admin_preferences.ctp:10
+msgid "Help & Language"
+msgstr "帮助和语言"
+
+#: views/users/admin_preferences.ctp:18
+msgid "Contact Details"
+msgstr "联系方式"
+
+#: views/users/admin_edit_password.ctp:12
+msgid "Please provide your current and your new password."
+msgstr "请输入您当前使用的密码和您修改后的新密码。"
+
+#: views/users/admin_forgot_pw.ctp:12
+msgid "Password recovery"
+msgstr "密码恢复"
+
+#: views/users/admin_forgot_pw.ctp:15
+msgid "Recover Password"
+msgstr "重获密码"
+
+#: views/users/admin_index.ctp:3
+msgid "User Management"
+msgstr "用户管理"
+
+#: views/users/admin_index.ctp:33
+msgid "Level"
+msgstr "级别"
+
+#: views/users/admin_index.ctp:59
+msgid "Resend Activation Email"
+msgstr "重新发送激活邮件"
+
+#: views/users/admin_index.ctp:67
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr "您确定要删除%s吗？"
+
+#: views/users/admin_edit.ctp:15
+msgid "A password will be autogenerated for this user and she will get an email with her login credentials."
+msgstr "为本用户自动生成密码，通过登陆信息她将得到一个邮箱。"
+
+#: views/users/admin_edit.ctp:32
+msgid "You are not allowed to change the role or office of this user, as he is an office manager."
+msgstr "本用户为工作室经理，您无权修改本用户的角色或工作室。"
+
+#: views/users/admin_edit.ctp:61
+msgid "You are not allowed to change the permissions of this user, as he is an office manager."
+msgstr "本用户为工作室经理，您无权修改本用户的许可。"
+
+#: views/users/elements/actions.ctp:3
+msgid "Add User"
+msgstr "添加用户"
+
+#: views/tellfriends/refer.ctp:7
+msgid "Friends' Email (comma separated emails)"
+msgstr "朋友的网站（邮箱用逗号隔开）"
+
+#: views/tellfriends/refer.ctp:11
+msgid "Your Message"
+msgstr "请留言"
+
+#: views/tellfriends/refer.ctp:11
+msgid "Hi, Your friend wants you to check out this website: www.greenpeace.org "
+msgstr "嗨，您的朋友希望您核实本网站：www.greenpeace.org "
+
+#: views/appeals/admin_view.ctp:2
+msgid "Appeal"
+msgstr "呼吁"
+
+#: views/appeals/admin_view.ctp:8
+msgid "Edit Appeal"
+msgstr "编辑呼吁"
+
+#: views/appeals/admin_view.ctp:16
+msgid "Delete Appeal"
+msgstr "删除呼吁"
+
+#: views/appeals/admin_view.ctp:49
+msgid "Campaign Code"
+msgstr "活动代码"
+
+#: views/appeals/admin_view.ctp:54
+msgid "Is Default"
+msgstr "默认值"
+
+#: views/appeals/admin_view.ctp:56
+msgid "Yes"
+msgstr "是"
+
+#: views/appeals/admin_view.ctp:56
+msgid "No"
+msgstr "否"
+
+#: views/appeals/admin_view.ctp:59
+msgid "Cost"
+msgstr "费用"
+
+#: views/appeals/admin_view.ctp:64
+msgid "Reviewed"
+msgstr "检查"
+
+#: views/appeals/admin_view.ctp:69
+#: views/transactions/admin_view.ctp:28
+#: views/transactions/admin_index.ctp:35
+msgid "Status"
+msgstr "状态"
+
+#: views/appeals/admin_view.ctp:74
+msgid "Created By"
+msgstr "创始人"
+
+#: views/appeals/admin_view.ctp:83
+msgid "Created On"
+msgstr "创建时间"
+
+#: views/appeals/admin_view.ctp:88
+msgid "Last Modified"
+msgstr "最后一次修改"
+
+#: views/appeals/admin_add.ctp:2
+#: views/appeals/admin_add.ctp:17
+msgid "Add Appeal"
+msgstr "添加呼吁"
+
+#: views/appeals/admin_add.ctp:6
+#: views/appeals/admin_add.ctp:7
+msgid "List Appeals"
+msgstr "呼吁列表"
+
+#: views/appeals/admin_add.ctp:8
+msgid "New Parent"
+msgstr "新的父级"
+
+#: views/appeals/admin_add.ctp:9
+msgid "List Users"
+msgstr "用户列表"
+
+#: views/appeals/admin_add.ctp:10
+msgid "New User"
+msgstr "新用户"
+
+#: views/appeals/admin_add.ctp:11
+msgid "List Countries"
+msgstr "国家列表"
+
+#: views/appeals/admin_add.ctp:12
+msgid "New Country"
+msgstr "新国家"
+
+#: views/appeals/admin_index.ctp:15
+msgid "New Appeal"
+msgstr "新呼吁"
+
+#: views/appeals/admin_index.ctp:43
+msgid "Preview"
+msgstr "预览"
+
+#: views/appeals/admin_edit.ctp:2
+msgid " Appeal"
+msgstr "呼吁"
+
+#: views/transactions/admin_view.ctp:2
+msgid "Transaction"
+msgstr "交易"
+
+#: views/transactions/admin_view.ctp:6
+msgid "Friends Id"
+msgstr "朋友的ID"
+
+#: views/transactions/admin_view.ctp:11
+msgid "Payment Gateway Id"
+msgstr "付款途径ID"
+
+#: views/transactions/admin_view.ctp:17
+msgid "Parent Trans."
+msgstr "父级交易"
+
+#: views/transactions/admin_view.ctp:33
+#: views/transactions/admin_index.ctp:39
+msgid "Gateway"
+msgstr "方法"
+
+#: views/transactions/admin_view.ctp:42
+#: views/transactions/admin_index.ctp:40
+msgid "Gift"
+msgstr "礼物"
+
+#: views/transactions/admin_view.ctp:52
+#: views/transactions/admin_index.ctp:38
+msgid "Amount"
+msgstr "数量"
+
+#: views/transactions/admin_index.ctp:11
+#, php-format
+msgid "%s's Transactions"
+msgstr "%s的交易"
+
+#: views/transactions/admin_index.ctp:37
+msgid "External ID"
+msgstr "外部ID"
+
+#: views/transactions/admin_index.ctp:121
+msgid "Sorry but there is nothing to display here..."
+msgstr "对不起，没有要显示的内容……"
+
+#: views/transactions/elements/actions.ctp:14
+msgid "Export Selection"
+msgstr "选择导出项"
+
+#: views/transactions/elements/actions.ctp:21
+msgid "Export All"
+msgstr "全部导出"
+
+#: views/transactions/elements/actions.ctp:30
+msgid "back to index"
+msgstr "返回索引"
+
+#: views/elements/warning.ctp:2
+msgid "Sorry, nothing to list."
+msgstr "对不起，未列出任何内容。"
+
+#: views/elements/admin/quicklinks.ctp:1
+msgid "What do you feel like doing?"
+msgstr "你喜欢做什么？"
+
+#: views/elements/admin/actions.ctp:32
+msgid "Sorry, but there is nothing to do here for now"
+msgstr "对不起，目前这里没有需要做的工作。"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:6
+msgid "Shortcuts"
+msgstr "快捷方式"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:10
+msgid "Bookmark this page"
+msgstr "标记此页"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:11
+msgid "Print this page"
+msgstr "打印此页"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:12
+msgid "Increase font size"
+msgstr "增大字体"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:13
+msgid "Decrease font size"
+msgstr "减小字体"
+
+#: views/elements/admin/sidebar/twitter_feed.ctp:7
+msgid "Latest Tweets"
+msgstr "最近一次鸣叫"
+
+#: views/elements/admin/sidebar/twitter_feed.ctp:20
+msgid "follow us on twitter"
+msgstr "和我们一起学鸟鸣"
+
+#: views/elements/admin/sidebar/help.ctp:2
+msgid "Need some help?"
+msgstr "需要帮助？"
+
+#: views/elements/admin/sidebar/search.ctp:23
+msgid "Search"
+msgstr "搜索"
+
+#: views/elements/admin/sidebar/search.ctp:28
+msgid "Enter an id or a keyword"
+msgstr "输入一个ID或关键字"
+
+#: views/elements/admin/sidebar/search.ctp:34
+msgid "search"
+msgstr "搜索"
+
+#: views/elements/admin/sidebar/news.ctp:9
+msgid "News"
+msgstr "新闻"
+
+#: views/elements/admin/sidebar/news.ctp:18
+msgid "more"
+msgstr "更多"
+
+#: views/elements/admin/sidebar/news.ctp:22
+msgid "follow us on Making Waves"
+msgstr "和我们一起制造风波"
+
+#: views/elements/admin/sidebar/news.ctp:33
+msgid "Latest blog entry"
+msgstr "最新博克记载"
+
+#: views/elements/admin/users/badge.ctp:2
+msgid "Welcome back"
+msgstr "欢迎归来"
+
+#: views/elements/admin/users/badge.ctp:3
+msgid "preferences"
+msgstr "参数"
+
+#: views/elements/admin/users/badge.ctp:4
+msgid "logout"
+msgstr "退出"
+
+#: views/elements/admin/filters/paging_limit.ctp:12
+msgid "How many results per page?"
+msgstr "每页结果显示"
+
+#: views/elements/admin/filters/paging_limit.ctp:19
+msgid "Prefer typing the number?"
+msgstr "更喜欢打字？"
+
+#: views/elements/admin/filters/time_range.ctp:7
+msgid "Filter by date"
+msgstr "根据日期筛选"
+
+#: views/elements/admin/filters/time_range.ctp:12
+msgid "Start Date"
+msgstr "开始日期"
+
+#: views/elements/admin/filters/time_range.ctp:42
+msgid "End Date"
+msgstr "截止日期"
+
+#: views/elements/admin/filters/keyword.ctp:2
+msgid "Filter by keyword"
+msgstr "通过关键字筛选"
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "due"
+msgstr "到期"
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "yes"
+msgstr "是"
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "no"
+msgstr "否"
+
+#: views/elements/tableset/rows/transaction.ctp:24
+msgid "The payment gateway is missing"
+msgstr "找不到付款途径"
+
+#: views/dashboards/admin_index.ctp:2
+msgid "Root Configuration"
+msgstr "基础配置"
+
+#: views/exports/admin_transactions.ctp:2
+msgid "Transaction Export"
+msgstr "交易导出"
+
+#: views/exports/admin_gifts.ctp:2
+msgid "Gift Export"
+msgstr "礼物导出"
+
+#: views/gifts/admin_view.ctp:8
+msgid "Delete Gift"
+msgstr "删除礼物"
+
+#: views/gifts/admin_view.ctp:22
+msgid "Office"
+msgstr "工作室"
+
+#: views/gifts/admin_view.ctp:31
+msgid "Type"
+msgstr "类型"
+
+#: views/gifts/admin_view.ctp:46
+#: views/gifts/admin_index.ctp:35
+msgid "Frequency"
+msgstr "频率"
+
+#: views/gifts/admin_view.ctp:59
+msgid "Fname"
+msgstr "名"
+
+#: views/gifts/admin_view.ctp:64
+msgid "Lname"
+msgstr "姓"
+
+#: views/gifts/admin_view.ctp:69
+msgid "Salutation"
+msgstr "打招呼"
+
+#: views/gifts/admin_view.ctp:79
+msgid "Address"
+msgstr "地址"
+
+#: views/gifts/admin_view.ctp:85
+msgid "Zip"
+msgstr "邮编"
+
+#: views/gifts/admin_view.ctp:90
+msgid "Country"
+msgstr "国家"
+
+#: views/gifts/admin_add.ctp:2
+msgid "New Gift"
+msgstr "新礼物"
+
+#: views/gifts/admin_add.ctp:9
+#, php-format
+msgid "Back to %s"
+msgstr "返回%s"
+
+#: views/gifts/admin_index.ctp:14
+msgid "Online Donations"
+msgstr "在线捐赠"
+
+#: views/gifts/admin_index.ctp:37
+msgid "Due"
+msgstr "到期"
+
+#: views/gifts/admin_index.ctp:41
+msgid "First Name"
+msgstr "名"
+
+#: views/gifts/admin_index.ctp:42
+msgid "Last Name"
+msgstr "姓"
+
+#: views/gifts/admin_index.ctp:47
+msgid "Date"
+msgstr "日期"
+
+#: views/settings/admin_edit.ctp:2
+msgid "Settings"
+msgstr "设置"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:6
+msgid "Edit Gift"
+msgstr "编辑礼物"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:8
+msgid "List Gifts"
+msgstr "礼物列表"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:18
+msgid "List Transactions"
+msgstr "交易列表"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:19
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:162
+msgid "New Transaction"
+msgstr "新交易"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:58
+msgid "User"
+msgstr "用户"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:117
+msgid "Related Transactions"
+msgstr "相关交易"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:122
+msgid "Parent Id"
+msgstr "父级ID"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:123
+msgid "Gateway Id"
+msgstr "网关ID"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:124
+msgid "External Id"
+msgstr "外部ID"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:125
+msgid "Gift Id"
+msgstr "礼物ID"
+
+#: views/templates/default/contact.ctp:5
+msgid "Contact Information"
+msgstr "联系方式"
+
+#: views/templates/default/gift.ctp:18
+msgid "Gift Information"
+msgstr "礼物信息"
+
+#: views/supporters/admin_index.ctp:28
+msgid "Phone"
+msgstr "电话"
+
+#: views/supporters/admin_index.ctp:29
+msgid "Zip Code"
+msgstr "邮编"
+
+#: views/supporters/admin_index.ctp:30
+msgid "City"
+msgstr "城市"
+
+#: views/supporters/admin_index.ctp:46
+msgid "Add Gift"
+msgstr "添加礼物"
+
+#: views/statistics/admin_index.ctp:3
+msgid "Statistics"
+msgstr "统计资料"
+
+#: views/statistics/admin_index.ctp:6
+msgid "Signups (partial)"
+msgstr "注册名单（部分）"
+
+#: views/statistics/admin_index.ctp:7
+msgid "Gifts (complete)"
+msgstr "礼物（完整）"
+
+#: views/statistics/admin_index.ctp:8
+msgid "Amounts"
+msgstr "数量"
+
+#~ msgid "tellafriend"
+#~ msgstr "Hello, Your friend wants you to visit www.greenpeace.org"
+

@@ -1,0 +1,1108 @@
+#total number of words to be translated in v1 (23-09-09) : 862
+msgid ""
+msgstr ""
+"Project-Id-Version: Cool IT Challenge\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-21 11:14+0100\n"
+"PO-Revision-Date: 2009-10-01 15:12+0530\n"
+"Last-Translator: kevin muller <kevin.muller@enova-tech.net>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Hindi\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: /home/remy/Work/www/donate/app/\n"
+"X-Poedit-SearchPath-0: ./controllers\n"
+"X-Poedit-SearchPath-1: ./views\n"
+"X-Poedit-SearchPath-2: ./models\n"
+"X-Poedit-SearchPath-3: ./webroot\n"
+
+#: controllers/auth_keys_controller.php:22
+msgid "Please go ahead and change your password now."
+msgstr "कृपया आगे बढ़ें और अपना पासवर्ड बदलें।"
+
+#: controllers/statistics_controller.php:122
+msgid "Sorry, the beginning date must be before the end date."
+msgstr "क्षमा, आरंभ करने की तारीख समाप्ति तारीख से पहले होनी चाहिए।"
+
+#: controllers/offices_controller.php:24
+msgid "This office is already active."
+msgstr "यह ऑफिस पहले से सक्रिय है।"
+
+#: controllers/offices_controller.php:41
+msgid "The office was successfully activated!"
+msgstr "ऑफिस सफलतापूर्वक सक्रिय कर दिया गया था ।"
+
+#: controllers/offices_controller.php:163
+#: controllers/appeals_controller.php:147
+#: controllers/users_controller.php:72
+#: controllers/users_controller.php:362
+#: controllers/roles_controller.php:74
+msgid "Please fill out all fields"
+msgstr "कृपया सभी क्षेत्रों को भरें"
+
+#: controllers/offices_controller.php:167
+msgid "Office was saved successfully."
+msgstr "'ऑफिस सफलतापूर्वक रक्षित कर लिया गया  था  ।"
+
+#: controllers/offices_controller.php:191
+msgid "Sorry, but there are still users, transactions or gifts related to this office."
+msgstr "क्षमा, अभी भी इस ऑफिस से संबंधित कुछ यूज़र, लेनदेन अथवा गिफ्ट शेष हैं। "
+
+#: controllers/offices_controller.php:195
+msgid "The Office has been deleted."
+msgstr "ऑफिस डिलीट कर दिया गया  है।"
+
+#: controllers/offices_controller.php:225
+msgid "Tree updated!"
+msgstr "ट्री अपडेटिड अर्थात अद्यतन "
+
+#: controllers/settings_controller.php:29
+msgid "The settings could not be updated."
+msgstr "सेटिंग्ज़ट अपडेट नहीं की जा सकीं।"
+
+#: controllers/settings_controller.php:31
+msgid "The settings were saved"
+msgstr "सेटिंग्ज़ट सेव कर ली गई थीं।"
+
+#: controllers/dashboards_controller.php:32
+msgid "The cache has been cleared."
+msgstr "कैश  आरंभ कर दिया गया है।"
+
+#: controllers/dashboards_controller.php:39
+msgid "The counter caches have been rebuilt."
+msgstr "प्रतिरोध कैश पुन: निर्मित कर दिए गए हैं।"
+
+#: controllers/transactions_controller.php:148
+msgid "The Transaction has been deleted."
+msgstr "लेनदेन डिलीट कर दी गई हैं।"
+
+#: controllers/gifts_controller.php:155
+#, php-format
+msgid "There was a problem processing the transaction: %s"
+msgstr "लेनदेन की प्रतिशत को प्रोसेस करने में एक कठिनाई आ गई थी।"
+
+#: controllers/gifts_controller.php:212
+msgid "Donation added!"
+msgstr "दान शामिल कर लिया गया है।"
+
+#: controllers/gifts_controller.php:346
+msgid "There was a problem saving the gift."
+msgstr "गिफ्ट सेव करने में कठिनाई आ गई थी। "
+
+#: controllers/gifts_controller.php:349
+msgid "The gift was successfully added!"
+msgstr "गिफ्ट सफलतापूर्वक शामिल कर ली गई थीं।"
+
+#: controllers/gifts_controller.php:371
+#: controllers/users_controller.php:193
+#: controllers/supporters_controller.php:151
+msgid "Successfully deleted!"
+msgstr "सफलतापूर्वक डिलीट कर दिया गया है।"
+
+#: controllers/gifts_controller.php:498
+msgid "Please choose a country first!"
+msgstr "कृपया सर्वप्रथम एक राष्ट्र  चुनें।"
+
+#: controllers/appeals_controller.php:151
+msgid "The AAppeal was saved successfully."
+msgstr "अपील सफलतापूर्वक सेव कर ली गई थी।"
+
+#: controllers/appeals_controller.php:173
+msgid "The Appeal has been deleted."
+msgstr "अपील डिलीट कर दी गई है। "
+
+#: controllers/users_controller.php:89
+msgid "New Account for Greenpeace White Rabbit"
+msgstr "ग्रीनपीस व्हाइट रेबिट के लिए नया खाता  "
+
+#: controllers/users_controller.php:98
+#, php-format
+msgid "The admin account for %s has been created successfully. An email has been sent to the email address."
+msgstr "%s के लिए एडमिन खाता सफलतापूर्वक खोल दिया गया है। ईमेल पते पर ईमेल भेज दिया गया है।"
+
+#: controllers/users_controller.php:103
+msgid "User was saved successfully."
+msgstr "यूज़र सफलतापूर्वक सेव कर लिया गया था।"
+
+#: controllers/users_controller.php:213
+msgid "Sorry, but we have no record of an account for "
+msgstr "क्षमा, हमारे पास .....के लिए खाते का कोई रिकार्ड नहीं है।"
+
+#: controllers/users_controller.php:236
+msgid " Password Recovery"
+msgstr "पासवर्ड रिकवरी"
+
+#: controllers/users_controller.php:243
+#, php-format
+msgid "A message has been sent to %s."
+msgstr "%s को एक संदेश भेज दिया गया है।"
+
+#: controllers/users_controller.php:309
+msgid "A new activation email was sent."
+msgstr "एक नया एक्टिवेशन ईमेल  भेज दिया गया था।"
+
+#: controllers/users_controller.php:342
+msgid "Your password has been updated successfully."
+msgstr "आपके पासवर्ड को सफलतापूर्वक अपडेट कर दिया गया है।"
+
+#: controllers/users_controller.php:368
+msgid "Saved successfully."
+msgstr "सफलतापूर्वक सेव कर लिया गया है।"
+
+#: controllers/auth_controller.php:14
+msgid "You are logged in already!"
+msgstr "आप पहले से ही लॉग इन किए हुए हैं।"
+
+#: controllers/auth_controller.php:20
+msgid "Good to see you again... But how come you are not logged in yet?!"
+msgstr "आपको दोबारा देखकर खुशी हुई....किंतु अभी तक आप लॉग इन क्यों नहीं कर पाए?"
+
+#: controllers/auth_controller.php:67
+msgid "Sorry, but there is no activated user with these login credentials."
+msgstr "क्षमा, इन लॉगिन क्रेडेन्शियल वाला कोई सक्रिय यूज़र नहीं है।"
+
+#: controllers/roles_controller.php:77
+msgid "Role was saved successfully."
+msgstr "भूमिका सफलतापूर्वक सेव कर ली गई थी।"
+
+#: controllers/roles_controller.php:94
+msgid "Role was successfully removed."
+msgstr "भूमिका सफलतापूर्वक हटा दी गई थी। "
+
+#: controllers/components/app_session.php:16
+msgid "You must set the Configure::write('Session.model') in core.php to use model storage"
+msgstr "मॉडल भंडारण का उपयोग करने के लिए आपको कनफिगर अवश्य  सैट करना चाहिए जिसके लिए कोर. पीएचपी में (सेशन मॉडल) अवश्यक लिखना चाहिए। "
+
+#: models/navigation.php:34
+msgid "Home"
+msgstr "होम"
+
+#: models/navigation.php:38
+msgid "Appeals"
+msgstr "\"अपील"
+
+#: models/navigation.php:42
+msgid "Gifts"
+msgstr "गिफ्ट"
+
+#: models/navigation.php:46
+msgid "Transactions"
+msgstr "लेनदेन"
+
+#: models/navigation.php:50
+msgid "Supporters"
+msgstr "सहायक"
+
+#: models/navigation.php:69
+msgid "Admin"
+msgstr "एडमिन"
+
+#: models/navigation.php:74
+msgid "Office Config"
+msgstr "ऑफिस कनफिगर"
+
+#: models/navigation.php:80
+msgid "Help"
+msgstr "हेल्प"
+
+#: models/navigation.php:87
+#: models/navigation.php:97
+#: models/navigation.php:119
+#: models/navigation.php:149
+#: models/navigation.php:159
+msgid "All"
+msgstr "ऑल"
+
+#: models/navigation.php:91
+msgid "My Office"
+msgstr "माई ऑफिस"
+
+#: models/navigation.php:101
+msgid "One Off"
+msgstr "वन ऑफ"
+
+#: models/navigation.php:105
+#: models/navigation.php:171
+msgid "Recurring"
+msgstr " आवृत्त्ती '"
+
+#: models/navigation.php:109
+#: models/navigation.php:123
+#: models/navigation.php:180
+msgid "Favorites"
+msgstr "फेवरिट"
+
+#: models/navigation.php:113
+#: models/navigation.php:143
+msgid "Archived"
+msgstr "आरचीव"
+
+#: models/navigation.php:153
+msgid "My Office Colleagues"
+msgstr " मेरे ऑफिस  सहकर्मी "
+
+#: models/navigation.php:167
+msgid "One-off"
+msgstr "वन-ऑफ"
+
+#: models/navigation.php:186
+msgid "Preferences"
+msgstr " प्रेफरेन्स / प्राथमिकता "
+
+#: models/navigation.php:190
+msgid "Edit Password"
+msgstr " पासवर्ड संपादित करें "
+
+#: models/navigation.php:196
+msgid "Login"
+msgstr "लॉग इन"
+
+#: models/navigation.php:200
+msgid "Lost Password"
+msgstr "पासवर्ड गुम हो गया"
+
+#: models/navigation.php:206
+msgid "Config"
+msgstr "कनफिगर"
+
+#: models/navigation.php:211
+msgid "Team &amp; Permissions"
+msgstr "टीम एंड एम्प', अनुमति"
+
+#: models/navigation.php:216
+msgid "Unactivated Users"
+msgstr "असक्रिय यूज़र"
+
+#: models/navigation.php:223
+msgid "Getting started"
+msgstr "प्रारंभ करते हुए"
+
+#: models/navigation.php:227
+msgid "Faq"
+msgstr "फेक़"
+
+#: models/navigation.php:233
+msgid "Offices"
+msgstr "ऑफिस"
+
+#: models/navigation.php:238
+msgid "Users"
+msgstr "यूज़र्स"
+
+#: models/navigation.php:243
+msgid "Roles"
+msgstr "भूमिकाएं"
+
+#: models/user.php:232
+#, php-format
+msgid "Welcome to %s"
+msgstr "%s में आपका स्वागत है।"
+
+#: webroot/test.php:99
+msgid "Debug setting does not allow access to this url."
+msgstr "डीबग सेटिंग इस यूआरएल को देखने की अनुमति नहीं देती हैं।"
+
+#: views/roles/admin_index.ctp:2
+msgid "Roles & Permissions"
+msgstr "भूमिकाएं एवं अनुमति"
+
+#: views/roles/admin_index.ctp:16
+msgid "(Uneditable)"
+msgstr " संपादन के योग्य नही "
+
+#: views/roles/admin_index.ctp:20
+msgid "Delete Role"
+msgstr "भूमिका डिलीट करें"
+
+#: views/roles/admin_index.ctp:22
+#: views/posts/admin_index.ctp:51
+#: views/posts/admin_edit.ctp:11
+msgid "Are you sure?"
+msgstr "क्याक आप आश्वस्त हैं?    "
+
+#: views/roles/admin_edit.ctp:3
+msgid "Add a role"
+msgstr "भूमिका जोड़ें"
+
+#: views/roles/admin_edit.ctp:4
+msgid "Manage roles"
+msgstr "भूमिकाएं मैनेज करें"
+
+#: views/roles/admin_edit.ctp:13
+msgid "Role Name"
+msgstr "भूमिका का नाम"
+
+#: views/roles/admin_edit.ctp:14
+msgid "Name"
+msgstr "नाम"
+
+#: views/roles/admin_edit.ctp:15
+msgid "Description"
+msgstr "विवरण"
+
+#: views/posts/admin_view.ctp:2
+msgid "Post"
+msgstr "पोस्ट"
+
+#: views/posts/admin_view.ctp:4
+#: views/posts/admin_add.ctp:4
+#: views/posts/admin_index.ctp:22
+#: views/posts/admin_edit.ctp:4
+msgid "Actions"
+msgstr "कार्य"
+
+#: views/posts/admin_view.ctp:6
+#: views/posts/admin_edit.ctp:2
+#: views/posts/admin_edit.ctp:27
+msgid "Edit Post"
+msgstr "पोस्टा ऐडिट करें"
+
+#: views/posts/admin_view.ctp:7
+msgid "Delete Post"
+msgstr "पोस्ट डिलीट करें"
+
+#: views/posts/admin_view.ctp:7
+#, php-format
+msgid "Are you sure you want to delete # %s?"
+msgstr "# %s को डिलीट करने के लिए क्या' आप आश्‍वस्‍त हैं? "
+
+#: views/posts/admin_view.ctp:8
+#: views/posts/admin_add.ctp:6
+#: views/posts/admin_edit.ctp:17
+msgid "List Posts"
+msgstr "पोस्ट की सूची बनाएं"
+
+#: views/posts/admin_view.ctp:9
+#: views/posts/admin_index.ctp:8
+msgid "New Post"
+msgstr "नई पोस्ट‍ "
+
+#: views/posts/admin_view.ctp:13
+msgid "Id"
+msgstr "आईडी"
+
+#: views/posts/admin_view.ctp:18
+msgid "Title"
+msgstr "शीर्षक"
+
+#: views/posts/admin_view.ctp:23
+msgid "Body"
+msgstr "बॉडी"
+
+#: views/posts/admin_view.ctp:28
+msgid "Created"
+msgstr "सृजित  "
+
+#: views/posts/admin_view.ctp:33
+msgid "Modified"
+msgstr "संशोधित"
+
+#: views/posts/admin_add.ctp:2
+msgid "Add a new post"
+msgstr "नई पोस्ट' जोड़ें"
+
+#: views/posts/admin_add.ctp:11
+msgid "Add Post"
+msgstr "पोस्ट जोड़ें"
+
+#: views/posts/admin_index.ctp:2
+msgid "Posts Index"
+msgstr "सूचकांक पोस्ट करें"
+
+#: views/posts/admin_index.ctp:40
+msgid "View"
+msgstr "अवलोकन"
+
+#: views/posts/admin_index.ctp:44
+msgid "Edit"
+msgstr "एडिट"
+
+#: views/posts/admin_index.ctp:48
+#: views/posts/admin_edit.ctp:8
+msgid "Delete"
+msgstr "डिलीट"
+
+#: views/pages/config_test.ctp:11
+msgid "Your tmp directory is writable."
+msgstr "आपकी टीएमपी डायरेक्टररी में लिखा जा सकता है।"
+
+#: views/pages/config_test.ctp:15
+msgid "Your tmp directory is NOT writable."
+msgstr "आपकी टीएमपी डायरेक्टकरी में लिखा नहीं जा सकता है।"
+
+#: views/pages/config_test.ctp:25
+#, php-format
+msgid "The %s is being used for caching. To change the config edit APP/config/core.php "
+msgstr "%s का उपयोग केचिंग के लिए किया जा रहा है। कनफिगरेशन बदलने के लिए एपीपी/कनफिग/कोर.पीएचपी एडिट करें।"
+
+#: views/pages/config_test.ctp:29
+msgid "Your cache is NOT working. Please check the settings in APP/config/core.php"
+msgstr "आपका कैच कार्य नहीं कर रहा है। कृपया एपीपी/कनफिग/कोर.पीएचपी की सेटिंग्ज़ा की जांच करें।"
+
+#: views/pages/config_test.ctp:39
+msgid "Your database configuration file is present."
+msgstr "आपकी डाटाबेस कनफिगरेशन फाइल उपलब्ध  है।"
+
+#: views/pages/config_test.ctp:44
+msgid "Your database configuration file is NOT present."
+msgstr "आपकी डाटाबेस कनफिगरेशन फाइल उपलब्ध नहीं है।"
+
+#: views/pages/config_test.ctp:46
+msgid "Rename config/database.php.default to config/database.php"
+msgstr "कनफिग/डाटाबेस.पीएचपी.डिफाल्टक को पुन: कनफिग/डाटाबेस.पीएचपी का नाम दें। "
+
+#: views/pages/config_test.ctp:61
+msgid "Cake is able to connect to the database."
+msgstr "केक डाटाबेस को जोड़ने में सक्षम है।"
+
+#: views/pages/config_test.ctp:65
+msgid "Cake is NOT able to connect to the database."
+msgstr "केक डाटाबेस को जोड़ने में सक्षम नहीं है"
+
+# plz check font is missiing
+#: views/pages/config_test.ctp:71
+msgid "Editing this Page"
+msgstr "इस पृष्ठ को एडिट किया जा रहा है"
+
+#: views/pages/config_test.ctp:74
+#, php-format
+msgid ""
+"To change the content of this page, edit: %s\n"
+"\t\tTo change its layout, edit: %s\n"
+"\t\tYou can also add some CSS styles for your pages at: %s"
+msgstr "आज ही ग्रीनपीस में शामिल होकर अपनी आवाज़ को वह गति प्रदान करें जो हमारे ग्रह की रक्षा के प्रति वचनबद्ध है। अच्छे भविष्य के लिए हमारी दूरदर्शिता ठीक ऐसे लोगों की तरह मज़बूत है जो हमें सहयोग देते हैं। आपका सहयोग बहमूल्य होगा"
+
+#: views/pages/home.ctp:2
+msgid "Donate"
+msgstr "दान करें"
+
+#: views/pages/home.ctp:3
+msgid "Join Greenpeace today and add your voice to the movement that's committed to defending our planet. Our vision of a better future is only as strong as the people who support us. Your support will make all the difference.!"
+msgstr "आज ही ग्रीनपीस में शामिल होकर अपनी आवाज़ को वह गति प्रदान करें जो हमारे ग्रह की रक्षा के प्रति वचनबद्ध है। अच्छे भविष्य के लिए हमारी दूरदर्शिता ठीक ऐसे लोगों की तरह मज़बूत है जो हमें सहयोग देते हैं। आपका सहयोग बहमूल्य होगा"
+
+#: views/pages/tos.ctp:1
+msgid "Terms of Service"
+msgstr "सेवा की शर्तें"
+
+#: views/auth/admin_login.ctp:4
+msgid "Admin Login"
+msgstr "एडमिन लॉगिन"
+
+#: views/auth/admin_login.ctp:12
+msgid "Please enter your login details"
+msgstr "कृपया अपने लॉगिन ब्यौ'रे एंटर करें"
+
+#: views/auth/admin_login.ctp:13
+msgid "Email"
+msgstr "ईमेल"
+
+#: views/auth/admin_login.ctp:14
+msgid "Password"
+msgstr "पासवर्ड"
+
+#: views/auth/admin_login.ctp:16
+msgid "Global Password (GL3)"
+msgstr "ग्लोबल पासवर्ड (जीएल3) "
+
+#: views/offices/admin_view.ctp:2
+msgid "Office Configuration"
+msgstr "ऑफिस कनफिगरेशन"
+
+#: views/offices/admin_view.ctp:16
+msgid "Parent Office"
+msgstr "प्रधान कार्यालय"
+
+#: views/offices/admin_view.ctp:25
+msgid "Supported Gateways"
+msgstr "सहयोगी गेटवेज़"
+
+#: views/offices/admin_view.ctp:30
+msgid "Uses Price"
+msgstr "उपयोग की कीमत"
+
+#: views/offices/admin_view.ctp:31
+msgid "Uses Rate"
+msgstr "उपयोग की दर"
+
+#: views/offices/admin_add.ctp:2
+#: views/offices/admin_add.ctp:13
+msgid "Add Office"
+msgstr "ऑफिस जोड़ें"
+
+#: views/offices/admin_add.ctp:6
+msgid "List Offices"
+msgstr "ऑफिस की सूची बनाएं"
+
+#: views/offices/admin_add.ctp:7
+msgid "List Gateways"
+msgstr "गेटवे की सूची बनाएं"
+
+#: views/offices/admin_add.ctp:8
+msgid "New Gateway"
+msgstr "नया गेटवे"
+
+#: views/offices/admin_team.ctp:2
+msgid "People Working in this Office"
+msgstr "इस ऑफिस में कार्यरत लोग"
+
+#: views/offices/admin_manage_tree.ctp:2
+msgid "Office Tree Management"
+msgstr "ऑफिस ट्री मेनेजमेंट"
+
+#: views/offices/admin_index.ctp:12
+#: views/offices/admin_edit.ctp:3
+msgid "New Office"
+msgstr "नया ऑफिस"
+
+#: views/offices/admin_index.ctp:16
+msgid "Manage Tree"
+msgstr "ट्री मैनेज करें"
+
+#: views/offices/admin_index.ctp:28
+msgid "Parent"
+msgstr "पेरेन्ट"
+
+#: views/offices/admin_edit.ctp:4
+msgid "Edit Office Configuration"
+msgstr "ऑफिस कनफिगरेशन एडिट करें"
+
+#: views/offices/admin_edit.ctp:16
+msgid "Main Preferences"
+msgstr "मुख्य  प्राथमिकता "
+
+#: views/offices/admin_edit.ctp:31
+msgid "Default Gift"
+msgstr "डिफाल्ट  गिफ्ट"
+
+#: views/offices/admin_edit.ctp:46
+msgid "Gateways & Currencies"
+msgstr "गेटवे व मुद्राएं"
+
+#: views/offices/elements/actions.ctp:9
+msgid "Cancel"
+msgstr "रद्द करें"
+
+#: views/users/admin_activate.ctp:7
+#, php-format
+msgid "Hello <em>%s</em>, your account was <strong>successfully activated</strong>! You are <strong>logged in now</strong>! Please go ahead and change your password now."
+msgstr "हैलो , आपका खाता सफलतापूर्वक सक्रिय कर दिया गया है , आप लॉग-इन  कर चुके हैं। कृपया आगे बढ़ें ओर अपना पासवर्ड बदलें"
+
+#: views/users/admin_preferences.ctp:2
+#: views/users/admin_edit_password.ctp:2
+msgid "My Account"
+msgstr "मेरा खाता"
+
+#: views/users/admin_preferences.ctp:10
+msgid "Help & Language"
+msgstr "सहायता और भाषा"
+
+#: views/users/admin_preferences.ctp:18
+msgid "Contact Details"
+msgstr "संपर्क ब्यौरे"
+
+#: views/users/admin_edit_password.ctp:12
+msgid "Please provide your current and your new password."
+msgstr "कृपया अपना वर्तमान और नया पासवर्ड बताएं"
+
+#: views/users/admin_forgot_pw.ctp:12
+msgid "Password recovery"
+msgstr "पासवर्ड रिकवरी"
+
+#: views/users/admin_forgot_pw.ctp:15
+msgid "Recover Password"
+msgstr "पासवर्ड रिकवर करें"
+
+#: views/users/admin_index.ctp:3
+msgid "User Management"
+msgstr "यूज़र मेनेजमेंट"
+
+#: views/users/admin_index.ctp:33
+msgid "Level"
+msgstr "लेवल"
+
+#: views/users/admin_index.ctp:59
+msgid "Resend Activation Email"
+msgstr "एक्टिवेशन ईमेल पुन: भेजें"
+
+#: views/users/admin_index.ctp:67
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr "%s डिलीट करने के लिए क्‍या आप आश्‍वस्‍त हैं?\""
+
+#: views/users/admin_edit.ctp:15
+msgid "A password will be autogenerated for this user and she will get an email with her login credentials."
+msgstr "इस यूज़र के लिए एक पासवर्ड स्‍वत: सृजित किया जाएगा और उसे उसके लॉगिन क्रेडेन्शियल सहित ईमेल भेज दिया जाएगा"
+
+#: views/users/admin_edit.ctp:32
+msgid "You are not allowed to change the role or office of this user, as he is an office manager."
+msgstr "चूंकि वह एक ऑफिस मैनेजर है इसलिए आपको इस यूज़र की भूमिका अथवा  ऑफिस को बदलने की अनुमति नहीं है "
+
+#: views/users/admin_edit.ctp:61
+msgid "You are not allowed to change the permissions of this user, as he is an office manager."
+msgstr "चूंकि वह एक ऑफिस मैनेजर है इसलिए आपको इस यूज़र की अनुमति को बदलने की अनुमति नहीं है।                "
+
+#: views/users/elements/actions.ctp:3
+msgid "Add User"
+msgstr "यूज़र जोड़ें"
+
+#: views/tellfriends/refer.ctp:7
+msgid "Friends' Email (comma separated emails)"
+msgstr "फ्रेंड्स ईमेल (अल्‍प विराम लगाकर ईमेल अलग करें) "
+
+#: views/tellfriends/refer.ctp:11
+msgid "Your Message"
+msgstr "आपका संदेश"
+
+#: views/tellfriends/refer.ctp:11
+msgid "Hi, Your friend wants you to check out this website: www.greenpeace.org "
+msgstr "हॉय। आपका मित्र www.greenpeace.org  वेबसाइट को देखना चाहता है"
+
+#: views/appeals/admin_view.ctp:2
+msgid "Appeal"
+msgstr "अपील"
+
+#: views/appeals/admin_view.ctp:8
+msgid "Edit Appeal"
+msgstr "अपील एडिट करें"
+
+#: views/appeals/admin_view.ctp:16
+msgid "Delete Appeal"
+msgstr "अपील डिलीट करें"
+
+#: views/appeals/admin_view.ctp:49
+msgid "Campaign Code"
+msgstr "केम्‍पेन कोड"
+
+#: views/appeals/admin_view.ctp:54
+msgid "Is Default"
+msgstr "क्‍या डिफाल्‍ट है"
+
+#: views/appeals/admin_view.ctp:56
+msgid "Yes"
+msgstr "हां"
+
+#: views/appeals/admin_view.ctp:56
+msgid "No"
+msgstr "नहीं"
+
+#: views/appeals/admin_view.ctp:59
+msgid "Cost"
+msgstr "लागत"
+
+#: views/appeals/admin_view.ctp:64
+msgid "Reviewed"
+msgstr "समीक्षागत"
+
+#: views/appeals/admin_view.ctp:69
+#: views/transactions/admin_view.ctp:28
+#: views/transactions/admin_index.ctp:35
+msgid "Status"
+msgstr "स्थिति "
+
+#: views/appeals/admin_view.ctp:74
+msgid "Created By"
+msgstr "द्वारा सृजित "
+
+#: views/appeals/admin_view.ctp:83
+msgid "Created On"
+msgstr "को सृजित "
+
+#: views/appeals/admin_view.ctp:88
+msgid "Last Modified"
+msgstr "अंतिम बार संशोधित किया गया"
+
+#: views/appeals/admin_add.ctp:2
+#: views/appeals/admin_add.ctp:17
+msgid "Add Appeal"
+msgstr "अपील जोड़ें"
+
+#: views/appeals/admin_add.ctp:6
+#: views/appeals/admin_add.ctp:7
+msgid "List Appeals"
+msgstr "अपील की सूची बनाएं"
+
+#: views/appeals/admin_add.ctp:8
+msgid "New Parent"
+msgstr "नए पेरेन्‍ट"
+
+#: views/appeals/admin_add.ctp:9
+msgid "List Users"
+msgstr "यूज़र की सूची बनाएं"
+
+#: views/appeals/admin_add.ctp:10
+msgid "New User"
+msgstr " नए यूज़र                       "
+
+#: views/appeals/admin_add.ctp:11
+msgid "List Countries"
+msgstr " देश की सूची बनाएं "
+
+#: views/appeals/admin_add.ctp:12
+msgid "New Country"
+msgstr "नए देश"
+
+#: views/appeals/admin_index.ctp:15
+msgid "New Appeal"
+msgstr "नई अपील"
+
+#: views/appeals/admin_index.ctp:43
+msgid "Preview"
+msgstr "पूर्वावलोकन"
+
+#: views/appeals/admin_edit.ctp:2
+msgid " Appeal"
+msgstr "अपील"
+
+#: views/transactions/admin_view.ctp:2
+msgid "Transaction"
+msgstr "लेनदेन"
+
+#: views/transactions/admin_view.ctp:6
+msgid "Friends Id"
+msgstr "फ्रेंड्स आईडी"
+
+#: views/transactions/admin_view.ctp:11
+msgid "Payment Gateway Id"
+msgstr "पेमेन्‍ट गेटवे आईडी"
+
+#: views/transactions/admin_view.ctp:17
+msgid "Parent Trans."
+msgstr "पेरेन्‍ट ट्रान्‍स"
+
+#: views/transactions/admin_view.ctp:33
+#: views/transactions/admin_index.ctp:39
+msgid "Gateway"
+msgstr "गेटवे"
+
+#: views/transactions/admin_view.ctp:42
+#: views/transactions/admin_index.ctp:40
+msgid "Gift"
+msgstr "गिफ्ट"
+
+#: views/transactions/admin_view.ctp:52
+#: views/transactions/admin_index.ctp:38
+msgid "Amount"
+msgstr "राशि"
+
+#: views/transactions/admin_index.ctp:11
+#, php-format
+msgid "%s's Transactions"
+msgstr "\"%s's लेनदेन"
+
+#: views/transactions/admin_index.ctp:37
+msgid "External ID"
+msgstr "बाह्य आईडी"
+
+#: views/transactions/admin_index.ctp:121
+msgid "Sorry but there is nothing to display here..."
+msgstr "क्षमा, यहां प्रदर्शित करने के लिए कुछ नहीं है"
+
+#: views/transactions/elements/actions.ctp:14
+msgid "Export Selection"
+msgstr "सिलेक्‍शन एक्‍सपोर्ट करें"
+
+#: views/transactions/elements/actions.ctp:21
+msgid "Export All"
+msgstr "सभी कुछ एक्‍सपोर्ट करें"
+
+#: views/transactions/elements/actions.ctp:30
+msgid "back to index"
+msgstr "सूचकांक पर वापस जाएं"
+
+#: views/elements/warning.ctp:2
+msgid "Sorry, nothing to list."
+msgstr "क्षमा, सूची के लिए कुछ नहीं है"
+
+#: views/elements/admin/quicklinks.ctp:1
+msgid "What do you feel like doing?"
+msgstr "आप काम करते हुए कैसा महसूस करते हैं?\""
+
+#: views/elements/admin/actions.ctp:32
+msgid "Sorry, but there is nothing to do here for now"
+msgstr "क्षमा, इस समय करने के लिए कुछ भी नहीं है"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:6
+msgid "Shortcuts"
+msgstr "शार्टकट"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:10
+msgid "Bookmark this page"
+msgstr "इस पृष्‍ठ को बुकमार्क करें"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:11
+msgid "Print this page"
+msgstr "इस पृष्‍ठ को प्रिंट करें"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:12
+msgid "Increase font size"
+msgstr "फोन्‍ट साइज़ बढ़ाएं"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:13
+msgid "Decrease font size"
+msgstr "फोन्‍ट साइज़ घटाएं"
+
+#: views/elements/admin/sidebar/twitter_feed.ctp:7
+msgid "Latest Tweets"
+msgstr "लेटेस्‍ट ट्वीस्‍ट्स\""
+
+#: views/elements/admin/sidebar/twitter_feed.ctp:20
+msgid "follow us on twitter"
+msgstr "ट्वीटर पर हमारा अनुसरण करें"
+
+#: views/elements/admin/sidebar/help.ctp:2
+msgid "Need some help?"
+msgstr "मदद की जरूरत है?\""
+
+#: views/elements/admin/sidebar/search.ctp:23
+msgid "Search"
+msgstr "खोजें"
+
+#: views/elements/admin/sidebar/search.ctp:28
+msgid "Enter an id or a keyword"
+msgstr "आईडी अथवा कीवर्ड एंटर करें"
+
+#: views/elements/admin/sidebar/search.ctp:34
+msgid "search"
+msgstr "खोजें"
+
+#: views/elements/admin/sidebar/news.ctp:9
+msgid "News"
+msgstr "न्‍यूज़"
+
+#: views/elements/admin/sidebar/news.ctp:18
+msgid "more"
+msgstr "अधिक"
+
+#: views/elements/admin/sidebar/news.ctp:22
+msgid "follow us on Making Waves"
+msgstr "तरंग निर्माण पर हमारा अनुसरण करें"
+
+#: views/elements/admin/sidebar/news.ctp:33
+msgid "Latest blog entry"
+msgstr "लेटेस्‍ट ब्‍लॉग एंट्री"
+
+#: views/elements/admin/users/badge.ctp:2
+msgid "Welcome back"
+msgstr "आपका पुन: स्‍वागत है"
+
+#: views/elements/admin/users/badge.ctp:3
+msgid "preferences"
+msgstr "प्रीफिरेन्‍सेज़"
+
+#: views/elements/admin/users/badge.ctp:4
+msgid "logout"
+msgstr "लॉग आउट"
+
+#: views/elements/admin/filters/paging_limit.ctp:12
+msgid "How many results per page?"
+msgstr "एक पृष्‍ठ में कितने परिणाम हैं?\""
+
+#: views/elements/admin/filters/paging_limit.ctp:19
+msgid "Prefer typing the number?"
+msgstr "क्‍या नम्‍बर टाइप करने को प्राथमिकता दें"
+
+#: views/elements/admin/filters/time_range.ctp:7
+msgid "Filter by date"
+msgstr "तारीख द्वारा फिल्‍टर करें"
+
+#: views/elements/admin/filters/time_range.ctp:12
+msgid "Start Date"
+msgstr "आरंभ करने की तारीख"
+
+#: views/elements/admin/filters/time_range.ctp:42
+msgid "End Date"
+msgstr "समाप्‍त करने की तारीख                                  "
+
+#: views/elements/admin/filters/keyword.ctp:2
+msgid "Filter by keyword"
+msgstr "कीवर्ड द्वारा फिल्‍टर करें"
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "due"
+msgstr "बकाया"
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "yes"
+msgstr "हां"
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "no"
+msgstr "नहीं"
+
+#: views/elements/tableset/rows/transaction.ctp:24
+msgid "The payment gateway is missing"
+msgstr "पेमेन्‍ट गेटवे गायब है"
+
+#: views/dashboards/admin_index.ctp:2
+msgid "Root Configuration"
+msgstr "रूट कनफिगरेशन"
+
+#: views/exports/admin_transactions.ctp:2
+msgid "Transaction Export"
+msgstr "लेनदेन एक्‍सपोर्ट\""
+
+#: views/exports/admin_gifts.ctp:2
+msgid "Gift Export"
+msgstr "गिफ्ट एक्‍सपोर्ट"
+
+#: views/gifts/admin_view.ctp:8
+msgid "Delete Gift"
+msgstr "गिफ्ट डिलीट करें"
+
+#: views/gifts/admin_view.ctp:22
+msgid "Office"
+msgstr "ऑफिस"
+
+#: views/gifts/admin_view.ctp:31
+msgid "Type"
+msgstr "टाइप"
+
+#: views/gifts/admin_view.ctp:46
+#: views/gifts/admin_index.ctp:35
+msgid "Frequency"
+msgstr "आवृत्ति"
+
+#: views/gifts/admin_view.ctp:59
+msgid "Fname"
+msgstr "एफनेम"
+
+#: views/gifts/admin_view.ctp:64
+msgid "Lname"
+msgstr "एलनेम"
+
+#: views/gifts/admin_view.ctp:69
+msgid "Salutation"
+msgstr "आदरसूचक"
+
+#: views/gifts/admin_view.ctp:79
+msgid "Address"
+msgstr "पता"
+
+#: views/gifts/admin_view.ctp:85
+msgid "Zip"
+msgstr "जि़प"
+
+#: views/gifts/admin_view.ctp:90
+msgid "Country"
+msgstr "देश"
+
+#: views/gifts/admin_add.ctp:2
+msgid "New Gift"
+msgstr "नई गिफ्ट"
+
+#: views/gifts/admin_add.ctp:9
+#, php-format
+msgid "Back to %s"
+msgstr "%s  पर वापस आयें "
+
+#: views/gifts/admin_index.ctp:14
+msgid "Online Donations"
+msgstr "ऑनलाइन दान"
+
+#: views/gifts/admin_index.ctp:37
+msgid "Due"
+msgstr "बकाया"
+
+#: views/gifts/admin_index.ctp:41
+msgid "First Name"
+msgstr "पहला नाम"
+
+#: views/gifts/admin_index.ctp:42
+msgid "Last Name"
+msgstr "आखिरी नाम"
+
+#: views/gifts/admin_index.ctp:47
+msgid "Date"
+msgstr "तारीख"
+
+#: views/settings/admin_edit.ctp:2
+msgid "Settings"
+msgstr "सेटिंग्‍ज़"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:6
+msgid "Edit Gift"
+msgstr "गिफ्ट एडिट करें"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:8
+msgid "List Gifts"
+msgstr "गिफ्ट की सूची बनाएं"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:18
+msgid "List Transactions"
+msgstr "लेनदेन की सूची बनाएं"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:19
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:162
+msgid "New Transaction"
+msgstr "नई लेनदेन"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:58
+msgid "User"
+msgstr "यूज़र"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:117
+msgid "Related Transactions"
+msgstr "संबंधित लेनदेन"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:122
+msgid "Parent Id"
+msgstr "पेरेन्‍ट आईडी"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:123
+msgid "Gateway Id"
+msgstr "गेटवे आईडी"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:124
+msgid "External Id"
+msgstr "बाह्य आईडी"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:125
+msgid "Gift Id"
+msgstr "गिफ्ट आईडी"
+
+#: views/templates/default/contact.ctp:5
+msgid "Contact Information"
+msgstr "संपर्क सूचना"
+
+#: views/templates/default/gift.ctp:18
+msgid "Gift Information"
+msgstr "गिफ्ट की सूचना"
+
+#: views/supporters/admin_index.ctp:28
+msgid "Phone"
+msgstr "फोन"
+
+#: views/supporters/admin_index.ctp:29
+msgid "Zip Code"
+msgstr "जि़पकोड"
+
+#: views/supporters/admin_index.ctp:30
+msgid "City"
+msgstr "शहर"
+
+#: views/supporters/admin_index.ctp:46
+msgid "Add Gift"
+msgstr "गिफ्ट जोडे़"
+
+#: views/statistics/admin_index.ctp:3
+msgid "Statistics"
+msgstr "सांख्यिकी"
+
+#: views/statistics/admin_index.ctp:6
+msgid "Signups (partial)"
+msgstr "साइन अप (आंशिक) "
+
+#: views/statistics/admin_index.ctp:7
+msgid "Gifts (complete)"
+msgstr "गिफ्ट (संपूर्ण) "
+
+#: views/statistics/admin_index.ctp:8
+msgid "Amounts"
+msgstr "राशि"
+
+#~ msgid "tellafriend"
+#~ msgstr "Hello, Your friend wants you to visit www.greenpeace.org"
+
