@@ -8,11 +8,6 @@ if (!isset($widgets)) {
 		$widgets[] = 'Filters.filters_widget';
 	}
 }
-if (!isset($widgets_options)) {
-	$widgets_options = array(
-		'search' => array('open' => true)
-	);
-}
 ?>
 <!-- SIDEBAR -->
 <div class="sidebar_wrapper">
@@ -28,14 +23,14 @@ if (!isset($widgets_options)) {
 				$plugin = $data[0];
 			}
 
-			if (!isset($widgets_options[$widget])) {
-				$widgets_options[$widget] = array();
-			}
+			$name = r('_widget', '', $widget);
+			$open = isset($widgetState[$name]) && $widgetState[$name]
+					? 'open' : 'closed';
 
-			echo $this->element($path . $widget, array(
-				'options' => $widgets_options[$widget], 'plugin' => $plugin
-			));
+			echo $this->element($path . $widget, compact('plugin', 'open'));
 		}
 		?>
+		<?php
+		echo $html->link(__('Save Widget Config', true), '#', array('class' => 'save-widgets'));?>
 	</div>
 </div>

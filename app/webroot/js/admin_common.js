@@ -29,8 +29,29 @@ function printThis(){
  * MAIN (JQUERY) - on document ready
  */
 $(function() {
+	var saveWidgetsText = $('a.save-widgets').text();
+	$('a.save-widgets').click(function() {
+		var self = this;
+		var url = '/admin/widget_states/save';
+		var widgets = [];
+		$('#right_sidebar div.widget').each(function() {
+			var myClass = $(this).attr('class');
+			widgets.push(myClass.replace(/(widget|open|closed| )/ig, ''));
+		});
+
+		var data = [];
+		for (var type in widgets) {
+			var val = $('#right_sidebar .widget.' + widgets[type]).is('.open') ? '1' : '0';
+			data.push(widgets[type] + '=' + val);
+		};
+
+		$.postCake(url, data.join('&'), function() {
+			$(self).text('Saved!');
+		});
+		return false;
+	});
+
 	$('.donate-submit').click(function() {
-		console.log('here');
 		$(this)
 			.attr('value', 'Processing ..')
 			.attr('disabled', true);
@@ -95,20 +116,21 @@ $(function() {
  * Toogles
  * How it works: a.toggle#<id> closes/open .wrapper_<id> easy hey ?
  */
-	$(".toggle.close").each(function() {
+	$(".toggle.closed").each(function() {
 		$(".wrapper_"+$(this).attr("id")).hide();
 	})
 
 	$('a.toggle').click(function() {
-		//@todo annimation only if not table row...
-		//$(".toggle_wrapper#wrapper_"+$(this).attr("id")).slideFadeToggle(300);
-		if($('a.toggle#'+$(this).attr("id")).hasClass("close")) {
-			$('a.toggle#'+$(this).attr("id")).addClass("open").removeClass("close");
+		if ($('a.toggle#'+$(this).attr("id")).hasClass("closed")) {
+			$('a.toggle#'+$(this).attr("id")).addClass("open").removeClass("closed");
+			$('a.toggle#'+$(this).attr("id")).parents('.widget').addClass("open").removeClass("closed");
 			$(".wrapper_"+$(this).attr("id")).show();
 		} else {
-			$('a.toggle#'+$(this).attr("id")).addClass("close").removeClass("open");
+			$('a.toggle#'+$(this).attr("id")).addClass("closed").removeClass("open");
+			$('a.toggle#'+$(this).attr("id")).parents('.widget').addClass("closed").removeClass("open");
 			$(".wrapper_"+$(this).attr("id")).hide();
 		}
+		$('#right_sidebar a.save-widgets').text(saveWidgetsText);
 		return false;
 	});
 /**

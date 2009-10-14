@@ -552,7 +552,7 @@ ul.selector li ul.subitem li a{
 	background:transparent url(/img/admin/layout/widget_open.png) right center no-repeat;
 	margin-right:10px;
 }
-.sidebar h3 a.toggle.close{
+.sidebar h3 a.toggle.closed{
 	background:transparent url(/img/admin/layout/widget_close.png) right center no-repeat;
 	margin-right:10px;
 }
@@ -881,7 +881,7 @@ ul.selector li ul.subitem li a{
 	padding-left:20px;	
 	background:transparent url(/img/admin/layout/widget_open.png) left center no-repeat;
 }
-.filter fieldset a.toggle.close{
+.filter fieldset a.toggle.closed{
 	background:transparent url(/img/admin/layout/widget_close.png) left center no-repeat;
 }
 .filter fieldset div{

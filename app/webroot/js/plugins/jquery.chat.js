@@ -54,7 +54,7 @@
 
 		var form = $obj.serialize();
 		$message.attr('disabled', true);
-		$submit.attr('disabled', true);  
+		$submit.attr('disabled', true);
 
 		$.ajax({
 			type: 'POST',

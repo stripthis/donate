@@ -27,7 +27,6 @@ function printThis(){
 
 $(function() {
 	$('.donate-submit').click(function() {
-		console.log('here');
 		$(this)
 			.attr('value', 'Processing ..')
 			.attr('disabled', true);

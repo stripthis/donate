@@ -204,9 +204,17 @@ class AppController extends Controller {
 			$msg = __('You need to login to access this page. If you were logged in previously you might have been logged out because somebody changed your permissions.', true);
 			$this->Message->add($msg, 'error');
 		}
+
 		if ($this->isAdmin()) {
 			$posts = ClassRegistry::init('Post')->find('twitter');
-			$this->set(compact('posts'));
+
+			$widgetState = ClassRegistry::init('WidgetState')->find('first', array(
+				'conditions' => array('user_id' => User::get('id'))
+			));
+			if (!empty($widgetState)) {
+				$widgetState = $widgetState['WidgetState'];
+			}
+			$this->set(compact('posts', 'widgetState'));
 		}
 	}
 /**

@@ -1,9 +1,8 @@
 <?php
 $favorites = $session->read('verbose_favorites');
 $favoritesCount = count($session->read('favorites'));
-$open = (!isset($options['open'])) ? 'close' : $options['open']; // widget is closed by default
 ?>
-<div class="favorites widget">
+<div class="favorites widget <?php echo $open ?>">
 	<div class="widget_header">
 		<h3>
 			<a href="<?php Router::url(); ?>#" class="toggle <?php echo $open; ?>" id="toggle_favorites">

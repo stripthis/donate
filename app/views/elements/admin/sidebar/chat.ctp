@@ -1,7 +1,4 @@
-<?php
-$open = (!isset($options['open'])) ? 'close' : $options['open'];
-?>
-<div class="chats widget">
+<div class="chat widget <?php echo $open ?>">
 	<div class="widget_header">
 		<h3>
 			<a href="<?php Router::url(); ?>#" class="toggle <?php echo $open; ?>" id="toggle_chat">

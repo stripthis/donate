@@ -18,7 +18,7 @@ if (!User::allowed('Appeals', 'admin_view')) {
 	unset($searchOptions['appeals']);
 }
 ?>
-<div class="search widget">
+<div class="search widget <?php echo $open ?>">
 	<div class="widget_header">
 	  <h3><a href="<?php echo Router::url(); ?>#" class="toggle open" id="toggle_search"><?php echo __('Search'); ?></a></h3>
   </div>
