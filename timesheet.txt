@@ -122,6 +122,16 @@ Mon 10/12/2009 Total Time : 7.5 hours
 6.	Appending contact list to previously existing list in friend's email field.(1 hour)
 7.	Communication & Mailing ( 0.5 hour)
 
+Tue 10/13/2009 Total Time : 7.5 hours
+
+1.      Study of RBS worldpay documentation and the payment process (2 hours)
+2.	R&D on unit testing & cakePHP unit testing ( 3 hours)
+3.	Worked on creating unit test for tellfriends  (2 hours)
+4.      DB updates (0.5 hour)
+
+
+
+
 
 
 
