@@ -1,0 +1,1110 @@
+#total number of words to be translated in v1 (23-09-09) : 862
+msgid ""
+msgstr ""
+"Project-Id-Version: Cool IT Challenge\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-09-21 11:14+0100\n"
+"PO-Revision-Date: 2009-10-12 13:17+0100\n"
+"Last-Translator: OPertaub <opertaub@yahoo.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-Basepath: /home/remy/Work/www/donate/app/\n"
+"X-Poedit-SearchPath-0: ./controllers\n"
+"X-Poedit-SearchPath-1: ./views\n"
+"X-Poedit-SearchPath-2: ./models\n"
+"X-Poedit-SearchPath-3: ./webroot\n"
+
+#: controllers/auth_keys_controller.php:22
+msgid "Please go ahead and change your password now."
+msgstr "Por favor cambie su contraseña ahora"
+
+#: controllers/statistics_controller.php:122
+msgid "Sorry, the beginning date must be before the end date."
+msgstr "Lo siento, la fecha de inicio tiene que ser antes de la fecha de finalización."
+
+#: controllers/offices_controller.php:24
+msgid "This office is already active."
+msgstr "Esta oficina esta ya activada."
+
+#: controllers/offices_controller.php:41
+msgid "The office was successfully activated!"
+msgstr "La oficina ha sido activada correctamente!"
+
+#: controllers/offices_controller.php:163
+#: controllers/appeals_controller.php:147
+#: controllers/users_controller.php:72
+#: controllers/users_controller.php:362
+#: controllers/roles_controller.php:74
+msgid "Please fill out all fields"
+msgstr "Por favor, rellena todo los campos"
+
+#: controllers/offices_controller.php:167
+msgid "Office was saved successfully."
+msgstr "La oficina ha sido guardada correctamente"
+
+#: controllers/offices_controller.php:191
+msgid "Sorry, but there are still users, transactions or gifts related to this office."
+msgstr "Lo siento, pero todavía hay usuarios, transacciones o regalos relacionados con este oficina "
+
+#: controllers/offices_controller.php:195
+msgid "The Office has been deleted."
+msgstr "La oficina ha sido borrada"
+
+#: controllers/offices_controller.php:225
+msgid "Tree updated!"
+msgstr "Arból actualizado!"
+
+#: controllers/settings_controller.php:29
+msgid "The settings could not be updated."
+msgstr "La configuración no se ha podido actualizar"
+
+#: controllers/settings_controller.php:31
+msgid "The settings were saved"
+msgstr "Las configuraciones han sido guardadas"
+
+#: controllers/dashboards_controller.php:32
+msgid "The cache has been cleared."
+msgstr "El historial ha sido borrado."
+
+#: controllers/dashboards_controller.php:39
+msgid "The counter caches have been rebuilt."
+msgstr "El contador de historial ha sido reconstruido"
+
+#: controllers/transactions_controller.php:148
+msgid "The Transaction has been deleted."
+msgstr "La Transacción ha sido borrada"
+
+#: controllers/gifts_controller.php:155
+#, php-format
+msgid "There was a problem processing the transaction: %s"
+msgstr "Ha habido un problema procesando la transacción: %s"
+
+#: controllers/gifts_controller.php:212
+msgid "Donation added!"
+msgstr "Donación añadida!"
+
+#: controllers/gifts_controller.php:346
+msgid "There was a problem saving the gift."
+msgstr "Hay un problema para guardar el regalo"
+
+#: controllers/gifts_controller.php:349
+msgid "The gift was successfully added!"
+msgstr "El regalo ha sido añadido correctamente!"
+
+#: controllers/gifts_controller.php:371
+#: controllers/users_controller.php:193
+#: controllers/supporters_controller.php:151
+msgid "Successfully deleted!"
+msgstr "Borrado correctamente"
+
+#: controllers/gifts_controller.php:498
+msgid "Please choose a country first!"
+msgstr "Por favor elige un país primero"
+
+#: controllers/appeals_controller.php:151
+msgid "The AAppeal was saved successfully."
+msgstr "La demanda ha sido guardada correctamente. "
+
+#: controllers/appeals_controller.php:173
+msgid "The Appeal has been deleted."
+msgstr "La demanda ha sido borrada"
+
+#: controllers/users_controller.php:89
+msgid "New Account for Greenpeace White Rabbit"
+msgstr "Nueva cuenta para el conejo blanco de Greenpeace"
+
+#: controllers/users_controller.php:98
+#, php-format
+msgid "The admin account for %s has been created successfully. An email has been sent to the email address."
+msgstr "La cuenta de admin de %s ha sido creada correctamente. Un email ha sido enviado a la dirección de correo electrónico"
+
+#: controllers/users_controller.php:103
+msgid "User was saved successfully."
+msgstr "El usuario ha sido guardado con éxito."
+
+#: controllers/users_controller.php:213
+msgid "Sorry, but we have no record of an account for "
+msgstr "Lo siento, pero no tenemos ninguna cuenta registrada"
+
+#: controllers/users_controller.php:236
+msgid " Password Recovery"
+msgstr "Contraseña recuperada"
+
+#: controllers/users_controller.php:243
+#, php-format
+msgid "A message has been sent to %s."
+msgstr "Un mensaje ha sido enviado a %s."
+
+#: controllers/users_controller.php:309
+msgid "A new activation email was sent."
+msgstr "Un nuevo email de activación ha sido enviado."
+
+#: controllers/users_controller.php:342
+msgid "Your password has been updated successfully."
+msgstr "Su contraseña ha sido actualizado con éxito."
+
+#: controllers/users_controller.php:368
+msgid "Saved successfully."
+msgstr "Guardado con éxito."
+
+#: controllers/auth_controller.php:14
+msgid "You are logged in already!"
+msgstr "Su cuenta esta activada!"
+
+#: controllers/auth_controller.php:20
+msgid "Good to see you again... But how come you are not logged in yet?!"
+msgstr "Bienvenido de nuevo....Pero ¿por que no se ha identificado todavía?!"
+
+#: controllers/auth_controller.php:67
+msgid "Sorry, but there is no activated user with these login credentials."
+msgstr "Lo siento, pero no existe usuario con esos datos"
+
+#: controllers/roles_controller.php:77
+msgid "Role was saved successfully."
+msgstr "Perfil guardado con éxito."
+
+#: controllers/roles_controller.php:94
+msgid "Role was successfully removed."
+msgstr "Pefil borrado con éxito."
+
+#: controllers/components/app_session.php:16
+msgid "You must set the Configure::write('Session.model') in core.php to use model storage"
+msgstr "Tiene que configurar la cuenta:: Escribe('Modelo. Sesión') en core.php para usar el modelo de almacenaje"
+
+#: models/navigation.php:34
+msgid "Home"
+msgstr "Inicio"
+
+#: models/navigation.php:38
+msgid "Appeals"
+msgstr "Demandas"
+
+#: models/navigation.php:42
+msgid "Gifts"
+msgstr "Regalos"
+
+#: models/navigation.php:46
+msgid "Transactions"
+msgstr "Transacciones"
+
+#: models/navigation.php:50
+msgid "Supporters"
+msgstr "Socios"
+
+#: models/navigation.php:69
+msgid "Admin"
+msgstr "Admin"
+
+#: models/navigation.php:74
+msgid "Office Config"
+msgstr "Config de Oficina"
+
+#: models/navigation.php:80
+msgid "Help"
+msgstr "Ayuda"
+
+#: models/navigation.php:87
+#: models/navigation.php:97
+#: models/navigation.php:119
+#: models/navigation.php:149
+#: models/navigation.php:159
+msgid "All"
+msgstr "Todo"
+
+#: models/navigation.php:91
+msgid "My Office"
+msgstr "Mi Oficina"
+
+#: models/navigation.php:101
+msgid "One Off"
+msgstr "Uno menos"
+
+#: models/navigation.php:105
+#: models/navigation.php:171
+msgid "Recurring"
+msgstr "Recurrente"
+
+#: models/navigation.php:109
+#: models/navigation.php:123
+#: models/navigation.php:180
+msgid "Favorites"
+msgstr "Favoritos"
+
+#: models/navigation.php:113
+#: models/navigation.php:143
+msgid "Archived"
+msgstr "Archivado"
+
+#: models/navigation.php:153
+msgid "My Office Colleagues"
+msgstr "Mis compañeros de Oficina"
+
+#: models/navigation.php:167
+msgid "One-off"
+msgstr "Único"
+
+#: models/navigation.php:186
+msgid "Preferences"
+msgstr "Preferencias"
+
+#: models/navigation.php:190
+msgid "Edit Password"
+msgstr "Editar contraseña"
+
+#: models/navigation.php:196
+msgid "Login"
+msgstr "Entrar"
+
+#: models/navigation.php:200
+msgid "Lost Password"
+msgstr "Contraseña perdida"
+
+#: models/navigation.php:206
+msgid "Config"
+msgstr "Config"
+
+#: models/navigation.php:211
+msgid "Team &amp; Permissions"
+msgstr "Equipo &amp; Permisos "
+
+#: models/navigation.php:216
+msgid "Unactivated Users"
+msgstr "Usuarios no activados "
+
+#: models/navigation.php:223
+msgid "Getting started"
+msgstr "Cómo empezar"
+
+#: models/navigation.php:227
+msgid "Faq"
+msgstr "Preguntas frecuentes"
+
+#: models/navigation.php:233
+msgid "Offices"
+msgstr "Oficinas"
+
+#: models/navigation.php:238
+msgid "Users"
+msgstr "Usuarios"
+
+#: models/navigation.php:243
+msgid "Roles"
+msgstr "Perfiles"
+
+#: models/user.php:232
+#, php-format
+msgid "Welcome to %s"
+msgstr "Bienvenido a %s"
+
+#: webroot/test.php:99
+msgid "Debug setting does not allow access to this url."
+msgstr "El ajuste de errores no permite el acceso a este url."
+
+#: views/roles/admin_index.ctp:2
+msgid "Roles & Permissions"
+msgstr "Perfiles & Permisos"
+
+#: views/roles/admin_index.ctp:16
+msgid "(Uneditable)"
+msgstr "( No editable)"
+
+#: views/roles/admin_index.ctp:20
+msgid "Delete Role"
+msgstr "Borrar Perfil"
+
+#: views/roles/admin_index.ctp:22
+#: views/posts/admin_index.ctp:51
+#: views/posts/admin_edit.ctp:11
+msgid "Are you sure?"
+msgstr "¿Está seguro?"
+
+#: views/roles/admin_edit.ctp:3
+msgid "Add a role"
+msgstr "Añadir un perfil"
+
+#: views/roles/admin_edit.ctp:4
+msgid "Manage roles"
+msgstr "Administrar perfiles"
+
+#: views/roles/admin_edit.ctp:13
+msgid "Role Name"
+msgstr "Nombre del Perfil"
+
+#: views/roles/admin_edit.ctp:14
+msgid "Name"
+msgstr "Nombre"
+
+#: views/roles/admin_edit.ctp:15
+msgid "Description"
+msgstr "Descripción"
+
+#: views/posts/admin_view.ctp:2
+msgid "Post"
+msgstr "Publicación"
+
+#: views/posts/admin_view.ctp:4
+#: views/posts/admin_add.ctp:4
+#: views/posts/admin_index.ctp:22
+#: views/posts/admin_edit.ctp:4
+msgid "Actions"
+msgstr "Acciones"
+
+#: views/posts/admin_view.ctp:6
+#: views/posts/admin_edit.ctp:2
+#: views/posts/admin_edit.ctp:27
+msgid "Edit Post"
+msgstr "Editar Publicación"
+
+#: views/posts/admin_view.ctp:7
+msgid "Delete Post"
+msgstr "Borrar Publicación"
+
+#: views/posts/admin_view.ctp:7
+#, php-format
+msgid "Are you sure you want to delete # %s?"
+msgstr "¿Está seguro de que quiere borrar #%s?"
+
+#: views/posts/admin_view.ctp:8
+#: views/posts/admin_add.ctp:6
+#: views/posts/admin_edit.ctp:17
+msgid "List Posts"
+msgstr "Lista de Publicaciones"
+
+#: views/posts/admin_view.ctp:9
+#: views/posts/admin_index.ctp:8
+msgid "New Post"
+msgstr "Nueva Publicación"
+
+#: views/posts/admin_view.ctp:13
+msgid "Id"
+msgstr "Id"
+
+#: views/posts/admin_view.ctp:18
+msgid "Title"
+msgstr "Título"
+
+#: views/posts/admin_view.ctp:23
+msgid "Body"
+msgstr "Cuerpo"
+
+#: views/posts/admin_view.ctp:28
+msgid "Created"
+msgstr "Creado"
+
+#: views/posts/admin_view.ctp:33
+msgid "Modified"
+msgstr "Modificado"
+
+#: views/posts/admin_add.ctp:2
+msgid "Add a new post"
+msgstr "Añadir una nueva Publicación"
+
+#: views/posts/admin_add.ctp:11
+msgid "Add Post"
+msgstr "Añadir Publicación"
+
+#: views/posts/admin_index.ctp:2
+msgid "Posts Index"
+msgstr "Índice de Publicaciones"
+
+#: views/posts/admin_index.ctp:40
+msgid "View"
+msgstr "Vista"
+
+#: views/posts/admin_index.ctp:44
+msgid "Edit"
+msgstr "Editar"
+
+#: views/posts/admin_index.ctp:48
+#: views/posts/admin_edit.ctp:8
+msgid "Delete"
+msgstr "Borrar"
+
+#: views/pages/config_test.ctp:11
+msgid "Your tmp directory is writable."
+msgstr "Se puede modificar su directorio tmp."
+
+#: views/pages/config_test.ctp:15
+msgid "Your tmp directory is NOT writable."
+msgstr "NO se puede modificar su directorio tmp."
+
+#: views/pages/config_test.ctp:25
+#, php-format
+msgid "The %s is being used for caching. To change the config edit APP/config/core.php "
+msgstr "El %s está siendo utilizadopara el almacenamiento en caché. Para cambiar la configuración de editar APP / config / core.php"
+
+#: views/pages/config_test.ctp:29
+msgid "Your cache is NOT working. Please check the settings in APP/config/core.php"
+msgstr "Su caché NO está funcionando. Compruebe por favor los ajustes en APP/config/core.php"
+
+#: views/pages/config_test.ctp:39
+msgid "Your database configuration file is present."
+msgstr "Su archivo de configuración de base de datos está presente."
+
+#: views/pages/config_test.ctp:44
+msgid "Your database configuration file is NOT present."
+msgstr "Su archivo de configuración de base de datos NO está presente."
+
+#: views/pages/config_test.ctp:46
+msgid "Rename config/database.php.default to config/database.php"
+msgstr "Renombrar config/base de datos.php.defecto por config/base de datos.php"
+
+#: views/pages/config_test.ctp:61
+msgid "Cake is able to connect to the database."
+msgstr "Cake puede conectar con la base de datos."
+
+#: views/pages/config_test.ctp:65
+msgid "Cake is NOT able to connect to the database."
+msgstr "Cake no puede conectar con la base datos."
+
+#: views/pages/config_test.ctp:71
+msgid "Editing this Page"
+msgstr "Editando esta Página"
+
+#: views/pages/config_test.ctp:74
+#, php-format
+msgid ""
+"To change the content of this page, edit: %s\n"
+"\t\tTo change its layout, edit: %s\n"
+"\t\tYou can also add some CSS styles for your pages at: %s"
+msgstr ""
+"Para cambiar el contenido de esta página, editar: %s\n"
+"\t\tPara cambiar su diseño, editar %s\n"
+"\t\tPuede también agregaralgunos estilos CSS para en sus páginas en: %s"
+
+#: views/pages/home.ctp:2
+msgid "Donate"
+msgstr "Hacer una donación"
+
+#: views/pages/home.ctp:3
+msgid "Join Greenpeace today and add your voice to the movement that's committed to defending our planet. Our vision of a better future is only as strong as the people who support us. Your support will make all the difference.!"
+msgstr "Únete a Greenpeace hoy, y alza tu voz junto a un movimiento comprometido en la defensa de nuestro planeta. Nuestra visión de un futuro mejor es sólo tan fuerte como la gente que nos apoya.¡ Tu apoyo hará la diferencia! "
+
+#: views/pages/tos.ctp:1
+msgid "Terms of Service"
+msgstr "Términos de Servicio"
+
+#: views/auth/admin_login.ctp:4
+msgid "Admin Login"
+msgstr "Acceso Admin"
+
+#: views/auth/admin_login.ctp:12
+msgid "Please enter your login details"
+msgstr "Por favor, introduzca sus datos de acceso"
+
+#: views/auth/admin_login.ctp:13
+msgid "Email"
+msgstr "correo electrónico"
+
+#: views/auth/admin_login.ctp:14
+msgid "Password"
+msgstr "Contraseña"
+
+#: views/auth/admin_login.ctp:16
+msgid "Global Password (GL3)"
+msgstr "Contraseña Global (GL3)"
+
+#: views/offices/admin_view.ctp:2
+msgid "Office Configuration"
+msgstr "Configuración de la Oficina "
+
+#: views/offices/admin_view.ctp:16
+msgid "Parent Office"
+msgstr "Oficina Parent"
+
+#: views/offices/admin_view.ctp:25
+msgid "Supported Gateways"
+msgstr "Portales soportados"
+
+#: views/offices/admin_view.ctp:30
+msgid "Uses Price"
+msgstr "Precio de Uso"
+
+#: views/offices/admin_view.ctp:31
+msgid "Uses Rate"
+msgstr "Tasas de Uso"
+
+#: views/offices/admin_add.ctp:2
+#: views/offices/admin_add.ctp:13
+msgid "Add Office"
+msgstr "Añadir Oficina"
+
+#: views/offices/admin_add.ctp:6
+msgid "List Offices"
+msgstr "Lista de Oficinas"
+
+#: views/offices/admin_add.ctp:7
+msgid "List Gateways"
+msgstr "Lista de Portales"
+
+#: views/offices/admin_add.ctp:8
+msgid "New Gateway"
+msgstr "Nuevo Portal"
+
+#: views/offices/admin_team.ctp:2
+msgid "People Working in this Office"
+msgstr "Personas que trabajan en esta Oficina"
+
+#: views/offices/admin_manage_tree.ctp:2
+msgid "Office Tree Management"
+msgstr "Gestión de Oficina Árbol"
+
+#: views/offices/admin_index.ctp:12
+#: views/offices/admin_edit.ctp:3
+msgid "New Office"
+msgstr "Nueva Oficina"
+
+#: views/offices/admin_index.ctp:16
+msgid "Manage Tree"
+msgstr "Administrar Árbol"
+
+#: views/offices/admin_index.ctp:28
+msgid "Parent"
+msgstr "Parent"
+
+#: views/offices/admin_edit.ctp:4
+msgid "Edit Office Configuration"
+msgstr "Editar la configuración de la oficina"
+
+#: views/offices/admin_edit.ctp:16
+msgid "Main Preferences"
+msgstr "Preferencias Principales"
+
+#: views/offices/admin_edit.ctp:31
+msgid "Default Gift"
+msgstr "Regalo por Defecto"
+
+#: views/offices/admin_edit.ctp:46
+msgid "Gateways & Currencies"
+msgstr "Portales & Divisas "
+
+#: views/offices/elements/actions.ctp:9
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: views/users/admin_activate.ctp:7
+#, php-format
+msgid "Hello <em>%s</em>, your account was <strong>successfully activated</strong>! You are <strong>logged in now</strong>! Please go ahead and change your password now."
+msgstr "Hola <em>%s</em>, su cuenta ha sido <strong> activado con éxito</strong>! Es <strong> identificado ahora </strong>! Por favor, sigue adelante y cambia su contraseña."
+
+#: views/users/admin_preferences.ctp:2
+#: views/users/admin_edit_password.ctp:2
+msgid "My Account"
+msgstr "Mi cuenta"
+
+#: views/users/admin_preferences.ctp:10
+msgid "Help & Language"
+msgstr "Ayuda y Lenguaje"
+
+#: views/users/admin_preferences.ctp:18
+msgid "Contact Details"
+msgstr "Datos de Contacto"
+
+#: views/users/admin_edit_password.ctp:12
+msgid "Please provide your current and your new password."
+msgstr "Por favor proporcione su contraseña corriente y la nueva."
+
+#: views/users/admin_forgot_pw.ctp:12
+msgid "Password recovery"
+msgstr "Recuperación de contraseña"
+
+#: views/users/admin_forgot_pw.ctp:15
+msgid "Recover Password"
+msgstr "Recuperar Contraseña"
+
+#: views/users/admin_index.ctp:3
+msgid "User Management"
+msgstr "Gestión de Usuario"
+
+#: views/users/admin_index.ctp:33
+msgid "Level"
+msgstr "Nivel"
+
+#: views/users/admin_index.ctp:59
+msgid "Resend Activation Email"
+msgstr "Vuelva a enviar el email de activación"
+
+#: views/users/admin_index.ctp:67
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr "¿Está seguro de que quiere eliminar %s?"
+
+#: views/users/admin_edit.ctp:15
+msgid "A password will be autogenerated for this user and she will get an email with her login credentials."
+msgstr "Una contraseña será generado automáticamente para la usuaria y que recibirá un correo electrónico con sus credenciales de acceso."
+
+#: views/users/admin_edit.ctp:32
+msgid "You are not allowed to change the role or office of this user, as he is an office manager."
+msgstr "No puede cambiar el papel o oficina de este usuario, por que es un administrador de oficina."
+
+#: views/users/admin_edit.ctp:61
+msgid "You are not allowed to change the permissions of this user, as he is an office manager."
+msgstr "No puede cambiar los permisos de este usuario, por que es un administrador de Oficinas."
+
+#: views/users/elements/actions.ctp:3
+msgid "Add User"
+msgstr "Añadir Usuario"
+
+#: views/tellfriends/refer.ctp:7
+msgid "Friends' Email (comma separated emails)"
+msgstr "Correo electrónico de Amigos (emails separados por comas)"
+
+#: views/tellfriends/refer.ctp:11
+msgid "Your Message"
+msgstr "Su Mensaje"
+
+#: views/tellfriends/refer.ctp:11
+msgid "Hi, Your friend wants you to check out this website: www.greenpeace.org "
+msgstr "Hola, Su amigo quiere que usted echa un vistazo a este sitio web: www.greenpeace.org"
+
+#: views/appeals/admin_view.ctp:2
+msgid "Appeal"
+msgstr "Demanda"
+
+#: views/appeals/admin_view.ctp:8
+msgid "Edit Appeal"
+msgstr "Editar Demanda"
+
+#: views/appeals/admin_view.ctp:16
+msgid "Delete Appeal"
+msgstr "Borrar Demanda"
+
+#: views/appeals/admin_view.ctp:49
+msgid "Campaign Code"
+msgstr "Código de la Campaña"
+
+#: views/appeals/admin_view.ctp:54
+msgid "Is Default"
+msgstr "Es por Defecto"
+
+#: views/appeals/admin_view.ctp:56
+msgid "Yes"
+msgstr "Si"
+
+#: views/appeals/admin_view.ctp:56
+msgid "No"
+msgstr "No"
+
+#: views/appeals/admin_view.ctp:59
+msgid "Cost"
+msgstr "Coste"
+
+#: views/appeals/admin_view.ctp:64
+msgid "Reviewed"
+msgstr "Revisado"
+
+#: views/appeals/admin_view.ctp:69
+#: views/transactions/admin_view.ctp:28
+#: views/transactions/admin_index.ctp:35
+msgid "Status"
+msgstr "Estado"
+
+#: views/appeals/admin_view.ctp:74
+msgid "Created By"
+msgstr "Creado Por"
+
+#: views/appeals/admin_view.ctp:83
+msgid "Created On"
+msgstr "Creado En"
+
+#: views/appeals/admin_view.ctp:88
+msgid "Last Modified"
+msgstr "Ultima modificación"
+
+#: views/appeals/admin_add.ctp:2
+#: views/appeals/admin_add.ctp:17
+msgid "Add Appeal"
+msgstr "Nueva Demanda"
+
+#: views/appeals/admin_add.ctp:6
+#: views/appeals/admin_add.ctp:7
+msgid "List Appeals"
+msgstr "Lista de Demandas"
+
+#: views/appeals/admin_add.ctp:8
+msgid "New Parent"
+msgstr "Nuevo Parent"
+
+#: views/appeals/admin_add.ctp:9
+msgid "List Users"
+msgstr "Lista de Usuarios"
+
+#: views/appeals/admin_add.ctp:10
+msgid "New User"
+msgstr "Nuevo Usuario"
+
+#: views/appeals/admin_add.ctp:11
+msgid "List Countries"
+msgstr "Lista de Países"
+
+#: views/appeals/admin_add.ctp:12
+msgid "New Country"
+msgstr "Nuevo País"
+
+#: views/appeals/admin_index.ctp:15
+msgid "New Appeal"
+msgstr "Nueva Demanda"
+
+#: views/appeals/admin_index.ctp:43
+msgid "Preview"
+msgstr "Previsualisar"
+
+#: views/appeals/admin_edit.ctp:2
+msgid " Appeal"
+msgstr "Demanda"
+
+#: views/transactions/admin_view.ctp:2
+msgid "Transaction"
+msgstr "Transacción"
+
+#: views/transactions/admin_view.ctp:6
+msgid "Friends Id"
+msgstr "Id de Amigos"
+
+#: views/transactions/admin_view.ctp:11
+msgid "Payment Gateway Id"
+msgstr "Id de Portal de Pago"
+
+#: views/transactions/admin_view.ctp:17
+msgid "Parent Trans."
+msgstr "Trans. Parent"
+
+#: views/transactions/admin_view.ctp:33
+#: views/transactions/admin_index.ctp:39
+msgid "Gateway"
+msgstr "Portal"
+
+#: views/transactions/admin_view.ctp:42
+#: views/transactions/admin_index.ctp:40
+msgid "Gift"
+msgstr "Regalo"
+
+#: views/transactions/admin_view.ctp:52
+#: views/transactions/admin_index.ctp:38
+msgid "Amount"
+msgstr "Cantidad"
+
+#: views/transactions/admin_index.ctp:11
+#, php-format
+msgid "%s's Transactions"
+msgstr "Transacciones de %s"
+
+#: views/transactions/admin_index.ctp:37
+msgid "External ID"
+msgstr "ID Externo"
+
+#: views/transactions/admin_index.ctp:121
+msgid "Sorry but there is nothing to display here..."
+msgstr "Lo siento, no hay nada que mostrar aquí..."
+
+#: views/transactions/elements/actions.ctp:14
+msgid "Export Selection"
+msgstr "Exportar Selección"
+
+#: views/transactions/elements/actions.ctp:21
+msgid "Export All"
+msgstr "Exportar Todo"
+
+#: views/transactions/elements/actions.ctp:30
+msgid "back to index"
+msgstr "Volver al índice"
+
+#: views/elements/warning.ctp:2
+msgid "Sorry, nothing to list."
+msgstr "Lo siento, no hay nada en la lista."
+
+#: views/elements/admin/quicklinks.ctp:1
+msgid "What do you feel like doing?"
+msgstr "¿Que quiere hacer?"
+
+#: views/elements/admin/actions.ctp:32
+msgid "Sorry, but there is nothing to do here for now"
+msgstr "Lo siento, pero no hay nada que hacer aquí por ahora"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:6
+msgid "Shortcuts"
+msgstr "Atajos"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:10
+msgid "Bookmark this page"
+msgstr "Añadir esta página en marcadores"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:11
+msgid "Print this page"
+msgstr "Imprimir esta página"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:12
+msgid "Increase font size"
+msgstr "Aumentar el tamaño de fuente"
+
+#: views/elements/admin/sidebar/shortcuts.ctp:13
+msgid "Decrease font size"
+msgstr "Disminuir el tamaño de fuente"
+
+#: views/elements/admin/sidebar/twitter_feed.ctp:7
+msgid "Latest Tweets"
+msgstr "Los últimos tweets"
+
+#: views/elements/admin/sidebar/twitter_feed.ctp:20
+msgid "follow us on twitter"
+msgstr "síganos en twitter"
+
+#: views/elements/admin/sidebar/help.ctp:2
+msgid "Need some help?"
+msgstr "¿Necesita un poco de ayuda? "
+
+#: views/elements/admin/sidebar/search.ctp:23
+msgid "Search"
+msgstr "Buscar"
+
+#: views/elements/admin/sidebar/search.ctp:28
+msgid "Enter an id or a keyword"
+msgstr "Introduzca una id o una palabra clave"
+
+#: views/elements/admin/sidebar/search.ctp:34
+msgid "search"
+msgstr "Buscar"
+
+#: views/elements/admin/sidebar/news.ctp:9
+msgid "News"
+msgstr "Notícias"
+
+#: views/elements/admin/sidebar/news.ctp:18
+msgid "more"
+msgstr "más"
+
+#: views/elements/admin/sidebar/news.ctp:22
+msgid "follow us on Making Waves"
+msgstr "Síganos en Making Waves"
+
+#: views/elements/admin/sidebar/news.ctp:33
+msgid "Latest blog entry"
+msgstr "La última entrada del blog "
+
+#: views/elements/admin/users/badge.ctp:2
+msgid "Welcome back"
+msgstr "Bienvenido de nuevo"
+
+#: views/elements/admin/users/badge.ctp:3
+msgid "preferences"
+msgstr "preferencias "
+
+#: views/elements/admin/users/badge.ctp:4
+msgid "logout"
+msgstr "Salir"
+
+#: views/elements/admin/filters/paging_limit.ctp:12
+msgid "How many results per page?"
+msgstr "¿Cuántos resultados por página?"
+
+#: views/elements/admin/filters/paging_limit.ctp:19
+msgid "Prefer typing the number?"
+msgstr "¿Prefiere escribir el número?"
+
+#: views/elements/admin/filters/time_range.ctp:7
+msgid "Filter by date"
+msgstr "Filtrar por fecha"
+
+#: views/elements/admin/filters/time_range.ctp:12
+msgid "Start Date"
+msgstr "Fecha de Inicio"
+
+#: views/elements/admin/filters/time_range.ctp:42
+msgid "End Date"
+msgstr "Fecha de finalización"
+
+#: views/elements/admin/filters/keyword.ctp:2
+msgid "Filter by keyword"
+msgstr "Filtrar por palabra clave"
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "due"
+msgstr "debido"
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "yes"
+msgstr "si"
+
+#: views/elements/tableset/rows/gift.ctp:50
+msgid "no"
+msgstr "no"
+
+#: views/elements/tableset/rows/transaction.ctp:24
+msgid "The payment gateway is missing"
+msgstr "No se encuentra el portal de pago"
+
+#: views/dashboards/admin_index.ctp:2
+msgid "Root Configuration"
+msgstr "Configuración de Root"
+
+#: views/exports/admin_transactions.ctp:2
+msgid "Transaction Export"
+msgstr "Exportar Transacción"
+
+#: views/exports/admin_gifts.ctp:2
+msgid "Gift Export"
+msgstr "Exportar Regalo"
+
+#: views/gifts/admin_view.ctp:8
+msgid "Delete Gift"
+msgstr "Borrar Regalo"
+
+#: views/gifts/admin_view.ctp:22
+msgid "Office"
+msgstr "Oficina"
+
+#: views/gifts/admin_view.ctp:31
+msgid "Type"
+msgstr "Tipo"
+
+#: views/gifts/admin_view.ctp:46
+#: views/gifts/admin_index.ctp:35
+msgid "Frequency"
+msgstr "Frecuencia"
+
+#: views/gifts/admin_view.ctp:59
+msgid "Fname"
+msgstr "Nombre"
+
+#: views/gifts/admin_view.ctp:64
+msgid "Lname"
+msgstr "Apellidos"
+
+#: views/gifts/admin_view.ctp:69
+msgid "Salutation"
+msgstr "Saludo"
+
+#: views/gifts/admin_view.ctp:79
+msgid "Address"
+msgstr "Dirección "
+
+#: views/gifts/admin_view.ctp:85
+msgid "Zip"
+msgstr "Código Postal"
+
+#: views/gifts/admin_view.ctp:90
+msgid "Country"
+msgstr "País "
+
+#: views/gifts/admin_add.ctp:2
+msgid "New Gift"
+msgstr "Nuevo Regalo"
+
+#: views/gifts/admin_add.ctp:9
+#, php-format
+msgid "Back to %s"
+msgstr "Volver a %s"
+
+#: views/gifts/admin_index.ctp:14
+msgid "Online Donations"
+msgstr "Donaciones en línea"
+
+#: views/gifts/admin_index.ctp:37
+msgid "Due"
+msgstr "Debido"
+
+#: views/gifts/admin_index.ctp:41
+msgid "First Name"
+msgstr "Nombre"
+
+#: views/gifts/admin_index.ctp:42
+msgid "Last Name"
+msgstr "Apellidos"
+
+#: views/gifts/admin_index.ctp:47
+msgid "Date"
+msgstr "Fecha"
+
+#: views/settings/admin_edit.ctp:2
+msgid "Settings"
+msgstr "Ajustes"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:6
+msgid "Edit Gift"
+msgstr "Editar Regalo"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:8
+msgid "List Gifts"
+msgstr "Lista de Regalos"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:18
+msgid "List Transactions"
+msgstr "Lista de Transacciones"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:19
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:162
+msgid "New Transaction"
+msgstr "Nueva Transacción"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:58
+msgid "User"
+msgstr "Usuario"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:117
+msgid "Related Transactions"
+msgstr "Transacciones relacionadas"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:122
+msgid "Parent Id"
+msgstr "Id del Parent"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:123
+msgid "Gateway Id"
+msgstr "Id del Portal"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:124
+msgid "External Id"
+msgstr "Id Externo"
+
+#: views/templates/appeal_2_4a815eff-8a8c-40fa-9b65-72b6a7f05a6e/view.ctp:125
+msgid "Gift Id"
+msgstr "Id del Regalo"
+
+#: views/templates/default/contact.ctp:5
+msgid "Contact Information"
+msgstr "Información del Contacto"
+
+#: views/templates/default/gift.ctp:18
+msgid "Gift Information"
+msgstr "Información del Regalo"
+
+#: views/supporters/admin_index.ctp:28
+msgid "Phone"
+msgstr "Teléfono"
+
+#: views/supporters/admin_index.ctp:29
+msgid "Zip Code"
+msgstr "Código Postal"
+
+#: views/supporters/admin_index.ctp:30
+msgid "City"
+msgstr "Ciudad"
+
+#: views/supporters/admin_index.ctp:46
+msgid "Add Gift"
+msgstr "Añadir Regalo"
+
+#: views/statistics/admin_index.ctp:3
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#: views/statistics/admin_index.ctp:6
+msgid "Signups (partial)"
+msgstr "Suscripciones (parcial)"
+
+#: views/statistics/admin_index.ctp:7
+msgid "Gifts (complete)"
+msgstr "Regalos (completo)"
+
+#: views/statistics/admin_index.ctp:8
+msgid "Amounts"
+msgstr "Cantidades"
+
+#~ msgid "tellafriend"
+#~ msgstr "Hello, Your friend wants you to visit www.greenpeace.org"
+
