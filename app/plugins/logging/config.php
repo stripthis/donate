@@ -3,7 +3,9 @@ $config = array(
 	'Logging' => array(
 		'models' => array(
 			'Gift',
-			'Transaction'
+			'Transaction',
+			'Import',
+			'Export'
 		)
 	)
 );

@@ -93,7 +93,7 @@ class ExportsController extends AppController {
 
 		$Export = ClassRegistry::init('Export');
 		$Export->create(array(
-			'created_by' => User::get('id'),
+			'user_id' => User::get('id'),
 			'nb_exported' => count($items),
 			'model' => $model
 		));

@@ -174,6 +174,7 @@ class TransactionsController extends AppController {
 				return $this->Message->add($msg, 'error');
 			}
 
+			$this->data['Import']['user_id'] = User::get('id');
 			$this->Import->create($this->data);
 			if (!$this->Import->validates()) {
 				$msg = __('There was a problem with the form!', true);
@@ -188,6 +189,7 @@ class TransactionsController extends AppController {
 			$result = $this->Session->read('import_result');
 			$this->data['Import']['nb_requested'] = $result['valid'] + $result['invalid_missing_parent'];
 			$this->data['Import']['nb_imported'] = $result['valid'];
+			$this->data['Import']['user_id'] = User::get('id');
 
 			$this->Import->create($this->data);
 			$this->Import->save();
