@@ -406,6 +406,7 @@ class GiftsController extends AppController {
 		);
 		$transactions = $this->paginate('Transaction');
 
+		$this->Gift = ClassRegistry::init('Gift');
 		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
 		$comments = $this->Gift->Comment->find($commentMethod, array(
 			'conditions' => array('Comment.foreign_id' => $id),

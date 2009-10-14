@@ -27,9 +27,17 @@ class Favorite extends FavoritesAppModel{
 		}
 
 		$models = array_keys($favConfig['models']);
-		$options = array();
+		$options = $hasManyOptions = array();
 		foreach ($models as $model) {
 			$options[$model] = array('foreignKey' => 'foreign_id');
+
+			$Model = ClassRegistry::init($model);
+			$Model->bindModel(array('hasMany' => array(
+				'Favorite' => array(
+					'dependent' => true,
+					'foreignKey' => 'foreign_id'
+				)
+			)), false);
 		}
 		$this->bindModel(array('belongsTo' => $options), false);
 
@@ -48,7 +56,7 @@ class Favorite extends FavoritesAppModel{
 		foreach ($models as $model) {
 			$verbose[$model] = 0;
 			foreach ($favorites as $fav) {
-				if (!empty($fav[$model]['id'])) {
+				if (!empty($fav['Favorite']['foreign_id']) && !empty($fav[$model]['id'])) {
 					$verbose[$model]++;
 				}
 			}

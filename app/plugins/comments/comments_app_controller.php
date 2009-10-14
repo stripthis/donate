@@ -11,7 +11,7 @@ class CommentsAppController extends AppController {
 
 		$this->Comment = ClassRegistry::init('Comments.Comment');
 		foreach ($config['models'] as $model => $threaded) {
-			$Model = ClassRegistry::init($model);
+			$Model =& ClassRegistry::init($model);
 			$Model->bindModel(array('hasMany' => array(
 				'Comment' => array(
 					'className' => 'Comments.Comment',
@@ -20,7 +20,7 @@ class CommentsAppController extends AppController {
 					'threaded' => $threaded
 				)
 			)), false);
-			
+
 			$this->Comment->bindModel(array('belongsTo' => array(
 				$model => array('foreignKey' => 'foreign_id')
 			)), false);

@@ -21,8 +21,9 @@ class AppController extends Controller {
 		'Pgp'
 	);
 
+	// dont change the order unless you really know what you are doing!
 	var $plugins = array(
-		'Bugs', 'Favorites', 'Comments', 'Tellfriends', 'Logging', 'Chat',
+		'Bugs', 'Comments', 'Favorites', 'Tellfriends', 'Logging', 'Chat',
 		'Smileys', 'Segments', 'Filters'
 	);
 
