@@ -21,6 +21,9 @@ class Office extends AppModel {
 		'CountriesOffice' => array(
 			'dependent' => true
 		),
+		'LanguagesOffice' => array(
+			'dependent' => true
+		),
 		'Appeal' => array(
 			'dependent' => true
 		),
@@ -38,6 +41,9 @@ class Office extends AppModel {
 		),
 		'Frequency' => array(
 			'with' => 'FrequenciesOffice'
+		),
+		'Language' => array(
+			'with' => 'LanguagesOffice'
 		),
 		'Country' => array(
 			'with' => 'CountriesOffice'
@@ -71,12 +77,8 @@ class Office extends AppModel {
 			$this->data['Office']['amounts'] = r(' ', '', $this->data['Office']['amounts']);
 		}
 
-		if (isset($this->data['Office']['languages'])) {
-			if (is_array($this->data['Office']['languages'])) {
-				$this->data['Office']['languages'] = implode(',', $this->data['Office']['languages']);
-			} else {
-				$this->data['Office']['languages'] = 'eng';
-			}
+		if (isset($this->data[__CLASS__]['languages'])) {
+			$this->languages = $this->data[__CLASS__]['languages'];
 		}
 
 		if (isset($this->data['Office']['gift_types'])) {
@@ -131,6 +133,18 @@ class Office extends AppModel {
 					'frequency_id' => $frequencyId
 				));
 				$this->FrequenciesOffice->save();
+			}
+		}
+
+		if (isset($this->languages)) {
+			$this->LanguagesOffice->deleteAll(array('office_id' => $this->id));
+
+			foreach ($this->languages as $langId) {
+				$this->LanguagesOffice->create(array(
+					'office_id' => $this->id,
+					'language_id' => $langId
+				));
+				$this->LanguagesOffice->save();
 			}
 		}
 		return true;

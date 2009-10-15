@@ -12,6 +12,7 @@ class OfficesController extends AppController {
 		$this->Gift = ClassRegistry::init('Gift');
 		$this->Gateway = $this->Office->Gateway;
 		$this->Frequency = $this->Office->Frequency;
+		$this->Language = $this->Office->Language;
 	}
 /**
  * undocumented function
@@ -134,6 +135,7 @@ class OfficesController extends AppController {
 				'contain' => array(
 					'GatewaysOffice(gateway_id)',
 					'FrequenciesOffice(frequency_id)',
+					'LanguagesOffice(language_id)',
 					'User' => array(
 						'fields' => array('id', 'name', 'permissions', 'office_id'),
 						'conditions' => array('User.id <>' => User::get('id'))
@@ -148,10 +150,14 @@ class OfficesController extends AppController {
 		$frequencyOptions = $this->Frequency->find('list', array(
 			'fields' => array('id', 'humanized')
 		));
+		$languageOptions = $this->Language->find('list', array(
+			'fields' => array('id', 'code')
+		));
 		$gatewayOptions = $this->Gateway->find('list');
 		$gateways = $this->Office->Gateway->find('list');
 		$this->set(compact(
-			'action', 'office', 'gateways', 'gatewayOptions', 'frequencyOptions'
+			'action', 'office', 'gateways',
+			'gatewayOptions', 'frequencyOptions', 'languageOptions'
 		));
 
 		$this->action = 'admin_edit';

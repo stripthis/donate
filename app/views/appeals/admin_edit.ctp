@@ -51,11 +51,7 @@
 			?>
 		</div>
 	</fieldset>
-	<?php
-		// echo $form->input('lang', array(
-		// 	'options' => Configure::read('App.languages'), 'label' => 'Supported Language'
-		// ));
-
+		<?php
 		if (User::allowed('Appeals', 'publish')) {
 			$infStatusOptions = array_map('ucfirst', $statusOptions);
 			$statusOptions = array_combine($statusOptions, $infStatusOptions);

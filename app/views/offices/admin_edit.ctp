@@ -19,9 +19,14 @@ $title = $action == 'add'
 		echo $form->input('name');
 		echo $form->input('live');
 		echo $form->input('external_url', array('label' => 'If not live, url to redirect to'));
+
+		$selected = array();
+		if ($action == 'edit') {
+			$selected = Set::extract('/LanguagesOffice/language_id', $office);
+		}
 		echo $form->input('languages', array(
-			'options' => Configure::read('App.languages'),
-			'selected' => explode(',', $form->data['Office']['languages']),
+			'options' => $languageOptions,
+			'selected' => $selected,
 			'multiple' => 'checkbox',
 			'label' => 'Languages:'
 		));

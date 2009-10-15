@@ -26,10 +26,9 @@ class GiftsController extends AppController {
 		$this->Card = ClassRegistry::init('Card');
 	}
 /**
- * Add a catch
+ * undocumented function
  *
- * @param string $appealId 
- * @param string $step 
+ * @param string $step
  * @return void
  * @access public
  */
@@ -173,8 +172,8 @@ class GiftsController extends AppController {
 /**
  * undocumented function
  *
- * @param string $userId
- * @param string $authKey
+ * @param string $key
+ * @param string $tId
  * @return void
  * @access public
  */
