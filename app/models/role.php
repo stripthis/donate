@@ -55,5 +55,29 @@ class Role extends AppModel {
 		}
 		return true;
 	}
+
+	/**
+	 * undocumented function
+	 *
+	 * @param string 
+	 * @param string 
+	 * @return void
+	 * @access public
+	 */
+	function find($type, $query = array()) {
+		$args = func_get_args();
+		switch ($type) {
+			case 'options':
+				$conditions = array('Role.name <>' => 'guest');
+				if (!User::is('root')) {
+					$conditions[] = "Role.name <> 'root'";
+				}
+				return $this->find('list', array(
+					'conditions' => $conditions,
+					'order' => array('name' => 'desc')
+				));
+		}
+		return call_user_func_array(array('parent', 'find'), $args);
+	}
 }
 ?>

@@ -220,5 +220,27 @@ class Office extends AppModel {
 			$this->saveField('parent_id', $id);
 		}
 	}
+
+	/**
+	 * undocumented function
+	 *
+	 * @param string 
+	 * @param string 
+	 * @return void
+	 * @access public
+	 */
+	function find($type, $query = array()) {
+		$args = func_get_args();
+		switch ($type) {
+			case 'root_options':
+				if (!User::is('root')) {
+					return array();
+				}
+				return $this->find('list', array(
+					'order' => array('name' => 'desc')
+				));
+		}
+		return call_user_func_array(array('parent', 'find'), $args);
+	}
 }
 ?>

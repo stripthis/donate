@@ -16,7 +16,9 @@
 	<?php endif; ?>
 	<?php
 	echo $form->input('id');
-	echo $form->input('name');
+	echo $form->input('Contact.salutation', array('options' => Configure::read('App.contact.salutations')));
+	echo $form->input('Contact.fname', array('label' => 'First Name'));
+	echo $form->input('Contact.lname', array('label' => 'Last Name'));
 	echo $form->input('login');
 
 	$canEdit = $action == 'add' || $user['Role']['name'] != 'office_manager';
@@ -31,12 +33,9 @@
 	} else {
 		echo '<p>' . __('You are not allowed to change the role or office of this user, as he is an office manager.', true) . '</p>';
 	}
-	echo $form->input('Contact.salutation', array('options' => Configure::read('App.contact.salutations')));
-	echo $form->input('Contact.fname', array('label' => 'First Name'));
-	echo $form->input('Contact.lname', array('label' => 'Last Name'));
 	echo '<h3>Individual Permissions</h3>';
 
-	$isRoot = isset($user) && $user['Role']['name'] == 'root';
+	$isRoot = isset($user) && isset($user['Role']) && $user['Role']['name'] == 'root';
 	if ($canEdit && !$isRoot) {
 		$permissions = Configure::read('App.permissions.options');
 

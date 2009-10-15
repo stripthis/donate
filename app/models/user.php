@@ -75,14 +75,13 @@ class User extends AppModel {
 			$diff = array_diff($permissions, $perms);
 			if (empty($diff)) {
 				$this->data[__CLASS__]['permissions'] = '';
-				return true;
+			} else {
+				$s = '';
+				foreach ($diff as $perm) {
+					$s .= '!' . $perm . ',';
+				}
+				$this->data[__CLASS__]['permissions'] = substr($s, 0, -1);
 			}
-
-			$s = '';
-			foreach ($diff as $perm) {
-				$s .= '!' . $perm . ',';
-			}
-			$this->data[__CLASS__]['permissions'] = substr($s, 0, -1);
 		}
 
 		if (isset($this->data[__CLASS__]['reports'])) {
@@ -99,6 +98,18 @@ class User extends AppModel {
 			}
 		}
 
+		if (!isset($this->data[__CLASS__]['office_id'])) {
+			$Session = Common::getComponent('Session');
+			$this->data[__CLASS__]['office_id'] = $Session->read('Office.id');
+		}
+		if (isset($this->data[__CLASS__]['login'])) {
+			$this->data['Contact']['email'] = $this->data[__CLASS__]['login'];
+		}
+
+		if (isset($this->data['Contact']['fname']) && isset($this->data['Contact']['lname'])) {
+			$this->data[__CLASS__]['name'] = $this->data['Contact']['fname'] . ' ' . $this->data['Contact']['lname'];
+		}
+		
 		return true;
 	}
 /**
@@ -469,16 +480,6 @@ class User extends AppModel {
 		return ($user)
 			? sprintf('http://www.gravatar.com/avatar/%s.jpg', md5(strtolower($user['User']['login']))).$param
 			: false;
-  }
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
-	function generatePassword() {
-		$pw = substr(md5(microtime()), 0, 9);
-		return array($pw, User::hashPw($pw));
 	}
 /**
  * undocumented function
@@ -519,6 +520,105 @@ class User extends AppModel {
 			return User::get('login') == Configure::read('App.emails.guestAccount');
 		}
 		return User::get('Role.name') == $role;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function savePassword() {
+		$pwData = $this->generatePassword();
+		$password = $pwData[0];
+		$this->set(array(
+			'id' => $this->id,
+			'password' => $pwData[1]
+		));
+		$this->save(null, false);
+		return $password;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function generatePassword() {
+		$pw = substr(md5(microtime()), 0, 9);
+		return array($pw, User::hashPw($pw));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $data 
+ * @param string $password 
+ * @return void
+ * @access public
+ */
+	function sendNewAccountEmail($password, $data) {
+		$options = array(
+			'mail' => array(
+				'to' => $data['User']['login'],
+				'subject' => __('New Account for Greenpeace White Rabbit', true)
+			),
+			'vars' => array(
+				'url' => Configure::read('App.domain'),
+				'password' => $password
+			)
+		);
+		Mailer::deliver('created_admin', $options);
+
+		$managers = $this->find('office_managers', array(
+			'exclude_me' => true,
+			'office_id' => $data[__CLASS__]['office_id']
+		));
+
+		foreach ($managers as $manager) {
+			$options = array(
+				'mail' => array(
+					'to' => $manager[__CLASS__]['login'],
+					'subject' => __('New Admin created in your office for Greenpeace White Rabbit', true)
+				),
+				'vars' => array(
+					'url' => Configure::read('App.domain'),
+					'login' => $data[__CLASS__]['login'],
+					'creator' => User::get()
+				)
+			);
+			Mailer::deliver('office_admin_note_for_new_user', $options);
+		}
+	}
+/**
+ * undocumented function
+ *
+ * @param string 
+ * @param string 
+ * @return void
+ * @access public
+ */
+	function find($type, $query = array()) {
+		$args = func_get_args();
+		switch ($type) {
+			case 'office_managers':
+				$roleId = $this->Role->lookup('office_manager', 'id', false);
+				$conditions = array(
+					'role_id' => $roleId
+				);
+				if (isset($query['office_id'])) {
+					$conditions['office_id'] = $query['office_id'];
+				}
+				if (isset($query['exclude_me']) && $query['exclude_me']) {
+					$conditions['id <>'] = User::get('id');
+				}
+				$fields = isset($query['fields'])
+							? $query['fields']
+							: array('id', 'login');
+				return $this->find('all', array(
+					'conditions' => $conditions,
+					'fields' => $fields
+				));
+		}
+		return call_user_func_array(array('parent', 'find'), $args);
 	}
 }
 ?>

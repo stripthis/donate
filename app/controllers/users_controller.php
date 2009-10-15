@@ -42,21 +42,8 @@ class UsersController extends AppController {
 			$action = 'edit';
 		}
 
-		$officeOptions = array();
-		if (User::is('root')) {
-			$officeOptions = $this->Office->find('list', array(
-				'order' => array('name' => 'desc')
-			));
-		}
-
-		$conditions = array('Role.name <>' => 'guest');
-		if (!User::is('root')) {
-			$conditions[] = "Role.name <> 'root'";
-		}
-		$roleOptions = $this->Role->find('list', array(
-			'conditions' => $conditions,
-			'order' => array('name' => 'desc')
-		));
+		$officeOptions = $this->Office->find('root_options');
+		$roleOptions = $this->Role->find('options');
 		$this->set(compact('action', 'user', 'officeOptions', 'roleOptions'));
 
 		$this->action = 'admin_edit';
@@ -64,41 +51,23 @@ class UsersController extends AppController {
 			return $this->data = $user;
 		}
 
-		if (!isset($this->data['User']['office_id'])) {
-			$this->data['User']['office_id'] = $this->Session->read('Office.id');
-		}
-		$this->data['Contact']['email'] = $this->data['User']['login'];
-
 		if (!$this->User->saveAll($this->data)) {
-			return $this->Message->add(__('Please fill out all fields', true), 'error');
+			$msg = __('Please fill out all fields', true);
+			return $this->Message->add($msg, 'error');
 		}
 
 		if ($action == 'add') {
-			$userId = $this->User->id;
+			$password = $this->User->savePassword();
+			$this->User->sendNewAccountEmail($password, $this->data);
 
-			$pwData = $this->User->generatePassword();
-			$password = $pwData[0];
-			$this->User->set(array(
-				'id' => $userId,
-				'password' => $pwData[1]
-			));
-			$this->User->save(null, false);
-
-			$options = array(
-				'mail' => array(
-					'to' => $this->data['User']['login'],
-					'subject' => __('New Account for Greenpeace White Rabbit', true)
-				),
-				'vars' => array(
-					'url' => Configure::read('App.domain'),
-					'password' => $password
-				)
+			$msg = sprintf(
+				__(
+					'The admin account for %s has been created successfully. 
+					An email has been sent to the email address.'
+				, true),
+				$this->data['User']['login']
 			);
-			Mailer::deliver('created_admin', $options);
-
-			$msg = sprintf(__('The admin account for %s has been created successfully. An email has been sent to the email address.', true), $this->data['User']['login']);
-			$url = array('action' => 'index');
-			return $this->Message->add(__($msg, true), 'ok', true, $url);
+			return $this->Message->add($msg, 'ok', true, array('action' => 'index'));
 		}
 
 		$msg = __('User was saved successfully.', true);
