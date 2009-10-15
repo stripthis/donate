@@ -123,6 +123,7 @@ class TransactionsController extends AppController {
 			'contain' => array(
 				'ParentTransaction',
 				'Gift.Contact',
+				'Gift.Frequency',
 				'Gateway'
 			)
 		));

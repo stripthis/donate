@@ -15,6 +15,9 @@ class Office extends AppModel {
 		'GatewaysOffice' => array(
 			'dependent' => true
 		),
+		'FrequenciesOffice' => array(
+			'dependent' => true
+		),
 		'CountriesOffice' => array(
 			'dependent' => true
 		),

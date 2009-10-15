@@ -310,6 +310,7 @@ class GiftsController extends AppController {
 			'conditions' => $conditions,
 			'recursive' => 2,
 			'contain' => array(
+				'Frequency(humanized)',
 				'Contact(fname, lname, email,created,modified,id)',
 				'Transaction(id,status,gateway_id,created,modified)' => 'Gateway(id,name)',
 			),
@@ -393,7 +394,7 @@ class GiftsController extends AppController {
 				'Contact.Address.Country(id, name)',
 				'Contact.Address.State(id, name)',
 				'Contact.Address.City(id, name)',
-				'Office(id, name)', 'Appeal'
+				'Office(id, name)', 'Appeal', 'Frequency'
 			)
 		));
 		Assert::notEmpty($gift, '404');

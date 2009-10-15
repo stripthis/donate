@@ -40,12 +40,12 @@
 		</dd>
 		<dt><?php echo __('Description', true); ?></dt>
 		<dd>
-			<?php echo $gift['Gift']['description']; ?>
+			<?php echo !empty($gift['Gift']['description']) ? $gift['Gift']['description'] : '--'; ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Frequency', true); ?></dt>
 		<dd>
-			<?php echo $gift['Gift']['frequency']; ?>
+			<?php echo $gift['Frequency']['humanized']; ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Appeal', true); ?></dt>
@@ -56,12 +56,12 @@
 			)); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Fname', true); ?></dt>
+		<dt><?php echo __('First name', true); ?></dt>
 		<dd>
 			<?php echo $gift['Contact']['fname']; ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Lname', true); ?></dt>
+		<dt><?php echo __('Last Name', true); ?></dt>
 		<dd>
 			<?php echo $gift['Contact']['lname']; ?>
 			&nbsp;
@@ -73,7 +73,7 @@
 		</dd>
 		<dt><?php echo __('Title', true); ?></dt>
 		<dd>
-			<?php echo $gift['Contact']['title']; ?>
+			<?php echo !empty($gift['Contact']['title']) ? $gift['Contact']['title'] : '--'; ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Address', true); ?></dt>

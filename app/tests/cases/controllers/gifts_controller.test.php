@@ -33,6 +33,7 @@ class GiftsControllerTest extends MyTestCase {
 		$this->Office = ClassRegistry::init('Office');
 		$this->Country = ClassRegistry::init('Country');
 		$this->City = ClassRegistry::init('City');
+		$this->Frequency = ClassRegistry::init('Frequency');
 
 		$models = array('Gift', 'Contact', 'Address', 'Phone');
 		AppModel::resetRequired($models);
@@ -139,7 +140,7 @@ class GiftsControllerTest extends MyTestCase {
 			'Gift' => array(
 				'type' => 'donation',
 				'amount' => 5,
-				'frequency' => 'monthly'
+				'frequency_id' => $this->Frequency->lookup('monthly', 'id', false)
 			),
 			'Contact' => array(
 				'salutation' => 'mr',
@@ -252,7 +253,7 @@ class GiftsControllerTest extends MyTestCase {
 			'Gift' => array(
 				'type' => 'donation',
 				'amount' => 23,
-				'frequency' => 'annually'
+				'frequency_id' => $this->Frequency->lookup('annually', 'id', false)
 			),
 			'Contact' => array(
 				'salutation' => 'mr',
@@ -274,7 +275,7 @@ class GiftsControllerTest extends MyTestCase {
 		));
 
 		$this->eq($sutData['Gift']['type'], $gift['Gift']['type']);
-		$this->eq($sutData['Gift']['frequency'], $gift['Gift']['frequency']);
+		$this->eq($sutData['Gift']['frequency_id'], $gift['Gift']['frequency_id']);
 		$this->eq($sutData['Gift']['amount'], $gift['Gift']['amount']);
 		$this->eq($sutData['Contact']['salutation'], $gift['Contact']['salutation']);
 		$this->eq($sutData['Contact']['email'], $gift['Contact']['email']);

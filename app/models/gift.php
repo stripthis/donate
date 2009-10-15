@@ -8,7 +8,8 @@ class Gift extends AppModel {
 	);
 
 	var $belongsTo = array(
-		'Contact', 'User', 'Appeal', 'Office'
+		'Contact', 'User', 'Appeal', 'Office',
+		'Frequency'
 	);
 
 	var $hasMany = array(
@@ -52,7 +53,7 @@ class Gift extends AppModel {
 				'message' => 'Sorry, this amount is too small.',
 			)
 		),
-		'frequency' => array(
+		'frequency_id' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The frequency is required!',
@@ -94,9 +95,7 @@ class Gift extends AppModel {
  */
 	function validateFrequency($check) {
 		$Session = Common::getComponent('Session');
-		return array_key_exists(current($check), Gift::find('frequencies', array(
-			'id' => $Session->read('gift_process_office_id')
-		)));
+		return array_key_exists(current($check), Gift::find('frequencies'));
 	}
 /**
  * Validate a gift type
@@ -159,27 +158,28 @@ class Gift extends AppModel {
 				}
 				return $result;
 			case 'frequencies':
-				$frequencies = Configure::read('App.gift.frequencies');
-
 				$Session = Common::getComponent('Session');
 				if ($Session->check('Office.id') && !$isGuest) {
-					$query['id'] = $Session->read('Office.id');
+					$query['office_id'] = $Session->read('Office.id');
 				}
 				if ($Session->check('gift_process_office_id') && $isGuest) {
-					$query['id'] = $Session->read('gift_process_office_id');
+					$query['office_id'] = $Session->read('gift_process_office_id');
 				}
 
-				if (!isset($query['options']) && isset($query['id'])) {
-					$frequencies = ClassRegistry::init('Office')->find('first', array(
-						'conditions' => array('id' => $query['id']),
-						'fields' => array('frequencies')
-					));
-					$frequencies = explode(',', $frequencies['Office']['frequencies']);
+
+				$conditions = array();
+				if (isset($query['office_id'])) {
+					$conditions['FrequenciesOffice.office_id'] = $query['office_id'];
 				}
 
+				$frequencies = ClassRegistry::init('FrequenciesOffice')->find('all', array(
+					'conditions' => $conditions,
+					'contain' => array('Frequency(name, id, humanized)'),
+					'order' => array('Frequency._order' => 'asc')
+				));
 				$result = array();
-				foreach ($frequencies as $frequency) {
-					$result[$frequency] = Inflector::humanize($frequency);
+				foreach ($frequencies as $f) {
+					$result[$f['Frequency']['id']] = $f['Frequency']['humanized'];
 				}
 				return $result;
 			case 'amounts':
@@ -289,18 +289,6 @@ class Gift extends AppModel {
 	function updateStatus($id, $status) {
 		$this->set(compact('id', 'status'));
 		return $this->save(null, false);
-	}
-/**
- * undocumented function
- */
-	static function getFrequencies(){
-		return Configure::read('App.gift.frequencies'); 
-	}
-/**
- * undocumented function
- */
-	static function getCurrencies(){
-		return Configure::read('App.gift.currencies'); 
 	}
 }
 ?>

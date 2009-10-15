@@ -23,7 +23,7 @@ class DueGiftsShell extends Shell {
 				'Gift.archived' => '0'
 			),
 			'contain' => array(
-				'LastTransaction'
+				'LastTransaction', 'Frequency'
 			),
 			'order' => array('Gift.created' => 'desc')
 		));
@@ -37,7 +37,7 @@ class DueGiftsShell extends Shell {
 				continue;
 			}
 
-			switch ($gift['Gift']['frequency']) {
+			switch ($gift['Frequency']['name']) {
 				case 'daily':
 					if (strtotime($lastProcessed) + DAY <= time()) {
 						$this->makeDue($gift);

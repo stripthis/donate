@@ -91,7 +91,7 @@
 							<?php echo $this->element('tableset/collumns/status', $options); ?>
 							<td class="title gift details" >
 								<span class="iconic gift creditcard">
-									<?php echo $gift['Gift']['amount'] . ' EUR ' . $gift['Gift']['frequency']; ?>
+									<?php echo $gift['Gift']['amount'] . ' EUR ' . $gift['Frequency']['humanized']; ?>
 								</span>
 								#<?php echo $gift['Gift']['serial']?>
 								(<?php echo __('due',true) ?>: <?php echo $gift['Gift']['due'] ? __('yes',true) : __('no',true)?>)

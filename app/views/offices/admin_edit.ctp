@@ -32,7 +32,7 @@ $title = $action == 'add'
 		<?php
 		echo $form->input('frequencies', array(
 			'label' => '', 
-			'options' => Gift::find('frequencies', array('options' => true)), 
+			'options' => Gift::find('frequencies'),
 			'multiple' => 'checkbox',
 			'selected' => explode(',', $form->data['Office']['frequencies'])
 		));

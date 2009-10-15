@@ -39,6 +39,7 @@ class SegmentsController extends SegmentsAppController {
 		$this->data['Segment']['user_id'] = User::get('id');
 
 		if (!empty($this->data['Segment']['name'])) {
+			unset($this->data['Segment']['id']);
 			$this->Segment->create($this->data);
 		} else {
 			unset($this->data['Segment']['name']);

@@ -40,7 +40,12 @@ $options = array(
 	?>
 	<td class="title gift details" >
 		<span class="iconic gift creditcard">
-			<?php echo $gift['Gift']['amount'] . ' EUR ' . $gift['Gift']['frequency']; ?>
+			<?php
+			$frequency = isset($gift['Frequency']['humanized'])
+							? $gift['Frequency']['humanized']
+							: $gift['Gift']['Frequency']['humanized'];
+			echo $gift['Gift']['amount'] . ' EUR ' . $frequency;
+			?>
 		</span>
 		<?php if (!$options['leaf']) : ?>
 			#<?php echo $gift['Gift']['serial']?>

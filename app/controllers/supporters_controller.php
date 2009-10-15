@@ -184,7 +184,7 @@ class SupportersController extends AppController {
 		$contact = $this->Contact->find('first', array(
 			'conditions' => array('Contact.id' => $id),
 			'contain' => array(
-				'Gift',
+				'Gift.Frequency',
 				'Address.Phone',
 				'Address.Country(id, name)',
 				'Address.State(id, name)',

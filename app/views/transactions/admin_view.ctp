@@ -29,9 +29,9 @@
 			<dd>
 				<?php
 				$amount = $transaction['Gift']['amount'];
-				$frequency = $transaction['Gift']['frequency'];
+				$frequency = $transaction['Gift']['Frequency']['humanized'];
 				$type = $transaction['Gift']['type'];
-				echo sprintf('%s %s, %s EUR', ucfirst($frequency), ucfirst($type), $amount);
+				echo sprintf('%s %s, %s EUR', $frequency, ucfirst($type), $amount);
 				?>
 		</dd>
 		<dt><?php echo __('Amount', true); ?></dt>

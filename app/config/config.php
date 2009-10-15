@@ -80,11 +80,6 @@ $config = array(
 			'inkind' => 'In-kind gift',
 			'legacy' => 'Legacy'
 		),
-		'frequencies' => array(
-			'onetime', 
-			'monthly',
-			'annually'
-		),
 		'currencies' => array(
 			'USD', 'EUR','GBP'
 		),

@@ -55,8 +55,8 @@
 		$options = array(
 			'label' => 'Frequency' . ': ' . $giftForm->required(),
 			'options' => $frequencyOptions,
-			'selected' => $giftForm->value('Gift', 'frequency', 'monthly', $form->data)
+			'selected' => $giftForm->value('Gift', 'frequency_id', false, $form->data)
 			);
-		echo $form->input('frequency', $options);
+		echo $form->input('frequency_id', $options);
 	?>
 </fieldset>
