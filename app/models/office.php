@@ -24,6 +24,9 @@ class Office extends AppModel {
 		'LanguagesOffice' => array(
 			'dependent' => true
 		),
+		'GiftTypesOffice' => array(
+			'dependent' => true
+		),
 		'Appeal' => array(
 			'dependent' => true
 		),
@@ -81,14 +84,6 @@ class Office extends AppModel {
 			$this->languages = $this->data[__CLASS__]['languages'];
 		}
 
-		if (isset($this->data['Office']['gift_types'])) {
-			if (is_array($this->data['Office']['gift_types'])) {
-				$this->data['Office']['gift_types'] = implode(',', $this->data['Office']['gift_types']);
-			} else {
-				$this->data['Office']['gift_types'] = 'donation';
-			}
-		}
-
 		if (isset($this->data['Office']['currencies'])) {
 			if (is_array($this->data['Office']['currencies'])) {
 				$this->data['Office']['currencies'] = implode(',', $this->data['Office']['currencies']);
@@ -99,6 +94,10 @@ class Office extends AppModel {
 
 		if (isset($this->data[__CLASS__]['frequencies'])) {
 			$this->frequencies = $this->data[__CLASS__]['frequencies'];
+		}
+
+		if (isset($this->data[__CLASS__]['gift_types'])) {
+			$this->giftTypes = $this->data[__CLASS__]['gift_types'];
 		}
 
 		return true;
@@ -147,6 +146,19 @@ class Office extends AppModel {
 				$this->LanguagesOffice->save();
 			}
 		}
+
+		if (isset($this->giftTypes)) {
+			$this->GiftTypesOffice->deleteAll(array('office_id' => $this->id));
+
+			foreach ($this->giftTypes as $typeId) {
+				$this->GiftTypesOffice->create(array(
+					'office_id' => $this->id,
+					'gift_type_id' => $typeId
+				));
+				$this->GiftTypesOffice->save();
+			}
+		}
+
 		return true;
 	}
 /**

@@ -9,7 +9,7 @@ class Gift extends AppModel {
 
 	var $belongsTo = array(
 		'Contact', 'User', 'Appeal', 'Office',
-		'Frequency'
+		'Frequency', 'GiftType'
 	);
 
 	var $hasMany = array(
@@ -105,9 +105,7 @@ class Gift extends AppModel {
  */
 	function validateType($check) {
 		$Session = Common::getComponent('Session');
-		return array_key_exists($check['type'], Gift::find('gift_types', array(
-			'id' => $Session->read('gift_process_office_id')
-		)));
+		return array_key_exists($check['type'], Gift::find('gift_types'));
 	}
 /**
  * Validate amount - to avoid small amounts
@@ -134,8 +132,6 @@ class Gift extends AppModel {
 		$args = func_get_args();
 		switch ($type) {
 			case 'gift_types':
-				$frequencies = Configure::read('App.gift.types');
-
 				$Session = Common::getComponent('Session');
 				if ($Session->check('Office.id') && !$isGuest) {
 					$query['id'] = $Session->read('Office.id');
@@ -144,17 +140,19 @@ class Gift extends AppModel {
 					$query['id'] = $Session->read('gift_process_office_id');
 				}
 
-				if (!isset($query['options']) && isset($query['id'])) {
-					$types = ClassRegistry::init('Office')->find('first', array(
-						'conditions' => array('id' => $query['id']),
-						'fields' => array('gift_types')
-					));
-					$types = explode(',', $types['Office']['gift_types']);
+				$conditions = array();
+				if (isset($query['office_id'])) {
+					$conditions['GiftTypesOffice.office_id'] = $query['office_id'];
 				}
 
+				$types = ClassRegistry::init('GiftTypesOffice')->find('all', array(
+					'conditions' => $conditions,
+					'contain' => array('GiftType(name, id, humanized)'),
+					'order' => array('GiftType.name' => 'asc')
+				));
 				$result = array();
-				foreach ($types as $type) {
-					$result[$type] = Inflector::humanize($type);
+				foreach ($types as $t) {
+					$result[$t['GiftType']['id']] = $t['GiftType']['humanized'];
 				}
 				return $result;
 			case 'frequencies':
@@ -233,8 +231,8 @@ class Gift extends AppModel {
 
 		$gift = $this->find('first', array(
 			'conditions' => array('Gift.id' => $id),
-			'contain' => array('Contact(fname, lname)'),
-			'fields' => array('Gift.type', 'Gift.amount', 'Gift.created')
+			'contain' => array('Contact(fname, lname)', 'GiftType(humanized)'),
+			'fields' => array('Gift.gift_type_id', 'Gift.amount', 'Gift.created')
 		));
 
 		if (empty($gift)) {
@@ -243,7 +241,7 @@ class Gift extends AppModel {
 
 		$name = sprintf('%s %s by %s %s on %s',
 			$gift['Gift']['amount'],
-			$gift['Gift']['type'],
+			$gift['GiftType']['humanized'],
 			$gift['Contact']['fname'],
 			$gift['Contact']['lname'],
 			date('Y-m-d H:i', strtotime($gift['Gift']['created']))

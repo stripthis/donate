@@ -18,6 +18,7 @@ class GiftsController extends AppController {
 		$this->TemplateStepVisit = ClassRegistry::init('TemplateStepVisit');
 		$this->GatewaysOffice = $this->Office->GatewaysOffice;
 		$this->Contact = $this->Gift->Contact;
+		$this->Frequency = $this->Gift->Frequency;
 		$this->Address = $this->Contact->Address;
 		$this->Phone = $this->Address->Phone;
 		$this->Country = $this->Address->Country;
@@ -235,13 +236,14 @@ class GiftsController extends AppController {
 		);
 
 		$order = array('Gift.created' => 'desc');
+		$onetime = $this->Frequency->lookup('onetime', 'id', false);
 		switch ($type) {
 			case 'recurring':
-				$conditions['Gift.frequency <>'] = 'onetime';
+				$conditions['Gift.frequency_id <>'] = $onetime;
 				$order = array('Gift.due' => 'desc');
 				break;
 			case 'onetime':
-				$conditions['Gift.frequency'] = 'onetime';
+				$conditions['Gift.frequency_id'] = $onetime;
 				break;
 			case 'favorites':
 			case 'starred':

@@ -75,11 +75,6 @@ $config = array(
 		'fre' => 'French'
 	),
 	'App.gift' => array(
-		'types' => array(
-			'donation' => 'Donation',
-			'inkind' => 'In-kind gift',
-			'legacy' => 'Legacy'
-		),
 		'currencies' => array(
 			'USD', 'EUR','GBP'
 		),
