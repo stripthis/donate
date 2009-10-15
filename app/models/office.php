@@ -36,6 +36,9 @@ class Office extends AppModel {
 		'Gateway' => array(
 			'with' => 'GatewaysOffice'
 		),
+		'Frequency' => array(
+			'with' => 'FrequenciesOffice'
+		),
 		'Country' => array(
 			'with' => 'CountriesOffice'
 		),
@@ -92,6 +95,10 @@ class Office extends AppModel {
 			}
 		}
 
+		if (isset($this->data[__CLASS__]['frequencies'])) {
+			$this->frequencies = $this->data[__CLASS__]['frequencies'];
+		}
+
 		return true;
 	}
 /**
@@ -111,6 +118,19 @@ class Office extends AppModel {
 					));
 					$this->GatewaysOffice->save();
 				}
+			}
+		}
+
+		if (isset($this->frequencies)) {
+			$this->FrequenciesOffice->deleteAll(array('office_id' => $this->id));
+
+			$options = explode(',', $this->frequencies);
+			foreach ($options as $frequencyId) {
+				$this->FrequenciesOffice->create(array(
+					'office_id' => $this->id,
+					'frequency_id' => $frequencyId
+				));
+				$this->FrequenciesOffice->save();
 			}
 		}
 		return true;
@@ -223,15 +243,14 @@ class Office extends AppModel {
 			$this->saveField('parent_id', $id);
 		}
 	}
-
-	/**
-	 * undocumented function
-	 *
-	 * @param string 
-	 * @param string 
-	 * @return void
-	 * @access public
-	 */
+/**
+ * undocumented function
+ *
+ * @param string 
+ * @param string 
+ * @return void
+ * @access public
+ */
 	function find($type, $query = array()) {
 		$args = func_get_args();
 		switch ($type) {

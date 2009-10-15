@@ -166,7 +166,6 @@ class Gift extends AppModel {
 					$query['office_id'] = $Session->read('gift_process_office_id');
 				}
 
-
 				$conditions = array();
 				if (isset($query['office_id'])) {
 					$conditions['FrequenciesOffice.office_id'] = $query['office_id'];

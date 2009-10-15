@@ -11,6 +11,7 @@ class OfficesController extends AppController {
 
 		$this->Gift = ClassRegistry::init('Gift');
 		$this->Gateway = $this->Office->Gateway;
+		$this->Frequency = $this->Office->Frequency;
 	}
 /**
  * undocumented function
@@ -132,6 +133,7 @@ class OfficesController extends AppController {
 				'conditions' => array('Office.id' => $id),
 				'contain' => array(
 					'GatewaysOffice(gateway_id)',
+					'FrequenciesOffice(frequency_id)',
 					'User' => array(
 						'fields' => array('id', 'name', 'permissions', 'office_id'),
 						'conditions' => array('User.id <>' => User::get('id'))
@@ -140,14 +142,17 @@ class OfficesController extends AppController {
 			));
 			Assert::notEmpty($office, '404');
 			Assert::true(User::allowed($this->name, $this->action, $office));
-
-			$selectedGateways = Set::extract('/GatewaysOffice/gateway_id', $office);
 			$action = 'edit';
 		}
 
+		$frequencyOptions = $this->Frequency->find('list', array(
+			'fields' => array('id', 'humanized')
+		));
 		$gatewayOptions = $this->Gateway->find('list');
 		$gateways = $this->Office->Gateway->find('list');
-		$this->set(compact('action', 'office', 'gateways', 'gatewayOptions', 'selectedGateways'));
+		$this->set(compact(
+			'action', 'office', 'gateways', 'gatewayOptions', 'frequencyOptions'
+		));
 
 		$this->action = 'admin_edit';
 		if ($this->isGet()) {
@@ -158,14 +163,13 @@ class OfficesController extends AppController {
 			$this->data['Office']['user_id'] = User::get('id');
 		}
 
-		$this->Office->set($this->data['Office']);
+		$this->Office->set($this->data);
 		if (!$this->Office->save()) {
 			return $this->Message->add(__('Please fill out all fields', true), 'error');
 		}
 
-		$officeId = $this->Office->id;
 		$msg = __('Office was saved successfully.', true);
-		$url = User::allowed('Offices', 'admin_index') 
+		$url = User::allowed('Offices', 'admin_index')
 				? array('action' => 'index')
 				: $this->referer();
 		$this->Message->add(__($msg, true), 'ok', true, $url);

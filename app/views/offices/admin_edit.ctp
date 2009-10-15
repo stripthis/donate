@@ -28,13 +28,16 @@ $title = $action == 'add'
 		?>
 	</fieldset>
 	<fieldset>
-		<legend><?php echo __('Default Gift', true); ?></legend>
 		<?php
+		$selected = array();
+		if ($action == 'edit') {
+			$selected = Set::extract('/FrequenciesOffice/frequency_id', $office);
+		}
 		echo $form->input('frequencies', array(
-			'label' => '', 
-			'options' => Gift::find('frequencies'),
+			'options' => $frequencyOptions,
+			'label' => __('Possible Frequencies', true),
 			'multiple' => 'checkbox',
-			'selected' => explode(',', $form->data['Office']['frequencies'])
+			'selected' => $selected
 		));
 
 		echo $form->input('amounts', array(
@@ -45,9 +48,13 @@ $title = $action == 'add'
 	<fieldset>
 		<legend><?php echo __('Gateways & Currencies', true); ?></legend>
 		<?php
+		$selected = array();
+		if ($action == 'edit') {
+			$selected = Set::extract('/GatewaysOffice/gateway_id', $office);
+		}
 		echo $form->input('gateways', array(
 			'options' => $gatewayOptions,
-			'selected' => $selectedGateways, 
+			'selected' => $selected,
 			'multiple' => 'checkbox'
 		));
 
