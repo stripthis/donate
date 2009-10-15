@@ -1,31 +1,7 @@
 <?php
-
 class AppealFixture extends CakeTestFixture {
 	var $name = 'Appeal';
 	var $records = array(
-	/*		
-		array(
-			'' => '',
-			'id' => '',
-			'parent_id' => '',	
-			'lang' => '',
-			'appeal_step_count' => '', 
-			'name' => '',
-			'slug' => '',
-			'campaign_code' => '',
-			'default' => '',
-			'cost' => '',
-			'targeted_income' => '',
-			'targeted_signups' => '',
-			'reviewed' => '',
-			'status' => '',
-			'processing' => '',
-			'office_id' => '',
-			'user_id' => '',
-			'created' => '',
-			'modified' => ''
-		),
-		*/
 		array(
 			'id' => '4a686dd2-8c64-45a0-99ee-4507a7f05a6e',
 			'parent_id' => '',
@@ -39,6 +15,7 @@ class AppealFixture extends CakeTestFixture {
 			'targeted_signups' => '',
 			'reviewed' => '1',
 			'status' => 'published',
+			'template_id' => '4acf366a-7bb4-4eb4-acb0-133a7f000102',
 			'office_id' => '4a6458a6-6ea0-4080-ad53-4a89a7f05a6e',
 			'user_id' => '4a65cf8b-bfc8-4c87-b27d-4d1fa7f05a6e',
 			'created' => '2009-07-23 16:04:02',
@@ -57,6 +34,7 @@ class AppealFixture extends CakeTestFixture {
 			'targeted_signups' => '',
 			'reviewed' => '1',
 			'status' => 'draft',
+			'template_id' => '4acf366a-67c8-42ef-b701-133a7f000102',
 			'office_id' => '4a6458a6-6ea0-4080-ad53-4a89a7f05a6e',
 			'user_id' => '4a65cf8b-bfc8-4c87-b27d-4d1fa7f05a6e',
 			'created' => '2009-08-11 14:07:27',
@@ -75,6 +53,7 @@ class AppealFixture extends CakeTestFixture {
 			'targeted_signups' => '',
 			'reviewed' => '1',
 			'status' => 'draft',
+			'template_id' => '4acf366a-71f0-4d1e-8ea5-133a7f000102',
 			'office_id' => '4a8a76be-27b8-4da6-b22d-2da4a7f05a6e',
 			'user_id' => '4a65cf8b-bfc8-4c87-b27d-4d1fa7f05a6e',
 			'created' => '2009-08-11 14:07:27',

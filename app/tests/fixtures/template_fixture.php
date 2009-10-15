@@ -4,7 +4,9 @@ class TemplateFixture extends CakeTestFixture {
 	var $records = array(
 		array(
 			'id' => '4acf366a-58f0-4df6-be21-133a7f000102',
+			'published' => '1',
 			'name' => 'Generic - one step redirect',
+			'slug' => 'generic-one-step-redirect',
 			'lang' => 'ENG',
 			'template_step_count' => '1',
 			'processing' => 'redirect',
@@ -15,7 +17,9 @@ class TemplateFixture extends CakeTestFixture {
 		),
 		array(
 			'id' => '4acf366a-67c8-42ef-b701-133a7f000102',
+			'published' => '1',
 			'name' => 'Generic - two steps redirect',
+			'slug' => 'generic-two-steps-redirect',
 			'lang' => 'ENG',
 			'template_step_count' => '2',
 			'processing' => 'redirect',
@@ -26,7 +30,9 @@ class TemplateFixture extends CakeTestFixture {
 		),
 		array(
 			'id' => '4acf366a-71f0-4d1e-8ea5-133a7f000102',
+			'published' => '1',
 			'name' => 'Generic - one step direct',
+			'slug' => 'generic-one-step-direct',
 			'lang' => 'ENG',
 			'template_step_count' => '1',
 			'processing' => 'direct',
@@ -37,9 +43,11 @@ class TemplateFixture extends CakeTestFixture {
 		),
 		array(
 			'id' => '4acf366a-7bb4-4eb4-acb0-133a7f000102',
+			'published' => '1',
 			'name' => 'Generic - two steps direct',
+			'slug' => 'generic-two-steps-direct',
 			'lang' => 'ENG',
-			'template_step_count' => '1',
+			'template_step_count' => '2',
 			'processing' => 'redirect',
 			'created' => '2009-10-09 15:00:00',
 			'created_by' => '4aaff7bb-bebc-4ca4-9577-1039a7f05a6e',
@@ -48,9 +56,11 @@ class TemplateFixture extends CakeTestFixture {
 		),
 		array(
 			'id' => '4acf366a-8578-4876-827b-133a7f000102',
+			'published' => '1',
 			'name' => 'Generic - three steps direct',
+			'slug' => 'generic-three-steps-direct',
 			'lang' => 'ENG',
-			'template_step_count' => '1',
+			'template_step_count' => '3',
 			'processing' => 'redirect',
 			'created' => '2009-10-09 15:00:00',
 			'created_by' => '4aaff7bb-bebc-4ca4-9577-1039a7f05a6e',

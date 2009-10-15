@@ -1,1 +1,0 @@
-<?php $this->element('../templates/default/thanks'); ?>
