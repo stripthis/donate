@@ -75,9 +75,6 @@ $config = array(
 		'fre' => 'French'
 	),
 	'App.gift' => array(
-		'currencies' => array(
-			'USD', 'EUR','GBP'
-		),
 		'cards' => array(
 			'mastercard' => 'Mastercard',
 			'visa' => 'Visa',

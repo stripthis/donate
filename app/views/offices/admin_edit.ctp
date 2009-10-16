@@ -63,11 +63,13 @@ $title = $action == 'add'
 			'multiple' => 'checkbox'
 		));
 
-		$options = Configure::read('App.gift.currencies');
-		$options = array_combine($options, $options);
+		$selected = array();
+		if ($action == 'edit') {
+			$selected = Set::extract('/CurrenciesOffice/currency_id', $office);
+		}
 		echo $form->input('currencies', array(
-			'options' => $options,
-			'selected' => explode(',', $form->data['Office']['currencies']),
+			'options' => $currencyOptions,
+			'selected' => $selected,
 			'multiple' => 'checkbox',
 			'label' => 'Currencies:'
 		));

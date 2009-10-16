@@ -24,6 +24,9 @@ class Office extends AppModel {
 		'LanguagesOffice' => array(
 			'dependent' => true
 		),
+		'CurrenciesOffice' => array(
+			'dependent' => true
+		),
 		'GiftTypesOffice' => array(
 			'dependent' => true
 		),
@@ -50,6 +53,9 @@ class Office extends AppModel {
 		),
 		'Country' => array(
 			'with' => 'CountriesOffice'
+		),
+		'Currency' => array(
+			'with' => 'CurrenciesOffice'
 		),
 	);
 
@@ -84,12 +90,8 @@ class Office extends AppModel {
 			$this->languages = $this->data[__CLASS__]['languages'];
 		}
 
-		if (isset($this->data['Office']['currencies'])) {
-			if (is_array($this->data['Office']['currencies'])) {
-				$this->data['Office']['currencies'] = implode(',', $this->data['Office']['currencies']);
-			} else {
-				$this->data['Office']['currencies'] = 'EUR';
-			}
+		if (isset($this->data[__CLASS__]['currencies'])) {
+			$this->currencies = $this->data[__CLASS__]['currencies'];
 		}
 
 		if (isset($this->data[__CLASS__]['frequencies'])) {
@@ -156,6 +158,18 @@ class Office extends AppModel {
 					'gift_type_id' => $typeId
 				));
 				$this->GiftTypesOffice->save();
+			}
+		}
+
+		if (isset($this->currencies)) {
+			$this->CurrenciesOffice->deleteAll(array('office_id' => $this->id));
+
+			foreach ($this->currencies as $curr) {
+				$this->CurrenciesOffice->create(array(
+					'office_id' => $this->id,
+					'currency_id' => $curr
+				));
+				$this->CurrenciesOffice->save();
 			}
 		}
 

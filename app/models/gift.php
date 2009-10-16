@@ -203,19 +203,25 @@ class Gift extends AppModel {
 			case 'currencies':
 				$Session = Common::getComponent('Session');
 				if ($Session->check('Office.id') && !$isGuest) {
-					$query['id'] = $Session->read('Office.id');
+					$query['office_id'] = $Session->read('Office.id');
 				}
 				if ($Session->check('gift_process_office_id') && $isGuest) {
-					$query['id'] = $Session->read('gift_process_office_id');
+					$query['office_id'] = $Session->read('gift_process_office_id');
 				}
 
-				$currencies = Configure::read('App.gift.currencies');
-				if (isset($query['id'])) {
-					$currencies = ClassRegistry::init('Office')->find('first', array(
-						'conditions' => array('id' => $query['id']),
-						'fields' => array('currencies')
-					));
-					$currencies = explode(',', $currencies['Office']['currencies']);
+				$conditions = array();
+				if (isset($query['office_id'])) {
+					$conditions['CurrenciesOffice.office_id'] = $query['office_id'];
+				}
+
+				$currencies = ClassRegistry::init('CurrenciesOffice')->find('all', array(
+					'conditions' => $conditions,
+					'contain' => array('Currency(iso_code, id)'),
+					'order' => array('Currency.iso_code' => 'asc')
+				));
+				$result = array();
+				foreach ($currencies as $c) {
+					$result[$c['Currency']['id']] = $c['Currency']['iso_code'];
 				}
 				return $currencies;
 		}

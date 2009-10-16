@@ -13,6 +13,7 @@ class OfficesController extends AppController {
 		$this->Gateway = $this->Office->Gateway;
 		$this->Frequency = $this->Office->Frequency;
 		$this->Language = $this->Office->Language;
+		$this->Currency = $this->Office->Currency;
 	}
 /**
  * undocumented function
@@ -136,6 +137,7 @@ class OfficesController extends AppController {
 					'GatewaysOffice(gateway_id)',
 					'FrequenciesOffice(frequency_id)',
 					'LanguagesOffice(language_id)',
+					'CurrenciesOffice(currency_id)',
 					'User' => array(
 						'fields' => array('id', 'name', 'permissions', 'office_id'),
 						'conditions' => array('User.id <>' => User::get('id'))
@@ -153,11 +155,13 @@ class OfficesController extends AppController {
 		$languageOptions = $this->Language->find('list', array(
 			'fields' => array('id', 'code')
 		));
+		$currencyOptions = $this->Currency->find('list', array(
+			'fields' => array('id', 'iso_code')
+		));
 		$gatewayOptions = $this->Gateway->find('list');
-		$gateways = $this->Office->Gateway->find('list');
 		$this->set(compact(
-			'action', 'office', 'gateways',
-			'gatewayOptions', 'frequencyOptions', 'languageOptions'
+			'action', 'office', 'gatewayOptions',
+			'frequencyOptions', 'languageOptions', 'currencyOptions'
 		));
 
 		$this->action = 'admin_edit';
