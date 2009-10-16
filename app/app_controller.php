@@ -83,7 +83,7 @@ class AppController extends Controller {
 
 		$this->RequestHandler->setContent('list', 'text/html');
 		if (empty($this->ignoreUserSession)) {
-			$rules = Configure::read('App.Permissions.' . User::get('Role.name'));
+			$rules = Configure::read('App.userPermissions.' . User::get('Role.name'));
 			Assert::notEmpty($rules, '500');
 			$canAccess = Common::requestAllowed($this->name, $this->action, $rules, true);
 
@@ -199,7 +199,7 @@ class AppController extends Controller {
 		$permissions = $Role->find('list', array(
 			'fields' => array('name', 'permissions')
 		));
-		Configure::write('App.Permissions', $permissions);
+		Configure::write('App.userPermissions', $permissions);
 	}
 /**
  * undocumented function
