@@ -6,6 +6,9 @@ $config = array(
 			'Gift' => true,
 			'User' => true,
 			'Contact' => true
+		),
+		'urls' => array(
+			'/\/admin\/gifts\/view\/.*$/'
 		)
 	)
 );

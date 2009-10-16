@@ -1,5 +1,9 @@
 <?php
 $config = array(
-	'Smileys' => array()
+	'Smileys' => array(
+		'urls' => array(
+			'/\/admin\/.*$/'
+		)
+	)
 );
 ?>

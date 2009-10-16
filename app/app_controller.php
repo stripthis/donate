@@ -23,7 +23,8 @@ class AppController extends Controller {
 
 	// dont change the order unless you really know what you are doing!
 	var $plugins = array(
-		'Bugs', 'Comments', 'Favorites', 'Tellfriends', 'Logging', 'Chat',
+		// 'Bugs',
+		'Comments', 'Favorites', 'Tellfriends', 'Logging', 'Chat',
 		'Smileys', 'Segments', 'Filters'
 	);
 
@@ -160,6 +161,19 @@ class AppController extends Controller {
 			include(APP . 'plugins' . DS . low($plugin) . DS . 'config.php');
 			Configure::write($config);
 
+			$config = current($config);
+			if (isset($config['urls'])) {
+				$pass = false;
+				foreach ($config['urls'] as $url) {
+					if (preg_match($url, $this->here)) {
+						$pass = true;
+						break;
+					}
+				}
+				if (!$pass) {
+					continue;
+				}
+			}
 			$controller = $plugin . 'AppController';
 			if (!class_exists($controller)) {
 				App::import('Controller', $plugin . '.' . $plugin . 'AppController');

@@ -8,6 +8,9 @@ $config = array(
 		'contain' => array(
 			'Gift.Contact',
 			'Transaction.Gateway'
+		),
+		'urls' => array(
+			'/\/admin\/.*$/'
 		)
 	)
 );

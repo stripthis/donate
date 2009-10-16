@@ -5,12 +5,6 @@ if (!isset($links)){
 switch ($this->action){
 	case 'admin_import':
 	case 'admin_index':
-		/*
-		$links[] =	array(
-			'name' => __('Import Transactions Results', true),
-			'label' => 'add', 'uri' => array('action'=>'import', 'all', 'admin' => true),
-			'options'=>array('class'=>'import')
-		);*/
 		$links[] = array(
 			'name' => __('Export Selection', true),
 			'label'=>'export',
@@ -32,16 +26,27 @@ switch ($this->action){
 			'label'=>'exportall',
 			'uri' => array(), 
 			'submit' => true,
-			'options'=> array('class' =>'exportall', 'name' => 'Transaction', 'div'=> array('class'=>'submit exportall'))
+			'options'=> array(
+				'class' => 'exportall',
+				'name' => 'Transaction',
+				'div'=> array('class' => 'submit exportall')
+			)
 		);
 		$links[] = array(
 			'name' => __('Import', true),
 			'label'=>'import',
 			'uri' => array('action' => 'import'),
+			'options'=> array('class' => 'import')
+		);
+		$links[] = array(
+			'name' => __('Statistics', true),
+			'label' => 'import',
+			'uri' => array('action' => 'import'),
 			'options'=> array('class' =>'import')
 		);
+		// pr($this->params['url']);
 	break;
-	case "admin_view":
+	case 'admin_view':
 		$links[] = array(
 			'name' => __('Back to index', true),
 			'label'=>'back to index',
@@ -50,5 +55,5 @@ switch ($this->action){
 		);
 	break;
 }
-echo $this->element('admin/actions',array('links'=>$links, 'selected'=>false));
+echo $this->element('admin/actions',array('links' => $links, 'selected' => false));
 ?>

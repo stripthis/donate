@@ -8,7 +8,9 @@
 		return this.each(function() {
 			var $this = $(this);
 			init($this);
-			update($this);
+			if ($('.chat_window', $this).is(':visible')) {
+				update($this);
+			}
 			setInterval(function() {
 				if ($('.chat_window', $this).is(':visible')) {
 					update($this);

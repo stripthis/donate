@@ -8,6 +8,79 @@ class AppModel extends Model {
  * @var integer
  */
 	public $recursive = -1;
+	var $__definedAssociations = array();
+	var $__loadAssociations = array('Aro', 'Aco', 'Permission');
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @param string $table 
+ * @param string $ds 
+ * @return void
+ * @access public
+ */
+	function __construct($id = false, $table = null, $ds = null) {
+		if (!in_array(get_class($this), $this->__loadAssociations)) {
+			foreach ($this->__associations as $association) {
+				if ($association == 'belongsTo') {
+					continue;
+				}
+				foreach ($this->{$association} as $key => $value) {
+					$assocName = $key;
+	
+					if (is_numeric($key)) {
+						$assocName = $value;
+						$value = array();
+					}
+	
+					$value['type'] = $association;
+					$this->__definedAssociations[$assocName] = $value;
+					if (!empty($value['with'])) {
+						$this->__definedAssociations[$value['with']] = array('type' => 'hasMany');
+					}
+				}
+	
+				$this->{$association} = array();
+			}
+		}
+	
+		parent::__construct($id, $table, $ds);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $name 
+ * @return void
+ * @access public
+ */
+	function __isset($name) {
+		return $this->__connect($name);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $name 
+ * @return void
+ * @access public
+ */
+	function __get($name) {
+		return $this->__connect($name);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $name 
+ * @return void
+ * @access public
+ */
+	function __connect($name) {
+		if (empty($this->__definedAssociations[$name])) {
+			return false;
+		}
+
+		$this->bind($name, $this->__definedAssociations[$name]);
+		return $this->{$name};
+	}
 /**
  * undocumented function
  *

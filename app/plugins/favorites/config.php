@@ -19,6 +19,9 @@ $config = array(
 				'Gift.office_id' => $officeId,
 				'Gift.id IS NULL'
 			)
+		),
+		'urls' => array(
+			'/\/admin\/.*$/'
 		)
 	)
 );

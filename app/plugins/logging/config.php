@@ -6,6 +6,9 @@ $config = array(
 			'Transaction',
 			'Import',
 			'Export'
+		),
+		'urls' => array(
+			'/\/admin\/.*$/'
 		)
 	)
 );

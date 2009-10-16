@@ -415,6 +415,7 @@ class Model extends Overloadable {
 		} elseif ($this->table === false) {
 			$this->table = Inflector::tableize($this->name);
 		}
+
 		$this->__createLinks();
 		$this->Behaviors->init($this->alias, $this->actsAs);
 	}

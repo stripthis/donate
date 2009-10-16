@@ -131,6 +131,8 @@ class ClassRegistry {
 				}
 				$alias = $settings['alias'];
 
+
+
 				if ($model =& $_this->__duplicate($alias, $class)) {
 					$_this->map($alias, $class);
 					return $model;

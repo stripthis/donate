@@ -1,5 +1,9 @@
 <?php
 $config = array(
-	'Chat' => array()
+	'Chat' => array(
+		'urls' => array(
+			'/\/admin\/.*$/'
+		)
+	)
 );
 ?>

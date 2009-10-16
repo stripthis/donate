@@ -123,30 +123,26 @@ class OfficesController extends AppController {
  * @access public
  */
 	function admin_edit($id = null) {
-		$office = $this->Office->create();
-		$selectedGateways = array();
-
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			if (!User::is('root')) {
 				$id = $this->Session->read('Office.id');
 			}
+
 			$office = $this->Office->find('first', array(
 				'conditions' => array('Office.id' => $id),
 				'contain' => array(
 					'GatewaysOffice(gateway_id)',
 					'FrequenciesOffice(frequency_id)',
 					'LanguagesOffice(language_id)',
-					'CurrenciesOffice(currency_id)',
-					'User' => array(
-						'fields' => array('id', 'name', 'permissions', 'office_id'),
-						'conditions' => array('User.id <>' => User::get('id'))
-					)
+					'CurrenciesOffice(currency_id)'
 				)
 			));
 			Assert::notEmpty($office, '404');
 			Assert::true(User::allowed($this->name, $this->action, $office));
 			$action = 'edit';
+		} else {
+			$office = $this->Office->create();
 		}
 
 		$frequencyOptions = $this->Frequency->find('list', array(
@@ -159,6 +155,7 @@ class OfficesController extends AppController {
 			'fields' => array('id', 'iso_code')
 		));
 		$gatewayOptions = $this->Gateway->find('list');
+
 		$this->set(compact(
 			'action', 'office', 'gatewayOptions',
 			'frequencyOptions', 'languageOptions', 'currencyOptions'

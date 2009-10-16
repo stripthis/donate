@@ -9,6 +9,9 @@ $config = array(
 			'Gift.Contact',
 			'Gift.Frequency',
 			'Transaction.Gateway'
+		),
+		'urls' => array(
+			'/\/admin\/.*$/'
 		)
 	)
 );

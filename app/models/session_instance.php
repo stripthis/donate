@@ -1,8 +1,6 @@
 <?php
 class SessionInstance extends AppModel {
 	public $name = 'SessionInstance';
-	// public $belongsTo = array('User');
-
 /**
  * beforeSave callback, used to attach User ID to SessionInstance
  *

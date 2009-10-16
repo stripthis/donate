@@ -1,5 +1,6 @@
 <?php
-class AppHelper extends Helper {
+App::import('Vendor', 'url_cache_app_helper');
+class AppHelper extends UrlCacheAppHelper {
 /**
  * undocumented function
  *
