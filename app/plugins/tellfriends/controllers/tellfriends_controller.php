@@ -125,25 +125,27 @@ class TellfriendsController extends TellfriendsAppController {
  * @access public
  */
 	function refer() {
-			if ($this->isGet()) {
+		//render tellfriends page
+		if ($this->isGet()) {
 			return;
 		}
-
+		//Check whether email content is spam
 		$comment = array('comment_author' => '',
-
                          'comment_author_email' => $this->data['Tellfriend']['sender'],
-
                          'comment_content' => $this->data['Tellfriend']['content'],
 						 'comment_type'  => 'tell a friend'
 						 );
-						 
-						 
-		$result = $this->Akismet->checkComment($comment);
-		
-		if($result == 'true'){
+		$emailContentIsSpam = $this->Akismet->checkComment($comment);
+		//Verify recaptcha				 
+		$recaptchaVerified = true;	
+		if($this->data['tellafriend']['useRecaptcha'] == 1){
+			$recaptchaVerified = $this->Recaptcha->valid($this->params['form']);
+		}
+		echo $recaptchaVerified;
+		if($emailContentIsSpam == 'true'){
 			echo $msg = 'Message content appears to be spam.';	
 			exit;
-		}else if($this->Recaptcha->valid($this->params['form'])){
+		}else if($recaptchaVerified){
 			$allowedCharInEmail = array('@', ',', '.', '-', '_');
 			App::import('Sanitize');
 			$this->data['Tellfriend']['receiver'] = Sanitize::paranoid(

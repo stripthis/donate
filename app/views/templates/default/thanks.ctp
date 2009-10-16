@@ -7,7 +7,7 @@
 			<?php echo $html->link('Add Another Gift', array('controller' => 'gifts', 'action' => 'add'))?>
 		</li>
 		<li>
-			<?php echo $html->link('Tell Your Friends!', array('controller' => 'tell_friends', 'action' => 'add'))?>
+			<?php echo $html->link('Tell Your Friends!', array('controller' => 'tellfriends/tellfriends', 'action' => 'refer'))?>
 		</li>
 	</ul>
 	</div>
