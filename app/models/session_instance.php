@@ -86,19 +86,26 @@ class SessionInstance extends AppModel {
 
 		$time = time();
 		$rand = rand();
-		$row = array($this->alias => array('key' => $key, 'data' => $value, 'expires' => $time +  Configure::read('Session.timeout') * $factor));
+		$row = array(
+			$this->alias => array(
+				'key' => $key,
+				'data' => $value,
+				'expires' => $time +  Configure::read('Session.timeout') * $factor
+			)
+		);
 
 		// When session is being written at end of operation, DB might be closed
-
 		$Db =& ConnectionManager::getDataSource($this->useDbConfig);
 
 		if (!$Db->isConnected()) {
 			$Db->connect();
 		}
 
-		// Proceed with saving
-
-		$id = $this->field($this->primaryKey, array($this->alias . '.key' => $key, $rand => $rand, $time => $time));
+		$id = $this->field($this->primaryKey, array(
+			$this->alias . '.key' => $key,
+			$rand => $rand,
+			$time => $time
+		));
 
 		if (!empty($id)) {
 			$row[$this->alias][$this->primaryKey] = $id;
@@ -120,7 +127,9 @@ class SessionInstance extends AppModel {
 		}
 
 		$rand = rand();
-		return $this->deleteAll(array($this->alias . '.expires <' => $expires, $rand => $rand));
+		return $this->deleteAll(array(
+			$this->alias . '.expires <' => $expires, $rand => $rand
+		));
 	 }
 }
 ?>

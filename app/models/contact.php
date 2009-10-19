@@ -87,14 +87,14 @@ class Contact extends AppModel {
  * @return array
  */
 	static function getSalutations() {
-		return Configure::read("App.contact.salutations");
+		return Configure::read('App.contact.salutations');
 	}
 /**
  * Get the list of allowed titles
  * @return array
  */
 	static function getTitles() {
-		return Configure::read("App.contact.titles");
+		return Configure::read('App.contact.titles');
 	}
 }
 ?>

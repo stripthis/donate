@@ -72,11 +72,12 @@ class RolesController extends AppController {
 
 		$this->Role->set($this->data['Role']);
 		if (!$this->Role->save()) {
-			return $this->Message->add(__('Please fill out all fields', true), 'error');
+			$msg = __('Please fill out all fields', true);
+			return $this->Message->add($msg, 'error');
 		}
 
 		$msg = __('Role was saved successfully.', true);
-		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'admin_index'));
+		$this->Message->add($msg, 'ok', true, array('action' => 'admin_index'));
 	}
 /**
  * undocumented function
@@ -85,15 +86,13 @@ class RolesController extends AppController {
  * @access public
  */
 	function admin_delete($id) {
-		$role = $this->Role->find('first', array(
-			'conditions' => array('Role.id' => $id),
-		));
+		$role = $this->Role->findById($id);
 		Assert::notEmpty($role, '404');
 		Assert::false(in_array($role['Role']['name'], $this->Role->unEditable), '403');
 
 		$this->Role->del($id);
 		$msg = __('Role was successfully removed.', true);
-		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'admin_index'));
+		$this->Message->add($msg, 'ok', true, array('action' => 'admin_index'));
 	}
 }
 ?>

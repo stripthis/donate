@@ -17,15 +17,15 @@ class PostsController extends AppController {
  * @return void
  * @access public
  */
-	function index($cat="news") {
+	function index($cat = 'news') {
 		switch ($cat) {
-			case "news":
-			case "twitter":
+			case 'news':
+			case 'twitter':
 				$posts = $this->Post->find('twitter');
 				$this->set(compact('posts'));
 				break;
 			default:
-				Assert::notEmpty(null, '404');
+				Assert::true(false, '404');
 				break;
 		}
 	}

@@ -9,8 +9,9 @@ class Country extends AppModel{
  * @access public
  */
 	function getIdByName($name = 'United States') {
-		$_this = ClassRegistry::init('Country');
-		return $_this->lookup(array('name' => $name), 'id', false);
+		return ClassRegistry::init(__CLASS__)->lookup(
+			array('name' => $name), 'id', false
+		);
 	}
 }
 ?>

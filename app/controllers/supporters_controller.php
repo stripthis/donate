@@ -70,33 +70,69 @@ class SupportersController extends AppController {
 			}
 		}
 
-		$defaults = array(
-			'keyword' => '',
-			'search_type' => 'all',
-			'my_limit' => 20,
-			'custom_limit' => false,
-			'start_date_day' => '01',
-			'start_date_year' => date('Y'),
-			'start_date_month' => '01',
-			'end_date_day' => '31',
-			'end_date_year' => date('Y'),
-			'end_date_month' => '12'
+		$params = $this->_parseGridParams();
+		$conditions = $this->_conditions($params, $conditions);
+		$this->Session->write('gifts_filter_conditions', $conditions);
+		$this->paginate['Contact'] = array(
+			'conditions' => $conditions,
+			'recursive' => 4,
+			'contain' => array(
+				'Address.City',
+				'Address.Country',
+				'Address.Phone',
+			),
+			// @todo fetch number of successfull transaction (!) amounts (!) once transactions are implemented
+			// @todo fetch number of successfull transactions once transactions are implemented
+			'limit' => $params['my_limit'],
+			'order' => array("CONCAT(Contact.fname,' ',Contact.lname)" => 'asc')
 		);
-		$params = am($defaults, $this->params['url'], $this->params['named']);
-		unset($params['ext']);
-		unset($params['url']);
+		$supporters = $this->paginate('Contact');
 
-		if (is_numeric($params['custom_limit'])) {
-			if ($params['custom_limit'] > 75) {
-				$params['custom_limit'] = 75;
-			}
-			if ($params['custom_limit'] == 0) {
-				$params['custom_limit'] = 50;
-			}
-			$params['my_limit'] = $params['custom_limit'];
-		}
-
-
+		$this->set(compact('supporters', 'type', 'params'));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	function admin_delete($id = null) {
+		Assert::true(false, '404');
+		$user = $this->User->find('first', $id);
+		$this->User->delete($id);
+		$this->Silverpop->UserOptOut($user);
+		$msg = __('Successfully deleted!', true);
+		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
+	function admin_view($id = null) {
+		$contact = $this->Contact->find('first', array(
+			'conditions' => array('Contact.id' => $id),
+			'contain' => array(
+				'Gift.Frequency',
+				'Address.Phone',
+				'Address.Country(id, name)',
+				'Address.State(id, name)',
+				'Address.City(id, name)',
+			)
+		));
+		$this->set(compact('contact'));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $params 
+ * @return void
+ * @access public
+ */
+	function _conditions($params, $conditions) {
 		if (!empty($params['keyword'])) {
 			$params['keyword'] = trim($params['keyword']);
 			switch ($params['search_type']) {
@@ -141,58 +177,7 @@ class SupportersController extends AppController {
 		}
 
 		$conditions = $this->Contact->dateRange($conditions, $params, 'created');
-		$this->Session->write('gifts_filter_conditions', $conditions);
-		$this->paginate['Contact'] = array(
-			'conditions' => $conditions,
-			'recursive' => 4,
-			'contain' => array(
-				'Address.City',
-				'Address.Country',
-				'Address.Phone',
-			),
-			// @todo fetch number of successfull transaction (!) amounts (!) once transactions are implemented
-			// @todo fetch number of successfull transactions once transactions are implemented
-			'limit' => $params['my_limit'],
-			'order' => array("CONCAT(Contact.fname,' ',Contact.lname)" => 'asc')
-		);
-		$supporters = $this->paginate('Contact');
-
-		$this->set(compact('supporters', 'type', 'params'));
-	}
-/**
- * undocumented function
- *
- * @param string $id 
- * @return void
- * @access public
- */
-	function admin_delete($id = null) {
-		Assert::true(false, '404');
-		$user = $this->User->find('first', $id);
-		$this->User->delete($id);
-		$this->Silverpop->UserOptOut($user);
-		$this->Message->add(__('Successfully deleted!', true), 'ok', true, array('action' => 'index'));
-	}
-/**
- * undocumented function
- *
- * @param string $id 
- * @return void
- * @access public
- */
-	function admin_view($id = null) {
-		$contact = $this->Contact->find('first', array(
-			'conditions' => array('Contact.id' => $id),
-			'contain' => array(
-				'Gift.Frequency',
-				'Address.Phone',
-				'Address.Country(id, name)',
-				'Address.State(id, name)',
-				'Address.City(id, name)',
-			)
-		));
-
-		$this->set(compact('contact'));
+		return $conditions;
 	}
 }
 ?>

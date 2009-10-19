@@ -52,10 +52,7 @@ class TemplatesController extends AppController {
  */
 	function admin_publish($id = null) {
 		Assert::true(User::allowed($this->name, $this->action), '403');
-		$this->Template->set(array(
-			'id' => $id,
-			'published' => '1'
-		));
+		$this->Template->set(array('id' => $id, 'published' => '1'));
 		$this->Template->save(null, false);
 
 		$msg = __('The template was published successfully!', true);
@@ -81,7 +78,7 @@ class TemplatesController extends AppController {
 		$this->data['Template']['user_id'] = User::get('id');
 		$this->Template->create($this->data);
 		if (!$this->Template->save()) {
-			$msg = 'There was a problem with the form!';
+			$msg = __('There was a problem with the form!', true);
 			return $this->Message->add($msg, 'error');
 		}
 
@@ -112,7 +109,8 @@ class TemplatesController extends AppController {
 
 		$this->Template->set($this->data);
 		if (!$this->Template->save()) {
-			return $this->Message->add(__('Please fill out all fields', true), 'error');
+			$msg = __('Please fill out all fields', true);
+			return $this->Message->add($msg, 'error');
 		}
 
 		$msg = __('The Template was saved successfully.', true);

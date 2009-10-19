@@ -60,44 +60,8 @@ class PagesController extends AppController {
  * @access public
  */
 	function admin_display() {
-		
 		$this->viewPath = 'pages' . DS . 'admin' . DS . 'help';
-		$this->render('start');
-		return;
-		
-		$path = func_get_args();
-		
-		if(empty($path)){
-			if(isset($this->params['section'])){
-				$path[] = $this->params['section'];
-			}
-			if(isset($this->params['page'])){
-				$path[] = $this->params['page'];
-			}
-			if(isset($this->params['subpage'])){
-				$path[] = $this->params['subpage'];
-			}
-		}
-		
-		$count = count($path);
-		$this->viewPath = 'pages' . DS . 'admin' . DS;
-		switch($count){
-			case 0:
-				$this->redirect('/','error',true);
-			break;
-			case 1:
-				//$page = $path[0];
-			case 2:
-				//$page = $path[0];
-				//$subpage = $path[1];
-				$this->render('help/start');
-			break;
-		}
-		
-		$title = Inflector::humanize($path[$count - 1]);
-		$this->set(compact('page', 'subpage', 'title'));
-		$this->layout = 'admin';
-		$this->render(join('/', $path));
+		return $this->render('start');
 	}
 }
 ?>

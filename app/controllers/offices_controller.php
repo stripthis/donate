@@ -35,15 +35,14 @@ class OfficesController extends AppController {
 			'contain' => array('SubOffice', 'ParentOffice')
 		));
 		Assert::notEmpty($office, '404');
-		
-		//@todo proper language switsupport
+
+		//@todo proper language switch support
 		$lang = strpos($office['Office']['name'], 'France') !== false ? 'fre' : 'eng';
 		$this->_setlanguage($lang);
 
 		$this->Office->activate($office['Office']['id']);
 		$msg = __('The office was successfully activated!', true);
-		$url = Controller::referer();
-		return $this->Message->add(__($msg, true), 'ok', true, $url);
+		return $this->Message->add($msg, 'ok', true, Controller::referer());
 	}
 /**
  * index action
@@ -75,10 +74,7 @@ class OfficesController extends AppController {
 		}
 		$office = $this->Office->find('first', array(
 			'conditions' => array('Office.id' => $id),
-			'contain' => array(
-				'ParentOffice',
-				'Gateway'
-			)
+			'contain' => array('ParentOffice', 'Gateway')
 		));
 		Assert::notEmpty($office, '404');
 		$this->set(compact('office'));
@@ -95,12 +91,10 @@ class OfficesController extends AppController {
 				'User.office_id' => $this->Session->read('Office.id')
 			),
 			'contain' => array('CreatedBy'),
+			'order' => array('User.level' => 'asc'),
 			'fields' => array(
 				'User.name', 'User.level', 'User.created',
 				'User.created_by', 'CreatedBy.login'
-			),
-			'order' => array(
-				'User.level' => 'asc'
 			)
 		);
 		$users = $this->paginate('User');
@@ -179,7 +173,7 @@ class OfficesController extends AppController {
 		$url = User::allowed('Offices', 'admin_index')
 				? array('action' => 'index')
 				: $this->referer();
-		$this->Message->add(__($msg, true), 'ok', true, $url);
+		$this->Message->add($msg, 'ok', true, $url);
 	}
 /**
  * delete action
@@ -203,7 +197,8 @@ class OfficesController extends AppController {
 			$this->Message->add($msg, 'error', true, $url);
 		}
 		$this->Office->del($id);
-		$this->Message->add(__('The Office has been deleted.', true), 'ok', true, $url);
+		$msg = __('The Office has been deleted.', true);
+		$this->Message->add($msg, 'ok', true, $url);
 	}
 /**
  * undocumented function
@@ -227,10 +222,7 @@ class OfficesController extends AppController {
 		}
 
 		foreach ($this->data['options'] as $id => $parentId) {
-			$this->Office->set(array(
-				'id' => $id,
-				'parent_id' => $parentId
-			));
+			$this->Office->set(array('id' => $id, 'parent_id' => $parentId));
 			$this->Office->save(null, false);
 		}
 		$msg = __('Tree updated!', true);

@@ -5,14 +5,14 @@ class Post extends AppModel {
 			'foreignKey' => 'foreign_id'
 		)
 	);
-	/**
-	 * undocumented function
-	 *
-	 * @param string 
-	 * @param string 
-	 * @return void
-	 * @access public
-	 */
+/**
+ * undocumented function
+ *
+ * @param string 
+ * @param string 
+ * @return void
+ * @access public
+ */
 	function find($type, $query = array()) {
 		$args = func_get_args();
 		switch ($type) {

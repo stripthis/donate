@@ -139,11 +139,9 @@ class TransactionsController extends AppController {
 		Assert::notEmpty($transaction, '404');
 		Assert::true(User::allowed($this->name, $this->action, $transaction), '403');
 
-		$this->Transaction->set(array(
-			'id' => $id,
-			'archived' => '1'
-		));
+		$this->Transaction->set(array('id' => $id, 'archived' => '1'));
 		$this->Transaction->save();
+
 		$msg = __('The Transaction has been deleted.', true);
 		$this->Message->add($msg, 'ok', true, array('action' => 'admin_index'));
 	}

@@ -80,65 +80,8 @@ class UsersController extends AppController {
  * @access public
  */
 	function admin_index($type = '') {
-		$conditions = array(
-			'User.login <>' => Configure::read('App.emails.guestAccount'),
-			'User.active' => '1'
-		);
-
-		if (!User::is('root')) {
-			$conditions['User.office_id'] = $this->Session->read('Office.id');
-			if ($type == 'unactivated') {
-				$conditions['User.active'] = '0';
-			}
-		} elseif (!empty($type)) {
-			$conditions['User.office_id'] = $type;
-		}
-
-		$defaults = array(
-			'keyword' => '',
-			'search_type' => 'all',
-			'my_limit' => 20,
-			'custom_limit' => false,
-			'start_date_day' => '01',
-			'start_date_year' => date('Y'),
-			'start_date_month' => '01',
-			'end_date_day' => '31',
-			'end_date_year' => date('Y'),
-			'end_date_month' => '12'
-		);
-		$params = am($defaults, $this->params['url'], $this->params['named']);
-		unset($params['ext']);
-		unset($params['url']);
-		if (is_numeric($params['custom_limit'])) {
-			if ($params['custom_limit'] > 75) {
-				$params['custom_limit'] = 75;
-			}
-			if ($params['custom_limit'] == 0) {
-				$params['custom_limit'] = 50;
-			}
-			$params['my_limit'] = $params['custom_limit'];
-		}
-
-		$conditions = $this->User->dateRange($conditions, $params, 'created');
-		// search was submitted
-		if (!empty($params['keyword'])) {
-			$params['keyword'] = trim($params['keyword']);
-
-			switch ($params['search_type']) {
-				case 'name':
-					$conditions['User.name LIKE'] = '%' . $params['keyword'] . '%';
-					break;
-				case 'email':
-					$conditions['User.login LIKE'] = '%' . $params['keyword'] . '%';
-					break;
-				default:
-					$conditions['or'] = array(
-						'User.name LIKE' => '%' . $params['keyword'] . '%',
-						'User.login LIKE' => '%' . $params['keyword'] . '%'
-					);
-					break;
-			}
-		}
+		$params = $this->_parseGridParams();
+		$conditions = $this->_conditions($params);
 
 		$this->paginate = array(
 			'conditions' => $conditions,
@@ -160,7 +103,8 @@ class UsersController extends AppController {
 		$user = $this->User->find('first', $id);
 		$this->User->delete($id);
 		$this->Silverpop->UserOptOut($user);
-		$this->Message->add(__('Successfully deleted!', true), 'ok', true, array('action' => 'index'));
+		$msg = __('Successfully deleted!', true);
+		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}
 /**
  * undocumented function
@@ -390,6 +334,49 @@ class UsersController extends AppController {
 			return $this->Message->add(__('There was a problem with the form.', true), 'error');
 		}
 		$this->Message->add(__('Saved successfully.', true), 'ok', true, $this->here);
+	}
+/**
+ * undocumented function
+ *
+ * @param string $params 
+ * @return void
+ * @access public
+ */
+	function _conditions($params) {
+		$conditions = array(
+			'User.login <>' => Configure::read('App.emails.guestAccount'),
+			'User.active' => '1'
+		);
+
+		if (!User::is('root')) {
+			$conditions['User.office_id'] = $this->Session->read('Office.id');
+			if ($type == 'unactivated') {
+				$conditions['User.active'] = '0';
+			}
+		} elseif (!empty($type)) {
+			$conditions['User.office_id'] = $type;
+		}
+		$conditions = $this->User->dateRange($conditions, $params, 'created');
+
+		if (!empty($params['keyword'])) {
+			$params['keyword'] = trim($params['keyword']);
+
+			switch ($params['search_type']) {
+				case 'name':
+					$conditions['User.name LIKE'] = '%' . $params['keyword'] . '%';
+					break;
+				case 'email':
+					$conditions['User.login LIKE'] = '%' . $params['keyword'] . '%';
+					break;
+				default:
+					$conditions['or'] = array(
+						'User.name LIKE' => '%' . $params['keyword'] . '%',
+						'User.login LIKE' => '%' . $params['keyword'] . '%'
+					);
+					break;
+			}
+		}
+		return $conditions;
 	}
 }
 ?>

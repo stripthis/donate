@@ -10,12 +10,13 @@
  * @license     GPL3 onwards - http://www.opensource.org/licenses/gpl-license.php
  */
 class SettingsController extends AppController {
-	/**
-	 * Edit (admin)
-	 * @param string $id leader.id
-	 * @return void
-	 * @access public
-	 */
+/**
+ * undocumented function
+ *
+ * @param string $id 
+ * @return void
+ * @access public
+ */
 	function admin_edit($id = null) {
 		$settings = $this->Setting->find('first');
 		Assert::notEmpty($settings, '404');
@@ -26,9 +27,11 @@ class SettingsController extends AppController {
 
 		$this->Setting->set($this->data);
 		if (!$this->Setting->save()) {
-			return $this->Message->add(__('The settings could not be updated.', true), 'error');
+			$msg = __('The settings could not be updated.', true);
+			return $this->Message->add($msg, 'error');
 		}
-		$this->Message->add(__('The settings were saved', true), 'ok');
+		$msg = __('The settings were saved', true);
+		$this->Message->add($msg, 'ok');
 	}
 }
 ?>

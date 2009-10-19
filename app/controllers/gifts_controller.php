@@ -217,23 +217,8 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_thanks() {
-		$msg = __('Donation added!', true);
-		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
 	function admin_index($type = 'all') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
-
-		$order = array('Gift.created' => 'desc');
-		if ($type == 'recurring') {
-			$order = array('Gift.due' => 'desc');
-		}
 
 		$params = $this->_parseGridParams();
 		$conditions = $this->_conditions($type, $params);
@@ -248,7 +233,9 @@ class GiftsController extends AppController {
 				'Transaction(id,status,gateway_id,created,modified)' => 'Gateway(id,name)',
 			),
 			'limit' => $params['my_limit'],
-			'order' => $order
+			'order' => $type != 'recurring'
+						? array('Gift.created' => 'desc')
+						: array('Gift.due' => 'desc')
 		);
 		$gifts = $this->paginate();
 		$this->set(compact('gifts', 'type', 'params'));
@@ -262,12 +249,11 @@ class GiftsController extends AppController {
 	function admin_stats() {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
-		$params = $this->_parseFilterParams();
+		$params = $this->_parseGridParams();
 
 		$urlData = explode('/', $this->params['url']['link']);
 		$type = $urlData[3];
-		$conditions = $this->_parseConditions($params, $type);
-		$conditions = $this->Transaction->dateRange($conditions, $params, 'created');
+		$conditions = $this->_conditions($params, $type);
 
 		$this->set(compact('transactions', 'type', 'params'));
 	}
@@ -285,9 +271,7 @@ class GiftsController extends AppController {
 			'conditions' => array('office_id' => $this->Session->read('Office.id')),
 			'order' => array('Appeal.name' => 'asc')
 		));
-		$contact = $this->Contact->find('first', array(
-			'conditions' => array('id' => $contactId),
-		));
+		$contact = $this->Contact->findById($contactId);
 		$this->set(compact('countryOptions', 'contact', 'appealOptions'));
 
 		if ($this->isGet()) {
@@ -301,7 +285,6 @@ class GiftsController extends AppController {
 		$this->data['Gift']['office_id'] = $this->Session->read('Office.id');
 
 		$this->Gift->create($this->data);
-
 		if (!$this->Gift->save()) {
 			$msg = __('There was a problem saving the gift.', true);
 			return $this->Message->add($msg, 'error');
@@ -323,12 +306,10 @@ class GiftsController extends AppController {
 		Assert::notEmpty($gift, '404');
 		Assert::true(User::allowed($this->name, $this->action, $gift), '403');
 
-		$this->Gift->set(array(
-			'id' => $id,
-			'archived' => '1'
-		));
+		$this->Gift->set(array('id' => $id, 'archived' => '1'));
 		$this->Gift->save();
-		$this->Message->add(__('Successfully deleted!', true), 'ok', true, array('action' => 'index'));
+		$msg = __('Successfully deleted!', true);
+		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}
 /**
  * undocumented function
@@ -359,7 +340,8 @@ class GiftsController extends AppController {
 		$transactions = $this->paginate('Transaction');
 
 		$this->Gift = ClassRegistry::init('Gift');
-		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] ? 'threaded' : 'all';
+		$commentMethod = $this->Gift->hasMany['Comment']['threaded'] 
+							? 'threaded' : 'all';
 		$comments = $this->Gift->Comment->find($commentMethod, array(
 			'conditions' => array('Comment.foreign_id' => $id),
 			'contain' => array('User(login, id)')

@@ -148,7 +148,6 @@ class Template extends AppModel {
 						continue;
 					}
 
-					// todo: support for thanks page
 					file_put_contents($filePath, $content);
 					if (empty($stepRow)) {
 						$this->TemplateStep->create(array(

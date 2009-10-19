@@ -140,9 +140,10 @@ class Appeal extends AppModel {
 				'fields' => array('id', 'name')
 			));
 			if (!empty($defaultAppeal)) {
-				$msg = 'Sorry, there can only be one default appeal at the same time.';
-				$msg .= ' The current default appeal is: "' . $defaultAppeal[__CLASS__]['name'] . '".';
-				$this->invalidate('default', __($msg, true));
+				$msg = sprintf(__('Sorry, there can only be one default appeal at the same time. 
+							The current default appeal is: "%s".', true
+						), $defaultAppeal[__CLASS__]['name']);
+				$this->invalidate('default', $msg);
 				return false;
 			}
 		}
@@ -152,12 +153,17 @@ class Appeal extends AppModel {
 		if (isset($this->data[__CLASS__]['template_id'])) {
 			$templateId = $this->data[__CLASS__]['template_id'];
 		} elseif (isset($this->data[__CLASS__]['id'])) {
-			$templateId = $this->lookup(array('id' => $this->data[__CLASS__]['id']), 'template_id', false);
+			$templateId = $this->lookup(
+				array('id' => $this->data[__CLASS__]['id']), 'template_id', false
+			);
 		}
-		$publishedTemplate = $this->Template->lookup(array('id' => $templateId), 'published', false);
+		$publishedTemplate = $this->Template->lookup(
+			array('id' => $templateId), 'published', false
+		);
 
 		if (!$publishedTemplate) {
-			$this->invalidate('status', __('You cannot set the status to "published" if there is no published template assigned.', true));
+			$msg = __('You cannot set the status to "published" if there is no published template assigned.', true);
+			$this->invalidate('status', $msg);
 		}
 	}
 /**

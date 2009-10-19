@@ -50,6 +50,7 @@ class AppealsController extends AppController {
 		));
 		Assert::notEmpty($appeal, '404');
 		Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
+
 		$this->set(compact('appeal'));
 	}
 /**
@@ -81,24 +82,20 @@ class AppealsController extends AppController {
 			$action = 'edit';
 		}
 
-		if ($action == 'add') {
-			Assert::true(User::allowed($this->name, $this->action), '403');
-
-			if (isset($this->params['named']['clone_id'])) {
-				$appeal = $this->Appeal->find('first', array(
-					'conditions' => array('Appeal.id' => $this->params['named']['clone_id']),
-				));
-				Assert::notEmpty($appeal, '404');
-				unset($appeal['Appeal']['id']);
-			}
+		if ($action == 'add' && isset($this->params['named']['clone_id'])) {
+			$appeal = $this->Appeal->find('first', array(
+				'conditions' => array(
+					'Appeal.id' => $this->params['named']['clone_id']
+				)
+			));
+			Assert::notEmpty($appeal, '404');
+			unset($appeal['Appeal']['id']);
 		}
 
-		$gatewayOptions = $this->Gateway->find('list_for_office', array(
-			'order' => array('name' => 'asc')
-		));
+		$gatewayOptions = $this->Gateway->find('list_for_office');
 		$templateOptions = $this->Template->find('published_list');
 		$processingOptions = $this->Gateway->find('processing_options');
-		$themes = $this->Theme->find('all'); //@todo office_themes (v0.2)
+		$themes = $this->Theme->find('all');
 		$statusOptions = $this->Appeal->enumOptions('status');
 
 		$this->set(compact(
@@ -114,7 +111,6 @@ class AppealsController extends AppController {
 		if ($action == 'add') {
 			$this->data['Appeal']['user_id'] = User::get('id');
 		}
-
 		$this->data['Appeal']['office_id'] = $this->Session->read('Office.id');
 		$this->Appeal->set($this->data['Appeal']);
 		if (!$this->Appeal->save()) {

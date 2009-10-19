@@ -16,7 +16,6 @@ class AuthController extends AppController{
 		}
 
 		if ($this->isGet()) {
-			return;
 			$msg = __('Good to see you again... But how come you are not logged in yet?!', true);
 			return $this->Message->add(__($msg, true), 'error');
 		}

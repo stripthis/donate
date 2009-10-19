@@ -3,7 +3,6 @@ class Role extends AppModel {
 	var $hasMany = array('User');
 	var $belongsTo = array('Office'); // optional, can also be a global role
 	var $unEditable = array('guest', 'root');
-	
 	var $validate = array(
 		'description' => array(
 			'maxlength' => array(
@@ -14,7 +13,6 @@ class Role extends AppModel {
 			)
 		)
 	);
-	
 /**
  * undocumented function
  *
@@ -55,15 +53,14 @@ class Role extends AppModel {
 		}
 		return true;
 	}
-
-	/**
-	 * undocumented function
-	 *
-	 * @param string 
-	 * @param string 
-	 * @return void
-	 * @access public
-	 */
+/**
+ * undocumented function
+ *
+ * @param string 
+ * @param string 
+ * @return void
+ * @access public
+ */
 	function find($type, $query = array()) {
 		$args = func_get_args();
 		switch ($type) {
