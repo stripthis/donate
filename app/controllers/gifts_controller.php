@@ -230,80 +230,13 @@ class GiftsController extends AppController {
 	function admin_index($type = 'all') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
-		$conditions = array(
-			'Gift.office_id' => $this->Session->read('Office.id'),
-			'Gift.archived' => '0'
-		);
-
 		$order = array('Gift.created' => 'desc');
-		$onetime = $this->Frequency->lookup('onetime', 'id', false);
-		switch ($type) {
-			case 'recurring':
-				$conditions['Gift.frequency_id <>'] = $onetime;
-				$order = array('Gift.due' => 'desc');
-				break;
-			case 'onetime':
-				$conditions['Gift.frequency_id'] = $onetime;
-				break;
-			case 'favorites':
-			case 'starred':
-				$conditions['Gift.id'] = $this->Session->read('favorites');
-				break;
-			case 'archived':
-				$conditions['Gift.archived'] = '1';
-				break;
+		if ($type == 'recurring') {
+			$order = array('Gift.due' => 'desc');
 		}
 
-		$defaults = array(
-			'keyword' => '',
-			'search_type' => 'all',
-			'my_limit' => 20,
-			'custom_limit' => false,
-			'start_date_day' => '01',
-			'start_date_year' => date('Y'),
-			'start_date_month' => '01',
-			'end_date_day' => '31',
-			'end_date_year' => date('Y'),
-			'end_date_month' => '12'
-		);
-		$params = am($defaults, $this->params['url'], $this->params['named']);
-		unset($params['ext']);
-		unset($params['url']);
-
-		if (is_numeric($params['custom_limit'])) {
-			if ($params['custom_limit'] > 75) {
-				$params['custom_limit'] = 75;
-			}
-			if ($params['custom_limit'] == 0) {
-				$params['custom_limit'] = 50;
-			}
-			$params['my_limit'] = $params['custom_limit'];
-		}
-
-		if (!empty($params['keyword'])) {
-			$params['keyword'] = trim($params['keyword']);
-			switch ($params['search_type']) {
-				case 'gift':
-					$conditions['Gift.serial LIKE'] = '%' . $params['keyword'] . '%';
-					break;
-				case 'appeal':
-					$conditions['Appeal.name LIKE'] = '%' . $params['keyword'] . '%';
-					break;
-				case 'person':
-					$key = "CONCAT(Contact.fname,' ',Contact.lname)";
-					$conditions[$key . ' LIKE'] = '%' . $params['keyword'] . '%';
-					break;
-				default:
-					$conditions['or'] = array(
-						'Gift.serial LIKE' => '%' . $params['keyword'] . '%',
-						'Appeal.name LIKE' => '%' . $params['keyword'] . '%',
-						'Office.name LIKE' => '%' . $params['keyword'] . '%',
-						"CONCAT(Contact.fname,' ',Contact.lname) LIKE" => '%' . $params['keyword'] . '%'
-					);
-					break;
-			}
-		}
-
+		$params = $this->_parseFilterParams();
+		$conditions = $this->_parseConditions($type, $params);
 		$conditions = $this->Gift->dateRange($conditions, $params, 'created');
 		$this->Session->write('gifts_filter_conditions', $conditions);
 
@@ -320,6 +253,24 @@ class GiftsController extends AppController {
 		);
 		$gifts = $this->paginate();
 		$this->set(compact('gifts', 'type', 'params'));
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function admin_stats() {
+		Assert::true(User::allowed($this->name, 'admin_view'), '403');
+
+		$params = $this->_parseFilterParams();
+
+		$urlData = explode('/', $this->params['url']['link']);
+		$type = $urlData[3];
+		$conditions = $this->_parseConditions($params, $type);
+		$conditions = $this->Transaction->dateRange($conditions, $params, 'created');
+
+		$this->set(compact('transactions', 'type', 'params'));
 	}
 /**
  * undocumented function
@@ -564,6 +515,95 @@ class GiftsController extends AppController {
 			$this->data['Phone']['id'] = $phoneId;
 		}
 		$this->Phone->save($this->data, false);
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function _parseFilterParams() {
+		$defaults = array(
+			'keyword' => '',
+			'search_type' => 'all',
+			'my_limit' => 20,
+			'custom_limit' => false,
+			'start_date_day' => '01',
+			'start_date_year' => date('Y'),
+			'start_date_month' => '01',
+			'end_date_day' => '31',
+			'end_date_year' => date('Y'),
+			'end_date_month' => '12'
+		);
+		$params = am($defaults, $this->params['url'], $this->params['named']);
+		unset($params['ext']);
+		unset($params['url']);
+
+		if (is_numeric($params['custom_limit'])) {
+			if ($params['custom_limit'] > 75) {
+				$params['custom_limit'] = 75;
+			}
+			if ($params['custom_limit'] == 0) {
+				$params['custom_limit'] = 50;
+			}
+			$params['my_limit'] = $params['custom_limit'];
+		}
+		return $params;
+	}
+/**
+ * undocumented function
+ *
+ * @param string $type 
+ * @param string $params 
+ * @return void
+ * @access public
+ */
+	function _parseConditions($type, $params) {
+		$conditions = array(
+			'Gift.office_id' => $this->Session->read('Office.id'),
+			'Gift.archived' => '0'
+		);
+		$onetime = $this->Frequency->lookup('onetime', 'id', false);
+		switch ($type) {
+			case 'recurring':
+				$conditions['Gift.frequency_id <>'] = $onetime;
+				break;
+			case 'onetime':
+				$conditions['Gift.frequency_id'] = $onetime;
+				break;
+			case 'favorites':
+			case 'starred':
+				$conditions['Gift.id'] = $this->Session->read('favorites');
+				break;
+			case 'archived':
+				$conditions['Gift.archived'] = '1';
+				break;
+		}
+
+		if (!empty($params['keyword'])) {
+			$params['keyword'] = trim($params['keyword']);
+			switch ($params['search_type']) {
+				case 'gift':
+					$conditions['Gift.serial LIKE'] = '%' . $params['keyword'] . '%';
+					break;
+				case 'appeal':
+					$conditions['Appeal.name LIKE'] = '%' . $params['keyword'] . '%';
+					break;
+				case 'person':
+					$key = "CONCAT(Contact.fname,' ',Contact.lname)";
+					$conditions[$key . ' LIKE'] = '%' . $params['keyword'] . '%';
+					break;
+				default:
+					$conditions['or'] = array(
+						'Gift.serial LIKE' => '%' . $params['keyword'] . '%',
+						'Appeal.name LIKE' => '%' . $params['keyword'] . '%',
+						'Office.name LIKE' => '%' . $params['keyword'] . '%',
+						"CONCAT(Contact.fname,' ',Contact.lname) LIKE" => '%' . $params['keyword'] . '%'
+					);
+					break;
+			}
+		}
+		return $conditions;
 	}
 }
 ?>

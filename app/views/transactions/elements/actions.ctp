@@ -22,16 +22,12 @@ switch ($this->action){
 			);
 		}
 		if (pluginLoaded('Filters')) {
-			$params = $this->params['url'];
-			$url = $params['url'];
-			unset($params['ext'], $params['url']);
-
 			$links[] = array(
 				'name' => __('Save Filter', true),
 				'label' => 'export',
 				'uri' =>array(
 					'controller' => 'filters', 'action' => 'add',
-					'?link=' . $url . '&' . http_build_query($params)
+					'?link=' . $common->urlQuery($this->params)
 				), 
 				'options'=> array('class' => 'export filters')
 			);
@@ -55,11 +51,13 @@ switch ($this->action){
 		);
 		$links[] = array(
 			'name' => __('Statistics', true),
-			'label' => 'import',
-			'uri' => array('action' => 'import'),
-			'options'=> array('class' =>'import')
+			'label' => 'export',
+			'uri' =>array(
+				'controller' => 'transactions', 'action' => 'stats',
+				'?link=' . $common->urlQuery($this->params)
+			), 
+			'options'=> array('class' => 'export filters')
 		);
-		// pr($this->params['url']);
 	break;
 	case 'admin_view':
 		$links[] = array(

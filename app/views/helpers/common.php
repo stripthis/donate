@@ -220,5 +220,21 @@ class CommonHelper extends Apphelper {
 		$img = $this->Html->image($imgUrl, compact('width', 'height'));
 		return $this->Html->link($img, 'http://en.gravatar.com/site/signup', array('class' => 'gravatar'), false, false);
 	}
+/**
+ * undocumented function
+ *
+ * @param string $params 
+ * @return void
+ * @access public
+ */
+	function urlQuery($params, $prependUrl = true) {
+		$url = $params['url']['url'];
+		unset($params['url']['ext'], $params['url']['url']);
+		$query = http_build_query($params['url']);
+		if ($prependUrl) {
+ 			return $url . '&' . $query;
+		}
+		return $query;
+	}
 }
 ?>

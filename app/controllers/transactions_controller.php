@@ -23,18 +23,9 @@ class TransactionsController extends AppController {
 	function admin_index($type = 'all', $contactId = null) {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
-		$conditions = array(
-			'Transaction.office_id' => $this->Session->read('Office.id'),
-			'Transaction.parent_id' => '',
-			'Transaction.archived' => '0'
-		);
+		$params = $this->_parseFilterParams();
+		$conditions = $this->_parseConditions($params, $type, $contactId);
 
-		switch ($type) {
-			case 'archived':
-				$conditions['Transaction.archived'] = '1';
-				break;
-		}
-	
 		$contact = false;
 		if (!empty($contactId)) {
 			$contact = $this->Contact->find('first', array(
@@ -50,43 +41,6 @@ class TransactionsController extends AppController {
 				'fields' => 'id'
 			));
 			$conditions['Transaction.gift_id'] = Set::extract('/Gift/id', $giftIds);
-		}
-
-		$defaults = array(
-			'keyword' => '',
-			'search_type' => 'all',
-			'start_date_day' => '01',
-			'start_date_year' => date('Y'),
-			'start_date_month' => '01',
-			'end_date_day' => '31',
-			'end_date_year' => date('Y'),
-			'end_date_month' => '12',
-			'my_limit' => 20,
-			'custom_limit' => false
-		);
-		$params = am($defaults, $this->params['url'], $this->params['named']);
-		unset($params['ext']);
-		unset($params['url']);
-		if (is_numeric($params['custom_limit'])) {
-			if ($params['custom_limit'] > 75) {
-				$params['custom_limit'] = 75;
-			}
-			if ($params['custom_limit'] == 0) {
-				$params['custom_limit'] = 50;
-			}
-			$params['my_limit'] = $params['custom_limit'];
-		}
-
-		if (!empty($params['keyword'])) {
-			$params['keyword'] = trim($params['keyword']);
-			switch ($params['search_type']) {
-				case 'import_id':
-					$conditions['Import.serial'] = $params['keyword'];
-					break;
-				default:
-					$conditions['Transaction.serial LIKE'] = '%' . $params['keyword'] . '%';
-					break;
-			}
 		}
 
 		$conditions = $this->Transaction->dateRange($conditions, $params, 'created');
@@ -109,6 +63,24 @@ class TransactionsController extends AppController {
 		$transactions = $this->paginate($this->Transaction);
 
 		$this->set(compact('transactions', 'contact', 'type', 'params'));
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function admin_stats() {
+		Assert::true(User::allowed($this->name, 'admin_view'), '403');
+
+		$params = $this->_parseFilterParams();
+
+		$urlData = explode('/', $this->params['url']['link']);
+		$type = $urlData[3];
+		$conditions = $this->_parseConditions($params, $type);
+		$conditions = $this->Transaction->dateRange($conditions, $params, 'created');
+
+		$this->set(compact('transactions', 'type', 'params'));
 	}
 /**
  * view action
@@ -211,6 +183,73 @@ class TransactionsController extends AppController {
 		);
 		$this->Session->write('import_result', $result);
 		$this->set(compact('result', 'process', 'import'));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $type 
+ * @param string $contactId 
+ * @return void
+ * @access public
+ */
+	function _parseConditions($params, $type) {
+		$conditions = array(
+			'Transaction.office_id' => $this->Session->read('Office.id'),
+			'Transaction.parent_id' => '',
+			'Transaction.archived' => '0'
+		);
+
+		switch ($type) {
+			case 'archived':
+				$conditions['Transaction.archived'] = '1';
+				break;
+		}
+
+		if (!empty($params['keyword'])) {
+			$params['keyword'] = trim($params['keyword']);
+			switch ($params['search_type']) {
+				case 'import_id':
+					$conditions['Import.serial'] = $params['keyword'];
+					break;
+				default:
+					$conditions['Transaction.serial LIKE'] = '%' . $params['keyword'] . '%';
+					break;
+			}
+		}
+		return $conditions;
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function _parseFilterParams() {
+		$defaults = array(
+			'keyword' => '',
+			'search_type' => 'all',
+			'start_date_day' => '01',
+			'start_date_year' => date('Y'),
+			'start_date_month' => '01',
+			'end_date_day' => '31',
+			'end_date_year' => date('Y'),
+			'end_date_month' => '12',
+			'my_limit' => 20,
+			'custom_limit' => false
+		);
+		$params = am($defaults, $this->params['url'], $this->params['named']);
+		unset($params['ext']);
+		unset($params['url']);
+		if (is_numeric($params['custom_limit'])) {
+			if ($params['custom_limit'] > 75) {
+				$params['custom_limit'] = 75;
+			}
+			if ($params['custom_limit'] == 0) {
+				$params['custom_limit'] = 50;
+			}
+			$params['my_limit'] = $params['custom_limit'];
+		}
+		return $params;
 	}
 }
 ?>
