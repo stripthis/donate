@@ -1,6 +1,7 @@
 <?php
 require_once WWW_ROOT . 'php-ofc-library/open-flash-chart.php';
-$title = new title('Transactions');
+$title = sprintf(__('%s Transactions in the analysis', true), $erronousCount + $notErronousCount);
+$title = new title($title);
 $data = array(
 	new pie_value($erronousCount, 'Erronous Transactions'),
 	new pie_value($notErronousCount, 'Successful Transactions')
