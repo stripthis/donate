@@ -21,6 +21,21 @@ switch ($this->action){
 				'options'=> array('div' => array('class' => 'submit export segments'))
 			);
 		}
+		if (pluginLoaded('Filters')) {
+			$params = $this->params['url'];
+			$url = $params['url'];
+			unset($params['ext'], $params['url']);
+
+			$links[] = array(
+				'name' => __('Save Filter', true),
+				'label' => 'export',
+				'uri' =>array(
+					'controller' => 'filters', 'action' => 'add',
+					'?link=' . $url . '&' . http_build_query($params)
+				), 
+				'options'=> array('class' => 'export filters')
+			);
+		}
 		$links[] = array(
 			'name' => __('Export All', true),
 			'label'=>'exportall',
@@ -55,5 +70,6 @@ switch ($this->action){
 		);
 	break;
 }
+
 echo $this->element('admin/actions',array('links' => $links, 'selected' => false));
 ?>
