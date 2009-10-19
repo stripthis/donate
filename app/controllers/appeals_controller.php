@@ -22,62 +22,9 @@ class AppealsController extends AppController {
  */
 	function admin_index($type = 'all') {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
-		// data set is for the current country
-		$conditions = array();
-		switch ($type) {
-			case 'office':
-				$conditions['Appeal.office_id'] = $this->Session->read('Office.id');
-				break;
-		}
-		// default search parameters
-		$defaults = array(
-			'keyword' => '',
-			'search_type' => 'all',
-			'my_limit' => 20,
-			'custom_limit' => false,
-			'start_date_day' => '01',
-			'start_date_year' => date('Y'),
-			'start_date_month' => '01',
-			'end_date_day' => '31',
-			'end_date_year' => date('Y'),
-			'end_date_month' => '12'
-		);
-		$params = am($defaults, $this->params['url'], $this->params['named']);
-		unset($params['ext']);
-		unset($params['url']);
-		if (is_numeric($params['custom_limit'])) {
-			if ($params['custom_limit'] > 75) {
-				$params['custom_limit'] = 75;
-			}
-			if ($params['custom_limit'] == 0) {
-				$params['custom_limit'] = 50;
-			}
-			$params['my_limit'] = $params['custom_limit'];
-		}
 
-		// search was submitted
-		if (!empty($params['keyword'])) {
-			$params['keyword'] = trim($params['keyword']);
-
-			switch ($params['search_type']) {
-				case 'name':
-					$conditions['Appeal.name LIKE'] = '%' . $params['keyword'] . '%';
-					break;
-				case 'campaign_code':
-					$conditions['Appeal.campaign_code LIKE'] = '%' . $params['keyword'] . '%';
-					break;
-				case 'author_email':
-					$conditions['User.login LIKE'] = '%' . $params['keyword'] . '%';
-					break;
-				default:
-					$conditions['or'] = array(
-						'Appeal.name LIKE' => '%' . $params['keyword'] . '%',
-						'Appeal.campaign_code LIKE' => '%' . $params['keyword'] . '%',
-						'User.login LIKE' => '%' . $params['keyword'] . '%'
-					);
-					break;
-			}
-		}
+		$params = $this->_parseGridParams();
+		$conditions = $this->_conditions($type, $params);
 
 		$this->paginate['Appeal'] = array(
 			'conditions' => $conditions,
@@ -198,6 +145,45 @@ class AppealsController extends AppController {
 		$this->Appeal->del($id);
 		$msg = __('The Appeal has been deleted.', true);
 		$this->Message->add($msg, 'ok', true, array('action' => 'admin_index'));
+	}
+/**
+ * undocumented function
+ *
+ * @param string $params 
+ * @return void
+ * @access public
+ */
+	function _conditions($type, $params) {
+		$conditions = array();
+		switch ($type) {
+			case 'office':
+				$conditions['Appeal.office_id'] = $this->Session->read('Office.id');
+				break;
+		}
+
+		if (!empty($params['keyword'])) {
+			$params['keyword'] = trim($params['keyword']);
+
+			switch ($params['search_type']) {
+				case 'name':
+					$conditions['Appeal.name LIKE'] = '%' . $params['keyword'] . '%';
+					break;
+				case 'campaign_code':
+					$conditions['Appeal.campaign_code LIKE'] = '%' . $params['keyword'] . '%';
+					break;
+				case 'author_email':
+					$conditions['User.login LIKE'] = '%' . $params['keyword'] . '%';
+					break;
+				default:
+					$conditions['or'] = array(
+						'Appeal.name LIKE' => '%' . $params['keyword'] . '%',
+						'Appeal.campaign_code LIKE' => '%' . $params['keyword'] . '%',
+						'User.login LIKE' => '%' . $params['keyword'] . '%'
+					);
+					break;
+			}
+		}
+		return $conditions;
 	}
 }
 ?>

@@ -23,8 +23,8 @@ class TransactionsController extends AppController {
 	function admin_index($type = 'all', $contactId = null) {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
-		$params = $this->_parseFilterParams();
-		$conditions = $this->_parseConditions($params, $type, $contactId);
+		$params = $this->_parseGridParams();
+		$conditions = $this->_conditions($params, $type);
 
 		$contact = false;
 		if (!empty($contactId)) {
@@ -43,7 +43,6 @@ class TransactionsController extends AppController {
 			$conditions['Transaction.gift_id'] = Set::extract('/Gift/id', $giftIds);
 		}
 
-		$conditions = $this->Transaction->dateRange($conditions, $params, 'created');
 		$this->Session->write('transactions_filter_conditions', $conditions);
 		$this->Transaction->recursive = 1;
 		$this->paginate['Transaction'] = array(
@@ -73,12 +72,11 @@ class TransactionsController extends AppController {
 	function admin_stats() {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
-		$params = $this->_parseFilterParams();
+		$params = $this->_parseGridParams();
 
 		$urlData = explode('/', $this->params['url']['link']);
 		$type = $urlData[3];
-		$conditions = $this->_parseConditions($params, $type);
-		$conditions = $this->Transaction->dateRange($conditions, $params, 'created');
+		$conditions = $this->_conditions($params, $type);
 		$this->Session->write('transactions_filter_conditions', $conditions);
 
 		$this->set(compact(
@@ -215,7 +213,7 @@ class TransactionsController extends AppController {
  * @return void
  * @access public
  */
-	function _parseConditions($params, $type) {
+	function _conditions($params, $type) {
 		$conditions = array(
 			'Transaction.office_id' => $this->Session->read('Office.id'),
 			'Transaction.parent_id' => '',
@@ -239,40 +237,8 @@ class TransactionsController extends AppController {
 					break;
 			}
 		}
+		$conditions = $this->Transaction->dateRange($conditions, $params, 'created');
 		return $conditions;
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
-	function _parseFilterParams() {
-		$defaults = array(
-			'keyword' => '',
-			'search_type' => 'all',
-			'start_date_day' => '01',
-			'start_date_year' => date('Y'),
-			'start_date_month' => '01',
-			'end_date_day' => '31',
-			'end_date_year' => date('Y'),
-			'end_date_month' => '12',
-			'my_limit' => 20,
-			'custom_limit' => false
-		);
-		$params = am($defaults, $this->params['url'], $this->params['named']);
-		unset($params['ext']);
-		unset($params['url']);
-		if (is_numeric($params['custom_limit'])) {
-			if ($params['custom_limit'] > 75) {
-				$params['custom_limit'] = 75;
-			}
-			if ($params['custom_limit'] == 0) {
-				$params['custom_limit'] = 50;
-			}
-			$params['my_limit'] = $params['custom_limit'];
-		}
-		return $params;
 	}
 }
 ?>

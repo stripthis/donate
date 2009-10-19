@@ -453,5 +453,38 @@ class AppController extends Controller {
 		$Dispatcher->dispatch(Router::url($url), $params);
 		exit;
 	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function _parseGridParams() {
+		$defaults = array(
+			'keyword' => '',
+			'search_type' => 'all',
+			'my_limit' => 20,
+			'custom_limit' => false,
+			'start_date_day' => '01',
+			'start_date_year' => date('Y'),
+			'start_date_month' => '01',
+			'end_date_day' => '31',
+			'end_date_year' => date('Y'),
+			'end_date_month' => '12'
+		);
+		$params = am($defaults, $this->params['url'], $this->params['named']);
+		unset($params['ext']);
+		unset($params['url']);
+		if (is_numeric($params['custom_limit'])) {
+			if ($params['custom_limit'] > 75) {
+				$params['custom_limit'] = 75;
+			}
+			if ($params['custom_limit'] == 0) {
+				$params['custom_limit'] = 50;
+			}
+			$params['my_limit'] = $params['custom_limit'];
+		}
+		return $params;
+	}
 }
 ?>

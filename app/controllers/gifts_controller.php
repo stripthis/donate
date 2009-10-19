@@ -235,9 +235,8 @@ class GiftsController extends AppController {
 			$order = array('Gift.due' => 'desc');
 		}
 
-		$params = $this->_parseFilterParams();
-		$conditions = $this->_parseConditions($type, $params);
-		$conditions = $this->Gift->dateRange($conditions, $params, 'created');
+		$params = $this->_parseGridParams();
+		$conditions = $this->_conditions($type, $params);
 		$this->Session->write('gifts_filter_conditions', $conditions);
 
 		$this->paginate['Gift'] = array(
@@ -519,46 +518,12 @@ class GiftsController extends AppController {
 /**
  * undocumented function
  *
- * @return void
- * @access public
- */
-	function _parseFilterParams() {
-		$defaults = array(
-			'keyword' => '',
-			'search_type' => 'all',
-			'my_limit' => 20,
-			'custom_limit' => false,
-			'start_date_day' => '01',
-			'start_date_year' => date('Y'),
-			'start_date_month' => '01',
-			'end_date_day' => '31',
-			'end_date_year' => date('Y'),
-			'end_date_month' => '12'
-		);
-		$params = am($defaults, $this->params['url'], $this->params['named']);
-		unset($params['ext']);
-		unset($params['url']);
-
-		if (is_numeric($params['custom_limit'])) {
-			if ($params['custom_limit'] > 75) {
-				$params['custom_limit'] = 75;
-			}
-			if ($params['custom_limit'] == 0) {
-				$params['custom_limit'] = 50;
-			}
-			$params['my_limit'] = $params['custom_limit'];
-		}
-		return $params;
-	}
-/**
- * undocumented function
- *
  * @param string $type 
  * @param string $params 
  * @return void
  * @access public
  */
-	function _parseConditions($type, $params) {
+	function _conditions($type, $params) {
 		$conditions = array(
 			'Gift.office_id' => $this->Session->read('Office.id'),
 			'Gift.archived' => '0'
@@ -603,6 +568,7 @@ class GiftsController extends AppController {
 					break;
 			}
 		}
+		$conditions = $this->Gift->dateRange($conditions, $params, 'created');
 		return $conditions;
 	}
 }

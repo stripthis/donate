@@ -223,7 +223,7 @@ class CommonHelper extends Apphelper {
 /**
  * undocumented function
  *
- * @param string $params 
+ * @param string $params
  * @return void
  * @access public
  */
