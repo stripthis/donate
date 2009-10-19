@@ -79,8 +79,31 @@ class TransactionsController extends AppController {
 		$type = $urlData[3];
 		$conditions = $this->_parseConditions($params, $type);
 		$conditions = $this->Transaction->dateRange($conditions, $params, 'created');
+		$this->Session->write('transactions_filter_conditions', $conditions);
 
-		$this->set(compact('transactions', 'type', 'params'));
+		$this->set(compact(
+			'transactions', 'type', 'params', 'conditions'
+		));
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function admin_stats_erronous() {
+		$conditions = $this->Session->read('transactions_filter_conditions');
+		$erronousCount = $this->Transaction->find('count', array(
+			'conditions' => am($conditions, array(
+				'Transaction.status' => 'error'
+			))
+		));
+		$notErronousCount = $this->Transaction->find('count', array(
+			'conditions' => am($conditions, array(
+				'Transaction.status <>' => 'error'
+			))
+		));
+		$this->set(compact('erronousCount', 'notErronousCount'));
 	}
 /**
  * view action

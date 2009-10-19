@@ -12,7 +12,7 @@ $config = array(
 		'plugins/jquery.chat.js' => '*:admin*',
 		'plugins/jquery.segments.js' => '*:admin*',
 		'jquery.validate.js' => 'Users:register',
-		'swfobject.js' => 'Statistics:*',
+		'swfobject.js' => 'Statistics:*, Transactions:admin_stats, Gifts:admin_stats',
 		'tiny_mce/tiny_mce_gzip.js' => $mceRules,
 		'tiny_initializer.js' => $mceRules,
 
