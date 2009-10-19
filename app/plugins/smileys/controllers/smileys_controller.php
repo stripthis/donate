@@ -29,14 +29,16 @@ class SmileysController extends AppController {
 		}
 
 		if (empty($this->data['Smiley']['file'])) {
-			return $this->Smiley->invalidate('file', 'You have to choose a file!');
+			return $this->Smiley->invalidate('file', __('You have to choose a file!', true));
 		}
 		$numImported = $this->Smiley->import($this->data['Smiley']['file']['tmp_name']);
 
 		if ($numImported !== false) {
-			return $this->Message->add($numImported . ' smileys imported!', 'ok');
+			$msg = sprintf(__('%s smileys imported!', true), $numImported);
+			return $this->Message->add($msg, 'ok');
 		}
-		$this->Message->add('There was a problem during the import!', 'error');
+		$msg = __('There was a problem during the import!', true);
+		$this->Message->add($msg, 'error');
 	}
 /**
  * undocumented function
@@ -54,7 +56,8 @@ class SmileysController extends AppController {
 		Assert::notEmpty($smiley, '404');
 
 		$this->Smiley->del($id);
-		$this->Message->add('Smiley deleted.', 'ok', true, $this->referer());
+		$msg = __('Smiley deleted.', true);
+		$this->Message->add($msg, 'ok', true, $this->referer());
 	}
 }
 ?>

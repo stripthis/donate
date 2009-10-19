@@ -32,5 +32,6 @@
 			<?php else : ?>
 				<?php __('There is nothing to display.')?>
 			<?php endif; ?>
+		</div>
 	</div>
 </div>

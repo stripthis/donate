@@ -37,7 +37,7 @@ if (!empty($transactions)) {
 		if ($doFavorites) {
 			$tr[] = $favorites->link('Transaction', $t['Transaction']['id']);
 		}
-		$tr = am($tr,array(            
+		$tr = am($tr,array(
 			$t['Transaction']['status'],
 			$t['Transaction']['serial'],
 			!empty($t['Import']['serial']) ? $t['Import']['serial'] : '--',

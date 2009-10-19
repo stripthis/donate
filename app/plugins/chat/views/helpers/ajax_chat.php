@@ -17,7 +17,7 @@ class AjaxChatHelper extends Helper {
 		');
 
 		echo '<div id="' . $id. '" class="chat" name="' . $key . '">';
-		echo '<div class="chat_window"><p>Loading...</p></div>';
+		echo '<div class="chat_window"><p>' . __('Loading...', true) . '</p></div>';
 		echo $this->Form->create('Chat', array(
 			'id' => $key . 'ChatForm', 'url' => array('controller' => 'chat', 'action' => 'post', 'plugin' => '')
 		));

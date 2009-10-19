@@ -34,15 +34,18 @@ class BugsController extends BugsAppController {
 			'order' => array('increment' => 'desc'),
 		));
 		$this->data['Bug']['increment'] = !empty($lastBug) 
-			? $lastBug['Bug']['increment'] + 1 : 1;
+			? $lastBug['Bug']['increment'] + 1
+			: 1;
 
 		$this->Bug->create($this->data);
 		if (!$this->Bug->validates()) {
-			return $this->Message->add('Please fix the errors below.', 'error');
+			$msg = __('Please fix the errors below.', true);
+			return $this->Message->add($msg, 'error');
 		}
 
 		if ($this->Bug->save()) {
-			$this->Message->add('Your bug was successfully reported.', 'success', true);
+			$msg = __('Your bug was successfully reported.', true);
+			$this->Message->add($msg, 'ok', true);
 
 			$this->Email->to = Configure::read('App.emails.bug');
 			$this->Email->subject = 'Bug report for ' . Configure::read('App.name');
@@ -65,7 +68,8 @@ class BugsController extends BugsAppController {
 			$this->set($content);
 			$this->Email->send();
 		} else {
-			$this->Message->add('There was an error adding your bug.', 'fail', true);
+			$msg = __('There was an error adding your bug.', true);
+			$this->Message->add($msg, 'error', true);
 		}
 		return $this->redirect($this->referer());
 	}
@@ -100,7 +104,8 @@ class BugsController extends BugsAppController {
 			$this->set($content);
 			$this->Email->send();
 		}
-		die('Resent all bugs to ' . Configure::read('App.emails.bug') . '.');
+		$msg = __('Resent all bugs to ' . Configure::read('App.emails.bug') . '.', true);
+		die($msg);
 	}
 /**
  * undocumented function
@@ -112,7 +117,8 @@ class BugsController extends BugsAppController {
 	function admin_delete($id) {
 		Assert::true(User::is('root'), '403');
 		$this->Bug->del($id);
-		$this->Message->add('Bug successfully removed!', 'ok', true, array('action' => 'index'));
+		$msg = __('Bug successfully removed!', true);
+		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}
 }
 

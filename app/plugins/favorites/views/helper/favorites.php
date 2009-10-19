@@ -40,7 +40,7 @@ class FavoritesHelper extends Apphelper {
 			);
 			return $this->Html->link($img, array(
 				'controller' => 'favorites', 'action' => 'add', $uuid, $model
-				), array('class' => 'star', 'escape'=>false
+				), array('class' => 'star', 'escape' => false
 			));
 		} else {
 			$img = $this->Html->image(

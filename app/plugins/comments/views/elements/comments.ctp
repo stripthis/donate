@@ -18,7 +18,7 @@ if (isset($item[$modelName])) {
 
 <?php
 if (empty($items)) {
- 	$emptyMsg = !empty($emptyMsg) ? $emptyMsg : 'There are currently no comments posted.';
+ 	$emptyMsg = !empty($emptyMsg) ? $emptyMsg : __('There are currently no comments posted.', true);
 	echo $this->element('warning', array('txt' => $emptyMsg));
 } else {
 	foreach ($items as $comment) {

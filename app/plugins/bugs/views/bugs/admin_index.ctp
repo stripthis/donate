@@ -3,11 +3,21 @@
 <?php echo $html->link('Resent All Bugs As Email', array('action' => 'resent_all')); ?>
 <table>
 <?php
-$th = array('Id', 'Created', 'User', 'Last thing that was done', 'Description', 'actions');
+$th = array(
+	__('Id', true),
+	__('Created', true),
+	__('User', true),
+	__('Last thing that was done', true),
+	__('Description', true),
+	__('actions', true)
+);
 echo $html->tableHeaders($th);
 foreach ($bugs as $bug) {
 	$actions = array(
-		$html->link('Delete', array('plugin' => 'bugs', 'action' => 'delete', $bug['Bug']['id']), null, 'Are you sure?')
+		$html->link('Delete', array(
+			'plugin' => 'bugs',
+			'action' => 'delete', $bug['Bug']['id']
+		), null, 'Are you sure?')
 	);
 	$tr = array(
 		'#' . $bug['Bug']['increment'],

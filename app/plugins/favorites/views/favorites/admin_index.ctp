@@ -28,7 +28,7 @@ if ($isSingle) {
 		$actions = array(
 			$html->link('Delete', array(
 				'plugin' => 'favorites', 'action' => 'delete', $favorite['Favorite']['id'], $m),
-				null, 'Are you sure?'
+				null, __('Are you sure?', true)
 			)
 		);
 

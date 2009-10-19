@@ -53,7 +53,8 @@ class FiltersController extends FiltersAppController {
 		Assert::true(AppModel::isOwn($filter, 'Filter'), '403');
 
 		$this->Filter->del($id);
-		$this->Message->add('Filter deleted.', 'ok', true, $this->referer());
+		$msg = __('Filter deleted.', true);
+		$this->Message->add($msg, 'ok', true, $this->referer());
 	}
 }
 ?>

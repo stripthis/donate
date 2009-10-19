@@ -48,7 +48,8 @@ class CommentsController extends CommentsAppController {
 
 		$result = $this->Comment->save();
 		if ($this->Comment->validationErrors) {
-			$this->Message->add(__('There are problems with the form.', true), 'error', true, $referer);
+			$msg = __('There are problems with the form.', true);
+			$this->Message->add($msg, 'error', true, $referer);
 		}
 		Assert::notEmpty($result);
 
@@ -70,7 +71,8 @@ class CommentsController extends CommentsAppController {
 
 		if (!$this->Comment->delete($id)) {
 			if ($this->isAjax()) {
-				return $this->Json->error(__('There are problems with the form.', true), array('profile' => true));
+				$msg = __('There are problems with the form.', true);
+				return $this->Json->error($msg, array('profile' => true));
 			}
 			$dispatcher = new Dispatcher();
 			$dispatcher->dispatch($this->referer(), array(

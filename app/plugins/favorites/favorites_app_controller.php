@@ -1,6 +1,5 @@
 <?php
 class FavoritesAppController extends AppController {
-	
 /**
  * undocumented function
  *

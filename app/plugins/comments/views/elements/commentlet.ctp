@@ -24,7 +24,7 @@
 					);
 					$actions[] = $html->link('Delete', array('controller' => 'comments',
 						'action' => 'delete', $comment['Comment']['id'], 'admin' => false),
-						null, 'Are you sure?'
+						null, __('Are you sure?', true)
 					);
 				}
 				echo implode(' | ', $actions);

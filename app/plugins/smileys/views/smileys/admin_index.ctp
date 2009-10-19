@@ -1,21 +1,25 @@
 <div class="content" id="smileys_index">
 	<h1><?php echo $this->pageTitle = 'Smiley Management'; ?></h1>
 
-	<?php echo $html->link('Import Smiley File', array('controller' => 'smileys', 'action' => 'import', 'admin' => true))?>
+	<?php
+	echo $html->link(__('Import Smiley File', true), array(
+		'controller' => 'smileys', 'action' => 'import', 'admin' => true
+	));
+	?>
 	<?php if (empty($smileys)) : ?>
-		<p>Sorry, there aren't any smileys yet!</p>
+		<p><?php echo __('Sorry, there aren\'t any smileys yet!', true) ?></p>
 	<?php else : ?>
 		<table>
 		<?php
 		$th = array(
 			$paginator->sort('code'),
 			$paginator->sort('filename'),
-			'Actions'
+			__('Actions', true)
 		);
 		echo $html->tableHeaders($th);
 		foreach ($smileys as $smiley) {
 			$actions = array(
-				$html->link('Delete',
+				$html->link(__('Delete', true),
 					array('action' => 'delete', 'admin' => true, $smiley['Smiley']['id']),
 					array('title' => 'Delete'), 'Are you sure?', false
 				)
