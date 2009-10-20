@@ -11,36 +11,53 @@ class TellfriendCase extends CakeTestCase {
 		$this->Sut = ClassRegistry::init('Tellfriend');
 	}
 /**
- * Check whether user is spamming -emails sent from sampe ip
+ * Test given ip is spamming.Test passes if it is spamming.
  *
- * @param string $currentIP 
- * @return boolean 
+ * @return void
  */	
-	function testisIpSpamming() {
+	function testGivenIpIsSpamming() {
      	  $result =$this->Sut->isIpSpamming('127.0.0.1');
 		  $this->assertTrue($result);
 
     }
 /**
- *  Check emails sent from a particular address in given time exceeds the given limit
+ * Test given ip is not spamming.Test passes if it is not spamming. 
  *
- * @param string $email_address 
- * @return boolean 
+ * @return void
  */	
-    function testgetEmailsSentFromInTime() {
+	function testGivenIpIsNotSpamming() {
+     	  $result =$this->Sut->isIpSpamming('127.0.0.1');
+		  $this->assertFalse($result);
+
+    }
+/**
+ * Check emails sent from a given email address in given time exceeds the given limit.Test passes if it exceeds given limit.
+ *
+ * @return void
+ */	
+    function testEmailsSentFromGivenEmailIdExceedsLimit() {
      	  $result =$this->Sut->getEmailsSentFromInTime('dhapola.shilpa@gmail.com');
 		  $this->assertTrue($result);
 
     }
 /**
+ * Test emails sent from a given email address in given time does not exceed the given limit.Test passes if it does not exceed given limit. 
+ *
+ * @return void
+ */	
+    function testEmailsSentFromGivenEmailIdNotExceedsLimit() {
+     	  $result =$this->Sut->getEmailsSentFromInTime('dhapola.shilpa@gmail.com');
+		  $this->assertFalse($result);
+
+    }
+/**
  * Insert records in tellfriend and invited_friends tables
  *
- * @param  array $data, $email 
- * @return boolean
+ * @return void
  */
  	 function testsaveReference() {
 		$data = array();
-		$data['Tellfriend']= array( 'receiver' => 's.dhapola85@yahoo.co.in shilpa.dhapola@gmail.com', 'sender' => 'shilpa.dhapola@enova-tech.net' ,'content' => 'Hi, Your friend wants you to check out this website: www.greenpeace.org','ip' => '127.0.0.1');
+		$data['Tellfriend']= array( 'receiver' => 's.dhapola85@yahoo.co.in', 'sender' => 'shilpa.dhapola@enova-tech.net' ,'content' => 'Hi, Your friend wants you to check out this website: www.greenpeace.org','ip' => '127.0.0.1');
 		$emails = array ('s.dhapola85@yahoo.co.in');
      	//$result =$this->Sut->saveReference($data, $emails);
 		//$this->assertTrue($result);
