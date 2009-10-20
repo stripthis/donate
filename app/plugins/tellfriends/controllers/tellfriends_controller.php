@@ -142,7 +142,6 @@ class TellfriendsController extends TellfriendsAppController {
 		if($this->data['tellafriend']['useRecaptcha'] == 1){
 			$recaptchaVerified = $this->Recaptcha->valid($this->params['form']);
 		}
-		echo $recaptchaVerified;
 		if($emailContentIsSpam == 'true'){
 			echo $msg = 'Message content appears to be spam.';	
 			exit;
