@@ -29,8 +29,8 @@ class AppController extends Controller {
 	);
 
 	var $helpers = array(
-		'Html','Javascript', 'Time', 'Form', 'Common', 'Text', 'Session',
-		'Paginator','Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
+		'Html', 'Javascript', 'Time', 'Form', 'Common', 'Text', 'Session',
+		'Paginator', 'Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
 		'Favorites', 'Chat.AjaxChat', 'Smileys.Smiley'
 	);
 
