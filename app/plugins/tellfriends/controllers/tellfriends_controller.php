@@ -21,8 +21,9 @@ class TellfriendsController extends TellfriendsAppController {
 			$this->set('js', $this->js);
 		}
 		$this->Akismet->apiKey = '9ae3443b5369';
-		$this->Recaptcha->publickey = "6LcYYwgAAAAAAFY60zscq0Oc6Zb1SxxawK6dOip7";
-		$this->Recaptcha->privatekey = "6LcYYwgAAAAAAGmtiUbf_Eis_w8HYICZs21eHKCC ";
+		$this->Recaptcha->publickey = Configure::read("App.recaptcha.publicKey");
+		$this->Recaptcha->privatekey = Configure::read("App.recaptcha.privateKey");
+		
 	}
 /**
  * Getting list of e-mail addresses from email providers using openinviter
@@ -141,7 +142,6 @@ class TellfriendsController extends TellfriendsAppController {
 		if($this->data['tellafriend']['useRecaptcha'] == 1){
 			$recaptchaVerified = $this->Recaptcha->valid($this->params['form']);
 		}
-		echo $recaptchaVerified;
 		if($emailContentIsSpam == 'true'){
 			echo $msg = 'Message content appears to be spam.';	
 			exit;
