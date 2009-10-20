@@ -10,14 +10,32 @@
 	</p>
 	<div class="quicklinks">
 		<ul>
-			<li><?php echo $html->link( $html->image("icons/XL/office_config.png", array("alt"=>"offices"))." Manage offices", 
-	                  array("admin"=>true,"controller"=>"offices"), array('escape' => false)); ?> 
+			<li>
+			<?php
+			$officeImg = $html->image('icons/XL/office_config.png', array('alt' => 'offices'));
+			echo $html->link($officeImg . " " . __('Manage offices', true), 
+					array('admin' => true, 'controller' => 'offices'),
+					array('escape' => false)
+				);
+			?>
 			</li>
-			<li><?php echo $html->link( $html->image("icons/XL/users.png", array("alt"=>"users"))." Manage users", 
-	                  array("admin"=>true,"controller"=>"users"), array('escape' => false)); ?> 
+			<li>
+				<?php
+				$usersImg = $html->image('icons/XL/users.png', array('alt' => 'users'));
+				echo $html->link($usersImg . " " . __('Manage users', true),
+					array('admin' => true, 'controller' => 'users'),
+					array('escape' => false)
+				);
+				?>
 			</li>
-			<li><?php echo $html->link( $html->image("icons/XL/root.png", array("alt"=>"users"))." Manage roles", 
-	                  array("admin"=>true,"controller"=>"roles"), array('escape' => false)); ?> 
+			<li>
+				<?php
+				$rootImg = $html->image('icons/XL/root.png', array('alt' => 'users'));
+				echo $html->link($rootImg . " " . __('Manage roles', true),
+					array('admin' => true, 'controller' => 'roles'),
+					array('escape' => false)
+				);
+				?>
 			</li>
 		</ul>
   </div>

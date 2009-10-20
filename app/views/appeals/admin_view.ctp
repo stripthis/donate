@@ -1,30 +1,29 @@
 <div class="content" id="appeals view">
-	<h2><?php  echo __('Appeal', true);?></h2>
+	<h2><?php echo __('Appeal', true);?></h2>
 	<div class="actions">
 		<h3><?php echo __('Actions', true); ?></h3>
 		<ul>
 			<li>
 				<?php
 				echo $html->link(__('Edit Appeal', true),
-					array('action'=>'edit', $appeal['Appeal']['id']),
-					array('class'=>'edit')
+					array('action' => 'edit', $appeal['Appeal']['id']),
+					array('class' => 'edit')
 				);
 				?>
 			</li>
 			<li>
 				<?php
 				echo $html->link(__('Clone Appeal', true),
-					array('action'=>'add', 'clone_id' => $appeal['Appeal']['id']),
-					array('class'=>'add')
+					array('action' => 'add', 'clone_id' => $appeal['Appeal']['id']),
+					array('class' => 'add')
 				);
 				?>
 			</li>
 			<li>
 				<?php
 				echo $html->link(__('Delete Appeal', true),
-					array('action'=>'delete', $appeal['Appeal']['id']),
-					array('class'=>'delete'),
-					__('Are you sure?', true)
+					array('action' => 'delete', $appeal['Appeal']['id']),
+					array('class' => 'delete'), __('Are you sure?', true)
 				);
 				?>
 			</li>

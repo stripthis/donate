@@ -57,7 +57,9 @@
 			$statusOptions = array_combine($statusOptions, $infStatusOptions);
 			echo $form->input('status', array('options' => $statusOptions));
 		} else {
-			echo '<p>This Appeal is ' . $form->data['Appeal']['status'] . '. You do not have permission to change the status.</p>';
+			$msg = __('This Appeal is "%s". You do not have permission to change the status.', true);
+			$msg = sprintf($msg, $form->data['Appeal']['status']);
+			echo '<p>' . $msg . '</p>';
 		}
 		?>
 	</fieldset>

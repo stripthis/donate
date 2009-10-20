@@ -469,19 +469,6 @@ class User extends AppModel {
 		return $record[$options['model']]['user_id'] == User::get('id');
 	}
 /**
- * Get gravatar url or default user picture
- * @scope static 
- */
-	static function gravatarUrl($user) {
-		$user = AppModel::normalize('User', $user);
-		$param = "?&rating=G";
-		$param .= "&size=".Configure::read('App.avatarSize');;
-		//$param.= "&default=".Configure::read('App.domain').Configure::read('Avatar.avatarDefault');
-		return ($user)
-			? sprintf('http://www.gravatar.com/avatar/%s.jpg', md5(strtolower($user['User']['login']))).$param
-			: false;
-	}
-/**
  * undocumented function
  *
  * @param string $obj 
@@ -495,19 +482,23 @@ class User extends AppModel {
 
 		$result = true;
 		if (!empty($obj)) {
+			$officeId = $this->Session->read('Office.id');
 			if (isset($obj['Gift']['office_id'])) {
-				$result = $obj['Gift']['office_id'] == $this->Session->read('Office.id');
+				$result = $obj['Gift']['office_id'] == $officeId;
 			}
 			if (isset($obj['Appeal']['office_id'])) {
-				$result = $obj['Appeal']['office_id'] == $this->Session->read('Office.id');
+				$result = $obj['Appeal']['office_id'] == $officeId;
 			}
 			if (isset($obj['User']['office_id'])) {
-				$result = $obj['User']['office_id'] == $this->Session->read('Office.id');
+				$result = $obj['User']['office_id'] == $officeId;
 			}
 		}
 
-		$result = $result && Common::requestAllowed($controller, $action, User::get('Role.permissions'), true);
-		return $result && Common::requestAllowed($controller, $action, User::get('permissions'), true);
+		$rolePerms = User::get('Role.permissions');
+		$result = $result && Common::requestAllowed($controller, $action, $rolePerms, true);
+
+		$indivPerms = User::get('permissions');
+		return $result && Common::requestAllowed($controller, $action, $indivPerms, true);
 	}
 /**
  * Returns if the current user is a guest or not

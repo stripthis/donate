@@ -8,9 +8,9 @@ $favConfig = Configure::read('Favorites');
 	echo $this->element('nav', array(
 		'type' => 'appeal_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
 	));
+	echo $this->element('../appeals/elements/actions');
 	?>
-<?php echo $this->element('../appeals/elements/actions'); ?>
-<?php if (!empty($appeals)) : ?>
+	<?php if (!empty($appeals)) : ?>
 		<table>
 		<?php
 		unset($params['sort']);
@@ -19,22 +19,27 @@ $favConfig = Configure::read('Favorites');
 		if ($doFavorites) {
 			$th[] = $favorites->favall('Appeal');
 		}
+
+		$options = array('url' => $params);
 		$th = am($th, array(
-			$paginator->sort(__('Status', true), 'status', array('url' => $params)),
-			$paginator->sort(__('Is Default?', true), 'default', array('url' => $params)),
-			$paginator->sort(__('Name', true), 'name', array('url' => $params)),
-			$paginator->sort(__('Campaign Code', true), 'campaign_code', array('url' => $params)),
-			$paginator->sort(__('Targeted Income', true), 'targeted_income', array('url' => $params)),
-			$paginator->sort(__('Targeted Signups', true), 'targeted_signups', array('url' => $params)),
-			$paginator->sort(__('Current Template', true), 'Template.name', array('url' => $params)),
-			$paginator->sort(__('Created', true), 'created', array('url' => $params)),
-			$paginator->sort(__('Last Update', true), 'modified', array('url' => $params)),
+			$paginator->sort(__('Status', true), 'status', $options),
+			$paginator->sort(__('Is Default?', true), 'default', $options),
+			$paginator->sort(__('Name', true), 'name', $options),
+			$paginator->sort(__('Campaign Code', true), 'campaign_code', $options),
+			$paginator->sort(__('Targeted Income', true), 'targeted_income', $options),
+			$paginator->sort(__('Targeted Signups', true), 'targeted_signups', $options),
+			$paginator->sort(__('Current Template', true), 'Template.name', $options),
+			$paginator->sort(__('Created', true), 'created', $options),
+			$paginator->sort(__('Last Update', true), 'modified', $options),
 			'Actions'
 		));
 		echo $html->tableHeaders($th);
 		foreach ($appeals as $appeal) {
 			$actions = array(
-				$html->link(__('Config', true), array('action'=>'view', $appeal['Appeal']['id']),array('class'=>'view')),
+				$html->link(__('Config', true),
+					array('action' => 'view', $appeal['Appeal']['id']),
+					array('class' => 'view')
+				),
 				$html->link(__('Clone', true),
 					array('action' => 'add', 'clone_id' => $appeal['Appeal']['id']),
 					array('class' => 'view')
@@ -42,12 +47,12 @@ $favConfig = Configure::read('Favorites');
 			);
 
 			$actions[] = $html->link(
-				($appeal['Appeal']['status'] != 'published') ? __('Preview',true) : __('View',true), 
+				($appeal['Appeal']['status'] != 'published') ? __('Preview', true) : __('View', true),
 				array(
 					'controller' => 'gifts', 'action' => 'add',
 					'appeal_id' => $appeal['Appeal']['id'], 'admin' => '0'
 				),
-				array('class'=>'view')
+				array('class' => 'view')
 			);
 			$user = $html->link($appeal['User']['login'], array(
 				'controller' => 'users', 'action'=>'view', $appeal['User']['id']
@@ -83,7 +88,7 @@ $favConfig = Configure::read('Favorites');
 		unset($urlParams['page']);
 		echo $this->element('paging', array('model' => 'Appeal', 'url' => $urlParams));
 		?>
-<?php else : ?>
+	<?php else : ?>
 		<p><?php echo __('Sorry, nothing to show here.', true); ?></p>
 	<?php endif; ?>
 	<?php echo $this->element('../appeals/elements/filter', compact('params', 'type')); ?>

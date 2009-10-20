@@ -21,5 +21,5 @@ switch ($this->action){
 		);
 	break;
 }
-echo $this->element('admin/actions',array('links'=>$links, 'selected'=>false));
+echo $this->element('admin/actions',array('links' => $links, 'selected'=>false));
 ?>
