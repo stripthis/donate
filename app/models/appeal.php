@@ -3,6 +3,7 @@ class Appeal extends AppModel {
 	var $belongsTo = array(
 		'User',
 		'Office',
+		'Template',
 		'Parent' => array(
 			'className' => 'Appeal',
 			'foreignKey' => 'parent_id'
