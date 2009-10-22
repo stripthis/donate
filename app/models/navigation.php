@@ -55,16 +55,6 @@ class Navigation extends AppModel{
 					'/admin/supporters'
 					, '#/\/admin\/supporters.*/iU'
 				)/*
-				, 'Offices' => array(
-					'/admin/offices'
-					, '#/\/admin\/offices\/(index.*|manage_tree|add)?$/iU'
-					, 'role' => 'root'
-				)
-				, 'Users' => array(
-					'/admin/users/index/all'
-					, '#/\/admin\/users.* /iU' <- added space here * / :)
-					, 'role' => 'root'
-				)
 				, 'Bugs' => array(
 					'/admin/bugs'
 					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
@@ -80,11 +70,7 @@ class Navigation extends AppModel{
 					, '#/\/admin\/offices(\/edit|\/view).*/iU'
 					, '#/\/admin\/(offices|users).*/iU'
 					, 'role' => 'office_manager'
-				)/*
-				, __('My settings', true) => array(
-					'/admin/users/preferences'
-					, '#/\/admin\/(users).* /iU'
-				)*/
+				)
 				, __('Help', true) => array(
 					'/admin/help'
 					, '#/\/admin\/help.*/iU'
@@ -105,10 +91,6 @@ class Navigation extends AppModel{
 				__('All', true) => array(
 					'/admin/appeals/index'
 					, '#/^\/admin\/templates.*$/iU'
-				)
-				, __('Create Template', true) => array(
-					'/admin/templates/add'
-					, '#/^\/admin\/templates\/add.*$/iU'
 				)
 			)
 			, 'gift_sub' => array(

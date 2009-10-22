@@ -1,9 +1,12 @@
 <div class="content" id="templates_index">
 	<h2><?php echo __('Templates', true);?></h2>
 	<?php
-	echo $this->element('nav', array(
-		'type' => 'template_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
-	));
+		echo $this->element('nav', array(
+			'type' => 'template_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+		));
+	?>
+	<?php
+		echo $this->element('../templates/elements/actions');
 	?>
 <?php if (isset($templates) && !empty($templates)) : ?>
 		<div class="index_wrapper">

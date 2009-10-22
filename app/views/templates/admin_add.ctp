@@ -1,6 +1,7 @@
 <div class="content add" id="template_form">
-	<h1><?php echo __('New Template', true); ?></h1>
-	<p><?php __('Please choose an existing template to copy or create your own. Once you saved, you can edit the html/php code. Once you are fully done, make sure to add the template to a templating schedule or to an appeal directly as the current template.') ?></p>
+	<h2><?php echo __('New Template', true); ?></h2>
+	<?php	echo $this->element('../templates/elements/actions'); ?>
+	<p class="message information"><?php __('Please choose an existing template to copy or create your own. Once you saved, you can edit the html/php code. Once you are fully done, make sure to add the template to a templating schedule or to an appeal directly as the current template.') ?></p>
 	<?php echo $form->create('Template');?>
 	<fieldset>
 		<legend><?php __('Identifiers'); ?></legend>
