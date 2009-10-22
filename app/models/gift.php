@@ -219,11 +219,7 @@ class Gift extends AppModel {
 					'contain' => array('Currency(iso_code, id)'),
 					'order' => array('Currency.iso_code' => 'asc')
 				));
-				$result = array();
-				foreach ($currencies as $c) {
-					$result[$c['Currency']['id']] = $c['Currency']['iso_code'];
-				}
-				return $result;
+				return Set::combine($currencies, '/Currency/id', '/Currency/iso_code');
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
 	}
