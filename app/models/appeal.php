@@ -7,10 +7,6 @@ class Appeal extends AppModel {
 		'Parent' => array(
 			'className' => 'Appeal',
 			'foreignKey' => 'parent_id'
-		),
-		'CurrentTemplate' => array(
-			'className' => 'Template',
-			'foreignKey' => 'template_id'
 		)
 	);
 
@@ -104,14 +100,14 @@ class Appeal extends AppModel {
 					}
 					$appeal = $this->find('first', array(
 						'conditions' => $conditions,
-						'contain' => array('Office', 'CurrentTemplate')
+						'contain' => array('Office', 'Template')
 					));
 				}
 
 				if (empty($appeal)) {
 					$appeal = $this->find('first', array(
 						'conditions' => array('Appeal.default' => '1'),
-						'contain' => array('Office', 'CurrentTemplate'),
+						'contain' => array('Office', 'Template'),
 						'status' => 'published'
 					));
 				}

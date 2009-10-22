@@ -68,8 +68,8 @@ $favConfig = Configure::read('Favorites');
 				$appeal['Appeal']['campaign_code'],
 				$appeal['Appeal']['targeted_income'],
 				$appeal['Appeal']['targeted_signups'],
-				!empty($appeal['CurrentTemplate']['name'])
-					? $appeal['CurrentTemplate']['name']
+				!empty($appeal['Template']['name'])
+					? $appeal['Template']['name']
 					: '--',
 				$common->date($appeal['Appeal']['created']),
 				$common->date($appeal['Appeal']['modified']),
