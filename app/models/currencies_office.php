@@ -1,5 +1,5 @@
 <?php
 class CurrenciesOffice extends AppModel {
-	var $belongsTo = array('office', 'Office');
+	var $belongsTo = array('Currency', 'Office');
 }
 ?>
