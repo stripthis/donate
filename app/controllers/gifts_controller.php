@@ -47,9 +47,9 @@ class GiftsController extends AppController {
 		$officeId = $currentAppeal['Appeal']['office_id'];
 		$this->Session->write($this->sessOfficeKey, $officeId);
 
-		$templateId = $currentAppeal['CurrentTemplate']['id'];
+		$templateId = $currentAppeal['Template']['id'];
 		$this->data['Gift']['appeal_id'] = $currentAppeal['Appeal']['id'];
-		$this->viewPath = 'templates' . DS . $currentAppeal['CurrentTemplate']['slug'] . '_' . $templateId;
+		$this->viewPath = 'templates' . DS . $currentAppeal['Template']['slug'] . '_' . $templateId;
 
 		$countryOptions = $this->Country->find('list', array('order' => array('Country.name' => 'asc')));
 		$this->set(compact('countryOptions', 'currentAppeal'));
@@ -83,7 +83,7 @@ class GiftsController extends AppController {
 			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
 		}
 
-		$isLastStep = $step == $currentAppeal['CurrentTemplate']['template_step_count'];
+		$isLastStep = $step == $currentAppeal['Template']['template_step_count'];
 		$validates = AppModel::bulkValidate($this->models, $this->data);
 
 		if (!$isLastStep && !$validates) {
@@ -207,9 +207,9 @@ class GiftsController extends AppController {
 		));
 		Assert::notEmpty($currentAppeal, '500');
 
-		$templateId = $currentAppeal['CurrentTemplate']['id'];
+		$templateId = $currentAppeal['Template']['id'];
 		$this->TemplateStepVisit->trackHit($templateId, $appealId, 'thanks');
-		$this->viewPath = 'templates' . DS . $currentAppeal['CurrentTemplate']['slug'] . '_' . $templateId;
+		$this->viewPath = 'templates' . DS . $currentAppeal['Template']['slug'] . '_' . $templateId;
 	}
 /**
  * undocumented function
