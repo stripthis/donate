@@ -223,7 +223,7 @@ class Gift extends AppModel {
 				foreach ($currencies as $c) {
 					$result[$c['Currency']['id']] = $c['Currency']['iso_code'];
 				}
-				return $currencies;
+				return $result;
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
 	}
