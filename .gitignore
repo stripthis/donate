@@ -9,7 +9,7 @@ Thumbs.db
 /app/config/core.php
 /app/config/environment.php
 /app/tmp
-/app/views/templates
+#/app/views/templates
 /app/webroot/files
 /app/sql_updates.txt
 /app/webroot/js/aggregate
