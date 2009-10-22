@@ -2,10 +2,10 @@
 if (!isset($widgets)) {
 	$widgets = array('search', 'favorites', 'chat', 'shortcuts','news');
 	if (pluginLoaded('Segments')) {
-		$widgets[] = 'Segments.segments_widget';
+		$widgets[] = 'segments.segments_widget';
 	}
 	if (pluginLoaded('Filters')) {
-		$widgets[] = 'Filters.filters_widget';
+		$widgets[] = 'filters.filters_widget';
 	}
 }
 ?>
@@ -26,7 +26,8 @@ if (!isset($widgets)) {
 			$name = r('_widget', '', $widget);
 			$open = isset($widgetState[$name]) && $widgetState[$name]
 					? 'open' : 'closed';
-
+			
+		  //pr($path . $widget);
 			echo $this->element($path . $widget, compact('plugin', 'open'));
 		}
 		?>

@@ -72,17 +72,7 @@ class Navigation extends AppModel{
 				)*/
 				, __('Admin', true) => array(
 					'/admin/dashboards'
-					, '#/\/admin\/(users|offices|dashboards|roles).*/iU'
-					, 'role' => 'root'
-				)
-				, __('Activity Log', true) => array(
-					'/admin/logs'
-					, '#/\/admin\/logs.*/iU'
-					, 'role' => 'root'
-				)
-				, __('Smileys', true) => array(
-					'/admin/smileys'
-					, '#/\/admin\/smileys.*/iU'
+					, '#/\/admin\/(users|offices|dashboards|roles|logs|smileys).*/iU'
 					, 'role' => 'root'
 				)
 				, __('Office Config', true) => array(
@@ -288,6 +278,16 @@ class Navigation extends AppModel{
 				, __('Roles', true) => array(
 					'/admin/roles'
 					, '#/\/admin\/roles.*/iU'
+					, 'role' => 'root'
+				)
+				, __('Activity Log', true) => array(
+					'/admin/logs'
+					, '#/\/admin\/logs.*/iU'
+					, 'role' => 'root'
+				)
+				, __('Smileys', true) => array(
+					'/admin/smileys'
+					, '#/\/admin\/smileys.*/iU'
 					, 'role' => 'root'
 				)
 			)

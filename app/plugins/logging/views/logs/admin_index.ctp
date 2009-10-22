@@ -1,6 +1,10 @@
-<div class="content" id="logs_index">
-	<h1><?php echo $this->pageTitle = 'Logs'; ?></h1>
-
+<div class="content index" id="logs_index">
+	<h2><?php echo $this->pageTitle = 'Logs'; ?></h2>
+	<?php
+	echo $this->element('nav', array(
+		'type' => 'admin_root_admin_sub', 'class' => 'menu with_tabs', 'div' => 'menu_wrapper'
+	));
+	?>
 	<?php if (empty($logs)) : ?>
 		<p>Nothing to show here</p>
 	<?php else : ?>

@@ -684,10 +684,15 @@ ul.selector li ul.subitem li a{
 .sidebar .news h3{
   background:transparent url(/img/icons/S/newspaper.png) 6px center no-repeat;
 }
-.sidebar .chats h3{
-  background:transparent url(/img/icons/S/comments.png) 6px center no-repeat;
+.sidebar .chat h3{
+  background:transparent url(/img/icons/S/cup.png) 6px center no-repeat;
 }
-
+.sidebar .segments h3{
+  background:transparent url(/img/icons/S/table_multiple.png) 6px center no-repeat;
+}
+.sidebar .filters h3{
+  background:transparent url(/img/icons/S/cog.png) 6px center no-repeat;
+}
 /***********************************************************************************
  * Content
  ***********************************************************************************/
