@@ -129,11 +129,32 @@ Tue 10/13/2009 Total Time : 7.5 hours
 3.	Worked on creating unit test for tellfriends  (2 hours)
 4.      DB updates (0.5 hour)
 
+Wed 10/14/2009 Total Time : 7.5 hours
+
+1.      Study of cakephp model and controller unit testing procedures (1.5 hours)
+2.	Added tellfriend controller unit test and fixture(2.5 hours)
+3.	Debugging on Recaptcha as the recaptcha verification was failing because of private key and generating new set of keys with recaptcha.net(2.5 hours)
+4.      DB updates (0.5 hour)
+5.      Added language translator files (0.5 hour)		
+
+Fri 10/16/2009 Total Time : 7.5 hours
+
+1.	Added unit test for tellfriend model  ( 2 hours)
+2.	If user redirected from thanks page not asking user for recaptcha verification  (3 hours)
+3.      Resolved issue related to '500 - Internal Error occured' with help of Tim (2 hours)
+4.      DB updates (0.5 hour)	
+
+Tue 10/20/2009 Total Time : 7 hours
+
+1.      Worked on Recaptcha debugging, getting recaptcha keys from config file  (2.5 hours)
+2.	Created test case for akismet spam filter ( 2 hours)
+3.	Unit test cases for tellfriend model  ( 2 hours)
+4.      Added proper comments and gave descriptive names to test functions ( 0.5 hour)
 
 
 
 
-
+ 
 
 
 

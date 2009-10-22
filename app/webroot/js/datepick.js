@@ -7,14 +7,23 @@ $(document).ready(function() {
 	   //datepicker for end select input		
 	  $('input#GiftEndDate').datepick({showOn: 'button', buttonImageOnly: true,
 	  buttonImage: 'js/datepicker/calendar-green.gif'});
-	  //datepicker for start select input
+	  //datepicker imnage for Gift
 	  $('input#GiftStartDate').datepick({showOn: 'button', 
 		 buttonImageOnly: true, buttonImage: 'js/datepicker/calendar-green.gif'});
-	    //datepicker for end select input		
+	    //datepicker image for Appeal		
 	  $('input#AppealsStartDate').datepick({showOn: 'button', buttonImageOnly: true,
 	  buttonImage: 'js/datepicker/calendar-green.gif'});
-	  //datepicker for start select input
 	  $('input#AppealsEndDate').datepick({showOn: 'button', 
+		 buttonImageOnly: true, buttonImage: 'js/datepicker/calendar-green.gif'});
+	  //datepicker image for Transaction		
+	  $('input#TransactionStartDate').datepick({showOn: 'button', buttonImageOnly: true,
+	  buttonImage: 'js/datepicker/calendar-green.gif'});
+	  $('input#TransactionEndDate').datepick({showOn: 'button', 
+		 buttonImageOnly: true, buttonImage: 'js/datepicker/calendar-green.gif'});
+	    //datepicker image for Log		
+	  $('input#LogStartDate').datepick({showOn: 'button', buttonImageOnly: true,
+	  buttonImage: 'js/datepicker/calendar-green.gif'});
+	  $('input#LogEndDate').datepick({showOn: 'button', 
 		 buttonImageOnly: true, buttonImage: 'js/datepicker/calendar-green.gif'});
  });
 
@@ -27,46 +36,60 @@ $(document).ready(function() {
 		  $('#CardExpireDateMonth').val(dtArray[0]);
 		  $('#CardExpireDateYear').val(dtArray[2]);
 	  });
-	  //populating the series of select input from text input
+	  //populating selected date for Gift
 	  $("input#GiftStartDate").change(function() {
-		  var dt = $("input#GiftStartDate").val();
-		  var dtArray = Array();
-		  dtArray = dt.split('/');
-		  
-		  $('#GiftStartDateMonthMonth').val(dtArray[0]);
-		  $('#GiftStartDateDayDay').val(dtArray[1]);
-		  $('#GiftStartDateYearYear').val(dtArray[2]);
+		 populateStartSelect(this.id);
 	  });
-	 
-	 //populating the series of select input from text input
 	  $("input#GiftEndDate").change(function() {
-		  var dt = $("input#GiftEndDate").val();
-		  var dtArray = Array();
-		  dtArray = dt.split('/');
-		  
-		  $('#GiftEndDateMonthMonth').val(dtArray[0]);
-		  $('#GiftEndDateDayDay').val(dtArray[1]);
-		  $('#GiftEndDateYearYear').val(dtArray[2]);
+		 populateEndSelect(this.id);
 	  });
-	    //populating the series of select input from text input
+	  
+	    //populating selected date for Appeals
 	  $("input#AppealsStartDate").change(function() {
-		  var dt = $("input#AppealsStartDate").val();
-		  var dtArray = Array();
-		  dtArray = dt.split('/');
-		  
-		  $('#AppealsStartDateMonthMonth').val(dtArray[0]);
-		  $('#AppealsStartDateDayDay').val(dtArray[1]);
-		  $('#AppealsStartDateYearYear').val(dtArray[2]);
+		 populateStartSelect(this.id);
 	  });
-	 
-	 //populating the series of select input from text input
 	  $("input#AppealsEndDate").change(function() {
-		  var dt = $("input#AppealsEndDate").val();
+		populateEndSelect(this.id);
+	  });
+	  
+	  //populating selected date for Transaction
+	  $("input#TransactionStartDate").change(function() {
+			populateStartSelect(this.id);
+	  });
+	  $("input#TransactionEndDate").change(function() {
+			populateEndSelect(this.id);
+	  });
+	  
+	  //populating selected date for Log
+	  $("input#LogStartDate").change(function() {
+			populateStartSelect(this.id);
+	  });
+	  $("input#LogEndDate").change(function() {
+			populateEndSelect(this.id);
+	  });
+	  
+	  
+	//populating the series of select input from text input	for Start date
+	  function populateStartSelect(id) {
+		  var pageName=id.split('StartDate', 1);
+		  var dt = $("input#"+pageName+"StartDate").val();
 		  var dtArray = Array();
 		  dtArray = dt.split('/');
 		  
-		  $('#AppealsEndDateMonthMonth').val(dtArray[0]);
-		  $('#AppealsEndDateDayDay').val(dtArray[1]);
-		  $('#AppealsEndDateYearYear').val(dtArray[2]);
-	  });
+		  $('#'+pageName+'StartDateMonthMonth').val(dtArray[0]);
+		  $('#'+pageName+'StartDateDayDay').val(dtArray[1]);
+		  $('#'+pageName+'StartDateYearYear').val(dtArray[2]);
+	  }
+	 //populating the series of select input from text input for End date 
+	   function populateEndSelect(id) {
+		  var pageName=id.split('EndDate', 1);
+		  var dt = $("input#"+pageName+"EndDate").val();
+		  var dtArray = Array();
+		  dtArray = dt.split('/');
+		  
+		  $('#'+pageName+'EndDateMonthMonth').val(dtArray[0]);
+		  $('#'+pageName+'EndDateDayDay').val(dtArray[1]);
+		  $('#'+pageName+'EndDateYearYear').val(dtArray[2]);
+		  
+	  }
  });
