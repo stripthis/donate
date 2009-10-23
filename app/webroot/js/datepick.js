@@ -81,8 +81,6 @@ $(document).ready(function() {
 		  
 		  $('#'+pageName+'StartDateMonthMonth').val(dtArray[0]);
 		  $('#'+pageName+'StartDateDayDay').val(dtArray[1]);
-		  //Append year option to select input if that year option in not available in select dropdown list
-		  appendYearOption(pageName+'StartDateYearYear', dtArray[2]);
 		  $('#'+pageName+'StartDateYearYear').val(dtArray[2]);
 	  }
 	 //populating the series of select input from text input for End date 
@@ -94,20 +92,7 @@ $(document).ready(function() {
 		  
 		  $('#'+pageName+'EndDateMonthMonth').val(dtArray[0]);
 		  $('#'+pageName+'EndDateDayDay').val(dtArray[1]);
-		  //Append year option to select input if that year option in not available in select dropdown list
-		  appendYearOption(pageName+'EndDateYearYear', dtArray[2]);
 		  $('#'+pageName+'EndDateYearYear').val(dtArray[2]);
 		  
-	  }
-	  function appendYearOption(id, year){
-		   var yearAvailable = false;
-		   $('#'+id+' option').each(function() { 
-		  		if(year == $(this).text()) {
-		  			yearAvailable = true;	
-				}
-		  });
-		  if(yearAvailable == false){
-			$('#'+id).append('<option value='+year+'>'+year+'</option>');
-		  }
 	  }
  });
