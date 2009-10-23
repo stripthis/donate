@@ -17,7 +17,7 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad73901-4c70-4be4-b76b-9bb2a7f05a6e',
 			'code' => 'dan',
-			'name' => '',
+			'name' => 'Danish',
 		),		array(
 			'id' => '4ad73901-7aac-48c9-9a30-9bb2a7f05a6e',
 			'code' => 'ara',
@@ -33,7 +33,7 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad73901-c884-4c53-86ee-9bb2a7f05a6e',
 			'code' => 'fin',
-			'name' => '',
+			'name' => 'Finish',
 		),		array(
 			'id' => '4ad73901-cb64-4524-8779-9bb2a7f05a6e',
 			'code' => 'eng',
@@ -65,7 +65,7 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad73970-d248-4d9a-8705-9c29a7f05a6e',
 			'code' => 'heb',
-			'name' => '',
+			'name' => 'Hebrew',
 		),		array(
 			'id' => '4ad73970-d26c-4f9e-ab9f-9c29a7f05a6e',
 			'code' => 'ltz',
@@ -85,7 +85,7 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad739cd-3c58-4bb7-86aa-9c8ca7f05a6e',
 			'code' => 'pol',
-			'name' => '',
+			'name' => 'Polis',
 		),		array(
 			'id' => '4ad739cd-64d4-4232-b0b9-9c8ca7f05a6e',
 			'code' => 'spa',
@@ -97,11 +97,11 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad739cd-90f8-424e-a6af-9c8ca7f05a6e',
 			'code' => 'tha',
-			'name' => '',
+			'name' => 'Thai',
 		),		array(
 			'id' => '4ad739cd-d3c4-441a-ac8b-9c8ca7f05a6e',
 			'code' => 'tur',
-			'name' => '',
+			'name' => 'Turkish',
 		),		array(
 			'id' => '4ad739cd-d470-49f7-821e-9c8ca7f05a6e',
 			'code' => 'nld',

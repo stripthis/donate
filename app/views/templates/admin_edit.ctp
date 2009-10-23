@@ -1,5 +1,6 @@
 <div class="content add" id="template_form">
-	<h1><?php echo __('Edit Template', true); ?></h1>
+	<h2><?php echo __('Edit Template', true); ?></h2>
+	<?php	echo $this->element('../templates/elements/actions'); ?>
 	<?php echo $form->create('Template');?>
 	<?php echo $form->input('id', array('type' => 'hidden'))?>
 	<fieldset>
@@ -38,6 +39,7 @@
 		<?php echo $html->link(__('Add Step', true), '#', array('class' => 'add-step'))?>
 	</fieldset>
 	<fieldset class="thanks-step">
+		<legend><?php __('Last Step'); ?></legend>
 		<?php
 		$path = VIEWS . 'templates' . DS . $template['Template']['slug'] . '_' . $template['Template']['id'];
 		$file = $path . DS . 'thanks.ctp';

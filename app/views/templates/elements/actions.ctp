@@ -11,6 +11,8 @@ switch ($this->action){
 			'options'=> array('class'=>'add')
 		);
 	break;
+	case "admin_add":
+	case "admin_edit":
 	case "admin_view":
 		$links[] = array(
 			'name' => __('back to index', true),
