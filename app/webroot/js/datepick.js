@@ -1,29 +1,32 @@
 $(document).ready(function() {
 //datepicker for text input
  $(function() {
+			var currentYear = (new Date).getFullYear();
+			var nextYear = parseInt(currentYear, 10) + parseInt(1, 10);
+			var tenYearLater = parseInt(currentYear, 10) + parseInt(10, 10);
 	   //datepicker for expire select input		
-	  $('input#GiftExpireDateHidden').datepick({showOn: 'both', buttonImageOnly: true,
+	  $('input#GiftExpireDateHidden').datepick({showOn: 'both',  yearRange: currentYear+':'+tenYearLater,  buttonImageOnly: true,
 	  buttonImage: 'js/datepicker/calendar-green.gif'});
 	   //datepicker for end select input		
-	  $('input#GiftEndDate').datepick({showOn: 'button', buttonImageOnly: true,
+	  $('input#GiftEndDate').datepick({showOn: 'button', yearRange: currentYear+':'+nextYear, buttonImageOnly: true,
 	  buttonImage: 'js/datepicker/calendar-green.gif'});
 	  //datepicker imnage for Gift
-	  $('input#GiftStartDate').datepick({showOn: 'button', 
+	  $('input#GiftStartDate').datepick({showOn: 'button',  yearRange: currentYear+':'+currentYear,
 		 buttonImageOnly: true, buttonImage: 'js/datepicker/calendar-green.gif'});
 	    //datepicker image for Appeal		
-	  $('input#AppealsStartDate').datepick({showOn: 'button', buttonImageOnly: true,
+	  $('input#AppealsStartDate').datepick({showOn: 'button', yearRange: currentYear+':'+currentYear, buttonImageOnly: true,
 	  buttonImage: 'js/datepicker/calendar-green.gif'});
-	  $('input#AppealsEndDate').datepick({showOn: 'button', 
+	  $('input#AppealsEndDate').datepick({showOn: 'button', yearRange: currentYear+':'+nextYear,
 		 buttonImageOnly: true, buttonImage: 'js/datepicker/calendar-green.gif'});
 	  //datepicker image for Transaction		
-	  $('input#TransactionStartDate').datepick({showOn: 'button', buttonImageOnly: true,
+	  $('input#TransactionStartDate').datepick({showOn: 'button', yearRange: currentYear+':'+currentYear, buttonImageOnly: true,
 	  buttonImage: 'js/datepicker/calendar-green.gif'});
-	  $('input#TransactionEndDate').datepick({showOn: 'button', 
+	  $('input#TransactionEndDate').datepick({showOn: 'button', yearRange: currentYear+':'+nextYear,
 		 buttonImageOnly: true, buttonImage: 'js/datepicker/calendar-green.gif'});
 	    //datepicker image for Log		
-	  $('input#LogStartDate').datepick({showOn: 'button', buttonImageOnly: true,
+	  $('input#LogStartDate').datepick({showOn: 'button', yearRange: currentYear+':'+currentYear, buttonImageOnly: true,
 	  buttonImage: 'js/datepicker/calendar-green.gif'});
-	  $('input#LogEndDate').datepick({showOn: 'button', 
+	  $('input#LogEndDate').datepick({showOn: 'button', yearRange: currentYear+':'+nextYear,
 		 buttonImageOnly: true, buttonImage: 'js/datepicker/calendar-green.gif'});
  });
 
