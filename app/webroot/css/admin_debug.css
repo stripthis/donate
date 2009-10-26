@@ -1,0 +1,45 @@
+/***********************************************************************************
+ * Special header in Gift:add for admins
+ ***********************************************************************************/
+#container{
+	margin-top:55px;
+}
+.debug_header_wrapper{
+	position:absolute;
+	width:100%;
+	background:#FFF;
+	margin-top:-55px;
+	border-bottom:1px solid #CCC;
+}
+.debug_header{
+	text-align:center;
+	margin:0;
+	padding-left:10px;
+	float:left;
+}
+.debug_header label, 
+.debug_header select, 
+.debug_header input,
+.debug_header .input
+{
+	width:auto;
+	float:left;
+	font-size:1em;
+}
+.debug_header .submit{
+	float:left;
+	padding:0;
+}
+.debug_header .submit input[type=submit]{
+	padding:0;
+	float:left;
+	width:auto;
+	font-size:1.05em;
+}
+.debug_header p{
+	float:left;
+	padding-top:10px;
+}
+.debug_header .appeal_switch{
+	float:left;
+}

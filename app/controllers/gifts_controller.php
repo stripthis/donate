@@ -84,6 +84,9 @@ class GiftsController extends AppController {
 		}
 
 		$isLastStep = $step == $currentAppeal['Template']['template_step_count'];
+
+		$this->data['Contact']['dob'] = '1930-10-05 00:00:00';
+		
 		$validates = AppModel::bulkValidate($this->models, $this->data);
 
 		if (!$isLastStep && !$validates) {
