@@ -26,8 +26,7 @@ if (!isset($widgets)) {
 			$name = r('_widget', '', $widget);
 			$open = isset($widgetState[$name]) && $widgetState[$name]
 					? 'open' : 'closed';
-			
-		  //pr($path . $widget);
+
 			echo $this->element($path . $widget, compact('plugin', 'open'));
 		}
 		?>

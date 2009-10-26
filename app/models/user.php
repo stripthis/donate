@@ -109,7 +109,7 @@ class User extends AppModel {
 		if (isset($this->data['Contact']['fname']) && isset($this->data['Contact']['lname'])) {
 			$this->data[__CLASS__]['name'] = $this->data['Contact']['fname'] . ' ' . $this->data['Contact']['lname'];
 		}
-		
+
 		return true;
 	}
 /**
@@ -215,7 +215,7 @@ class User extends AppModel {
 				'fields' => array(
 					'User.id', 'User.name', 'User.login', 'User.password', 'User.permissions',
 					'User.active', 'User.tooltips', 'User.role_id', 'User.office_id',
-					'User.contact_id'
+					'User.contact_id', 'User.lang'
 				)
 			));
 		}
