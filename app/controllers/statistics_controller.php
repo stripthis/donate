@@ -25,7 +25,7 @@ class StatisticsController extends AppController {
 	function admin_index() {
 		$gifts = $this->Gift->find('all', array(
 			'conditions' => $this->_conditions(),
-			'fields' => array('created', 'amount')
+			'fields' => array('created', 'amount', 'archived', 'complete')
 		));
 
 		$months = Common::months($this->startDate, $this->endDate, false);
@@ -76,7 +76,6 @@ class StatisticsController extends AppController {
 		// @todo: measure archived time
 		return array(
 			'office_id' => $this->Session->read('Office.id'),
-			'archived' => '0',
 			"DATE_FORMAT(" . $field. ", '%Y-%m-%d') >= '" . $this->startDate . "'",
 			"DATE_FORMAT(" . $field . ", '%Y-%m-%d') <= '" . $this->endDate . "'",
 		);
@@ -95,7 +94,7 @@ class StatisticsController extends AppController {
 			$startDate = strtotime(Configure::read('Stats.startDate'));
 
 			// last day of last month
-			$endDate = strtotime('-1 day', strtotime(date('Y-m-01')));
+			$endDate = strtotime(date('Y-m-01', strtotime('+1 month')));
 
 			if ($this->Session->check($sessKeyStart)) {
 				$startDate = $this->Session->read($sessKeyStart);
