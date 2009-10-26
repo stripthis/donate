@@ -8,8 +8,8 @@
 			<li><?php echo $html->link(__('Amounts',true), array('action'=>'index/gifts','admin'=>true)); ?></li> -->
 		</ul>
 	</div>
-	<?php echo $this->element('../statistics/elements/filter') ?>
 	<?php
+	echo $this->element('../statistics/elements/filter');
 	$url = '/admin/statistics/index.json?startDate=' . $startDate . '&endDate=' . $endDate;
 	?>
 	<script type="text/javascript">

@@ -31,25 +31,33 @@ class OpenFlashChartHelper extends AppHelper {
 		$col = isset($options['color']) ? $options['color'] : null;
 		$outlineCol = isset($options['outline_col']) ? $options['outline_col'] : null;
 
-		$type = isset($options['type']) ? $options['type'] : 'bar_filled';
-		$diagram = new $type($col, $outlineCol);
+		if (isset($options['charts'])) {
+			foreach ($options['charts'] as $chartOpts) {
+				$type = isset($chartOpts['type']) ? $chartOpts['type'] : 'bar_filled';
+				$diagram = new $type($chartOpts['col'], $chartOpts['outline']);
 
-		if ($type == 'bar_3d') {
-			$diagram->colour = $col;
+				if ($type == 'bar_3d') {
+					$diagram->colour = $col;
+				}
+				$diagram->set_values($chartOpts['values']);
+
+				if (isset($chartOpts['key'])) {
+					$diagram->key($chartOpts['key'], 12);
+				}
+				$xAxis = $this->xAxis($options);
+				if ($xAxis !== null) {
+					$chart->set_x_axis($xAxis);
+				}
+
+				$yAxis = $this->yAxis($options);
+				if ($xAxis !== null) {
+					$chart->set_y_axis($yAxis);
+				}
+
+				$chart->add_element($diagram);
+			}
 		}
-		$diagram->set_values($options['values']);
 
-		$xAxis = $this->xAxis($options);
-		if ($xAxis !== null) {
-			$chart->set_x_axis($xAxis);
-		}
-
-		$yAxis = $this->yAxis($options);
-		if ($xAxis !== null) {
-			$chart->set_y_axis($yAxis);
-		}
-
-		$chart->add_element($diagram);
 		return $chart->toString();
 	}
 /**
