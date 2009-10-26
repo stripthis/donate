@@ -11,6 +11,8 @@ $(function() {
 		$('#txtOtherAmount').attr('value', '');
 	});
 
+	$('div.date').myDatepick();
+
 	function checkOtherAmount() {
 		$('input.otheramount').attr('checked', true);
 		$('input.amount').each(function() {

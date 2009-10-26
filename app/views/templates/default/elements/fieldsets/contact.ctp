@@ -35,7 +35,7 @@
 			))."\n";
 		?>
 	</div>
-	<div class="input_wrapper full">
+	<div class="input_wrapper full date">
 		<?php
 			echo $form->input('Contact.dob', array(
 				'label' => __('Date of Birth', true) . ':',

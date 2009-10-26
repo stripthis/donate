@@ -11,18 +11,17 @@ $config = array(
 		'plugins/jquery.scrollTo-min' => '*:admin*',
 		'plugins/jquery.chat.js' => '*:admin*',
 		'plugins/jquery.segments.js' => '*:admin*',
+		'datepicker/jquery.datepick.js' => '*:*',
+		'plugins/jquery.my_datepick.js' => '*:*',
 		'jquery.validate.js' => 'Users:register',
 		'swfobject.js' => 'Statistics:*, Transactions:admin_stats, Gifts:admin_stats',
 		'tiny_mce/tiny_mce_gzip.js' => $mceRules,
 		'tiny_initializer.js' => $mceRules,
-
 		'admin_common.js' => '*:admin*',
 		'common.js' => '*:!admin*',
 		'japp.js' => '*:*',
-		'datepicker/jquery.datepick.js' => '*:*',
-		'datepicker.js' => '*:*',
+		// 'datepicker.js' => '*:*',
 		'thickbox.js' => 'Tellfriends:refer, Tellfriends:openinviter',
-		'datepick.js' => '*:*'
 	)
 );
 ?>
