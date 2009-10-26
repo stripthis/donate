@@ -94,7 +94,7 @@ class StatisticsController extends AppController {
 			$startDate = strtotime(Configure::read('Stats.startDate'));
 
 			// last day of last month
-			$endDate = strtotime('-1 day', strtotime(date('Y-m-01')));
+			$endDate = strtotime(date('Y-m-01', strtotime('+1 month')));
 
 			if ($this->Session->check($sessKeyStart)) {
 				$startDate = $this->Session->read($sessKeyStart);
