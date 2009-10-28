@@ -60,11 +60,6 @@ class Navigation extends AppModel{
 					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
 					, 'role' => 'root'
 				)*/
-				, __('Admin', true) => array(
-					'/admin/dashboards'
-					, '#/\/admin\/(users|offices|dashboards|roles|logs|smileys).*/iU'
-					, 'role' => 'root'
-				)
 				, __('Office Config', true) => array(
 					'/admin/offices/edit'
 					, '#/\/admin\/offices(\/edit|\/view).*/iU'
@@ -98,9 +93,9 @@ class Navigation extends AppModel{
 					'/admin/gifts/index/all'
 					, '#/^\/admin\/gifts\/index\/all.*$/iU'
 				)
-				, __('One Off', true) => array(
-					'/admin/gifts/index/oneoff'
-					, '#/^\/admin\/gifts\/index\/oneoff.*$/iU'
+				, __('Onetime', true) => array(
+					'/admin/gifts/index/onetime'
+					, '#/^\/admin\/gifts\/index\/onetime.*$/iU'
 				)
 				, __('Recurring', true) => array(
 					'/admin/gifts/index/recurring'
@@ -113,6 +108,10 @@ class Navigation extends AppModel{
 				, __('Archived', true) => array(
 					'/admin/gifts/index/archived'
 					, '#/^\/admin\/gifts\/index\/archived.*$/iU'
+				)
+				, __('Statistics', true) => array(
+					'/admin/gifts/stats'
+					, '#/^\/admin\/gifts\/stats.*$/iU'
 				)
 			)
 			, 'transaction_sub' => array(

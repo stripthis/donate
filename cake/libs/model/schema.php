@@ -466,10 +466,12 @@ class CakeSchema extends Object {
 		$db =& ConnectionManager::getDataSource($Obj->useDbConfig);
 		$fields = $Obj->schema(true);
 		$columns = $props = array();
+
 		foreach ($fields as $name => $value) {
 			if ($Obj->primaryKey == $name) {
 				$value['key'] = 'primary';
 			}
+
 			if (!isset($db->columns[$value['type']])) {
 				trigger_error('Schema generation error: invalid column type ' . $value['type'] . ' does not exist in DBO', E_USER_NOTICE);
 				continue;

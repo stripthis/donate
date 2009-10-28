@@ -9,6 +9,7 @@ class TemplatesController extends AppController {
 	function beforeFilter() {
 		parent::beforeFilter();
 		$this->Gateway = ClassRegistry::init('Gateway');
+		$this->GatewayProcessing = $this->Template->GatewayProcessing;
 	}
 /**
  * Admin Index
@@ -70,7 +71,9 @@ class TemplatesController extends AppController {
 		$templateOptions = $this->Template->find('list', array(
 			'order' => array('name' => 'asc')
 		));
-		$this->set(compact('templateOptions'));
+		$processingOptions = $this->GatewayProcessing->find('options');
+		$this->set(compact('templateOptions', 'processingOptions'));
+
 		if ($this->isGet()) {
 			return;
 		}

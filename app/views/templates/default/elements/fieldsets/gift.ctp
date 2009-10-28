@@ -17,7 +17,10 @@
 <fieldset class="left" id="gift_type">
 	<legend><?php echo __("Gift Information"); ?></legend>
 	<?php echo $form->input('Gift.id', array('type' => 'hidden'))."\n"; ?>
-	<?php echo $form->input('Gift.type', array('options' => $typeOptions,'type' => 'hidden'))."\n"; ?>
+	<?php
+	// only support donation for now
+	// echo $form->input('Gift.gift_type_id', array('options' => $typeOptions,'type' => 'hidden'))."\n";
+	?>
 	<div class="input_wrapper radio">
 		<label for="amount" class="option_title"><?php __('Amount'); ?>: <strong class="required">*</strong></label>
 		<?php foreach ($amountOptions as $amountOption): ?>

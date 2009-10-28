@@ -5,6 +5,10 @@ class Template extends AppModel {
 		'Sluggable' => array('label' => 'name')
 	);
 
+	var $belongsTo = array(
+		'GatewayProcessing'
+	);
+
 	var $hasMany = array(
 		'TemplateStep' => array(
 			'dependent' => true

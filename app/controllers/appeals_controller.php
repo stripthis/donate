@@ -27,12 +27,17 @@ class AppealsController extends AppController {
 		$conditions = $this->_conditions($type, $params);
 
 		$this->paginate['Appeal'] = array(
+			'recursive' => 1,
 			'conditions' => $conditions,
-			'contain' => array('User(id, login)', 'Template(name)'),
+			'contain' => array(
+				'User(id, login)',
+				'Template(name)'
+			),
 			'order' => array('Appeal.name' => 'asc'),
 			'limit' => $params['my_limit']
 		);
 		$appeals = $this->paginate($this->Appeal);
+
 		$this->set(compact('appeals', 'type', 'params'));
 	}
 /**
@@ -194,6 +199,8 @@ class AppealsController extends AppController {
 					break;
 			}
 		}
+
+		$conditions = $this->Appeal->dateRange($conditions, $params, 'created');
 		return $conditions;
 	}
 }

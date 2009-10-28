@@ -9,7 +9,7 @@ class Gift extends AppModel {
 
 	var $belongsTo = array(
 		'Contact', 'User', 'Appeal', 'Office',
-		'Frequency', 'GiftType', 'Currency' //@todo less sql requests?
+		'Frequency', 'GiftType', 'Currency'
 	);
 
 	var $hasMany = array(
@@ -25,7 +25,7 @@ class Gift extends AppModel {
 	);
 
 	var $validate = array(
-		'type' => array(
+		'gift_type_id' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The type is required!',
@@ -94,7 +94,6 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateFrequency($check) {
-		$Session = Common::getComponent('Session');
 		return array_key_exists(current($check), Gift::find('frequencies'));
 	}
 /**
@@ -104,8 +103,7 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateType($check) {
-		$Session = Common::getComponent('Session');
-		return array_key_exists($check['type'], Gift::find('gift_types'));
+		return array_key_exists(current($check), Gift::find('gift_types'));
 	}
 /**
  * Validate amount - to avoid small amounts
@@ -224,8 +222,10 @@ class Gift extends AppModel {
 		return call_user_func_array(array('parent', 'find'), $args);
 	}
 /**
- * @todo: add currency support
+ * undocumented function
  *
+ * @param string $id 
+ * @return void
  * @access public
  */
 	function name($id) {
@@ -233,7 +233,7 @@ class Gift extends AppModel {
 
 		$gift = $this->find('first', array(
 			'conditions' => array('Gift.id' => $id),
-			'contain' => array('Contact(fname, lname)', 'GiftType(humanized)'),
+			'contain' => array('Contact(fname, lname)', 'GiftType(humanized)', 'Currency(iso_code)'),
 			'fields' => array('Gift.gift_type_id', 'Gift.amount', 'Gift.created')
 		));
 
@@ -241,8 +241,9 @@ class Gift extends AppModel {
 			return false;
 		}
 
-		$name = sprintf('%s %s by %s %s on %s',
+		$name = sprintf('%s %s %s by %s %s on %s',
 			$gift['Gift']['amount'],
+			$gift['Currency']['iso_code'],
 			$gift['GiftType']['humanized'],
 			$gift['Contact']['fname'],
 			$gift['Contact']['lname'],

@@ -30,7 +30,7 @@ class PagesController extends AppController {
 				}
 				$appeals = $this->Appeal->find('all', array(
 					'conditions' => array(
-						'Appeal.status' => 'published',
+						'Appeal.published' => '1',
 						'Office.live' => true
 					),
 					'contain' => array('Office'),

@@ -24,7 +24,7 @@ $favoritesCount = count($session->read('favorites'));
 			</li>
 			<li>
 				<?php
-				$label = sprintf(__('Supporters', true) . ' (%s)', $favorites['User']);
+				$label = sprintf(__('Supporters', true) . ' (%s)', $favorites['Contact']);
 				echo $html->link($label, array(
 					'controller' => 'supporters', 'action' => 'index', 'favorites',
 					'plugin' => ''

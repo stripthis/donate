@@ -22,7 +22,7 @@ $favConfig = Configure::read('Favorites');
 
 		$options = array('url' => $params);
 		$th = am($th, array(
-			$paginator->sort(__('Status', true), 'status', $options),
+			$paginator->sort(__('Published?', true), 'published', $options),
 			$paginator->sort(__('Is Default?', true), 'default', $options),
 			$paginator->sort(__('Name', true), 'name', $options),
 			$paginator->sort(__('Campaign Code', true), 'campaign_code', $options),
@@ -47,7 +47,7 @@ $favConfig = Configure::read('Favorites');
 			);
 
 			$actions[] = $html->link(
-				($appeal['Appeal']['status'] != 'published') ? __('Preview', true) : __('View', true),
+				(!$appeal['Appeal']['published']) ? __('Preview', true) : __('View', true),
 				array(
 					'controller' => 'gifts', 'action' => 'add',
 					'appeal_id' => $appeal['Appeal']['id'], 'admin' => '0'
@@ -62,7 +62,7 @@ $favConfig = Configure::read('Favorites');
 				$tr[] = $favorites->link("Appeal", $t['Appeal']['id']);
 			}
 			$tr = am($tr,array(
-				ucfirst($appeal['Appeal']['status']),
+				$appeal['Appeal']['published'] ? __('Yes', true) : __('No', true),
 				$appeal['Appeal']['default'] ? __('Yes', true) : __('No', true),
 				$appeal['Appeal']['name'],
 				$appeal['Appeal']['campaign_code'],

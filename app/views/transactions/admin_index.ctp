@@ -58,11 +58,11 @@ echo $this->element('../transactions/elements/actions', array('export' => true))
 			$tr[] = $favorites->link("Transaction", $t['Transaction']['id']);
 		}
 
-		$tr = am($tr,array(            
+		$tr = am($tr, array(
 			$t['Transaction']['status'],
 			$t['Transaction']['serial'],
 			!empty($t['Import']['serial']) ? $t['Import']['serial'] : '--',
-			$t['Transaction']['amount'].' EUR', //@todo currency
+			$t['Transaction']['amount'] . ' ' . $t['Currency']['iso_code'],
 			$t['Gateway']['name'],
 			$common->date($t['Transaction']['created']),
 			$common->date($t['Transaction']['modified']),

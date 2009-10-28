@@ -33,15 +33,5 @@ if (pluginLoaded('Filters')) {
 	);
 }
 
-$links[] = array(
-	'name' => __('Statistics', true),
-	'label' => 'export',
-	'uri' =>array(
-		'controller' => 'transactions', 'action' => 'stats',
-		'?link=' . $common->urlQuery($this->params)
-	), 
-	'options'=> array('class' => 'export filters')
-);
-
 echo $this->element('admin/actions', array('links' => $links, 'selected' => false));
 ?>

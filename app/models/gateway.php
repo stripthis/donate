@@ -33,10 +33,7 @@ class Gateway extends AppModel {
 				));
 				return Set::combine($gatewaysOffices, '/Gateway/id', '/Gateway/name');
 			case 'processing_options':
-				return array(
-					'direct' => 'Direct',
-					'redirect' => 'Redirect'
-				);
+				return ClassRegistry::init('GatewayProcessing')->find('options');
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
 	}

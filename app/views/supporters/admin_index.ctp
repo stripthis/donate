@@ -40,9 +40,6 @@ $favConfig = Configure::read('Favorites');
 			$actions = array(
 				$html->link(__('View', true), array(
 					'action' => 'view', $t['Contact']['id']),array('class'=>'view'
-				)),
-				$html->link(__('Edit', true), array(
-					'action' => 'edit', $t['Contact']['id']), array('class'=>'edit'
 				))
 			);
 
