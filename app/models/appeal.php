@@ -96,7 +96,7 @@ class Appeal extends AppModel {
 						'archived' => '0'
 					);
 					if (User::is('guest')) {
-						$conditions['status'] = 'published';
+						$conditions['published'] = '1';
 					}
 					$appeal = $this->find('first', array(
 						'conditions' => $conditions,
@@ -160,7 +160,7 @@ class Appeal extends AppModel {
 
 		if ($published && !$publishedTemplate) {
 			$msg = __('You cannot set the status to "published" if there is no published template assigned.', true);
-			$this->invalidate('status', $msg);
+			$this->invalidate('published', $msg);
 		}
 	}
 /**
