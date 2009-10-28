@@ -47,7 +47,7 @@ $favConfig = Configure::read('Favorites');
 			);
 
 			$actions[] = $html->link(
-				($appeal['Appeal']['status'] != 'published') ? __('Preview', true) : __('View', true),
+				(!$appeal['Appeal']['published']) ? __('Preview', true) : __('View', true),
 				array(
 					'controller' => 'gifts', 'action' => 'add',
 					'appeal_id' => $appeal['Appeal']['id'], 'admin' => '0'
