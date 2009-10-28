@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* App schema generated on: 2009-10-28 14:10:50 : 1256737730*/
+/* App schema generated on: 2009-10-28 15:10:31 : 1256740831*/
 class AppSchema extends CakeSchema {
 	var $name = 'App';
 
@@ -159,6 +159,12 @@ class AppSchema extends CakeSchema {
 		'id' => array('type' => 'string', 'null' => false, 'length' => 36, 'key' => 'primary'),
 		'frequency_id' => array('type' => 'string', 'null' => false, 'length' => 36),
 		'office_id' => array('type' => 'string', 'null' => false, 'length' => 36),
+		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
+	);
+	var $gateway_processings = array(
+		'id' => array('type' => 'string', 'null' => false, 'length' => 36, 'key' => 'primary'),
+		'label' => array('type' => 'string', 'null' => false, 'length' => 20),
+		'humanized' => array('type' => 'string', 'null' => false, 'length' => 20),
 		'indexes' => array('PRIMARY' => array('column' => 'id', 'unique' => 1))
 	);
 	var $gateways = array(
@@ -358,7 +364,7 @@ class AppSchema extends CakeSchema {
 		'slug' => array('type' => 'string', 'null' => false, 'length' => 100),
 		'lang' => array('type' => 'string', 'null' => false, 'length' => 3),
 		'template_step_count' => array('type' => 'integer', 'null' => false, 'length' => 2),
-		'processing' => array('type' => 'string', 'null' => false, 'default' => 'direct', 'length' => 10),
+		'gateway_processing_id' => array('type' => 'string', 'null' => false, 'length' => 36),
 		'created' => array('type' => 'datetime', 'null' => false),
 		'created_by' => array('type' => 'string', 'null' => false, 'length' => 36),
 		'modified' => array('type' => 'datetime', 'null' => false),

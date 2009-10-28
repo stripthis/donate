@@ -52,12 +52,13 @@
 	</fieldset>
 		<?php
 		if (User::allowed('Appeals', 'publish')) {
-			$infStatusOptions = array_map('ucfirst', $statusOptions);
-			$statusOptions = array_combine($statusOptions, $infStatusOptions);
-			echo $form->input('status', array('options' => $statusOptions));
+			echo $form->input('published');
 		} else {
-			$msg = __('This Appeal is "%s". You do not have permission to change the status.', true);
-			$msg = sprintf($msg, $form->data['Appeal']['status']);
+			$msg = __('This Appeal is "published".', true);
+			if (!$form->data['Appeal']['published']) {
+				$msg = __('This Appeal is "not published".', true);
+			}
+			$msg .= ' ' . __('You do not have permission to change the status.', true);
 			echo '<p>' . $msg . '</p>';
 		}
 		?>

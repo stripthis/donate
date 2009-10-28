@@ -36,7 +36,7 @@
 		</dd>
 		<dt><?php echo __('Status', true); ?></dt>
 		<dd>
-			<?php echo ucfirst($appeal['Appeal']['status']); ?>
+			<?php echo $appeal['Appeal']['published'] ? __('Published', true) : __('Unpublished', true); ?>
 		</dd>
 		<dt><?php echo __('Campaign Code', true); ?></dt>
 		<dd>

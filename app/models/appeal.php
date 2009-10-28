@@ -93,7 +93,7 @@ class Appeal extends AppModel {
 							'Appeal.slug' => $id,
 						),
 						'default' => '0',
-						'status <>' => 'archived'
+						'archived' => '0'
 					);
 					if (User::is('guest')) {
 						$conditions['status'] = 'published';
@@ -108,7 +108,7 @@ class Appeal extends AppModel {
 					$appeal = $this->find('first', array(
 						'conditions' => array('Appeal.default' => '1'),
 						'contain' => array('Office', 'Template.GatewayProcessing'),
-						'status' => 'published'
+						'published' => '1'
 					));
 				}
 				return $appeal;
@@ -145,7 +145,7 @@ class Appeal extends AppModel {
 			}
 		}
 
-		$published = isset($this->data[__CLASS__]['status']) && $this->data[__CLASS__]['status'];
+		$published = isset($this->data[__CLASS__]['published']) && $this->data[__CLASS__]['published'];
 		$templateId = false;
 		if (isset($this->data[__CLASS__]['template_id'])) {
 			$templateId = $this->data[__CLASS__]['template_id'];
@@ -158,7 +158,7 @@ class Appeal extends AppModel {
 			array('id' => $templateId), 'published', false
 		);
 
-		if (!$publishedTemplate) {
+		if ($published && !$publishedTemplate) {
 			$msg = __('You cannot set the status to "published" if there is no published template assigned.', true);
 			$this->invalidate('status', $msg);
 		}
