@@ -307,6 +307,7 @@ class GiftsController extends AppController {
 				'Contact.Address.Country(id, name)',
 				'Contact.Address.State(id, name)',
 				'Contact.Address.City(id, name)',
+				'GiftType(humanized)',
 				'Office(id, name)', 'Appeal', 'Frequency', 'Currency(iso_code)'
 			)
 		));

@@ -225,6 +225,9 @@ class TransactionsController extends AppController {
 			case 'archived':
 				$conditions['Transaction.archived'] = '1';
 				break;
+			case 'favorites':
+				$conditions['Transaction.id'] = $this->Session->read('favorites');
+				break;
 		}
 
 		if (!empty($params['keyword'])) {

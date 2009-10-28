@@ -30,7 +30,7 @@
 		</dd>
 		<dt><?php echo __('Type', true); ?></dt>
 		<dd>
-			<?php echo $gift['Gift']['type']; ?>
+			<?php echo $gift['GiftType']['humanized']; ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Amount', true); ?></dt>
