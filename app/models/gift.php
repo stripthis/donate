@@ -25,7 +25,7 @@ class Gift extends AppModel {
 	);
 
 	var $validate = array(
-		'type' => array(
+		'gift_type_id' => array(
 			'required' => array(
 				'rule' => 'notEmpty',
 				'message' => 'The type is required!',
@@ -94,7 +94,6 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateFrequency($check) {
-		$Session = Common::getComponent('Session');
 		return array_key_exists(current($check), Gift::find('frequencies'));
 	}
 /**
@@ -104,8 +103,7 @@ class Gift extends AppModel {
  * @access public
  */
 	function validateType($check) {
-		$Session = Common::getComponent('Session');
-		return array_key_exists($check['type'], Gift::find('gift_types'));
+		return array_key_exists(current($check), Gift::find('gift_types'));
 	}
 /**
  * Validate amount - to avoid small amounts

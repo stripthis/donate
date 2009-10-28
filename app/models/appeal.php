@@ -100,14 +100,14 @@ class Appeal extends AppModel {
 					}
 					$appeal = $this->find('first', array(
 						'conditions' => $conditions,
-						'contain' => array('Office', 'Template')
+						'contain' => array('Office', 'Template.GatewayProcessing')
 					));
 				}
 
 				if (empty($appeal)) {
 					$appeal = $this->find('first', array(
 						'conditions' => array('Appeal.default' => '1'),
-						'contain' => array('Office', 'Template'),
+						'contain' => array('Office', 'Template.GatewayProcessing'),
 						'status' => 'published'
 					));
 				}

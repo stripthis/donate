@@ -9,6 +9,10 @@
 		echo $form->input('id');
 		echo $form->input('name');
 		echo $form->input('slug', array('label' => __('Slug (Generated based on name if left empty)', true)));
+		echo $form->input('gateway_processing_id', array(
+			'label' => __('Processing Method', true),
+			'options' => $processingOptions
+		));
 		echo $form->input('template_id', array(
 			'label' => __('Template to copy:', true),
 			'empty' => __('Create new Template', true),

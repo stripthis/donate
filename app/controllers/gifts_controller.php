@@ -18,6 +18,7 @@ class GiftsController extends AppController {
 		$this->TemplateStepVisit = ClassRegistry::init('TemplateStepVisit');
 		$this->GatewaysOffice = $this->Office->GatewaysOffice;
 		$this->Contact = $this->Gift->Contact;
+		$this->GiftType = $this->Gift->GiftType;
 		$this->Frequency = $this->Gift->Frequency;
 		$this->Address = $this->Contact->Address;
 		$this->Phone = $this->Address->Phone;
@@ -66,6 +67,11 @@ class GiftsController extends AppController {
 		$this->loadSessionData($this->data);
 		$this->City->injectCityId($this->data);
 
+		if (!isset($this->data['Gift']['gift_type_id'])) {
+			$this->data['Gift']['gift_type_id'] = $this->GiftType->lookup(
+				array('name' => 'donation'), 'id', false
+			);
+		}
 		if (!isset($this->data['Gift']['id']) || empty($this->data['Gift']['id'])) {
 			$data = array(
 				'complete' => 0,
@@ -85,8 +91,6 @@ class GiftsController extends AppController {
 
 		$isLastStep = $step == $currentAppeal['Template']['template_step_count'];
 
-		$this->data['Contact']['dob'] = '1930-10-05 00:00:00';
-		
 		$validates = AppModel::bulkValidate($this->models, $this->data);
 
 		if (!$isLastStep && !$validates) {
@@ -123,7 +127,7 @@ class GiftsController extends AppController {
 		// @todo if appeal or payment gateway use redirect model then redirect
 		// else if the credit data is given, validates
 		$errors = false;
-		if (isset($this->data['Card']) && $currentAppeal['Appeal']['processing'] == 'manual') {
+		if (isset($this->data['Card']) && $currentAppeal['Appeal']['GatewayProcessing']['label'] == 'manual') {
 			$this->Card->set($this->data);
 			if (true || $this->Card->validates()) {
 				//@todo if application used in manual/direct debit mode, save credit card details

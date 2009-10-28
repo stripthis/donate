@@ -1,5 +1,9 @@
 <?php
 class Card extends AppModel {
+	var $belongsTo = array(
+		'CardType'
+	);
+
 	var $validate = array(
 		'id' => array(
 			'rule' => 'blank',

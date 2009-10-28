@@ -24,8 +24,7 @@
 		<?php echo $form->input('template_id', array('options' => $templateOptions)); ?>
 	</fieldset>
 		<fieldset>
-		<legend><?php __('Processing'); ?></legend>
-		<?php echo $form->input('processing', array('options' => $processingOptions)); ?>
+		<legend><?php __('Processing'); ?></legend>&nbsp;
 		<?php echo $form->input('gateway_id', array('options' => $gatewayOptions));?>
 	</fieldset>
 		<fieldset>
