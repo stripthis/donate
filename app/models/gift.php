@@ -9,7 +9,7 @@ class Gift extends AppModel {
 
 	var $belongsTo = array(
 		'Contact', 'User', 'Appeal', 'Office',
-		'Frequency', 'GiftType'
+		'Frequency', 'GiftType', 'Currency' //@todo less sql requests?
 	);
 
 	var $hasMany = array(
@@ -21,7 +21,7 @@ class Gift extends AppModel {
 			'className' => 'Transaction',
 			'type' => 'left',
 			'limit' => 1
-		)
+		), 
 	);
 
 	var $validate = array(
