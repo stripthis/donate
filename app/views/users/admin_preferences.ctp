@@ -1,3 +1,6 @@
+<?php
+$this->pageTitle = __('Preferences', true);
+?>
 <div class="content edit" id="users_edit">
 	<h2><?php echo __('My Account', true); ?></h2>
 	<?php
@@ -20,5 +23,5 @@
 	  <?php echo $form->input('Contact.fname', array('label' => 'First Name')); ?>
 	  <?php echo $form->input('Contact.lname', array('label' => 'Last Name')); ?>
 	</fieldset>
-	<?php	echo $form->end('Save'); ?>
+	<?php echo $form->end('Save'); ?>
 </div>

@@ -55,7 +55,9 @@ class TransactionsController extends AppController {
 				'Import',
 				'ChildTransaction.Gateway',
 				'ChildTransaction.Gift',
-				'ParentTransaction'
+				'ChildTransaction.Currency(iso_code)',
+				'ParentTransaction',
+				'Currency(iso_code)'
 			),
 			'limit' => $params['my_limit']
 		);
@@ -117,7 +119,8 @@ class TransactionsController extends AppController {
 				'ParentTransaction',
 				'Gift.Contact',
 				'Gift.Frequency',
-				'Gateway'
+				'Gateway',
+				'Currency(iso_code)'
 			)
 		));
 		Assert::notEmpty($transaction, '404');

@@ -14,6 +14,7 @@ class SupportersController extends AppController {
 		$this->User = ClassRegistry::init('User');
 		$this->Contact = ClassRegistry::init('Contact');
 		$this->Gift = ClassRegistry::init('Gift');
+		$this->Frequency = $this->Gift->Frequency;
 		$this->Address = ClassRegistry::init('Address');
 		$this->Country = $this->Address->Country;
 		$this->City = $this->Address->City;
@@ -31,15 +32,16 @@ class SupportersController extends AppController {
 			'Gift.office_id' => $this->Session->read('Office.id'),
 		);
 
+		$onetime = $this->Frequency->lookup('onetime', 'id', false);
 		switch ($type) {
 			case 'signups':
 				// doesn't have gift
 				break;
 			case 'oneoff':
-				$giftConditions['Gift.frequency'] = 'onetime';
+				$giftConditions['Gift.frequency_id'] = $onetime;
 				break;
 			case 'recurring':
-				$giftConditions['Gift.frequency <>'] = 'onetime';
+				$giftConditions['Gift.frequency_id <>'] = $onetime;
 				$myParams = array(
 					'start_date_day' => '01',
 					'start_date_month' => date('m', strtotime('-1 month')),

@@ -8,6 +8,7 @@ class Transaction extends AppModel {
 		'Gateway',
 		'Import',
 		'Gift',
+		'Currency',
 		'ParentTransaction' => array(
 			'className' => 'Transaction',
 			'foreignKey' => 'parent_id'

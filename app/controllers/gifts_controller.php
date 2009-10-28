@@ -1,6 +1,6 @@
 <?php
 class GiftsController extends AppController {
-	var $helpers = array('Fpdf', 'GiftForm');
+	var $helpers = array('Fpdf', 'GiftForm', 'OpenFlashChart');
 	var $models = array('Gift', 'Contact', 'Address', 'Phone');
 	var $sessAppealKey = 'gift_process_appeal_id';
 	var $sessOfficeKey = 'gift_process_office_id';
@@ -138,7 +138,6 @@ class GiftsController extends AppController {
 		}
 
 		// everything ok prepare / perform the transaction
-		//@todo dont always use the first one, make it dependent on the payment method 
 		//@todo && the amount / currency vs. payment gateway fee by offices
 		$gateway = $this->GatewaysOffice->find('by_office', array(
 			'office_id' => $officeId
@@ -246,23 +245,6 @@ class GiftsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_stats() {
-		Assert::true(User::allowed($this->name, 'admin_view'), '403');
-
-		$params = $this->_parseGridParams();
-
-		$urlData = explode('/', $this->params['url']['link']);
-		$type = $urlData[3];
-		$conditions = $this->_conditions($params, $type);
-
-		$this->set(compact('transactions', 'type', 'params'));
-	}
-/**
- * undocumented function
- *
- * @return void
- * @access public
- */
 	function admin_add($contactId = false) {
 		$countryOptions = $this->Country->find('list', array(
 			'order' => array('Country.name' => 'asc')
@@ -278,10 +260,6 @@ class GiftsController extends AppController {
 			return;
 		}
 
-		if (isset($this->data['Gift']['amount_other']) && !empty($this->data['Gift']['amount_other'])) {
-			$this->data['Gift']['amount'] = $this->data['Gift']['amount_other'];
-		}
-		$this->data['Gift']['contact_id'] = $contactId;
 		$this->data['Gift']['office_id'] = $this->Session->read('Office.id');
 
 		$this->Gift->create($this->data);
@@ -326,7 +304,7 @@ class GiftsController extends AppController {
 				'Contact.Address.Country(id, name)',
 				'Contact.Address.State(id, name)',
 				'Contact.Address.City(id, name)',
-				'Office(id, name)', 'Appeal', 'Frequency'
+				'Office(id, name)', 'Appeal', 'Frequency', 'Currency(iso_code)'
 			)
 		));
 		Assert::notEmpty($gift, '404');
@@ -334,7 +312,10 @@ class GiftsController extends AppController {
 
 		$this->paginate['Transaction'] = array(
 			'conditions' => array('Transaction.gift_id' => $id),
-			'contain' => array('Gateway(name)'),
+			'contain' => array(
+				'Gateway(name)',
+				'Currency(iso_code)'
+			),
 			'order' => array('Transaction.created' => 'asc')
 		);
 		$transactions = $this->paginate('Transaction');
@@ -347,6 +328,35 @@ class GiftsController extends AppController {
 			'contain' => array('User(login, id)')
 		));
 		$this->set(compact('gift', 'comments', 'commentMethod', 'transactions'));
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function admin_stats() {
+		$this->_handleTimePeriod();
+		$gifts = $this->Gift->find('all', array(
+			'conditions' => array(
+				'office_id' => $this->Session->read('Office.id'),
+				"DATE_FORMAT(created, '%Y-%m-%d') >= '" . $this->startDate . "'",
+				"DATE_FORMAT(created, '%Y-%m-%d') <= '" . $this->endDate . "'",
+			),
+			'fields' => array('created', 'amount', 'archived', 'complete')
+		));
+
+		$months = Common::months($this->startDate, $this->endDate, false);
+		$result = array();
+		foreach ($months as $month) {
+			$result[$month] = array();
+			foreach ($gifts as $gift) {
+				if (Common::sameMonth($gift['Gift']['created'], $month)) {
+					$result[$month][] = $gift;
+				}
+			}
+		}
+		$this->set(compact('result', 'gifts', 'months'));
 	}
 /**
  * undocumented function

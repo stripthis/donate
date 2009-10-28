@@ -15,9 +15,20 @@
 		</ul>
 	</div>
 	<?php echo $form->create('Gift', array('url' => $this->here))."\n"; ?>
-	<?php echo $this->element('../templates/default/elements/gift', compact('appealOptions')); ?>
-	<div class="clear"></div>
-	<?php echo $this->element('../templates/default/elements/payment'); ?>
+	<fieldset class="gift" id="gift_type">
+		<legend><?php echo __("Gift Information"); ?></legend>
+		<?php
+		echo $form->input('Gift.type', array('options' => Gift::find('gift_types')));
+		echo $form->input('Gift.amount', array('label' => 'Amount:'));
+		echo $form->input('Gift.appeal_id', array('options' => $appealOptions));
+		echo $form->input('currency', array('label' => '', 'options' => Gift::find('currencies')));
+		echo $form->input('frequency_id', array(
+			'label' => 'Frequency' . ': ' . $giftForm->required(),
+			'options' => Gift::find('frequencies')
+		));
+		echo $form->input('Gift.contact_id', array('type' => 'hidden', 'value' => $contact['Contact']['id']));
+		?>
+	</fieldset>
 	<div class="clear"></div>
 	<?php echo $form->submit('Save', array('class' => 'donate-submit')); ?>
 	<?php echo $form->end(); ?>

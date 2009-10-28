@@ -24,7 +24,7 @@ class ExportsController extends AppController {
  * @access public
  */
 	function admin_gifts() {
-		$this->_process('Gift', array('Contact'));
+		$this->_process('Gift', array('Contact', 'Currency'));
 	}
 /**
  * undocumented function
@@ -33,7 +33,7 @@ class ExportsController extends AppController {
  * @access public
  */
 	function admin_transactions() {
-		$this->_process('Transaction', array('Gift'));
+		$this->_process('Transaction', array('Gift', 'Currency'));
 	}
 /**
  * undocumented function
@@ -70,7 +70,7 @@ class ExportsController extends AppController {
 		$items = $this->$model->find('all', array(
 			'conditions' => $conditions,
 			'contain' => $contain,
-			'fields' => $this->data[$model]['fields']
+			'fields' => am($this->data[$model]['fields'], array('Currency.iso_code'))
 		));
 
 		// remove the gift id from fields list now if needed
@@ -84,6 +84,11 @@ class ExportsController extends AppController {
 		}
 
 		$items = $this->filterFields($model, $items, $contain);
+
+		foreach ($items as $i => $item) {
+			$items[$i][$model]['amount'] .= ' ' . $items[$i]['Currency']['iso_code'];
+			unset($items[$i]['Currency']);
+		}
 
 		if (isset($this->data[$model]['download']) && $this->data[$model]['download']) {
 			$name = $plural . '_export_' . date('Y_m_d_H_i');

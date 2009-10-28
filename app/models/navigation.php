@@ -60,11 +60,6 @@ class Navigation extends AppModel{
 					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
 					, 'role' => 'root'
 				)*/
-				, __('Admin', true) => array(
-					'/admin/dashboards'
-					, '#/\/admin\/(users|offices|dashboards|roles|logs|smileys).*/iU'
-					, 'role' => 'root'
-				)
 				, __('Office Config', true) => array(
 					'/admin/offices/edit'
 					, '#/\/admin\/offices(\/edit|\/view).*/iU'
@@ -113,6 +108,10 @@ class Navigation extends AppModel{
 				, __('Archived', true) => array(
 					'/admin/gifts/index/archived'
 					, '#/^\/admin\/gifts\/index\/archived.*$/iU'
+				)
+				, __('Statistics', true) => array(
+					'/admin/gifts/stats'
+					, '#/^\/admin\/gifts\/stats.*$/iU'
 				)
 			)
 			, 'transaction_sub' => array(

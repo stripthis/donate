@@ -35,7 +35,7 @@
 		</dd>
 		<dt><?php echo __('Amount', true); ?></dt>
 		<dd>
-			<?php echo $gift['Gift']['amount']; ?>
+			<?php echo $gift['Gift']['amount'] . ' ' . $gift['Currency']['iso_code']; ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Description', true); ?></dt>
@@ -145,7 +145,7 @@
 				$t['Transaction']['status'],
 				$t['Transaction']['serial'],
 				$t['Transaction']['order_id'],
-				$t['Transaction']['amount'].' EUR', //@todo currency
+				$t['Transaction']['amount'] .' ' . $t['Currency']['iso_code'],
 				$t['Gateway']['name'],
 				$common->date($t['Transaction']['created']),
 				implode(' - ', $actions)

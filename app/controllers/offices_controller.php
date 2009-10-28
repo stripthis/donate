@@ -18,7 +18,7 @@ class OfficesController extends AppController {
 /**
  * undocumented function
  *
- * @param string $officeId 
+ * @param string $officeId
  * @return void
  * @access public
  */

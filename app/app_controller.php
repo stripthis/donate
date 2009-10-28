@@ -486,5 +486,51 @@ class AppController extends Controller {
 		}
 		return $params;
 	}
+/**
+ * Calculate the whole business around the date range that was picked
+ *
+ * @return void
+ * @access public
+ */
+	function _handleTimePeriod() {
+		$sessKeyStart = 'stats_start_date';
+		$sessKeyEnd = 'stats_end_date';
+
+		if (!$this->isPost()) {
+			$startDate = strtotime(Configure::read('Stats.startDate'));
+
+			// last day of last month
+			$endDate = strtotime(date('Y-m-01', strtotime('+1 month')));
+
+			if ($this->Session->check($sessKeyStart)) {
+				$startDate = $this->Session->read($sessKeyStart);
+			}
+			if ($this->Session->check($sessKeyEnd)) {
+				$endDate = $this->Session->read($sessKeyEnd);
+			}
+
+			if (isset($this->params['url']['startDate'])) {
+				$startDate = $this->params['url']['startDate'];
+			}
+			if (isset($this->params['url']['endDate'])) {
+				$endDate = $this->params['url']['endDate'];
+			}
+		} else {
+			$startDate = strtotime($this->cleanupDate($this->data['Statistics']['startDate']));
+			$endDate = strtotime($this->cleanupDate($this->data['Statistics']['endDate']));
+
+			$this->Session->write($sessKeyStart, $startDate);
+			$this->Session->write($sessKeyEnd, $endDate);
+		}
+
+		if ($startDate > $endDate) {
+			$msg = __('Sorry, the beginning date must be before the end date.', true);
+			$this->User->invalidate('startDate', __($msg, true));
+		}
+
+		$this->startDate = date('Y-m-d', $startDate);
+		$this->endDate = date('Y-m-d', $endDate);
+		$this->set(compact('startDate', 'endDate'));
+	}
 }
 ?>
