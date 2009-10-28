@@ -93,9 +93,9 @@ class Navigation extends AppModel{
 					'/admin/gifts/index/all'
 					, '#/^\/admin\/gifts\/index\/all.*$/iU'
 				)
-				, __('One Off', true) => array(
-					'/admin/gifts/index/oneoff'
-					, '#/^\/admin\/gifts\/index\/oneoff.*$/iU'
+				, __('Onetime', true) => array(
+					'/admin/gifts/index/onetime'
+					, '#/^\/admin\/gifts\/index\/onetime.*$/iU'
 				)
 				, __('Recurring', true) => array(
 					'/admin/gifts/index/recurring'
