@@ -237,6 +237,7 @@ class GiftsController extends AppController {
 				'Frequency(humanized)',
 				'Contact(fname, lname, email,created,modified,id)',
 				'Transaction(id,status,gateway_id,created,modified)' => 'Gateway(id,name)',
+				'Appeal(name)'
 			),
 			'limit' => $params['my_limit'],
 			'order' => $type != 'recurring'
