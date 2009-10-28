@@ -653,7 +653,7 @@ ul.selector li ul.subitem li a{
 	margin:-10px 0 0 0;
 	padding:0;
 }
-.sidebar .search .submit input{
+.sidebar .submit input{
 	margin:0;
 	font-size:1.3em;
 	width:100%;
@@ -663,6 +663,29 @@ ul.selector li ul.subitem li a{
   margin:0;
   padding:5px;
   vertical-align:text-top;
+}
+.sidebar textarea{
+	border:2px solid #CCC;
+	width:99%;
+  margin: 2px 0 0 0;
+  padding:0;
+  font-size:1em;
+}
+.sidebar .chat label{
+	display:none;
+	margin:0;
+}
+.sidebar .chat label{
+	display:none;
+}
+.sidebar .chat .chat_window{
+	margin:0;
+}
+.sidebar p.empty{
+	font-size:1em;
+	font-weight:bold;
+	color:#777;
+	padding:5px;
 }
 /* helpbox */
 .sidebar .help{
@@ -693,6 +716,9 @@ ul.selector li ul.subitem li a{
 .sidebar .filters h3{
   background:transparent url(/img/icons/S/cog.png) 6px center no-repeat;
 }
+
+/* chat */
+
 /***********************************************************************************
  * Content
  ***********************************************************************************/

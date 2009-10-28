@@ -96,5 +96,33 @@ class Contact extends AppModel {
 	static function getTitles() {
 		return Configure::read('App.contact.titles');
 	}
+/**
+ * Indicates if a given contact is complete 
+ * @return completion rate (ex: 0 to 100%)
+ */
+	static function getCompleteness($contact){
+		if (!isset($contact['Contact']['id'])) {
+			return 0;
+		}
+		//@todo based on validation rules and table description
+		$field = 1;
+		$field_count = 3;
+		if (isset($contact['Contact']['lname'])) {
+			$field++;
+		}
+		if (isset($contact['Contact']['email'])) {
+			$field++;
+		}
+		return round($field/$field_count*100);
+	}
+/**
+ * Shortcut, is a contact complete?
+ * 
+ * @param $contact
+ * @return true or false
+ */	
+	static function isComplete($contact){
+		return (Contact::getCompleteness($contact) == 100);
+	}
 }
 ?>

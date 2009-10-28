@@ -238,11 +238,16 @@ class GiftsController extends AppController {
 
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,
-			'recursive' => 2,
+			'recursive' => 3, //@todo custom query?
 			'contain' => array(
 				'Frequency(humanized)',
 				'Contact(fname, lname, email,created,modified,id)',
+				'Contact.Address(zip,country_id,state_id)',  //@todo another way to get address in the view?
+				'Contact.Address.Country',
+				'Contact.Address.State',
+				'Contact.Address.City',
 				'Transaction(id,status,gateway_id,created,modified)' => 'Gateway(id,name)',
+				'Currency(id,name,sign,iso_code)',
 				'Appeal(name)'
 			),
 			'limit' => $params['my_limit'],

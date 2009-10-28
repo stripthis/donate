@@ -1,5 +1,12 @@
 <?php
-$contact['Contact']['status'] = 'tick';
+//format address //@todo multiple address
+$address['Address'] = isset($contact['Contact']['Address'][0]) ? 
+	$contact['Contact']['Address'][0] : array();
+//format status 
+if(!isset($contact['Contact']['status'])) {
+	$contact['Contact']['status'] = Contact::getCompleteness($contact);
+}
+// recurring options for collumns elements
 $options = array(
 	'model' => 'Contact', 
 	'id' => $contact['Contact']['id'],
@@ -15,20 +22,54 @@ $options = array(
 	<?php echo $this->element('tableset/collumns/favorites',$options); ?>
 	<?php echo $this->element('tableset/collumns/status', $options); ?>
 	<td class="title">
-		<a href="/admin/supporters/view/<?php echo $contact['Contact']['id']; ?>" class="iconic profile">
-			<?php echo ucfirst($contact['Contact']['fname']); ?>
-			<?php echo ucfirst($contact['Contact']['lname']); ?>  
-			(<?php echo $contact['Contact']['email']; ?>)
+			<?php 
+				$label = '';
+				if (isset($contact['Contact']['fname'])) {
+					$label .= ucfirst($contact['Contact']['fname']).' ';
+				} else {
+					$label .= $common->emptyNotice(__('no first name',true)).' ';
+				}
+				if (isset($contact['Contact']['lname'])) {
+					$label .= ucfirst($contact['Contact']['lname']);
+				} else {
+					$label .= $common->emptyNotice(__('no last name',true)).' ';
+				}
+				if (isset($contact['Contact']['email'])) {
+					$label .= ' (' . low($contact['Contact']['email']) . ')';
+				} else {
+					$label .= ' (' .$common->emptyNotice(__('no email',true)) . ')';
+				}
+				if (isset($contact['Contact']['id'])) {
+					echo $html->link($label, 
+						array('controller' => 'supporters', 'action' => 'view', $contact['Contact']['id']),
+						array('class'=> 'iconic profile')
+					);
+				} else {
+					echo '<p class=\'iconic profile\'>'.$label.'</p>';
+				}
+			?>
 		</a>
 	</td>
 	<td class="description">
-		<?php if(isset($contact['Contact']['Address'])) : //@todo multiple address ?>
-			<?php echo $contact['Contact']['Address'][0]['zip']; ?>
-			<?php echo $contact['Contact']['Address'][0]['City']['name']; ?> - 
-			<?php echo $contact['Contact']['Address'][0]['Country']['name']; ?>
-		<?php else: ?>
-			&nbsp;
-		<?php endif; ?>
+			<?php 
+				$label = '';
+				if (isset($address['Address']['zip'])) {
+					$label .= $address['Address']['zip'].' '; 
+				} else {
+					$label .= $common->emptyNotice(__('no zipcode',true)).' ';
+				}
+				if (isset($address['Address']['City']['name'])) {
+					$label .= $address['Address']['City']['name'].' '; 
+				} else {
+					$label .= $common->emptyNotice(__('no city',true)).' ';
+				}
+				if (isset($address['Address']['Country']['name'])) {
+					$label .= $address['Address']['Country']['name'].' '; 
+				} else {
+					$label .= $common->emptyNotice(__('no country',true)).' ';
+				}
+				echo $label;
+			?>
 	</td>
 	<?php echo $this->element('tableset/collumns/attachments',$options); ?>
 	<?php echo $this->element('tableset/collumns/comments',$options); ?>

@@ -27,7 +27,7 @@
 					<?php endforeach; ?>
 				</ul>
 			<?php else : ?>
-				<?php __('There is nothing to display.')?>
+				<p class="empty"><?php __('Sorry, there is nothing to display.')?></p>
 			<?php endif; ?>
 		</div>
 	</div>

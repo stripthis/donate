@@ -1,14 +1,26 @@
 <?php
-$class = "gift";
-$id = '';
-$gift['Gift']['status'] = $common->giftStatus($gift);
+$contact['Contact'] = isset($gift['Contact']) ? $gift['Contact']	: $gift['Gift']['Contact'];
+
+// format status
+if (isset($gift['Gift']['status'])) {
+	$status = $gift['Gift']['status'];
+}else {
+	$status = false;
+}
+if ($status && isset($leaf) && !$leaf) {
+	// generate 'aggregate' status //@todo in model?
+	if(!Contact::isComplete($contact)) {
+		$status = false;
+	}
+	//@todo same with transaction status
+}
 
 // recurring options for collumns elements
 $options = array(
 	'model' => 'Gift', 
 	'id' => $gift['Gift']['id'],
-	'status' => $gift['Gift']['status'],
-	'allowEmpty' => (isset($allowEmpty) ? $allowEmpty : true),
+	'status' => $status,
+	'allowEmpty' => isset($allowEmpty) ? $allowEmpty : true,
 	'leaf' => isset($leaf) ? $leaf : false,
 	'parent_id' => isset($parent_id) ? $parent_id : false,
 	'do_selection' => isset($do_selection) ? $do_selection : 1,
@@ -18,13 +30,8 @@ $options = array(
 	'colsToAppend' => isset($colsToAppend) ? $colsToAppend : false
 );
 ?>
-
 <tr class="<?php echo $common->getFoldClass($options); ?>">
 	<?php
-	$contactData = isset($gift['Contact'])
-					? $gift['Contact']
-					: $gift['Gift']['Contact'];
-
 	if ($options['do_selection']) {
 		echo $this->element('tableset/collumns/selection', $options);
 	}
@@ -41,37 +48,79 @@ $options = array(
 	<td class="title gift details" >
 		<span class="iconic gift creditcard">
 			<?php
-			$frequency = isset($gift['Frequency']['humanized'])
-							? $gift['Frequency']['humanized']
-							: $gift['Gift']['Frequency']['humanized'];
-			echo $gift['Gift']['amount'] . ' EUR ' . $frequency;
+			//prd($gift);
+			// format frequency
+			if (isset($gift['Frequency']['humanized'])) {
+				$frequency = low($gift['Frequency']['humanized']);
+			} elseif (isset($gift['Gift']['Frequency']['humanized'])) {
+				$frequency = low($gift['Gift']['Frequency']['humanized']);
+			} else {
+				$frequency = $common->emptyNotice(__('Undefined',true));
+			}
+			// format amount
+			if (isset($gift['Gift']['amount'])) {
+				$amount = $gift['Gift']['amount'];
+			} else {
+				$amount = $common->emptyNotice(__('Undefined',true));
+			}
+			// format currency
+			if (isset($gift['Currency']['iso_code'])) {
+				$currency = up($gift['Currency']['iso_code']); // or sign, name
+			} else {
+				$currency = $common->emptyNotice(__('???',true));
+			}
+			// format type
+			if (isset($gift['Gift']['gift_type_id'])) {
+				$type = low($gift['Gift']['gift_type_id']); // @todo clean data model
+			} else {
+				$type = $common->emptyNotice(__('???',true));
+			}
+			echo $amount.' '.$currency.' '.$frequency.' '.$type;
 			?>
 		</span>
-		<?php if (!$options['leaf']) : ?>
-			#<?php echo $gift['Gift']['serial']?>
-			<?php if (isset($type) && $type != 'onetime' || !isset($type)) : ?>
-				(<?php echo __('due',true) ?>: <?php echo $gift['Gift']['due'] ? __('yes',true) : __('no',true)?>)
-			<?php endif; ?>
-		<?php endif; ?>
+		<?php 
+		/*	if (isset($type) && $type != 'onetime' || !isset($type)) {
+				echo '('.__('due',true) ?>: <?php echo $gift['Gift']['due'] ? __('yes',true) : __('no',true).')';
+			}*/
+		?>
 	</td>
-
 	<?php if (!$options['leaf']) : ?>
 		<td class="description contact details">
-			<?php
-			$validData = isset($contactData['fname']) && isset($contactData['lname']) && $contactData['email'];
-			if ($validData) {
-				$label = ucfirst($contactData['fname']) . ' ' . ucfirst($contactData['lname']);
-				$label .= ' (' . low($contactData['email']) . ')';
-				echo $html->link($label, array(
-					'controller' => 'gifts', 'action' => 'view', $gift['Gift']['id']
-				));
-			} else {
-				echo '--';
-			}
+			<?php 
+				$label = '';
+				if (isset($contact['Contact']['fname'])) {
+					$label .= ucfirst($contact['Contact']['fname']).' ';
+				} else {
+					$label .= $common->emptyNotice(__('no first name',true)).' ';
+				}
+				if (isset($contact['Contact']['lname'])) {
+					$label .= ucfirst($contact['Contact']['lname']);
+				} else {
+					$label .= $common->emptyNotice(__('no last name',true)).' ';
+				}
+				if (isset($contact['Contact']['email'])) {
+					$label .= ' (' . low($contact['Contact']['email']) . ')';
+				} else {
+					$label .= ' (' .$common->emptyNotice(__('no email',true)) . ')';
+				}
+				if (isset($contact['Contact']['id'])) {
+					echo $html->link($label, 
+						array('controller' => 'supporters', 'action' => 'view', $contact['Contact']['id'])
+					);
+				} else {
+					echo $label;
+				}
 			?>
 		</td>
 	<?php else : ?>
-		<td class="description">Some more information</td>
+		<td class="description">
+			<?php
+				$label = '#'.$gift['Gift']['serial'];
+				echo $html->link($label, array(
+					'controller' => 'gifts', 'action' => 'view', $gift['Gift']['id']
+				));
+			?>
+		</td>
 	<?php endif; ?>
 
 	<?php

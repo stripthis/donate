@@ -140,26 +140,6 @@ class CommonHelper extends Apphelper {
 		}
 		return $items;
 	}
-/**
- * undocumented function
- *
- * @param string $gift 
- * @return void
- * @access public
- */
-	function giftStatus($gift) {
-		if (!isset($gift['Gift'])) {
-			$gift = array('Gift' => $gift);
-		}
-
-		$status = 'tick';
-		if (!$gift['Gift']['complete']) {
-			$status = 'error';
-		} elseif (isset($gift['Gift']['status']) && !empty($gift['Gift']['status'])) {
-			$status = $gift['Gift']['status'];
-		}
-		return $status;
-	}
 /** 
  * Format a help message
  * @param $help array{content, type, class}
@@ -191,7 +171,7 @@ class CommonHelper extends Apphelper {
 		}
 	}
 /**
- * undocumented function
+ * Format the date in a nice format
  *
  * @param string $date 
  * @return void
@@ -208,7 +188,7 @@ class CommonHelper extends Apphelper {
 		return date($format, $date);
 	}
 /**
- * undocumented function
+ * Generates Gravatar link and picture
  *
  * @param string $email 
  * @return void
@@ -235,6 +215,15 @@ class CommonHelper extends Apphelper {
  			return $url . '&' . $query;
 		}
 		return $query;
+	}
+/**
+ * Special formating for empty field (cf. highlighting)
+ * 
+ * @param $str
+ * @return string
+ */
+	function emptyNotice($str){
+		return '<strong class="empty">'.$str.'</strong>';
 	}
 }
 ?>

@@ -21,7 +21,7 @@ class Gift extends AppModel {
 			'className' => 'Transaction',
 			'type' => 'left',
 			'limit' => 1
-		)
+		), 
 	);
 
 	var $validate = array(
