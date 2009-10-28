@@ -10,7 +10,7 @@ $config = array(
 		'models' => array(
 			'Gift' => 'name',
 			'Transaction' => 'serial',
-			'User' => 'login',
+			'Contact' => 'name',
 			'Comment' => 'increment'
 		),
 		'loadConditions' => array(
