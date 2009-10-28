@@ -8,7 +8,8 @@ $config = array(
 		'tooltip.css' => '*:*',
 		'datepicker.css' => '*:*',
 		'thickbox.css' => 'Tellfriends:refer, Tellfriends:openinviter',
-		'jquery.datepick.css' => '*:*'
+		'jquery.datepick.css' => '*:*',
+		'admin_debug.css' => '*:*,!*:admin_*',
 	)
 );
 ?>

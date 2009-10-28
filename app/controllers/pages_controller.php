@@ -61,7 +61,14 @@ class PagesController extends AppController {
  */
 	function admin_display() {
 		$this->viewPath = 'pages' . DS . 'admin' . DS . 'help';
-		return $this->render('start');
+		$path = func_get_args();
+		$count = count($path);
+		if (!$count) {
+			$page = 'start';
+		} else {
+			$page = $path[0];
+		}
+		return $this->render($page);
 	}
 }
 ?>

@@ -13,7 +13,7 @@
 ?>
 </head>
 <body>
-<?php //echo $this->element('admin/debug_header'); ?>
+<?php echo $this->element('admin/debug/header'); ?>
 <div id="container">
 <?php echo $content_for_layout; ?>
 </div>

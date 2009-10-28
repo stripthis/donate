@@ -1253,6 +1253,27 @@ div.related {
   display:block;
 }
 
+/* faq */
+ul.faq, ul.faq li, ul.faq li h3{
+	padding:0;
+	margin:0;
+}
+ul.faq li{
+	list-style-type:none;
+	font-size:1.1em;
+	margin:4px 0;
+}
+ul.faq li a.toggle{
+	display:block;
+	background:#EFEFEF;
+	-moz-border-radius:5px;
+}
+ul.faq li a.closed{
+	display:block;
+}
+ul.faq li p, ul.faq li a.toggle, ul.faq li h3{
+	padding:5px 10px;
+}
 /***********************************************************************************
  * Footer
  ***********************************************************************************/

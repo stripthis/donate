@@ -144,6 +144,21 @@ class AppealsController extends AppController {
 	}
 /**
  * undocumented function
+ */
+	function admin_redirect(){
+		$url = array(
+			'controller' => 'gifts', 
+			'action' => 'add' , 
+			'admin' => 0
+		);
+		if(isset($this->params['data']['Appeal']['id'])) {
+			$url[] =	'appeal_id:' . $this->params['data']['Appeal']['id'];
+		}
+		$this->redirect($url);
+		exit;
+	}
+/**
+ * undocumented function
  *
  * @param string $params 
  * @return void
