@@ -25,13 +25,13 @@ class AppController extends Controller {
 	var $plugins = array(
 		// 'Bugs',
 		'Comments', 'Favorites', 'Tellfriends', 'Logging', 'Chat',
-		'Smileys', 'Segments', 'Filters'
+		'Smileys', 'Segments', 'Filters', 'Bibitfake'
 	);
 
 	var $helpers = array(
 		'Html', 'Javascript', 'Time', 'Form', 'Common', 'Text', 'Session',
 		'Paginator', 'Plural', 'SimpleTextile', 'Cache', 'MyPaginator',
-		'Favorites', 'Chat.AjaxChat', 'Smileys.Smiley'
+		'Favorites', 'Chat.AjaxChat', 'Smileys.Smiley',
 	);
 
 	var $ignoreUserSession = false;

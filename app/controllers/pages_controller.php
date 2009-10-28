@@ -48,7 +48,7 @@ class PagesController extends AppController {
 		if (!empty($path[$count - 1])) {
 			$title = Inflector::humanize($path[$count - 1]);
 		}
-		
+
 		$this->set(compact('page', 'subpage', 'title'));
 		$this->layout = 'default';
 		$this->render(join('/', $path));

@@ -1,6 +1,6 @@
 <?php 
 /* SVN FILE: $Id$ */
-/* App schema generated on: 2009-10-28 15:10:25 : 1256741545*/
+/* App schema generated on: 2009-10-28 17:10:09 : 1256745849*/
 class AppSchema extends CakeSchema {
 	var $name = 'App';
 

@@ -17,7 +17,8 @@ class RemoveCacheShell extends Shell {
 	function main() {
 		$paths = array(
 			APP . 'tmp',
-			APP . 'tmp' . DS . 'cache'
+			APP . 'tmp' . DS . 'cache',
+			APP . 'tmp' . DS . 'cache' . DS . 'persistent'
 		);
 
 		foreach ($paths as $path) {

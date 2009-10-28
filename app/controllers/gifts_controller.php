@@ -161,6 +161,12 @@ class GiftsController extends AppController {
 		$tId = $this->Transaction->getLastInsertId();
 
 		$result = $this->Transaction->process($tId);
+
+		if (is_string($result)) {
+			$this->dropSessionData();
+			return $this->redirect($result);
+		}
+
 		if ($result !== true) {
 			$msg = sprintf(__('There was a problem processing the transaction: %s', true), $result);
 			$this->TemplateStepVisit->trackHit($templateId, $appealId, $step);

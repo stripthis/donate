@@ -38,8 +38,20 @@ class Transaction extends AppModel {
 		if (empty($transaction)) {
 			return 'invalid';
 		}
-		
-		// update gift status as transaction status changes via Gift::updateStatus
+
+		// bibitFake
+		$Bibit = ClassRegistry::init('Bibitfake.Bibit');
+		$result = $Bibit->process(array('tId' => $id));
+		$this->set(array(
+			'id' => $id,
+			'order_id' => $result['order_id']
+		));
+
+		if (isset($result['url'])) {
+			return $result['url'];
+		}
+
+		// for direct method update gift status as transaction status changes via Gift::updateStatus
 		return true;
 	}
 /**
