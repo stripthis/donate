@@ -573,6 +573,7 @@ class GiftsController extends AppController {
 					$conditions['or'] = array(
 						'Gift.serial LIKE' => '%' . $params['keyword'] . '%',
 						'Appeal.name LIKE' => '%' . $params['keyword'] . '%',
+						'GiftType.humanized LIKE' => '%' . $params['keyword'] . '%',
 						"CONCAT(Contact.fname,' ',Contact.lname) LIKE" => '%' . $params['keyword'] . '%'
 					);
 					break;

@@ -43,6 +43,7 @@ class Mailer{
 			App::import('Core', 'Router');
 			$Email->Controller = new AppController();
 		}
+
 		$Email->Controller->set($options['vars']);
 
 		if ($options['store']) {
