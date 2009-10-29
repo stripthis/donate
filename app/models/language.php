@@ -17,17 +17,21 @@ class Language extends AppModel {
 		$args = func_get_args();
 		switch ($type) {
 			case 'options':
-				$Session = Common::getComponent('Session');
-				$langs = $this->LanguagesOffice->find('all', array(
-					'conditions' => array(
-						'office_id' => $Session->read('Office.id')
-					),
-					'fields' => array('language_id')
-				));
 				$conditions = array();
-				if (!empty($langs)) {
-					$conditions['id'] = Set::extract('/LanguagesOffice/language_id', $langs);
+
+				if (!isset($query['all'])) {
+					$Session = Common::getComponent('Session');
+					$langs = $this->LanguagesOffice->find('all', array(
+						'conditions' => array(
+							'office_id' => $Session->read('Office.id')
+						),
+						'fields' => array('language_id')
+					));
+					if (!empty($langs)) {
+						$conditions['id'] = Set::extract('/LanguagesOffice/language_id', $langs);
+					}
 				}
+
 				return $this->find('list', array(
 					'conditions' => $conditions,
 					'fields' => array('code', 'name'),

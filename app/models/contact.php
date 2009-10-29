@@ -119,7 +119,7 @@ class Contact extends AppModel {
  * @param $contact
  * @return true or false
  */	
-	static function isComplete($contact){
+	static function isComplete($contact) {
 		return Contact::getCompleteness($contact) == 100;
 	}
 }

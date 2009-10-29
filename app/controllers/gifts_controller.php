@@ -143,8 +143,6 @@ class GiftsController extends AppController {
 			return $this->render('step' . $step);
 		}
 
-		// everything ok prepare / perform the transaction
-		// @todo && the amount / currency vs. payment gateway fee by offices
 		$gateway = $this->GatewaysOffice->find('by_office', array(
 			'office_id' => $officeId
 		));

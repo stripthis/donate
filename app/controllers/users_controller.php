@@ -268,13 +268,9 @@ class UsersController extends AppController {
  * @access public
  */
 	function admin_preferences($id = null) {
-		$langOptions = $this->Language->find('options');
+		$langOptions = $this->Language->find('options', array('all' => true));
 		$this->set(compact('langOptions'));
-		// 'eng' => 'English',
-		// 'fre' => 'French',
-		// 'spa' => 'Spanish',
-		// 'chi' => 'Chinese',
-		// 'hin' => 'Hindi'
+
 		if ($this->isGet()) {
 			return $this->data = User::get();
 		}
