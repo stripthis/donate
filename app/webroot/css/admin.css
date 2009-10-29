@@ -413,16 +413,13 @@ input[type=submit] {
 }
 /* use badge */
 #header #userbadge{
-	/*position:absolute;
-	top:0;
-	right:20px;*/
 	float:right;
 	margin-right:20px;
-  background:#1d791d;
-  color:white;
-  font-size:1.1em;
-  padding:10px 20px 8px 20px;
-  -moz-border-radius:0 0 5px 5px;
+	background:#1d791d;
+	color:white;
+	font-size:1.1em;
+	padding:10px 20px 8px 20px;
+	-moz-border-radius:0 0 5px 5px;
 }
 #header #userbadge a.logout{
 	padding:0 25px 0 5px;
@@ -964,11 +961,9 @@ ul.selector li ul.subitem li a{
 	height:16px;
 	display:block;
 	background:transparent url(../img/admin/layout/plus.png) 0 0 no-repeat;
-	/*background:transparent url(../img/icons/S/text_indent_remove.png) 0 0 no-repeat;*/
 }
 .index_wrapper table a.toggle.open{
 	background:transparent url(../img/admin/layout/minus.png) 0 0 no-repeat;
-	/*background:transparent url(../img/icons/S/text_indent.png) 0 0 no-repeat;*/
 }
 .index_wrapper th{
 	text-align:left;
@@ -1319,3 +1314,5 @@ ul.faq li p, ul.faq li a.toggle, ul.faq li h3{
 #footer a img{
 	float:left;
 }
+
+.cake-sql-log th, .cake-sql-log td {text-align:left;}
