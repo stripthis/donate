@@ -1,6 +1,3 @@
-/**
- * launch browser add to favorite dialog
- */
 function addFavorite(){
 	var title = document.title;
 	var url = location.href;
@@ -16,22 +13,17 @@ function addFavorite(){
 	}
 }
 
-/**
- * launch browser print dialog
- */
 function printThis(){
-  if(window.print) window.print();  
-  else{
-    var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
-    document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
-    WebBrowser1.ExecWB(6, 2);  
-    WebBrowser1.outerHTML = "";  
-  }
+	if (window.print) {
+		window.print();
+	} else {
+		var WebBrowser = '<OBJECT ID="WebBrowser1" WIDTH=0 HEIGHT=0 CLASSID="CLSID:8856F961-340A-11D0-A96B-00C04FD705A2"></OBJECT>';
+		document.body.insertAdjacentHTML('beforeEnd', WebBrowser);
+		WebBrowser1.ExecWB(6, 2);
+		WebBrowser1.outerHTML = "";
+	}
 }
 
-/**
- * MAIN (JQUERY) - on document ready
- */
 $(function() {
 	var saveWidgetsText = $('a.save-widgets').text();
 	$('a.save-widgets').click(function() {
@@ -60,9 +52,7 @@ $(function() {
 			.attr('value', 'Processing ..')
 			.attr('disabled', true);
 	});
-/**
- * Cake SQL Log (app debug mode)
- */
+
 	if ($('.cake-sql-log').length > 0) {
 		$('.cake-sql-log').hide();
 		$('<a href="#">Toggle Sql Log</a>')
@@ -72,44 +62,6 @@ $(function() {
 				return false;
 			});
 	}
-/**
- * Hint for input fields (text)
- * @credit http://remysharp.com/2007/01/25/jquery-tutorial-text-box-hints/
- */
-	$.fn.hint = function (blurClass) {
-		if (!blurClass) { 
-			blurClass = 'blur';
-		}
-		return this.each(function () {
-			var $$ = $(this); 
-			var title = $$.attr('title'); 
-			if (title) { 
-				$$.blur(function () {
-					if ($$.val() == '') {
-						$$.val(title).addClass(blurClass);
-					}
-				})
-				.focus(function () {
-					if ($$.val() == title && $$.hasClass(blurClass)) {
-						$$.val('').removeClass(blurClass);
-					}
-				})
-				.parents('form:first').submit(function () {
-					if ($$.val() == title && $$.hasClass(blurClass)) {
-						$$.val('').removeClass(blurClass);
-					}
-				}).end()
-				.blur();
-				if ($.browser.mozilla && !$$.attr('autocomplete')) {
-					setTimeout(function () {
-						if ($$.val() == title) $$.val('');
-						$$.blur();
-					}, 10);
-				}
-			}
-		});
-	};
-	$('.hint').hint();
 /**
  * Slick annimation -  Slide, fade and toggle (and will break your tables if you're nice)
  */
@@ -137,10 +89,7 @@ $(function() {
 		$('#right_sidebar a.save-widgets').text(saveWidgetsText);
 		return false;
 	});
-/**
- * Form select/unselect all
- * How it works: 
- */
+
 	$('input.select_all').click(function() {
 		var check = false;
 		if($(this).attr("checked")!= undefined && $(this).attr("checked")){

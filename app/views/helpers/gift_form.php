@@ -34,7 +34,7 @@ class GiftFormHelper extends AppHelper {
  * undocumented function
  */
 	function hint($txt){
-		return "<span class='tooltip with_img information' title='$txt'>&nbsp;</span>";         	
+		return '<span class="tooltip with_img information" title="' . $txt . '">&nbsp;</span>';
 	}
 /**
  * undocumented function
