@@ -2,11 +2,6 @@
 
 class Mailer{
 	static function deliver($template, $options = array()) {
-		$isDebug = isset($options['mail']['delivery']) && $options['mail']['delivery'] == 'debug';
-		if (Common::isDevelopment() && !class_exists('ShellDispatcher') && !$isDebug) {
-			return true;
-		}
-
 		$options = Set::merge(array(
 			'vars' => array(),
 			'mail' => array(
@@ -69,7 +64,12 @@ class Mailer{
 			$html = $View->renderLayout($html);
 			file_put_contents($path, $html);
 		}
-		return $Email->send();
+
+		$result = $Email->send();
+		if (Common::isDevelopment() && Configure::read('App.email_debug')) {
+			Common::debugEmail();
+		}
+		return $result;
 	}
 }
 ?>
