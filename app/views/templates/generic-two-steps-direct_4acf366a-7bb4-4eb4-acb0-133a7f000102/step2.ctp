@@ -14,6 +14,7 @@ if (!empty($cData)) {
 		<?php echo $form->create('Gift', array('url' => $this->here . '/2'))."\n"; ?>
 <?php echo $this->element('../templates/default/elements/fieldsets/hidden'); ?>
 <?php echo $this->element('../templates/default/elements/fieldsets/contact'); ?>
+<?php //echo $this->element('../templates/default/elements/fieldsets/smallprints'); ?>
 		<?php echo $form->submit('Donate', array('class' => 'donate-submit')); ?>
 		<?php echo $form->end()?>
 		</div>

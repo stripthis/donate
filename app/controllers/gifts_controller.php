@@ -117,6 +117,17 @@ class GiftsController extends AppController {
 			return $this->render('step' . $step);
 		}
 
+		if (!isset($this->data['Gift']['eula'])) {
+			$this->data['Contact']['contactable'] = '0';
+		} elseif (!$this->data['Gift']['eula']) {
+			$msg = __('You have to accept the terms of conditions.', true);
+			$this->Message->add($msg, 'error');
+			$this->TemplateStepVisit->trackHit($templateId, $appealId, $step);
+			return $this->render('step' . $step);
+		} else {
+			$this->data['Contact']['contactable'] = '1';
+		}
+
 		$this->saveRelatedData();
 
 		// since this is the last step, make the gift complete
