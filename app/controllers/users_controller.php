@@ -150,11 +150,9 @@ class UsersController extends AppController {
 				'to' => $user['User']['login']
 				, 'subject' => __(Configure::read('App.name') . ' Password Recovery', true)
 				, 'template' => 'forgot_pw'
-				, 'delivery' => 'debug'
 			)
 		);
 		Mailer::deliver('forgot_pw', $emailSettings);
-		Common::debugEmail();
 		$msg = sprintf(__('A message has been sent to %s.', true), $user['User']['login']);
 		$this->Message->add($msg, 'ok');
 	}
