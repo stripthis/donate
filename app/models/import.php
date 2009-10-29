@@ -1,7 +1,6 @@
 <?php
 class Import extends AppModel {
 	var $actsAs = array(
-		'Containable', 'Lookupable',
 		'ContinuousId' => array(
 			'field' => 'serial',
 			'offset' => '100000'

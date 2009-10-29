@@ -75,22 +75,22 @@ class WebModel extends AppModel
             curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
             curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie_file);
         }
-            
-    	$response = curl_exec($ch);
-    	curl_close($ch);           	
-			    
-        return $response;        
+
+		$response = curl_exec($ch);
+		curl_close($ch);
+
+        return $response;
     }
     
     function httpGet($url, $vars = null, $headers = null, $cookie_file = null, $timeout = null)
     {            
         if (!empty($vars))
-            $url = $url.'?'.$this->__toUrlData($vars);
+			$url = $url.'?'.$this->__toUrlData($vars);
 
 
         $ch = curl_init();
-        
-    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);    	
+
+    	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     	
     	// Don't check certifications that closley if not required, fixed some issues for me before
     	if ($this->ssl_strict==false)

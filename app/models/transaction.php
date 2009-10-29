@@ -1,7 +1,7 @@
 <?php
 class Transaction extends AppModel {
 	var $actsAs = array(
-		'Containable', 'Lookupable', 'Serialable'
+		'Serialable'
 	);
 
 	var $belongsTo = array(

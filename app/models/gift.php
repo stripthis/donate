@@ -1,8 +1,6 @@
 <?php
 class Gift extends AppModel {
 	var $actsAs = array(
-		'Containable',
-		'Lookupable',
 		'Serialable',
 		'ContinuousId' => array('offset' => '100000')
 	);

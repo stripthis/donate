@@ -1,9 +1,6 @@
 <?php
 class User extends AppModel {
 	var $actsAs = array(
-		'Containable',
-		'Lookupable',
-		'Enumerable',
 		'SavedBy'
 	);
 

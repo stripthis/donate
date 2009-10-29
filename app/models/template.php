@@ -1,7 +1,7 @@
 <?php
 class Template extends AppModel {
 	var $actsAs = array(
-		'Containable', 'Lookupable', 'SavedBy',
+		'SavedBy',
 		'Sluggable' => array('label' => 'name')
 	);
 

@@ -103,10 +103,9 @@ class AppealsController extends AppController {
 		$templateOptions = $this->Template->find('published_list');
 		$processingOptions = $this->Gateway->find('processing_options');
 		$themes = $this->Theme->find('all');
-		$statusOptions = $this->Appeal->enumOptions('status');
 
 		$this->set(compact(
-			'action', 'statusOptions', 'themes', 'gatewayOptions',
+			'action', 'themes', 'gatewayOptions',
 			'processingOptions', 'templateOptions', 'appeal'
 		));
 

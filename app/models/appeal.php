@@ -21,7 +21,6 @@ class Appeal extends AppModel {
 	);
 
 	var $actsAs = array(
-		'Containable', 'Lookupable', 'Enumerable',
 		'Sluggable' => array('label' => 'name')
 	);
 

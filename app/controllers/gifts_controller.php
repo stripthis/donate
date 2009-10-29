@@ -579,8 +579,7 @@ class GiftsController extends AppController {
 					break;
 			}
 		}
-		$conditions = $this->Gift->dateRange($conditions, $params, 'created');
-		return $conditions;
+		return $this->Gift->dateRange($conditions, $params, 'created');
 	}
 }
 ?>
