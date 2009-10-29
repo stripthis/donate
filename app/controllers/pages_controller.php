@@ -34,7 +34,7 @@ class PagesController extends AppController {
 						'Office.live' => true
 					),
 					'contain' => array('Office'),
-					'fields' => array('name', 'id'),
+					'fields' => array('name', 'slug'),
 					'order' => array('name' => 'asc')
 				));
 

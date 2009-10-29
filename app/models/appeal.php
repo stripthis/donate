@@ -84,14 +84,10 @@ class Appeal extends AppModel {
 			case 'default':
 				$appeal = false;
 
-				$id = isset($query['id']) ? $query['id'] : false;
-				if ($id) {
+				$slug = isset($query['slug']) ? $query['slug'] : false;
+				if ($slug) {
 					$conditions = array(
-						'OR' => array(
-							'Appeal.id' => $id,
-							'Appeal.name' => $id,
-							'Appeal.slug' => $id,
-						),
+						'Appeal.slug' => $slug,
 						'default' => '0',
 						'archived' => '0'
 					);

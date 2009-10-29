@@ -2,7 +2,7 @@
 class GiftsController extends AppController {
 	var $helpers = array('Fpdf', 'GiftForm', 'OpenFlashChart');
 	var $models = array('Gift', 'Contact', 'Address', 'Phone');
-	var $sessAppealKey = 'gift_process_appeal_id';
+	var $sessAppealKey = 'gift_process_appeal_slug';
 	var $sessOfficeKey = 'gift_process_office_id';
 /**
  * undocumented function
@@ -37,8 +37,9 @@ class GiftsController extends AppController {
 	function add($step = 1) {
 		$this->checkForValidAppealId($step);
 
-		$appealId = $this->Session->read($this->sessAppealKey);
-		$currentAppeal = $this->Appeal->find('default', array('id' => $appealId));
+		$appealSlug = $this->Session->read($this->sessAppealKey);
+		$currentAppeal = $this->Appeal->find('default', array('slug' => $appealSlug));
+		$appealId = $currentAppeal['Appeal']['id'];
 
 		if (!$currentAppeal['Office']['live']) {
 			return $this->redirect($currentAppeal['Office']['external_url']);
@@ -469,19 +470,19 @@ class GiftsController extends AppController {
 	function checkForValidAppealId($step) {
 		$msg = __('Please choose a country first!', true);
 
-		if ($step == 1 && $this->isGet() && !isset($this->params['named']['appeal_id'])) {
+		if ($step == 1 && $this->isGet() && !isset($this->params['named']['appeal'])) {
 			return $this->Message->add($msg, 'error', true, '/');
 		}
 
-		if (isset($this->params['named']['appeal_id'])) {
-			$conditions = array('id' => $this->params['named']['appeal_id']);
-			$existingAppeal = $this->Appeal->lookup($conditions, 'id', false);
+		if (isset($this->params['named']['appeal'])) {
+			$conditions = array('slug' => $this->params['named']['appeal']);
+			$existingAppeal = $this->Appeal->lookup($conditions, 'slug', false);
 			$sessAppealId = $this->Session->read($this->sessAppealKey);
 			if (!$existingAppeal || $step != 1 && $sessAppealId != $existingAppeal) {
 				return $this->Message->add($msg, 'error', true, '/');
 			}
 
-			$this->Session->write($this->sessAppealKey, $this->params['named']['appeal_id']);
+			$this->Session->write($this->sessAppealKey, $this->params['named']['appeal']);
 		}
 	}
 /**

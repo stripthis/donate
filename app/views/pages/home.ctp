@@ -7,7 +7,7 @@
 	<li>
 		<?php
 		echo $html->link($appeal['Appeal']['name'], array(
-			'controller' => 'gifts', 'action' => 'add', 'appeal_id' => $appeal['Appeal']['id']
+			'controller' => 'gifts', 'action' => 'add', 'appeal_id' => $appeal['Appeal']['slug']
 		));
 		?>
 	</li>
