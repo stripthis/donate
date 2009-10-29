@@ -103,20 +103,19 @@ class Contact extends AppModel {
  *
  * @return completion rate (ex: 0 to 100%)
  */
-	static function getCompleteness($contact) {
-		$alias = $this->alias;
-		if (!isset($contact[$alias]['id'])) {
+	static function getCompleteness($contact){
+		if (!isset($contact[__CLASS__]['id'])) {
 			return 0;
 		}
 
 		$fields2Test = array('fname', 'lname', 'email', 'dob');
 		$fieldsWithData = 0;
 		foreach ($fields2Test as $field) {
-			if (isset($contact[$alias][$field]) && !empty($contact[$alias][$field])) {
+			if (isset($contact[__CLASS__][$field]) && !empty($contact[__CLASS__][$field])) {
 				$fieldsWithData++;
 			}
 		}
-		return round($fieldsWithData / $fields2Test * 100, 2);
+		return round($fieldsWithData / count($fields2Test) * 100, 2);
 	}
 /**
  * Shortcut, is a contact complete?
