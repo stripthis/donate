@@ -149,6 +149,7 @@ class GiftsController extends AppController {
 
 		$this->Transaction->create(array(
 			'gift_id' => $this->data['Gift']['id'],
+			'currency_id' => $this->data['Gift']['currency_id'],
 			'office_id' => $officeId,
 			'amount' => $this->data['Gift']['amount'],
 			'gateway_id' => $gateway['GatewaysOffice']['gateway_id']

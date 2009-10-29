@@ -41,7 +41,7 @@ class Bibit extends BibitfakeAppModel {
 		$orderId = substr(0, 10, sha1($microtime + 1));
 
 		$base = Router::url('/bibit/redirect/', true);
-		$successUrl = $base . 'success';
+		$successUrl = Router::url('/gifts/thanks');
 		$failUrl = $base . 'failure';
 		$pendingUrl = $base . 'pending';
 
