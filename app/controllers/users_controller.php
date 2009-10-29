@@ -9,6 +9,7 @@ class UsersController extends AppController {
 	function beforeFilter() {
 		parent::beforeFilter();
 		$this->Office = $this->User->Office;
+		$this->Language = $this->Office->Language;
 		$this->Role = $this->User->Role;
 		$this->ReportsUser = $this->User->ReportsUser;
 		$this->Report = $this->ReportsUser->Report;
@@ -267,6 +268,13 @@ class UsersController extends AppController {
  * @access public
  */
 	function admin_preferences($id = null) {
+		$langOptions = $this->Language->find('options');
+		$this->set(compact('langOptions'));
+		// 'eng' => 'English',
+		// 'fre' => 'French',
+		// 'spa' => 'Spanish',
+		// 'chi' => 'Chinese',
+		// 'hin' => 'Hindi'
 		if ($this->isGet()) {
 			return $this->data = User::get();
 		}

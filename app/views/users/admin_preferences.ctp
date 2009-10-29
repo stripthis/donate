@@ -13,7 +13,7 @@ $this->pageTitle = __('Preferences', true);
 	<legend><?php echo __('Help & Language', true); ?></legend>
 	<?php
 	echo $form->input('login', array('label' => 'Login / Email'));
-	echo $form->input('User.lang', array('label' => 'Language', 'options' => Configure::read('App.languages')));
+	echo $form->input('User.lang', array('label' => 'Language', 'options' => $langOptions));
 	echo $form->input('User.tooltips', array('label' => 'Show Tooltips?'));
 	?>
 	</fieldset>

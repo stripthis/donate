@@ -127,11 +127,11 @@ class GiftsController extends AppController {
 		// @todo if appeal or payment gateway use redirect model then redirect
 		// else if the credit data is given, validates
 		$errors = false;
-		if (isset($this->data['Card']) && $currentAppeal['Appeal']['GatewayProcessing']['label'] == 'manual') {
+		if (isset($this->data['Card']) && $currentAppeal['Appeal']['GatewayProcessing']['label'] != 'redirect') {
 			$this->Card->set($this->data);
 			if (true || $this->Card->validates()) {
-				//@todo if application used in manual/direct debit mode, save credit card details
-				//But for now: *WE DON'T SAVE*
+				// @todo if application used in manual/direct debit mode, save credit card details
+				// But for now: *WE DON'T SAVE*
 			} else {
 				$errors = true;
 			}
@@ -145,12 +145,11 @@ class GiftsController extends AppController {
 		}
 
 		// everything ok prepare / perform the transaction
-		//@todo && the amount / currency vs. payment gateway fee by offices
+		// @todo && the amount / currency vs. payment gateway fee by offices
 		$gateway = $this->GatewaysOffice->find('by_office', array(
 			'office_id' => $officeId
 		));
 
-		//@todo save payment data here?
 		$this->Transaction->create(array(
 			'gift_id' => $this->data['Gift']['id'],
 			'office_id' => $officeId,
@@ -238,11 +237,11 @@ class GiftsController extends AppController {
 
 		$this->paginate['Gift'] = array(
 			'conditions' => $conditions,
-			'recursive' => 3, //@todo custom query?
+			'recursive' => 3,
 			'contain' => array(
 				'Frequency(humanized)',
 				'Contact(fname, lname, email,created,modified,id)',
-				'Contact.Address(zip,country_id,state_id)',  //@todo another way to get address in the view?
+				'Contact.Address(zip,country_id,state_id)',
 				'Contact.Address.Country',
 				'Contact.Address.State',
 				'Contact.Address.City',

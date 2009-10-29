@@ -5,11 +5,11 @@ class LanguageFixture extends CakeTestFixture {
 	var $records = array(		array(
 			'id' => '4ad73901-0aac-48f1-814e-9bb2a7f05a6e',
 			'code' => 'gle',
-			'name' => '',
+			'name' => 'Irish',
 		),		array(
 			'id' => '4ad73901-0d28-4119-8966-9bb2a7f05a6',
 			'code' => 'ces',
-			'name' => '',
+			'name' => 'Czech',
 		),		array(
 			'id' => '4ad73901-49f4-42ff-ba9c-9bb2a7f05a6e',
 			'code' => 'rus',
@@ -25,7 +25,7 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad73901-893c-40b4-a431-9bb2a7f05a6e',
 			'code' => 'fil',
-			'name' => '',
+			'name' => 'Filipino',
 		),		array(
 			'id' => '4ad73901-8c1c-4dda-90d3-9bb2a7f05a6e',
 			'code' => 'deu',
@@ -33,7 +33,7 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad73901-c884-4c53-86ee-9bb2a7f05a6e',
 			'code' => 'fin',
-			'name' => 'Finish',
+			'name' => 'Finnish',
 		),		array(
 			'id' => '4ad73901-cb64-4524-8779-9bb2a7f05a6e',
 			'code' => 'eng',
@@ -45,15 +45,15 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad73970-11f4-4c49-b5ff-9c29a7f05a6e',
 			'code' => 'hun',
-			'name' => '',
+			'name' => 'Hungarian',
 		),		array(
 			'id' => '4ad73970-1344-4637-9df7-9c29a7f05a6e',
 			'code' => 'gre',
-			'name' => '',
+			'name' => 'Greek',
 		),		array(
 			'id' => '4ad73970-5e84-4d13-8e05-9c29a7f05a6e',
 			'code' => 'ind',
-			'name' => '',
+			'name' => 'Indonesian',
 		),		array(
 			'id' => '4ad73970-7e70-4ae8-9fa9-9c29a7f05a6e',
 			'code' => 'swe',
@@ -69,7 +69,7 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad73970-d26c-4f9e-ab9f-9c29a7f05a6e',
 			'code' => 'ltz',
-			'name' => '',
+			'name' => 'Luxembourgeois',
 		),		array(
 			'id' => '4ad73970-f4e8-4a0d-bb1b-9c29a7f05a6e',
 			'code' => 'jpn',
@@ -77,15 +77,15 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad739cd-1098-49db-aa6f-9c8ca7f05a6e',
 			'code' => 'nob',
-			'name' => '',
+			'name' => 'Norwegian',
 		),		array(
 			'id' => '4ad739cd-352c-48b4-8f39-9c8ca7f05a6e',
 			'code' => 'slk',
-			'name' => '',
+			'name' => 'Slovak',
 		),		array(
 			'id' => '4ad739cd-3c58-4bb7-86aa-9c8ca7f05a6e',
 			'code' => 'pol',
-			'name' => 'Polis',
+			'name' => 'Polish',
 		),		array(
 			'id' => '4ad739cd-64d4-4232-b0b9-9c8ca7f05a6e',
 			'code' => 'spa',
@@ -93,7 +93,7 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad739cd-6944-4ba2-8df5-9c8ca7f05a6e',
 			'code' => 'por',
-			'name' => '',
+			'name' => 'Portuguese',
 		),		array(
 			'id' => '4ad739cd-90f8-424e-a6af-9c8ca7f05a6e',
 			'code' => 'tha',
@@ -105,11 +105,11 @@ class LanguageFixture extends CakeTestFixture {
 		),		array(
 			'id' => '4ad739cd-d470-49f7-821e-9c8ca7f05a6e',
 			'code' => 'nld',
-			'name' => '',
+			'name' => 'Dutch',
 		),		array(
 			'id' => '4ad73c86-3bf0-48bd-9840-a000a7f05a6e',
 			'code' => 'zho',
-			'name' => '',
+			'name' => 'Chinese',
 		),	);
 }
 

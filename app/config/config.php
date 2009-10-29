@@ -70,13 +70,6 @@ $config = array(
 			'/'
 		)
 	),
-	'App.languages' => array(
-		'eng' => 'English',
-		'fre' => 'French',
-		'spa' => 'Spanish',
-		'chi' => 'Chinese',
-		'hin' => 'Hindi'
-	),
 	'App.gift' => array(
 		'cards' => array(
 			'mastercard' => 'Mastercard',
