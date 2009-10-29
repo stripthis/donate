@@ -130,6 +130,7 @@ class TellfriendsController extends TellfriendsAppController {
 		if ($this->isGet()) {
 			return;
 		}
+
 		//Check whether email content is spam
 		$comment = array('comment_author' => '',
                          'comment_author_email' => $this->data['Tellfriend']['sender'],
@@ -169,7 +170,7 @@ class TellfriendsController extends TellfriendsAppController {
 				foreach ($toEmail as $email) {
 					$emailSettings = array(
 						'vars' => array(
-							'mail_message' => $this->data['Tellfriend']['content']
+							'message' => $this->data['Tellfriend']['content']
 						),
 						'mail' => array(
 							'to' => $email

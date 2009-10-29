@@ -65,6 +65,9 @@ class Mailer{
 			file_put_contents($path, $html);
 		}
 
+		if (!isset($Email->Controller->Session)) {
+			$Email->Controller->Session = Common::getComponent('Session');
+		}
 		$result = $Email->send();
 		if (Common::isDevelopment() && Configure::read('App.email_debug')) {
 			Common::debugEmail();
