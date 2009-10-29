@@ -24,6 +24,12 @@ class BibitController extends BibitfakeAppController {
 			return;
 		}
 
+		$this->Card->set($this->data);
+		if (!$this->Card->validates()) {
+			$msg = __('There are problems with the form!', true);
+			return $this->Message->add($msg, 'error');
+		}
+
 		$this->Transaction->set(array(
 			'id' => $this->data['Card']['transaction_id'],
 			'status' => 'ok'

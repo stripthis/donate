@@ -12,16 +12,11 @@ echo $form->input('transaction_id', array('type' => 'hidden', 'value' => $transa
 	<legend><?php __('Payment Information') ?>:</legend>
 	<div class="input_wrapper radio">
 		<label for="amount" class="option_title"><?php __('Card type'); ?>: <?php echo $giftForm->required(); ?></label>
-		<?php if ($form->isFieldError('Card.type')):?>
-			<div class="error"><?php echo $form->error("Card.type"); ?></div>
-		<?php endif; ?>
-
-		<?php foreach ($cardOptions as $cardId => $cardName): ?>
-			<label class="option" id="<?php echo $cardId; ?>">
-				<input name="data[Card][type]" value="<?php echo low($cardName) ?>" class="radio" type="radio">
-				<span><?php echo $cardName; ?></span>
-			</label>
-		<?php endforeach; ?>
+		<?php
+		echo $form->input('Card.type', array(
+			'options' => $cardOptions, 'label' => false
+		))
+		?>
 	</div>
 	<div class="input_wrapper half">
 		<?php

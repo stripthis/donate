@@ -10,12 +10,6 @@ class Card extends AppModel {
 			'on' => 'update'
 		),
 		'type' => array(
-			'required' => array(
-				'rule' => 'notEmpty',
-				'message' => 'Please select a card.',
-				'is_required' => true,
-				'last' => true
-			),
 			'valid' => array(
 				'rule' => array("validateType"),
 				'message' => 'This is an invalid type.',
@@ -71,7 +65,10 @@ class Card extends AppModel {
  * @access public
  */
 	function validateType($check) {
-		return array_key_exists($check['type'], Configure::read('App.gift.cards'));
+		$types = $this->CardType->find('list', array(
+			'fields' => array('id', 'label')
+		));
+		return in_array(current($check), $types);
 	}
 /**
  * Validate card number based on the type (ex: visa)
