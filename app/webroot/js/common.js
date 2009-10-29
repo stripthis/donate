@@ -46,14 +46,14 @@ $(function() {
 	})
 
 	$('a.toggle').click(function() {
-		if ($('a.toggle#'+$(this).attr("id")).hasClass("closed")) {
-			$('a.toggle#'+$(this).attr("id")).addClass("open").removeClass("closed");
-			$('a.toggle#'+$(this).attr("id")).parents('.widget').addClass("open").removeClass("closed");
-			$(".wrapper_"+$(this).attr("id")).show();
+		if ($('a.toggle#' + $(this).attr("id")).hasClass("closed")) {
+			$('a.toggle#' + $(this).attr("id")).addClass("open").removeClass("closed");
+			$('a.toggle#' + $(this).attr("id")).parents('.widget').addClass("open").removeClass("closed");
+			$(".wrapper_" + $(this).attr("id")).show();
 		} else {
-			$('a.toggle#'+$(this).attr("id")).addClass("closed").removeClass("open");
-			$('a.toggle#'+$(this).attr("id")).parents('.widget').addClass("closed").removeClass("open");
-			$(".wrapper_"+$(this).attr("id")).hide();
+			$('a.toggle#' + $(this).attr("id")).addClass("closed").removeClass("open");
+			$('a.toggle#' + $(this).attr("id")).parents('.widget').addClass("closed").removeClass("open");
+			$(".wrapper_" + $(this).attr("id")).hide();
 		}
 		$('#right_sidebar a.save-widgets').text(saveWidgetsText);
 		return false;

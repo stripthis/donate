@@ -111,6 +111,7 @@ class Appeal extends AppModel {
 						'published' => '1'
 					));
 				}
+
 				return $appeal;
 		}
 		return call_user_func_array(array('parent', 'find'), $args);
