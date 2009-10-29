@@ -32,7 +32,7 @@ class Transaction extends AppModel {
 		$transaction = $this->find('first', array(
 			'conditions' => array(
 				$this->alias . '.id' => $id,
-				'status' => 'new' // todo need 2 support more statuses based on error handling
+				'status' => 'new'
 			)
 		));
 		if (empty($transaction)) {

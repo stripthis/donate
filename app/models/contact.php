@@ -97,22 +97,26 @@ class Contact extends AppModel {
 		return Configure::read('App.contact.titles');
 	}
 /**
- * Indicates if a given contact is complete 
+ * Indicates if a given contact is complete
+ * Counts values in the contact that have data and matches them vs
+ * the total number of fields
+ *
  * @return completion rate (ex: 0 to 100%)
  */
-	static function getCompleteness($contact){
-		if (!isset($contact[__CLASS__]['id'])) {
+	static function getCompleteness($contact) {
+		$alias = $this->alias;
+		if (!isset($contact[$alias]['id'])) {
 			return 0;
 		}
 
 		$fields2Test = array('fname', 'lname', 'email', 'dob');
 		$fieldsWithData = 0;
 		foreach ($fields2Test as $field) {
-			if (isset($contact[__CLASS__][$field]) && !empty($contact[__CLASS__][$field])) {
+			if (isset($contact[$alias][$field]) && !empty($contact[$alias][$field])) {
 				$fieldsWithData++;
 			}
 		}
-		return round($fieldsWithData / $fields2Test * 100);
+		return round($fieldsWithData / $fields2Test * 100, 2);
 	}
 /**
  * Shortcut, is a contact complete?
@@ -121,7 +125,7 @@ class Contact extends AppModel {
  * @return true or false
  */	
 	static function isComplete($contact){
-		return (Contact::getCompleteness($contact) == 100);
+		return Contact::getCompleteness($contact) == 100;
 	}
 }
 ?>

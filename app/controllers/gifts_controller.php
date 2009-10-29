@@ -124,7 +124,6 @@ class GiftsController extends AppController {
 		$this->saveSessionData();
 
 		// credit card data is given
-		// @todo if appeal or payment gateway use redirect model then redirect
 		// else if the credit data is given, validates
 		$errors = false;
 		if (isset($this->data['Card']) && $currentAppeal['Appeal']['GatewayProcessing']['label'] != 'redirect') {
