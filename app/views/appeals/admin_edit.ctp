@@ -33,18 +33,23 @@
 			<?php
 			$numThemes = count($themes);
 			$i = 0;
+			$selected = array();
+			if (isset($appeal)) {
+				$selected = Set::extract('/Theme/id', $appeal);
+			}
 			foreach ($themes as $theme) {
 				$i++;
 				if ($numThemes > 1 && $i <= $numThemes / 2) {
 					$i = 0;
 					echo '</div><div class="half">';
 				}
-			
+
 				echo $form->input('Appeal.themes.' . $theme['Theme']['id'], array(
 					'label' => ucfirst($theme['Theme']['name']),
 					'type' => 'checkbox', 'value' => '',
 					'checked' => false ? 'checked' : '',
-					'options' => false
+					'options' => false,
+					'checked' => in_array($theme['Theme']['id'], $selected)
 				));
 			}
 			?>

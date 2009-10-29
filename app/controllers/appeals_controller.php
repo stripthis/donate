@@ -80,10 +80,12 @@ class AppealsController extends AppController {
 		$action = 'add';
 		if ($this->action == 'admin_edit') {
 			$appeal = $this->Appeal->find('first', array(
-				'conditions' => array('Appeal.id' => $id)
+				'conditions' => array('Appeal.id' => $id),
+				'contain' => array('Theme(id)')
 			));
 			Assert::notEmpty($appeal, '404');
 			Assert::true(User::allowed($this->name, $this->action, $appeal), '403');
+
 			$action = 'edit';
 		}
 
@@ -105,7 +107,7 @@ class AppealsController extends AppController {
 
 		$this->set(compact(
 			'action', 'statusOptions', 'themes', 'gatewayOptions',
-			'processingOptions', 'templateOptions'
+			'processingOptions', 'templateOptions', 'appeal'
 		));
 
 		$this->action = 'admin_edit';
