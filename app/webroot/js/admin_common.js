@@ -2,14 +2,18 @@
  * launch browser add to favorite dialog
  */
 function addFavorite(){
-  var title=document.title; var url=location.href;               // default page url and title
-  if(window.sidebar) window.sidebar.addPanel(title, url, "");    // firefox
-  else if(document.all) window.external.AddFavorite(url, title); // evil
-  else if(window.opera && window.print){                         // opera
-    var box = document.createElement('a');
-    box.setAttribute('href',url); box.setAttribute('title',title); box.setAttribute('rel','sidebar');
-    box.click();
-  }
+	var title = document.title;
+	var url = location.href;
+	if (false && window.sidebar) {
+		window.sidebar.addPanel(title, url, "");
+	} else if (document.all) {
+		alert('here');
+		window.external.AddFavorite(url, title);
+	} else if (window.opera && window.print) {
+		var box = document.createElement('a');
+		box.setAttribute('href',url); box.setAttribute('title',title); box.setAttribute('rel','sidebar');
+		box.click();
+	}
 }
 
 /**
