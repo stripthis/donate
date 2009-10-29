@@ -114,7 +114,7 @@ class LogableBehavior extends ModelBehavior {
  */
 	function customLog(&$Model, $action, $id, $values = array()) {
 		$logData['Log'] = $values;
-		/** @todo clean up $logData */
+
 		if (isset($this->Log->_schema['model_id']) && is_numeric($id)) {
 			$logData['Log']['model_id'] = $id;
 		}
