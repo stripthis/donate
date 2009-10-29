@@ -39,10 +39,9 @@
 			<?php echo !in_array($amountSelected, $amountOptions) ? $giftForm->checked() : ''?> 
 		/> 
 		<?php
-			echo $form->input('currency', array(
-				'label' => '', 'options' => $currencyOptions,
-				'selected' => $giftForm->value('Gift', 'currency', 'EUR', $form->data)
-			))."\n";
+			echo $form->input('currency_id', array(
+				'label' => '', 'options' => $currencyOptions
+			));
 		?>
 		<?php 
 			if ($form->isFieldError('amount')) {

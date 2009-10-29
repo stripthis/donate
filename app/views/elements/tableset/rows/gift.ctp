@@ -48,40 +48,47 @@ $options = array(
 	<td class="title gift details" >
 		<span class="iconic gift creditcard">
 			<?php
-			//prd($gift);
-			// format frequency
 			if (isset($gift['Frequency']['humanized'])) {
 				$frequency = low($gift['Frequency']['humanized']);
 			} elseif (isset($gift['Gift']['Frequency']['humanized'])) {
 				$frequency = low($gift['Gift']['Frequency']['humanized']);
 			} else {
-				$frequency = $common->emptyNotice(__('Undefined',true));
+				$frequency = $common->emptyNotice(__('Undefined', true));
 			}
-			// format amount
+
 			if (isset($gift['Gift']['amount'])) {
 				$amount = $gift['Gift']['amount'];
 			} else {
-				$amount = $common->emptyNotice(__('Undefined',true));
+				$amount = $common->emptyNotice(__('Undefined', true));
 			}
-			// format currency
+
 			if (isset($gift['Currency']['iso_code'])) {
-				$currency = up($gift['Currency']['iso_code']); // or sign, name
+				$currency = up($gift['Currency']['iso_code']);
 			} else {
 				$currency = $common->emptyNotice(__('???',true));
 			}
-			// format type
-			if (isset($gift['Gift']['gift_type_id'])) {
-				$type = low($gift['Gift']['gift_type_id']); // @todo clean data model
+
+			$giftType = false;
+			if (isset($gift['GiftType'])) {
+				$giftType = $gift['GiftType'];
+			}
+			if (isset($gift['Gift']['GiftType'])) {
+				$giftType = $gift['Gift']['GiftType'];
+			}
+
+			if (!empty($giftType)) {
+				$type = low($giftType['humanized']);
 			} else {
 				$type = $common->emptyNotice(__('???',true));
 			}
-			echo $amount.' '.$currency.' '.$frequency.' '.$type;
+			echo $amount . ' ' . $currency . ' ' . $frequency . ' ' . $type;
 			?>
 		</span>
 		<?php 
-		/*	if (isset($type) && $type != 'onetime' || !isset($type)) {
-				echo '('.__('due',true) ?>: <?php echo $gift['Gift']['due'] ? __('yes',true) : __('no',true).')';
-			}*/
+		if (isset($frequency) && $frequency != 'onetime' || !isset($frequency)) {
+			echo '(' . __('due', true) . ': ';
+			echo $gift['Gift']['due'] ? __('yes', true) : __('no', true) . ')';
+		}
 		?>
 	</td>
 	<?php if (!$options['leaf']) : ?>
@@ -91,17 +98,17 @@ $options = array(
 				if (isset($contact['Contact']['fname'])) {
 					$label .= ucfirst($contact['Contact']['fname']).' ';
 				} else {
-					$label .= $common->emptyNotice(__('no first name',true)).' ';
+					$label .= $common->emptyNotice(__('no first name', true)).' ';
 				}
 				if (isset($contact['Contact']['lname'])) {
 					$label .= ucfirst($contact['Contact']['lname']);
 				} else {
-					$label .= $common->emptyNotice(__('no last name',true)).' ';
+					$label .= $common->emptyNotice(__('no last name', true)).' ';
 				}
 				if (isset($contact['Contact']['email'])) {
 					$label .= ' (' . low($contact['Contact']['email']) . ')';
 				} else {
-					$label .= ' (' .$common->emptyNotice(__('no email',true)) . ')';
+					$label .= ' (' . $common->emptyNotice(__('no email', true)) . ')';
 				}
 				if (isset($contact['Contact']['id'])) {
 					echo $html->link($label, 

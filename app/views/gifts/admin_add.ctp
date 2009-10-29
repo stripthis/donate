@@ -21,7 +21,7 @@
 		echo $form->input('Gift.type', array('options' => Gift::find('gift_types')));
 		echo $form->input('Gift.amount', array('label' => 'Amount:'));
 		echo $form->input('Gift.appeal_id', array('options' => $appealOptions));
-		echo $form->input('currency', array('label' => '', 'options' => Gift::find('currencies')));
+		echo $form->input('currency_id', array('label' => '', 'options' => Gift::find('currencies')));
 		echo $form->input('frequency_id', array(
 			'label' => 'Frequency' . ': ' . $giftForm->required(),
 			'options' => Gift::find('frequencies')

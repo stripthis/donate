@@ -144,13 +144,12 @@ class CommonHelper extends Apphelper {
  * Format a help message
  * @param $help array{content, type, class}
  * @return string
- * @todo hide + never show again (textbox)
  */
-	function help($msg, $options=null){
-		$default_options = array('class'=>'message information');
-		$options = am($default_options,$options);
+	function help($msg, $options = null){
+		$default_options = array('class' => 'message information');
+		$options = am($default_options, $options);
 		if (isset($msg)) {
-			return '<div class="'.$options['class'].'">'.$msg.'</div>';
+			return '<div class="' . $options['class'] . '">' . $msg . '</div>';
 		}
 	}
 /**
@@ -158,8 +157,8 @@ class CommonHelper extends Apphelper {
  * @param string context aka input(s) type {'text','select'}
  * @param options array, return or echo
  */
-	function datepicker($type='text',$options=null){
-		$options = am(array('return'=>false),$options);
+	function datepicker($type = 'text', $options = null){
+		$options = am(array('return' => false),$options);
 		$result = '';
 		if ($type == 'select') {
 			$result .= '<input class="datepicker select_a" type="hidden"/>';

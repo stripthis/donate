@@ -240,6 +240,7 @@ class GiftsController extends AppController {
 			'recursive' => 3,
 			'contain' => array(
 				'Frequency(humanized)',
+				'GiftType(humanized)',
 				'Contact(fname, lname, email,created,modified,id)',
 				'Contact.Address(zip,country_id,state_id)',
 				'Contact.Address.Country',

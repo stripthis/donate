@@ -8,6 +8,7 @@ $config = array(
 		'contain' => array(
 			'Gift.Contact',
 			'Gift.Frequency',
+			'Gift.GiftType',
 			'Transaction.Gateway'
 		),
 		'urls' => array(
