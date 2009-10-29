@@ -17,8 +17,7 @@ $config = array(
 		'swfobject.js' => 'Statistics:*, Transactions:admin_stats, Gifts:admin_stats',
 		'tiny_mce/tiny_mce_gzip.js' => $mceRules,
 		'tiny_initializer.js' => $mceRules,
-		'admin_common.js' => '*:admin*',
-		'common.js' => '*:!admin*',
+		'common.js' => '*:*',
 		'japp.js' => '*:*',
 		'thickbox.js' => 'Tellfriends:refer, Tellfriends:openinviter',
 	)
