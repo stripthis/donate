@@ -434,7 +434,11 @@ class AppController extends Controller {
  * @access public
  */
 	function cleanupDate($data) {
-		return $data['year'] . '-' . $data['month'] . '-01';
+		$min = $data['min'];
+		if (strlen($min) == 1) {
+			$min = '0' . $min;
+		}
+		return $data['year'] . '-' . $data['month'] . '-' . $data['day'] . ' ' . $data['hour'] . ':' . $min;
 	}
 /**
  * undocumented function
@@ -498,9 +502,7 @@ class AppController extends Controller {
 
 		if (!$this->isPost()) {
 			$startDate = strtotime(Configure::read('Stats.startDate'));
-
-			// last day of last month
-			$endDate = strtotime(date('Y-m-01', strtotime('+1 month')));
+			$endDate = strtotime(date('Y-m-d'));
 
 			if ($this->Session->check($sessKeyStart)) {
 				$startDate = $this->Session->read($sessKeyStart);
@@ -525,11 +527,32 @@ class AppController extends Controller {
 
 		if ($startDate > $endDate) {
 			$msg = __('Sorry, the beginning date must be before the end date.', true);
-			$this->User->invalidate('startDate', __($msg, true));
+			$this->Message->add($msg, 'error');
+
 		}
 
-		$this->startDate = date('Y-m-d', $startDate);
-		$this->endDate = date('Y-m-d', $endDate);
+		$type = 'year';
+		$diff = abs($endDate - $startDate);
+		switch (true) {
+			case ($diff <= DAY):
+				$type = 'hour';
+				break;
+			case ($diff <= MONTH + 5 * DAY):
+				$type = 'day';
+				break;
+			case ($diff <= 2 * YEAR):
+				$type = 'month';
+				break;
+		}
+		$this->diagramType = $type;
+
+		$format = 'Y-m-d';
+		if ($type == 'hour') {
+			$format = 'Y-m-d H:00';
+		}
+
+		$this->startDate = date($format, $startDate);
+		$this->endDate = date($format, $endDate);
 		$this->set(compact('startDate', 'endDate'));
 	}
 }

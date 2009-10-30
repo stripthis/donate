@@ -24,34 +24,54 @@ foreach ($result as $date => $gifts) {
 	$incompleteValues[] = $incompleteValVal;
 }
 
+$labels = array();
+
 $labels = array_keys($result);
+$format = 'd.m';
+if ($type == 'hour') {
+	$format = 'H';
+}
+if ($type == 'year') {
+	$format = 'Y';
+}
 foreach ($labels as $i => $label) {
-	$labels[$i] = date('m.y', strtotime($label));
+	$labels[$i] = date($format, strtotime($label));
+}
+if (count($labels) > 20) {
+	foreach ($labels as $i => $value) {
+		if ($i % 2 == 1) {
+			$labels[$i] = '';
+		}
+	}
 }
 
 $min = min($createdValues);
 $max = max($createdValues);
 $displayMin = $min > 2 ? $min - 3 : $min;
 
+$tooltip = '#x_label#<br>#val#';
 $chartOptions = array(
 	'charts' => array(
 		array(
 			'key' => 'Created',
 			'values' => $createdValues,
 			'col' => '#66CC00',
-			'outline' => '#006600'
+			'outline' => '#006600',
+			'tooltip' => $tooltip,
 		),
 		array(
 			'key' => 'Archived',
 			'values' => $archivedValues,
 			'col' => '#ff8800',
-			'outline' => '#774499'
+			'outline' => '#774499',
+			'tooltip' => $tooltip,
 		),
 		array(
 			'key' => 'Incomplete',
 			'values' => $incompleteValues,
 			'col' => '#cc0000',
-			'outline' => '#774499'
+			'outline' => '#774499',
+			'tooltip' => $tooltip,
 		)
 	),
 	'title' => array('txt' => $title),

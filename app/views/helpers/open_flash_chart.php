@@ -54,11 +54,15 @@ class OpenFlashChartHelper extends AppHelper {
 					$chart->set_y_axis($yAxis);
 				}
 
+				if (isset($chartOpts['tooltip'])) {
+					$diagram->set_tooltip($chartOpts['tooltip']);
+				}
+
 				$chart->add_element($diagram);
 			}
 		}
 
-		return $chart->toString();
+		return $chart->toPrettyString();
 	}
 /**
  * undocumented function

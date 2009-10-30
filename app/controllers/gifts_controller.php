@@ -1,6 +1,7 @@
 <?php
 class GiftsController extends AppController {
 	var $helpers = array('Fpdf', 'GiftForm', 'OpenFlashChart');
+	var $components = array('Date');
 	var $models = array('Gift', 'Contact', 'Address', 'Phone');
 	var $sessAppealKey = 'gift_process_appeal_slug';
 	var $sessOfficeKey = 'gift_process_office_id';
@@ -367,26 +368,35 @@ class GiftsController extends AppController {
  */
 	function admin_stats() {
 		$this->_handleTimePeriod();
+		$format = '%Y-%m-%d';
+		if ($this->diagramType == 'hour') {
+			$format = '%Y-%m-%d %H:00';
+		}
 		$gifts = $this->Gift->find('all', array(
 			'conditions' => array(
 				'office_id' => $this->Session->read('Office.id'),
-				"DATE_FORMAT(created, '%Y-%m-%d') >= '" . $this->startDate . "'",
-				"DATE_FORMAT(created, '%Y-%m-%d') <= '" . $this->endDate . "'",
+				"DATE_FORMAT(created, '" . $format . "') >= '" . $this->startDate . "'",
+				"DATE_FORMAT(created, '" . $format . "') <= '" . $this->endDate . "'",
 			),
 			'fields' => array('created', 'amount', 'archived', 'complete')
 		));
 
-		$months = Common::months($this->startDate, $this->endDate, false);
 		$result = array();
-		foreach ($months as $month) {
-			$result[$month] = array();
+
+		$type = $this->diagramType;
+
+		$items = DateComponent::diff($type, $this->startDate, $this->endDate, false);
+
+		foreach ($items as $item) {
+			$result[$item] = array();
 			foreach ($gifts as $gift) {
-				if (Common::sameMonth($gift['Gift']['created'], $month)) {
-					$result[$month][] = $gift;
+				if (DateComponent::same($gift['Gift']['created'], $item, $type)) {
+					$result[$item][] = $gift;
 				}
 			}
 		}
-		$this->set(compact('result', 'gifts', 'months'));
+
+		$this->set(compact('result', 'gifts', 'months', 'type'));
 	}
 /**
  * undocumented function
