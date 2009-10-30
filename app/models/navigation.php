@@ -36,7 +36,7 @@ class Navigation extends AppModel{
 					, '#/^\/admin(\/statistics|\/home).*$/iU'
 				)
 				, __('Appeals', true) => array(
-					'/admin/appeals/index/all'
+					'/admin/appeals/index'
 					, '#/^\/admin\/appeals.*$/iU'
 				)
 				, __('Templates', true) => array(
@@ -74,12 +74,8 @@ class Navigation extends AppModel{
 			// ADMIN MENU LEVEL 1 (sub tabs)
 			, 'appeal_sub' => array(
 				__('All', true) => array(
-					'/admin/appeals/index/all'
-					, '#/^\/admin\/appeals\/index\/all.*$/iU'
-				)
-				, __('My Office', true) => array(
-					'/admin/appeals/index/office'
-					, '#/^\/admin\/appeals\/index\/office.*$/iU'
+					'/admin/appeals/index'
+					, '#/^\/admin\/appeals\/index.*$/iU'
 				)
 			)
 			, 'template_sub' => array(

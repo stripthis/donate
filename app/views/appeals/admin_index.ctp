@@ -82,7 +82,6 @@ $favConfig = Configure::read('Favorites');
 		<?php
 		echo $form->end();
 		$urlParams = $params;
-		$urlParams[] = $type;
 		$urlParams['merge'] = true;
 		unset($urlParams['ext']);
 		unset($urlParams['page']);
@@ -91,5 +90,5 @@ $favConfig = Configure::read('Favorites');
 	<?php else : ?>
 		<p><?php echo __('Sorry, nothing to show here.', true); ?></p>
 	<?php endif; ?>
-	<?php echo $this->element('../appeals/elements/filter', compact('params', 'type')); ?>
+	<?php echo $this->element('../appeals/elements/filter', compact('params')); ?>
 </div>

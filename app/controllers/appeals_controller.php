@@ -20,11 +20,11 @@ class AppealsController extends AppController {
  * @return void
  * @access public
  */
-	function admin_index($type = 'all') {
+	function admin_index() {
 		Assert::true(User::allowed($this->name, 'admin_view'), '403');
 
 		$params = $this->_parseGridParams();
-		$conditions = $this->_conditions($type, $params);
+		$conditions = $this->_conditions($params);
 
 		$this->paginate['Appeal'] = array(
 			'recursive' => 1,
@@ -38,7 +38,7 @@ class AppealsController extends AppController {
 		);
 		$appeals = $this->paginate($this->Appeal);
 
-		$this->set(compact('appeals', 'type', 'params'));
+		$this->set(compact('appeals', 'params'));
 	}
 /**
  * Admin View
@@ -170,13 +170,10 @@ class AppealsController extends AppController {
  * @return void
  * @access public
  */
-	function _conditions($type, $params) {
-		$conditions = array();
-		switch ($type) {
-			case 'office':
-				$conditions['Appeal.office_id'] = $this->Session->read('Office.id');
-				break;
-		}
+	function _conditions($params) {
+		$conditions = array(
+			'Appeal.office_id' => $this->Session->read('Office.id')
+		);
 
 		if (!empty($params['keyword'])) {
 			$params['keyword'] = trim($params['keyword']);
