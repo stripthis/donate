@@ -123,21 +123,13 @@ class Gift extends AppModel {
  * @access public
  */
 	function find($type, $query = array()) {
-		$isGuest = User::is('guest');
-
 		$args = func_get_args();
 		switch ($type) {
 			case 'gift_types':
-				$Session = Common::getComponent('Session');
-				if ($Session->check('Office.id') && !$isGuest) {
-					$query['id'] = $Session->read('Office.id');
-				}
-				if ($Session->check('gift_process_office_id') && $isGuest) {
-					$query['id'] = $Session->read('gift_process_office_id');
-				}
+				$query['office_id'] = Gift::officeId();
 
 				$conditions = array();
-				if (isset($query['office_id'])) {
+				if (!empty($query['office_id'])) {
 					$conditions['GiftTypesOffice.office_id'] = $query['office_id'];
 				}
 
@@ -152,16 +144,9 @@ class Gift extends AppModel {
 				}
 				return $result;
 			case 'frequencies':
-				$Session = Common::getComponent('Session');
-				if ($Session->check('Office.id') && !$isGuest) {
-					$query['office_id'] = $Session->read('Office.id');
-				}
-				if ($Session->check('gift_process_office_id') && $isGuest) {
-					$query['office_id'] = $Session->read('gift_process_office_id');
-				}
-
+				$query['office_id'] = Gift::officeId();
 				$conditions = array();
-				if (isset($query['office_id'])) {
+				if (!empty($query['office_id'])) {
 					$conditions['FrequenciesOffice.office_id'] = $query['office_id'];
 				}
 
@@ -176,18 +161,11 @@ class Gift extends AppModel {
 				}
 				return $result;
 			case 'amounts':
-				$Session = Common::getComponent('Session');
-				if ($Session->check('Office.id') && !$isGuest) {
-					$query['id'] = $Session->read('Office.id');
-				}
-				if ($Session->check('gift_process_office_id') && $isGuest) {
-					$query['id'] = $Session->read('gift_process_office_id');
-				}
-
+				$query['office_id'] = Gift::officeId();
 				$amounts = '5,10,15';
-				if (!isset($query['options']) && isset($query['id'])) {
+				if (!isset($query['options']) && !empty($query['office_id'])) {
 					$amounts = ClassRegistry::init('Office')->find('first', array(
-						'conditions' => array('id' => $query['id']),
+						'conditions' => array('id' => $query['office_id']),
 						'fields' => array('amounts')
 					));
 					$amounts = $amounts['Office']['amounts'];
@@ -197,16 +175,9 @@ class Gift extends AppModel {
 				$amounts = Gift::find('amounts', $query);
 				return $amounts[0];
 			case 'currencies':
-				$Session = Common::getComponent('Session');
-				if ($Session->check('Office.id') && !$isGuest) {
-					$query['office_id'] = $Session->read('Office.id');
-				}
-				if ($Session->check('gift_process_office_id') && $isGuest) {
-					$query['office_id'] = $Session->read('gift_process_office_id');
-				}
-
+				$query['office_id'] = Gift::officeId();
 				$conditions = array();
-				if (isset($query['office_id'])) {
+				if (!empty($query['office_id'])) {
 					$conditions['CurrenciesOffice.office_id'] = $query['office_id'];
 				}
 
@@ -287,6 +258,26 @@ class Gift extends AppModel {
 	function updateStatus($id, $status) {
 		$this->set(compact('id', 'status'));
 		return $this->save(null, false);
+	}
+/**
+ * undocumented function
+ *
+ * @return void
+ * @access public
+ */
+	function officeId() {
+		$result = false;
+		$isGuest = User::is('guest');
+
+		$Session = Common::getComponent('Session');
+		if ($Session->check('Office.id') && !$isGuest) {
+			$result = $Session->read('Office.id');
+		}
+		if ($Session->check('gift_process_office_id') && $isGuest) {
+			$result = $Session->read('gift_process_office_id');
+		}
+		return $result;
+
 	}
 }
 ?>
