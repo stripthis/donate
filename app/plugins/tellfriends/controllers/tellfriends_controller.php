@@ -178,16 +178,17 @@ class TellfriendsController extends TellfriendsAppController {
 					);
 					if (Mailer::deliver('tellfriend', $emailSettings)) {
 						$this->Tellfriend->saveField('sent', 1);
-						$msg = 'Your message has been sent to your friends.';
-						return $this->Message->add(__($msg, true), 'ok', true, $this->referer());
+						$msg = __('Your message has been sent to your friends.', true);
+						return $this->Message->add($msg, 'ok', true, $this->referer());
 					}
-					$msg = 'Your message was not sent due to an internal problem. Please try again.';
-					$this->Message->add(__($msg, true), 'ok', true, $this->referer());
+					$msg = __('Your message was not sent due to an internal problem. Please try again.', true);
+					return $this->Message->add($msg, 'ok', true, $this->referer());
+					
 				}
 			}
 		} else{
-			 $msg = 'The characters you entered didn\'t match the word verification. Please try again.';
-			 $this->Message->add(__($msg, true), 'ok', true, $this->referer());
+			 $msg = __('The characters you entered didn\'t match the word verification. Please try again.', true);
+			 return $this->Message->add($msg, 'ok', true, $this->referer());
 		}
 	}
 }
