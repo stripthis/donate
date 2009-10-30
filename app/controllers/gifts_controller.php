@@ -179,8 +179,8 @@ class GiftsController extends AppController {
 
 		if ($result !== true) {
 			$msg = sprintf(__('There was a problem processing the transaction: %s', true), $result);
+			$this->Message->add($msg, 'error');
 			$this->TemplateStepVisit->trackHit($templateId, $appealId, $step);
-			$this->Message->add(__($msg, true));
 			return $this->render('step' . $step);
 		}
 

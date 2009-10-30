@@ -72,7 +72,7 @@ class UsersController extends AppController {
 		}
 
 		$msg = __('User was saved successfully.', true);
-		$this->Message->add(__($msg, true), 'ok', true, array('action' => 'index'));
+		$this->Message->add($msg, 'ok', true, array('action' => 'index'));
 	}
 /**
  * undocumented function

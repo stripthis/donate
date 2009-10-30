@@ -16,8 +16,6 @@ class AuthController extends AppController{
 		}
 
 		if ($this->isGet()) {
-			// $msg = __('Good to see you again... But how come you are not logged in yet?!', true);
-			// return $this->Message->add(__($msg, true), 'error');
 			return;
 		}
 
@@ -65,7 +63,7 @@ class AuthController extends AppController{
 		}
 
 		$msg = __('Sorry, but there is no activated user with these login credentials.', true);
-		$this->Message->add(__($msg, true), 'error');
+		$this->Message->add($msg, 'error');
 		$this->set('invalidAccount', true);
 	}
 /**
