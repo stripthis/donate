@@ -10,7 +10,6 @@
 	<fieldset>
 		<legend><?php __('Status'); ?></legend>
 		<?php echo $form->input('default'); ?>
-		<?php echo $form->input('reviewed');?>
 	</fieldset>
 	<fieldset>
 		<legend><?php __('Objectives'); ?></legend>

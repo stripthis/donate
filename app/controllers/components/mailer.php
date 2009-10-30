@@ -16,7 +16,7 @@ class Mailer{
 			),
 			'store' => false
 		), $options);
-				
+
 		if (!empty($options['mail']['subject'])) {
 			$options['mail']['subject'] = strip_tags($options['mail']['subject']);
 		}
