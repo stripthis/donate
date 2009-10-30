@@ -86,12 +86,12 @@ class Appeal extends AppModel {
 				$slug = isset($query['slug']) ? $query['slug'] : false;
 				if ($slug) {
 					$conditions = array(
-						'Appeal.slug' => $slug,
-						'default' => '0',
-						'archived' => '0'
+						$this->alias . '.slug' => $slug,
+						$this->alias . '.default' => '0',
+						$this->alias . '.archived' => '0'
 					);
 					if (User::is('guest')) {
-						$conditions['published'] = '1';
+						$conditions[$this->alias . '.published'] = '1';
 					}
 					$appeal = $this->find('first', array(
 						'conditions' => $conditions,
