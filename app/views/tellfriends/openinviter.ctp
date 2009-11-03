@@ -19,7 +19,7 @@ $providers =array(
 	*/
 );
 				echo $form->create('openinviter', array(
-					'url' =>array('controller'=>'tellfriends', 'action'=>'contactList') 
+					'url' =>array('controller'=>'tellfriends', 'action'=>'contactlist') 
 				));
 			?>
             <div id= "openinviter_login">
@@ -44,11 +44,10 @@ $providers =array(
 					<td align='right' id= "errProvider"></td>
 				</tr>
 				<tr class='thTableImportantRow'>
-					<td colspan='2' align='center'><input type='button' id="import" name='import' value='Import Contacts'></td>
+					<td colspan='2' align='center'><input type='submit' id="import" name='import' value='Import Contacts'></td>
 				</tr>
 			</table> 
 			<?php echo $form->end(); ?>
 			</fieldset>
             
-            </div><input type='hidden' id="openinviter_contact_list">
-            <div id= "contactList"></div>
+            </div>

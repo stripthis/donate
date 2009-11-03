@@ -24,82 +24,39 @@ class TellfriendsController extends TellfriendsAppController {
 		$this->Recaptcha->publickey = Configure::read("App.recaptcha.publicKey");
 		$this->Recaptcha->privatekey = Configure::read("App.recaptcha.privateKey");
 	}
-/**
+	/**
  * Getting list of e-mail addresses from email providers using openinviter
  *
  * @return  list of e-mail addresses with checkbox as string
  * @access public
  */
-	function contactList($email = null, $encodedPass = null, $provider = null){
-	
+	function contactlist(){
 			$errors=array();
-			$password = base64_decode($encodedPass);
+			$contacts=array();
 
 			App::import('Vendor', 'OpenInviter', array('file' => 'openinviter.php'));
 			
 			$inviter = new OpenInviter();
 			$oi_services=$inviter->getPlugins();
 				
-			$inviter->startPlugin($provider);
+			$inviter->startPlugin($this->data['openinviter']['provider_box']);
 			
 			$internal=$inviter->getInternalError();
 			if ($internal){
 				$errors['inviter']=$internal;
-			} elseif(!$inviter->login($email,$password)){
+			} elseif(!$inviter->login($this->data['openinviter']['email_box'],$this->data['openinviter']['password_box'])){
 				$internal=$inviter->getInternalError();
 				$errors['login']=($internal?$internal:"Login failed. Please check the email and password you have provided and try again later");
 			} elseif (false===$contacts=$inviter->getMyContacts()){
 				$errors['contacts']="Unable to get contacts."; 
-			} else{
-			
-				$this->render  = false;
-				$element       = '';
-				$totalContacts = count($contacts);
-				//Displying contacts in three columns
-				if($totalContacts >0){
-					$element .= "<table>";
-					$tempKey = 0;
-					$newContacts = array();
-					foreach ($contacts as $key=>$val) {
-						$val = $key;
-						$key = $tempKey;
-						$newContacts[$key] = $val;
-						$tempKey++;
-					}
-					$tableColumns = 3;
-					$tableRows    = $totalContacts/3;
-					$newKey       = 0;
-					for($r = 0; $r < $tableRows; $r++) {
-						$element .= "<tr>";
-						for($c = 0; $c < $tableColumns; $c++) {
-							if($newKey<$totalContacts) {
-									$element .= '<td  valign="top"><input type="checkbox" name="Tellfriend.option[]" value="'.$newContacts[$newKey].'" onchange="tellFriends(this);"></td><td valgin="bottom">'.$newContacts[$newKey].'</td>';
-									$newKey++;
-							} else {
-									$element .= '<td  valign="top">&nbsp;</td><td valgin="bottom">&nbsp;</td>';
-							}
-						}
-						$element .= "</tr>";
-					}
-					
-				    $element .= '<td valgin="bottom" colspan ="2"><input type="button" id="confirm" value="Confirm" onclick="validate();">&nbsp;</td><td valign="top" colspan ="4">&nbsp;</td></table>';
-				 }
-				echo $element;
-				exit;
-			}
-			if(count($errors)>0){
-				$errMessages = '';
-				foreach ($errors as $key=>$val) {
-							$errMessages .= $val;
-						}
-				$errMessages .='<br /><input type="button" id="back_to_login" value="Back" onclick="backto();">';
-				echo $errMessages;
-				exit;
-			}
-
-			
+			} 
+			$this->set(compact('contacts'));
+			$this->set('sender', $this->data['openinviter']['email_box']);
+			$this->set(compact('errors'));
+		return;	
 	
 	}
+
 /**
  * controller action for datepicker view
  *
