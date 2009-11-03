@@ -169,6 +169,34 @@ Fri 10/23/2009 Total Time : 6 hours
 Mon 10/26/2009 Total Time : 3.5 hours
 
 1.      Working checking checkbox on text click & paginating contacts  (2.5 hours)
-3.      Testing of datepicker functionality.(0.5 hour)
-2.	Communication (0.5 hours)
+2.      Testing of datepicker functionality.(0.5 hour)
+3.	Communication (0.5 hours)
+
+Tue 10/27/2009 Total Time : 8 hours
+
+1.      Functionality Testing (4 hours)
+2.      Setting up new updated databae(0.5 hour)
+3.      Retesting after new database connection(3 hours)
+4.	Communication (0.5 hours)
+
+Wen 10/28/2009 Total Time : 8 hours
+
+1.      Functionlaities testing (6 hours)
+2.      Ticket management(1 hour)
+3.	Communication (1 hour)
+
+Thu 10/29/2009 Total Time : 8.5 hours
+
+1.      Functionlaities testing (4 hours)
+2.      Creatd virtual host for local application (1 hours)
+3.      UI testing (1.5 hours)
+4.      Ticket management(1 hour)
+5.	Communication (1 hour)
+
+Fri 10/30/2009 Total Time : 6 hours
+
+1.      Retesting of all completed issues(4.5 hours)
+2.      Ticket management(0.5 hour)
+3.      Fix i18n tellfriends(0.5 hour)
+4.	Communication (0.5 hour)
 
