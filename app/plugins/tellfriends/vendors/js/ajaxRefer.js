@@ -1,5 +1,5 @@
 $(document).ready(function() {
-   $("input[name^='contactcheckbox']").click(function() { 
+    $("input:checkbox").click(function() { 
 			var chckVal = $(this).val();
 			//appending email address of checked checkbox
 			if($(this).is(':checked') == true){
@@ -9,7 +9,7 @@ $(document).ready(function() {
 			}
 	});
    
-   $("span").click(function() { 
+   $("span.spantxt").click(function() { 
 			arr = Array();
 			arr = $(this).attr('id').split("_");
 			var checkboxId = 'contactcheckbox_'+arr[1];
@@ -61,4 +61,7 @@ function removeContacts(chckVal){
 				$("#openinviter_contact_list").val(result);
 			
 }
+
+			 
+                    
 
