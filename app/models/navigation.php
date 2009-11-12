@@ -26,7 +26,7 @@ class Navigation extends AppModel{
 		$Session = Common::getComponent('Session');
 
 		$navigations = array(
-		  // GUEST - NO MENU YET
+			// GUEST - NO MENU YET
 			'Guests' => array(
 			)
 			// ADMIN MENU LEVEL 0 (main tabs)
@@ -54,12 +54,7 @@ class Navigation extends AppModel{
 				, __('Supporters', true) => array(
 					'/admin/supporters'
 					, '#/\/admin\/supporters.*/iU'
-				)/*
-				, 'Bugs' => array(
-					'/admin/bugs'
-					, '#/\/admin\/bugs.* /iU' <- added space here * / :)
-					, 'role' => 'root'
-				)*/
+				)
 				, __('Office Config', true) => array(
 					'/admin/offices/edit'
 					, '#/\/admin\/offices(\/edit|\/view).*/iU'
@@ -118,23 +113,7 @@ class Navigation extends AppModel{
 				, __('Favorites', true) => array(
 					'/admin/transactions/index/favorites'
 					, '#/^\/admin\/gifts\/transactions\/index\/favorites.*$/iU'
-				)/*
-				, 'Pending' => array(
-					'/admin/transactions/index/pending'
-					, '#/^\/admin\/transactions\/index\/pending.*$/iU'
 				)
-				, 'Errors' => array(
-					'/admin/transactions/index/errors'
-					, '#/^\/admin\/gifts\/transactions\/index\/errors.*$/iU'
-				)
-				, 'Retried' => array(
-					'/admin/transactions/index/retried'
-					, '#/^\/admin\/gifts\/transactions\/index\/retried.*$/iU'
-				)
-				, 'Successful' => array(
-					'/admin/transactions/index/successful'
-					, '#/^\/admin\/gifts\/transactions\/index\/successful.*$/iU'
-				)*/
 				, __('Archived', true) => array(
 					'/admin/transactions/index/archived'
 					, '#/^\/admin\/gifts\/transactions\/index\/archived.*$/iU'
@@ -155,10 +134,6 @@ class Navigation extends AppModel{
 					'/admin/supporters'
 					, '#/^\/admin\/supporters$/iU'
 				)
-				// , __('Signups', true) => array(
-				// 	'/admin/supporters/index/signups'
-				// 	, '#/^\/admin\/supporters\/index\/signups.*$/iU'
-				// )
 				, __('One-off', true) => array(
 					'/admin/supporters/index/oneoff'
 					, '#/^\/admin\/supporters\/index\/oneoff.*$/iU'
@@ -167,11 +142,6 @@ class Navigation extends AppModel{
 					'/admin/supporters/index/recurring'
 					, '#/^\/admin\/supporters\/index\/recurring.*$/iU'
 				)
-				/*,
-				'Major Donors' => array(
-					'/admin/supporters/index/major_donors'
-					, '#/^\/admin\/supporters\/index\/major_donors.*$/iU'
-				),*/
 				, __('Favorites', true) => array(
 					'/admin/supporters/index/favorites'
 					, '#/^\/admin\/supporters\/favorites.*$/iU'
