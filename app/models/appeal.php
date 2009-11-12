@@ -1,5 +1,9 @@
 <?php
 class Appeal extends AppModel {
+	var $actsAs = array(
+		'Sluggable' => array('label' => 'name')
+	);
+
 	var $belongsTo = array(
 		'User',
 		'Office',
@@ -13,15 +17,11 @@ class Appeal extends AppModel {
 	var $hasMany = array(
 		'AppealsTheme' => array(
 			'dependent' => true
-		),
+		)
 	);
 
 	var $hasAndBelongsToMany = array(
 		'Theme'
-	);
-
-	var $actsAs = array(
-		'Sluggable' => array('label' => 'name')
 	);
 
 	var $validate = array(

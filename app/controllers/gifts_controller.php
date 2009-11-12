@@ -12,11 +12,11 @@ class GiftsController extends AppController {
  */
 	function beforeFilter() {
 		parent::beforeFilter();
+
 		$this->Appeal = ClassRegistry::init('Appeal');
 		$this->AuthKey = ClassRegistry::init('AuthKey');
 		$this->AuthKeyType = $this->AuthKey->AuthKeyType;
 		$this->Office = ClassRegistry::init('Office');
-		$this->TemplateStepVisit = ClassRegistry::init('TemplateStepVisit');
 		$this->GatewaysOffice = $this->Office->GatewaysOffice;
 		$this->Contact = $this->Gift->Contact;
 		$this->GiftType = $this->Gift->GiftType;
@@ -26,6 +26,7 @@ class GiftsController extends AppController {
 		$this->Country = $this->Address->Country;
 		$this->City = $this->Address->City;
 		$this->Transaction = $this->Gift->Transaction;
+		$this->TemplateStepVisit = ClassRegistry::init('TemplateStepVisit');
 		$this->Card = ClassRegistry::init('Card');
 	}
 /**
@@ -413,7 +414,7 @@ class GiftsController extends AppController {
 			'user_id' => $userId
 			, 'auth_key_type_id' => $authKeyTypeId
 			, 'foreign_id' => $tId
-			, 'expires' => TimeZone::date('Y-m-d H:i:s', 'UTC', '+3 days')
+			, 'expires' => date('Y-m-d H:i:s', strtotime('+3 days'))
 		));
 		$keyData = array(
 			'user_id' => $userId,

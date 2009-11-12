@@ -157,11 +157,10 @@ class AppealsController extends AppController {
 			'action' => 'add' , 
 			'admin' => 0
 		);
-		if(isset($this->params['data']['Appeal']['id'])) {
-			$url[] =	'appeal_id:' . $this->params['data']['Appeal']['id'];
+		if (isset($this->params['data']['Appeal']['id'])) {
+			$url[] = 'appeal_id:' . $this->params['data']['Appeal']['id'];
 		}
 		$this->redirect($url);
-		exit;
 	}
 /**
  * undocumented function
