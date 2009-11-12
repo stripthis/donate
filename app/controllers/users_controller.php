@@ -136,7 +136,7 @@ class UsersController extends AppController {
 		$authKey = AuthKey::generate(array(
 			'user_id' => $user['User']['id']
 			, 'auth_key_type_id' => $authKeyTypeId
-			, 'expires' => TimeZone::date('Y-m-d H:i:s', 'UTC', '+3 days')
+			, 'expires' => date('Y-m-d H:i:s', strtotime('+3 days'))
 		));
 
 		$emailSettings = array(

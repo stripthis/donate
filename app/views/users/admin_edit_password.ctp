@@ -6,7 +6,9 @@
 	));
 	?>
 	<?php echo $form->create('User', array('url' => '/admin/users/edit_password', 'id' => 'UserAddForm')); ?>
-	<?php echo $common->help( __('Please provide your current and your new password.',true)); ?>
+	<?php if ($session->read('lost_password') == false) : ?>
+		<?php echo $common->help( __('Please provide your current and your new password.',true)); ?>
+	<?php endif; ?>
 	<fieldset class="half">
 		<legend><?php echo __('Changing your Password', true); ?></legend>
 		<div class="divider big"></div>
