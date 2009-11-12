@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title><?php echo Configure::read('App.browserTitle'); ?> <?php echo h($title_for_layout); ?></title>
-<?php echo $this->element("meta_includes"); ?>
+	<?php echo $this->element("meta_includes"); ?>
+	<?php echo $html->charset('utf8'); ?>
 	<base href="<?php echo r('www.', '', Router::url('/', true)); ?>" rel="<?php echo $this->here ?>" />
 <?php echo $this->element('css_includes'); ?>
 <?php

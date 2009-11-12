@@ -531,6 +531,8 @@ class AppController extends Controller {
 
 		}
 
+		// determine based on the difference between start and enddate what the type of the diagram should be
+		// If the x-axis should be based on day, month or year
 		$type = 'year';
 		$diff = abs($endDate - $startDate);
 		switch (true) {
